@@ -32,6 +32,8 @@ One convention for both repos:
 ├── docs/                  # ASE documentation (the knowledge base)
 │   ├── README.md          # Architecture overview (GitHub renders this automatically)
 │   ├── INDEX.md            # Agent-facing map — every file listed with description
+│   ├── testing-convention.md  # Generic ASE testing conventions (invariant, copy-pasteable)
+│   ├── testing-strategy.md    # Project-specific test strategy (instantiates convention)
 │   ├── architecture/      # C4/C5 diagrams, Structurizr DSL sources
 │   ├── decisions/         # ADRs in MADR format (immutable once closed)
 │   └── design/            # Feature design docs (per-feature, disposable)
@@ -92,8 +94,8 @@ BYOK: the user brings their own AI. The tool doesn't care which one.
 
 ```
 ase init                  # Scaffold canonical directory structure in current repo
-ase init --with-copilot   # Also emit .github/copilot-instructions.md → "See AGENTS.md"
-ase init --with-claude    # Also emit CLAUDE.md → "See AGENTS.md"
+ase init --with-claude    # Also emit CLAUDE.md with @AGENTS.md import
+ase init --with-gemini    # Also emit .gemini/settings.json pointing to AGENTS.md
 
 ase check                 # Run deterministic checks only
 ase check --all           # Run deterministic + AI-assisted (via MCP)
@@ -101,6 +103,7 @@ ase check --path src/     # Scope to a directory or file
 
 ase generate copilot      # Emit Copilot-facing pointer + optional .github/instructions/ slices
 ase generate claude        # Emit CLAUDE.md pointer
+ase generate gemini        # Emit .gemini/settings.json context config
 ```
 
 ### Deterministic checks (runs without AI)
@@ -167,6 +170,8 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 - [x] Create canonical directory structure in `ase-cli` itself
     - [x] `docs/README.md` — architecture overview (CLI + MCP server design)
     - [x] `docs/INDEX.md` — agent-facing map of all docs
+    - [x] `docs/testing-convention.md` — generic ASE testing conventions (test layers, AC IDs, traceability)
+    - [x] `docs/testing-strategy.md` — ase-cli specific test strategy (layers, markers, CI wiring)
     - [x] `docs/decisions/` — ADRs in MADR format
     - [x] `docs/decisions/README.md` — auto-rendered ADR listing
     - [x] `docs/design/` — empty, ready for features
@@ -205,9 +210,10 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 
 OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → specs → design → tasks), **apply** (`/opsx:apply` implements), **archive** (`/opsx:archive` merges delta specs into `openspec/specs/`, moves to `changes/archive/`). Artifacts can be updated anytime — no rigid phase gates.
 
-- [ ] **Change 001 — `ase init` scaffold command**
-    - [ ] Propose: `/opsx:propose` — creates `openspec/changes/001-ase-init/` with proposal, specs, design, tasks
-    - [ ] Apply: implement scaffold command, `--with-copilot`, `--with-claude` flags
+- [x] **Change 001 — `ase init` scaffold command**
+    - [x] Propose: `/opsx:propose` — creates `openspec/changes/ase-init/` with proposal, specs, design, tasks
+    - [x] Specs: 21 AC IDs (SCAFFOLD-001..013, VENDOR-001..008) with `**Test:**` field per scenario
+    - [ ] Apply: implement scaffold command, `--with-claude`, `--with-gemini` flags
     - [ ] Archive: merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
 - [ ] **Change 002 — Deterministic check framework**
     - [ ] Propose: plugin registry, checker interface, result format
@@ -266,6 +272,7 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
 - [ ] **Change 012 — `ase generate` command**
     - [ ] `ase generate copilot` — emits `.github/copilot-instructions.md` pointer to AGENTS.md
     - [ ] `ase generate claude` — emits `CLAUDE.md` pointer to AGENTS.md
+    - [ ] `ase generate gemini` — emits `.gemini/settings.json` with AGENTS.md context path
     - Codex reads `AGENTS.md` + `.agents/` natively — no generator needed
     - [ ] Propose → Apply → Archive
 - [ ] Tag: `v0.8.0`
@@ -583,6 +590,8 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - Vendor-agnostic over vendor-locked. The knowledge lives in the repo, not in a tool.
 - `docs/` is for architecture, decisions, and design. Not for your static site. Point your SSG elsewhere.
 - Every `docs/` directory has a `README.md` (human-readable, renders on Git hosts) and an `INDEX.md` (agent-facing map, context economy). They look similar but serve different readers.
+- Separate the invariant from the instance. `testing-convention.md` defines what doesn't change across projects (test layers, AC IDs, traceability). `testing-strategy.md` instantiates it for a specific project (tools, CI, directory layout).
+- Acceptance criteria are test definitions waiting to be executed. Every scenario needs a stable ID and a declared proof layer.
 - Give credit where credit is due. A book that hides its shoulders is weaker, not stronger.
 
 ---
