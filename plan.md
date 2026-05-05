@@ -214,15 +214,21 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 
 **Prerequisite:** `openspec init` runs once per project to generate slash commands (`.opencode/`, `.claude/`, etc.). These are committed — generated pointers, not authored duplicates.
 
-OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → specs → design → tasks), **apply** (`/opsx:apply` implements), **archive** (`/opsx:archive` merges delta specs into `openspec/specs/`, moves to `changes/archive/`). Artifacts can be updated anytime — no rigid phase gates.
+OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the change folder), **plan** (`/opsx:ff` fast-forwards proposal → specs → design → tasks), **apply** (`/opsx:apply` implements tasks), **archive** (`/opsx:archive` merges delta specs into `openspec/specs/`, moves to `changes/archive/<YYYY-MM-DD>-<name>/`). Artifacts can be updated anytime — no rigid phase gates. Helper commands: `/opsx:continue`, `/opsx:explore`, `/opsx:verify`, `/opsx:sync`, `/opsx:onboard`, `/opsx:bulk-archive`.
+
+> **AC IDs are an ASE convention, not canonical OpenSpec.** OpenSpec prescribes no AC ID format; the `[PREFIX-NNN]` pattern and `**Test:**` field are layered on top to enable test traceability checks.
+
+> **Use a strong, thinking-capable model for OpenSpec work.** Proposals, delta specs, and design docs are where intent gets fixed — weak models produce shallow specs that read fine but miss edge cases and architectural consequences. Default to a top-tier reasoning model (e.g. Claude Opus, GPT-5 Thinking, Gemini Pro) for `/opsx:ff` and `/opsx:apply`; cheaper models are fine for archive merges and mechanical edits.
+
+> **Put the agent in Plan / Spec / Architect mode when proposing changes.** Most agentic IDEs expose a planning mode that defers code edits until the spec and design are explicitly approved (Claude Code's plan mode, Cursor's Plan, Cline/Roo's Architect, OpenCode's Plan). Use it for `/opsx:new` and `/opsx:ff` so the model thinks before it writes — then drop to normal mode for `/opsx:apply`.
 
 - [x] **Change 001 — `ase init` scaffold command**
-    - [x] Propose: `/opsx:propose` — creates `openspec/changes/ase-init/` with proposal, specs, design, tasks
+    - [x] New + Plan: `/opsx:new ase-init` then `/opsx:ff` — creates `openspec/changes/ase-init/` with proposal, specs, design, tasks
     - [x] Specs: 21 AC IDs (SCAFFOLD-001..013, VENDOR-001..008) with `**Test:**` field per scenario
-    - [x] Apply: implement scaffold command, `--with-claude`, `--with-gemini` flags (43/43 tasks, 21 tests, 24 ACs)
-    - [x] Archive: merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
+    - [x] Apply (`/opsx:apply`): implement scaffold command, `--with-claude`, `--with-gemini` flags (43/43 tasks, 21 tests, 24 ACs)
+    - [x] Archive (`/opsx:archive`): merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
 - [x] **Change 002 — Deterministic check framework**
-    - [x] Propose: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
+    - [x] New + Plan: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
     - [ ] Apply: implement plugin registry, `ase check` wiring, shared result model
     - [ ] Archive: merge specs
 - [ ] Tag: `v0.3.0`
@@ -231,26 +237,26 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
 
 - [ ] **Change 003 — Agent-facing file checks**
     - `agents-exists`, `agents-size`, `agents-links`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] **Change 004 — Architecture & file structure checks**
     - `docs-readme-exists`, `docs-index-exists`, `docs-index-stale`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] **Change 005 — ADR format checks**
     - `adr-format`, `adr-index`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] Tag: `v0.4.0`
 
 #### Phase F — Spec-Driven: Spec Quality Checks (`v0.5.0`)
 
 - [ ] **Change 006 — AC ID & test category checks**
     - `spec-ac-ids`, `spec-test-category`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] **Change 007 — File & spec size checks**
     - `spec-size`, `file-size`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] **Change 008 — Agent hub & secrets checks**
     - `agents-hub-structure`, `secrets`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] Tag: `v0.5.0`
 
 #### Phase G — Spec-Driven: Test Traceability Checks (`v0.6.0`)
@@ -258,10 +264,10 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
 - [ ] **Change 009 — Test traceability**
     - `test-traceability` — cross-reference AC IDs in specs vs test markers
     - Regex-based: JUnit `@Tag`, Cucumber `@AC:`, fallback `// AC:`
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] **Change 010 — Test coverage**
     - `test-coverage` — positive/negative proof pair validation
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] Tag: `v0.6.0`
 
 #### Phase H — Spec-Driven: MCP Server + AI Checks (`v0.7.0`)
@@ -269,7 +275,7 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
 - [ ] **Change 011 — MCP server**
     - Start MCP server on demand, publish tools: `check_top_heavy`, `check_adr_scope`, `check_agents_toc`, `check_spec_quality`
     - Each tool constructs a structured prompt from a version-controlled template
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] Wire `ase check --all` to start MCP server and await AI results
 - [ ] Tag: `v0.7.0`
 
@@ -280,7 +286,7 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
     - [ ] `ase generate claude` — emits `CLAUDE.md` pointer to AGENTS.md
     - [ ] `ase generate gemini` — emits `.gemini/settings.json` with AGENTS.md context path
     - Codex reads `AGENTS.md` + `.agents/` natively — no generator needed
-    - [ ] Propose → Apply → Archive
+    - [ ] New → Plan → Apply → Archive
 - [ ] Tag: `v0.8.0`
 
 #### Phase J — Quality Verification on ase-cli itself (`v0.9.0`)
@@ -478,22 +484,42 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase T — Write Team + Cross-Team Chapters (`v0.7.0`)
 
+> **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing ASE-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
+
 - [ ] Chapter: Why Teams Break Agentic Workflows
     - N developers × M agents = compounding drift
+    - Where individual practice runs out of road
+- [ ] Chapter: OpenSpec in an Existing SDLC *(bridge chapter)*
+    - You don't need a new methodology — you need to know which existing slot each artifact fits in
+    - Change folder ↔ ticket (Jira / Linear / GitHub Issue) — and when to skip the ticket entirely
+    - Spec delta ↔ PR review focus (review intent before diff)
+    - `tasks.md` ↔ sprint board / kanban column
+    - Archive ↔ changelog / release notes
+    - ADRs ↔ architecture review board (or its absence)
+    - The "delegate, review, own" loop — the emerging cross-tool operating model in SDD writing (2026)
 - [ ] Chapter: Trunk-Based Development with Agents
-    - Small batches, short-lived branches, frequent integration
-    - Credit: Dave Farley
-- [ ] Chapter: Parallel Agents on the Same Codebase
-    - Spec ownership, architecture boundaries as isolation
-- [ ] Chapter: Shared AI Instruction Conventions
-    - Team-level AGENTS.md, shared skills, onboarding
+    - Anchor: Dave Farley's TBD — small batches, short-lived branches, frequent integration
+    - OpenSpec change folder ↔ short-lived branch
+    - Merge cadence with parallel changes; how spec deltas reduce merge pain
 - [ ] Chapter: Code Review for Agent-Generated Code
-    - Intent-first review, PR taxonomy, pair review
+    - Review the spec delta first, the diff second
+    - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
+    - Pair review with another agent (multi-LLM critique)
+    - What to look for that humans skip and agents miss
+- [ ] Chapter: Parallel Agents on the Same Codebase
+    - One change folder per developer-agent pair as the isolation primitive
+    - Architecture boundaries as the natural conflict-prevention layer
+    - Conflict resolution when delta specs overlap
+- [ ] Chapter: Shared AI Instruction Conventions
+    - Team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding
+    - When to standardize, when to leave divergent
 - [ ] Chapter: Cross-Team Coordination
-    - ADRs as cross-team mechanism, shared conventions
-    - Inner source: sharing `.agents/` libraries
+    - ADRs as cross-team mechanism (permanent, public, already part of the SDLC)
+    - Inner source: sharing `.agents/` libraries across teams
+    - Multi-repo realities — and OpenSpec's own roadmap gap
 - [ ] Chapter: What Is Still Evolving
     - Maturity honesty applies to the book itself
+    - What the SDD ecosystem has not yet figured out (multi-repo planning, agent-to-agent handoff, governance without bureaucracy)
 - [ ] Tag: `v0.7.0`
 
 #### Phase U — Appendices + Polish (`v0.8.0`)
@@ -574,11 +600,14 @@ Each chapter is an OpenSpec change proposal on the book repo.
 | Dave Farley / Modern Software Engineering | Trunk-based dev, CI, sampling theory |
 | MADR (adr.github.io/madr) — Michael Nygard et al. | ADR format |
 | LeanSpec (lean-spec.dev) | Small specs, first principles |
-| OpenSpec (openspec.dev) | Spec lifecycle, AC IDs, archive |
+| OpenSpec (openspec.pro) | Spec lifecycle, change folders, archive flow |
 | GitHub SpecKit | Enterprise end of spec spectrum |
 | AGENTS.md (agentpatterns.ai) | TOC pattern, instruction hub |
 | dot-principles/example-catalog | PTAC principles, quality uplift |
 | MCP (modelcontextprotocol.io) | Agent-tool bridge standard |
+| SDD tool comparisons (Hashrocket; R. Hightower; A. Pradhan; T. Wang, 2026) | Tool tradeoffs, team-fit framing for Phase T |
+| AI-SDLC writing 2026 (Microsoft, CIO, IBM, Augment Code) | "Delegate, review, own" operating model; SDLC backdrop |
+| Tim De Schryver — Keep Agentic AI Simple | Practical individual-developer workflow, contrast with team scale |
 
 ---
 
@@ -599,6 +628,8 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - Separate the invariant from the instance. `testing-convention.md` defines what doesn't change across projects (test layers, AC IDs, traceability). `testing-strategy.md` instantiates it for a specific project (tools, CI, directory layout).
 - Acceptance criteria are test definitions waiting to be executed. Every scenario needs a stable ID and a declared proof layer.
 - Give credit where credit is due. A book that hides its shoulders is weaker, not stronger.
+- Anchor team process to existing SDLC primitives (branches, PRs, tickets, ADRs). New ceremonies age fast; existing ones already have tooling, muscle memory, and review culture.
+- Adoption is pull, not push. Document what teams have made work; let the reader decide what to lift.
 
 ---
 
