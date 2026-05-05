@@ -231,7 +231,7 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] Propose: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
     - [x] Apply: single-module check.py (85 lines), 34 tests, 98% coverage. 25/25 tasks complete.
     - [x] Archive: merge specs → openspec/specs/{checker-registry,check-result-model,check-cli}
-- [ ] Tag: `v0.3.0`
+- [x] Tag: `v0.3.0`
 
 #### Phase E — Spec-Driven: File & Structure Checks (`v0.4.0`)
 
