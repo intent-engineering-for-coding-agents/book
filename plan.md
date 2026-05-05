@@ -93,7 +93,13 @@ BYOK: the user brings their own AI. The tool doesn't care which one.
 ### Commands
 
 ```
+ase --help                # Show usage and command reference
+ase --version             # Show version (from pyproject.toml)
+
 ase init                  # Scaffold canonical directory structure in current repo
+ase init --path <dir>     # Target a specific directory
+ase init --dry-run         # Preview without creating files
+ase init --force           # Overwrite existing files
 ase init --with-claude    # Also emit CLAUDE.md with @AGENTS.md import
 ase init --with-gemini    # Also emit .gemini/settings.json pointing to AGENTS.md
 
@@ -213,10 +219,10 @@ OpenSpec workflow per change: **propose** (`/opsx:propose` creates proposal → 
 - [x] **Change 001 — `ase init` scaffold command**
     - [x] Propose: `/opsx:propose` — creates `openspec/changes/ase-init/` with proposal, specs, design, tasks
     - [x] Specs: 21 AC IDs (SCAFFOLD-001..013, VENDOR-001..008) with `**Test:**` field per scenario
-    - [ ] Apply: implement scaffold command, `--with-claude`, `--with-gemini` flags
-    - [ ] Archive: merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
-- [ ] **Change 002 — Deterministic check framework**
-    - [ ] Propose: plugin registry, checker interface, result format
+    - [x] Apply: implement scaffold command, `--with-claude`, `--with-gemini` flags (43/43 tasks, 21 tests, 24 ACs)
+    - [x] Archive: merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
+- [x] **Change 002 — Deterministic check framework**
+    - [x] Propose: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
     - [ ] Apply: implement plugin registry, `ase check` wiring, shared result model
     - [ ] Archive: merge specs
 - [ ] Tag: `v0.3.0`
