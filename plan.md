@@ -237,7 +237,8 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 - [ ] **Change 003 — Agent-facing file checks**
     - `agents-exists`, `agents-size`, `agents-links`
-    - [ ] New → Plan → Apply → Archive
+    - [x] Propose: 3 specs, 15 AC IDs (AGEX 3, AGSZ 6, AGLN 6), env var config for line limit
+    - [ ] Apply → Archive
 - [ ] **Change 004 — Architecture & file structure checks**
     - `docs-readme-exists`, `docs-index-exists`, `docs-index-stale`
     - [ ] New → Plan → Apply → Archive
