@@ -228,9 +228,9 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] Apply (`/opsx:apply`): implement scaffold command, `--with-claude`, `--with-gemini` flags (43/43 tasks, 21 tests, 24 ACs)
     - [x] Archive (`/opsx:archive`): merge delta specs → `openspec/specs/`, move to `changes/archive/YYYY-MM-DD-ase-init/`
 - [x] **Change 002 — Deterministic check framework**
-    - [x] New + Plan: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
-    - [ ] Apply: implement plugin registry, `ase check` wiring, shared result model
-    - [ ] Archive: merge specs
+    - [x] Propose: plugin registry (11 ACs), checker interface, result format (7 ACs), `ase check` CLI (10 ACs). 28 AC IDs total across 3 specs.
+    - [x] Apply: single-module check.py (85 lines), 34 tests, 98% coverage. 25/25 tasks complete.
+    - [x] Archive: merge specs → openspec/specs/{checker-registry,check-result-model,check-cli}
 - [ ] Tag: `v0.3.0`
 
 #### Phase E — Spec-Driven: File & Structure Checks (`v0.4.0`)
