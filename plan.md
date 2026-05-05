@@ -235,10 +235,11 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 #### Phase E — Spec-Driven: File & Structure Checks (`v0.4.0`)
 
-- [ ] **Change 003 — Agent-facing file checks**
+- [x] **Change 003 — Agent-facing file checks**
     - `agents-exists`, `agents-size`, `agents-links`
     - [x] Propose: 3 specs, 15 AC IDs (AGEX 3, AGSZ 6, AGLN 6), env var config for line limit
-    - [ ] Apply → Archive
+    - [x] Apply: checkers/ package, 16 tests, 71 total pass, 15/15 ACs proven
+    - [x] Archive: merge specs → openspec/specs/{agents-exists,agents-links,agents-size}
 - [ ] **Change 004 — Architecture & file structure checks**
     - `docs-readme-exists`, `docs-index-exists`, `docs-index-stale`
     - [ ] New → Plan → Apply → Archive
