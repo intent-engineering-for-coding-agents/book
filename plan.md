@@ -243,7 +243,8 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 - [x] **Change 004 — Architecture & file structure checks**
     - `docs-readme-exists` (FAIL, recursive), `docs-index-exists` (WARN, recursive), `docs-index-stale` (WARN, per-directory)
     - [x] Propose: 3 specs, 17 AC IDs (DRME 5, DINE 5, DINS 7)
-    - [ ] Apply → Archive
+    - [x] Apply: 17 tests, 88 total pass, 17/17 ACs proven
+    - [x] Archive → openspec/specs/{docs-readme-exists,docs-index-exists,docs-index-stale}
 - [ ] **Change 005 — ADR format checks**
     - `adr-format`, `adr-index`
     - [ ] New → Plan → Apply → Archive
