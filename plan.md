@@ -240,9 +240,10 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] Propose: 3 specs, 15 AC IDs (AGEX 3, AGSZ 6, AGLN 6), env var config for line limit
     - [x] Apply: checkers/ package, 16 tests, 71 total pass, 15/15 ACs proven
     - [x] Archive: merge specs → openspec/specs/{agents-exists,agents-links,agents-size}
-- [ ] **Change 004 — Architecture & file structure checks**
-    - `docs-readme-exists`, `docs-index-exists`, `docs-index-stale`
-    - [ ] New → Plan → Apply → Archive
+- [x] **Change 004 — Architecture & file structure checks**
+    - `docs-readme-exists` (FAIL, recursive), `docs-index-exists` (WARN, recursive), `docs-index-stale` (WARN, per-directory)
+    - [x] Propose: 3 specs, 17 AC IDs (DRME 5, DINE 5, DINS 7)
+    - [ ] Apply → Archive
 - [ ] **Change 005 — ADR format checks**
     - `adr-format`, `adr-index`
     - [ ] New → Plan → Apply → Archive
