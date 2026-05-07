@@ -32,11 +32,12 @@ One convention for both repos:
 ├── docs/                  # ASE documentation (the knowledge base)
 │   ├── README.md          # Architecture overview (GitHub renders this automatically)
 │   ├── INDEX.md            # Agent-facing map — every file listed with description
-│   ├── testing-convention.md  # Generic ASE testing conventions (invariant, copy-pasteable)
-│   ├── testing-strategy.md    # Project-specific test strategy (instantiates convention)
-│   ├── architecture/      # C4/C5 diagrams, Structurizr DSL sources
-│   ├── decisions/         # ADRs in MADR format (immutable once closed)
-│   └── design/            # Feature design docs (per-feature, disposable)
+│   ├── architecture/      # High-level design (C4 diagrams, Structurizr DSL sources)
+│   ├── decisions/         # Architectural decisions (ADRs in MADR format, immutable once closed)
+│   ├── design/            # Detailed design docs (per-feature, disposable)
+│   └── testing/           # Testing conventions and strategy
+│       ├── testing-convention.md  # Generic ASE testing conventions (invariant, copy-pasteable)
+│       └── testing-strategy.md    # Project-specific test strategy (instantiates convention)
 ├── openspec/              # OpenSpec: change proposals, delta specs, tasks
 │   ├── changes/           # Active and proposed changes
 │   │   └── archive/       # Completed changes (historical record)
