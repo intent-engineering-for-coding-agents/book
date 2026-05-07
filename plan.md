@@ -388,8 +388,10 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 Each chapter is an OpenSpec change proposal on the book repo.
 
 - [ ] Chapter: Why Structure Matters
+    - *Sources: ThoughtWorks Technology Radar Vol 34 (cognitive debt).*
     - Compounding drift, before/after, structure as context
 - [ ] Chapter: The Four Document Types
+    - *Sources: Nygard 2011 (origin of ADRs); Kopp/Armbruster/Zimmermann 2018 (MADR template + paper); LeanSpec; OpenSpec. The four-doc split is this book's synthesis — closest published precedent is arc42.*
     - `docs/README.md` — architecture overview, renders on GitHub
     - `docs/INDEX.md` — agent-facing map, loaded first for context economy
     - ADRs in MADR format at `docs/decisions/`
@@ -397,47 +399,59 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Specs at `openspec/`
     - Lifespans: permanent → temporary → disposable
     - Why conflating them corrupts both
-    - Credit: MADR — Michael Nygard et al.
+    - Credit: ADRs — Michael Nygard (2011); MADR template — Oliver Kopp, Anita Armbruster, Olaf Zimmermann (2018)
 - [ ] Chapter: Plain-Text-as-Code
+    - *Sources: Write the Docs "Docs as Code"; Mermaid; C4 model; Structurizr.*
     - Markdown, Mermaid, MADR as substrate
     - Git-diffable, vendor-independent, agent-readable
 - [ ] Chapter: The Map — ASE and the SDLC
+    - *Sources: Farley *Modern Software Engineering*; continuousdelivery.com; Microsoft "An AI-led SDLC"; IBM "AI in SDLC".*
     - One-page diagram: SDLC phases → ASE touchpoints
     - ASE extends, does not replace
 - [ ] Chapter: Honest Maturity
+    - *Sources: ThoughtWorks Radar adoption rings (Hold/Assess/Trial/Adopt) as lineage; CMM noted briefly to dismiss process-theatre framing.*
     - Practiced / documented / CI-enforced / target state
     - Maturity labels prevent process theatre
+    - Lineage: rhymes with ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings; this is staged-maturity-honesty, not CMM-style process compliance.
 - [ ] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
 - [ ] Tag: `v0.3.0`
 
 #### Phase Q — Write AI Instructions Chapters (`v0.4.0`)
 
 - [ ] Chapter: Prompt Engineering Basics
+    - *Sources: Karpathy "vibe coding" (Feb 2, 2025); Willison "Not all AI-assisted programming is vibe coding" (Mar 19, 2025); Yegge "Revenge of the junior developer" (Mar 22, 2025) — six-wave model.*
     - Where everyone starts, why it fails at scale
     - Progression: prompt → AGENTS.md → specs
 - [ ] Chapter: AGENTS.md — One File Changes Everything
+    - *Sources: agents.md (de-facto spec); agentpatterns.ai "AGENTS.md as Project-Level README" (TOC pattern); Böckeler.*
     - TOC pattern, what goes in it, tool-agnostic
-    - Credit: agentpatterns.ai
+    - Credit: agentpatterns.ai (TOC pattern framing)
 - [ ] Chapter: From AGENTS.md to AI Instruction Hub
+    - *Sources: agentpatterns.ai "Evaluating AGENTS.md"; Anthropic "Building effective agents" (Dec 2024).*
     - `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`
     - One folder for all AI tools
 - [ ] Chapter: Writing Instructions That Work
+    - *Sources: Böckeler ("AI teammate" mental model); Anthropic "Building effective agents".*
     - Specific, negative instructions, architecture boundaries
     - Testing: how should the agent verify its own work?
 - [ ] Chapter: Skills, Commands, and Hooks
+    - *Sources: Anthropic "Building effective agents"; ThoughtWorks Radar Vol 34 (harness engineering); Huntley "Everything is a Ralph Loop".*
     - Skills: agent-invoked workflows
     - Commands: user-triggered
     - Hooks: automated quality gates
     - Concrete example: `/update-index` skill — scans `docs/`, regenerates `INDEX.md`
     - Instructions prevent drift (`index-maintenance.md`), skills fix it when it happens
 - [ ] Chapter: Context Window Management
+    - *Sources: Hightower SDD-tools comparison (Feb 2026); Anthropic "Building effective agents".*
     - Why context fills, small sessions > long conversations
     - Subagents, /compact, loading skills selectively
     - `INDEX.md` as context economy — agents load one 40-line file instead of 10×200-line files
 - [ ] Chapter: Debugging and Recovery
+    - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple".*
     - Drift, spin, halt — signs and strategies
     - "The agent is not broken — it is clueless. Fix the context."
 - [ ] Chapter: Vendor Files That Point, Not Duplicate
+    - *Sources: agents.md; agentpatterns.ai.*
     - `CLAUDE.md` → "See AGENTS.md"
     - `.github/copilot-instructions.md` → "See AGENTS.md"
     - `ase generate` — why generated files are pointers, not authored duplicates
@@ -447,41 +461,53 @@ Each chapter is an OpenSpec change proposal on the book repo.
 #### Phase R — Write Spec-Driven Chapters (`v0.5.0`)
 
 - [ ] Chapter: Why Specs?
+    - *Sources: OpenSpec; GitHub Spec-Kit; LeanSpec; Hightower SDD-tools comparison.*
     - Drift, intent, traceability, Spec > Code
 - [ ] Chapter: Why Small?
+    - *Sources: LeanSpec; Anthropic "Building effective agents" (context engineering).*
     - Context window economics, LeanSpec rule: under 300 lines
     - Credit: LeanSpec
 - [ ] Chapter: Why Important Stuff First?
+    - *Sources: agentpatterns.ai (TOC pattern, top-down attention); Anthropic.*
     - Agents read top-down, lose focus
     - If they read only the first 50 lines — would it still work?
 - [ ] Chapter: The Spectrum
+    - *Sources: Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (Feb 2026); GitHub Blog "Spec-driven development with AI" (2025); LeanSpec; OpenSpec; Spec-Kit.*
     - Raw prompt → spec.md → OpenSpec → SpecKit
     - Match formality to risk
 - [ ] Chapter: Spec Lifecycle
+    - *Sources: OpenSpec; GitHub Spec-Kit; Hightower.*
     - Write → critique → review → implement → archive
     - Multi-LLM critique
 - [ ] Chapter: Spec > Code
+    - *Sources: OpenSpec; LeanSpec.*
     - Implementation is disposable. The spec is not.
 - [ ] Tag: `v0.5.0`
 
 #### Phase S — Write Quality Chapters (`v0.6.0`)
 
 - [ ] Chapter: Tests as Proof, Not Ritual
+    - *Sources: Farley *Modern Software Engineering*; ThoughtWorks Radar Vol 34 (mutation testing as feedback control).*
     - "Done" = approved intent has executable proof
     - AI speed makes automated proof mathematically required
 - [ ] Chapter: AC IDs + Positive/Negative Coverage
+    - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; ASE convention disclaimer (`plan.md` AC-IDs note).*
     - Stable IDs, mandatory `**Test:**` field
     - Happy-path-only is not proof
 - [ ] Chapter: Before / During / After Checkpoints
+    - *Sources: Anthropic "Building effective agents"; agentpatterns.ai.*
     - Before: architecture, AGENTS.md, design system
     - During: spec writing, hooks, context management
     - After: verification, refactoring, review
 - [ ] Chapter: Security in Depth
+    - *Sources: OWASP Top 10; ThoughtWorks Radar Vol 34 (zero trust, sandboxed execution).*
     - Secrets, injection, dependencies — guardrails in AGENTS.md
     - OWASP as review checklist
 - [ ] Chapter: PR Taxonomy
+    - *Sources: Hammant trunkbaseddevelopment.com; Farley *Modern Software Engineering*.*
     - `docs`, `structural`, `behavior` — why mixing makes review harder
 - [ ] Chapter:.principles — Raising the Bar
+    - *Sources: dot-principles repo; dot-principles example-catalog.*
     - dot-scout → dot-prime → code → dot-audit
     - Complements specs and tests, does not replace them
 - [ ] Tag: `v0.6.0`
@@ -491,9 +517,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
 > **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing ASE-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
 
 - [ ] Chapter: Why Teams Break Agentic Workflows
+    - *Sources: Yegge "Revenge of the junior developer" (Agent Clusters → Agent Fleets, 2025–2026); ThoughtWorks Radar Vol 34.*
     - N developers × M agents = compounding drift
     - Where individual practice runs out of road
 - [ ] Chapter: OpenSpec in an Existing SDLC *(bridge chapter)*
+    - *Sources: OpenSpec; Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (delegate-review-own loop framing).*
     - You don't need a new methodology — you need to know which existing slot each artifact fits in
     - Change folder ↔ ticket (Jira / Linear / GitHub Issue) — and when to skip the ticket entirely
     - Spec delta ↔ PR review focus (review intent before diff)
@@ -502,26 +530,32 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - ADRs ↔ architecture review board (or its absence)
     - The "delegate, review, own" loop — the emerging cross-tool operating model in SDD writing (2026)
 - [ ] Chapter: Trunk-Based Development with Agents
-    - Anchor: Dave Farley's TBD — small batches, short-lived branches, frequent integration
+    - *Sources: Hammant trunkbaseddevelopment.com (canonical TBD); Hammant *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020); Farley *Modern Software Engineering* + continuousdelivery.com.*
+    - Anchor: Paul Hammant's TBD as the canonical reference — small batches, short-lived branches, frequent integration. Farley's *MSE* and *Continuous Delivery* (with Humble) are the secondary anchors for the CI feedback-loop framing.
     - OpenSpec change folder ↔ short-lived branch
     - Merge cadence with parallel changes; how spec deltas reduce merge pain
 - [ ] Chapter: Code Review for Agent-Generated Code
+    - *Sources: ThoughtWorks Radar Vol 34 (mutation testing, feedback controls); Böckeler.*
     - Review the spec delta first, the diff second
     - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
 - [ ] Chapter: Parallel Agents on the Same Codebase
+    - *Sources: Yegge "Revenge of the junior developer" (Agent Clusters → Fleets); Huntley "Everything is a Ralph Loop".*
     - One change folder per developer-agent pair as the isolation primitive
     - Architecture boundaries as the natural conflict-prevention layer
     - Conflict resolution when delta specs overlap
 - [ ] Chapter: Shared AI Instruction Conventions
+    - *Sources: agents.md; agentpatterns.ai.*
     - Team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding
     - When to standardize, when to leave divergent
 - [ ] Chapter: Cross-Team Coordination
+    - *Sources: Nygard 2011 (ADRs as cross-team mechanism); ThoughtWorks Radar Vol 34.*
     - ADRs as cross-team mechanism (permanent, public, already part of the SDLC)
     - Inner source: sharing `.agents/` libraries across teams
     - Multi-repo realities — and OpenSpec's own roadmap gap
 - [ ] Chapter: What Is Still Evolving
+    - *Sources: ThoughtWorks Radar Vol 34 (market fragmentation, term-coining); Hightower SDD-tools comparison.*
     - Maturity honesty applies to the book itself
     - What the SDD ecosystem has not yet figured out (multi-repo planning, agent-to-agent handoff, governance without bureaucracy)
 - [ ] Tag: `v0.7.0`
@@ -599,23 +633,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 ## Sources to Cherry-Pick
 
-| Source | Used For |
-|---|---|
-| [Dave Farley / Modern Software Engineering](https://www.davefarley.net/?p=352) | Trunk-based dev, CI, sampling theory |
-| [MADR](https://adr.github.io/madr/) — Michael Nygard et al. | ADR format; vocabulary used in `docs/decisions/` |
-| [Docs as Code](https://www.writethedocs.org/guide/docs-as-code.html) | Plain-text-as-code practice — Markdown, specs, ADRs, diagrams reviewable in Git |
-| [Mermaid](https://mermaid.js.org/) | Text-defined diagram format for lightweight workflows and architecture diagrams in Markdown |
-| [C4 model](https://c4model.com/) | Architecture-view model behind `docs/architecture/c4-views/` |
-| [Structurizr](https://docs.structurizr.com/) | Models-as-code tooling for C4 DSL sources under `docs/architecture/**/structurizr-dsl/` |
-| [LeanSpec](https://lean-spec.dev) | Small specs, first principles |
-| [OpenSpec](https://openspec.pro/) | Lightweight spec-driven development framework; change folders, delta specs, archive flow |
-| [SpecKit](https://speckit.org/) | Enterprise end of spec spectrum |
-| [AGENTS.md](https://agents.md/) | De facto AI-agent entry-point pattern; TOC pattern behind `AGENTS.md` and `.agents/` |
-| [.principles](https://github.com/dot-principles) / [example-catalog](https://github.com/dot-principles/example-catalog) | PTAC principles, quality uplift |
-| [MCP](https://modelcontextprotocol.io) | Agent-tool bridge standard |
-| [Rick Hightower — Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI](https://hashrocket.com/blog/posts/spec-driven-development-how-product-owners-can-ship-features-faster-with-ai) (Feb 2026) | Tool tradeoffs, team-fit framing for Phase T |
-| AI-SDLC writing 2026: [Microsoft](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896) · [IBM](https://www.ibm.com/think/topics/ai-in-sdlc) · [Towards AI](https://pub.towardsai.net/ai-driven-agentic-software-development-life-cycle-in-2026-3c9a2390a9e7) · [Codebridge](https://www.codebridge.tech/articles/agentic-ai-software-development-lifecycle-the-production-ready-playbook) | "Delegate, review, own" operating model; SDLC backdrop |
-| [Tim De Schryver — Keep Agentic AI Simple](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development) | Practical individual-developer workflow, contrast with team scale |
+See the [References](#references) section at the end of this document for the full, dated bibliography. Each chapter outline above carries a small inline `*Sources:*` line listing the references that chapter will lean on.
 
 ---
 
@@ -628,7 +646,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - Small specs outperform large specs — an agent that finishes is better than one that drifts.
 - The spec is the durable artifact. The implementation is disposable.
 - AI generates code faster than you can verify manually. Automated proof is not optional — it is mathematically required at agentic speeds.
-- Distinguish practiced from documented from CI-enforced from target state. Maturity honesty prevents process theatre.
+- Distinguish practiced from documented from CI-enforced from target state. Maturity and honesty prevent process theater.
 - One source of truth for AI instructions. Vendor files are generated pointers, not authored duplicates.
 - Vendor-agnostic over vendor-locked. The knowledge lives in the repo, not in a tool.
 - `docs/` is for architecture, decisions, and design. Not for your static site. Point your SSG elsewhere.
@@ -646,3 +664,52 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - Domain: `ase-book.dev` — buy when going public
 - PyPI package name: `ase-cli` — verify availability
 - When to announce / share externally?
+
+---
+
+## References
+
+*Last reviewed: 2026-05-07.*
+
+Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines under each chapter point into this section.
+
+### Foundations — engineering practice, decision records, plain-text-as-code
+
+- Andrej Karpathy — ["Vibe coding"](https://x.com/karpathy/status/1886192184808149383). X (Twitter), *Feb 2, 2025*. Origin of the term used in this book's subtitle.
+- Simon Willison — ["Not all AI-assisted programming is vibe coding"](https://simonwillison.net/2025/Mar/19/vibe-coding/). *Mar 19, 2025*. Practical counterweight to Karpathy.
+- Dave Farley — *Modern Software Engineering* (Addison-Wesley, 2021); with Jez Humble: *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing). Feedback loops, sampling, CI/CD vocabulary.
+- Paul Hammant — [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
+- Michael Nygard — ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions). Cognitect blog, *Nov 15, 2011*. Origin of the ADR practice.
+- Oliver Kopp, Anita Armbruster, Olaf Zimmermann — [MADR template](https://adr.github.io/madr/) (ongoing) and ["Markdown Architectural Decision Records: Format and Tool Support"](https://ceur-ws.org/Vol-2072/paper9.pdf), CEUR-WS Vol-2072, *2018*. Markdown ADR template used in `docs/decisions/`.
+- [Docs as Code — Write the Docs guide](https://www.writethedocs.org/guide/docs-as-code.html) (ongoing). Plain-text-as-code practice.
+- [Mermaid](https://mermaid.js.org/) (ongoing). Text-defined diagrams.
+- Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
+- Simon Brown — [Structurizr](https://docs.structurizr.com/) (ongoing). Models-as-code tooling for C4 DSL.
+
+### Spec-driven development
+
+- Fission AI — [OpenSpec](https://openspec.dev/) ([repo](https://github.com/Fission-AI/OpenSpec), ongoing). The change-folder + delta-spec framework this book uses end-to-end.
+- GitHub — [Spec-Kit](https://github.com/github/spec-kit) ([docs](https://github.github.com/spec-kit/), ongoing). Enterprise end of the spectrum.
+- [LeanSpec](https://lean-spec.dev) (ongoing). Smaller-community framework articulating the small-spec discipline.
+- Rick Hightower — ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI: Where SDD Tools Diverge"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46). Medium, *Feb 2026*. Tool-tradeoff map for Phase T.
+- Rick Hightower — ["What Is GSD? Spec-Driven Development Without the Ceremony"](https://pub.spillwave.com/what-is-gsd-spec-driven-development-without-the-ceremony-570216956a84). Spillwave, *2026*. Companion piece on the lightweight end of SDD.
+- GitHub Blog — ["Spec-driven development with AI: Get started with a new open source toolkit"](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/). *2025*. Official launch context for SpecKit.
+
+### Agentic engineering & AI instructions
+
+- [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
+- AgentPatterns.ai — ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) and ["Evaluating AGENTS.md: When Context Files Hurt More Than Help"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing). TOC pattern, context-file evaluation.
+- Anthropic — ["Building effective agents"](https://www.anthropic.com/research/building-effective-agents). *Dec 2024*. Design philosophy behind the MCP-driven check architecture.
+- [Model Context Protocol](https://modelcontextprotocol.io) (ongoing). Agent-tool bridge standard.
+- ThoughtWorks — Technology Radar Vol 34: [press release](https://www.thoughtworks.com/about-us/news/2026/combat-ai-cognitive-debt-radar-v34) and [PDF](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2026/04/tr_technology_radar_vol_34_en.pdf). *April 2026*. Cognitive debt, harness engineering, named SDD frameworks.
+- Birgitta Böckeler — [publications hub](https://birgitta.info/) (ongoing) and ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows) (Refactoring.fm interview). ThoughtWorks Distinguished Engineer, AI-assisted software delivery lead.
+- Steve Yegge — ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer). Sourcegraph blog, *Mar 22, 2025*. Six-wave model for the agentic shift (Manual → Completions → Chat → Coding Agents → Agent Clusters → Agent Fleets).
+- Geoffrey Huntley — ["Everything is a Ralph loop"](https://ghuntley.com/loop/). *2025*. Harness / back-pressure engineering primer.
+- Microsoft — ["An AI-led SDLC: Building an end-to-end agentic software development lifecycle"](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896). *2026*. Industry-view backdrop.
+- IBM — ["AI in SDLC"](https://www.ibm.com/think/topics/ai-in-sdlc) (ongoing). Industry-view backdrop.
+- Tim De Schryver — ["Keep Agentic AI Simple: A Practical Workflow for Software Development"](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development). *2025*. Practical individual-developer workflow.
+- [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing). Principle-as-code experiment, optional complement to specs/tests.
+
+### Security
+
+- [OWASP](https://owasp.org/) (ongoing) and [OWASP Top 10](https://owasp.org/www-project-top-ten/) (ongoing). Review checklist anchor for the Security in Depth chapter.

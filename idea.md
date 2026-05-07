@@ -134,11 +134,17 @@ mindmap
 
 ## Key References
 
-- Dave Farley / Modern Software Engineering — trunk-based development,
-  continuous integration, feedback loop theory
-- MADR — Michael Nygard et al. (adr.github.io/madr)
+- Dave Farley / *Modern Software Engineering* (2021) and Paul Hammant /
+  trunkbaseddevelopment.com — trunk-based development, continuous
+  integration, feedback loop theory
+- ADRs — Michael Nygard, "Documenting Architecture Decisions" (2011)
+- MADR — Oliver Kopp, Anita Armbruster, Olaf Zimmermann (2018,
+  adr.github.io/madr)
 - LeanSpec (lean-spec.dev) — lightweight spec approach
 - OpenSpec (openspec.dev) — structured spec with AC IDs
-- GitHub SpecKit — enterprise spec toolchain
+- GitHub Spec-Kit (github.com/github/spec-kit) — enterprise spec toolchain
+- AGENTS.md (agents.md) and AgentPatterns.ai — TOC pattern for AI
+  instruction files
+- Andrej Karpathy — origin of the term "vibe coding" (Feb 2, 2025)
 - dot-principles (github.com/dot-principles) — principle-as-code,
   AI-native quality audit
