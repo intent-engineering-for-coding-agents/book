@@ -601,17 +601,21 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 | Source | Used For |
 |---|---|
-| Dave Farley / Modern Software Engineering | Trunk-based dev, CI, sampling theory |
-| MADR (adr.github.io/madr) — Michael Nygard et al. | ADR format |
-| LeanSpec (lean-spec.dev) | Small specs, first principles |
-| OpenSpec (openspec.pro) | Spec lifecycle, change folders, archive flow |
-| GitHub SpecKit | Enterprise end of spec spectrum |
-| AGENTS.md (agentpatterns.ai) | TOC pattern, instruction hub |
-| dot-principles/example-catalog | PTAC principles, quality uplift |
-| MCP (modelcontextprotocol.io) | Agent-tool bridge standard |
-| SDD tool comparisons (Hashrocket; R. Hightower; A. Pradhan; T. Wang, 2026) | Tool tradeoffs, team-fit framing for Phase T |
-| AI-SDLC writing 2026 (Microsoft, CIO, IBM, Augment Code) | "Delegate, review, own" operating model; SDLC backdrop |
-| Tim De Schryver — Keep Agentic AI Simple | Practical individual-developer workflow, contrast with team scale |
+| [Dave Farley / Modern Software Engineering](https://www.davefarley.net/?p=352) | Trunk-based dev, CI, sampling theory |
+| [MADR](https://adr.github.io/madr/) — Michael Nygard et al. | ADR format; vocabulary used in `docs/decisions/` |
+| [Docs as Code](https://www.writethedocs.org/guide/docs-as-code.html) | Plain-text-as-code practice — Markdown, specs, ADRs, diagrams reviewable in Git |
+| [Mermaid](https://mermaid.js.org/) | Text-defined diagram format for lightweight workflows and architecture diagrams in Markdown |
+| [C4 model](https://c4model.com/) | Architecture-view model behind `docs/architecture/c4-views/` |
+| [Structurizr](https://docs.structurizr.com/) | Models-as-code tooling for C4 DSL sources under `docs/architecture/**/structurizr-dsl/` |
+| [LeanSpec](https://lean-spec.dev) | Small specs, first principles |
+| [OpenSpec](https://openspec.pro/) | Lightweight spec-driven development framework; change folders, delta specs, archive flow |
+| [SpecKit](https://speckit.org/) | Enterprise end of spec spectrum |
+| [AGENTS.md](https://agents.md/) | De facto AI-agent entry-point pattern; TOC pattern behind `AGENTS.md` and `.agents/` |
+| [.principles](https://github.com/dot-principles) / [example-catalog](https://github.com/dot-principles/example-catalog) | PTAC principles, quality uplift |
+| [MCP](https://modelcontextprotocol.io) | Agent-tool bridge standard |
+| [Rick Hightower — Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI](https://hashrocket.com/blog/posts/spec-driven-development-how-product-owners-can-ship-features-faster-with-ai) (Feb 2026) | Tool tradeoffs, team-fit framing for Phase T |
+| AI-SDLC writing 2026: [Microsoft](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896) · [IBM](https://www.ibm.com/think/topics/ai-in-sdlc) · [Towards AI](https://pub.towardsai.net/ai-driven-agentic-software-development-life-cycle-in-2026-3c9a2390a9e7) · [Codebridge](https://www.codebridge.tech/articles/agentic-ai-software-development-lifecycle-the-production-ready-playbook) | "Delegate, review, own" operating model; SDLC backdrop |
+| [Tim De Schryver — Keep Agentic AI Simple](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development) | Practical individual-developer workflow, contrast with team scale |
 
 ---
 
