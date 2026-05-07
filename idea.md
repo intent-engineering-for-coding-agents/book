@@ -20,8 +20,9 @@ progressively make your AI agent less clueless — one step at a time.
 - Compatible with existing SDLC and Spec-Driven Development practices
 - Extends them — does not compete with them
 
-The guide is structured around four independent topics. Each can be
-adopted on its own. Each makes the others more effective.
+The guide is structured around four topics. Each can be adopted on
+its own at solo scale. At team scale they couple — and the book says
+where. Each makes the others more effective.
 
 ## The Four Topics
 
@@ -48,14 +49,47 @@ checkout any tag and see what the practice looks like when applied.
 
 ## The Audience
 
-Senior developers and architects who already use AI coding tools and
-want more control, more consistency, and better outcomes at scale.
+Senior developers and architects already working with a capable CLI
+agent — one that combines a thinking model, agent (tool-use)
+capabilities, and a plan/architect mode. Tested across Claude
+Sonnet/Opus 4+ (via Copilot and Claude Code), Codex/GPT 5.4+,
+OpenCode + Deepseek 4 Pro, and Junie CLI. Other tools in the same
+class should follow the same practices; IDE-only assistants and
+completion-only tools are out of scope.
+
+Readers want more control, more consistency, and better outcomes at
+scale.
+
+## What's Out of Scope
+
+This is not an operations book.
+
+- DevOps and SRE concerns (cloud vs on-prem, Kubernetes, observability
+  stacks like Datadog or New Relic) — those belong in their own books.
+- Cost economics for seat-licensed AI. One paragraph in the appendix;
+  no chapter.
+- IDE-only assistants and completion-only tools. The book targets CLI
+  agents in the capability class; other tools may follow the patterns
+  but are not the focus.
+- Vendor comparison matrices. Tested-class tools are listed above; the
+  book does not rank them.
+
+The Farley test: *Modern Software Engineering* has no Operations
+chapter — ops dissolves into feedback loops, where it already lives
+inside Quality.
 
 ## The Guiding Principles
 
 - The tool is the proof. Git history is the narrative.
+- Capability-class targeting beats vendor-agnostic vagueness. The
+  book targets CLI agents with thinking + agent + plan mode. The
+  tested set is named; other class members should fit.
 - Each document type has a different lifespan. ADRs are permanent.
   Specs are temporary. Conflating them corrupts both.
+- Specs > Code. Specifications are more important than the generated
+  code. The implementation is disposable; the canonical spec is the
+  durable artefact. With agentic regeneration, code becomes downstream
+  of intent.
 - Put the most important context at the top — agents read top-down
   and lose focus.
 - Small specs outperform large specs — an agent that finishes is
@@ -85,10 +119,11 @@ mindmap
         Design docs
         Specs
       Plain-Text-as-Code
-      skeleton.md
       Honest maturity
+      Brownfield bootstrap
+        skeleton.md
+      When ASE Fails
     AI Instructions
-      Prompt engineering basics
       AGENTS.md
       AI Instruction Hub
         .agents/instructions
@@ -96,7 +131,7 @@ mindmap
         .agents/commands
       Hooks and automation
       Context window management
-      Debugging and recovery
+      Failure modes and recovery
     Spec-Driven Development
       Why specs
       Why small
@@ -111,6 +146,7 @@ mindmap
       Multi-LLM critique
     Quality and Verification
       Tests as proof
+      Agent Evaluation and Regression
       AC IDs and coverage
       Before during after
       Security in depth
@@ -127,7 +163,6 @@ mindmap
       What is still evolving
     Appendices
       Tooling landscape
-      Cost management
       Instantiation example
       Credits and references
 ```

@@ -22,6 +22,14 @@ The book does not narrate building the tool. The tool stands as finished evidenc
 
 ---
 
+## Vertical-Slice Strategy
+
+Each topic completes — chapters, `ase-cli` features, and a worked example — before the next begins. We ship one topic at a time; we do not write all four in parallel. The phases below sequence Foundation → AI Instructions → Spec-Driven → Quality; each is shippable on its own before the next starts.
+
+**Topic done** = at least one shipped chapter, the matching `ase-cli` features tagged at a release version, and a worked example a reader can checkout. No half-finished topics; no horizontal sweep.
+
+---
+
 ## Canonical Directory Structure
 
 One convention for both repos:
@@ -219,7 +227,7 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 > **AC IDs are an ASE convention, not canonical OpenSpec.** OpenSpec prescribes no AC ID format; the `[PREFIX-NNN]` pattern and `**Test:**` field are layered on top to enable test traceability checks.
 
-> **Use a strong, thinking-capable model for OpenSpec work.** Proposals, delta specs, and design docs are where intent gets fixed — weak models produce shallow specs that read fine but miss edge cases and architectural consequences. Default to a top-tier reasoning model (e.g. Claude Opus, GPT-5 Thinking, Gemini Pro) for `/opsx:ff` and `/opsx:apply`; cheaper models are fine for archive merges and mechanical edits.
+> **Use a model in the capability class (thinking + agent + plan mode) for OpenSpec work.** Proposals, delta specs, and design docs are where intent gets fixed — weak models produce shallow specs that read fine but miss edge cases and architectural consequences. Default to a top-tier reasoning model (Claude Sonnet/Opus 4+, GPT 5.4+, Deepseek 4 Pro — the tested set from `idea.md`'s Audience section) for `/opsx:ff` and `/opsx:apply`; cheaper models are fine for archive merges and mechanical edits.
 
 > **Put the agent in Plan / Spec / Architect mode when proposing changes.** Most agentic IDEs expose a planning mode that defers code edits until the spec and design are explicitly approved (Claude Code's plan mode, Cursor's Plan, Cline/Roo's Architect, OpenCode's Plan). Use it for `/opsx:new` and `/opsx:ff` so the model thinks before it writes — then drop to normal mode for `/opsx:apply`.
 
@@ -414,15 +422,22 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Practiced / documented / CI-enforced / target state
     - Maturity labels prevent process theatre
     - Lineage: rhymes with ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings; this is staged-maturity-honesty, not CMM-style process compliance.
+- [ ] Chapter: Brownfield vs Greenfield — Bootstrap with skeleton.md
+    - *Sources: Reversa (sandeco/reversa) — 5-phase legacy → spec pipeline for AI coding agents (Claude Code / Cursor / Codex); Schwab "AI as Your Legacy Code Archaeologist" (Caimito, Feb 7, 2026); Cockburn *Crystal Clear* (2004) — original "walking skeleton" lineage; Fujitsu Application Transform (Mar 2026) — industry-scale validation.*
+    - Greenfield ASE assumes you can author AGENTS.md, ADRs, and specs from intent. Brownfield cannot — the intent is buried in years of code, dead comments, and tribal knowledge.
+    - **`skeleton.md`** as the brownfield bootstrap artefact: an AI-generated structural map of an existing codebase (modules, dependencies, data flow, business-rule outline, C4 views) that seeds the agent's understanding before any new ASE work begins.
+    - How to generate one: point a capability-class CLI agent at the legacy tree; ask for a structural skeleton, not a refactor. Iterate with a domain expert. Reversa is one toolchain that automates this end-to-end.
+    - Why it's essential: most enterprise readers are in brownfield, not greenfield. Without a skeleton, the agent improvises against a system it doesn't understand and compounds drift.
+    - Lineage note: Cockburn's "walking skeleton" (a thin end-to-end implementation, *Crystal Clear* 2004) is the etymology. The AI-era `skeleton.md` is a *reverse-engineered* map of an existing system, not a thin forward-built one. Same metaphor, different direction.
+- [ ] Chapter: When ASE Fails
+    - *Sources: ThoughtWorks Radar Vol 34 (cognitive debt); Yegge "Revenge of the junior developer"; De Schryver "Keep Agentic AI Simple".*
+    - Failure modes that survive even good foundation: AGENTS.md rot, dead specs, agent-accelerated tech debt, over-spec, drift with no detection.
+    - Honest framing before the practices: ASE doesn't make your code perfect; it gives you the surface area to detect and recover. Each later topic aims a fix at one of these modes.
 - [ ] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
 - [ ] Tag: `v0.3.0`
 
 #### Phase Q — Write AI Instructions Chapters (`v0.4.0`)
 
-- [ ] Chapter: Prompt Engineering Basics
-    - *Sources: Karpathy "vibe coding" (Feb 2, 2025); Willison "Not all AI-assisted programming is vibe coding" (Mar 19, 2025); Yegge "Revenge of the junior developer" (Mar 22, 2025) — six-wave model.*
-    - Where everyone starts, why it fails at scale
-    - Progression: prompt → AGENTS.md → specs
 - [ ] Chapter: AGENTS.md — One File Changes Everything
     - *Sources: agents.md (de-facto spec); agentpatterns.ai "AGENTS.md as Project-Level README" (TOC pattern); Böckeler.*
     - TOC pattern, what goes in it, tool-agnostic
@@ -447,10 +462,12 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Why context fills, small sessions > long conversations
     - Subagents, /compact, loading skills selectively
     - `INDEX.md` as context economy — agents load one 40-line file instead of 10×200-line files
-- [ ] Chapter: Debugging and Recovery
-    - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple".*
-    - Drift, spin, halt — signs and strategies
+- [ ] Chapter: Failure Modes & Recovery
+    - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple"; ThoughtWorks Radar Vol 34 (cognitive debt).*
+    - The taxonomy: drift (loses context mid-task), spin (loops on a sub-problem), halt (stops before done), hallucination (invents files/APIs), context poisoning (bad AGENTS.md compounds across sessions), tool misuse (wrong tool for the job).
+    - Signs to watch for in each mode; recovery strategies; when to reset context vs when to redirect.
     - "The agent is not broken — it is clueless. Fix the context."
+    - Maturity-honest: this is the most under-documented part of agentic engineering. The chapter says what the book asserts vs what it leaves open.
 - [ ] Chapter: Vendor Files That Point, Not Duplicate
     - *Sources: agents.md; agentpatterns.ai.*
     - `CLAUDE.md` → "See AGENTS.md"
@@ -463,15 +480,17 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 - [ ] Chapter: Why Specs?
     - *Sources: OpenSpec; GitHub Spec-Kit; LeanSpec; Hightower SDD-tools comparison.*
-    - Drift, intent, traceability, Spec > Code
+    - Drift, intent, traceability — the practical motivation for spec-first.
 - [ ] Chapter: Why Small?
     - *Sources: LeanSpec; Anthropic "Building effective agents" (context engineering).*
-    - Context window economics, LeanSpec rule: under 300 lines
-    - Credit: LeanSpec
+    - Lean focus: an agent that finishes beats one that drifts. Specs over ~300 lines start losing the thread.
+    - Context window economics — every token spent on a long spec is a token unavailable for code.
+    - Credit: LeanSpec.
 - [ ] Chapter: Why Important Stuff First?
-    - *Sources: agentpatterns.ai (TOC pattern, top-down attention); Anthropic.*
-    - Agents read top-down, lose focus
-    - If they read only the first 50 lines — would it still work?
+    - *Sources: agentpatterns.ai (TOC pattern, top-down attention); Anthropic "Building effective agents".*
+    - Agents read top-down and lose focus. If they read only the first 50 lines — would the spec still work?
+    - Practical implication: constraints, non-goals, and risk-bearing requirements go at the top, not the bottom. The AI may never reach the rest.
+    - Why this inverts conventional doc structure (which buries assumptions in appendices).
 - [ ] Chapter: The Spectrum
     - *Sources: Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (Feb 2026); GitHub Blog "Spec-driven development with AI" (2025); LeanSpec; OpenSpec; Spec-Kit.*
     - Raw prompt → spec.md → OpenSpec → SpecKit
@@ -481,8 +500,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Write → critique → review → implement → archive
     - Multi-LLM critique
 - [ ] Chapter: Spec > Code
-    - *Sources: OpenSpec; LeanSpec.*
-    - Implementation is disposable. The spec is not.
+    - *Sources: OpenSpec; LeanSpec; Hightower SDD-tools comparison; Farley *Modern Software Engineering* (intent over artefact).*
+    - The book's load-bearing thesis. **Specifications are more important than generated code.** The implementation is disposable; the canonical spec is the durable artefact.
+    - Why this inverts the historical default: with agentic regeneration, code is downstream of spec — review intent before diff, specs outlive the codebase, agents regenerate code from spec, not the reverse.
+    - The bar a spec must clear to earn this status: testable, AC-tagged, sized to be readable, scoped to one change.
+    - The hardest mental shift in the whole book: stop treating code as the artefact, start treating it as the output.
 - [ ] Tag: `v0.5.0`
 
 #### Phase S — Write Quality Chapters (`v0.6.0`)
@@ -491,6 +513,12 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: Farley *Modern Software Engineering*; ThoughtWorks Radar Vol 34 (mutation testing as feedback control).*
     - "Done" = approved intent has executable proof
     - AI speed makes automated proof mathematically required
+- [ ] Chapter: Agent Evaluation & Regression
+    - *Sources: ThoughtWorks Radar Vol 34 (mutation testing as feedback control); Anthropic "Building effective agents"; Hightower SDD-tools comparison.*
+    - Tests prove the *code* is right; this chapter proves the *agent setup* is right. Golden tests for an agent + AGENTS.md + skill stack: did this change make the agent better or worse — measured how.
+    - A/B comparison of two AGENTS.md versions on a fixed task.
+    - Regression detection when a skill or hook is updated.
+    - The evidence base for the central claim: at agentic speeds, manual verification is not enough. This is the feedback loop that closes it.
 - [ ] Chapter: AC IDs + Positive/Negative Coverage
     - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; ASE convention disclaimer (`plan.md` AC-IDs note).*
     - Stable IDs, mandatory `**Test:**` field
@@ -565,7 +593,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 - [ ] Appendix: Tooling Landscape (links to living page)
     - CLI agents, spec tools, MCP essentials
-    - Model selection and cost management
+    - Model selection and cost: capability-class criterion (thinking + agent + plan mode); per-token pricing matters for direct-API readers; per-seat pricing (Copilot Enterprise, Cursor Business) makes per-run accounting irrelevant. One paragraph, not a chapter — DevOps and SRE are out of scope.
 - [ ] Appendix: Instantiation Checklist
     - How to adopt ASE practices in your repo
     - What to copy, what to adapt
@@ -649,7 +677,7 @@ See the [References](#references) section at the end of this document for the fu
 - AI generates code faster than you can verify manually. Automated proof is not optional — it is mathematically required at agentic speeds.
 - Distinguish practiced from documented from CI-enforced from target state. Maturity and honesty prevent process theater.
 - One source of truth for AI instructions. Vendor files are generated pointers, not authored duplicates.
-- Vendor-agnostic over vendor-locked. The knowledge lives in the repo, not in a tool.
+- Capability-class targeting beats vendor-agnostic vagueness. The book targets CLI agents with thinking + agent + plan mode. The knowledge lives in the repo (`AGENTS.md`, `.agents/`, specs) — portable across tested-class tools.
 - `docs/` is for architecture, decisions, and design. Not for your static site. Point your SSG elsewhere.
 - Every `docs/` directory has a `README.md` (human-readable, renders on Git hosts) and an `INDEX.md` (agent-facing map, context economy). They look similar but serve different readers.
 - Separate the invariant from the instance. `testing-convention.md` defines what doesn't change across projects (test layers, AC IDs, traceability). `testing-strategy.md` instantiates it for a specific project (tools, CI, directory layout).
@@ -686,6 +714,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - [Mermaid](https://mermaid.js.org/) (ongoing). Text-defined diagrams.
 - Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
 - Simon Brown — [Structurizr](https://docs.structurizr.com/) (ongoing). Models-as-code tooling for C4 DSL.
+- Alistair Cockburn — *Crystal Clear: A Human-Powered Methodology for Small Teams* (Addison-Wesley, *2004*). Origin of the "walking skeleton" pattern — etymology for the modern `skeleton.md` artefact.
 
 ### Spec-driven development
 
@@ -710,6 +739,9 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - IBM — ["AI in SDLC"](https://www.ibm.com/think/topics/ai-in-sdlc) (ongoing). Industry-view backdrop.
 - Tim De Schryver — ["Keep Agentic AI Simple: A Practical Workflow for Software Development"](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development). *2025*. Practical individual-developer workflow.
 - [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing). Principle-as-code experiment, optional complement to specs/tests.
+- [Reversa](https://github.com/sandeco/reversa) (ongoing, MIT). Five-phase reverse-engineering framework that coordinates AI sub-agents inside Claude Code / Cursor / Codex to extract C4 diagrams, ERDs, state machines, and API contracts from legacy code — the canonical brownfield `skeleton.md` toolchain.
+- Stephan Schwab — ["AI as Your Legacy Code Archaeologist"](https://www.caimito.net/en/blog/2026/02/07/ai-as-your-legacy-code-archaeologist.html). Caimito blog, *Feb 7, 2026*. Practitioner voice on AI-driven extraction of business rules from legacy code.
+- Fujitsu — ["Generative AI service that analyzes source code and automatically generates design documents"](https://global.fujitsu/en-global/pr/news/2026/03/30-01). Fujitsu press release, *Mar 30, 2026*. Industry-scale validation of automated legacy-to-design extraction.
 
 ### Security
 
