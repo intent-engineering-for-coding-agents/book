@@ -365,14 +365,14 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 
 #### Phase N — ase-book Foundation (`v0.1.0`)
 
-- [ ] Write `docs/README.md` for the book site
+- [x] Write `docs/README.md` for the book site
     - VitePress as SSG, `content/` structure, Mermaid, Actions deploy
-- [ ] Write `docs/INDEX.md` — agent-facing map of all docs
-- [ ] Write ADRs:
+- [x] Write `docs/INDEX.md` — agent-facing map of all docs
+- [x] Write ADRs:
     - ADR-0001: VitePress over alternatives (Hugo, Docusaurus, mdBook)
     - ADR-0002: `content/` for VitePress prose — frees `docs/` for ASE documentation
-- [ ] Wire `ase check` in CI on the book repo itself
-- [ ] Tag: `v0.1.0`
+- [x] Wire `ase check` in CI on the book repo itself
+- [x] Tag: `v0.1.0`
 
 #### Phase O — ase-book AI Instructions (`v0.2.0`)
 

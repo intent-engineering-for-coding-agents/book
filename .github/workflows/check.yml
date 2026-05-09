@@ -1,0 +1,20 @@
+name: ase check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+      - name: Install ase-cli
+        run: uv tool install git+https://github.com/ase-book/ase-cli.git
+      - name: Run ase check
+        run: ase check
