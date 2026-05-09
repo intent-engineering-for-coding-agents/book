@@ -6,14 +6,11 @@ Senior or experienced developers who already use AI coding assistants and want t
 
 Write for a practitioner, not a student. The book adds structure and accountability to something they are already doing.
 
-## Tone
+## Tone and voice
 
-- Direct and authoritative without being preachy
-- Opinionated where the evidence is solid; honest about uncertainty where it is not
-- Practitioner voice: "here is what works and why", not "here is what you should do"
-- No enterprise buzzwords (leverage, synergy, holistic, robust, scalable as adjectives)
-- No hype about AI replacing developers; no doomerism about AI either
-- Credit sources explicitly — the book does not pretend its ideas are original
+Direct, opinionated, practitioner voice. Credit sources explicitly. No hype about AI replacing developers; no doomerism about AI either.
+
+See [voice.md](voice.md) for the full voice and craft guide — narrative tension, forbidden AI patterns, rhythm, and the bar a chapter must clear to feel lived-in. `writing.md` covers mechanics; `voice.md` covers how the prose should sound.
 
 ## Structure
 

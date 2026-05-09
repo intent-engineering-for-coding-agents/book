@@ -21,6 +21,7 @@ Load [review.md](.agents/instructions/review.md) and work through each checklist
 4. **DRY** — no repeated explanation from other chapters; no contradictions
 5. **Structure** — length 600–1200 words, no H4+, code blocks have language tags
 6. **ase-cli cross-references** — claimed tags and file paths verified against the actual repo
+7. **Voice** — does the prose match `voice.md`? No forbidden AI patterns, varied rhythm, narrative tension at openings, no generic summary endings, sections difficult to skim
 
 ## Output
 

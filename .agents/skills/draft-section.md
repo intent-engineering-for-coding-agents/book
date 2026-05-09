@@ -14,7 +14,7 @@ When you are ready to write a section of a chapter and have the outline bullet p
 ## Process
 
 1. Read the chapter outline from `plan.md` — treat the bullet points as the spec, not suggestions
-2. Load [writing.md](.agents/instructions/writing.md) for tone and formatting rules
+2. Load [writing.md](.agents/instructions/writing.md) and [voice.md](.agents/instructions/voice.md) — `writing.md` covers mechanics, `voice.md` covers how the prose should sound
 3. Draft in this order:
    - Opening paragraph: state the problem this chapter addresses (concrete, not abstract)
    - Body: expand each bullet point into prose or a supporting example; keep `ase-cli` cross-references accurate

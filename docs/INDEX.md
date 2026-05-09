@@ -18,7 +18,8 @@ The `.agents/` directory is not under `docs/` but is part of the repo's AI instr
 | File | Description |
 |---|---|
 | [AGENTS.md](../AGENTS.md) | AI entry point — TOC for all instructions and skills |
-| [.agents/instructions/writing.md](../.agents/instructions/writing.md) | Tone, audience, structure, formatting |
+| [.agents/instructions/writing.md](../.agents/instructions/writing.md) | Audience, structure, sources, formatting mechanics |
+| [.agents/instructions/voice.md](../.agents/instructions/voice.md) | How the prose should sound — voice, rhythm, forbidden AI patterns |
 | [.agents/instructions/vitepress.md](../.agents/instructions/vitepress.md) | VitePress config, sidebar, Mermaid, build commands |
 | [.agents/instructions/review.md](../.agents/instructions/review.md) | How to review and critique draft chapters |
 | [.agents/instructions/index-maintenance.md](../.agents/instructions/index-maintenance.md) | When and how to update INDEX.md |

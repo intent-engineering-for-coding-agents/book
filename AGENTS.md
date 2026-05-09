@@ -13,7 +13,8 @@ You are working on the **ASE Book**, a VitePress site teaching Agentic Software 
 
 Load when relevant:
 
-- [Writing](.agents/instructions/writing.md) — tone, audience, structure, formatting conventions
+- [Writing](.agents/instructions/writing.md) — audience, structure, sources, formatting mechanics
+- [Voice](.agents/instructions/voice.md) — narrative tension, forbidden AI patterns, engineer-flavoured prose
 - [VitePress](.agents/instructions/vitepress.md) — config, sidebar, Mermaid, build commands
 - [Review](.agents/instructions/review.md) — how to review and critique draft content
 - [Index maintenance](.agents/instructions/index-maintenance.md) — keep `docs/INDEX.md` current
