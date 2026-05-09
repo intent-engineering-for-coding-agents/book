@@ -376,21 +376,21 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 
 #### Phase O — ase-book AI Instructions (`v0.2.0`)
 
-- [ ] Write `AGENTS.md` for the book repo — TOC pattern
+- [x] Write `AGENTS.md` for the book repo — TOC pattern
     - Role: book authoring agent
     - Content conventions, tone, audience
     - VitePress commands
-- [ ] Create `.agents/instructions/`:
+- [x] Create `.agents/instructions/`:
     - `writing.md` — tone, structure, audience, formatting
     - `vitepress.md` — config, sidebar, Mermaid, deployment
     - `review.md` — how to review and critique draft content
     - `index-maintenance.md` — when creating/renaming/deleting files under `docs/`, update `INDEX.md`
-- [ ] Create `.agents/skills/`:
+- [x] Create `.agents/skills/`:
     - `draft-section` — draft a new section from outline
     - `review-chapter` — consistency, tone, DRY review
     - `update-sidebar` — regenerate sidebar from file tree
     - `update-index` — scan `docs/`, regenerate all `INDEX.md` files
-- [ ] Tag: `v0.2.0`
+- [x] Tag: `v0.2.0`
 
 #### Phase P — Write Foundation Chapters (`v0.3.0`)
 

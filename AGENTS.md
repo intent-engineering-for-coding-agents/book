@@ -1,21 +1,35 @@
 # AGENTS.md — ASE Book
 
-> AI entry point. Read this first. Under 50 lines — TOC only.
+You are working on the **ASE Book**, a VitePress site teaching Agentic Software Engineering practices.
 
-## What this repo is
+## Project
 
-The ASE Book: a VitePress site teaching Agentic Software Engineering.
-Book prose lives in `content/`. ASE documentation lives in `docs/`.
+- **Site generator**: VitePress 1.x (`srcDir: 'content'`)
+- **Diagrams**: Mermaid (via vitepress-plugin-mermaid)
+- **Package manager**: npm
+- **License**: Apache 2.0
 
-## Key references
+## Instructions
 
-| File | When to load |
-|---|---|
-| [docs/README.md](docs/README.md) | Architecture overview |
-| [docs/INDEX.md](docs/INDEX.md) | Agent-facing map of all docs |
-| [plan.md](plan.md) | Full phase roadmap |
-| [idea.md](idea.md) | Vision, four topics, guiding principles |
+Load when relevant:
 
-## Status
+- [Writing](.agents/instructions/writing.md) — tone, audience, structure, formatting conventions
+- [VitePress](.agents/instructions/vitepress.md) — config, sidebar, Mermaid, build commands
+- [Review](.agents/instructions/review.md) — how to review and critique draft content
+- [Index maintenance](.agents/instructions/index-maintenance.md) — keep `docs/INDEX.md` current
+- [docs/INDEX.md](docs/INDEX.md) — full map of all documentation
 
-Scaffold phase (v0.0.1). Content authoring begins Phase N.
+## Commands
+
+```
+npm run docs:dev     # local dev server with hot reload
+npm run docs:build   # build to .vitepress/dist/
+npm run docs:preview # preview the built site locally
+```
+
+## Skills
+
+- [**draft-section**](.agents/skills/draft-section.md) — draft a content section from a chapter outline entry
+- [**review-chapter**](.agents/skills/review-chapter.md) — consistency, tone, and DRY review of a draft chapter
+- [**update-sidebar**](.agents/skills/update-sidebar.md) — regenerate VitePress sidebar from `content/` file tree
+- [**update-index**](.agents/skills/update-index.md) — scan `docs/`, regenerate `docs/INDEX.md` and all listing files
