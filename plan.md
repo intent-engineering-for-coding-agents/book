@@ -350,9 +350,9 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 
 - [x] Init repo under `ase-book/ase-book`
 - [x] Apache 2.0 license
-- [ ] Init VitePress: `srcDir: 'content'`, Mermaid plugin, clean theme
-- [ ] GitHub Actions: build + deploy to GitHub Pages on push to `main`
-- [ ] Create canonical directory structure:
+- [x] Init VitePress: `srcDir: 'content'`, Mermaid plugin, clean theme
+- [x] GitHub Actions: build + deploy to GitHub Pages on push to `main`
+- [x] Create canonical directory structure:
     - `docs/README.md` — stub
     - `docs/INDEX.md` — stub
     - `docs/decisions/` — empty
@@ -361,7 +361,7 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
     - `content/` — VitePress prose root (empty)
     - `AGENTS.md` — stub
 - [x] Seed files: `idea.md`, `plan.md`, `principles.md`
-- [ ] Tag: `v0.0.1`
+- [x] Tag: `v0.0.1`
 
 #### Phase N — ase-book Foundation (`v0.1.0`)
 
