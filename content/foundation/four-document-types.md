@@ -1,59 +1,51 @@
 # The Four Document Types
 
-Conflating document types is one of the most common ways a repo's documentation degrades. An architectural decision record that gets overwritten when the system changes is no longer a decision record. A design doc that is cited six months later as if it were authoritative is no longer disposable. Specs and ADRs stored in the same directory with the same naming convention look identical until the moment you need to tell them apart — at which point you cannot.
+Open most repositories' `docs/` directory and you will find a flat list of files with similar names. Some of them are decisions. Some are designs. Some are specs that nobody archived. Some were authoritative once and have been quietly wrong for a year.
 
-The fix is simple: treat each document type as distinct, give each type its own home, and understand that the types have fundamentally different lifespans.
+The agent loads all of them. It cannot tell which is which. Neither can the new developer who joined last month.
 
-## The four types
+This is not a documentation problem. It is a *type* problem. There are four kinds of documents in an ASE repo, each with a different lifespan and a different reason to exist. Mix them and they corrupt each other. Separate them and the repo briefs itself.
 
-### Architecture overview — `docs/README.md`
+## The four types, by lifespan
 
-A narrative description of what the system is and how it fits together. Not a spec. Not a decision record. A briefing for anyone — human or agent — who encounters the repo cold.
+**Architecture overview** — `docs/README.md`. A narrative description of what the system is and how it fits together. Not a spec. Not a decision record. The briefing for anyone — human or agent — who encounters the repo cold. Lives forever; updated as the architecture changes.
 
-Lifespan: **permanent, but updated**. As the architecture evolves, `docs/README.md` evolves with it. It is never deleted; it is kept current.
+**Agent-facing map** — `docs/INDEX.md`. A table. Every file under `docs/` listed with a one-line description. No prose, no story — a map. Lives forever; updated in the same commit as any file change under `docs/`.
 
-Why it lives at `docs/README.md`: every Git host renders `README.md` automatically. The architecture overview is the first thing a developer or agent sees when they navigate to `docs/` in a browser. That automatic rendering is the point.
+**Architectural Decision Records** — `docs/decisions/`. One file per decision, in MADR format. What the decision was, what was considered, why this option won, what the consequences are. *Permanent and immutable once closed.* Reversing a decision creates a new ADR that references the old one. The history of why is more valuable than the current answer to what.
 
-### Agent-facing map — `docs/INDEX.md`
+**Design docs** — `docs/design/`. Per-feature thinking before implementation. Options, approach, risks. Not an ADR — too narrow, too temporary. Not a spec — describes the approach, not the behaviour. Authoritative during the work; historical artefact afterwards. Not deleted; not maintained either.
 
-A table listing every file under `docs/`, each with a one-line description of what it contains. No prose, no explanation — a map.
+**Specs** — `openspec/`. The canonical specification of system behaviour: acceptance criteria, scenarios, test definitions. Written before implementation, validated during it, archived to `openspec/changes/archive/` after. An un-archived spec is live instruction. The agent does not know it is supposed to be done.
 
-Lifespan: **permanent, updated on every file change**. When you add a file to `docs/`, you add a row to `docs/INDEX.md` in the same commit.
+That is technically five things, because the architecture overview and the agent map share `docs/` but serve different readers. Treating them as one — a single "documentation file" — is the most common collapse and the easiest to make.
 
-Why it matters: agents load files sequentially. Without an index, an agent exploring a large `docs/` directory must read each file to find the relevant one — expensive in tokens. With an index, the agent loads one 40-line file and knows exactly where to look. This is the context economy principle in practice.
+## The lifespans matter more than the names
 
-### Architectural Decision Records — `docs/decisions/`
+| Type | Lifespan | What that means in practice |
+|---|---|---|
+| `docs/README.md` | Permanent, updated | Always rewritten in place to stay current |
+| `docs/INDEX.md` | Permanent, updated | Maintained on every file change in `docs/` |
+| ADRs | Permanent, immutable | Never edited after closing; reversal = new ADR |
+| Design docs | Temporary, abandoned | Authoritative during the work, dormant after |
+| Specs | Temporary, archived | Moved to archive after implementation |
 
-One file per architectural decision, in MADR format. What the decision was, what was considered, why this option was chosen, and what the consequences are.
+A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
 
-Lifespan: **permanent and immutable once closed**. An ADR is never overwritten. If a decision is reversed, a new ADR records the reversal and references the original. The history of why a decision was made is more valuable than the decision itself.
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011) — origin of ADRs. Kopp, Armbruster, Zimmermann — MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018). OpenSpec (openspec.dev). LeanSpec (lean-spec.dev).*
 
-Credit: the ADR practice originated with Michael Nygard's 2011 post "Documenting Architecture Decisions." The MADR template — the structured Markdown format used in this book — was developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann.
+## What conflation looks like in the wild
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect blog (Nov 15, 2011). Kopp, Armbruster, Zimmermann — MADR template (adr.github.io/madr, ongoing) and CEUR-WS Vol-2072 (2018).*
+An ADR gets edited because the design changed. The decision history is now a lie — readers see the current state and assume that was always the chosen option. The thing that made the ADR valuable, the *why*, has been overwritten by the *what*.
 
-### Design docs — `docs/design/`
+A design doc gets cited six months after the feature shipped. The cite is wrong; the design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft.
 
-Per-feature documents that capture the thinking before implementation: options considered, approach chosen, key risks. Not an ADR — the decision is too narrow or too temporary to warrant permanent status. Not a spec — the design doc explains the approach; the spec defines the behaviour.
+A spec gets parked in `docs/` because someone thought the team should "keep" it. Now the agent reads it on every session as if the behaviour were still pending implementation. Half the agent's context window is documentation of work that finished last quarter.
 
-Lifespan: **temporary and disposable**. A design doc is written before implementation and is authoritative during it. Once the feature ships, the design doc becomes a historical artefact. It is not deleted — deletion makes the history unreachable — but it is not maintained either. Its authority expires at ship time.
+Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. The simpler move is to keep the four types separate from the start.
 
-### Specs — `openspec/`
+## What `ase-cli` does
 
-Specifications of system behaviour: acceptance criteria, scenarios, test definitions. The canonical source of truth for what the system should do and how you prove it does.
+The `ase-cli` repo at `git tag v0.4.0` shows the structure live. Six ADRs in `docs/decisions/`, all closed and immutable. Design docs in `docs/design/` for features that needed upfront reasoning. Specs in `openspec/specs/` for current behaviour, with completed changes archived to `openspec/changes/archive/`. Run `ase check` against it and the structural validation passes — `docs-readme-exists`, `docs-index-exists`, `adr-format` all green.
 
-Lifespan: **temporary, archived after implementation**. A spec is written before implementation, validated during it, and moved to `openspec/changes/archive/` after. An un-archived spec is live context — the agent treats it as active. An archived spec is historical record.
-
-*Sources: OpenSpec (openspec.dev) — change-folder and archive workflow. LeanSpec (lean-spec.dev) — spec discipline and sizing guidance.*
-
-## Why conflating them corrupts both
-
-When ADRs and design docs share a directory with the same naming convention, two things happen. First, the agent cannot tell which files are authoritative and permanent (ADRs) and which are disposable (design docs). It treats them the same. Second, the humans on the team start treating them the same too — overwriting old design docs, appending to ADRs instead of closing them.
-
-When specs and ADRs are stored together, the spec's temporary authority bleeds into the ADR's permanent status. Teams archive their specs into the decisions directory and call it "architecture documentation." Six months later the decisions directory is a graveyard of superseded specifications masquerading as permanent records.
-
-The fix is not a documentation system or a governance process. It is four named directories with understood lifespans: `docs/README.md` and `docs/INDEX.md` for permanent orientation, `docs/decisions/` for permanent immutable records, `docs/design/` for temporary per-feature thinking, and `openspec/` for temporary behavioural specifications.
-
-## Evidence in ase-cli
-
-The `ase-cli` repo instantiates this pattern at `git tag v0.1.0`. Six ADRs in `docs/decisions/`, each closed and immutable. Design docs in `docs/design/` for features that needed upfront reasoning. Specs in `openspec/specs/`, with completed changes archived under `openspec/changes/archive/`. The `ase check` tool validates the structure and will flag violations.
+That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available.

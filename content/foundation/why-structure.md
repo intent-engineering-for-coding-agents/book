@@ -1,37 +1,39 @@
 # Why Structure Matters
 
-Without structure in your repo, every agent session starts from zero. The agent is capable — it is not clueless because the model is weak. It is clueless because you have not given it anything to work from. That cluelessness compounds.
+The agent picks Redis.
 
-## The problem: compounding drift
+It is a fine choice. Most caching examples use Redis. The team chose against Redis six months ago — for reasons that live in one person's memory and zero files in the repo. The agent had no way to know. The PR is approved. Three more PRs build on it before someone notices, and by then the choice is load-bearing. Removing it costs more than the original ADR would have.
 
-Each agent session produces code shaped by whatever context it can infer from the files it reads. If your repo has no architecture overview, no recorded decisions, no explicit conventions, the agent fills the gap with plausible-sounding guesses. Those guesses produce code that works locally but violates constraints the team holds implicitly — constraints that were never written down.
+This is a small story. The codebase has hundreds of these. Each session burns a little more of the gap between what the team decided and what the codebase actually expresses.
 
-The next session builds on that code. The agent has no reason to flag the violation; it has no record of the constraint. It extends the violation. By session five, fixing the drift costs ten times what writing the ADR would have.
+## Compounding drift
 
-This is what the ThoughtWorks Technology Radar Vol 34 called *cognitive debt* — the AI-era analogue to technical debt, but harder to detect because no linter flags an undocumented decision. Code has static analysis. Context does not.
+The model did not fail. The agent reasoned correctly from the context it had. The constraint was the context.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026) — cognitive debt framing.*
+ThoughtWorks called this *cognitive debt* in their April 2026 Radar — the AI-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week is making ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
 
-## Structure as context
+At human speed, drift like this used to take quarters to compound. At agentic speed, weeks. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier — agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
-What you put in your repo determines what the agent can produce. A repo with `docs/README.md` describing the architecture, `docs/decisions/` recording why key choices were made, and `AGENTS.md` pointing the agent to those files — that repo briefs the agent before it writes a line. The agent is still clueless about things not in those files, but it is no longer inventing the things that are.
+*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026) — cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025) — velocity as amplifier.*
 
-The before/after is concrete:
+## Structure as briefing
 
-**Before**: a developer asks the agent to add a caching layer. The agent picks Redis, because Redis is what caching examples use. The repo actually decided against Redis six months ago — an ADR that was never written. The team discovers the violation three PRs later.
+Whatever lives in `docs/`, `AGENTS.md`, and `openspec/` is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The choice is not whether the agent improvises — it always improvises — but how much it has to.
 
-**After**: the ADR exists in `docs/decisions/`. `AGENTS.md` points the agent there. The agent reads it. It asks about caching constraints before proposing Redis. The decision is preserved and enforced without human intervention.
+Take the Redis case again, run it forward with structure in place:
 
-This is not about policing the agent. It is about giving it enough context to make good guesses on its own.
+The decision was recorded as an ADR in `docs/decisions/0014-no-redis.md`. `AGENTS.md` lists `docs/decisions/` as canonical. The agent reads the ADR before proposing the cache. The agent surfaces the constraint and asks. The decision is now enforced in the system that created the temptation, instead of caught three PRs later by a human reviewer who happened to remember.
 
-## The prerequisite for everything else
+Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own — which is what the rest of this Foundation section is about.
 
-The remaining topics in this book assume Foundation is in place. AI Instructions cannot do their job if there is no `docs/` directory for instructions to point into. Spec-driven development produces specs with nowhere to live. Quality checks validate conventions that have not been written.
+## The prerequisite
 
-Foundation is not the most interesting topic. It is the one that makes the others work.
+The remaining topics in this book each assume Foundation is in place. AI Instructions need a `docs/` to point into. Spec-driven development needs structure for specs to live in. Quality checks need conventions to validate. Skip Foundation and the rest stops working.
 
-## Honest caveats
+Foundation is also the topic with the lowest immediate payoff. A team can adopt OpenSpec on Tuesday and feel the difference Wednesday. A team that adopts Foundation gets value over months — fewer surprised-glance PRs, less rediscovery of past decisions, agents that no longer reinvent caching strategies. The compounding works in both directions.
 
-Structure has a maintenance cost. An `AGENTS.md` that is written and never updated becomes the first entry in [When ASE Fails](./when-ase-fails). A `docs/decisions/` directory with six ADRs from the first month and nothing since is a signal that the practice was adopted and then abandoned.
+## The discipline trap
 
-The goal is not a perfect repo from day one. It is a repo where structure is maintained as the system changes. The chapters that follow describe what to maintain and why.
+A repo that adopts Foundation and then stops maintaining it is worse than a repo that never adopted it. An `AGENTS.md` last updated nine months ago is a confident-sounding lie the agent will follow. An empty `docs/decisions/` directory next to a `.gitkeep` is a signal that ADRs are not how this team works, regardless of what the README claims.
+
+The seventh chapter in this section, [When ASE Fails](./when-ase-fails), names the failure modes that survive even good initial setup. Read it before you commit to the practices in the rest of the book. The point of Foundation is not a perfect repo on day one. It is a repo whose context stays current as the system changes.

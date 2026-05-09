@@ -1,15 +1,17 @@
 # The Map — ASE and the SDLC
 
-ASE does not replace your SDLC. It extends it. Every practice in this book maps to an existing phase of software development — planning, implementation, review, CI/CD, maintenance — and adds structure to what already happens there. The ceremonies stay. The artifacts change.
+The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artefacts. New review process. Your existing tooling becomes legacy on contact.
 
-This chapter maps where ASE fits. Later topics go into depth on each practice. The purpose here is orientation: when you read a chapter on OpenSpec or AGENTS.md or `ase check`, you should be able to place it on the map without looking it up.
+That pitch dies on first contact with any team that has working CI, an established review culture, and a Jira board people actually use. So this book makes a different pitch.
+
+ASE extends the SDLC. The ceremonies stay. The artefacts inside them change.
 
 ## The map
 
 ```mermaid
 graph LR
     subgraph Planning
-        A[Ticket / story] --> B[OpenSpec change folder\nspec + design + tasks]
+        A[Ticket / story] --> B[OpenSpec change folder<br/>spec + design + tasks]
     end
     subgraph Implementation
         C[AGENTS.md + .agents/] --> D[Agent-assisted coding]
@@ -19,52 +21,58 @@ graph LR
         D --> E[Spec review before code review]
         E --> F[PR — docs / structural / behavior]
     end
-    subgraph CI/CD
-        F --> G[ase check\nAC traceability\ntest suite]
+    subgraph CI
+        F --> G[ase check<br/>AC traceability<br/>tests]
         G --> H[Deploy]
     end
     subgraph Maintenance
-        H --> I[Archive spec\nUpdate INDEX.md\nKeep ADRs closed]
+        H --> I[Archive spec<br/>Update INDEX.md<br/>ADRs stay closed]
         I --> A
     end
 ```
 
+Five phases, none of them new. Inside each, ASE adds artefacts that make agentic work more legible.
+
 ## Planning: from ticket to spec
 
-The change starts the same way it always has — a ticket, a story, a Jira issue, a Linear card. OpenSpec adds a change folder alongside it: `openspec/changes/<name>/` containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
+The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artefact — `openspec/changes/<name>/` — containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
 
-For small, low-risk changes — a typo fix, a dependency bump — no spec is needed. For anything involving behaviour, architecture, or agent-assisted implementation, a spec written before the code pays for itself in reduced ambiguity. The Spec-Driven topic covers when and how.
+Not every change earns a spec. A typo fix does not. A dependency bump does not. Anything that touches behaviour, architecture, or that you intend to hand to an agent — write the spec first. The Spec-Driven topic covers when and how. The principle here is narrower: planning is where intent gets fixed, and fixed intent is what the agent works from.
 
 *Sources: Farley, *Modern Software Engineering* (Addison-Wesley, 2021) — intent over artefact.*
 
-## Implementation: the agent is briefed, not instructed on the fly
+## Implementation: brief the agent through the repo
 
-When the agent begins implementing, it loads `AGENTS.md` as its entry point. From there it finds the relevant instruction files, the architecture overview, and the spec for the current change. It is not briefed via chat message; the briefing is in the repo.
+When the agent starts implementing, it loads `AGENTS.md` first. From there it finds the relevant instructions, the architecture overview, and the spec for the current change. The briefing is in the repo. It is not delivered through a chat message that disappears when the session ends.
 
-The difference matters at scale. A briefing delivered in a chat session is lost when the session ends. A briefing in `AGENTS.md` and `.agents/instructions/` is available to every agent session, every developer, and every automated run.
+The contrast matters at scale. A briefing in a chat session works for one developer for one hour. A briefing in `AGENTS.md` and `.agents/instructions/` works for every agent session, every developer, every CI run, on every machine. Same briefing, every time. The repo is the briefing.
 
-## Review: intent before diff
+## Review: intent first, diff second
 
-The spec defines what the change should accomplish. The PR shows what was implemented. Review the spec delta first — does the intent match what was agreed? Then review the diff — does the implementation match the intent?
+Two reviews per PR, not one. The spec delta says what the change is supposed to do. The diff says what got built. Review the spec first — does the intent match what was agreed? Then review the diff — does the implementation match the intent?
 
-PR taxonomy keeps review focused. A PR that is exclusively documentation changes (`docs` type) does not need the same scrutiny as a PR that changes observable behaviour (`behavior` type). Mixing them makes both harder to review. The Quality topic covers taxonomy in detail.
+This sequencing is cheap to adopt and surprisingly effective. A reviewer who reads the diff first anchors on whether the code is well-written. A reviewer who reads the spec first asks whether the *change* is the right change at all. The first version of the question rarely gets asked when the diff is already in front of you.
 
-## CI/CD: the pipeline validates ASE conventions
+PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour scrutiny. A `behavior` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The Quality topic covers taxonomy in detail.
 
-`ase check` runs on every push. It validates that `AGENTS.md` is present and well-formed, that `docs/README.md` and `docs/INDEX.md` exist, that ADRs follow the MADR format, that spec scenarios have AC IDs and test declarations. This is not a new gate; it is a new check added to an existing CI pipeline.
+## CI: the pipeline checks the conventions
 
-AC traceability links spec scenarios to tests. When a test marked `@pytest.mark.ac("SCAFFOLD-001")` passes, the AC with that ID is proven. When a spec is archived, the traceability record survives in the archive.
+`ase check` runs on every push. It validates that `AGENTS.md` is present and well-formed. That `docs/README.md` and `docs/INDEX.md` exist. That ADRs follow MADR. That spec scenarios have AC IDs and test declarations. Not a new pipeline — a new check inside the pipeline you already have.
 
-*Sources: Microsoft, "An AI-led SDLC" (2026). IBM, "AI in SDLC" (ongoing). continuousdelivery.com — Farley and Humble (ongoing).*
+AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival; six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
-## Maintenance: keeping the map current
+*Sources: Microsoft, "An AI-led SDLC" (2026). IBM, "AI in SDLC" (ongoing). continuousdelivery.com — Farley and Humble.*
 
-After a change ships, the spec is archived. `docs/INDEX.md` is updated if any docs files were added, renamed, or deleted. ADRs are left closed and untouched. The `AGENTS.md` is updated if the change affects conventions the agent needs to know.
+## Maintenance: the step everyone skips
 
-The maintenance step is the one most teams skip, which is why drift compounds. Archiving a spec takes two minutes. Discovering six months later that your openspec/changes/ directory contains four half-done proposals, two cancelled ones, and one that was implemented but never archived — and that the agent has been treating all seven as active context — costs considerably more.
+After a change ships, archive the spec. Update `docs/INDEX.md` if any docs files moved. Leave ADRs closed. Update `AGENTS.md` if the change altered a convention.
+
+This is the step where ASE most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
+
+`ase check` catches some of this — `docs-index-stale` flags the index that does not match the file tree. It cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
 
 ## What stays the same
 
-Your sprint process, your PR workflow, your Jira board, your deployment pipeline — none of these change. ASE adds artifacts within existing steps and adds one CI check. It does not add ceremonies, standups, or review gates that did not already exist.
+The sprint process. The PR workflow. The Jira board. The deployment pipeline. None of these change. ASE adds artefacts inside existing steps and one CI check.
 
-This is a deliberate design constraint. New ceremonies age quickly. Existing ones already have tooling, muscle memory, and review culture. ASE borrows that infrastructure rather than building its own.
+This is a deliberate constraint. New ceremonies age fast. Existing ones already have tooling, muscle memory, and review culture. ASE borrows that infrastructure rather than asking the team to rebuild it.
