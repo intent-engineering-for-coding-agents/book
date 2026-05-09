@@ -387,7 +387,7 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
     - `index-maintenance.md` — when creating/renaming/deleting files under `docs/`, update `INDEX.md`
 - [x] Create `.agents/skills/`:
     - `draft-section` — draft a new section from outline
-    - `review-chapter` — consistency, tone, DRY review
+    - `review-chapter` — consistency, tone, DRY revi
     - `update-sidebar` — regenerate sidebar from file tree
     - `update-index` — scan `docs/`, regenerate all `INDEX.md` files
 - [x] Tag: `v0.2.0`
@@ -396,10 +396,10 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 
 Each chapter is an OpenSpec change proposal on the book repo.
 
-- [ ] Chapter: Why Structure Matters
+- [x] Chapter: Why Structure Matters
     - *Sources: ThoughtWorks Technology Radar Vol 34 (cognitive debt).*
     - Compounding drift, before/after, structure as context
-- [ ] Chapter: The Four Document Types
+- [x] Chapter: The Four Document Types
     - *Sources: Nygard 2011 (origin of ADRs); Kopp/Armbruster/Zimmermann 2018 (MADR template + paper); LeanSpec; OpenSpec. The four-doc split is this book's synthesis — closest published precedent is arc42.*
     - `docs/README.md` — architecture overview, renders on GitHub
     - `docs/INDEX.md` — agent-facing map, loaded first for context economy
@@ -409,32 +409,32 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Lifespans: permanent → temporary → disposable
     - Why conflating them corrupts both
     - Credit: ADRs — Michael Nygard (2011); MADR template — Oliver Kopp, Anita Armbruster, Olaf Zimmermann (2018)
-- [ ] Chapter: Plain-Text-as-Code
+- [x] Chapter: Plain-Text-as-Code
     - *Sources: Write the Docs "Docs as Code"; Mermaid; C4 model; Structurizr.*
     - Markdown, Mermaid, MADR as substrate
     - Git-diffable, vendor-independent, agent-readable
-- [ ] Chapter: The Map — ASE and the SDLC
+- [x] Chapter: The Map — ASE and the SDLC
     - *Sources: Farley *Modern Software Engineering*; continuousdelivery.com; Microsoft "An AI-led SDLC"; IBM "AI in SDLC".*
     - One-page diagram: SDLC phases → ASE touchpoints
     - ASE extends, does not replace
-- [ ] Chapter: Honest Maturity
+- [x] Chapter: Honest Maturity
     - *Sources: ThoughtWorks Radar adoption rings (Hold/Assess/Trial/Adopt) as lineage; CMM noted briefly to dismiss process-theatre framing.*
     - Practiced / documented / CI-enforced / target state
     - Maturity labels prevent process theatre
     - Lineage: rhymes with ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings; this is staged-maturity-honesty, not CMM-style process compliance.
-- [ ] Chapter: Brownfield vs Greenfield — Bootstrap with skeleton.md
+- [x] Chapter: Brownfield vs Greenfield — Bootstrap with skeleton.md
     - *Sources: Reversa (sandeco/reversa) — 5-phase legacy → spec pipeline for AI coding agents (Claude Code / Cursor / Codex); Schwab "AI as Your Legacy Code Archaeologist" (Caimito, Feb 7, 2026); Cockburn *Crystal Clear* (2004) — original "walking skeleton" lineage; Fujitsu Application Transform (Mar 2026) — industry-scale validation.*
     - Greenfield ASE assumes you can author AGENTS.md, ADRs, and specs from intent. Brownfield cannot — the intent is buried in years of code, dead comments, and tribal knowledge.
     - **`skeleton.md`** as the brownfield bootstrap artefact: an AI-generated structural map of an existing codebase (modules, dependencies, data flow, business-rule outline, C4 views) that seeds the agent's understanding before any new ASE work begins.
     - How to generate one: point a capability-class CLI agent at the legacy tree; ask for a structural skeleton, not a refactor. Iterate with a domain expert. Reversa is one toolchain that automates this end-to-end.
     - Why it's essential: most enterprise readers are in brownfield, not greenfield. Without a skeleton, the agent improvises against a system it doesn't understand and compounds drift.
     - Lineage note: Cockburn's "walking skeleton" (a thin end-to-end implementation, *Crystal Clear* 2004) is the etymology. The AI-era `skeleton.md` is a *reverse-engineered* map of an existing system, not a thin forward-built one. Same metaphor, different direction.
-- [ ] Chapter: When ASE Fails
+- [x] Chapter: When ASE Fails
     - *Sources: ThoughtWorks Radar Vol 34 (cognitive debt); Yegge "Revenge of the junior developer"; De Schryver "Keep Agentic AI Simple".*
     - Failure modes that survive even good foundation: AGENTS.md rot, dead specs, agent-accelerated tech debt, over-spec, drift with no detection.
     - Honest framing before the practices: ASE doesn't make your code perfect; it gives you the surface area to detect and recover. Each later topic aims a fix at one of these modes.
-- [ ] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
-- [ ] Tag: `v0.3.0`
+- [x] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
+- [x] Tag: `v0.3.0`
 
 #### Phase Q — Write AI Instructions Chapters (`v0.4.0`)
 
