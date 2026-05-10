@@ -16,7 +16,7 @@ This is not a documentation problem. It is a *type* problem. *Agentic Software E
 
 **Design docs**: `docs/design/`. Per-feature thinking before implementation. Options, approach, risks. Not an ADR. Too narrow, too temporary. Not a spec. Describes the approach, not the behaviour. Authoritative during the work; historical artefact afterwards. Not deleted; not maintained either.
 
-**Specs**: `openspec/`. The canonical specification of system behaviour: acceptance criteria, scenarios, test definitions. Written before implementation, validated during it, archived to `openspec/changes/archive/` after. An un-archived spec is live instruction. The agent does not know it is supposed to be done.
+**Specs**: `openspec/`. The canonical specification of system behaviour: acceptance criteria, scenarios, test definitions. Written before implementation, validated during it, archived to `openspec/changes/archive/` after. An un-archived spec is live instruction. The agent does not know it is supposed to be done. Archive on completion, not later.
 
 README files and INDEX files share each documentation directory and the same lifespan, but they serve different readers. A human lands on the README when they navigate to a directory in a browser; an agent loads the INDEX first when it begins a session. Merging the two into a single "documentation file" is the most common collapse, and the easiest to make.
 
@@ -48,4 +48,4 @@ Each of these is reversible. Each of them, in a real repo, takes weeks of carefu
 
 The `ase-cli` repo at `git tag v0.4.0` shows the structure live. Six ADRs in `docs/decisions/`, all closed and immutable. Design docs in `docs/design/` for features that needed upfront reasoning. Specs in `openspec/specs/` for current behaviour, with completed changes archived to `openspec/changes/archive/`. Run `ase check` against it and the structural validation passes: `docs-readme-exists`, `docs-index-exists`, `adr-format` all green.
 
-That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available.
+That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries.

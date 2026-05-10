@@ -2,7 +2,7 @@
 
 The agent adds a `POST /orders` REST endpoint.
 
-The team moved to gRPC eighteen months ago. Typed contracts, streaming, performance reasons that live in one architect's head and zero files in the repo. Every other service in the codebase is gRPC. The new endpoint is REST, because every tutorial uses REST and the agent's training data is steeped in it. The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. The PR is approved. Three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
+The team moved to gRPC months ago. Typed contracts, streaming, performance reasons that live in one architect's head, and zero files in the repo. Every other service in the codebase is gRPC. The new endpoint is REST, because every tutorial uses REST and the agent's training data is steeped in it. The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. The PR is approved. Three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
 
 This is a small story. The codebase has hundreds of these. Each session burns a little more of the gap between what the team decided and what the codebase actually expresses.
 

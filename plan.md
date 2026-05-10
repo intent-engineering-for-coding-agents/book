@@ -671,7 +671,10 @@ See the [References](#references) section at the end of this document for the fu
 *(Append as they emerge during building and writing)*
 
 - Each document type has a different lifespan. ADRs are permanent. Specs are disposable. Conflating them corrupts both.
+- Documents must keep pace with code. Before AI, undocumented intent could live in heads; the senior dev carried the load. AI has no head. Code changes without matching doc updates create documentation debt that the agent will compound, because it cannot see what isn't written.
 - Put the most important context at the top — agents read top-down and lose focus.
+- Documents form a hypergraph, not a tree. Agents and humans pick the relevant context via links and skip the rest. Fast retrieval at every depth is part of the design, not an afterthought.
+- One concept per document. Splitting by concept makes the hypergraph navigable; splitting by size keeps each node within an agent's attention budget. The two rationales point the same way.
 - Small specs outperform large specs — an agent that finishes is better than one that drifts.
 - The spec is the durable artifact. The implementation is disposable.
 - AI generates code faster than you can verify manually. Automated proof is not optional — it is mathematically required at agentic speeds.
@@ -698,7 +701,7 @@ See the [References](#references) section at the end of this document for the fu
 
 ## References
 
-*Last reviewed: 2026-05-07.*
+*Last reviewed: 2026-05-10.*
 
 Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines under each chapter point into this section.
 
@@ -715,15 +718,20 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
 - Simon Brown — [Structurizr](https://docs.structurizr.com/) (ongoing). Models-as-code tooling for C4 DSL.
 - Alistair Cockburn — *Crystal Clear: A Human-Powered Methodology for Small Teams* (Addison-Wesley, *2004*). Origin of the "walking skeleton" pattern — etymology for the modern `skeleton.md` artefact.
+- Apache Maven Project — ["Introduction to the Standard Directory Layout"](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html). Maven Documentation, last modified *Mar 9, 2014*. Maven popularized "convention over configuration" in the Java build world starting with Maven 1 (2004); this page is the canonical illustration.
+- David Heinemeier Hansson — ["The Rails Doctrine"](https://rubyonrails.org/doctrine/). Ruby on Rails, *Jan 19, 2016*. Codifies "Convention over Configuration" as one of nine doctrinal pillars (Rails released 2004); the most-cited popular usage of the phrase.
 
 ### Spec-driven development
 
 - Fission AI — [OpenSpec](https://openspec.dev/) ([repo](https://github.com/Fission-AI/OpenSpec), ongoing). The change-folder + delta-spec framework this book uses end-to-end.
 - GitHub — [Spec-Kit](https://github.com/github/spec-kit) ([docs](https://github.github.com/spec-kit/), ongoing). Enterprise end of the spectrum.
 - [LeanSpec](https://lean-spec.dev) (ongoing). Smaller-community framework articulating the small-spec discipline.
-- Rick Hightower — ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI: Where SDD Tools Diverge"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46). Medium, *Feb 2026*. Tool-tradeoff map for Phase T.
-- Rick Hightower — ["What Is GSD? Spec-Driven Development Without the Ceremony"](https://pub.spillwave.com/what-is-gsd-spec-driven-development-without-the-ceremony-570216956a84). Spillwave, *2026*. Companion piece on the lightweight end of SDD.
-- GitHub Blog — ["Spec-driven development with AI: Get started with a new open source toolkit"](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/). *2025*. Official launch context for SpecKit.
+- Rick Hightower — ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI: Where SDD Tools Diverge"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46). Medium, *Feb 27, 2026*. Tool-tradeoff map for Phase T.
+- Rick Hightower — ["What Is GSD? Spec-Driven Development Without the Ceremony"](https://pub.spillwave.com/what-is-gsd-spec-driven-development-without-the-ceremony-570216956a84). Spillwave, *Feb 23, 2026*. Companion piece on the lightweight end of SDD.
+- GitHub Blog — ["Spec-driven development with AI: Get started with a new open source toolkit"](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/). *Sep 2, 2025*. Official launch context for SpecKit.
+- ["Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants"](https://openreview.net/forum?id=bw5mNj75h9). OpenReview submission to AIware 2026, *Jan 30, 2026* (modified Apr 2, 2026). Academic framing of spec-as-contract; anchor for the "spec-driven hardened into a recognized practice" claim in the Introduction.
+- SolGuruz — ["Spec-Driven Development Guide"](https://solguruz.com/blog/spec-driven-development-guide/). *Mar 12, 2026*. Industry overview of spec-driven workflows.
+- IntuitionLabs — ["Spec-Driven Development & Spec-Kit"](https://intuitionlabs.ai/articles/spec-driven-development-spec-kit). Revised *Feb 21, 2026*. Spec-Kit walkthrough.
 
 ### Agentic engineering & AI instructions
 
@@ -734,10 +742,15 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - ThoughtWorks — Technology Radar Vol 34: [press release](https://www.thoughtworks.com/about-us/news/2026/combat-ai-cognitive-debt-radar-v34) and [PDF](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2026/04/tr_technology_radar_vol_34_en.pdf). *April 2026*. Cognitive debt, harness engineering, named SDD frameworks.
 - Birgitta Böckeler — [publications hub](https://birgitta.info/) (ongoing) and ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows) (Refactoring.fm interview). ThoughtWorks Distinguished Engineer, AI-assisted software delivery lead.
 - Steve Yegge — ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer). Sourcegraph blog, *Mar 22, 2025*. Six-wave model for the agentic shift (Manual → Completions → Chat → Coding Agents → Agent Clusters → Agent Fleets).
-- Geoffrey Huntley — ["Everything is a Ralph loop"](https://ghuntley.com/loop/). *2025*. Harness / back-pressure engineering primer.
-- Microsoft — ["An AI-led SDLC: Building an end-to-end agentic software development lifecycle"](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896). *2026*. Industry-view backdrop.
+- Bill Doerrfeld — ["AI doesn't create great developers, it amplifies them"](https://leaddev.com/ai/ai-doesnt-create-great-developers-it-amplifies-them). LeadDev, *Jan 20, 2026*. The amplification thesis: AI multiplies the developer's existing skill — bad inputs ship bad code faster, experienced inputs ship experienced code faster. A touchstone reference for why ASE targets senior developers.
+- Geoffrey Huntley — ["Everything is a Ralph loop"](https://ghuntley.com/loop/). *Jan 17, 2026*. Harness / back-pressure engineering primer.
+- Microsoft — ["An AI-led SDLC: Building an end-to-end agentic software development lifecycle"](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896). *Feb 5, 2026*. Industry-view backdrop.
 - IBM — ["AI in SDLC"](https://www.ibm.com/think/topics/ai-in-sdlc) (ongoing). Industry-view backdrop.
-- Tim De Schryver — ["Keep Agentic AI Simple: A Practical Workflow for Software Development"](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development). *2025*. Practical individual-developer workflow.
+- Outshift (Cisco) — ["Agentic SDLC: A New Evolution in Software Engineering"](https://outshift.cisco.com/blog/ai-ml/agentic-sdlc-new-evolution-in-software-engineering). *Apr 14, 2026*. Specs-and-harnesses framing of the coding-agent SDLC; closest in scope to this book.
+- EPAM — ["Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC"](https://www.epam.com/insights/ai/blogs/agentic-development-lifecycle-explained). *Feb 5, 2026*. Phase-0 governance + validation gates; ADLC literature for *building agents as products*, distinct scope from ASE.
+- Arthur AI — ["The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI"](https://www.youtube.com/watch?v=Odj-x2OZODw). YouTube talk, *Dec 8, 2025*. Eval-driven development and the post-deploy agent flywheel; ADLC for agents-as-products.
+- Jesper Lowgren — ["Agentic AI Breaks the SDLC. Now What?"](https://www.youtube.com/watch?v=nSU7wiTyI4Q). YouTube talk, *Mar 31, 2026*. Six governance pillars (Intent / Boundary / Semantic / Policy / Protocol / Assurance) and a 12-step Agentic SDLC; the runtime-governance and deterministic-cage angle on agents-as-products. Surfaces the terminology collision: "Agentic SDLC" used here for autonomous-agent governance, distinct from Outshift's coding-agent SDLC.
+- Tim De Schryver — ["Keep Agentic AI Simple: A Practical Workflow for Software Development"](https://timdeschryver.dev/blog/keep-agentic-ai-simple-a-practical-workflow-for-software-development). *May 6, 2026*. Practical individual-developer workflow.
 - [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing). Principle-as-code experiment, optional complement to specs/tests.
 - [Reversa](https://github.com/sandeco/reversa) (ongoing, MIT). Five-phase reverse-engineering framework that coordinates AI sub-agents inside Claude Code / Cursor / Codex to extract C4 diagrams, ERDs, state machines, and API contracts from legacy code — the canonical brownfield `skeleton.md` toolchain.
 - Stephan Schwab — ["AI as Your Legacy Code Archaeologist"](https://www.caimito.net/en/blog/2026/02/07/ai-as-your-legacy-code-archaeologist.html). Caimito blog, *Feb 7, 2026*. Practitioner voice on AI-driven extraction of business rules from legacy code.
