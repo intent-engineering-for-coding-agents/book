@@ -399,8 +399,8 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Chapter: Why Structure Matters
     - *Sources: ThoughtWorks Technology Radar Vol 34 (cognitive debt).*
     - Compounding drift, before/after, structure as context
-- [x] Chapter: The Four Document Types
-    - *Sources: Nygard 2011 (origin of ADRs); Kopp/Armbruster/Zimmermann 2018 (MADR template + paper); LeanSpec; OpenSpec. The four-doc split is this book's synthesis — closest published precedent is arc42.*
+- [x] Chapter: Document Types
+    - *Sources: Nygard 2011 (origin of ADRs); Kopp/Armbruster/Zimmermann 2018 (MADR template + paper); LeanSpec; OpenSpec. The split (README files + INDEX files + ADRs + design docs + specs) is this book's synthesis — closest published precedent is arc42.*
     - `docs/README.md` — architecture overview, renders on GitHub
     - `docs/INDEX.md` — agent-facing map, loaded first for context economy
     - ADRs in MADR format at `docs/decisions/`

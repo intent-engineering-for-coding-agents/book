@@ -23,6 +23,7 @@ The `.agents/` directory is not under `docs/` but is part of the repo's AI instr
 | [.agents/instructions/vitepress.md](../.agents/instructions/vitepress.md) | VitePress config, sidebar, Mermaid, build commands |
 | [.agents/instructions/review.md](../.agents/instructions/review.md) | How to review and critique draft chapters |
 | [.agents/instructions/index-maintenance.md](../.agents/instructions/index-maintenance.md) | When and how to update INDEX.md |
+| [.agents/instructions/glossary-maintenance.md](../.agents/instructions/glossary-maintenance.md) | First-use abbreviation expansion; keep `content/appendices/glossary.md` current |
 | [.agents/skills/draft-section.md](../.agents/skills/draft-section.md) | Draft a content section from a chapter outline |
 | [.agents/skills/review-chapter.md](../.agents/skills/review-chapter.md) | Consistency, tone, DRY review of a draft |
 | [.agents/skills/update-sidebar.md](../.agents/skills/update-sidebar.md) | Regenerate VitePress sidebar from content/ file tree |

@@ -117,6 +117,19 @@ Avoid the structural tells:
 - Generic optimism about AI capability
 - Emotionally flat prose where every sentence is a declarative statement of equal weight
 
+### Em dashes for asides
+
+Strings of em dashes (`—`) sprinkling asides across a paragraph are an AI-writing tell. Engineers writing engineers do not punctuate this way.
+
+Rewrite rules:
+
+- **Aside** → period + new sentence. *"The chapters compound — Foundation makes AI Instructions effective"* becomes *"The chapters compound. Foundation makes AI Instructions effective."*
+- **Definition or expansion of a term** → colon. *"Cognitive debt — the AI-era undocumented decision"* becomes *"Cognitive debt: the AI-era undocumented decision."*
+- **Bold label + description in a list** → colon. *"**Foundation** — repo structure as the agent's briefing"* becomes *"**Foundation**: repo structure as the agent's briefing."*
+- **Tight parenthetical clause** → comma, or just delete the dashes. *"a CLI agent — one that combines a thinking model"* becomes *"a CLI agent, one that combines a thinking model."*
+
+An em dash is acceptable at most once per page, and only when the alternative genuinely loses meaning. If the rewrite reads fine, the em dash was AI texture.
+
 ## Preferred techniques
 
 Use occasionally — never on every page:
