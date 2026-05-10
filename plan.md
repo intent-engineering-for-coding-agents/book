@@ -713,6 +713,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Paul Hammant — [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
 - Michael Nygard — ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions). Cognitect blog, *Nov 15, 2011*. Origin of the ADR practice.
 - Oliver Kopp, Anita Armbruster, Olaf Zimmermann — [MADR template](https://adr.github.io/madr/) (ongoing) and ["Markdown Architectural Decision Records: Format and Tool Support"](https://ceur-ws.org/Vol-2072/paper9.pdf), CEUR-WS Vol-2072, *2018*. Markdown ADR template used in `docs/decisions/`.
+- Flemming N. Larsen — [Plain Text as Code Manifest](https://github.com/Plain-Text-as-Code). GitHub, *March 2026, ongoing*. Author's foundational statement of the philosophy; the Foundation chapter applies it to ASE.
 - [Docs as Code — Write the Docs guide](https://www.writethedocs.org/guide/docs-as-code.html) (ongoing). Plain-text-as-code practice.
 - [Mermaid](https://mermaid.js.org/) (ongoing). Text-defined diagrams.
 - Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
