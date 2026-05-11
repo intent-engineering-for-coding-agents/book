@@ -59,7 +59,11 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 ## CI checks
 
-`check.yml` installs `ase-cli` and runs `ase check` on every push and PR. This validates that the book repo follows ASE conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale.
+`check.yml` installs `ase-cli` and runs `ase check` on every push and PR. This validates that the book repo follows ASE conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
+
+## AI instruction hub
+
+The repo-level [AGENTS.md](../AGENTS.md) is the entry point agents load first. It maps the `.agents/` directory — instructions ([writing](../.agents/instructions/writing.md), [voice](../.agents/instructions/voice.md), [VitePress](../.agents/instructions/vitepress.md), [review](../.agents/instructions/review.md), [index maintenance](../.agents/instructions/index-maintenance.md), [glossary maintenance](../.agents/instructions/glossary-maintenance.md)) and skills ([draft-section](../.agents/skills/draft-section.md), [review-chapter](../.agents/skills/review-chapter.md), [update-sidebar](../.agents/skills/update-sidebar.md), [update-index](../.agents/skills/update-index.md)). `docs/INDEX.md` is intentionally narrow — it maps `docs/` only; the AI hub lives outside that tree.
 
 ## Book topic structure
 
