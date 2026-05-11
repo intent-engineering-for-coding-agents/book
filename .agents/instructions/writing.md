@@ -26,7 +26,8 @@ Constraints first: put the key constraint, non-goal, or risk at the top of the c
 ## Formatting
 
 - Prose paragraphs for explanation; code blocks for anything the reader will type or copy
-- Markdown tables for comparisons; Mermaid for diagrams
+- Markdown tables for comparisons
+- **Diagrams: Mermaid by default.** Author every diagram as Mermaid in a fenced ` ```mermaid ` block — flow, sequence, state, ER, class, etc. Mermaid renders in the VitePress build *and* on GitHub, and stays diffable as plain text. Use ASCII / box-art only as a fallback when Mermaid genuinely can't express the shape (rare; one common case is a directory tree, which reads better as indented text)
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `*Sources:*` line at the end of any section that draws on a specific reference — format: `*Sources: Author "Title" (Year).*`

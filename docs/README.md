@@ -6,16 +6,18 @@ This repo dogfoods its own convention: `docs/` holds ASE documentation; `content
 
 ## Design
 
-```
-┌─────────────────────────────────────────────┐
-│  ase-book (this repo)                        │
-│                                              │
-│  content/          ──▶  VitePress build      │
-│  .vitepress/config      (.vitepress/dist/)   │
-│                               │              │
-│  .github/workflows/ ──────────▼              │
-│  deploy.yml              GitHub Pages        │
-└─────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+  subgraph repo["ase-book (this repo)"]
+    src["content/<br/>.vitepress/config"]
+    wf[".github/workflows/<br/>deploy.yml"]
+  end
+  build[("VitePress build<br/>.vitepress/dist/")]
+  pages[["GitHub Pages"]]
+
+  src --> build
+  wf --> build
+  build --> pages
 ```
 
 ## Technology

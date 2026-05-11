@@ -33,6 +33,10 @@ Each entry is a table row:
 | filename.md | Feature name | status | YYYY-MM-DD |
 ```
 
+## Empty directories
+
+A directory under `docs/` that holds no substantive content — only a `.gitkeep`, or nothing at all — does **not** need `README.md` or `INDEX.md`. `ase check` (>= the empty-dirs-exclusion change) skips such placeholders. Create the two files the moment the directory gets its first real file, and add the new dir's entry to `docs/INDEX.md` at the same time.
+
 ## Why
 
 Agents load `docs/INDEX.md` first for context economy. A stale index — broken links, missing entries, orphans — causes wasted context and missed files. The `update-index` skill can regenerate these automatically.
