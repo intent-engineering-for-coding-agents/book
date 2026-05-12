@@ -2,19 +2,23 @@
 
 The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artefacts. New review process. Your existing tooling becomes legacy on contact.
 
+The Software Development Life Cycle is the structured sequence a team runs to take software from idea to production: plan, build, review, integrate, deploy, maintain. Every team runs some version of it, whether they call it that or not.
+
 That pitch dies on first contact with any team that has working CI, an established review culture, and a Jira board people actually use. So this book makes a different pitch.
 
 *Agentic Software Engineering (ASE)* extends the SDLC. The ceremonies stay. The artefacts inside them change.
 
+*Sources: Sommerville, *Software Engineering* (10th ed., Pearson, 2015), ch. 2.*
+
 ## The map
 
 ```mermaid
-graph LR
+graph TD
     subgraph Planning
         A[Ticket / story] --> B[OpenSpec change folder<br/>spec + design + tasks]
     end
     subgraph Implementation
-        C[AGENTS.md + .agents/] --> D[Agent-assisted coding]
+        C["AGENTS.md + .agents/"] --> D[Agent-assisted coding]
         B --> D
     end
     subgraph Review
@@ -31,29 +35,31 @@ graph LR
     end
 ```
 
-Five phases, none of them new. Inside each, ASE adds artefacts that make agentic work more legible.
+Five phases, none of them new. Inside each, ASE adds exactly one thing.
 
 ## Planning: from ticket to spec
 
 The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artefact, `openspec/changes/<name>/`, containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
 
-Not every change earns a spec. A typo fix does not. A dependency bump does not. Anything that touches behaviour, architecture, or that you intend to hand to an agent: write the spec first. The Spec-Driven topic covers when and how. The principle here is narrower: planning is where intent gets fixed, and fixed intent is what the agent works from.
+Not every change earns a spec. A typo fix does not. A dependency bump does not. A bug fix is less clear-cut: if the correct behavior is self-evident, skip it; if figuring out what the system was *supposed* to do is the hard part, that reasoning belongs in a spec before anyone writes a line to restore it. Anything that touches architecture, or that you intend to hand to an agent: write the spec first. Planning is where intent gets fixed. Fixed intent is what the agent works from. Unfixed intent is what makes it produce code nobody wanted.
 
-*Sources: Farley, *Modern Software Engineering* (Addison-Wesley, 2021), intent over artefact.*
+*Sources: Farley, *Modern Software Engineering* (Addison-Wesley, 2021), intent over artifact.*
 
 ## Implementation: brief the agent through the repo
 
-When the agent starts implementing, it loads `AGENTS.md` first. From there it finds the relevant instructions, the architecture overview, and the spec for the current change. The briefing is in the repo. It is not delivered through a chat message that disappears when the session ends.
+With the spec in place, the agent needs to find it — along with the architecture overview, the constraints, and the conventions for the codebase it is about to change. That is what `AGENTS.md` is for. It loads first. From there it finds the relevant instructions and the spec for the current change. The briefing is in the repo, not in a chat message that disappears when the session ends.
 
 The contrast matters at scale. A briefing in a chat session works for one developer for one hour. A briefing in `AGENTS.md` and `.agents/instructions/` works for every agent session, every developer, every CI run, on every machine. Same briefing, every time. The repo is the briefing.
 
-## Review: intent first, diff second
+## Review: intent first, code second
 
-Two reviews per PR, not one. The spec delta says what the change is supposed to do. The diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the diff. Does the implementation match the intent?
+The agent commits. The PR opens. Most teams treat what comes next as one step. ASE treats it as two.
 
-This sequencing is cheap to adopt and surprisingly effective. A reviewer who reads the diff first anchors on whether the code is well-written. A reviewer who reads the spec first asks whether the *change* is the right change at all. The first version of the question rarely gets asked when the diff is already in front of you.
+The spec delta says what the change is supposed to do. The code diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the code diff. Does the implementation match the intent?
 
-PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour scrutiny. A `behavior` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The Quality topic covers taxonomy in detail.
+This sequencing is cheap to adopt and surprisingly effective. A reviewer who reads the code diff first anchors on whether the code is well-written. A reviewer who reads the spec first asks whether the *change* is the right change at all. That second question rarely gets asked when the diff is already in front of you.
+
+PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour scrutiny. A `behavior` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is just PR discipline with names.
 
 ## CI: the pipeline checks the conventions
 
@@ -61,7 +67,7 @@ PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour s
 
 AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival; six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
-*Sources: Microsoft, "An AI-led SDLC" (2026). IBM, "AI in SDLC" (ongoing). continuousdelivery.com, Farley and Humble.*
+*Sources: Microsoft, "An AI-led SDLC" (2026). IBM, "AI in SDLC" (ongoing). continuousdelivery.com, Farley, and Humble.*
 
 ## Maintenance: the step everyone skips
 
@@ -71,8 +77,6 @@ This is the step where ASE most reliably falls apart in practice. Archiving take
 
 `ase check` catches some of this. `docs-index-stale` flags the index that does not match the file tree. It cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
 
-## What stays the same
+## Why not add ceremonies
 
-The sprint process. The PR workflow. The Jira board. The deployment pipeline. None of these change. ASE adds artefacts inside existing steps and one CI check.
-
-This is a deliberate constraint. New ceremonies age fast. Existing ones already have tooling, muscle memory, and review culture. ASE borrows that infrastructure rather than asking the team to rebuild it.
+New ceremonies have a half-life. Teams adopt them at the start of a quarter and drift back under deadline pressure six months later. ASE sidesteps this by plugging into the ceremonies that already have tooling, habit, and buy-in. The ask is smaller. The persistence is better.

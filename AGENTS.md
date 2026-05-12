@@ -31,7 +31,9 @@ npm run docs:preview # preview the built site locally
 
 ## Skills
 
+**When a task matches a skill below, load and follow that skill file before doing any work. Skills are not optional.**
+
 - [**draft-section**](.agents/skills/draft-section.md) — draft a content section from a chapter outline entry
-- [**review-chapter**](.agents/skills/review-chapter.md) — consistency, tone, and DRY review of a draft chapter
+- [**review-chapter**](.agents/skills/review-chapter.md) — consistency, tone, and DRY review of a draft chapter; load `plan.md` for outline alignment
 - [**update-sidebar**](.agents/skills/update-sidebar.md) — regenerate VitePress sidebar from `content/` file tree
 - [**update-index**](.agents/skills/update-index.md) — scan `docs/`, regenerate `docs/INDEX.md` and all listing files

@@ -402,10 +402,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Chapter: Document Types
     - *Sources: Nygard 2011 (origin of ADRs); Kopp/Armbruster/Zimmermann 2018 (MADR template + paper); LeanSpec; OpenSpec. The split (README files + INDEX files + ADRs + design docs + specs) is this book's synthesis — closest published precedent is arc42.*
     - `docs/README.md` — architecture overview, renders on GitHub
-    - `docs/INDEX.md` — agent-facing map, loaded first for context economy
-    - ADRs in MADR format at `docs/decisions/`
-    - Design docs at `docs/design/`
-    - Specs at `openspec/`
+    - `docs/INDEX.md` — agent-facing map, loaded first for context economy; README serves human browsers, INDEX serves the agent — same directory, different jobs, do not merge
+    - ADRs: documents that manifest specific decisions (context, options considered, decision, consequences); the decision is immutable once closed; reversal = new ADR; supporting context (pros/cons, consequences, notes) may be updated in place — record an amendment at the bottom (date + WAS/NOW) so the edit is legible without git blame; introduce MADR (Markdown format by Kopp/Armbruster/Zimmermann 2018) at `docs/decisions/`
+    - Design docs at `docs/design/`: matter of preference — write-and-forget OR keep current (minor changes: edit in place; major redesign: new doc, old stays for history); the discipline is consistency so the agent does not confuse a superseded design for the current one
+    - Specs: manifestation of intent — acceptance criteria, scenarios, test definitions; also a task plan with checkboxes the agent works through (checkmarks force execution, prevent the agent skipping inconvenient steps); advise: instruct the agent (in AGENTS.md or the spec) to check off tasks immediately on completion — enables live progress visibility and safe interruption/resumption; written before implementation, archived after; un-archived spec is live instruction
+    - Spec ≠ OpenSpec: OpenSpec is a framework managing specs through a change lifecycle; a `/specs` folder is the ad hoc alternative (common, lower ceremony, but no built-in archival prompt — dead specs accumulate)
     - Lifespans: permanent → temporary → disposable
     - Why conflating them corrupts both
     - Credit: ADRs — Michael Nygard (2011); MADR template — Oliver Kopp, Anita Armbruster, Olaf Zimmermann (2018)
@@ -481,11 +482,13 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [ ] Chapter: Why Specs?
     - *Sources: OpenSpec; GitHub Spec-Kit; LeanSpec; Hightower SDD-tools comparison.*
     - Drift, intent, traceability — the practical motivation for spec-first.
+    - **[FLAG]** Address the waterfall objection directly: spec-before-code is not waterfall. Waterfall separates requirements from implementation across phases and teams with a handoff boundary. A change proposal is scoped to one PR, written by the same person who implements it, and iterated during review. The spec is not a contract; it is a pre-flight check.
 - [ ] Chapter: Why Small?
     - *Sources: LeanSpec; Anthropic "Building effective agents" (context engineering).*
     - Lean focus: an agent that finishes beats one that drifts. Specs over ~300 lines start losing the thread.
     - Context window economics — every token spent on a long spec is a token unavailable for code.
     - Credit: LeanSpec.
+    - **[FLAG]** A spec is a change proposal scoped to one PR, not a requirements document. Changes emerge during implementation and PR review — the spec anchors intent, it does not freeze it. Small proposals mean real negotiation happens in the PR, where it belongs, not in a month-long spec review cycle.
 - [ ] Chapter: Why Important Stuff First?
     - *Sources: agentpatterns.ai (TOC pattern, top-down attention); Anthropic "Building effective agents".*
     - Agents read top-down and lose focus. If they read only the first 50 lines — would the spec still work?
@@ -709,6 +712,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 
 - Andrej Karpathy — ["Vibe coding"](https://x.com/karpathy/status/1886192184808149383). X (Twitter), *Feb 2, 2025*. Origin of the term used in this book's subtitle.
 - Simon Willison — ["Not all AI-assisted programming is vibe coding"](https://simonwillison.net/2025/Mar/19/vibe-coding/). *Mar 19, 2025*. Practical counterweight to Karpathy.
+- Ian Sommerville — *Software Engineering* (10th ed., Pearson, 2015). SDLC definition and phases; cited in "The Map: ASE and the SDLC."
 - Dave Farley — *Modern Software Engineering* (Addison-Wesley, 2021); with Jez Humble: *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing). Feedback loops, sampling, CI/CD vocabulary.
 - Paul Hammant — [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
 - Michael Nygard — ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions). Cognitect blog, *Nov 15, 2011*. Origin of the ADR practice.

@@ -38,15 +38,15 @@ graph TD
     D --> E[Archive]
 ```
 
-GitHub renders Mermaid out of the box, and VitePress does the same with one plugin. IDE support varies — some preview panes handle it natively, others need a Mermaid extension. For editing or visualizing without local tooling, the live editor at mermaid.live is the easy escape hatch. The source travels with the document that describes the system. When the architecture moves, the diagram moves in the same commit, and the PR review covers both.
+GitHub renders Mermaid out of the box, and VitePress does the same with one plugin. For editing without local tooling, mermaid.live is the escape hatch. The source travels with the document that describes the system. When the architecture moves, the diagram moves in the same commit, and the PR review covers both.
 
 Agents default to ASCII art when asked for a diagram in plain text. Sometimes the result is fine for a one-off illustration. Often the characters do not quite line up in monospace, and the next person — human or agent — has to nudge them back into place. The deeper problem is that ASCII art is a picture made of punctuation, with no structure underneath; the next agent reading the file sees a wall of `|` and `+`, not a graph. Mermaid takes roughly the same number of characters and produces a renderable, queryable artifact. Ask for Mermaid explicitly; current models produce it well.
 
 Mermaid covers more than 26 diagram types — sequence, state, ER, Gantt, C4, mindmap, and more — and GitHub renders most of them today. Use the type that fits the thing you are describing rather than forcing everything through `graph TD`.
 
-D2 is the more interesting format on its merits — cleaner syntax, a better layout engine, native theming — and it has online renderers and IDE extensions today. But no major Git vendor renders it inline, so a D2 block in a Markdown file shows up as a fenced code listing in PR review rather than a rendered diagram. Mermaid is the right call for now. Watch D2 as Git-host support catches up.
+D2 is the more interesting format on its merits, but no major Git vendor renders it inline yet — a D2 block shows up as a code listing in PR review, not a diagram. Mermaid is the right call for now.
 
-The C4 model gives a useful set of diagram types (Context, Container, Component, Code) that map cleanly onto `docs/README.md` (architecture overview) and per-feature design docs. Structurizr provides DSL tooling for maintaining C4 models as code if the diagrams grow large enough to need it. Most repos do not.
+The C4 model gives a useful set of diagram types (Context, Container, Component, Code) that map cleanly onto `docs/README.md` (architecture overview) and per-feature design docs.
 
 *Sources: Mermaid (mermaid.js.org). Mermaid live editor (mermaid.live). Mermaid diagram catalogue (mermaid.js.org/ecosystem/tutorials.html). D2 (d2lang.com). C4 model, Simon Brown (c4model.com). Structurizr (docs.structurizr.com).*
 
@@ -56,7 +56,7 @@ The MADR template (context, considered options, decision outcome, consequences) 
 
 The alternative is prose-format decision records with no template, which produces ADRs that each tell a different kind of story and resist any structural validation. `ase check`'s `adr-format` check exists because templated ADRs can be validated; freeform ones cannot.
 
-This is a pattern: structure the substrate enough that machines can reason about it, leave the contents free enough that humans can write it without ceremony. The same principle shows up in the Acceptance Criterion ID (AC ID) convention later in the book.
+The template does enough for validation; the contents stay free enough to write without ceremony. The same principle shows up in the Acceptance Criterion ID (AC ID) convention later in the book.
 
 ## What it is not
 

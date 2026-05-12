@@ -12,6 +12,6 @@ The chapters in this section address the underlying problem of agents that are p
 2. [Document Types](./document-types): README files, INDEX files, ADRs, design docs, and specs each have a different lifespan
 3. [Plain-Text-as-Code](./plain-text-as-code): why everything the agent needs must live in the repo as plain text
 4. [The Map: ASE and the SDLC](./ase-and-the-sdlc): where ASE practices slot into an existing SDLC
-5. [Honest Maturity](./honest-maturity): practiced / documented / CI-enforced / target state
+5. [Honest Maturity](./honest-maturity): practiced / documented / CI-enforced
 6. [Brownfield vs Greenfield](./brownfield-vs-greenfield): how to bootstrap ASE on an existing codebase using `skeleton.md`
 7. [When ASE Fails](./when-ase-fails): the failure modes that survive even good initial setup

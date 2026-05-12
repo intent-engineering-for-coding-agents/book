@@ -24,7 +24,7 @@ Run the gRPC case forward with structure in place:
 
 The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who happened to remember the migration meeting from 2024.
 
-Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own. That is what the rest of *Agentic Software Engineering (ASE)* is about.
+Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own.
 
 ## The prerequisite
 
@@ -36,4 +36,4 @@ Foundation is also the topic with the lowest immediate payoff. A team can adopt 
 
 A repo that adopts Foundation and then stops maintaining it is worse than a repo that never adopted it. An `AGENTS.md` last updated nine months ago is a confident-sounding lie the agent will follow. An empty `docs/decisions/` directory next to a `.gitkeep` signals that ADRs are not how this team actually works, regardless of what the README claims.
 
-The seventh chapter in this section, [When ASE Fails](./when-ase-fails), names the failure modes that survive even good initial setup. Read it before committing to the practices in the rest of the book. The point of Foundation is not a perfect repo on day one. It is a repo whose context stays current as the system changes.
+[When ASE Fails](./when-ase-fails) names the failure modes that survive even good initial setup. Read it before committing to the practices in the rest of the book. The point of Foundation is not a perfect repo on day one. It is a repo whose context stays current as the system changes.

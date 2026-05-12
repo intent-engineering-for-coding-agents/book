@@ -34,8 +34,6 @@ Alistair Cockburn coined "walking skeleton" in *Crystal Clear* (2004). His versi
 
 The AI-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture that was built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible so you can reason about it and build on it.
 
-The naming is deliberate. *Skeleton* signals that this is the load-bearing structure, not the surface. *Map* would have been less specific.
-
 *Sources: Cockburn, *Crystal Clear: A Human-Powered Methodology for Small Teams* (Addison-Wesley, 2004), origin of the walking-skeleton pattern.*
 
 ## After the skeleton

@@ -6,7 +6,7 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 ## AGENTS.md rot
 
-The entry point goes stale. The instructions describe a system that no longer exists. The decision recorded in `AGENTS.md` was reversed nine months ago in a new Architectural Decision Record (ADR) at `docs/decisions/0023-reverse-the-thing.md`, but the reversal never made it back to `AGENTS.md` itself. The agent reads the stale instructions, follows them faithfully, and produces code that fits the old system.
+The entry point goes stale. `AGENTS.md` says to follow the old module layout. An ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`. The agent reads the instructions, not the ADR, and produces code shaped for the old system.
 
 The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR that changes something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `ase check` rule catches "the convention you describe no longer matches the code." The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
 
@@ -34,6 +34,8 @@ The team writes 500-line specs for a config rename. The spec becomes the bottlen
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
+*Sources: LeanSpec (lean-spec.dev), small-spec discipline and formality-to-risk matching.*
+
 The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further. The summary is: small specs get implemented. Long ones get drift.
 
 ## Drift with no detection
@@ -56,6 +58,6 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small, Why Important First) |
 | Drift with no detection | Quality and Verification |
 
-Knowing the failure modes before learning the practices makes the practices easier to calibrate. The point is not zero drift. That is not on offer. The point is drift that is detectable while it is still cheap to fix.
+The point is not zero drift. That is not on offer. The point is drift that is detectable while it is still cheap to fix.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering. Yegge, "Revenge of the junior developer" (2025). De Schryver, "Keep Agentic AI Simple" (2025).*
