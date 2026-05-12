@@ -10,7 +10,9 @@ AI amplifies the developer driving it. Bill Doerrfeld put it bluntly in early 20
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026).*
 
-This is the territory of *Agentic Software Engineering (ASE)*, a term in active circulation for the practices that progressively make your AI agent less clueless about your system and intention. Not a methodology or a process. Just practices you adopt as you need them.
+This is the territory of *Agentic Software Engineering (ASE)*, a term in active circulation for the practices that progressively make your AI agent less clueless about your system and intention. Not a methodology or a process. Just practices you adopt as you need them. ASE sits within what's increasingly called *Developer AI*: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
+
+An agent in ASE plays two roles. Labor is the obvious one: it writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch it into plan or architect mode and it pushes back on your design before a line is written. It surfaces the assumption you treated as settled. It asks what you haven't asked. The same agent that generates a payment service in twenty minutes can, five minutes earlier, point out that you haven't decided what happens when the payment provider times out.
 
 ## What you can expect
 
@@ -66,4 +68,4 @@ Landing here from a chapter search? Jump to the start of the topic that chapter 
 
 ASE does not stop your agent from drifting. It gives you the surface area to detect drift and recover from it. That is a weaker claim than what most agentic-engineering material promises, and it is the one this book can actually defend. The chapter [When ASE Fails](./foundation/when-ase-fails) lists the failure modes that survive even good initial setup. It sits inside Foundation, before any of the practices.
 
-If that framing sounds reasonable, start with [Foundation](./foundation/).
+If that framing sounds reasonable, start with [Foundation](./foundation/index.md).
