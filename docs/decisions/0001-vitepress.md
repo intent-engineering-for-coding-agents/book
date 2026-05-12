@@ -1,8 +1,10 @@
-# ADR-0001: Use VitePress for the Book Site
+---
+status: accepted
+date: 2026-05-09
+decision-makers: ASE Book Contributors
+---
 
-* Status: accepted
-* Deciders: ASE Book Contributors
-* Date: 2026-05-09
+# ADR-0001: Use VitePress for the Book Site
 
 ## Context and Problem Statement
 
