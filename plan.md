@@ -254,10 +254,10 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] Propose: 3 specs, 17 AC IDs (DRME 5, DINE 5, DINS 7)
     - [x] Apply: 17 tests, 88 total pass, 17/17 ACs proven
     - [x] Archive → openspec/specs/{docs-readme-exists,docs-index-exists,docs-index-stale}
-- [ ] **Change 005 — ADR format checks**
+- [x] **Change 005 — ADR format checks**
     - `adr-format`, `adr-index`
-    - [ ] New → Plan → Apply → Archive
-- [ ] Tag: `v0.4.0`
+    - [x] New → Plan → Apply → Archive
+- [x] Tag: `v0.4.0`
 
 #### Phase F — Spec-Driven: Spec Quality Checks (`v0.5.0`)
 
