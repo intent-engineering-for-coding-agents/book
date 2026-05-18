@@ -1,4 +1,4 @@
-# AGENTS.md — ASE Book
+# AGENTS.md: ASE Book
 
 You are working on the **ASE Book**, a VitePress site teaching Agentic Software Engineering practices.
 
@@ -13,13 +13,13 @@ You are working on the **ASE Book**, a VitePress site teaching Agentic Software 
 
 Load when relevant:
 
-- [Writing](.agents/instructions/writing.md) — audience, structure, sources, formatting mechanics
-- [Voice](.agents/instructions/voice.md) — narrative tension, forbidden AI patterns, engineer-flavoured prose
-- [VitePress](.agents/instructions/vitepress.md) — config, sidebar, Mermaid, build commands
-- [Review](.agents/instructions/review.md) — how to review and critique draft content
-- [Index maintenance](.agents/instructions/index-maintenance.md) — keep `docs/INDEX.md` current. Mirrored in ase-cli — update both.
-- [Glossary maintenance](.agents/instructions/glossary-maintenance.md) — first-use expansion of abbreviations; keep `content/appendices/glossary.md` current
-- [docs/INDEX.md](docs/INDEX.md) — full map of all documentation
+- [Writing](.agents/instructions/writing.md): audience, structure, sources, formatting mechanics
+- [Voice](.agents/instructions/voice.md): narrative tension, forbidden AI patterns, engineer-flavoured prose
+- [VitePress](.agents/instructions/vitepress.md): config, sidebar, Mermaid, build commands
+- [Review](.agents/instructions/review.md): how to review and critique draft content
+- [Index maintenance](.agents/instructions/index-maintenance.md): keep `docs/INDEX.md` current. Mirrored in ase-cli: update both.
+- [Glossary maintenance](.agents/instructions/glossary-maintenance.md): first-use expansion of abbreviations; keep `content/appendices/glossary.md` current
+- [docs/INDEX.md](docs/INDEX.md): full map of all documentation
 
 ## Commands
 
@@ -33,7 +33,7 @@ npm run docs:preview # preview the built site locally
 
 **When a task matches a skill below, load and follow that skill file before doing any work. Skills are not optional.**
 
-- [**draft-section**](.agents/skills/draft-section.md) — draft a content section from a chapter outline entry
-- [**review-chapter**](.agents/skills/review-chapter.md) — consistency, tone, and DRY review of a draft chapter; load `plan.md` for outline alignment
-- [**update-sidebar**](.agents/skills/update-sidebar.md) — regenerate VitePress sidebar from `content/` file tree
-- [**update-index**](.agents/skills/update-index.md) — scan `docs/`, regenerate `docs/INDEX.md` and all listing files
+- [**draft-section**](.agents/skills/draft-section.md): draft a content section from a chapter outline entry
+- [**review-chapter**](.agents/skills/review-chapter.md): consistency, tone, and DRY review of a draft chapter; load `plan.md` for outline alignment
+- [**update-sidebar**](.agents/skills/update-sidebar.md): regenerate VitePress sidebar from `content/` file tree
+- [**update-index**](.agents/skills/update-index.md): scan `docs/`, regenerate `docs/INDEX.md` and all listing files
