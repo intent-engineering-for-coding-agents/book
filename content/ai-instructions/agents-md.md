@@ -22,7 +22,7 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 - **Load-on-demand instructions**: links to `.agents/instructions/` files, each with a clause saying when to load it
 - **Commands and skills**: key commands and invocable skills, listed last as reference rather than orientation
 
-The clause on each instruction link is where most teams cut corners. A bare link forces the agent to load the file to decide if it's relevant. A clause lets it skip:
+The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file just to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
 
 ```
 - [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
