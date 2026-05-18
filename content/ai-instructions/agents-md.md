@@ -1,6 +1,6 @@
 # AGENTS.md — One File Changes Everything
 
-The agent was working on the auth module. The codebase used a custom token validation library the team had written to handle their SSO provider's quirks. The agent didn't know it existed. It reached for `python-jwt`, implemented its own claims validation, and opened a PR that bypassed three security checks the custom library handled. The PR had tests. They passed. A reviewer caught it before merge, but only because they happened to have worked on the custom library two years earlier. Nobody else on the team would have known.
+The agent was working on the auth module. The codebase used a custom token validation library the team had written to handle their Single Sign-On (SSO) provider's quirks. The agent didn't know it existed. It reached for `python-jwt`, implemented its own claims validation, and opened a PR that bypassed three security checks the custom library handled. The PR had tests. They passed. A reviewer caught it before merge, but only because they happened to have worked on the custom library two years earlier. Nobody else on the team would have known.
 
 The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
@@ -12,7 +12,7 @@ The instinct when writing `AGENTS.md` is to fill it. Project history, coding sty
 
 This is the wrong pattern. A file large enough to cover everything is a file too large to actually brief the agent. Token budgets are finite. Attention degrades with document length. An agent that loads a 2,000-line `AGENTS.md` has less context left for the actual task than one that loads 36 lines and knows where to look for everything else.
 
-AgentPatterns.ai named the better approach: the **TOC pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. It is short enough to fit in a single context load, directive enough to orient the agent without overwhelming it, and precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
+AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. It is short enough to fit in a single context load, directive enough to orient the agent without overwhelming it, and precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
 `ase-cli`'s `AGENTS.md` at `v0.4.0` is 36 lines. It names the project and its purpose, lists five instruction files each with a sentence explaining when to load it, shows the key commands, and ends with a skill list. An agent starting a new session reads those 36 lines and knows exactly where to look for everything else.
 

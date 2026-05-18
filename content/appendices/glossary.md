@@ -66,6 +66,10 @@ An AI-generated structural map of an existing codebase: modules, dependencies, d
 
 In this book's sense: the canonical specification of system behaviour. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
 
+## TOC pattern
+
+The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md — One File Changes Everything](/ai-instructions/agents-md).
+
 ## Walking skeleton
 
 A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's *Crystal Clear* (2004). Etymological ancestor of the AI-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
