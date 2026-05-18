@@ -10,7 +10,7 @@ The agent didn't invent the vulnerability. It improvised in the absence of a bri
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-This is the wrong pattern. A file large enough to cover everything is a file too large to actually brief the agent. Token budgets are finite. Attention degrades with document length. An agent that loads a 2,000-line `AGENTS.md` has less context left for the actual task than one that loads 36 lines and knows where to look for everything else.
+This is the wrong pattern. A file large enough to cover everything is a file too large to actually brief the agent. Token budgets are finite. Attention degrades with document length. An agent that loads a 2,000-line `AGENTS.md` has less context left for the actual task than one that reads a single screen and knows where to look for everything else.
 
 AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. It is short enough to fit in a single context load, directive enough to orient the agent without overwhelming it, and precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
