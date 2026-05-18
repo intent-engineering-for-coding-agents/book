@@ -1,6 +1,6 @@
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-The retry policy lives in a function called `do_it_again_lol`. Its author left in 2022. Nobody knows what it retries, how many times, or why three. The system it belongs to has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
+The retry policy lives in a function called `do_it_again_lol`. Its author left in 2022. Nobody knows what it retries, how many times, or why the count is three. The system it belongs to has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
 

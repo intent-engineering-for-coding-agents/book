@@ -54,4 +54,4 @@ Each of these is reversible. Each of them, in a real repo, takes weeks of carefu
 
 The `ase-cli` repo at `git tag v0.4.0` shows the structure live. Six ADRs in `docs/decisions/`, all closed and immutable. Design docs in `docs/design/` for features that needed upfront reasoning. Specs in `openspec/specs/` for current behaviour, with completed changes archived to `openspec/changes/archive/`. Run `ase check` against it and the structural validation passes: `docs-readme-exists`, `docs-index-exists`, `adr-format` all green.
 
-That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries.
+That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries. None of it works if the documents live somewhere the agent cannot reach.

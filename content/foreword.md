@@ -18,7 +18,7 @@ But a vibe-coded prototype has no business growing up into a production system. 
 
 **The AI is not a magic box.** It cannot read your mind. It will not auto-magically produce the code you intended. That is not going to happen. Not today, and not by wishing harder at the prompt box. If you have something in mind, you have to tell it what you have in mind. Spell out the requirements. State the rules, the intention, the tech stack. Use the AI as a sparring partner to sharpen your architecture and tighten your design, but the thinking still starts with you.
 
-**Context is the whole game.** Rather than cramming everything into one-shot prompts, you'll have to retype tomorrow, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the AI can re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. Skip it, and you'll be vibe-coding forever, wondering why your agent keeps "forgetting."
+**Context is the whole game.** Rather than cramming everything into one-shot prompts you'll be retyping the next day, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the AI can re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. Skip it, and you'll be vibe-coding forever, wondering why your agent keeps "forgetting."
 
 ## From Vibe to Pro
 

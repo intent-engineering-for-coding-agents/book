@@ -4,7 +4,7 @@ The agent works fast. It has read more code than you ever will. It generates a p
 
 The agent has no idea what you actually decided.
 
-It does not know the team chose against Redis last quarter. It cannot see why the auth flow that looks redundant is actually load-bearing: the incident from 2024 lives only in someone's head. The database column it is about to add was deprecated in an Architectural Decision Record (ADR) that was never written by an architect who left in 2023. The agent reasons brilliantly from the context it has. The constraint is the context.
+It does not know the team chose against Redis last quarter. It cannot see why the auth flow that looks redundant is actually load-bearing: the incident from 2024 lives only in someone's head. The database column it is about to add was deprecated by a decision that never made it into an ADR. The architect who made that call left in 2023. The agent reasons brilliantly from the context it has. The constraint is the context.
 
 AI amplifies the developer driving it. Bill Doerrfeld put it bluntly in early 2026: *AI doesn't create great developers, it amplifies them.* A clueless developer with AI ships clueless code faster. An experienced developer with AI ships experienced code faster. The amplifier is neutral; what it amplifies is not.
 
@@ -56,11 +56,11 @@ If you arrived expecting eval suites, agent-architecture patterns, or governance
 
 ## The companion: `ase-cli`
 
-Every practice in this book is demonstrated in a companion repo, `ase-cli`. ADRs in MADR format, specs with stable AC IDs, tests that actually trace back to those IDs. Each phase is a git tag. Checkout `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
+Every practice in this book is demonstrated in a companion repo, `ase-cli`. ADRs in MADR format, specs with stable AC IDs, tests that actually trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
 
 ## How to read
 
-Linearly works. The chapters compound; earlier topics make later ones effective. Topic-by-topic also works since each topic has a self-contained introduction.
+Reading linearly works. The chapters compound; earlier topics make later ones effective. Topic-by-topic also works since each topic has a self-contained introduction.
 
 Landing here from a chapter search? Jump to the start of the topic that chapter belongs to. The four topic introductions are the smallest complete unit.
 

@@ -2,7 +2,7 @@
 
 The architecture diagram for your most important service is in a Keynote file on a laptop that left the company two months ago. The decision to use eventual consistency was made in a slide review nobody recorded. The retry policy is documented in a Confluence page whose last edit date is 2023.
 
-Your agent cannot read the Keynote file or replay the slide review. The Confluence page is technically reachable through an Atlassian MCP — if the agent knows the page exists, if it knows to look there, if its permissions reach that far, if a 2023 edit is still trustworthy. The developer who joined yesterday meets the same gates.
+Your agent cannot read the Keynote file or replay the slide review. The Confluence page is technically reachable through an Atlassian MCP: if the agent knows the page exists, if it knows to look there, if its permissions reach that far, if a 2023 edit is still trustworthy. The developer who joined yesterday meets the same gates.
 
 If the agent needs it, it lives in the repo. If it lives in the repo, it lives in plain text. That is the rule, and almost every other *Agentic Software Engineering (ASE)* Foundation practice is downstream of it.
 
@@ -52,9 +52,9 @@ The C4 model gives a useful set of diagram types (Context, Container, Component,
 
 ## MADR for decisions
 
-The MADR template (context, considered options, decision outcome, consequences) produces Architectural Decision Records (ADRs) that look the same as each other. Consistent shape means the agent can parse without understanding prose, and a human can scan ten ADRs in two minutes to find the relevant one.
+The MADR template (context, considered options, decision outcome, consequences) produces Architectural Decision Records (ADRs) that share a consistent shape. Consistent shape means the agent can parse without understanding prose, and a human can scan ten ADRs in two minutes to find the relevant one.
 
-The alternative is prose-format decision records with no template, which produces ADRs that each tell a different kind of story and resist any structural validation. `ase check`'s `adr-format` check exists because templated ADRs can be validated; freeform ones cannot.
+The alternative is prose-format decision records with no template, which produce ADRs that each tell a different kind of story and resist any structural validation. `ase check`'s `adr-format` check exists because templated ADRs can be validated; freeform ones cannot.
 
 The template does enough for validation; the contents stay free enough to write without ceremony. The same principle shows up in the Acceptance Criterion ID (AC ID) convention later in the book.
 
@@ -66,4 +66,4 @@ It is also not a wiki ban. Wikis are fine for team announcements, meeting notes,
 
 ## The compound effect
 
-A team that practices this consistently accumulates structured context. Each ADR adds to the agent's understanding of the system's history. Each skill file adds a workflow the agent can invoke. The architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo.
+A team that practices this consistently accumulates structured context. Each ADR adds to the agent's understanding of the system's history. Each skill file adds a workflow the agent can invoke. The architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. What remains is understanding where to fit this into the workflow the team already runs.

@@ -30,10 +30,10 @@ Nothing about this requires policing the agent. It requires giving the agent eno
 
 The remaining ASE topics each assume Foundation is in place. AI Instructions need a `docs/` to point into. Spec-driven development needs structure for specs to live in. Quality checks need conventions to validate. Skip Foundation and the rest stops working.
 
-Foundation is also the topic with the lowest immediate payoff. A team can adopt OpenSpec on Tuesday and feel the difference Wednesday. A team that adopts Foundation gets value over months: fewer surprised-glance PRs, less rediscovery of past decisions, agents that no longer reintroduce stacks the team paid migration cost to leave behind. The compounding works in both directions.
+Foundation is also the topic with the lowest immediate payoff. A team can adopt OpenSpec on Tuesday and feel the difference Wednesday. A team that adopts Foundation gets value over months: fewer PRs that quietly resurrect choices the team already made, less rediscovery of past decisions, agents that no longer reintroduce stacks the team paid migration cost to leave behind. The compounding works in both directions.
 
 ## The discipline trap
 
 A repo that adopts Foundation and then stops maintaining it is worse than a repo that never adopted it. An `AGENTS.md` last updated nine months ago is a confident-sounding lie the agent will follow. An empty `docs/decisions/` directory next to a `.gitkeep` signals that ADRs are not how this team actually works, regardless of what the README claims.
 
-[When ASE Fails](./when-ase-fails) names the failure modes that survive even good initial setup. Read it before committing to the practices in the rest of the book. The point of Foundation is not a perfect repo on day one. It is a repo whose context stays current as the system changes.
+[When ASE Fails](./when-ase-fails) names the failure modes that survive even good initial setup. Read it before committing to the practices in the rest of the book. The point of Foundation is not a perfect repo on day one. It is a repo whose context stays current as the system changes. Getting that right starts with understanding that not all documents age the same way.
