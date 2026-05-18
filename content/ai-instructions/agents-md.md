@@ -14,7 +14,7 @@ This is the wrong pattern. A file large enough to cover everything is a file too
 
 AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. It is short enough to fit in a single context load, directive enough to orient the agent without overwhelming it, and precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
-`ase-cli`'s `AGENTS.md` at `v0.4.0` is 36 lines. It names the project and its purpose, lists five instruction files each with a sentence explaining when to load it, shows the key commands, and ends with a skill list. An agent starting a new session reads those 36 lines and knows exactly where to look for everything else.
+`ase-cli`'s `AGENTS.md` at `v0.4.0` fits on one screen. It names the project and its purpose, lists five instruction files each with a sentence explaining when to load it, shows the key commands, and ends with a skill list. An agent starting a new session reads it in full and knows exactly where to look for everything else.
 
 ## What goes in it
 
@@ -63,6 +63,6 @@ A link to an instruction file that was renamed six months ago silently breaks th
 
 Two mitigations. First, treat `AGENTS.md` changes as load-bearing: review them with the same care as an ADR. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session. Second, run `ase check` with `agents-links` enabled. It validates that every link resolves to a real file. This does not catch stale clauses, but it catches broken pointers before the agent hits them at session start.
 
-The deeper mitigation is the one that applies to every high-lifespan document: smaller is more maintainable. A 36-line `AGENTS.md` has 36 lines that can go stale.
+The deeper mitigation is the one that applies to every high-lifespan document: smaller is more maintainable. Every line in `AGENTS.md` is a line that can go stale.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*
