@@ -63,4 +63,4 @@ Two mitigations. First, treat `AGENTS.md` changes as load-bearing: review them w
 
 The deeper mitigation is the one that applies to every high-lifespan document: smaller is more maintainable. A 36-line `AGENTS.md` has 36 lines that can go stale.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*

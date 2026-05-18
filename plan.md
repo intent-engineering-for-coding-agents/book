@@ -742,6 +742,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ### Agentic engineering & AI instructions
 
 - [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
+- GitHub Changelog — ["Copilot coding agent now supports AGENTS.md custom instructions"](https://github.blog/changelog/2025-08-28-copilot-coding-agent-now-supports-agents-md-custom-instructions/). *Aug 28, 2025*. Confirms native AGENTS.md support in the Copilot coding agent.
 - AgentPatterns.ai — ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) and ["Evaluating AGENTS.md: When Context Files Hurt More Than Help"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing). TOC pattern, context-file evaluation.
 - Anthropic — ["Building effective agents"](https://www.anthropic.com/research/building-effective-agents). *Dec 2024*. Design philosophy behind the MCP-driven check architecture.
 - [Model Context Protocol](https://modelcontextprotocol.io) (ongoing). Agent-tool bridge standard.
