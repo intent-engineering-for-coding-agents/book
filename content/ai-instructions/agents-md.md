@@ -4,7 +4,7 @@ The agent was working on the auth module. The codebase used a custom token valid
 
 The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Codex reads it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. Copilot reads `.github/copilot-instructions.md`, which does the same. Every tool reaches `AGENTS.md` through its own entry point, but the team maintains one canonical file. Get it right and every agent arrives oriented. Skip it and every agent improvises, from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing. One file at the repo root. Codex and the GitHub Copilot coding agent both read it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it and every agent improvises, from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -36,18 +36,16 @@ Three categories, in this order.
 
 ## Tool-agnostic by design
 
-Claude Code reads `CLAUDE.md`. GitHub Copilot reads `.github/copilot-instructions.md`. Cursor reads `.cursorrules`. Each vendor defined their own entry point before the ecosystem converged. Codex reads `AGENTS.md` natively. No separate file needed.
-
-The practical solution: `AGENTS.md` is the canonical briefing. Every vendor file is a generated pointer:
+The ecosystem converged on `AGENTS.md` faster than expected. Codex read it from the start. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
 
 ```markdown
 # CLAUDE.md
 @AGENTS.md
 ```
 
-One line. Claude Code follows the reference and loads the real briefing. Any edit to `AGENTS.md` reaches every agent automatically; no vendor file needs updating. `ase generate claude` writes this file. `ase generate copilot` writes a `.github/copilot-instructions.md` that does the same for Copilot.
+Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.md` propagates automatically. `ase generate claude` writes this pointer file so you never have to author it by hand.
 
-The rule: vendor files never contain instructions that are not also in `AGENTS.md`. The only content they add is the pointer syntax their tool requires. One source of truth, generated pointers, no authored duplicates.
+The rule: if a vendor file needs to exist, it contains only the pointer syntax that tool requires. No instructions live there that are not already in `AGENTS.md`. One source of truth, thin pointers, no authored duplicates.
 
 ## The size limit
 
