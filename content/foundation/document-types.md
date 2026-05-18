@@ -10,6 +10,8 @@ This is not a documentation problem. It is a *type* problem. *Agentic Software E
 
 The other five types each carry constraints. Content documents do not. That asymmetry is the point.
 
+The enforcement mechanism is directory placement. Structured documents live under `docs/`; content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `ase check` scopes its validators to `docs/` and `openspec/`. AGENTS.md loads from the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
+
 **README files** live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory. The top-level `docs/README.md` is the architecture overview. It lives forever and is updated as the architecture changes.
 
 **INDEX files** serve a different reader: the agent. A table listing every file under the directory with a one-line description. No prose, no story. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else. README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser; an agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
