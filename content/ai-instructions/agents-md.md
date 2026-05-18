@@ -4,7 +4,7 @@ The agent was working on the auth module. The codebase used a custom token valid
 
 The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Codex and the GitHub Copilot coding agent both read it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it and every agent improvises, from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing. One file at the repo root. Codex and the GitHub Copilot coding agent both read it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -17,8 +17,6 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 `ase-cli`'s `AGENTS.md` at `v0.4.0` fits on one screen. It names the project and its purpose, lists five instruction files each with a sentence explaining when to load it, shows the key commands, and ends with a skill list. An agent starting a new session reads it in full and knows exactly where to look for everything else.
 
 ## What goes in it
-
-Three categories, in this order.
 
 **Project identity.** What the repo is and what it produces. One paragraph or a short facts block. The agent can read the README instead, but the README is written for humans: verbose, contextual, probably not what you want as the opening brief. A dedicated identity block in `AGENTS.md` keeps this tight.
 
