@@ -25,9 +25,9 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 The clause on each instruction link is where most teams cut corners. A bare link forces the agent to load the file to decide if it's relevant. A clause lets it skip:
 
 ```
-- [Build and CI](.agents/instructions/build-and-ci.md) — uv commands, lint, test, CI pipeline
-- [Coding standards](.agents/instructions/coding-standards.md) — Python style, project structure, testing
-- [OpenSpec workflow](.agents/instructions/openspec.md) — Specs, AC IDs, test traceability
+- [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
+- [Coding standards](.agents/instructions/coding-standards.md): Python style, project structure, testing
+- [OpenSpec workflow](.agents/instructions/openspec.md): Specs, AC IDs, test traceability
 ```
 
 "Load when working on authentication" is an instruction. "See auth docs" is not. If the clause is there and accurate, the agent makes the right call without reading the file first.
