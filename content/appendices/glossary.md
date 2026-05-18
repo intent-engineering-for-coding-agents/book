@@ -6,6 +6,10 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 A stable identifier (format `[PREFIX-NNN]`, e.g. `SCAFFOLD-001`) attached to each acceptance scenario in a spec. Tests reference the ID via marker or comment, producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format.
 
+## ADLC (Agentic Development Lifecycle)
+
+The discipline of building AI agents *as products*: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from ASE, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+
 ## ADR (Architectural Decision Record)
 
 A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once closed (reversing a decision creates a new ADR that references the old one), though status updates and cross-references can still be edited. Originated in Michael Nygard's 2011 post; the structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
@@ -21,6 +25,10 @@ The framework this book describes. A set of practices that progressively make an
 ## Brownfield
 
 A codebase that predates ASE practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt ASE from intent the way greenfield ones can; they bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+
+## BYOK (Bring Your Own Key)
+
+A design principle where the tool uses the caller's AI provider credentials rather than supplying its own. `ase-cli`'s AI-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
 
 ## Capability-class agent
 

@@ -14,6 +14,7 @@ export default withMermaid(
         { text: 'Appendices', link: '/appendices/glossary' },
       ],
       sidebar: [
+        { text: 'Foreword', link: '/foreword' },
         { text: 'Introduction', link: '/introduction' },
         {
           text: 'Foundation',

@@ -26,4 +26,6 @@ Honest labelling produces two outcomes. First, it tells everyone what they can r
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at *practiced* and the enforcement cost is not worth the work — a team that enforces a spec-before-code rule in code review may be doing better work than one with a pipeline check and four dead specs. Each topic chapter marks the minimum level where the practice starts returning value, and what CI-enforced looks like when the team decides the investment is worth making.
 
+The three levels rhyme with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings — both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice actually enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you can rely on.
+
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as framing for practice-readiness.*

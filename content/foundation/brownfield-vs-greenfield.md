@@ -1,10 +1,10 @@
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-The Foundation chapters before this one assume you can start from intent. You know what the system is supposed to do. You write `AGENTS.md` based on that. You author ADRs as decisions are made. You write specs from requirements.
+The retry policy lives in a function called `do_it_again_lol`. Its author left in 2022. Nobody knows what it retries, how many times, or why three. The system it belongs to has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
 
-If you are reading this book at work, you probably cannot do any of those things. The system predates *Agentic Software Engineering (ASE)* practices by years. The intent is buried in code that survived three rewrites and two tech leads. The retry policy is in a function called `do_it_again_lol` whose author left in 2022. The original architect was certain about three things, none of which are written down anywhere.
+An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
 
-A capable agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did. Before any of the previous chapters' practices apply, the brownfield repo needs a different starting move.
+The Foundation chapters in this topic work from intent. You know what the system is supposed to do, so you write `AGENTS.md` from that knowledge, author *Architectural Decision Records (ADRs)* as decisions are made, write specs from requirements. If you are reading this book at work, you are probably looking at a codebase where none of that is possible. The intent is buried. Before any of those practices apply, the brownfield repo needs a different starting move.
 
 ## skeleton.md is the bootstrap
 
