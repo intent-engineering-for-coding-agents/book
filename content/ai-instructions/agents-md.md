@@ -18,7 +18,7 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 
 ## What goes in it
 
-- **Project identity**: what the repo is and what it produces — one paragraph or a short facts block, not the README
+- **Project identity**: what the repo is and what it produces, in one paragraph or a short facts block, not the README
 - **Load-on-demand instructions**: links to `.agents/instructions/` files, each with a clause saying when to load it
 - **Commands and skills**: key commands and invocable skills, listed last as reference rather than orientation
 
