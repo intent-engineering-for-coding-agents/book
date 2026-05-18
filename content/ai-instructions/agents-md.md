@@ -47,6 +47,8 @@ Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.
 
 The rule: if a vendor file needs to exist, it contains only the pointer syntax that tool requires. No instructions live there that are not already in `AGENTS.md`. One source of truth, thin pointers, no authored duplicates.
 
+Why `AGENTS.md` specifically, rather than `CLAUDE.md` or `.github/copilot-instructions.md`? Picking any vendor file as canonical creates a hierarchy. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first; every other tool is a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of using it with Claude Code is one pointer file with one line. That is the cost of adopting a tool that predates the convention, not a reason to abandon the convention.
+
 ## The size limit
 
 `ase check` includes an `agents-size` rule that flags `AGENTS.md` files over a configurable line limit (default: 50 lines). This is not a hard constraint: it is a signal. A 200-line `AGENTS.md` is usually a file that started as a TOC and accumulated everything someone was afraid to leave out.
