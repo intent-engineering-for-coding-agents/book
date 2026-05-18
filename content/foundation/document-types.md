@@ -6,17 +6,21 @@ This is not a documentation problem. It is a *type* problem. *Agentic Software E
 
 ## The types
 
+**Content documents** are the baseline: wiki pages, guides, articles, reference documentation. They carry no lifecycle constraint, no structural requirement, and no size limit the agent must respect. Write them, update them in place, and let them grow or shrink as the subject demands. The agent treats them as prose to read, not instructions to execute. No archiving trigger, no immutability rule, no checkbox discipline.
+
+The other five types each carry constraints. Content documents do not. That asymmetry is the point.
+
 **README files** live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory. The top-level `docs/README.md` is the architecture overview. It lives forever and is updated as the architecture changes.
 
 **INDEX files** serve a different reader: the agent. A table listing every file under the directory with a one-line description. No prose, no story. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else. README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser; an agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
+
+**Design docs** live in `docs/design/`. Per-feature thinking: options, approach, risks. Not a decision record. Too narrow, too feature-specific. Not a spec. Describes the approach, not the behaviour. What you do with them afterward is a matter of preference. Some teams write them and move on; the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
 
 **Architectural Decision Records (ADRs)** are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is *why*. Six months later, when a developer proposes to reintroduce the stack the team migrated away from, the ADR answers before it reaches a meeting.
 
 The *decision itself* is immutable once closed. Reversing it means writing a new ADR that references the old one. But supporting context can be updated in place: pros and cons, discovered consequences, implementation notes. The core decision does not change. When you do update, record an amendment at the bottom of the file: the date, what changed, and the before and after. This makes the edit history legible without requiring readers to dig through git blame.
 
 This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent can scan ten ADRs in two minutes without parsing the prose of each one, and `ase check` can validate format before a decision lands in the wrong state.
-
-**Design docs** live in `docs/design/`. Per-feature thinking: options, approach, risks. Not a decision record. Too narrow, too feature-specific. Not a spec. Describes the approach, not the behaviour. What you do with them afterward is a matter of preference. Some teams write them and move on; the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
 
 **Specs** are a manifestation of intent. Where an ADR records a decision that was made, a spec records what you want the system to do before you build it: acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order. The checkboxes matter. An agent that reads a list of unchecked tasks will execute them; an agent that reads prose will summarise it. Explicit tasks with checkmarks are how you prevent the agent from skimming past a step it found inconvenient.
 
@@ -30,10 +34,11 @@ Written before implementation, archived after. An un-archived spec is live instr
 
 | Type | Lifespan | What that means in practice |
 |---|---|---|
+| Content documents | Permanent, updated | Write and evolve in place; no lifecycle or size constraints |
 | README files | Permanent, updated | Always rewritten in place to stay current |
 | INDEX files | Permanent, updated | Maintained on every file change in the directory |
-| ADRs | Permanent; decision frozen | Reversal = new ADR. Status changes and cross-reference edits are fine |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
+| ADRs | Permanent; decision frozen | Reversal = new ADR. Status changes and cross-reference edits are fine |
 | Specs | Temporary, archived | Moved to archive after implementation |
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
