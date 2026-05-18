@@ -18,9 +18,11 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 
 ## What goes in it
 
-**Project identity.** What the repo is and what it produces. One paragraph or a short facts block. The agent can read the README instead, but the README is written for humans: verbose, contextual, probably not what you want as the opening brief. A dedicated identity block in `AGENTS.md` keeps this tight.
+- **Project identity**: what the repo is and what it produces — one paragraph or a short facts block, not the README
+- **Load-on-demand instructions**: links to `.agents/instructions/` files, each with a clause saying when to load it
+- **Commands and skills**: key commands and invocable skills, listed last as reference rather than orientation
 
-**Load-on-demand instructions.** Links to files in `.agents/instructions/`, each with a clause explaining when to load it. This is the core of the TOC pattern:
+The clause on each instruction link is where most teams cut corners. A bare link forces the agent to load the file to decide if it's relevant. A clause lets it skip:
 
 ```
 - [Build and CI](.agents/instructions/build-and-ci.md) — uv commands, lint, test, CI pipeline
@@ -28,9 +30,7 @@ AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern
 - [OpenSpec workflow](.agents/instructions/openspec.md) — Specs, AC IDs, test traceability
 ```
 
-"Load when working on authentication" is an instruction. "See auth docs" is not. The agent decides whether to load the file based on that clause. If the clause is absent, the agent loads the file anyway to check, wasting tokens on something that may not be relevant. If the clause is there and accurate, the agent makes the right call without reading the file first.
-
-**Commands and skills.** Key commands the agent can run, and skills it can invoke. These go last because they're reference, not orientation. The agent should already know what it's doing before it needs to know what commands are available.
+"Load when working on authentication" is an instruction. "See auth docs" is not. If the clause is there and accurate, the agent makes the right call without reading the file first.
 
 ## Tool-agnostic by design
 
