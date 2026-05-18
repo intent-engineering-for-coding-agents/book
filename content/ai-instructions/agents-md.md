@@ -4,7 +4,7 @@ The agent was working on the auth module. The codebase used a custom token valid
 
 The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Most AI coding agents look for it at the start of every session. Claude Code, GitHub Copilot, Cursor, and Codex all search for it automatically. Get that file right and the agent arrives oriented rather than guessing. Skip it and the agent improvises, every session, from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing. One file at the repo root. Codex reads it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. Copilot reads `.github/copilot-instructions.md`, which does the same. Every tool reaches `AGENTS.md` through its own entry point, but the team maintains one canonical file. Get it right and every agent arrives oriented. Skip it and every agent improvises, from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -57,7 +57,7 @@ A test: can someone open `AGENTS.md` and, in under two minutes, know what the pr
 
 ## Maintenance as the actual discipline
 
-`AGENTS.md` is the highest-leverage file in the repo. Every session reads it. That also means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today."
+`AGENTS.md` is the highest-leverage file in the repo. Every session loads it, via the entry-point file that imports it. That also means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today."
 
 A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error; both produce an agent that is confidently working from the wrong brief.
 
