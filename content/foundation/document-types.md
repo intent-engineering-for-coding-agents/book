@@ -4,7 +4,7 @@ The agent loaded the spec. Three months after the feature shipped, it was still 
 
 This is not a documentation problem. It is a *type* problem. *Agentic Software Engineering (ASE)* recognises a small set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 
-An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why* — the thing that made the ADR valuable — has been overwritten by the *what*.
+An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why*, the thing that made the ADR valuable, has been overwritten by the *what*.
 
 A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft.
 
@@ -57,7 +57,7 @@ A team that grasps the lifespan column has the practice. A team that only learns
 
 ## Tooling
 
-If you want to see this in practice, `ase-cli` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `ase check` and the structural validators pass. It is not a showcase — it is what the structure looks like when the types have been applied consistently over the life of a real project.
+If you want to see this in practice, `ase-cli` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `ase check` and the structural validators pass. It is not a showcase. It is what the structure looks like when the types have been applied consistently over the life of a real project.
 
 Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries.
 

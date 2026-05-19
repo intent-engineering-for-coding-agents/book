@@ -16,7 +16,7 @@ The fix is not more process. It is honesty about where you actually are. The res
 
 Each level can carry a target annotation: *practiced, target: CI-enforced by Q3.* This distinguishes intent from claim. Writing *target: CI-enforced* when you are not there yet is honesty. Writing *CI-enforced* when you rely on code review to catch it is something else.
 
-These are not CMM audit levels. No certification, no maturity score, no report for management. One team, honest with itself about one practice. A practice can sit at *practiced* indefinitely if the enforcement cost is not worth the work. The discipline is calling things by the right name — not upgrading the label to look good in a retrospective.
+These are not CMM audit levels. No certification, no maturity score, no report for management. One team, honest with itself about one practice. A practice can sit at *practiced* indefinitely if the enforcement cost is not worth the work. The discipline is calling things by the right name. Not upgrading the label to look good in a retrospective.
 
 ## Why the labels matter
 

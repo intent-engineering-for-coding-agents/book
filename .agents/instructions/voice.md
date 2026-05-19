@@ -19,9 +19,9 @@ A reader who skims any paragraph at random should think: this came from experien
 
 ## Register anchor
 
-The author is an experienced developer who teaches with their sleeves rolled up. Pedagogical, genuinely enthusiastic without selling anything, with a taste for dark humor that lands on something technically true. The person who is always in good spirits but is not shy about calling something a mess — and finds it slightly funny. Not academic. Not corporate. More: "Let me show you something interesting, and let me tell you what can go wrong."
+The author is an experienced developer who teaches with their sleeves rolled up. Pedagogical, genuinely enthusiastic without selling anything, with a taste for dark humor that lands on something technically true. The person who is always in good spirits but is not shy about calling something a mess, and finds it slightly funny. Not academic. Not corporate. More: "Let me show you something interesting, and let me tell you what can go wrong."
 
-This is analogous to "science teacher with a smile" but calibrated for a senior engineering audience. The pedagogical instinct means intuition comes before mechanics — show what breaks first, so the reader understands *why* the solution looks the way it does. Build understanding; don't dump.
+This is analogous to "science teacher with a smile" but calibrated for a senior engineering audience. The pedagogical instinct: intuition comes before mechanics. Show what breaks first, so the reader understands *why* the solution looks the way it does. Build understanding; don't dump.
 
 ## Voice and tone
 
@@ -33,7 +33,7 @@ Confidence without arrogance. Realism without cynicism. Excitement without hype.
 
 ### Paragraph discipline
 
-Max 4 sentences per paragraph. Vary length aggressively — a 1-sentence paragraph after a 4-sentence paragraph is a rhythm, not a mistake. Three paragraphs of the same visual length in a row is an AI tell. Break one of them.
+Max 4 sentences per paragraph. Vary length aggressively. A 1-sentence paragraph after a 4-sentence paragraph is a rhythm, not a mistake. Three paragraphs of the same visual length in a row is an AI tell. Break one of them.
 
 ### Open with tension, not framing
 
@@ -149,7 +149,7 @@ An em dash is acceptable at most once per page, and only when the alternative ge
 Use occasionally — never on every page:
 
 - A rhetorical question, where the question is genuinely open
-- Dry or dark humour — the precise observation that is slightly too true to be comfortable
+- Dry or dark humour: the precise observation that is slightly too true to be comfortable
 - A compact analogy
 - A strong opinion, owned and defended
 - A surprising comparison
