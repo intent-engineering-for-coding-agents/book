@@ -8,5 +8,5 @@ The chapters in this section cover the mechanics: what goes in `AGENTS.md`, how 
 
 ## Chapters
 
-1. [AGENTS.md — One File Changes Everything](./agents-md): the TOC pattern, what goes in it, and why it has to stay short
+1. [AGENTS.md: One File Changes Everything](./agents-md): the TOC pattern, what goes in it, and why it has to stay short
 2. [From AGENTS.md to AI Instruction Hub](./instruction-hub): `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`, one folder for all AI tools

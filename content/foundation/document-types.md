@@ -4,11 +4,11 @@ The agent loaded the spec. Three months after the feature shipped, it was still 
 
 This is not a documentation problem. It is a *type* problem. *Agentic Software Engineering (ASE)* recognises a small set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 
-An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why*, the thing that made the ADR valuable, has been overwritten by the *what*.
+An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why*, the thing that made the ADR valuable, has been overwritten by the *what*. The ADR still passes review. It is simply wrong.
 
-A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft.
+A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
 
-A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter.
+A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. It is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
 
 Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. The types exist to prevent the pruning.
 

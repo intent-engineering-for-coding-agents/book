@@ -47,7 +47,7 @@ Not every change earns a spec. A typo fix does not. A dependency bump does not. 
 
 ## Implementation: brief the agent through the repo
 
-With the spec in place, the agent needs to find it — along with the architecture overview, the constraints, and the conventions for the codebase it is about to change. That is what `AGENTS.md` is for. It loads first. From there it finds the relevant instructions and the spec for the current change. The briefing is in the repo, not in a chat message that disappears when the session ends.
+With the spec in place, the agent needs to find it, along with the architecture overview, the constraints, and the conventions for the codebase it is about to change. That is what `AGENTS.md` is for. It loads first. From there it finds the relevant instructions and the spec for the current change. The briefing is in the repo, not in a chat message that disappears when the session ends.
 
 The contrast matters at scale. A briefing in a chat session works for one developer for one hour. A briefing in `AGENTS.md` and `.agents/instructions/` works for every agent session, every developer, every CI run, on every machine. Same briefing, every time. The repo is the briefing.
 
@@ -80,3 +80,5 @@ This is the step where ASE most reliably falls apart in practice. Archiving take
 ## Why not add ceremonies
 
 New ceremonies have a half-life. Teams adopt them at the start of a quarter and drift back under deadline pressure six months later. ASE sidesteps this by plugging into the ceremonies that already have tooling, habit, and buy-in. The ask is smaller. The persistence is better.
+
+What still fails is the gap between what a team believes it is doing and what the repo shows it is actually doing. A team that added spec review to its PR process but skips it under pressure did not adopt the practice. It adopted the intent. No SDLC map tells you the difference, and nothing in the map closes that gap on its own.

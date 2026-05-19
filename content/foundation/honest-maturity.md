@@ -4,7 +4,7 @@ Ask the team if they practice spec-driven development. Most will say yes. Look a
 
 The team is not lying. They believe they practice it. They probably did practice it for the first month after adoption. The gap between *what we believe we do* and *what the repo shows we do* is the most reliable failure mode in any engineering organisation, and ASE practices are no different.
 
-The fix is not more process. It is honesty about where you actually are. The rest of the book attaches one of three labels to every practice — *practiced*, *documented*, *CI-enforced* — to say where a team needs to be for it to work. This is where those labels come from.
+The fix is not more process. It is honesty about where you actually are. The rest of the book attaches one of three labels to every practice: *practiced*, *documented*, *CI-enforced*. The label tells you where a team needs to be for the practice to work. This is where those labels come from.
 
 ## Three levels, used honestly
 
@@ -24,7 +24,7 @@ A team that claims CI-enforced maturity for something they actually catch in cod
 
 Honest labelling produces two outcomes. First, it tells everyone what they can rely on. *CI-enforced* means trust the pipeline. *Practiced* means ask someone who knows. Second, it makes gaps visible, which makes them closeable. A practice marked *practiced, target: CI-enforced by Q3* is a backlog item. A practice marked *CI-enforced* that is actually only practiced is an outage waiting for the right Tuesday.
 
-Not every practice in this book needs to reach CI-enforced. Some pay off at *practiced* and the enforcement cost is not worth the work — a team that enforces a spec-before-code rule in code review may be doing better work than one with a pipeline check and four dead specs. Each topic chapter marks the minimum level where the practice starts returning value, and what CI-enforced looks like when the team decides the investment is worth making.
+Not every practice in this book needs to reach CI-enforced. Some pay off at *practiced* and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review may be doing better work than one with a pipeline check and four dead specs. Each topic chapter marks the minimum level where the practice starts returning value, and what CI-enforced looks like when the team decides the investment is worth making.
 
 The three levels rhyme with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice actually enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you can rely on.
 

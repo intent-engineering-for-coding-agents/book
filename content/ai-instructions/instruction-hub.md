@@ -8,7 +8,7 @@ The fix is not better synchronisation between two files. It is one file that bot
 
 ## `.agents/instructions/`
 
-Instruction files are context the agent loads on demand: conventions, standards, workflow rules. Each file covers one domain. The agent reads the relevant file when the task calls for it and skips the rest.
+An agent modifying the authentication module does not need the CI pipeline rules. An agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain; the agent reads the relevant one and skips the rest.
 
 `ase-cli` at `v0.4.0` has four:
 
@@ -46,7 +46,7 @@ The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and Jet
 
 Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `ase-cli`; it contains a `.gitkeep`.
 
-A hook fires on a trigger — after a file edit, before a commit, when a session ends — and runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
+A hook fires on a trigger: after a file edit, before a commit, when a session ends. It runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
 
 The most common hook candidates: run the linter after any source file edit, validate `docs/INDEX.md` after any change under `docs/`, check that no secrets appear in staged files before a commit. These are tasks `AGENTS.md` might instruct the agent to do. A hook makes them non-optional.
 
@@ -70,3 +70,5 @@ The honest caveat: hook authoring is immature. The tooling varies by agent, the 
 The point of `.agents/` is the same as the point of `AGENTS.md`: one source of truth that any tool can reach. Claude Code loads `.agents/instructions/coding-standards.md` when `AGENTS.md` tells it to. The Copilot coding agent loads the same file via the same pointer. A new tool added to the stack next year reads from the same directory.
 
 Per-tool instruction files create forks the moment two developers use different tools. `.agents/` prevents the fork before it starts. Vendor files stay thin pointers. Instructions, skills, and hooks stay in one place, maintained once, read by all.
+
+The hub gives the agent its orientation about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub briefs the agent on the rules. The spec briefs it on the intent. Both have to exist, and writing the spec well is its own discipline.

@@ -33,7 +33,7 @@ export default withMermaid(
           text: 'AI Instructions',
           items: [
             { text: 'Overview', link: '/ai-instructions/' },
-            { text: 'AGENTS.md — One File Changes Everything', link: '/ai-instructions/agents-md' },
+            { text: 'AGENTS.md: One File Changes Everything', link: '/ai-instructions/agents-md' },
             { text: 'From AGENTS.md to AI Instruction Hub', link: '/ai-instructions/instruction-hub' },
           ]
         },

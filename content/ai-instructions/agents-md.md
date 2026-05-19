@@ -1,4 +1,4 @@
-# AGENTS.md — One File Changes Everything
+# AGENTS.md: One File Changes Everything
 
 The agent was working on the auth module. The codebase used a custom token validation library the team had written to handle their Single Sign-On (SSO) provider's quirks. The agent didn't know it existed. It reached for `python-jwt`, implemented its own claims validation, and opened a PR that bypassed three security checks the custom library handled. The PR had tests. They passed. A reviewer caught it before merge, but only because they happened to have worked on the custom library two years earlier. Nobody else on the team would have known.
 
@@ -10,13 +10,13 @@ The agent didn't invent the vulnerability. It improvised in the absence of a bri
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-This is the wrong pattern. A file large enough to cover everything is a file too large to actually brief the agent. Token budgets are finite. Attention degrades with document length. An agent that loads a 2,000-line `AGENTS.md` has less context left for the actual task than one that reads a single screen and knows where to look for everything else.
+Six weeks later the file is 300 lines. The agent reads every line before starting any task, because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed. It is more constrained.
 
-AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. It is short enough to fit in a single context load, directive enough to orient the agent without overwhelming it, and precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
-
-`ase-cli`'s `AGENTS.md` at `v0.4.0` fits on one screen. It names the project and its purpose, lists five instruction files each with a sentence explaining when to load it, shows the key commands, and ends with a skill list. An agent starting a new session reads it in full and knows exactly where to look for everything else.
+AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
 ## What goes in it
+
+Three things belong in it, in this order.
 
 - **Project identity**: what the repo is and what it produces, in one paragraph or a short facts block, not the README
 - **Load-on-demand instructions**: links to `.agents/instructions/` files, each with a clause saying when to load it
@@ -45,13 +45,13 @@ Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.
 
 The rule: if a vendor file needs to exist, it contains only the pointer syntax that tool requires. No instructions live there that are not already in `AGENTS.md`. One source of truth, thin pointers, no authored duplicates.
 
-Why `AGENTS.md` specifically, rather than `CLAUDE.md` or `.github/copilot-instructions.md`? Picking any vendor file as canonical creates a hierarchy. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first; every other tool is a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of using it with Claude Code is one pointer file with one line. That is the cost of adopting a tool that predates the convention, not a reason to abandon the convention.
+The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of adopting it with Claude Code is one pointer file with one line. That is a small cost for a convention that belongs to no tool.
 
 ## The size limit
 
-`ase check` includes an `agents-size` rule that flags `AGENTS.md` files over a configurable line limit (default: 50 lines). This is not a hard constraint: it is a signal. A 200-line `AGENTS.md` is usually a file that started as a TOC and accumulated everything someone was afraid to leave out.
+The TOC pattern has a failure mode: gradual accumulation. Branch naming conventions. Deployment reminders. Clauses that grew from one sentence to four because the original was too vague. Six months later, the file is 200 lines, and it started as 20. It still says `AGENTS.md` at the top.
 
-A test: can someone open `AGENTS.md` and, in under two minutes, know what the project is, which instruction file to load for their current task, and what commands to run? If yes, the file is doing its job. If they have to scroll for the answer, the TOC has become its own content problem.
+The test is not the line count. Can someone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
 ## Maintenance as the actual discipline
 
@@ -59,8 +59,12 @@ A test: can someone open `AGENTS.md` and, in under two minutes, know what the pr
 
 A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error; both produce an agent that is confidently working from the wrong brief.
 
-Two mitigations. First, treat `AGENTS.md` changes as load-bearing: review them with the same care as an ADR. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session. Second, run `ase check` with `agents-links` enabled. It validates that every link resolves to a real file. This does not catch stale clauses, but it catches broken pointers before the agent hits them at session start.
+Two mitigations. First, treat `AGENTS.md` changes as load-bearing. Review them with the same care as an ADR. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session. Second, keep the file short enough that a person can review it in full in under two minutes. A small file is a file where staleness is visible.
 
-The deeper mitigation is the one that applies to every high-lifespan document: smaller is more maintainable. Every line in `AGENTS.md` is a line that can go stale.
+Keeping the entry point honest is the first discipline. What it points to requires the same treatment. The instruction files in `.agents/` accumulate stale content for the same reasons `AGENTS.md` does, and they do it without the visibility that comes from being the first file every session loads.
+
+## Tooling
+
+If you want to see this in practice, `ase-cli`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: five instruction files with load clauses, the key commands, and a skill list. Run `ase check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*

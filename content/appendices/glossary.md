@@ -68,7 +68,7 @@ In this book's sense: the canonical specification of system behaviour. Acceptanc
 
 ## TOC pattern
 
-The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md — One File Changes Everything](/ai-instructions/agents-md).
+The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: One File Changes Everything](/ai-instructions/agents-md).
 
 ## Walking skeleton
 

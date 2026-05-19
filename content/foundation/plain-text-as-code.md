@@ -18,9 +18,9 @@ The fuller statement of the philosophy is in the *Plain Text as Code Manifest* (
 
 ## Markdown for prose
 
-Markdown is the unremarkable choice: renders on every Git host, readable without a renderer, no tooling required to write. AsciiDoc is the better format on its merits — richer semantics, real includes, proper tables, attributes that survive transformation — but Markdown wins the ecosystem fight, and every model trained in the last few years has read more of it than any other markup. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
+Markdown is the unremarkable choice: renders on every Git host, readable without a renderer, no tooling required to write. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight, and every model trained in the last few years has read more of it than any other markup. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
 
-If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. Not in a PR description; description quality is uneven, and even with a GitHub MCP the agent rarely knows which closed PR to read. Not in a commit message; commit quality is uneven on any team — some developers write essays, others write `fix`. So the log is not a reliable place to find decisions. Not in a code comment; comments rot with the code they describe and cannot be read without the surrounding file. In a file, with a name, at a known location.
+If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. Not in a PR description; description quality is uneven, and even with a GitHub MCP the agent rarely knows which closed PR to read. Not in a commit message; commit quality is uneven on any team: some developers write essays, others write `fix`. So the log is not a reliable place to find decisions. Not in a code comment; comments rot with the code they describe and cannot be read without the surrounding file. In a file, with a name, at a known location.
 
 The test is operational, not aesthetic: can the agent find this in a session that started thirty seconds ago, with no chat history, only the repo? If the answer is no, the information is not really documented.
 
@@ -28,7 +28,7 @@ The test is operational, not aesthetic: can the agent find this in a session tha
 
 A C4 diagram in draw.io is opaque to agents and unreviewed by humans. The file format describes shape positions and styles, not graph semantics, and nobody opens the source to verify a PR description's claim that the architecture changed.
 
-Mermaid is different. The source is plain text that diffs cleanly, and the syntax encodes the graph itself — `graph TD; A --> B` describes a graph with two nodes and one directed edge, not a picture of two boxes and an arrow:
+Mermaid is different. The source is plain text that diffs cleanly, and the syntax encodes the graph itself. `graph TD; A --> B` describes a graph with two nodes and one directed edge, not a picture of two boxes and an arrow:
 
 ```mermaid
 graph TD
@@ -40,11 +40,11 @@ graph TD
 
 GitHub renders Mermaid out of the box, and VitePress does the same with one plugin. For editing without local tooling, mermaid.live is the escape hatch. The source travels with the document that describes the system. When the architecture moves, the diagram moves in the same commit, and the PR review covers both.
 
-Agents default to ASCII art when asked for a diagram in plain text. Sometimes the result is fine for a one-off illustration. Often the characters do not quite line up in monospace, and the next person — human or agent — has to nudge them back into place. The deeper problem is that ASCII art is a picture made of punctuation, with no structure underneath; the next agent reading the file sees a wall of `|` and `+`, not a graph. Mermaid takes roughly the same number of characters and produces a renderable, queryable artifact. Ask for Mermaid explicitly; current models produce it well.
+Agents default to ASCII art when asked for a diagram in plain text. Sometimes the result is fine for a one-off illustration. Often the characters do not quite line up in monospace, and the next person, human or agent, has to nudge them back into place. The deeper problem is that ASCII art is a picture made of punctuation, with no structure underneath; the next agent reading the file sees a wall of `|` and `+`, not a graph. Mermaid takes roughly the same number of characters and produces a renderable, queryable artifact. Ask for Mermaid explicitly; current models produce it well.
 
-Mermaid covers more than 26 diagram types — sequence, state, ER, Gantt, C4, mindmap, and more — and GitHub renders most of them today. Use the type that fits the thing you are describing rather than forcing everything through `graph TD`.
+Mermaid covers more than 26 diagram types, including sequence, state, ER, Gantt, C4, and mindmap. GitHub renders most of them today. Use the type that fits the thing you are describing rather than forcing everything through `graph TD`.
 
-D2 is the more interesting format on its merits, but no major Git vendor renders it inline yet — a D2 block shows up as a code listing in PR review, not a diagram. Mermaid is the right call for now.
+D2 is the more interesting format on its merits, but no major Git vendor renders it inline yet. A D2 block shows up as a code listing in PR review, not a diagram. Mermaid is the right call for now.
 
 The C4 model gives a useful set of diagram types (Context, Container, Component, Code) that map cleanly onto `docs/README.md` (architecture overview) and per-feature design docs.
 
