@@ -60,4 +60,6 @@ Each topic targets one or more of these modes directly:
 
 The point is not zero drift. That is not on offer. The point is drift that is detectable while it is still cheap to fix.
 
+Drift with no detection is the hardest failure mode because nothing alerts you to it. You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows — what should the agent be reading, and how do you keep it honest — is what the AI Instructions topic is for.
+
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering. Yegge, "Revenge of the junior developer" (2025). De Schryver, "Keep Agentic AI Simple" (2025).*

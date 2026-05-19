@@ -2,7 +2,15 @@
 
 The agent loaded the spec. Three months after the feature shipped, it was still sitting in `openspec/changes/` with its acceptance criteria intact and its status unmarked. The agent treated it as active instruction, implemented behaviour the system already had, and opened a PR nobody knew what to do with. Nobody had archived it. Nobody had done anything wrong. The type had been confused with a permanent record, and permanent records do not get cleaned up.
 
-This is not a documentation problem. It is a *type* problem. *Agentic Software Engineering (ASE)* recognises a small set of document types, each with a different lifespan and a different reason to exist. Mix them and they corrupt each other. Separate them and the repo briefs itself.
+This is not a documentation problem. It is a *type* problem. *Agentic Software Engineering (ASE)* recognises a small set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
+
+An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why* — the thing that made the ADR valuable — has been overwritten by the *what*.
+
+A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft.
+
+A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter.
+
+Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. The types exist to prevent the pruning.
 
 ## The types
 
@@ -47,18 +55,10 @@ A team that grasps the lifespan column has the practice. A team that only learns
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018). OpenSpec (openspec.dev).*
 
-## What conflation looks like in the wild
+## Tooling
 
-An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The *why*, the thing that made the ADR valuable, has been overwritten by the *what*.
+If you want to see this in practice, `ase-cli` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `ase check` and the structural validators pass. It is not a showcase — it is what the structure looks like when the types have been applied consistently over the life of a real project.
 
-A design doc gets cited six months after the feature shipped. The cite is wrong; the design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft.
+Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries.
 
-A spec gets parked in `docs/` because someone thought the team should keep it. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter.
-
-Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo.
-
-## What `ase-cli` does
-
-The `ase-cli` repo at `git tag v0.4.0` shows the structure live. Six ADRs in `docs/decisions/`, all closed and immutable. Design docs in `docs/design/` for features that needed upfront reasoning. Specs in `openspec/specs/` for current behaviour, with completed changes archived to `openspec/changes/archive/`. Run `ase check` against it and the structural validation passes: `docs-readme-exists`, `docs-index-exists`, `adr-format` all green.
-
-That is not because the team is disciplined. It is because the directories make the wrong move harder than the right one. Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries. None of it works if the documents live somewhere the agent cannot reach.
+All of it assumes the documents are in a format the agent can process. A type taxonomy tells you where to put things and how long to keep them. It does not guarantee the agent can read them. An architecture diagram embedded in a Keynote file is still a Keynote file, regardless of which directory it sits in.

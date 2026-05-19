@@ -33,15 +33,19 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 
 ### Structure and length
 
-- Is the chapter 600–1200 words of prose? If shorter, is it complete? If longer, what can be cut?
+- Is the chapter complete? If it feels short, something is missing. If it feels long, find the padding and cut it. Do not count words — read it.
 - No heading depth beyond H3
 - Code blocks have language tags
 - Tables used for comparisons, not for lists that belong in prose
+- Transition check: does each section end with tension, implication, or a forward-pointing question — or does it trail off into summary? Summary endings are a cut.
+- Chapter ending: is there a planted seed for the next chapter? Or does the chapter simply stop?
+- Paragraph rhythm: are there three or more paragraphs of the same visual length in sequence? Break one of them.
 
 ### ase-cli cross-references
 
 - Where the chapter claims a practice is demonstrated in `ase-cli`, verify the claim is accurate
 - Reference the correct git tag or file path; do not invent them
+- Tool positioning: are all tool mentions either in the Tooling section (last) or as a single brief illustration in the body? If a tool appears more than once in the body, it is overselling — move the extras to Tooling or cut them.
 
 ## Multi-LLM critique (optional)
 

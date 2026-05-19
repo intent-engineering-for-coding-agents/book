@@ -17,6 +17,12 @@ The prose must never feel:
 
 A reader who skims any paragraph at random should think: this came from experience, not from summarizing documentation.
 
+## Register anchor
+
+The author is an experienced developer who teaches with their sleeves rolled up. Pedagogical, genuinely enthusiastic without selling anything, with a taste for dark humor that lands on something technically true. The person who is always in good spirits but is not shy about calling something a mess — and finds it slightly funny. Not academic. Not corporate. More: "Let me show you something interesting, and let me tell you what can go wrong."
+
+This is analogous to "science teacher with a smile" but calibrated for a senior engineering audience. The pedagogical instinct means intuition comes before mechanics — show what breaks first, so the reader understands *why* the solution looks the way it does. Build understanding; don't dump.
+
 ## Voice and tone
 
 Pragmatic. Technically ambitious. Occasionally skeptical. Calm but opinionated. Curious. Precise. Slightly conversational.
@@ -24,6 +30,10 @@ Pragmatic. Technically ambitious. Occasionally skeptical. Calm but opinionated. 
 Confidence without arrogance. Realism without cynicism. Excitement without hype.
 
 ## Writing characteristics
+
+### Paragraph discipline
+
+Max 4 sentences per paragraph. Vary length aggressively — a 1-sentence paragraph after a 4-sentence paragraph is a rhythm, not a mistake. Three paragraphs of the same visual length in a row is an AI tell. Break one of them.
 
 ### Open with tension, not framing
 
@@ -91,7 +101,11 @@ Open with a strong observation, a surprising truth, or operational tension. The 
 
 ### Section endings
 
-Avoid generic summaries. Avoid repetitive recaps. Prefer an implication that points forward, an unresolved tension, or a sharp observation the reader carries into the next section.
+The last paragraph of a section must do one of three things: (a) raise an unresolved tension, (b) name the implication that points forward, (c) pose a question the next section answers. Never a summary. A section that ends by restating what it just covered is a section that trails off.
+
+### Chapter endings — the Asimov technique
+
+The final paragraph of a chapter plants a seed for the next. Name the question or problem that remains open and that the next chapter takes on. Not as an announcement ("In the next chapter we will...") — as an open tension the reader carries into the turn of the page. The reader should feel pulled, not redirected.
 
 ## Forbidden AI patterns
 
@@ -135,12 +149,19 @@ An em dash is acceptable at most once per page, and only when the alternative ge
 Use occasionally — never on every page:
 
 - A rhetorical question, where the question is genuinely open
-- Dry humour, understated
+- Dry or dark humour — the precise observation that is slightly too true to be comfortable
 - A compact analogy
 - A strong opinion, owned and defended
 - A surprising comparison
 
-> Most agent frameworks resemble distributed systems designed by people who hoped observability would somehow become optional.
+The right humor register: understated, technically grounded, slightly rueful. The best form is the observation that makes an experienced reader recognize something they have seen before and did not expect to see named.
+
+Examples in register:
+> "The spec was accurate. For the codebase as it existed three months ago."
+> "Nobody updated AGENTS.md. Everybody assumed someone else would."
+> "Most agent frameworks resemble distributed systems designed by people who hoped observability would somehow become optional."
+
+Never: jokes that reach, pop-culture references, self-congratulation, forced optimism. Dark is fine; try-hard is not.
 
 ## Quality bar
 
