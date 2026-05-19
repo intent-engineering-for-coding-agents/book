@@ -36,7 +36,11 @@ Skills are workflows, not context. An instruction file tells the agent how thing
 
 The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. A workflow for generating a new checker from spec is a skill.
 
+Typed from the session, `/update-index` invokes the skill directly. In Claude Code, every file in `.agents/skills/` surfaces as a slash command. The autonomous trigger is still there: `AGENTS.md` tells the agent which skill to load when the task description matches. But the developer can also bypass that layer and invoke the skill explicitly, `/draft-section` to start a new chapter without composing a task description from scratch. Same file either way.
+
 OpenSpec repos generate a full set of skills on `openspec init`: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. Each is a committed file in `.agents/skills/openspec-*/SKILL.md`. These are vendor pointers, generated once and committed, which is why they live alongside the hand-authored skills rather than somewhere separate. The directory does not distinguish between authored and generated; both are plain Markdown files the agent reads the same way.
+
+The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and JetBrains AI each have their own slash command surfaces, and none of them read `.agents/skills/` as commands. They reach the instruction files through `AGENTS.md` pointers; the workflow logic is shared. The slash command that invokes it is not. Vendor-neutral structure gets you as far as the file. The keyboard shortcut stays local to each tool.
 
 ## `.agents/hooks/`
 
@@ -45,6 +49,17 @@ Hooks are the part of the hub that most teams have not wired up yet. The directo
 A hook fires on a trigger — after a file edit, before a commit, when a session ends — and runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
 
 The most common hook candidates: run the linter after any source file edit, validate `docs/INDEX.md` after any change under `docs/`, check that no secrets appear in staged files before a commit. These are tasks `AGENTS.md` might instruct the agent to do. A hook makes them non-optional.
+
+Doc comment formatting is a cleaner hook candidate than it first appears. An agent editing a `.java` file produces Javadoc that compiles but may not match the codebase's conventions: wrong tag order, missing `@return`, summary lines that exceed the configured limit. Instructing the agent to fix this competes with the rest of the task. A hook does not. In `.agents/hooks/` that becomes three files:
+
+```
+.agents/hooks/
+├── java.md   # checkstyle on modified .java files
+├── cs.md     # dotnet-format on modified .cs files
+└── py.md     # docformatter on modified .py files
+```
+
+Each file defines a trigger (a file edit matching that extension) and the command to run. The agent does not get a vote.
 
 The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardised across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. `.agents/hooks/` is the right place for them when they are ready. For most teams right now, they are not ready.
 
