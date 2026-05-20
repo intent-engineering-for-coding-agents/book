@@ -447,35 +447,35 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: agentpatterns.ai "Evaluating AGENTS.md"; Anthropic "Building effective agents" (Dec 2024).*
     - `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`
     - One folder for all AI tools
-- [ ] Chapter: Writing Instructions That Work
+- [x] Chapter: Writing Instructions That Work
     - *Sources: Böckeler ("AI teammate" mental model); Anthropic "Building effective agents".*
     - Specific, negative instructions, architecture boundaries
     - Testing: how should the agent verify its own work?
-- [ ] Chapter: Skills, Commands, and Hooks
+- [x] Chapter: Skills, Commands, and Hooks
     - *Sources: Anthropic "Building effective agents"; ThoughtWorks Radar Vol 34 (harness engineering); Huntley "Everything is a Ralph Loop".*
     - Skills: agent-invoked workflows
     - Commands: user-triggered
     - Hooks: automated quality gates
     - Concrete example: `/update-index` skill — scans `docs/`, regenerates `INDEX.md`
     - Instructions prevent drift (`index-maintenance.md`), skills fix it when it happens
-- [ ] Chapter: Context Window Management
+- [x] Chapter: Context Window Management
     - *Sources: Hightower SDD-tools comparison (Feb 2026); Anthropic "Building effective agents".*
     - Why context fills, small sessions > long conversations
     - Subagents, /compact, loading skills selectively
     - `INDEX.md` as context economy — agents load one 40-line file instead of 10×200-line files
-- [ ] Chapter: Failure Modes & Recovery
+- [x] Chapter: Failure Modes & Recovery
     - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple"; ThoughtWorks Radar Vol 34 (cognitive debt).*
     - The taxonomy: drift (loses context mid-task), spin (loops on a sub-problem), halt (stops before done), hallucination (invents files/APIs), context poisoning (bad AGENTS.md compounds across sessions), tool misuse (wrong tool for the job).
     - Signs to watch for in each mode; recovery strategies; when to reset context vs when to redirect.
     - "The agent is not broken — it is clueless. Fix the context."
     - Maturity-honest: this is the most under-documented part of agentic engineering. The chapter says what the book asserts vs what it leaves open.
-- [ ] Chapter: Vendor Files That Point, Not Duplicate
+- [x] Chapter: Vendor Files That Point, Not Duplicate
     - *Sources: agents.md; agentpatterns.ai.*
     - `CLAUDE.md` → "See AGENTS.md"
     - `.github/copilot-instructions.md` → "See AGENTS.md"
     - `ase generate` — why generated files are pointers, not authored duplicates
     - Reference `ase-cli` implementation
-- [ ] Tag: `v0.4.0`
+- [x] Tag: `v0.4.0`
 
 #### Phase R — Write Spec-Driven Chapters (`v0.5.0`)
 
