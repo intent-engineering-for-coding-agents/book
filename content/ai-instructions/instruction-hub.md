@@ -42,6 +42,18 @@ OpenSpec repos generate a full set of skills on `openspec init`: `opsx:new`, `op
 
 The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and JetBrains AI each have their own slash command surfaces, and none of them read `.agents/skills/` as commands. They reach the instruction files through `AGENTS.md` pointers; the workflow logic is shared. The slash command that invokes it is not. Vendor-neutral structure gets you as far as the file. The keyboard shortcut stays local to each tool.
 
+One bridge that works: a symbolic link. Create `.claude/skills` as a symlink pointing to `.agents/skills`, and Claude Code reads from its native location while the files live in the vendor-neutral hub. The legacy `.claude/commands` directory works the same way if your setup still uses it.
+
+```bash
+# macOS / Linux
+ln -s ../.agents/skills .claude/skills
+
+# Windows (requires Developer Mode or Administrator)
+mklink /D .claude\skills .agents\skills
+```
+
+Git stores symlinks as small text files containing the target path and commits them like any other file. On Linux and macOS they resolve automatically. On Windows, creating symlinks requires Developer Mode or elevated privileges; without one of those, Git checks out the symlink as a plain text file and the directory bridge does not form. Teams on Windows need to enable Developer Mode once, then the `ln -s` command works in Git Bash the same as on Linux.
+
 ## `.agents/hooks/`
 
 Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `ase-cli`; it contains a `.gitkeep`.

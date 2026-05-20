@@ -439,11 +439,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase Q — Write AI Instructions Chapters (`v0.4.0`)
 
-- [ ] Chapter: AGENTS.md — One File Changes Everything
+- [x] Chapter: AGENTS.md — One File Changes Everything
     - *Sources: agents.md (de-facto spec); agentpatterns.ai "AGENTS.md as Project-Level README" (TOC pattern); Böckeler.*
     - TOC pattern, what goes in it, tool-agnostic
     - Credit: agentpatterns.ai (TOC pattern framing)
-- [ ] Chapter: From AGENTS.md to AI Instruction Hub
+- [x] Chapter: From AGENTS.md to AI Instruction Hub
     - *Sources: agentpatterns.ai "Evaluating AGENTS.md"; Anthropic "Building effective agents" (Dec 2024).*
     - `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`
     - One folder for all AI tools

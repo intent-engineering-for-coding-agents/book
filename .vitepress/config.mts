@@ -35,6 +35,11 @@ export default withMermaid(
             { text: 'Overview', link: '/ai-instructions/' },
             { text: 'AGENTS.md: One File Changes Everything', link: '/ai-instructions/agents-md' },
             { text: 'From AGENTS.md to AI Instruction Hub', link: '/ai-instructions/instruction-hub' },
+            { text: 'Writing Instructions That Work', link: '/ai-instructions/writing-instructions' },
+            { text: 'Skills, Commands, and Hooks', link: '/ai-instructions/skills-commands-hooks' },
+            { text: 'Context Window Management', link: '/ai-instructions/context-window' },
+            { text: 'Failure Modes and Recovery', link: '/ai-instructions/failure-modes' },
+            { text: 'Vendor Files That Point, Not Duplicate', link: '/ai-instructions/vendor-files' },
           ]
         },
         {
