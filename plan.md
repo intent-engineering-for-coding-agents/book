@@ -261,15 +261,15 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 #### Phase F — Spec-Driven: Spec Quality Checks (`v0.5.0`)
 
-- [ ] **Change 006 — AC ID & test category checks**
+- [x] **Change 006 — AC ID & test category checks**
     - `spec-ac-ids`, `spec-test-category`
-    - [ ] New → Plan → Apply → Archive
-- [ ] **Change 007 — File & spec size checks**
+    - [x] New → Plan → Apply → Archive
+- [x] **Change 007 — File & spec size checks**
     - `spec-size`, `file-size`
-    - [ ] New → Plan → Apply → Archive
-- [ ] **Change 008 — Agent hub & secrets checks**
+    - [x] New → Plan → Apply → Archive
+- [x] **Change 008 — Agent hub & secrets checks**
     - `agents-hub-structure`, `secrets`
-    - [ ] New → Plan → Apply → Archive
+    - [x] New → Plan → Apply → Archive
 - [ ] Tag: `v0.5.0`
 
 #### Phase G — Spec-Driven: Test Traceability Checks (`v0.6.0`)
