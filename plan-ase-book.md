@@ -185,7 +185,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Why this inverts the historical default: with agentic regeneration, code is downstream of spec — review intent before diff, specs outlive the codebase, agents regenerate code from spec, not the reverse.
     - The bar a spec must clear to earn this status: testable, AC-tagged, sized to be readable, scoped to one change.
     - The hardest mental shift in the whole book: stop treating code as the artefact, start treating it as the output.
-- [ ] Tag: `v0.5.0`
+- [x] Tag: `v0.5.0`
 
 #### Phase S — Write Quality Chapters (`v0.6.0`)
 
