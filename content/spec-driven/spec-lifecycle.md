@@ -12,11 +12,13 @@ A spec without a lifecycle is a spec that accumulates. Active specs look identic
 
 **Review**: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
 
+A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An AI agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
+
 **Implement**: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 
 **Archive**: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`. The change folder moves to `openspec/changes/archive/`. The implementation is in git. The intent is in the canonical spec. The change history is in the archive. Three things, three places, none of them confused.
 
-The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch never sees an in-flight spec — only the canonical spec in `openspec/specs/` that reflects what was actually shipped.
+The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was actually shipped.
 
 *Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).*
 

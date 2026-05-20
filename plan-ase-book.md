@@ -247,6 +247,9 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: ThoughtWorks Radar Vol 34 (mutation testing, feedback controls); Böckeler.*
     - Review the spec delta first, the diff second
     - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
+    - PR size: a full change folder + implementation is not a small PR; the spec is what makes it reviewable
+    - Splitting the PR: spec documents first (intent review), implementation second (code review) — when this is worth the overhead
+    - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `ase-cli` MCP `check_spec_quality`
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
 - [ ] Chapter: Parallel Agents on the Same Codebase

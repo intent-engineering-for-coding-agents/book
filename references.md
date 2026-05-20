@@ -19,6 +19,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
 - Simon Brown — [Structurizr](https://docs.structurizr.com/) (ongoing). Models-as-code tooling for C4 DSL.
 - Terrastruct — [D2](https://d2lang.com/) (ongoing). A modern diagram scripting language; produces richer layouts than Mermaid but as of 2026 is not rendered inline by major Git hosts. Referenced in the Plain-Text-as-Code chapter as context for why Mermaid is the current practical choice.
+- Frederick P. Brooks Jr. — *The Mythical Man-Month: Essays on Software Engineering* (Addison-Wesley, 1975; 20th anniversary ed. 1995). "Plan to Throw One Away" (ch. 11): the first system will be discarded; plan for it. Agentic regeneration collapses the cost of that discard from months to minutes.
 - Alistair Cockburn — *Crystal Clear: A Human-Powered Methodology for Small Teams* (Addison-Wesley, *2004*). Origin of the "walking skeleton" pattern — etymology for the modern `skeleton.md` artefact.
 - Apache Maven Project — ["Introduction to the Standard Directory Layout"](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html). Maven Documentation, last modified *Mar 9, 2014*. Maven popularized "convention over configuration" in the Java build world starting with Maven 1 (2004); this page is the canonical illustration.
 - David Heinemeier Hansson — ["The Rails Doctrine"](https://rubyonrails.org/doctrine/). Ruby on Rails, *Jan 19, 2016*. Codifies "Convention over Configuration" as one of nine doctrinal pillars (Rails released 2004); the most-cited popular usage of the phrase.
@@ -34,6 +35,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - ["Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants"](https://openreview.net/forum?id=bw5mNj75h9). OpenReview submission to AIware 2026, *Jan 30, 2026* (modified Apr 2, 2026). Academic framing of spec-as-contract; anchor for the "spec-driven hardened into a recognized practice" claim in the Introduction.
 - SolGuruz — ["Spec-Driven Development Guide"](https://solguruz.com/blog/spec-driven-development-guide/). *Mar 12, 2026*. Industry overview of spec-driven workflows.
 - IntuitionLabs — ["Spec-Driven Development & Spec-Kit"](https://intuitionlabs.ai/articles/spec-driven-development-spec-kit). Revised *Feb 21, 2026*. Spec-Kit walkthrough.
+- ["From Vibe Coding to Spec-Driven Development"](https://towardsdatascience.com/from-vibe-coding-to-spec-driven-development/). Towards Data Science, *2025*. Describes the transition from ephemeral chat-based prompting to version-controlled spec artefacts; confirms vibe coding produces no formal spec file by default.
 
 ## Agentic engineering & AI instructions
 

@@ -43,6 +43,18 @@ export default withMermaid(
           ]
         },
         {
+          text: 'Spec-Driven Development',
+          items: [
+            { text: 'Overview', link: '/spec-driven/' },
+            { text: 'Why Specs?', link: '/spec-driven/why-specs' },
+            { text: 'Why Small?', link: '/spec-driven/why-small' },
+            { text: 'Why Important Stuff First?', link: '/spec-driven/why-important-first' },
+            { text: 'The Spectrum', link: '/spec-driven/the-spectrum' },
+            { text: 'Spec Lifecycle', link: '/spec-driven/spec-lifecycle' },
+            { text: 'Spec > Code', link: '/spec-driven/spec-gt-code' },
+          ]
+        },
+        {
           text: 'Appendices',
           items: [
             { text: 'Glossary', link: '/appendices/glossary' },
