@@ -40,7 +40,7 @@ You can run one agent or several. ASE works the same way regardless of which age
 
 You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
-What you will not find here: a vendor comparison matrix. The tested-class agents are named, not ranked. Those matrices don’t age in months and were never useful in the first place. Cost economics for seat-licensed AI gets one paragraph in the appendix and no chapter. And no prescription. This is the report of what teams have made work, with attribution and caveats. Adoption is pull, not push.
+What you will not find here: a vendor comparison matrix. The tested-class agents are named, not ranked. Those matrices don't age in months and were never useful in the first place. Cost economics for seat-licensed AI gets one paragraph in the appendix and no chapter. And no prescription. This is the report of what teams have made work, with attribution and caveats. Adoption is pull, not push.
 
 ## ASE is not ADLC
 

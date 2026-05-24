@@ -1,6 +1,6 @@
 # Tests as Proof, Not Ritual
 
-The spec said the API would retry once on a 503, wait one second, then return a 503 to the caller with a structured error. The implementation did all of that on the happy path. It did not do it when the retry itself timed out. There were three tests. All three passed. None of them exercised the timeout. The agent had written exactly the tests the prose suggested and no more. The deploy went out. The first 503 with a slow upstream took the page down for nine minutes.
+The spec said the file upload would validate the type, check the size limit, write the file to storage, and record the metadata. The implementation did all four on the happy path. It did not do it when the storage write failed partway through. The metadata was recorded, the file was not there, and every subsequent read produced a confusing error with no obvious cause. There were four tests. All four passed. None of them interrupted the storage write. The agent had written exactly the tests the prose suggested and no more. The deploy went out. The first failed write in production sat undetected for a week before a user complained.
 
 The tests passed. The intent was not proven. Those are different sentences.
 
@@ -18,7 +18,7 @@ Coverage follows code structure, and code structure has more dimensions than a l
 
 The practical progression for a new function: happy path first, then the primary error path, then one test per branch, then one test per exception class, then boundary values at the edges of valid input. That order matches where defects cluster in practice. It is not the order most agents default to, which is happy path followed by whatever scenarios the prose most obviously suggested. The prose suggested the normal case. The defects live in the paths the prose did not think to name.
 
-This applies within a test type. Across test types — unit, integration, acceptance, end-to-end, architectural — a different question applies: which type of test is the right proof for this scenario? A unit test proves a function in isolation; it proves nothing about the HTTP layer above it. An integration test proves a module pipeline; it proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
+This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation; it proves nothing about the HTTP layer above it. An integration test proves a module pipeline; it proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
 
 *Sources: Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021). ThoughtWorks, Technology Radar Vol 34 (April 2026).*
 
@@ -28,7 +28,7 @@ The team had a definition of done that read: "implementation complete, tests pas
 
 The working definition in this book: a change is done when the approved intent has executable proof that covers the paths the code actually contains, not just the path the spec described first. Approved intent is the spec, reviewed and merged. Executable proof is a test that fails when the intent is not met, on the happy path and on every branch, error, and exception path the implementation introduces. Without the spec, there is nothing to approve. Without proof across the full structure, the approval is partial. Both have to be there, and they have to be connected to each other through an identifier that does not break when the prose moves.
 
-Farley's *Modern Software Engineering* makes the same argument from a different angle. Engineering, as a discipline, is the application of feedback loops to produce reliable outcomes. The spec is the input to the loop. The test is what closes it. Without the closing step, you have a process that produces artefacts, not engineering.
+Farley's *Modern Software Engineering* makes the same argument from a different angle. Engineering, as a discipline, is the application of feedback loops to produce reliable outcomes. The spec is the input to the loop. The test is what closes it. Without the closing step, you have a process that produces artefacts, not engineering. The term for doing this intentionally is vibe coding. The term for doing it by accident is most agentic workflows.
 
 ## Why agentic speed forces the issue
 
@@ -46,7 +46,19 @@ Tests prove intent only if you can tell which test proves which part of the inte
 
 The fix is the acceptance criterion identifier. Each spec scenario gets a stable ID. Each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test that is not linked to a spec scenario proves general behaviour, not specified intent.
 
-A test scoped to one scenario and linked to its AC ID is also the most reliable worked example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate: a demo that would fail in CI if the code diverged is not a comment that rots quietly. It is executable documentation, and it is free — you get it automatically when you write the test right.
+A test scoped to one scenario and linked to its AC ID is also the most reliable worked example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface can drift silently. A test that fails in CI when the code diverges cannot. It is executable documentation, and it is free. You get it automatically when you write the test right.
+
+## Reviewing the spec before the code
+
+Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
+
+If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. There is no automated check that catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts.
+
+The practical form is a PR. The spec change goes up for review before a line of code is written. The team reads it, asks questions, and approves it. The same discipline people already apply to code, applied one step earlier where fixing things costs a conversation instead of a rewrite.
+
+Size matters here for the same reason it matters in code review. A long spec change gets skimmed. Keep proposals small. One scenario at a time if you can. When the change is larger, split it. The cognition limit that makes large PRs dangerous applies equally to prose.
+
+The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readablem and the reasoning stays findable.
 
 ## Honest caveats
 

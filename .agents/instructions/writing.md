@@ -36,6 +36,8 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `*Sources:*` line at the end of any section that draws on a specific reference — format: `*Sources: Author "Title" (Year).*`
+- Use American English punctuation conventions: periods and commas go inside closing quotation marks (`"like this."` not `"like this".`)
+- Use straight quotes and apostrophes throughout (`"`, `'`) — never curly/smart quotes (`"`, `"`, `'`, `'`), in prose or code
 - Do not use em-dash for decoration; use it only to set off a clause
 - Inline code for file names, paths, command names, and flag names
 

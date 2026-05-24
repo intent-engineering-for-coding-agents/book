@@ -19,10 +19,12 @@ A working taxonomy — representative, not prescriptive:
 | **Architectural** | Structural rules hold: no forbidden dependencies, no layer violations | Module graph |
 | **Acceptance** | A user-visible scenario works end-to-end at the spec level | Feature, golden fixture |
 | **E2E** | The deployed system behaves as the user expects | CLI to output, browser to API |
+| **Visual regression** | Rendered output matches a stored reference; no layout shifts, no styling regressions | UI component or full-page render |
+| **Smoke** | The deployed system is alive and routing correctly after a release | Deployed surface entry points |
 | **Performance** | Latency or throughput stays within a defined bound | Load profile |
 | **Manual** | Intent is specified in the spec; automated proof not yet written, or cannot be | Any level |
 
-Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
+Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
 *Sources: model2diagram `docs/architecture/test-strategy.md` (the working reference implementation of the convention this chapter describes).*
 
@@ -33,17 +35,31 @@ The test taxonomy is only useful if it is written down where the agent can read 
 The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. In model2diagram this is `docs/architecture/test-strategy.md`. The format is a table:
 
 ```markdown
-| Test Type     | Framework          | Location                            |
-|---------------|--------------------|-------------------------------------|
-| Unit          | JUnit + Kotest     | src/test/kotlin/**/*Test.kt         |
-| Integration   | JUnit + Kotest     | src/test/kotlin/**/*IntegrationTest.kt |
-| Contract      | JUnit (Java only)  | src/test/java/**/interop/           |
-| Architectural | ArchUnit           | src/test/kotlin/**/*ArchTest.kt     |
-| Acceptance    | JUnit + Kotest     | src/test/kotlin/**/*AcceptanceTest.kt |
-| E2E           | JUnit + Kotest     | src/test/kotlin/**/*E2eTest.kt      |
+## Test types in use
+
+| Test Type     | Framework          | Location                                   | Level       |
+|---------------|--------------------|--------------------------------------------|-------------|
+| Unit          | JUnit + Kotest     | src/test/kotlin/**/*Test.kt                | pre-commit  |
+| Integration   | JUnit + Kotest     | src/test/kotlin/**/*IntegrationTest.kt     | pre-merge   |
+| Contract      | JUnit (Java only)  | src/test/java/**/interop/                  | pre-merge   |
+| Architectural | ArchUnit           | src/test/kotlin/**/*ArchTest.kt            | pre-commit  |
+| Acceptance    | JUnit + Kotest     | src/test/kotlin/**/*AcceptanceTest.kt      | pre-merge   |
+| E2E           | JUnit + Kotest     | src/test/kotlin/**/*E2eTest.kt             | post-deploy |
+
+## Excluded test types
+
+| Type              | Reason                                      |
+|-------------------|---------------------------------------------|
+| Visual regression | Backend service; no rendered UI             |
+| Performance       | No SLA defined; out of current scope        |
+| Smoke             | No separate deployment pipeline             |
 ```
 
-The document is part of the project's architecture documentation. It lives in `docs/architecture/` alongside ADRs and design docs. The agent reads it before writing a test. Without it the agent improvises; with it, the agent generates a test at the right level in the right file with the right framework from the first session.
+The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific — some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
+
+The exclusions section is equally important. Without it, the agent has no way to distinguish *not applicable* from *nobody thought of it*. The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
+
+The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent generates a test at the right level in the right file with the right framework from the first session.
 
 The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. In model2diagram, ADR-0005 documents why `[PREFIX-NNN]` bracket IDs and `Test-type:` fields were chosen over alternatives. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
