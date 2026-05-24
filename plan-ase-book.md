@@ -189,33 +189,48 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase S — Write Quality Chapters (`v0.6.0`)
 
-- [ ] Chapter: Tests as Proof, Not Ritual
+- [x] Chapter: Tests as Proof, Not Ritual
     - *Sources: Farley *Modern Software Engineering*; ThoughtWorks Radar Vol 34 (mutation testing as feedback control).*
-    - "Done" = approved intent has executable proof
-    - AI speed makes automated proof mathematically required
-- [ ] Chapter: Agent Evaluation & Regression
+    - "Done" = approved intent has executable proof; executable proof covers all paths the code contains, not just the happy path
+    - Positive tests are the floor: branches, return types, exceptions each require proof
+    - Progression: happy path → error path → per branch → per exception class → boundaries
+    - Tests as executable documentation: proof requirement makes the demo accurate
+    - **[EXPAND]** Add test taxonomy table and complexity-to-minimum-test-count table (from new Test Strategy chapter)
+- [x] Chapter: Agent Evaluation & Regression
     - *Sources: ThoughtWorks Radar Vol 34 (mutation testing as feedback control); Anthropic "Building effective agents"; Hightower SDD-tools comparison.*
     - Tests prove the *code* is right; this chapter proves the *agent setup* is right. Golden tests for an agent + AGENTS.md + skill stack: did this change make the agent better or worse — measured how.
     - A/B comparison of two AGENTS.md versions on a fixed task.
     - Regression detection when a skill or hook is updated.
     - The evidence base for the central claim: at agentic speeds, manual verification is not enough. This is the feedback loop that closes it.
-- [ ] Chapter: AC IDs + Positive/Negative Coverage
-    - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; ASE convention disclaimer (AC-IDs note).*
-    - Stable IDs, mandatory `**Test:**` field
+- [x] Chapter: AC IDs + Positive/Negative Coverage
+    - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; ASE convention disclaimer (AC-IDs note); model2diagram ADR-0005.*
+    - Stable IDs in bracket format `[PREFIX-NNN]`; prefix 2–4 letters from component abbreviation (e.g. `GV`, `AUTH`, `CONF`) so meaning is immediately clear; monotone counter
+    - `Test-type:` field on its own line in the scenario, before WHEN/THEN — intent captured at design time
+    - Mandatory `**Test:**` field
+    - Dual `@Tag` on the test: one for AC ID, one for test type — traceability + CI filtering in one annotation
+    - AC registry (`test/ac-registry.md` pattern): one row per component, prefix + next counter, commit atomically with new scenario
     - Happy-path-only is not proof
-- [ ] Chapter: Before / During / After Checkpoints
+- [ ] Chapter: Test Strategy and Convention *(new)*
+    - *Sources: model2diagram `docs/architecture/test-strategy.md`; model2diagram `test/scenario-template.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
+    - The problem: the agent defaults to unit tests for everything; the team's convention is not visible unless it is written down
+    - Test taxonomy: unit, slice, integration, interface/contract, acceptance, architectural, e2e, performance, manual — what each type proves at which boundary
+    - Not every project uses all types; define the ones that apply and be explicit
+    - The convention lives in `docs/architecture/test-strategy.md` (or equivalent) — frameworks per type, file locations, coverage thresholds; this document is what the agent reads
+    - Scenario complexity tiers → minimum test count: simple (1+1), medium (2–3 + 2), complex (several + several)
+    - The convention document belongs in the Before gate alongside the design system
+- [x] Chapter: Before / During / After Checkpoints
     - *Sources: Anthropic "Building effective agents"; agentpatterns.ai.*
-    - Before: architecture, AGENTS.md, design system
+    - Before: architecture, AGENTS.md, design system, **test strategy document**
     - During: spec writing, hooks, context management
     - After: verification, refactoring, review
-- [ ] Chapter: Security in Depth
+- [x] Chapter: Security in Depth
     - *Sources: OWASP Top 10; ThoughtWorks Radar Vol 34 (zero trust, sandboxed execution).*
     - Secrets, injection, dependencies — guardrails in AGENTS.md
     - OWASP as review checklist
-- [ ] Chapter: PR Taxonomy
+- [x] Chapter: PR Taxonomy
     - *Sources: Hammant trunkbaseddevelopment.com; Farley *Modern Software Engineering*.*
     - `docs`, `structural`, `behavior` — why mixing makes review harder
-- [ ] Chapter:.principles — Raising the Bar
+- [x] Chapter: .principles — Raising the Bar
     - *Sources: dot-principles repo; dot-principles example-catalog.*
     - dot-scout → dot-prime → code → dot-audit
     - Complements specs and tests, does not replace them

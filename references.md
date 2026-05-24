@@ -27,6 +27,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ## Spec-driven development
 
 - Fission AI — [OpenSpec](https://openspec.dev/) ([repo](https://github.com/Fission-AI/OpenSpec), ongoing). The change-folder + delta-spec framework this book uses end-to-end.
+  - openspec.dev — [FAQ](https://openspec.dev/faq) (ongoing). Source for the "Lightweight. Minimal steps, minimal process." quote used in the AC IDs chapter to establish that OpenSpec deliberately does not prescribe ID formats or coverage rules.
 - GitHub — [Spec-Kit](https://github.com/github/spec-kit) ([docs](https://github.github.com/spec-kit/), ongoing). Enterprise end of the spectrum.
 - [LeanSpec](https://lean-spec.dev) (ongoing). Smaller-community framework articulating the small-spec discipline.
 - Rick Hightower — ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI: Where SDD Tools Diverge"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46). Medium, *Feb 27, 2026*. Tool-tradeoff map for Phase T.

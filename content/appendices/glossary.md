@@ -4,7 +4,11 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable identifier (format `[PREFIX-NNN]`, e.g. `SCAFFOLD-001`) attached to each acceptance scenario in a spec. Tests reference the ID via marker or comment, producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format.
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2–4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone — deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+
+## AC registry
+
+A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file; increment the counter atomically with the new scenario. Prevents prefix overlap and ID reuse. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
 
 ## ADLC (Agentic Development Lifecycle)
 
@@ -34,6 +38,14 @@ A design principle where the tool uses the caller's AI provider credentials rath
 
 A CLI agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically: Claude Sonnet/Opus 4+, Codex/GPT 5.4+, OpenCode + Deepseek 4 Pro, Junie CLI. IDE-only assistants and completion-only tools are out of scope.
 
+## CSRF (Cross-Site Request Forgery)
+
+A web attack class in which an authenticated user's browser is induced to submit an unintended request to a site they are logged into. Defended against with CSRF tokens, same-site cookies, or origin checks. Listed in [Security in Depth](/quality/security-in-depth).
+
+## CVE (Common Vulnerabilities and Exposures)
+
+A public catalogue of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [Security in Depth](/quality/security-in-depth).
+
 ## Cognitive debt
 
 The AI-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
@@ -41,6 +53,10 @@ The AI-era analogue to technical debt: undocumented decisions and assumptions th
 ## Greenfield
 
 A new codebase, or one being built from explicit intent. Greenfield ASE adoption assumes you can author `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
+
+## Golden test
+
+A fixed, repeatable task with a known good output, used to detect regressions when something upstream changes. In this book, applied both to code (a stable input with an expected output) and to agent setups (a fixed task with structural properties the agent's output should satisfy). See [Agent Evaluation and Regression](/quality/agent-evaluation).
 
 ## LeanSpec
 
@@ -54,6 +70,14 @@ A specific Markdown template for ADRs developed by Oliver Kopp, Anita Armbruster
 
 The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `ase-cli` to expose AI-assisted checks via the user's own AI agent (BYOK: bring your own key).
 
+## Mutation testing
+
+A technique that introduces small, semantics-changing edits (mutations) into the code under test and re-runs the test suite. A surviving mutation indicates a gap: the suite did not detect a wrong implementation. The kill rate is a feedback control on whether tests are proof or decoration. See [Tests as Proof, Not Ritual](/quality/tests-as-proof).
+
+## OWASP (Open Worldwide Application Security Project)
+
+A non-profit foundation publishing community-driven security resources for web applications. Best known for the OWASP Top 10, the ten most prevalent web application vulnerability classes. Used in this book as the after-gate review checklist. See [Security in Depth](/quality/security-in-depth).
+
 ## OpenSpec
 
 A spec-driven-development framework (openspec.dev) built around a change-folder pattern: proposal, delta spec, design, tasks, archive. The book uses OpenSpec end-to-end; `ase-cli` is built with it.
@@ -66,9 +90,17 @@ An AI-generated structural map of an existing codebase: modules, dependencies, d
 
 In this book's sense: the canonical specification of system behaviour. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
 
-## Spec-Driven Development (SDD)
+## SDD (Spec-Driven Development)
 
 The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one PR, archived after merge, and treated as the durable artefact from which code is generated. One of the four topics in ASE. See [Spec-Driven Development](/spec-driven/).
+
+## Test-type field
+
+A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming the category of test that proves the scenario (e.g. `unit`, `integration`, `e2e`). Captures the intended test level at spec-authoring time so the agent generates the right kind of test. Resolved against the project's test strategy document at implementation time. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+
+## TBD (Trunk-Based Development)
+
+A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. See [PR Taxonomy](/quality/pr-taxonomy).
 
 ## TOC pattern
 

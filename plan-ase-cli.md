@@ -224,12 +224,17 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 #### Phase J — Quality Verification on ase-cli itself (`v0.9.0`)
 
+- [ ] **Convention artefacts** — establish the quality convention the book describes
+    - [ ] `docs/architecture/test-strategy.md`: test types used (unit, integration, e2e), pytest frameworks per type, file locations, coverage thresholds
+    - [ ] `test/ac-registry.md`: one row per component prefix; monotone counter
+    - [ ] `test/scenario-template.md`: exact scenario format + complexity-tier coverage requirements (simple: 1+1, medium: 2-3+2, complex: several+several)
+    - [ ] ADR: `docs/decisions/NNNN-ac-id-and-test-type-convention.md` — records the decision to adopt `[PREFIX-NNN]` IDs and `Test-type:` field in all ase-cli specs
+- [ ] **Retrofit pytest markers** — add `@pytest.mark.<AC_ID>` and `@pytest.mark.<test_type>` to all existing ase-cli tests; update CI filter config
 - [ ] Test package for every check: AC-tagged, positive/negative proof
 - [ ] CI: run `ase check --deterministic` on itself (the tool validates its own repo)
 - [ ] CI: AC traceability scan — every spec scenario has test proof
 - [ ] Pre-commit hooks: lint (ruff), format (ruff format), secrets scan
-- [ ] Deterministic AC traceability in CI (when ready)
-- [ ] Tag: `v0.7.0`
+- [ ] Tag: `v0.9.0`
 
 #### Phase K — Team & Polish (`v0.10.0`)
 
