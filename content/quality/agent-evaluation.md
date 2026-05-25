@@ -52,4 +52,83 @@ Eval suites for agents are still early practice. There is no widely-shared tooli
 
 The hardest part is keeping the suite calibrated. A task that the agent reliably nails today becomes uninformative tomorrow when the underlying model improves. A task that the agent reliably fails today may be testing a property the agent cannot satisfy with any configuration. The suite drifts in both directions and needs periodic curation. Treat it as a living artefact, not a one-time setup.
 
+## Concrete tooling: ase eval
+
+The `eval-demo` directory in `ase-cli` ships the A/B scenario from this chapter as a runnable example. Two target states, `baseline/` and `after-drift/`, represent what the same agent produced under two versions of `AGENTS.md`. The eval suite does not know which version ran; it only checks what the agent left behind.
+
+```
+examples/eval-demo/
+├── eval/
+│   ├── 01-service-architecture/
+│   │   ├── task.md       # what to ask the agent
+│   │   └── checks.yaml   # properties to verify after
+│   ├── 02-test-traceability/
+│   │   └── checks.yaml
+│   └── 03-documentation/
+│       └── checks.yaml
+├── baseline/
+└── after-drift/
+```
+
+The `checks.yaml` for task one:
+
+```yaml
+task: "Service uses class-based design with validation in the service layer"
+checks:
+  - id: service-uses-class
+    description: "user_service.py defines a class"
+    type: file_contains
+    file: src/user_service.py
+    pattern: "^class "
+  - id: validation-in-service
+    description: "Validation is a method on the service class"
+    type: file_contains
+    file: src/user_service.py
+    pattern: "_validate"
+```
+
+Run `ase eval` against each state from `examples/eval-demo/`:
+
+```bash
+ase eval --path baseline --eval-dir eval
+```
+
+```
+Task                            Pass  Warn  Fail
+------------------------------------------------
+01-service-architecture            3     0     0
+02-test-traceability               4     0     0
+03-documentation                   2     0     0
+------------------------------------------------
+Total                              9     0     0
+
+Score: 9/9 (100%)
+```
+
+```bash
+ase eval --path after-drift --eval-dir eval
+```
+
+```
+Task                            Pass  Warn  Fail
+------------------------------------------------
+01-service-architecture            1     0     2
+02-test-traceability               2     0     2
+03-documentation                   2     0     0
+------------------------------------------------
+Total                              5     0     4
+
+Score: 5/9 (55%)
+
+Failures:
+  01-service-architecture / service-uses-class: src/user_service.py does not match '^class '
+  01-service-architecture / validation-in-service: src/user_service.py does not match '_validate'
+  02-test-traceability / tests-have-ac-markers: tests/test_user_service.py does not match '@pytest.mark.ac'
+  02-test-traceability / tests-reference-ac-ids: tests/test_user_service.py does not match 'USER-'
+```
+
+The score dropped from 100% to 55%. Four checks failed, both from the tasks that encode architectural intent. The documentation task passed in both states: the agent kept the index current even after the `AGENTS.md` change. The eval suite caught what code review missed, and it caught it before anyone had named the drift as a pattern.
+
+If you want to try it: `pip install ase-cli`, clone `ase-cli`, and run `ase eval` from `examples/eval-demo/`. The pre-committed output is in `score-baseline.txt` and `score-after-drift.txt`. This book's own agent skills are tested the same way, in the `eval/` directory at the repo root.
+
 The acceptance-criterion IDs the previous chapter assumed exist are the link between intent and proof. The next chapter is how to make those IDs durable enough to survive everything else in this section.

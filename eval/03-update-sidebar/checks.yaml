@@ -1,0 +1,25 @@
+task: "update-sidebar skill keeps .vitepress/config.mts current"
+checks:
+  - id: config-exists
+    description: ".vitepress/config.mts exists"
+    type: file_exists
+    path: .vitepress/config.mts
+
+  - id: sidebar-has-quality-section
+    description: "Sidebar config includes Quality section"
+    type: file_contains
+    file: .vitepress/config.mts
+    pattern: "Quality"
+
+  - id: sidebar-has-agent-evaluation
+    description: "Sidebar links to agent-evaluation chapter"
+    type: file_contains
+    file: .vitepress/config.mts
+    pattern: "agent-evaluation"
+
+  - id: sidebar-has-tests-as-proof
+    description: "Sidebar links to tests-as-proof chapter"
+    type: file_contains
+    file: .vitepress/config.mts
+    pattern: "tests-as-proof"
+    severity: MEDIUM

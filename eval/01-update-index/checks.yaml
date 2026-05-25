@@ -1,0 +1,24 @@
+task: "update-index skill regenerates docs/INDEX.md with correct structure"
+checks:
+  - id: index-file-exists
+    description: "docs/INDEX.md exists"
+    type: file_exists
+    path: docs/INDEX.md
+
+  - id: index-includes-readme
+    description: "INDEX.md links to README.md"
+    type: file_contains
+    file: docs/INDEX.md
+    pattern: "README\\.md"
+
+  - id: index-includes-decisions
+    description: "INDEX.md references decisions/ directory"
+    type: file_contains
+    file: docs/INDEX.md
+    pattern: "decisions"
+    severity: MEDIUM
+
+  - id: decisions-readme-exists
+    description: "docs/decisions/README.md exists"
+    type: file_exists
+    path: docs/decisions/README.md

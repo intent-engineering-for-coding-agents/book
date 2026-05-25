@@ -1,0 +1,25 @@
+task: "Chapter meets structural requirements the review-chapter skill enforces"
+checks:
+  - id: chapter-file-exists
+    description: "agent-evaluation.md exists"
+    type: file_exists
+    path: content/quality/agent-evaluation.md
+
+  - id: chapter-has-sources-line
+    description: "Chapter contains a Sources: attribution line"
+    type: file_contains
+    file: content/quality/agent-evaluation.md
+    pattern: "\\*Sources:"
+
+  - id: chapter-no-h4-headings
+    description: "Chapter does not use H4 or deeper headings"
+    type: file_not_contains
+    file: content/quality/agent-evaluation.md
+    pattern: "^####"
+    severity: MEDIUM
+
+  - id: chapter-has-h2-sections
+    description: "Chapter has at least one H2 section"
+    type: file_contains
+    file: content/quality/agent-evaluation.md
+    pattern: "^## "
