@@ -16,9 +16,9 @@ This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally 
 
 *Sources: OpenSpec (openspec.dev); openspec.dev FAQ (2026). Cucumber/Gherkin scenario structure (origin of the `Given/When/Then` form used in many spec frameworks). model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22).*
 
-## The mandatory field: `Test-type:`
+## The recommended field: `Test-type:`
 
-Each scenario in a spec carries one mandatory field: `Test-type:`. It tells the agent what kind of test to write. Traceability, the link from spec to test, runs the other direction: the AC ID travels with the test, not with the spec.
+Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in a PR. Every scenario where it is omitted forces the agent to infer the test layer from the scenario content alone, which works most of the time and fails at the edges. Traceability, the link from spec to test, runs the other direction: the AC ID travels with the test, not with the spec.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
