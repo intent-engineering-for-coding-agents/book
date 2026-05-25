@@ -56,4 +56,22 @@ More formality means more audit trail, better traceability, and less improvisati
 
 Teams underestimate the theatre risk. A heavy spec framework adopted by a small team will produce specs written to satisfy the framework rather than guide the implementation. The structure will be right. The content will be shallow, written in twenty minutes by a developer who wants to get to the code. Shallow specs with correct structure are worse than short specs with precise content: they look complete and are not.
 
-The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it. The lifecycle that keeps specs alive and useful is the next subject.
+The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it. The question is what that pain looks like, and what it teaches about where on the spectrum a team actually belongs.
+
+## The arc
+
+Teams do not usually choose their formality level consciously. They accumulate it in response to pain.
+
+The first production regression with no audit trail is the usual catalyst for adding a `spec.md`. Something breaks. The review meeting starts. Someone asks why the agent made the decision it made. Nobody knows: the reasoning was in a chat window that no longer exists. A Markdown file would have cost thirty minutes. The incident cost a day.
+
+The step from `spec.md` to OpenSpec usually follows collaboration, or repetition. Two developers, same codebase, different agents, conflicting intent. Or the same kind of drift recurring: the spec existed but the second agent rewrote what the first had built, because nobody recorded what the first had decided. When the pattern repeats, the team reaches for structure.
+
+Karpathy's *vibe coding* is not a failure mode. It is a deliberate posture: intentional, exploration-mode, no audit trail, no long-term commitment. The right tool for prototypes and throwaway experiments.
+
+Willison's observation holds: not all AI-assisted programming is vibe coding. The two modes are different by intent, not by quality.
+
+The arc from vibe coding to structured spec-driven development is real. Tsinghua's GLM-5 paper formalised it under the same terms in early 2026. But the arc is not an obligation. Some teams stay at `spec.md` permanently and that is the right call. Some skip directly to OpenSpec. The question is not where on the spectrum a team should aspire to reach. The question is what level the team will actually maintain under deadline pressure.
+
+The lifecycle that turns a spec into shipped code is the practical machinery behind that question.
+
+*Sources: Andrej Karpathy, "Vibe coding" (Feb 2025). Simon Willison, "Not all AI-assisted programming is vibe coding" (Mar 2025). Tsinghua University et al., "GLM-5: From Vibe Coding to Agentic Engineering" (Feb 2026).*

@@ -48,6 +48,7 @@ export default withMermaid(
             { text: 'Overview', link: '/spec-driven/' },
             { text: 'Why Specs?', link: '/spec-driven/why-specs' },
             { text: 'Why Small?', link: '/spec-driven/why-small' },
+            { text: 'The Rule of Ten', link: '/spec-driven/the-rule-of-ten' },
             { text: 'Why Important Stuff First?', link: '/spec-driven/why-important-first' },
             { text: 'The Spectrum', link: '/spec-driven/the-spectrum' },
             { text: 'Spec Lifecycle', link: '/spec-driven/spec-lifecycle' },

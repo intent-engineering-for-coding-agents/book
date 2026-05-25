@@ -22,6 +22,18 @@ The entire lifecycle lives on a branch. Create the branch, create the spec. Impl
 
 *Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).*
 
+## Writing the task list
+
+The task list is where the spec becomes executable. A spec without one leaves the agent to decide its own decomposition. The agent will decompose based on its priors, which are not the same as the team's intent.
+
+The rule: one task per acceptance-criteria cluster. If three scenarios test the same endpoint, they belong to one task. Write it as an imperative: not "Rate limiting?" but "Add rate-limiting to the login endpoint with scenarios ACC-003 and ACC-004." The AC IDs go in the task. The connection between intent and proof survives the archive.
+
+Tasks are checkboxes. The agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
+
+For sizing guidance on how many tasks belong in a list, and when a list that grows past ten is signaling a scope problem, see "The Rule of Ten" in this section.
+
+The task list makes the spec executable. It does not make the spec correct. That review happens next.
+
 ## Multi-LLM critique
 
 The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training. They share the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.

@@ -36,4 +36,4 @@ Small specs create their own failure mode: a spec too vague to be useful.
 
 "Add error handling to the API" fits in ten lines but tells the agent almost nothing. The constraint is not size. It is specificity per line. A 200-line spec with twenty precise acceptance criteria beats a 50-line spec with five vague ones, every time.
 
-Write small and write precisely. The constraint is not "fewer words". It is "one PR's scope, one concrete outcome per scenario, nothing else". The next question is where to put things inside that scope: which part of the spec the agent reads first, and why that order matters more than most teams expect.
+Write small and write precisely. The constraint is not "fewer words". It is "one PR's scope, one concrete outcome per scenario, nothing else". Scope is the first constraint. The second is quantity: how many tasks the spec should generate, how many files the PR should touch, and what to do when those numbers start climbing.

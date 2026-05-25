@@ -164,11 +164,24 @@ The book recommends **one directory name** and one convention.
 
 ---
 
+## Author Launch Checklist
+
+Things only the author can do — work through these around Phase V.
+
+- [ ] Buy `ase-book.dev` domain (before any public announcement)
+- [ ] Verify PyPI package name `ase-cli` is available; claim it before Phase L ships
+- [ ] Submit PR to [jordimas/awesome-agentic-engineering](https://github.com/jordimas/awesome-agentic-engineering) on launch day — one-liner on why it helps teams adopt agentic engineering
+- [ ] Post "Show HN" on Hacker News on launch day — link the live site, lead with the ase-cli proof
+- [ ] Announce via [AI Engineer community](https://www.ai.engineer/newsletter) — correct audience, direct fit
+- [ ] Reach out to [Latent Space](https://www.latent.space) for a guest post or resource feature
+- [ ] Cross-post a chapter excerpt to dev.to and/or Medium (Javarevisited) — surfaces in "books every AI engineer should read" roundups
+- [ ] Consider submitting an experience paper to AGENT workshop at ICSE 2027
+
+---
+
 ## Open Questions
 
-- Domain: `ase-book.dev` — buy when going public
-- PyPI package name: `ase-cli` — verify availability
-- When to announce / share externally?
+- When is the right moment to soft-launch (share with a small circle) vs. hard-launch publicly?
 
 ---
 

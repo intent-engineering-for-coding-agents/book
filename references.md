@@ -1,6 +1,6 @@
 # References
 
-*Last reviewed: 2026-05-10.*
+*Last reviewed: 2026-05-25.*
 
 Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines in [plan-ase-book.md](plan-ase-book.md) point into this section.
 
@@ -40,6 +40,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 
 ## Agentic engineering & AI instructions
 
+- Tsinghua University et al. — ["GLM-5: From Vibe Coding to Agentic Engineering"](https://arxiv.org/abs/2602.15763). arXiv:2602.15763, *Feb 2026*. A major model paper whose subtitle mirrors this book's own framing — academic confirmation that "vibe coding → agentic engineering" is the recognized arc. Linked as a key resource in the jordimas/awesome-agentic-engineering list.
 - [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
 - GitHub Changelog — ["Copilot coding agent now supports AGENTS.md custom instructions"](https://github.blog/changelog/2025-08-28-copilot-coding-agent-now-supports-agents-md-custom-instructions/). *Aug 28, 2025*. Confirms native AGENTS.md support in the Copilot coding agent.
 - AgentPatterns.ai — ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) and ["Evaluating AGENTS.md: When Context Files Hurt More Than Help"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing). TOC pattern, context-file evaluation.
