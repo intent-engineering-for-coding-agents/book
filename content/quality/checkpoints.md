@@ -45,14 +45,19 @@ Review is the third part of the after-checkpoint, and the order matters. Review 
 A small change runs through all three gates in sequence:
 
 ```mermaid
-graph LR
-  A[Before: foundation] --> B[Write spec]
-  B --> C[During: implementation]
-  C --> D[After: verification]
-  D --> E[Merge + archive]
-  A -.-> A1[AGENTS.md current<br/>arch legible<br/>design system in place]
-  C -.-> C1[hooks firing<br/>context fresh<br/>spec stable]
-  D -.-> D1[scope check<br/>AC tests trace<br/>spec review first]
+flowchart TD
+  subgraph before["Before: foundation"]
+    b1["AGENTS.md current\narch legible\ndesign system in place"]
+  end
+  w(["Write spec"])
+  subgraph during["During: implementation"]
+    d1["hooks firing\ncontext fresh\nspec stable"]
+  end
+  subgraph after["After: verification"]
+    a1["scope check\nAC tests trace\nspec review first"]
+  end
+  m(["Merge + archive"])
+  before --> w --> during --> after --> m
 ```
 
 Each gate has its own failure mode. Skip the before-gate and the agent improvises against unknowns. Skip the during-gate and the work drifts inside the session. Skip the after-gate and the merged artefact does not match the merged intent. The three gates are not redundant. They catch different problems at different points in the lifecycle.
@@ -71,4 +76,4 @@ The gates are not project phases. A spec is not finished before implementation s
 
 The gates are also not equally costly. The before-gate is mostly maintenance: the architecture is already documented, `AGENTS.md` already exists, the design system already has its conventions. The during-gate is mostly automation. The after-gate is where most of the human attention goes, and it is also where the most value is created when the attention is spent well. Plan accordingly.
 
-Security is the gate that most teams imagine sits inside the after-checkpoint and only there. The next chapter argues that security is spread across all three gates, with the most expensive lapses happening at the before-gate where nothing visible is changing.
+The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid — including the broken one. The next chapter covers security failure modes that survive because they match the examples the agent was shown, not because any check missed them.

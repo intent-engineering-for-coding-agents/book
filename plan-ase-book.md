@@ -224,9 +224,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - During: spec writing, hooks, context management
     - After: verification, refactoring, review
 - [x] Chapter: Security in Depth
-    - *Sources: OWASP Top 10; ThoughtWorks Radar Vol 34 (zero trust, sandboxed execution).*
-    - Secrets, injection, dependencies — guardrails in AGENTS.md
-    - OWASP as review checklist
+    - *Sources: OWASP Top 10; ThoughtWorks Radar Vol 34 (zero trust, sandboxed execution, prompt injection).*
+    - Pattern replication — the agent copies broken auth patterns because it does not distinguish trusted from untested
+    - Deference to the user on unsafe security decisions — the agent accepts any answer to "should I disable this check?"
+    - The cleanup PR that removes a security control — each looked redundant, each was there for a reason
+    - The agent as attack surface — prompt injection, compromised tool definitions, model weights
 - [x] Chapter: PR Taxonomy
     - *Sources: Hammant trunkbaseddevelopment.com; Farley *Modern Software Engineering*.*
     - `docs`, `structural`, `behavior` — why mixing makes review harder
