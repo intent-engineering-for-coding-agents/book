@@ -16,9 +16,9 @@ This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally 
 
 *Sources: OpenSpec (openspec.dev); openspec.dev FAQ (2026). Cucumber/Gherkin scenario structure (origin of the `Given/When/Then` form used in many spec frameworks). model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22).*
 
-## The mandatory fields: `Test-type:` and `**Test:**`
+## The mandatory field: `Test-type:`
 
-Each scenario in a spec carries two mandatory fields: `Test-type:` and `**Test:**`. Together they tell the agent what kind of test to write and which specific test proves this scenario.
+Each scenario in a spec carries one mandatory field: `Test-type:`. It tells the agent what kind of test to write. Traceability, the link from spec to test, runs the other direction: the AC ID travels with the test, not with the spec.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
@@ -28,14 +28,11 @@ Test-type: integration
 **Given** an empty target directory
 **When** the user runs `ase init`
 **Then** the directory contains `AGENTS.md`, `docs/`, and `openspec/`
-**Test:** `tests/test_init_integration_test.py::test_init_empty_directory`
 ```
 
 `Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses; with it, the category is locked at spec review.
 
-`**Test:**` names the specific test that proves the scenario. Not "a test exists". A referenceable path or marker. The field is mandatory, not advisory. A scenario without a `**Test:**` line is not a finished scenario. It is a sketch. The traceability check planned for `ase-cli` v0.6.0 counts scenarios with missing or unresolvable `**Test:**` lines and fails when the count is non-zero.
-
-Both fields are how you encode the practice into the artefact rather than into the discipline of whoever is writing. A field that is optional becomes the first thing to skip when the agent is in a hurry. The agent in a hurry is the agent the team will spend the most time with.
+A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed. Test methods get extracted. A path hardcoded in the spec goes stale without anyone noticing, which is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
 
 ## Framework tagging: two annotations, two uses
 
@@ -98,7 +95,6 @@ Test-type: integration
 **Given** a user with id 42 exists
 **When** DELETE /users/42 is called
 **Then** the response is 204 and the user no longer exists
-**Test:** `tests/test_users.py::test_delete_existing_user`
 
 #### Scenario: Delete a non-existent user [USR-009]
 
@@ -107,7 +103,6 @@ Test-type: integration
 **Given** no user with id 999 exists
 **When** DELETE /users/999 is called
 **Then** the response is 404 with `{ error: 'not found' }`
-**Test:** `tests/test_users.py::test_delete_missing_user`
 
 #### Scenario: Delete an already-deleted user [USR-010]
 
@@ -116,12 +111,11 @@ Test-type: integration
 **Given** user 42 was deleted previously
 **When** DELETE /users/42 is called
 **Then** the response is 410 with `{ error: 'gone' }`
-**Test:** `tests/test_users.py::test_delete_gone_user`
 ```
 
-Three scenarios, three IDs, three `Test-type:` fields, three `**Test:**` lines. `USR` is the prefix because this feature is about users — readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database; a unit test with a mocked repository would not prove the HTTP status codes or the ORM query. The positive case is USR-008. The two negative cases are USR-009 and USR-010. The coverage check sees the pair. The traceability check sees three scenarios and three tests. The grep for `USR-009` in the test file finds the test that proves it, even after the spec scenario heading is rewritten.
+Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database; a unit test with a mocked repository would not prove the HTTP status codes or the ORM query. The positive case is USR-008. The two negative cases are USR-009 and USR-010. The coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test, whether it lives in `test_users.py` or somewhere else entirely.
 
-What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate ASE by twenty years. What is unusual is the strictness: the ID is in the scenario heading, the test path is in the scenario body, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
+What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate ASE by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
 
 ## Honest caveats
 

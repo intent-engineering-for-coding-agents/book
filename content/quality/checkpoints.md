@@ -24,7 +24,7 @@ The during-checkpoint is where the spec, the hooks, and the context-management d
 
 The spec is the first input. By this point it should be written, reviewed, and stable. A spec that is still being negotiated while the implementation is happening is two pieces of work running concurrently, and the implementation will drift to wherever the agent guesses the spec is heading. Hold the spec. Let the implementation catch up. If the spec needs to change, change it explicitly and restart the relevant scenario.
 
-Hooks are the deterministic side of the during-gate. A pre-commit hook that runs the linter, a hook that catches secrets being committed, a hook that verifies the modified specs still have `**Test:**` fields. These run without anyone asking. They catch the small, specific things that are easy to encode and would otherwise drift.
+Hooks are the deterministic side of the during-gate. A pre-commit hook that runs the linter, a hook that catches secrets being committed, a hook that verifies every AC ID in modified specs has a corresponding tag in the test suite. These run without anyone asking. They catch the small, specific things that are easy to encode and would otherwise drift.
 
 Context management is the harder one. A session that starts with a clean context window and a focused spec produces different output than the same session three hours later, with the window full and the spec mixed up with the last two unrelated tasks. The discipline is small sessions, focused tasks, explicit context loads. The book covered this in the AI Instructions section; the checkpoint is reminding the developer to actually apply it. A drifting session is not visible in any diff. It is visible in the increasing rate of small mistakes the agent makes per hour.
 

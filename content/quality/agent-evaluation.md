@@ -67,7 +67,8 @@ examples/eval-demo/
 │   └── 03-documentation/
 │       └── checks.yaml
 ├── baseline/
-└── after-drift/
+├── after-drift/
+└── after-fix/
 ```
 
 The `checks.yaml` for task one:
@@ -129,6 +130,34 @@ Failures:
 
 The score dropped from 100% to 55%. Four checks failed, both from the tasks that encode architectural intent. The documentation task passed in both states: the agent kept the index current even after the `AGENTS.md` change. The eval suite caught what code review missed, and it caught it before anyone had named the drift as a pattern.
 
-If you want to try it: `pip install ase-cli`, clone `ase-cli`, and run `ase eval` from `examples/eval-demo/`. The pre-committed output is in `score-baseline.txt` and `score-after-drift.txt`. This book's own agent skills are tested the same way, in the `eval/` directory at the repo root.
+The suite just told you what broke. The next question is whether your fix actually works.
+
+Revert or refine the `AGENTS.md` change, run the agent against the same tasks, and capture the output to `after-fix/`. The eval does not care what changed or why; it checks the same properties against whatever the agent left behind.
+
+```bash
+ase eval --path after-fix --eval-dir eval
+```
+
+```
+Task                            Pass  Warn  Fail
+------------------------------------------------
+01-service-architecture            3     0     0
+02-test-traceability               4     0     0
+03-documentation                   2     0     0
+------------------------------------------------
+Total                              9     0     0
+
+Score: 9/9 (100%)
+```
+
+Full recovery. The revert worked.
+
+Partial improvement is also signal. A score of 7/9 after a refined fix means the direction is right but the fix did not land cleanly. The suite names which checks still fail. That is more actionable than "it seems better" after reading a few PRs.
+
+Measuring deliberate improvement works the same way, run in reverse. The score does not go above 100%. When you want the agent to start producing behavior it does not currently produce, write the check before making the change. The baseline fails it; the score drops. That drop is the spec: the agent does not yet satisfy this property. Update `AGENTS.md`, run the agent, run eval. Recovery to 100% is the evidence the improvement landed.
+
+The suite is a spec, not a benchmark. Raising the bar means adding checks. Clearing the bar means satisfying them.
+
+If you want to try it: `pip install ase-cli`, clone `ase-cli`, and run `ase eval` from `examples/eval-demo/`. The pre-committed output is in `score-baseline.txt`, `score-after-drift.txt`, and `score-after-fix.txt`. This book's own agent skills are tested the same way, in the `eval/` directory at the repo root.
 
 The acceptance-criterion IDs the previous chapter assumed exist are the link between intent and proof. The next chapter is how to make those IDs durable enough to survive everything else in this section.
