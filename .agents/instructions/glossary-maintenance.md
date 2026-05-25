@@ -6,7 +6,7 @@ When introducing a technical term in a chapter, follow the first-use rule and ke
 
 Every abbreviation expands on its first occurrence within each chapter:
 
-> "...the team writes an Architectural Decision Record (ADR) for the migration..."
+> "...the team writes an Architectural Decision Record (ADR) for the migration..".
 
 After the first use, the abbreviation alone is correct. The rule is per-chapter, not per-book — a VitePress site has no fixed reading order, and any chapter can be a landing page from search.
 

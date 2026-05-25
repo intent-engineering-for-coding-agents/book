@@ -144,7 +144,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple"; ThoughtWorks Radar Vol 34 (cognitive debt).*
     - The taxonomy: drift (loses context mid-task), spin (loops on a sub-problem), halt (stops before done), hallucination (invents files/APIs), context poisoning (bad AGENTS.md compounds across sessions), tool misuse (wrong tool for the job).
     - Signs to watch for in each mode; recovery strategies; when to reset context vs when to redirect.
-    - "The agent is not broken — it is clueless. Fix the context."
+    - "The agent is not broken — it is clueless. Fix the context".
     - Maturity-honest: this is the most under-documented part of agentic engineering. The chapter says what the book asserts vs what it leaves open.
 - [x] Chapter: Vendor Files That Point, Not Duplicate
     - *Sources: agents.md; agentpatterns.ai.*

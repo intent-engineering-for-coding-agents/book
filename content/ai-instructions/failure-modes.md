@@ -28,13 +28,13 @@ The framing that produces the right remediation: the agent is not broken, it is 
 
 A useful signal: when the agent is spending time but producing nothing, rerunning the same check, generating nearly identical variants, stalling on a tool call, something is wrong. Do not let it run. Toyota's production philosophy calls this pulling the Andon cord: stop the line the moment a defect appears, rather than letting the problem compound downstream.
 
-The question to ask when you stop: why is the agent struggling here? The answer is almost always the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is almost never "let it keep trying." The fix is to give it what it is missing, or to make the decision on its behalf.
+The question to ask when you stop: why is the agent struggling here? The answer is almost always the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is almost never "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
 
 ## When to reset vs when to redirect
 
 Reset when the session has accumulated enough context that the agent cannot reliably maintain the task's constraints. Reset when context poisoning is the mode. The agent needs fresh context, not more instructions layered on top of stale ones. Reset when drift is the diagnosis.
 
-Redirect when the agent has the right context but is stuck. A spin, a halt, or tool misuse all respond to a message. "You are spinning on the interface constraint. Here is the decision: use the existing interface and add a new method." A redirect costs one message. A reset costs a full re-briefing.
+Redirect when the agent has the right context but is stuck. A spin, a halt, or tool misuse all respond to a message. "You are spinning on the interface constraint. Here is the decision: use the existing interface and add a new method". A redirect costs one message. A reset costs a full re-briefing.
 
 In practice, the distinction is: if the agent was working well before it went wrong, redirect. If the session has been running long enough that you are unsure what the agent still has in context, reset.
 

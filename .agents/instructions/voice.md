@@ -19,7 +19,7 @@ A reader who skims any paragraph at random should think: this came from experien
 
 ## Register anchor
 
-The author is an experienced developer who teaches with their sleeves rolled up. Pedagogical, genuinely enthusiastic without selling anything, with a taste for dark humor that lands on something technically true. The person who is always in good spirits but is not shy about calling something a mess, and finds it slightly funny. Not academic. Not corporate. More: "Let me show you something interesting, and let me tell you what can go wrong."
+The author is an experienced developer who teaches with their sleeves rolled up. Pedagogical, genuinely enthusiastic without selling anything, with a taste for dark humor that lands on something technically true. The person who is always in good spirits but is not shy about calling something a mess, and finds it slightly funny. Not academic. Not corporate. More: "Let me show you something interesting, and let me tell you what can go wrong".
 
 This is analogous to "science teacher with a smile" but calibrated for a senior engineering audience. The pedagogical instinct: intuition comes before mechanics. Show what breaks first, so the reader understands *why* the solution looks the way it does. Build understanding; don't dump.
 
@@ -39,9 +39,9 @@ Max 4 sentences per paragraph. Vary length aggressively. A 1-sentence paragraph 
 
 A section that opens "Without X, Y is impossible" is opening with framing. A section that opens with a contradiction, a surprise, a failed deploy, or a scaling cliff is opening with tension. Tension goes first; framing comes after.
 
-Bad: *"Agentic systems are increasingly important."*
+Bad: *"Agentic systems are increasingly important".*
 
-Good: *"The first autonomous coding agent looked impressive right until it deleted the migration directory."*
+Good: *"The first autonomous coding agent looked impressive right until it deleted the migration directory".*
 
 The opening sentence should make the reader want the next one.
 
@@ -81,9 +81,9 @@ Cut every sentence that re-explains. Cut every transition that announces what th
 
 Show runtime behaviour. Describe execution paths. Demonstrate what fails when it fails.
 
-Bad: *"Coordination between components is important."*
+Bad: *"Coordination between components is important".*
 
-Good: *"The planner generated valid subtasks. The executor completed them. Then the reconciliation layer quietly merged incompatible state."*
+Good: *"The planner generated valid subtasks. The executor completed them. Then the reconciliation layer quietly merged incompatible state".*
 
 ### Every design has a cost
 
@@ -105,7 +105,7 @@ The last paragraph of a section must do one of three things: (a) raise an unreso
 
 ### Chapter endings — the Asimov technique
 
-The final paragraph of a chapter plants a seed for the next. Name the question or problem that remains open and that the next chapter takes on. Not as an announcement ("In the next chapter we will...") — as an open tension the reader carries into the turn of the page. The reader should feel pulled, not redirected.
+The final paragraph of a chapter plants a seed for the next. Name the question or problem that remains open and that the next chapter takes on. Not as an announcement ("In the next chapter we will..".) — as an open tension the reader carries into the turn of the page. The reader should feel pulled, not redirected.
 
 ## Forbidden AI patterns
 
@@ -137,10 +137,10 @@ Strings of em dashes (`—`) sprinkling asides across a paragraph are an AI-writ
 
 Rewrite rules:
 
-- **Aside** → period + new sentence. *"The chapters compound — Foundation makes AI Instructions effective"* becomes *"The chapters compound. Foundation makes AI Instructions effective."*
-- **Definition or expansion of a term** → colon. *"Cognitive debt — the AI-era undocumented decision"* becomes *"Cognitive debt: the AI-era undocumented decision."*
-- **Bold label + description in a list** → colon. *"**Foundation** — repo structure as the agent's briefing"* becomes *"**Foundation**: repo structure as the agent's briefing."*
-- **Tight parenthetical clause** → comma, or just delete the dashes. *"a CLI agent — one that combines a thinking model"* becomes *"a CLI agent, one that combines a thinking model."*
+- **Aside** → period + new sentence. *"The chapters compound — Foundation makes AI Instructions effective"* becomes *"The chapters compound. Foundation makes AI Instructions effective".*
+- **Definition or expansion of a term** → colon. *"Cognitive debt — the AI-era undocumented decision"* becomes *"Cognitive debt: the AI-era undocumented decision".*
+- **Bold label + description in a list** → colon. *"**Foundation** — repo structure as the agent's briefing"* becomes *"**Foundation**: repo structure as the agent's briefing".*
+- **Tight parenthetical clause** → comma, or just delete the dashes. *"a CLI agent — one that combines a thinking model"* becomes *"a CLI agent, one that combines a thinking model".*
 
 An em dash is acceptable at most once per page, and only when the alternative genuinely loses meaning. If the rewrite reads fine, the em dash was AI texture.
 
@@ -157,9 +157,9 @@ Use occasionally — never on every page:
 The right humor register: understated, technically grounded, slightly rueful. The best form is the observation that makes an experienced reader recognize something they have seen before and did not expect to see named.
 
 Examples in register:
-> "The spec was accurate. For the codebase as it existed three months ago."
-> "Nobody updated AGENTS.md. Everybody assumed someone else would."
-> "Most agent frameworks resemble distributed systems designed by people who hoped observability would somehow become optional."
+> "The spec was accurate. For the codebase as it existed three months ago".
+> "Nobody updated AGENTS.md. Everybody assumed someone else would".
+> "Most agent frameworks resemble distributed systems designed by people who hoped observability would somehow become optional".
 
 Never: jokes that reach, pop-culture references, self-congratulation, forced optimism. Dark is fine; try-hard is not.
 

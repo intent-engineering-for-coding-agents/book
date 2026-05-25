@@ -12,7 +12,7 @@ The prefix is 2–4 letters from the component or feature abbreviation. `GV` for
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is exactly the thing that does not match for long. With an identifier, the test can move, the scenario heading can change, the file can split into two, and the linkage holds.
 
-This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
+This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
 
 *Sources: OpenSpec (openspec.dev); openspec.dev FAQ (2026). Cucumber/Gherkin scenario structure (origin of the `Given/When/Then` form used in many spec frameworks). model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22).*
 
@@ -33,7 +33,7 @@ Test-type: integration
 
 `Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses; with it, the category is locked at spec review.
 
-`**Test:**` names the specific test that proves the scenario. Not "a test exists." A referenceable path or marker. The field is mandatory, not advisory. A scenario without a `**Test:**` line is not a finished scenario. It is a sketch. The traceability check planned for `ase-cli` v0.6.0 counts scenarios with missing or unresolvable `**Test:**` lines and fails when the count is non-zero.
+`**Test:**` names the specific test that proves the scenario. Not "a test exists". A referenceable path or marker. The field is mandatory, not advisory. A scenario without a `**Test:**` line is not a finished scenario. It is a sketch. The traceability check planned for `ase-cli` v0.6.0 counts scenarios with missing or unresolvable `**Test:**` lines and fails when the count is non-zero.
 
 Both fields are how you encode the practice into the artefact rather than into the discipline of whoever is writing. A field that is optional becomes the first thing to skip when the agent is in a hurry. The agent in a hurry is the agent the team will spend the most time with.
 

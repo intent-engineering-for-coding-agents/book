@@ -55,7 +55,7 @@ The test is not the line count. Can someone open the file and, in under two minu
 
 ## Maintenance as the actual discipline
 
-`AGENTS.md` is the highest-leverage file in the repo. Every session loads it, via the entry-point file that imports it. That also means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today."
+`AGENTS.md` is the highest-leverage file in the repo. Every session loads it, via the entry-point file that imports it. That also means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today".
 
 A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error; both produce an agent that is confidently working from the wrong brief.
 
@@ -67,4 +67,4 @@ Keeping the entry point honest is the first discipline. What it points to requir
 
 If you want to see this in practice, `ase-cli`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: five instruction files with load clauses, the key commands, and a skill list. Run `ase check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents". GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Böckeler, "Navigating AI Development Workflows," Refactoring.fm.*

@@ -28,7 +28,7 @@ See AGENTS.md at the repo root for all project conventions and AI instructions.
 
 One canonical source, thin pointers, no authored duplicates.
 
-*Sources: [agents.md](https://agents.md/) (May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025).*
+*Sources: [agents.md](https://agents.md/) (May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents". GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025).*
 
 ## Why generated is better than authored
 

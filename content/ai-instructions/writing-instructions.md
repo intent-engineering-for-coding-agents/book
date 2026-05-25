@@ -1,6 +1,6 @@
 # Writing Instructions That Work
 
-The instruction said "use the team's naming conventions." The agent followed it and named the new service `orderProcessor`, matching the pattern in the oldest files. The team had migrated to kebab-case eighteen months ago. Nobody updated the instruction. The convention was still there, just wrong.
+The instruction said "use the team's naming conventions". The agent followed it and named the new service `orderProcessor`, matching the pattern in the oldest files. The team had migrated to kebab-case eighteen months ago. Nobody updated the instruction. The convention was still there, just wrong.
 
 Vague instructions are not neutral. They are instructions for the agent to improvise, from whatever evidence it can find. And the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent may not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
 
@@ -26,7 +26,7 @@ A useful test for any instruction: can the agent produce a concrete behaviour fr
 
 "Follow good security practices" is not testable. "Never store secrets in environment variables; use the team's `SecretConfig` class in `src/config/secrets.py`" is testable. The agent either uses `SecretConfig` or it does not.
 
-Specificity closes the gap between what you wrote and what the agent does. "Keep functions small" leaves the agent to define "small." "Keep functions under 25 lines; extract when you exceed this" gives the agent a threshold it can check. The first instruction produces code of varying length depending on what the agent has seen before. The second produces code that consistently stays under the limit.
+Specificity closes the gap between what you wrote and what the agent does. "Keep functions small" leaves the agent to define "small". "Keep functions under 25 lines; extract when you exceed this" gives the agent a threshold it can check. The first instruction produces code of varying length depending on what the agent has seen before. The second produces code that consistently stays under the limit.
 
 ## Negative instructions do the work
 

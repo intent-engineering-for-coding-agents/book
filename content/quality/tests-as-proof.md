@@ -24,7 +24,7 @@ This applies within a test type. Across test types, a different question applies
 
 ## Done means proven
 
-The team had a definition of done that read: "implementation complete, tests passing, PR merged." That phrasing survived from the pre-agent era and stopped working the day the agent shipped its first feature in an afternoon. Implementation complete is now a low bar. Tests passing only means the tests that exist pass.
+The team had a definition of done that read: "implementation complete, tests passing, PR merged". That phrasing survived from the pre-agent era and stopped working the day the agent shipped its first feature in an afternoon. Implementation complete is now a low bar. Tests passing only means the tests that exist pass.
 
 The working definition in this book: a change is done when the approved intent has executable proof that covers the paths the code actually contains, not just the path the spec described first. Approved intent is the spec, reviewed and merged. Executable proof is a test that fails when the intent is not met, on the happy path and on every branch, error, and exception path the implementation introduces. Without the spec, there is nothing to approve. Without proof across the full structure, the approval is partial. Both have to be there, and they have to be connected to each other through an identifier that does not break when the prose moves.
 

@@ -8,7 +8,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 
 - Andrej Karpathy — ["Vibe coding"](https://x.com/karpathy/status/1886192184808149383). X (Twitter), *Feb 2, 2025*. Origin of the term used in this book's subtitle.
 - Simon Willison — ["Not all AI-assisted programming is vibe coding"](https://simonwillison.net/2025/Mar/19/vibe-coding/). *Mar 19, 2025*. Practical counterweight to Karpathy.
-- Ian Sommerville — *Software Engineering* (10th ed., Pearson, 2015). SDLC definition and phases; cited in "The Map: ASE and the SDLC."
+- Ian Sommerville — *Software Engineering* (10th ed., Pearson, 2015). SDLC definition and phases; cited in "The Map: ASE and the SDLC".
 - Dave Farley — *Modern Software Engineering* (Addison-Wesley, 2021); with Jez Humble: *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing). Feedback loops, sampling, CI/CD vocabulary.
 - Paul Hammant — [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
 - Michael Nygard — ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions). Cognitect blog, *Nov 15, 2011*. Origin of the ADR practice.
@@ -27,7 +27,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ## Spec-driven development
 
 - Fission AI — [OpenSpec](https://openspec.dev/) ([repo](https://github.com/Fission-AI/OpenSpec), ongoing). The change-folder + delta-spec framework this book uses end-to-end.
-  - openspec.dev — [FAQ](https://openspec.dev/faq) (ongoing). Source for the "Lightweight. Minimal steps, minimal process." quote used in the AC IDs chapter to establish that OpenSpec deliberately does not prescribe ID formats or coverage rules.
+  - openspec.dev — [FAQ](https://openspec.dev/faq) (ongoing). Source for the "Lightweight. Minimal steps, minimal process". quote used in the AC IDs chapter to establish that OpenSpec deliberately does not prescribe ID formats or coverage rules.
 - GitHub — [Spec-Kit](https://github.com/github/spec-kit) ([docs](https://github.github.com/spec-kit/), ongoing). Enterprise end of the spectrum.
 - [LeanSpec](https://lean-spec.dev) (ongoing). Smaller-community framework articulating the small-spec discipline.
 - Rick Hightower — ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI: Where SDD Tools Diverge"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46). Medium, *Feb 27, 2026*. Tool-tradeoff map for Phase T.

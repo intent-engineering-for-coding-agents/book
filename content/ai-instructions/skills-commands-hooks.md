@@ -8,7 +8,7 @@ The problem was not the instruction. The problem was treating a repeatable workf
 
 An instruction tells the agent how your codebase works. A skill tells it how to perform a specific repeatable task. The agent reads instructions for context. It runs skills for outcomes.
 
-Get this wrong and you end up with instructions that describe workflows in prose ("when you finish modifying `docs/`, remember to update...") and skills that describe conventions instead of steps. The result is context the agent skims and procedures the agent improvises.
+Get this wrong and you end up with instructions that describe workflows in prose ("when you finish modifying `docs/`, remember to update..".) and skills that describe conventions instead of steps. The result is context the agent skims and procedures the agent improvises.
 
 The test: if a developer would describe it as a recipe, a sequence of discrete steps, it is a skill. If they would describe it as background knowledge, this is how we do things here, it is an instruction. Instructions prevent drift by keeping the agent oriented. Skills fix it when it happens.
 
@@ -16,9 +16,9 @@ The test: if a developer would describe it as a recipe, a sequence of discrete s
 
 A skill is a Markdown file. What it contains determines whether the agent runs it correctly.
 
-Discrete steps matter most. Not "update the documentation" but "scan `docs/` with `ls -R`; for each directory, read the heading of each Markdown file; regenerate `docs/INDEX.md` with file path and heading; regenerate each `README.md` with a sorted list." Discrete steps can be checked off. Prose cannot.
+Discrete steps matter most. Not "update the documentation" but "scan `docs/` with `ls -R`; for each directory, read the heading of each Markdown file; regenerate `docs/INDEX.md` with file path and heading; regenerate each `README.md` with a sorted list". Discrete steps can be checked off. Prose cannot.
 
-Add a completion condition. How does the agent know it is done? "Run `ase check docs-index-stale`. If it passes, the skill is complete." Without this, the agent may finish step four and not realise there is a step five.
+Add a completion condition. How does the agent know it is done? "Run `ase check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realise there is a step five.
 
 Anticipate the most common failure. If the skill reads file headings and a file has no heading, what should the agent do? A skill that answers this question runs more reliably than one that leaves the agent to improvise at the moment it encounters the exception.
 

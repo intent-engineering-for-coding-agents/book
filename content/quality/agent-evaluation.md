@@ -1,12 +1,12 @@
 # Agent Evaluation and Regression
 
-The team added one bullet to `AGENTS.md`: "prefer composition over inheritance." It seemed harmless. The next week the agent started rewriting service classes into helper functions even where the inheritance hierarchy carried meaningful invariants. The PRs passed review because each one looked plausible in isolation. The shape of the codebase shifted in a direction nobody had asked for. The line was eventually removed. Nobody could say exactly when the drift started.
+The team added one bullet to `AGENTS.md`: "prefer composition over inheritance". It seemed harmless. The next week the agent started rewriting service classes into helper functions even where the inheritance hierarchy carried meaningful invariants. The PRs passed review because each one looked plausible in isolation. The shape of the codebase shifted in a direction nobody had asked for. The line was eventually removed. Nobody could say exactly when the drift started.
 
 Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the missing one in most teams.
 
 ## Two different feedback loops
 
-The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent." That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artefact under scrutiny.
+The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent". That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artefact under scrutiny.
 
 The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect is visible only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to `AGENTS.md` that makes the agent measurably worse can sit in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 

@@ -8,7 +8,7 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 The entry point goes stale. `AGENTS.md` says to follow the old module layout. An ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`. The agent reads the instructions, not the ADR, and produces code shaped for the old system.
 
-The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR that changes something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `ase check` rule catches "the convention you describe no longer matches the code." The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
+The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR that changes something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `ase check` rule catches "the convention you describe no longer matches the code". The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
 
 ## Dead specs
 

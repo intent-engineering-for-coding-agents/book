@@ -44,7 +44,7 @@ This is a heuristic table, not a decision tree. The real question: what is the c
 
 ## What GSD is
 
-GSD (Get Shit Done) is the lightest structured point on the spectrum: structured prompting without a framework. No change folder. No formal lifecycle. Write a concise intent document, run the agent, commit. Hightower describes it as "spec-driven development without the ceremony."
+GSD (Get Shit Done) is the lightest structured point on the spectrum: structured prompting without a framework. No change folder. No formal lifecycle. Write a concise intent document, run the agent, commit. Hightower describes it as "spec-driven development without the ceremony".
 
 It is not sloppy. GSD produces a usable artifact. It just does not produce an archive, a task log, or a traceability trail. For teams where OpenSpec's overhead exceeds their risk profile, GSD is the practical alternative. For teams where traceability is required, it is not.
 

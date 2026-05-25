@@ -26,7 +26,7 @@ One file per domain, not one file per task. `coding-standards.md` covers all Pyt
 
 AgentPatterns.ai's evaluation of context files identifies this as the most common failure mode: files that are too large to be useful, or too granular to be discoverable. The instruction file that nobody loads is worse than no instruction file, because it creates a false confidence that the agent has been briefed.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help."*
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help".*
 
 ## `.agents/skills/`
 

@@ -10,7 +10,7 @@ The `.principles` experiment is one answer to that gap.
 
 The dot-principles project (github.com/dot-principles) is a principle-as-code framework. The shape: principles are written as version-controlled Markdown files, organised into catalogues, and applied through three agent commands: `dot-scout`, `dot-prime`, and `dot-audit`. The framework is open, experimental, and complementary to specs and tests, not a replacement.
 
-A principle file states one belief about how code should be shaped. "Functions should have one reason to change." "Error handling lives at the boundary, not in the core." "Tests should fail for one reason." Each principle is short, named, and reusable. The catalogue is a collection of these files, scoped to a team or a project.
+A principle file states one belief about how code should be shaped. "Functions should have one reason to change". "Error handling lives at the boundary, not in the core". "Tests should fail for one reason". Each principle is short, named, and reusable. The catalogue is a collection of these files, scoped to a team or a project.
 
 The three commands close the loop on the principles.
 
@@ -34,7 +34,7 @@ The framework is optional. A team using ASE without `.principles` has specs, tes
 
 ## A worked example
 
-A team writing a Python service decides one of their principles is "no business logic in route handlers." The handler validates input, delegates to a service, and returns the response. Business decisions happen in the service layer.
+A team writing a Python service decides one of their principles is "no business logic in route handlers". The handler validates input, delegates to a service, and returns the response. Business decisions happen in the service layer.
 
 The principle file lives at `.principles/no-logic-in-handlers.md`:
 

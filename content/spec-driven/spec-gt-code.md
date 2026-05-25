@@ -42,13 +42,13 @@ Frederick P. Brooks called it in 1975: plan to throw one away. The first system 
 
 Vibe coding is a special case. A vibe session produces no spec: the specification is chat history, ephemeral and uncommitted. That makes it useful for exploration and mockups. The transition to production is: extract what you learned into a spec, discard the prototype code, and regenerate from the spec.
 
-*Sources: Frederick P. Brooks Jr., *The Mythical Man-Month* (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away." "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025).*
+*Sources: Frederick P. Brooks Jr., *The Mythical Man-Month* (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away". "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025).*
 
 ## The bar a spec must clear
 
 Not every document labelled "spec" earns the treatment described above. A spec that deserves to be treated as the durable artefact has to meet a minimum standard.
 
-**Testable**: each acceptance criterion maps to an observable, verifiable outcome. Not "the API should handle errors gracefully." "When the upstream service returns a 503, the API should retry once after 1 second, then return a 503 with `{ error: 'upstream unavailable' }`." The criterion is correct or it is not.
+**Testable**: each acceptance criterion maps to an observable, verifiable outcome. Not "the API should handle errors gracefully". "When the upstream service returns a 503, the API should retry once after 1 second, then return a 503 with `{ error: 'upstream unavailable' }`". The criterion is correct or it is not.
 
 **AC-tagged**: each scenario has a stable identifier. `[FEAT-001]`. Not a description. An ID. The ID survives the scenario being reworded, the file being moved, the section being reordered. Tests reference the ID, not the prose. This is what makes traceability work: the link between the spec and the tests that prove it does not break when someone edits the heading.
 

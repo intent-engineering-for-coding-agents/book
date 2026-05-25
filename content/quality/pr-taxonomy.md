@@ -1,6 +1,6 @@
 # PR Taxonomy
 
-The PR description read: "Fix the user profile bug, add the new export endpoint, and reformat the auth module." The diff was three hundred lines. The reviewer opened it, scrolled, scrolled again, and approved. A week later the auth module had a regression that traced back to the reformatting, which had silently changed the order in which two middleware decorators applied. The reformatting had not been in the spec. The fix had been. The export endpoint had been. The third change was a free rider, and it broke production.
+The PR description read: "Fix the user profile bug, add the new export endpoint, and reformat the auth module". The diff was three hundred lines. The reviewer opened it, scrolled, scrolled again, and approved. A week later the auth module had a regression that traced back to the reformatting, which had silently changed the order in which two middleware decorators applied. The reformatting had not been in the spec. The fix had been. The export endpoint had been. The third change was a free rider, and it broke production.
 
 Mixed PRs make every kind of review harder. They mix high-stakes changes with low-stakes ones, intent-bearing changes with cosmetic ones, things that need careful review with things that need none. The reviewer is reduced to scanning, because reading carefully for one class of change while ignoring the rest is not how human attention works.
 
@@ -10,7 +10,7 @@ The taxonomy is small. Three types of change, each with its own review style, ea
 
 **Docs changes** modify Markdown, comments, or other non-executable text. They do not affect runtime behaviour. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
-**Structural changes** are reorganisations: renames, moves, formatting, refactors that preserve behaviour. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioural change." The diff is often large; the cognitive load is medium; the risk is the silent behavioural change that sneaks in because a refactor was assumed safe and was not.
+**Structural changes** are reorganisations: renames, moves, formatting, refactors that preserve behaviour. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioural change". The diff is often large; the cognitive load is medium; the risk is the silent behavioural change that sneaks in because a refactor was assumed safe and was not.
 
 **Behavioural changes** modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
 

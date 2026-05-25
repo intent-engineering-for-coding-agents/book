@@ -10,7 +10,7 @@ This is not a flaw. It is how autoregressive generation works. Each token is pro
 
 The implication is direct: put the load-bearing information at the top. Constraints. Non-goals. The scope boundary. The one thing that, if misunderstood, corrupts the entire implementation. Not as a courtesy to the agent. Because if those constraints are not established before the agent begins designing, they may not be established at all.
 
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents." Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents". Anthropic, "Building effective agents" (Dec 2024).*
 
 ## The first-fifty-lines test
 

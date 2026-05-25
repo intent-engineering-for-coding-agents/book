@@ -20,7 +20,7 @@ Each chapter follows this pattern:
 2. **Practice** — what to do, with examples from `ase-cli` or the book repo itself
 3. **Evidence** — why it works (references, `ase-cli` tags the reader can check out)
 4. **Honest caveats** — where the practice has limits or is still evolving
-5. **Tooling** (optional, always last) — if `ase-cli` demonstrates this practice, mention it here in one paragraph: what command, what it does, how to try it. Frame as "If you want to see this in practice..." — never as a recommendation. The practice is the point; the tool is an example.
+5. **Tooling** (optional, always last) — if `ase-cli` demonstrates this practice, mention it here in one paragraph: what command, what it does, how to try it. Frame as "If you want to see this in practice..". — never as a recommendation. The practice is the point; the tool is an example.
 
 Outside the Tooling section, tool names appear at most once per chapter, as a brief illustration only. If a tool is mentioned more than once in the body, move the extra mentions to Tooling or cut them.
 
@@ -36,7 +36,7 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `*Sources:*` line at the end of any section that draws on a specific reference — format: `*Sources: Author "Title" (Year).*`
-- Use American English punctuation conventions: periods and commas go inside closing quotation marks (`"like this."` not `"like this".`)
+- Use American English punctuation conventions: periods and commas go inside closing quotation marks (`"like this".` not `"like this".`)
 - Use straight quotes and apostrophes throughout (`"`, `'`) — never curly/smart quotes (`"`, `"`, `'`, `'`), in prose or code
 - Do not use em-dash for decoration; use it only to set off a clause
 - Inline code for file names, paths, command names, and flag names
