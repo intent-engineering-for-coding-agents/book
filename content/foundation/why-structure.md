@@ -18,13 +18,15 @@ At human speed, drift like this used to take quarters to compound. At agentic sp
 
 ## Structure as briefing
 
-Whatever lives in `docs/`, `AGENTS.md`, and `openspec/` is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent always improvises. The choice is how much it has to.
+Whatever lives in `docs/`, `AGENTS.md`, and `openspec/` is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
 
 Run the gRPC case forward with structure in place:
 
 The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who happened to remember the migration meeting from 2024.
 
 Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own.
+
+*Sources: `ase-cli` repo structure in this project family. AGENTS.md conventions in this repo. OpenSpec documentation (ongoing).*
 
 ## The prerequisite
 

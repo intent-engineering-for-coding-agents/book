@@ -10,9 +10,11 @@ AI amplifies the developer driving it. Bill Doerrfeld put it bluntly in early 20
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026).*
 
-This is the territory of *Agentic Software Engineering (ASE)*, a term in active circulation for the practices that progressively make your AI agent less clueless about your system and intention. Not a methodology or a process. Just practices you adopt as you need them. ASE sits within what's increasingly called *Developer AI*: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
+This is the territory of *Agentic Software Engineering (ASE)*, the label this book uses for the practices that progressively make your AI agent less clueless about your system and intention. The term now appears in parts of the field, but the boundaries are still unsettled. Not a methodology or a process. Just practices you adopt as you need them. ASE sits within what some vendors and practitioners now call *Developer AI*: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
 
 An agent in ASE plays two roles. Labor is the obvious one: it writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch it into plan or architect mode and it pushes back on your design before a line is written. It surfaces the assumption you treated as settled. It asks what you haven't asked. The same agent that generates a payment service in twenty minutes can, five minutes earlier, point out that you haven't decided what happens when the payment provider times out.
+
+*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026). GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026). Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025).*
 
 ## What you can expect
 
@@ -26,7 +28,7 @@ The book is organized around four topics. Each works on its own at a solo scale;
 
 **Quality and Verification**: tests as proof of intent. Stable acceptance-criterion identifiers thread spec to test. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
-Topics three and four are a pair. Spec-driven development has hardened into a recognized practice through 2025–2026. This book takes the next step: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven without verification is just aim.
+Topics three and four are a pair. Spec-driven development has become more visible in 2025–2026 tooling and discussion, though the practice is still young and unevenly defined. This book takes the next step: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven without verification is only aim.
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026). SolGuruz, "Spec-Driven Development Guide" (2026). IntuitionLabs, "Spec-Driven Development & Spec-Kit" (2026).*
 
@@ -34,21 +36,23 @@ After the four topics come team workflows, cross-team coordination, and a sectio
 
 ## Who this is for
 
-You are a senior developer or architect. You already use a capability-class CLI agent: one with a thinking model, real tool use, and the autonomy to carry out a plan without checking in for every decision. The tested set: Claude Sonnet/Opus from the 4 generations onward, Codex/GPT from 5.3 onward, OpenCode + Deepseek 4 Pro, Junie CLI. Successor models in the same class should follow the same practices.
+You are a senior developer or architect. You already use a capability-class CLI agent: one with a reasoning-capable model, real tool use, and enough autonomy to carry out a plan without checking in for every decision. At the time of writing, that class includes tools such as Claude Code, Codex CLI, OpenCode, and Junie CLI. The exact model roster will keep moving. The practices in this book target the class, not a frozen vendor list.
 
-You can run one agent or several. ASE works the same way regardless of which agent runs it, though each tool has its own conventions for picking up `AGENTS.md` and `.agents/`. Wiring a specific agent into your repo is the agent's documentation problem, not this book's. The list of viable agents will shift through 2026 and beyond. The practices here should not, unless the agents themselves adopt the conventions and dissolve the need for them.
+You can run one agent or several. ASE works broadly the same way regardless of which agent runs it, though each tool has its own conventions for picking up `AGENTS.md` and `.agents/`. Wiring a specific agent into your repo is the agent's documentation problem, not this book's. The list of viable agents will shift through 2026 and beyond. The practices here should change more slowly, unless the tools themselves absorb these conventions and make some of the repo scaffolding unnecessary.
+
+*Sources: Anthropic Docs, "Claude Code overview" (ongoing). OpenAI Docs, "Codex CLI" (ongoing). OpenCode Docs (ongoing). Junie documentation in this repo. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025).*
 
 You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
-What you will not find here: a vendor comparison matrix. The tested-class agents are named, not ranked. Those matrices don't age in months and were never useful in the first place. Cost economics for seat-licensed AI gets one paragraph in the appendix and no chapter. And no prescription. This is the report of what teams have made work, with attribution and caveats. Adoption is pull, not push.
+What you will not find here: a vendor comparison matrix. The agent class is named, not ranked. Those matrices age in months, sometimes faster. Cost economics for seat-licensed AI gets one paragraph in the appendix and no chapter. And no prescription. This book is a report on what practitioners and toolmakers have described as workable so far, with attribution and caveats. Adoption is pull, not push.
 
 ## ASE is not ADLC
 
 Some readers will arrive having just finished an ADLC explainer and wonder why they need a second framework. They don't. ADLC and ASE solve different problems.
 
-*Agentic Development Lifecycle (ADLC)* is about building agents *as products*. The development side is reasoning loops, evals, hallucination budgets, the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, escalation paths that wrap a probabilistic agent in a deterministic cage. The deliverable is the agent.
+*Agentic Development Lifecycle (ADLC)* usually refers to building agents *as products*. The development side is reasoning loops, evals, hallucination budgets, the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, escalation paths that wrap a probabilistic agent in a deterministic cage. The deliverable is the agent.
 
-ASE is the other side of the table. The agent is the worker, not the product. Labor is only half of it. The agent also sharpens your design and reminds you of what you haven't yet considered. The deliverable is the same software your team has always shipped, with an agent loaded into your repo conventions to write more of it. Your tests stay tests, not evals. CI checks Acceptance Criterion (AC) traceability rather than agent-behavior drift, and the spec describes the change rather than the agent.
+ASE is the other side of the table. In this book's framing, the agent is the worker, not the product. Labor is only half of it. The agent also sharpens your design and reminds you of what you haven't yet considered. The deliverable is the same software your team has always shipped, with an agent loaded into your repo conventions to write more of it. Your tests stay tests, not evals. CI checks Acceptance Criterion (AC) traceability rather than agent-behavior drift, and the spec describes the change rather than the agent.
 
 If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to make an agent that writes code less clueless about your system. The two disciplines borrow vocabulary. They do not solve the same problem.
 
@@ -57,6 +61,8 @@ If you arrived expecting eval suites, agent-architecture patterns, or governance
 ## The companion: `ase-cli`
 
 Every practice in this book is demonstrated in a companion repo, `ase-cli`. ADRs in MADR format, specs with stable AC IDs, tests that actually trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
+
+*Sources: `ase-cli` repository history and tags in this project family.*
 
 ## How to read
 

@@ -4,7 +4,7 @@ The agent was working on the auth module. The codebase used a custom token valid
 
 The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Codex and the GitHub Copilot coding agent both read it natively. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing. One file at the repo root. Several current coding agents read it natively or can be pointed to it with a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which can import it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -13,6 +13,8 @@ The instinct when writing `AGENTS.md` is to fill it. Project history, coding sty
 Six weeks later the file is 300 lines. The agent reads every line before starting any task, because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed. It is more constrained.
 
 AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
+
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents". GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025). Anthropic docs for `CLAUDE.md` support (ongoing).*
 
 ## What goes in it
 
@@ -34,7 +36,7 @@ The clause on each instruction link is where most teams cut corners. Without one
 
 ## Tool-agnostic by design
 
-The ecosystem converged on `AGENTS.md` faster than expected. Codex read it from the start. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
+The ecosystem has been converging on `AGENTS.md` faster than many teams expected. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
 
 ```markdown
 # CLAUDE.md

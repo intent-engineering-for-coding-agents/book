@@ -6,9 +6,9 @@ The agent wrote unit tests because nobody told it to write anything else. It def
 
 ## The test taxonomy
 
-Different test types prove different things at different boundaries. A unit test proves one component in isolation. An integration test proves two or more components interacting. Neither proves what the other proves. Both are required.
+Different test types prove different things at different boundaries. A unit test proves one component in isolation. An integration test proves two or more components interacting. Neither proves what the other proves. Most non-trivial systems need more than one kind of test.
 
-A working taxonomy — representative, not prescriptive:
+A working taxonomy — representative, not prescriptive. This is the book's synthesis, built to make test intent legible to humans and agents:
 
 | Type | What it proves | Scope |
 |---|---|---|
@@ -32,7 +32,7 @@ Not every project uses all types. A CLI tool may have no slice tests and no perf
 
 The test taxonomy is only useful if it is written down where the agent can read it.
 
-The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. In model2diagram this is `docs/architecture/test-strategy.md`. The format is a table:
+The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. In model2diagram this is `docs/architecture/test-strategy.md`. The format can be as simple as a table:
 
 ```markdown
 ## Test types in use
@@ -59,13 +59,15 @@ The Level column is the second axis. Type answers what the test proves; level an
 
 The exclusions section is equally important. Without it, the agent has no way to distinguish *not applicable* from *nobody thought of it*. The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
 
-The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent generates a test at the right level in the right file with the right framework from the first session.
+The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
 
 The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. In model2diagram, ADR-0005 documents why `[PREFIX-NNN]` bracket IDs and `Test-type:` fields were chosen over alternatives. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
+*Sources: model2diagram `docs/architecture/test-strategy.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
+
 ## Scenario complexity and minimum test count
 
-Not every scenario requires the same number of tests. The minimum follows from the scenario's complexity — the number of conditions, branches, and error paths it contains.
+Not every scenario requires the same number of tests. In this book's convention, the minimum follows from the scenario's complexity — the number of conditions, branches, and error paths it contains.
 
 | Scenario complexity | Minimum tests |
 |---|---|
@@ -76,6 +78,8 @@ Not every scenario requires the same number of tests. The minimum follows from t
 A positive test proves the THEN holds when the WHEN is satisfied. A negative test proves the THEN does not fire when the WHEN is not satisfied: no false positives, no silent accepts. Both are required at every complexity tier; only the count scales.
 
 This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template. When it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
+
+*Sources: model2diagram `test/scenario-template.md`; model2diagram `docs/architecture/test-strategy.md`.*
 
 ## The AC registry
 
@@ -95,8 +99,10 @@ Prefix is 2–4 letters from the component abbreviation. `GV` for GraphValidator
 
 The rule for adding a new scenario: look up the prefix, use the `Next` value as the ID, increment `Next`, commit the registry update atomically with the new scenario. The registry and the spec change together. A scenario without a registry update is a scenario whose author allocated an ID by guessing.
 
+*Sources: model2diagram `test/ac-registry.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
+
 ## Tooling note
 
-If you want to see this in practice, model2diagram at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the six types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running.
+If you want to see this in practice, model2diagram at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the six types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running in that companion project.
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation. The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.

@@ -12,11 +12,13 @@ The problem: you do not know what the agent will get wrong until it gets it wron
 
 An instruction written before a failure is an instruction written for a hypothetical. The agent may never need it. It may also misinterpret it in a case you did not anticipate, producing a new failure the instruction was never designed to prevent.
 
-The practical approach: start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is now grounded in a real failure, describes the real constraint, and prevents the real thing that went wrong rather than a thing you imagined it might do.
+The practical approach in this book is: start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is now grounded in a real failure, describes the real constraint, and prevents the real thing that went wrong rather than a thing you imagined it might do.
 
 This keeps the file short. Short instruction files load faster, stay readable, and are easier to maintain when conventions change. A file full of preemptive instructions typically contains many that have never been exercised. A file built from observed failures contains nothing that is not load-bearing.
 
 The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing. It is a straitjacket.
+
+*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm. Anthropic, "Building effective agents" (Dec 2024).*
 
 Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. Those are not areas where general engineering knowledge is useful. They are areas where only your repo's history matters, and the agent cannot read that history unless you tell it to.
 
@@ -52,7 +54,7 @@ Instructions can be stale, vague, or simply wrong. The only way to know is to te
 
 Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is either missing, unclear, or not being loaded.
 
-The most common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file; the second one actually controls behaviour.
+One common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file; the second one actually controls behaviour.
 
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 

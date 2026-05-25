@@ -6,6 +6,8 @@ Knowing which failure mode you are in determines the recovery. A spin and a drif
 
 ## The six modes
 
+This chapter uses a working taxonomy rather than a field-standard one. The labels are meant to be operationally useful during a session, not to claim settled academic categories.
+
 **Drift** is the agent losing the thread of the task as context fills or as the task grows past the original brief. Signs: earlier constraints dropped from the output, code that contradicts the spec, increasingly generic responses that no longer reference the specific requirements. Recovery: reset the session with a fresh brief. The agent is not broken; it has lost context.
 
 **Spin** is the agent stuck on a sub-problem it cannot resolve alone. Signs: multiple similar attempts at the same solution, requests for clarification about the same constraint, acknowledgment of a blocker without progress past it. Recovery: provide the missing information or make the decision the agent cannot make on its own. Spin is not hallucination. The agent knows something is wrong. It needs input, not a reset.
@@ -24,11 +26,13 @@ Knowing which failure mode you are in determines the recovery. A spin and a drif
 
 None of these modes are agent failures in the sense of the model being broken. They are predictable consequences of the architecture: context windows that fill, instructions that go stale, tasks that require decisions the agent was not given authority to make.
 
-The framing that produces the right remediation: the agent is not broken, it is clueless. Fix the context. A broken agent needs a different model. A clueless agent needs better information. Most failures in practice are the second kind, which means the fix is in the repo or the session, not in the model.
+The framing that usually produces the right remediation is: the agent is not broken, it is clueless. Fix the context. A broken agent needs a different model. A clueless agent needs better information. In many day-to-day failures, the second diagnosis is the useful one, which means the fix is in the repo or the session, not in the model.
 
-A useful signal: when the agent is spending time but producing nothing, rerunning the same check, generating nearly identical variants, stalling on a tool call, something is wrong. Do not let it run. Toyota's production philosophy calls this pulling the Andon cord: stop the line the moment a defect appears, rather than letting the problem compound downstream.
+A useful signal: when the agent is spending time but producing nothing, rerunning the same check, generating nearly identical variants, stalling on a tool call, something is wrong. Do not let it run unchecked. Toyota's production philosophy calls this pulling the Andon cord: stop the line when a defect appears rather than letting the problem compound downstream. The analogy is imperfect, but the intervention logic is the useful part.
 
-The question to ask when you stop: why is the agent struggling here? The answer is almost always the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is almost never "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
+The question to ask when you stop: why is the agent struggling here? Often the answer is the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is rarely "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
+
+*Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026). Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026). ThoughtWorks Technology Radar Vol. 34 (Apr 2026). Toyota, "What is Andon?" (ongoing).*
 
 ## When to reset vs when to redirect
 

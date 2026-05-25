@@ -14,17 +14,18 @@ When you are ready to write a section of a chapter and have the outline bullet p
 ## Process
 
 1. Read the chapter outline from `plan.md` — treat the bullet points as the spec, not suggestions
-2. Load [writing.md](.agents/instructions/writing.md) and [voice.md](.agents/instructions/voice.md) — `writing.md` covers mechanics, `voice.md` covers how the prose should sound
+2. Load [writing.md](.agents/instructions/writing.md), [voice.md](.agents/instructions/voice.md), and [credibility-pass.md](.agents/skills/credibility-pass.md) — `writing.md` covers mechanics, `voice.md` covers how the prose should sound, and `credibility-pass.md` defines the mandatory provenance check before handoff
 3. Draft in this order:
    - Opening paragraph: state the problem this chapter addresses (concrete, not abstract)
    - Body: expand each bullet point into prose or a supporting example; keep `ase-cli` cross-references accurate
    - Closing: honest caveats or where this practice has limits
 4. Add a `*Sources:*` line wherever a specific reference is drawn on
 5. Verify all referenced `ase-cli` tags and file paths exist before writing them
+6. Run the credibility pass on the draft and fix every blocking finding before handing the file to `review-chapter`
 
 ## Output
 
-A complete `.md` file ready for a review pass. Do not commit without running `review-chapter` first.
+A complete `.md` file ready for a review pass. Do not commit without running `review-chapter` first, and do not call the draft complete until the credibility pass has been cleared.
 
 ## Quality bar
 
@@ -32,4 +33,5 @@ A complete `.md` file ready for a review pass. Do not commit without running `re
 - No content invented beyond the outline
 - Key constraint or problem appears in the first paragraph
 - Sources cited are in `plan.md` References section
+- The credibility pass has been run and all blocking findings resolved
 - `npm run docs:build` passes after the file is added to `content/` and the sidebar

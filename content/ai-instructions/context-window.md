@@ -22,6 +22,8 @@ This is counterintuitive. The instinct is to keep context rich by not resetting.
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than instructions the agent may no longer have in active context.
 
+*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026). Anthropic, "Building effective agents" (Dec 2024). This repo's `AGENTS.md` and skill structure.*
+
 ## Loading selectively
 
 The clause on each instruction file link tells the agent which to load. A developer working on authentication loads `auth-conventions.md`. They do not load `deployment-runbook.md` or `database-schema.md`. The clauses make that decision automatic.
@@ -32,7 +34,9 @@ If the clauses are not specific enough, the agent loads conservatively, which us
 
 Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec; the main agent reviews it. A subagent searches for usages of an API; the main agent decides what to do with the results. Each runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need; it delegates the parts that would fill its context to agents that do not carry its history.
 
-Most capability-class agents support some form of context compaction: Claude Code's `/compact`, Cursor's conversation summarisation, similar controls in Copilot and OpenCode. The mechanism compresses accumulated conversation history into a summary, freeing context for the next steps. The tradeoff is lossy compression: fine for broad context, risky for specific decisions that need to survive verbatim. Use it when the session has accumulated substantial successful output and the next stage needs room. Do not use it when the constraints that remain are precise.
+Several capability-class agents now support some form of context compaction: Claude Code's `/compact`, Cursor's conversation summarisation, and similar controls in other tools. The mechanism compresses accumulated conversation history into a summary, freeing context for the next steps. The tradeoff is lossy compression: fine for broad context, risky for specific decisions that need to survive verbatim. Use it when the session has accumulated substantial successful output and the next stage needs room. Do not use it when the constraints that remain are precise.
+
+*Sources: Anthropic docs for Claude Code `/compact` (ongoing). Cursor documentation on conversation summarisation (ongoing).*
 
 ## The discipline
 

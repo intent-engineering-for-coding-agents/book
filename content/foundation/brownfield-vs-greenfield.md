@@ -8,7 +8,7 @@ The Foundation chapters in this topic work from intent. You know what the system
 
 ## skeleton.md is the bootstrap
 
-`skeleton.md` is an AI-generated structural map of an existing codebase. Not a refactor plan. Not a list of improvements. Not a roadmap. A map.
+`skeleton.md` is the name this book uses for an AI-generated structural map of an existing codebase. Not a refactor plan. Not a list of improvements. Not a roadmap. A map.
 
 A useful skeleton contains what a capable agent can infer from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to *what is this system, and how does it work?*, written down for the first time, possibly ever.
 
@@ -20,11 +20,11 @@ Point a capability-class CLI agent at the legacy tree. Ask for a structural map,
 
 > Produce a structural map of this codebase. Cover the major modules and their responsibilities, how they depend on each other, the main data flows, and any business rules you can infer from the implementation. Note anything you cannot determine from the code alone.
 
-The agent will get the structure roughly 70–80% right. The remaining slice is business rules that exist only in institutional memory, and that requires a human who holds that memory. The skeleton is not done until a domain expert has reviewed it and corrected what the agent could not see.
+On a first pass, the agent will often get the structure mostly right. The remaining slice is business rules that exist only in institutional memory, and that requires a human who holds that memory. The skeleton is not done until a domain expert has reviewed it and corrected what the agent could not see.
 
 Commit the reviewed result. Update `docs/INDEX.md`. The skeleton is now part of the repo's context. It is not an artefact in a chat history that disappears the moment the session closes.
 
-Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates AI sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent can produce a useful skeleton against any codebase, given a domain expert and a few iterations.
+Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates AI sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside current coding-agent toolchains such as Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent can produce a useful skeleton against many codebases, given a domain expert and a few iterations.
 
 *Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation of the same pattern.*
 
@@ -47,5 +47,7 @@ The skeleton does not eliminate the brownfield condition. The system is still wh
 A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. The map drifts from the territory. A skeleton written eighteen months ago for a system that has been refactored three times since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a *Last reviewed* date and revisit it on a schedule the team will actually keep.
+
+*Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026). Cockburn, *Crystal Clear* (2004).*
 
 The skeleton's job ends when ADRs and `docs/README.md` cover what it covered. At that point it can be archived. Most teams will never quite reach that point.

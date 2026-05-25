@@ -52,3 +52,19 @@ Each chapter has an outline in `plan.md`. Expand the bullet points into prose â€
 ## References
 
 Every reference used must appear in the `plan.md` References section. Do not cite sources not in that list without adding them there first. Verify attributions before writing them â€” see `feedback_book_references.md` in memory.
+
+## Mandatory credibility pass
+
+Every writing task must load and run `.agents/skills/credibility-pass.md` before the draft is considered complete. Draft first, then run the credibility pass, then fix what it finds. Do not hand off a chapter or section for review until the credibility pass has no blocking issues.
+
+### Source hygiene rules
+
+- Treat provenance as part of the writing, not as an end-of-draft cleanup step.
+- Every section that makes a factual, historical, operational, or comparative claim needs a local `*Sources:*` line, even if the source also appears elsewhere in the chapter.
+- For each claim, decide what kind of source you are using: **primary/original**, **primary documentation**, **secondary commentary**, or **vendor-authored**. Prefer the strongest available source. If you only have a weaker source, keep it and lower the certainty of the prose.
+- Do not present book synthesis as field consensus. If a taxonomy, split, workflow, or naming scheme is this book's framing, say so explicitly with language like `This book uses...`, `The working taxonomy here is...`, or `This is a practical synthesis...`.
+- Do not present emerging conventions as standards unless the source actually supports that claim. Terms like `AGENTS.md`, ASE, ADLC variants, test taxonomies, and current agent workflows often need `de-facto`, `emerging`, `current practice`, or equivalent framing.
+- Time-sensitive claims about tools, model families, supported features, and current workflow patterns must be dated or bounded in time. Avoid pretending that a 2025-2026 snapshot is a permanent truth.
+- If the evidence does not justify certainty, downgrade the wording. Prefer `can`, `often`, `in some teams`, `in current practice`, or `this book argues` over universal claims.
+- When a section is mostly opinion or synthesis but includes one concrete factual claim, keep the local `*Sources:*` line for that factual part.
+- Before sign-off, run the credibility pass and resolve every `Missing local source`, `Weak provenance`, `Overstated claim`, `Unlabeled synthesis`, `Perishable claim`, and `Field-consensus overreach` finding.
