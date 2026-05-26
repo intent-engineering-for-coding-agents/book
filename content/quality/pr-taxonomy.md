@@ -49,7 +49,7 @@ graph TD
   B & D & F & H --> I[main]
 ```
 
-Four PRs, four reviews, four merges. None of them takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The reviewer of B reads the spec first. The reviewer of D scans for accuracy. The reviewer of F checks completeness. The reviewer of H checks that the extraction preserved behaviour and is referenced everywhere it should be.
+Four PRs, four reviews, four merges. None of them takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The reviewer of the export implementation reads the spec first. The reviewer of the README update scans for accuracy. The reviewer of the auth-module reformat checks completeness. The reviewer of the helper extraction checks that the extraction preserved behaviour and is referenced everywhere it should be.
 
 If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have got the same level of attention as the export logic. The duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
 
