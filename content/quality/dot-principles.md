@@ -20,7 +20,7 @@ Security follows the same pattern. The public catalogue includes the full OWASP 
 
 *Sources: [OWASP Top 10](https://owasp.org/Top10/) (2021); Saltzer, J.H. and Schroeder, M.D. "The Protection of Information in Computer Systems." *Proceedings of the IEEE*, 1975.*
 
-The three commands close the loop on the principles.
+## The dot-commands
 
 `dot-scout` is the setup step. It scans the project tree, detects the languages and frameworks in use, and places `.principles` files at the appropriate directory levels throughout the project, exactly as `.gitignore` files propagate git exclusions. Each generated file activates the principle groups relevant to that subtree: `@kotlin`, `@typescript`, `@schema`. Subdirectories inherit from parents and can layer on more specific groups or suppress individual principles with `!ID`.
 
