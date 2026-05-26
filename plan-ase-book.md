@@ -242,14 +242,26 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 > **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing ASE-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
 
+- [ ] Chapter: OpenSpec Across Stacks *(precedes bridge chapter; pairs with it)*
+    - *Sources: Fission AI, OpenSpec; Framelink MCP for Figma (GLips/Figma-Context-MCP, 14.9k★ as of mid-2026). Multi-tier directory guidance is book synthesis.*
+    - Front-end: the spec pattern is identical; what changes is the context the agent reads
+    - Design system docs under `docs/design/` — component conventions, animation rules, accessibility requirements, state management patterns. What Figma captures visually, the design system doc captures as convention.
+    - Figma via MCP: Framelink MCP lets agents fetch layout metadata, component structure, spacing, and colors from Figma files. Spec references the Figma frame link; the agent fetches design data during implementation. The spec focuses on behavior (states, validation, edge cases, loading/error/empty); MCP covers visuals. [PERISHABLE: MCP connector availability and quality are a mid-2026 snapshot.]
+    - User flows and navigation logic belong in `docs/architecture/`, referenced by the spec
+    - Multi-tier: one `openspec/` per stack (front-end, BFF, back-end), not one unified. A single `openspec/` across stacks gives the agent three codebases of context it doesn't need and three sets of canonical specs it shouldn't trust.
+    - The integration contract — BFF API, event schema — lives in an ADR at `docs/decisions/`, referenced by specs in both stacks
+    - When a change spans tiers (rare), each tier gets its own change folder referencing the same cross-cutting ADR
 - [ ] Chapter: Why Teams Break Agentic Workflows
     - *Sources: Yegge "Revenge of the junior developer" (Agent Clusters → Agent Fleets, 2025–2026); ThoughtWorks Radar Vol 34.*
     - N developers × M agents = compounding drift
     - Where individual practice runs out of road
 - [ ] Chapter: OpenSpec in an Existing SDLC *(bridge chapter)*
-    - *Sources: OpenSpec; Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (delegate-review-own loop framing).*
+    - *Sources: OpenSpec; Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (delegate-review-own loop framing); Framelink MCP for Figma (GLips/Figma-Context-MCP).*
     - You don't need a new methodology — you need to know which existing slot each artifact fits in
     - Change folder ↔ ticket (Jira / Linear / GitHub Issue) — and when to skip the ticket entirely
+    - User Story → Acceptance Criteria conversion: one Jira story maps to 1–N OpenSpec change folders. The story provides the why and what; the spec provides the testable how. The spec references the Jira issue ID for traceability.
+    - Atlassian MCP: the agent fetches Jira story context and Confluence pages during spec drafting. The AGENTS.md should instruct the agent to check Jira for the linked story before writing.
+    - Figma → spec handoff: paste the Figma frame link in the spec; the agent fetches design data via Framelink MCP. Spec covers behavior; MCP covers visuals. Cross-reference the OpenSpec Across Stacks chapter.
     - Spec delta ↔ PR review focus (review intent before diff)
     - `tasks.md` ↔ sprint board / kanban column
     - Archive ↔ changelog / release notes

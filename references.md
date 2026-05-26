@@ -37,6 +37,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - SolGuruz — ["Spec-Driven Development Guide"](https://solguruz.com/blog/spec-driven-development-guide/). *Mar 12, 2026*. Industry overview of spec-driven workflows.
 - IntuitionLabs — ["Spec-Driven Development & Spec-Kit"](https://intuitionlabs.ai/articles/spec-driven-development-spec-kit). Revised *Feb 21, 2026*. Spec-Kit walkthrough.
 - ["From Vibe Coding to Spec-Driven Development"](https://towardsdatascience.com/from-vibe-coding-to-spec-driven-development/). Towards Data Science, *2025*. Describes the transition from ephemeral chat-based prompting to version-controlled spec artefacts; confirms vibe coding produces no formal spec file by default.
+- Framelink — [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing, 14.9k★). MCP server bridging Figma design data to AI coding agents; fetches layout metadata, component structure, spacing, and colors from Figma files.
 
 ## Agentic engineering & AI instructions
 
