@@ -10,15 +10,19 @@ The `.principles` experiment is one answer to that gap.
 
 The dot-principles project (github.com/dot-principles) is a principle-as-code framework. The shape: principles are written as version-controlled Markdown files, organised into catalogues, and applied through three agent commands: `dot-scout`, `dot-prime`, and `dot-audit`. The framework is open, experimental, and complementary to specs and tests, not a replacement.
 
-A principle file states one belief about how code should be shaped. "Functions should have one reason to change". "Error handling lives at the boundary, not in the core". "Tests should fail for one reason". Each principle is short, named, and reusable. The catalogue is a collection of these files, scoped to a team or a project.
+A principle file states one established belief about how code should be shaped. "Functions should have one reason to change". "Error handling lives at the boundary, not in the core". "Tests should fail for one reason". Each principle is short, named, and reusable, and each has a citable published source behind it: the public catalogue accepts only principles grounded in the software engineering literature, backed by a book with an ISBN, a paper with a DOI, or an authoritative specification. Team conventions without a published source go in a team-namespaced fork rather than the shared catalogue.
+
+Structural design patterns get Mermaid class diagrams alongside the prose. The Gang of Four Bridge principle in the public catalogue includes the two-hierarchy decomposition as a diagram: readable by the developer as reference material, and readable by the agent as a structural specification to match code against. Violations that no lint rule can catch, like a class hierarchy multiplying along two orthogonal axes, become straightforward audit findings when the agent has the canonical diagram in context.
 
 The three commands close the loop on the principles.
 
-`dot-scout` reads the codebase and identifies which principles the existing code already follows, which it violates, and which are unused. The output is a baseline: here is where you are relative to your principles.
+`dot-scout` is the setup step. It scans the project tree, detects the languages and frameworks in use, and places `.principles` files at the appropriate directory levels throughout the project, exactly as `.gitignore` files propagate git exclusions. Each generated file activates the principle groups relevant to that subtree: `@kotlin`, `@typescript`, `@schema`. Subdirectories inherit from parents and can layer on more specific groups or suppress individual principles with `!ID`.
 
-`dot-prime` runs before a coding session. It loads the relevant principles into the agent's context, scoped to the files the session will touch. Not the entire catalogue; the subset the agent will need. The agent codes against the principles, not against a generic style guide.
+`dot-prime` runs before a coding session. It resolves the active `.principles` hierarchy for the files the session will touch and distils it into a compact set of rules the agent keeps in context while coding. Not the entire catalogue; the five to ten principles that apply here. The agent codes against the principles, not against a generic style guide.
 
-`dot-audit` runs after a coding session, or as a CI step. It checks the produced code against the same principles, flagging violations. The check is AI-native: a deterministic linter cannot tell whether a function has one reason to change, but a model with the principle in context can make a defensible call.
+`dot-audit` runs after a coding session, or as a CI step. It checks the produced code against the active principles, reports findings grouped by severity, and, when asked, fixes them, commits, pushes, and opens a PR. The check is AI-native: a deterministic linter cannot tell whether a function has one reason to change, but a model with the principle in context can make a defensible call.
+
+The framework does not teach the agent software engineering. The agent already knows SOLID, OWASP, DDD, and the rest. What `.principles` gives it is intent: which principles matter here, in this part of your codebase.
 
 *Sources: [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing).*
 
@@ -36,30 +40,62 @@ The framework is optional. A team using ASE without `.principles` has specs, tes
 
 A team writing a Python service decides one of their principles is "no business logic in route handlers". The handler validates input, delegates to a service, and returns the response. Business decisions happen in the service layer.
 
-The principle file lives at `.principles/no-logic-in-handlers.md`:
+The team creates a principle file in their catalogue at `principles/team/no-logic-in-handlers.md`:
 
 ```markdown
-# No business logic in route handlers
+# TEAM-NO-LOGIC-IN-HANDLERS: No business logic in route handlers
+
+**Layer**: 1
+**Categories**: code-design, http, separation-of-concerns
+**Applies-to**: python, flask, fastapi
+**Summary**: Route handlers validate input, delegate to a service, and shape the response.
+
+## Principle
 
 Route handlers validate input, delegate to a service, and shape the
 response. Decisions about what the system should do live in the service
-layer.
+layer. A handler that branches on business state is doing work that
+belongs elsewhere.
 
-## Why
+## Why it matters
 
 Handlers are tested with HTTP-shaped tests. Services are tested with
 domain-shaped tests. Mixing the two makes both tests harder to write
 and harder to read. The handler becomes a place where ad hoc behaviour
 accumulates and the service becomes anaemic.
 
-## Smells
+## Violations to detect
 
 - A handler that branches on business state (user.is_admin, order.status)
 - A handler that calls more than one service method
 - A handler whose tests assert business outcomes rather than HTTP outcomes
+
+## Good practice
+
+```python
+@app.route("/orders/<id>/cancel")
+def cancel_order(id):
+    order = OrderValidator(id).validate_exists()
+    CancelOrderService().cancel(order)
+    return jsonify({"status": "cancelled"}), 200
 ```
 
-The principle is a Markdown file. It is reviewable. It is version-controlled. It can be argued about in a PR. When the agent writes a new endpoint, `dot-prime` loads this file into context, and the agent writes the handler in the expected shape because it has the principle in front of it. When `dot-audit` runs on the PR, it checks the new code against the principle and flags violations with reference to the file.
+## Sources
+
+- Team convention, adopted 2024.
+```
+
+`TEAM-NO-LOGIC-IN-HANDLERS` is a team-local principle, so `Team convention` is a valid source. A principle submitted to the public catalogue would need a published reference: a book, a paper with a DOI, or an authoritative specification.
+
+The `.principles` file at the repo root declares it active:
+
+```
+@team
+```
+
+A single line. The agent reads `.principles`, resolves `@team` to the group definition in `groups/team.yaml`, finds `TEAM-NO-LOGIC-IN-HANDLERS`, loads the full content from the catalogue. When the agent writes a new endpoint, `dot-prime` loads this file into context, and the agent writes the handler in the expected shape because it has the principle in front of it. When `dot-audit` runs on the PR, it checks the new code against the principle and flags violations with reference to the file.
+
+The principle is a Markdown file, reviewable, version-controlled, debatable in a PR. The `.principles` selection file is three lines of text. The catalogue directory mirrors the team's structure. The ase-book itself ships a 54-principle catalogue under `principles/ase/` with a group at `groups/ase-book.yaml`, activated by the single line `@ase-book` in `.principles`.
 
 The principle does not need to be perfectly stated. It needs to be stated well enough that the agent can apply it consistently. The first version is rarely the last; principles get refined in PRs over time, like any other documentation.
 
