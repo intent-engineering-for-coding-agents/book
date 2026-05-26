@@ -14,6 +14,12 @@ A principle file states one established belief about how code should be shaped. 
 
 Structural design patterns get Mermaid class diagrams alongside the prose. The Gang of Four Bridge principle in the public catalogue includes the two-hierarchy decomposition as a diagram: readable by the developer as reference material, and readable by the agent as a structural specification to match code against. Violations that no lint rule can catch, like a class hierarchy multiplying along two orthogonal axes, become straightforward audit findings when the agent has the canonical diagram in context.
 
+*Sources: [GOF-BRIDGE](https://github.com/dot-principles/dot-principles/blob/main/principles/gof/bridge.md) — Gamma, Helm, Johnson, Vlissides. *Design Patterns*. Addison-Wesley, 1994. ISBN 978-0-201-63361-0.*
+
+Security follows the same pattern. The public catalogue includes the full OWASP Top 10 and the Saltzer-Schroeder security design principles: zero trust, separation of privilege, threat modelling, supply chain security. Developers do not skip these because they disagree with them; they skip them because the principles are not in front of them when writing the handler. `dot-prime` puts them there. Injection and broken access control get caught during development, not at the pen test.
+
+*Sources: [OWASP Top 10](https://owasp.org/Top10/) (2021); Saltzer, J.H. and Schroeder, M.D. "The Protection of Information in Computer Systems." *Proceedings of the IEEE*, 1975.*
+
 The three commands close the loop on the principles.
 
 `dot-scout` is the setup step. It scans the project tree, detects the languages and frameworks in use, and places `.principles` files at the appropriate directory levels throughout the project, exactly as `.gitignore` files propagate git exclusions. Each generated file activates the principle groups relevant to that subtree: `@kotlin`, `@typescript`, `@schema`. Subdirectories inherit from parents and can layer on more specific groups or suppress individual principles with `!ID`.
@@ -28,7 +34,7 @@ The framework does not teach the agent software engineering. The agent already k
 
 ## Where it fits
 
-Specs are about behaviour. Tests are about proof. Principles are about shape.
+This book uses three distinct questions to separate the layers: what should the code do, does it do it, and is it well-shaped. Specs answer the first. Tests answer the second. Principles answer the third.
 
 The three answer different questions and the answers do not overlap. A spec describes what the code should do, not what shape it should have. A test verifies the spec is met, not whether the implementation that meets it is well-shaped. A principle audit catches the cases where the spec is met and the test passes and the code is still clumsy.
 
@@ -42,7 +48,7 @@ A team writing a Python service decides one of their principles is "no business 
 
 The team creates a principle file in their catalogue at `principles/team/no-logic-in-handlers.md`:
 
-```markdown
+````markdown
 # TEAM-NO-LOGIC-IN-HANDLERS: No business logic in route handlers
 
 **Layer**: 1
@@ -83,7 +89,7 @@ def cancel_order(id):
 ## Sources
 
 - Team convention, adopted 2024.
-```
+````
 
 `TEAM-NO-LOGIC-IN-HANDLERS` is a team-local principle, so `Team convention` is a valid source. A principle submitted to the public catalogue would need a published reference: a book, a paper with a DOI, or an authoritative specification.
 
@@ -95,15 +101,19 @@ The `.principles` file at the repo root declares it active:
 
 A single line. The agent reads `.principles`, resolves `@team` to the group definition in `groups/team.yaml`, finds `TEAM-NO-LOGIC-IN-HANDLERS`, loads the full content from the catalogue. When the agent writes a new endpoint, `dot-prime` loads this file into context, and the agent writes the handler in the expected shape because it has the principle in front of it. When `dot-audit` runs on the PR, it checks the new code against the principle and flags violations with reference to the file.
 
-The principle is a Markdown file, reviewable, version-controlled, debatable in a PR. The `.principles` selection file is three lines of text. The catalogue directory mirrors the team's structure. The ase-book itself ships a 54-principle catalogue under `principles/ase/` with a group at `groups/ase-book.yaml`, activated by the single line `@ase-book` in `.principles`.
+The principle is a Markdown file, reviewable, version-controlled, debatable in a PR. The `.principles` selection file is three lines of text. The catalogue directory mirrors the team's structure. The ase-book itself ships a catalogue under `principles/ase/` with a group at `groups/ase-book.yaml`, activated by the single line `@ase-book` in `.principles`.
 
 The principle does not need to be perfectly stated. It needs to be stated well enough that the agent can apply it consistently. The first version is rarely the last; principles get refined in PRs over time, like any other documentation.
 
 ## When it makes sense and when it does not
 
-Small teams do not need `.principles`. The senior developer is in the PRs. The principles live in their head and get applied by their attention. The framework adds overhead with no marginal value.
+The clearest case for `.principles` is the one the framework was built for: a solo developer on a project with no reviewer. The principles live in nobody else's head because there is nobody else. The agent becomes the reviewer, available for every PR, never on holiday, never too tired to notice the obvious.
 
-The framework starts to pay off when the team is large enough that not every PR is reviewed by the developer who holds the principles. Or when multiple agents are running against the same codebase and the team wants the principles enforced consistently. Or when a senior developer is leaving and the team wants to keep the principles they cared about. In each case the gap is the same: the principles exist somewhere a single human can hold them, and the codebase is moving faster than that single human can scale.
+Human reviewers drift. A developer who has seen a thousand handlers gradually stops noticing when one accumulates business logic. The agent does not accumulate that familiarity. It reads the principle file and checks the code, every time, with the same attention it gave the first PR. That consistency is part of the value. The audit runs from CI on every push, or on demand from a PR comment. As of 2026, GitHub Copilot responds to `@github` mentions directly in the PR.
+
+The second case is the large team: when the codebase is moving faster than any single reviewer can cover, when multiple agents are running in parallel and the team wants the same standards applied consistently, or when the senior developer who held the principles in their head is leaving. The gap in each case is the same: one human can hold the standards, but the surface area is too wide for that human to reach.
+
+Small teams where a senior developer reviews every PR may not need the framework yet. The principles live in that person's attention. The overhead of a catalogue is real and the marginal value is low.
 
 The framework also pays off when the principles are non-obvious. "Use 4-space indentation" does not belong here; the linter handles it. "Error handling lives at the boundary" does belong here; no linter will catch the violation, but a model with the principle in context will. The dividing line is whether a deterministic rule can be written. If yes, write the rule. If no, write the principle.
 
