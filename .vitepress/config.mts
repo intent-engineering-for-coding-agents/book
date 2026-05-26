@@ -73,6 +73,7 @@ export default withMermaid(
           text: 'Appendices',
           items: [
             { text: 'Glossary', link: '/appendices/glossary' },
+            { text: 'Living Principles', link: '/appendices/living-principles' },
           ]
         }
       ],

@@ -210,7 +210,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Dual `@Tag` on the test: one for AC ID, one for test type — traceability + CI filtering in one annotation
     - AC registry (`test/ac-registry.md` pattern): one row per component, prefix + next counter, commit atomically with new scenario
     - Happy-path-only is not proof
-- [ ] Chapter: Test Strategy and Convention *(new)*
+- [x] Chapter: Test Strategy and Convention
     - *Sources: model2diagram `docs/architecture/test-strategy.md`; model2diagram `test/scenario-template.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
     - The problem: the agent defaults to unit tests for everything; the team's convention is not visible unless it is written down
     - Test taxonomy: unit, slice, integration, interface/contract, acceptance, architectural, e2e, performance, manual — what each type proves at which boundary
@@ -310,7 +310,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - How to adopt ASE practices in your repo
     - What to copy, what to adapt
     - `ase init` as starting point
-- [ ] Appendix: Living Principles → dot-principles
+- [x] Appendix: Living Principles → dot-principles
 - [ ] Appendix: Credits and References
     - Dave Farley, Michael Nygard, LeanSpec, OpenSpec, SpecKit, dot-principles
 - [ ] Final review: full read-through, verify all git tags, cross-reference ase-cli

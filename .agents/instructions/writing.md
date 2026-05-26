@@ -68,3 +68,14 @@ Every writing task must load and run `.agents/skills/credibility-pass.md` before
 - If the evidence does not justify certainty, downgrade the wording. Prefer `can`, `often`, `in some teams`, `in current practice`, or `this book argues` over universal claims.
 - When a section is mostly opinion or synthesis but includes one concrete factual claim, keep the local `*Sources:*` line for that factual part.
 - Before sign-off, run the credibility pass and resolve every `Missing local source`, `Weak provenance`, `Overstated claim`, `Unlabeled synthesis`, `Perishable claim`, and `Field-consensus overreach` finding.
+
+## Living principles
+
+Every chapter expresses normative claims — rules about how things should be done. When you draft a new chapter or substantively edit an existing one, extract any new principles that emerged and add them to the catalogue.
+
+1. After completing the draft, scan for normative claims: "must", "should", "always", "never", "the rule is", load-bearing theses, claims about how to structure work the agent does
+2. For each new principle not already in `principles/ase/`, create a new `.md` file in the appropriate category directory (`principles/ase/foundation/`, `principles/ase/context/`, `principles/ase/specs/`, `principles/ase/testing/`, `principles/ase/quality/`, `principles/ase/team/`)
+3. Follow the `.principles` file schema: `# ID: Title`, `**Layer**: 1|2|3`, `**Summary**:`, `## Principle`, `## Why it matters`, `## Violations to detect`, `## Good practice`, `## Sources`
+4. Add the new ID to `groups/ase-book.yaml`
+5. Add the principle's row to the table in `content/appendices/living-principles.md` under the correct category
+6. If a chapter edit invalidates an existing principle, update or remove the principle file and the appendix table row
