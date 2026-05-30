@@ -56,4 +56,4 @@ The review process works when humans and agents each cover their own gaps. Human
 
 Intent-first review requires that the spec is actually maintained and accurate. A spec that diverged from intent during implementation (because the implementation revealed a constraint the spec did not anticipate) needs to be updated before review. A reviewed PR should have a spec delta that matches the implementation; if the spec and the diff contradict each other, one of them is wrong. The developer owns resolving the contradiction before the PR is opened.
 
-The review works when there is one developer per PR. Add parallelism and the coordination question moves upstream, to before the branch is created.
+The review works when there is one developer per PR, which is the rule the whole section rests on: one OpenSpec change, one developer, one branch. What makes that rule hold across a team is not more process. It is a shared set of conventions every agent reads, so two developers' agents make the same calls without having to negotiate them first.

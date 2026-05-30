@@ -87,4 +87,4 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end may need a different boundary than the one described here. The principle is scope context to the work being done; the directory layout is one way to enforce that principle.
 
-The multi-stack problem is one manifestation of a broader coordination failure at team scale. One developer with one agent avoids it naturally. Two developers with two agents and one unclear boundary do not. The next chapter names the pattern directly.
+Multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of it. Knowing which existing slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

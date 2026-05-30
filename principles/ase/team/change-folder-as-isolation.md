@@ -32,5 +32,5 @@ Create the change folder, including a complete proposal with affected components
 
 ## Sources
 
-- ase-book, ["Parallel Agents on the Same Codebase"](/team/parallel-agents) chapter.
+- ase-book, [Team Workflows and Adoption](/team/) overview and ["Trunk-Based Development with Agents"](/team/trunk-based-development) chapter.
 - Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, Mar 22, 2025.

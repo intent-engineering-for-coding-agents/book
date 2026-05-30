@@ -52,13 +52,9 @@ A test scoped to one scenario and linked to its AC ID is also the most reliable 
 
 Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
 
-If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. There is no automated check that catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts.
+If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Code Review for Agent-Generated Code](../team/code-review-agent-code) covers how that review runs; the point here is that no amount of test rigor substitutes for it.
 
-The practical form is a PR. The spec change goes up for review before a line of code is written. The team reads it, asks questions, and approves it. The same discipline people already apply to code, applied one step earlier where fixing things costs a conversation instead of a rewrite.
-
-Size matters here for the same reason it matters in code review. A long spec change gets skimmed. Keep proposals small. One scenario at a time if you can. When the change is larger, split it. The cognition limit that makes large PRs dangerous applies equally to prose.
-
-The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readablem and the reasoning stays findable.
+The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readable and the reasoning stays findable.
 
 ## Honest caveats
 

@@ -30,7 +30,7 @@ The rule: one task per acceptance-criteria cluster. If three scenarios test the 
 
 Tasks are checkboxes. The agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
 
-For sizing guidance on how many tasks belong in a list, and when a list that grows past ten is signaling a scope problem, see "The Rule of Ten" in this section.
+For sizing guidance on how many tasks belong in a list, and when a list that grows past ten signals a scope problem, see the Rule of Ten in [Why Small?](./why-small).
 
 The task list makes the spec executable. It does not make the spec correct. That review happens next.
 

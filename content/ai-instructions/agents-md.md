@@ -43,11 +43,9 @@ The ecosystem has been converging on `AGENTS.md` faster than many teams expected
 @AGENTS.md
 ```
 
-Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.md` propagates automatically. `ase generate claude` writes this pointer file so you never have to author it by hand.
+Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.md` propagates automatically.
 
-The rule: if a vendor file needs to exist, it contains only the pointer syntax that tool requires. No instructions live there that are not already in `AGENTS.md`. One source of truth, thin pointers, no authored duplicates.
-
-The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of adopting it with Claude Code is one pointer file with one line. That is a small cost for a convention that belongs to no tool.
+The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of adopting it with Claude Code is one pointer file with one line. That is a small cost for a convention that belongs to no tool. How those pointer files are generated and kept thin without drifting is the subject of [Vendor Files That Point, Not Duplicate](./vendor-files).
 
 ## The size limit
 

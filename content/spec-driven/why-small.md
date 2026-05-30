@@ -37,3 +37,23 @@ Small specs create their own failure mode: a spec too vague to be useful.
 "Add error handling to the API" fits in ten lines but tells the agent almost nothing. The constraint is not size. It is specificity per line. A 200-line spec with twenty precise acceptance criteria beats a 50-line spec with five vague ones, every time.
 
 Write small and write precisely. The constraint is not "fewer words". It is "one PR's scope, one concrete outcome per scenario, nothing else". Scope is the first constraint. The second is quantity: how many tasks the spec should generate, how many files the PR should touch, and what to do when those numbers start climbing.
+
+## Ten is a rule of thumb
+
+Quantity has a threshold, and a decent rule of thumb is ten. Ten tasks in a spec. Ten files in a PR. The number is not magic and it is not a rule in any strict sense. Eight would work, twelve would work. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. A rule of thumb you cannot hold in your head under deadline pressure is not even useful as that. It is a footnote.
+
+The limit is for the humans in the loop, not the agent. The agent can re-read a twenty-three-task spec on every step. The reviewer cannot re-read a twenty-three-file diff while also judging whether the intent was right in the first place. Ten is roughly the point where a change still fits in one reviewer's head across a single sitting.
+
+When the task list reaches eleven, stop. The spec is describing two changes. Find the natural seam, the point where two halves could each ship and be useful on their own, and split there. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID. Splitting is not failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter; the rule here is only about when the count is telling you to split.
+
+## When the change is genuinely large
+
+Some features survive the split test. One coherent thing, twelve tasks, no clean seam. Sequenced PRs handle this. Branch names carry the sequence: `feature/<name>-part-1`, `feature/<name>-part-2`. The acceptance-criterion ID namespace is shared across the parts: `FEATURE-001` through `FEATURE-010` for part one, `FEATURE-011` onward for part two. The traceability trail stays continuous across the merge boundary, so six months later the archive still shows which test proved which scenario regardless of which PR shipped it. Part two depends on part one merging; note that dependency in the part-two proposal so the reviewer knows before opening the diff.
+
+File count is a rougher signal than task count. Ten files is a soft default; fifteen or twenty is fine when the change has a unifying shape. A rename propagated across fifty files is trivially reviewable: the description states the pattern, every diff is identical, the reviewer confirms it and moves on. A behavior change touching four deeply coupled files can be genuinely hard. The real question is whether the reviewer can understand the change from the description and a quick scan. File count is a proxy for that, nothing more. Where it becomes a real signal: a PR touching fifteen files with different changes in each, no unifying pattern, and a description that struggles to say what was done. That is a scope problem wearing a file-count disguise, and the fix is the same. Find the seam and split.
+
+The `openspec/changes/<name>/` folder and everything in it, the proposal, delta spec, design doc, and task list, does not count toward the file total. That is intent, not implementation.
+
+*Sources: LeanSpec, small-spec discipline and formality-to-risk matching.*
+
+Once the task list has the right number of items, the next question is which one the agent tackles first.

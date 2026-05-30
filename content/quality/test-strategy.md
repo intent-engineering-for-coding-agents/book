@@ -83,23 +83,9 @@ This table belongs in the project's `test/scenario-template.md` alongside the sc
 
 ## The AC registry
 
-AC IDs are stable because they are monotone: numbers only go up, even when a scenario is deleted. A deleted `GV-007` leaves a permanent gap. That gap is intentional. It means any external reference — a changelog, a bug report, a comment in code — that mentions `GV-007` will find no scenario, which is the correct answer. No ambiguity about whether the ID was reused.
+The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are covered in [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
 
-The registry file (`test/ac-registry.md`) maintains one row per component:
-
-```markdown
-| Prefix | Component         | Next |
-|--------|-------------------|------|
-| GV     | graph-validator   | 019  |
-| AUTH   | authentication    | 007  |
-| CONF   | configuration     | 023  |
-```
-
-Prefix is 2–4 letters from the component abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader should recognise the component from the prefix without consulting the registry. The prefix is permanent; never reassign it to a different component.
-
-The rule for adding a new scenario: look up the prefix, use the `Next` value as the ID, increment `Next`, commit the registry update atomically with the new scenario. The registry and the spec change together. A scenario without a registry update is a scenario whose author allocated an ID by guessing.
-
-*Sources: model2diagram `test/ac-registry.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
+*Sources: model2diagram `test/ac-registry.md`.*
 
 ## Tooling note
 
