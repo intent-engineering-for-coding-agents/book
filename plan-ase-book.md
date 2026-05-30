@@ -236,7 +236,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: dot-principles repo; dot-principles example-catalog.*
     - dot-scout → dot-prime → code → dot-audit
     - Complements specs and tests, does not replace them
-- [ ] Tag: `v0.6.0`
+- [x] Tag: `v0.6.0`
 
 #### Phase T — Write Team + Cross-Team Chapters (`v0.7.0`)
 
