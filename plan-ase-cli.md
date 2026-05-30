@@ -194,14 +194,14 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 #### Phase G — Spec-Driven: Test Traceability Checks (`v0.6.0`)
 
-- [ ] **Change 009 — Test traceability**
+- [x] **Change 009 — Test traceability**
     - `test-traceability` — cross-reference AC IDs in specs vs test markers
     - Regex-based: JUnit `@Tag`, Cucumber `@AC:`, fallback `// AC:`
-    - [ ] New → Plan → Apply → Archive
-- [ ] **Change 010 — Test coverage**
+    - [x] New → Plan → Apply → Archive
+- [x] **Change 010 — Test coverage**
     - `test-coverage` — positive/negative proof pair validation
-    - [ ] New → Plan → Apply → Archive
-- [ ] Tag: `v0.6.0`
+    - [x] New → Plan → Apply → Archive
+- [x] Tag: `v0.6.0`
 
 #### Phase H — Spec-Driven: MCP Server + AI Checks (`v0.7.0`)
 
