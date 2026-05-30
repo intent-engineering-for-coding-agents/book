@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter; together they form a compact summary of the book's normative claims — the rules, instincts, and boundaries that make agentic software engineering work.
 
-This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/ase/`; the selection file is `.principles` at the repo root, and the group definition is `groups/ase-book.yaml`. All 54 principles are active by default.
+This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/ase/`; the selection file is `.principles` at the repo root, and the group definition is `groups/ase-book.yaml`. All 61 principles are active by default.
 
 ## Foundation
 
@@ -100,6 +100,13 @@ Principles about team process, adoption, and culture.
 | ASE-TEAM-ADOPTION-IS-PULL | Document what teams have made work; let the reader decide what to lift. |
 | ASE-TEAM-GIVE-CREDIT | A book that hides its sources is weaker, not stronger — credit sources explicitly. |
 | ASE-TEAM-REPO-IS-BRIEFING | The repo is the briefing — every new developer and every new agent session starts here. |
+| ASE-TEAM-ONE-OPENSPEC-PER-STACK | Each stack in a multi-tier system gets its own `openspec/` directory — prevents cross-tier context confusion. |
+| ASE-TEAM-INTEGRATION-CONTRACT-IN-ADR | Cross-tier API contracts belong in ADRs, not in individual stack specs. |
+| ASE-TEAM-CHANGE-FOLDER-AS-ISOLATION | One change folder per developer-agent pair is the isolation primitive for parallel work. |
+| ASE-TEAM-SPEC-DELTA-FIRST-IN-REVIEW | In PR review, read the spec delta before the code diff — intent-first review. |
+| ASE-TEAM-TBD-CHANGE-FOLDER-BRANCH | An OpenSpec change folder corresponds to one short-lived branch — create together, archive and merge together. |
+| ASE-TEAM-STANDARDIZE-SHARED-DIVERGE-LOCAL | Standardize AI conventions that affect the codebase; leave local workflow choices divergent. |
+| ASE-TEAM-ADR-CROSS-TEAM | ADRs are the cross-team coordination primitive — permanent, public, already in the SDLC. |
 
 ---
 

@@ -30,6 +30,10 @@ The framework this book describes. A set of practices that progressively make an
 
 A codebase that predates ASE practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt ASE from intent the way greenfield ones can; they bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
+## BFF (Backend for Frontend)
+
+An intermediate service layer that sits between front-end clients and back-end services. The BFF provides a client-specific API — aggregating, transforming, and authorizing calls — so the front-end does not talk directly to back-end services. When using OpenSpec in a multi-tier system, each tier (front-end, BFF, back-end) has its own `openspec/` directory. Cross-tier contracts are recorded in ADRs. See [OpenSpec Across Stacks](/team/openspec-across-stacks).
+
 ## BYOK (Bring Your Own Key)
 
 A design principle where the tool uses the caller's AI provider credentials rather than supplying its own. `ase-cli`'s AI-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
@@ -100,7 +104,7 @@ A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming
 
 ## TBD (Trunk-Based Development)
 
-A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. See [PR Taxonomy](/quality/pr-taxonomy).
+A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the ASE context, an OpenSpec change folder maps one-to-one onto a short-lived branch. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
 
 ## TOC pattern
 

@@ -242,7 +242,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 > **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing ASE-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
 
-- [ ] Chapter: OpenSpec Across Stacks *(precedes bridge chapter; pairs with it)*
+- [x] Chapter: OpenSpec Across Stacks *(precedes bridge chapter; pairs with it)*
     - *Sources: Fission AI, OpenSpec; Framelink MCP for Figma (GLips/Figma-Context-MCP, 14.9k★ as of mid-2026). Multi-tier directory guidance is book synthesis.*
     - Front-end: the spec pattern is identical; what changes is the context the agent reads
     - Design system docs under `docs/design/` — component conventions, animation rules, accessibility requirements, state management patterns. What Figma captures visually, the design system doc captures as convention.
@@ -251,11 +251,11 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Multi-tier: one `openspec/` per stack (front-end, BFF, back-end), not one unified. A single `openspec/` across stacks gives the agent three codebases of context it doesn't need and three sets of canonical specs it shouldn't trust.
     - The integration contract — BFF API, event schema — lives in an ADR at `docs/decisions/`, referenced by specs in both stacks
     - When a change spans tiers (rare), each tier gets its own change folder referencing the same cross-cutting ADR
-- [ ] Chapter: Why Teams Break Agentic Workflows
+- [x] Chapter: Why Teams Break Agentic Workflows
     - *Sources: Yegge "Revenge of the junior developer" (Agent Clusters → Agent Fleets, 2025–2026); ThoughtWorks Radar Vol 34.*
     - N developers × M agents = compounding drift
     - Where individual practice runs out of road
-- [ ] Chapter: OpenSpec in an Existing SDLC *(bridge chapter)*
+- [x] Chapter: OpenSpec in an Existing SDLC *(bridge chapter)*
     - *Sources: OpenSpec; Hightower "GSD vs Spec Kit vs OpenSpec vs Taskmaster" (delegate-review-own loop framing); Framelink MCP for Figma (GLips/Figma-Context-MCP).*
     - You don't need a new methodology — you need to know which existing slot each artifact fits in
     - Change folder ↔ ticket (Jira / Linear / GitHub Issue) — and when to skip the ticket entirely
@@ -267,12 +267,12 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Archive ↔ changelog / release notes
     - ADRs ↔ architecture review board (or its absence)
     - The "delegate, review, own" loop — the emerging cross-tool operating model in SDD writing (2026)
-- [ ] Chapter: Trunk-Based Development with Agents
+- [x] Chapter: Trunk-Based Development with Agents
     - *Sources: Hammant trunkbaseddevelopment.com (canonical TBD); Hammant *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020); Farley *Modern Software Engineering* + continuousdelivery.com.*
     - Anchor: Paul Hammant's TBD as the canonical reference — small batches, short-lived branches, frequent integration. Farley's *MSE* and *Continuous Delivery* (with Humble) are the secondary anchors for the CI feedback-loop framing.
     - OpenSpec change folder ↔ short-lived branch
     - Merge cadence with parallel changes; how spec deltas reduce merge pain
-- [ ] Chapter: Code Review for Agent-Generated Code
+- [x] Chapter: Code Review for Agent-Generated Code
     - *Sources: ThoughtWorks Radar Vol 34 (mutation testing, feedback controls); Böckeler.*
     - Review the spec delta first, the diff second
     - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
@@ -281,25 +281,25 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `ase-cli` MCP `check_spec_quality`
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
-- [ ] Chapter: Parallel Agents on the Same Codebase
+- [x] Chapter: Parallel Agents on the Same Codebase
     - *Sources: Yegge "Revenge of the junior developer" (Agent Clusters → Fleets); Huntley "Everything is a Ralph Loop".*
     - One change folder per developer-agent pair as the isolation primitive
     - Architecture boundaries as the natural conflict-prevention layer
     - Conflict resolution when delta specs overlap
-- [ ] Chapter: Shared AI Instruction Conventions
+- [x] Chapter: Shared AI Instruction Conventions
     - *Sources: agents.md; agentpatterns.ai.*
     - Team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding
     - When to standardize, when to leave divergent
-- [ ] Chapter: Cross-Team Coordination
+- [x] Chapter: Cross-Team Coordination
     - *Sources: Nygard 2011 (ADRs as cross-team mechanism); ThoughtWorks Radar Vol 34.*
     - ADRs as cross-team mechanism (permanent, public, already part of the SDLC)
     - Inner source: sharing `.agents/` libraries across teams
     - Multi-repo realities — and OpenSpec's own roadmap gap
-- [ ] Chapter: What Is Still Evolving
+- [x] Chapter: What Is Still Evolving
     - *Sources: ThoughtWorks Radar Vol 34 (market fragmentation, term-coining); Hightower SDD-tools comparison.*
     - Maturity honesty applies to the book itself
     - What the SDD ecosystem has not yet figured out (multi-repo planning, agent-to-agent handoff, governance without bureaucracy)
-- [ ] Tag: `v0.7.0`
+- [ ] Tag: `v0.7.0`  <!-- chapters complete; tag pending build verification -->
 
 #### Phase U — Appendices + Polish (`v0.8.0`)
 

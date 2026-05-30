@@ -70,6 +70,21 @@ export default withMermaid(
           ]
         },
         {
+          text: 'Team Workflows',
+          items: [
+            { text: 'Overview', link: '/team/' },
+            { text: 'OpenSpec Across Stacks', link: '/team/openspec-across-stacks' },
+            { text: 'Why Teams Break Agentic Workflows', link: '/team/why-teams-break' },
+            { text: 'OpenSpec in an Existing SDLC', link: '/team/openspec-in-existing-sdlc' },
+            { text: 'Trunk-Based Development with Agents', link: '/team/trunk-based-development' },
+            { text: 'Code Review for Agent-Generated Code', link: '/team/code-review-agent-code' },
+            { text: 'Parallel Agents on the Same Codebase', link: '/team/parallel-agents' },
+            { text: 'Shared AI Instruction Conventions', link: '/team/shared-conventions' },
+            { text: 'Cross-Team Coordination', link: '/team/cross-team-coordination' },
+            { text: 'What Is Still Evolving', link: '/team/what-is-still-evolving' },
+          ]
+        },
+        {
           text: 'Appendices',
           items: [
             { text: 'Glossary', link: '/appendices/glossary' },
