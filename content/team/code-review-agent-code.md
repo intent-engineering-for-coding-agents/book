@@ -12,7 +12,7 @@ Only after those questions are answered does the diff get opened. The diff-revie
 
 A PR template that buries the spec delta reference at the bottom, after the test plan and the deployment checklist, is a PR template that produces reviewers who skip to the diff. The spec delta should be the first section in the PR description, with a direct link to the change folder. The reviewer should not have to hunt for it.
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing). ThoughtWorks, Technology Radar Vol 34, April 2026.*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff.*
 
 ## The PR taxonomy applied
 
@@ -22,7 +22,7 @@ The agent implementing a new endpoint may also notice that a helper function is 
 
 The `AGENTS.md` instruction for this is: behavioral changes do not include drive-by refactors. A refactor noticed during implementation is a follow-up, named in the PR description, shipped separately. The PR that ships the spec is behavioral; the PR that ships the cleanup is structural.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing).*
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), separating structural changes from behavioral changes into distinct PRs.*
 
 ## Split the spec PR from the implementation PR
 
@@ -40,7 +40,7 @@ The output of a multi-LLM critique pass is a list of concerns: missing edge case
 
 The forward reference: `ase-cli`'s MCP tool `check_spec_quality` performs a version of this critique automatically, flagging common spec deficiencies (missing negative test scenarios, undefined error behavior, acceptance criteria that describe implementation rather than behavior). As of mid-2026, this is an early tool; the pattern of automated spec critique is more stable than the specific tooling.
 
-*Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm. ThoughtWorks, Technology Radar Vol 34, April 2026.*
+*Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.*
 
 ## What humans skip and agents miss
 

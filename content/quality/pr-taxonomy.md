@@ -16,7 +16,7 @@ The taxonomy is small. Three types of change, each with its own review style, ea
 
 Three classes. Three review styles. One PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades; what is new is that agents make the temptation to mix them stronger, because the agent can do all three in one session and feels efficient bundling them.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing). Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021).*
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
 
 ## Why mixing makes review harder
 

@@ -6,7 +6,7 @@ The new version of the library introduced a transitive dependency that exfiltrat
 
 Most security advice for agentic teams is standard practice rebranded. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see. The failure modes specific to an agent that writes code by matching patterns, that defers to the user on risk decisions, and that arrives at a codebase with no memory of why a particular control exists.
 
-*Sources: OWASP, OWASP Top 10 (ongoing). ThoughtWorks, Technology Radar Vol 34 (April 2026).*
+*Sources: OWASP, OWASP Top 10 (ongoing), the standard application-security baseline this chapter builds on. ThoughtWorks, Technology Radar Vol 34 (April 2026), the agent-specific security failure modes the standard tools do not see.*
 
 ## Pattern replication
 
@@ -16,7 +16,7 @@ The agent does not distinguish between a pattern it should follow and a pattern 
 
 The human reviewer catches this because they remember. They know which endpoint has the inherited hole. They know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorisation model needs revision."
 
-The defence is to make the pattern the agent should follow the easiest pattern to find. A `docs/architecture/authorisation.md` that shows the canonical auth check. A comment on the broken endpoint that says "do not copy — see ADR-0012." An `AGENTS.md` rule that says authorisation patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
+The defence is to make the pattern the agent should follow the easiest pattern to find. A `docs/architecture/authorisation.md` that shows the canonical auth check. A comment on the broken endpoint that says "do not copy, see ADR-0012." An `AGENTS.md` rule that says authorisation patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
 
 ## Deference to the user
 

@@ -14,7 +14,7 @@ The practical structure: `AGENTS.md` at the repo root is the team's brief. It co
 
 Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. Keep the team brief short and link to detail files. `AGENTS.md` is a table of contents; the conventions live in `.agents/instructions/`.
 
-*Sources: [AGENTS.md](https://agents.md/) (ongoing). AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing).*
+*Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project brief. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the brief short and linking out to detail files.*
 
 ## Shared `.agents/skills/` libraries
 
@@ -24,7 +24,7 @@ These live in `.agents/skills/` and are referenced from `AGENTS.md`. On a team, 
 
 Skills can also be shared across repos via inner source: a shared `.agents/` repository that teams pull from, or a directory within a shared infrastructure repo. The shared skills define the team's common procedures; individual repos extend them with project-specific additions. The principle is the same as shared library dependencies: standardize what is common, extend for what is specific.
 
-*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing).*
+*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context and instruction files for quality and drift.*
 
 ## Onboarding: the first agent session
 

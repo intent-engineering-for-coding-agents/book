@@ -18,7 +18,7 @@ This keeps the file short. Short instruction files load faster, stay readable, a
 
 The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing. It is a straitjacket.
 
-*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm. Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.*
 
 Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. Those are not areas where general engineering knowledge is useful. They are areas where only your repo's history matters, and the agent cannot read that history unless you tell it to.
 
@@ -46,7 +46,7 @@ Write them explicitly. "Do not modify files under `src/generated/`; they are pro
 
 The same applies to package boundaries. "The `payments` module has no dependency on `users`; if a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
 
-*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm. Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.*
 
 ## Testing whether your instructions work
 

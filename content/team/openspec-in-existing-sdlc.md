@@ -16,7 +16,7 @@ The reverse link is automatic if you use the issue key in commit messages. Jira'
 
 When should you skip the ticket entirely? For small behavioral changes (a one-line fix, a config key rename) where the spec is the only record that matters. The threshold is whether anyone other than the implementing developer needs to track the work. If yes, ticket. If the spec and the commit message are the entire record, skip the overhead.
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing).*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder as the spec-of-record kept distinct from the planning ticket.*
 
 ## User story to acceptance criteria: the conversion
 
@@ -28,7 +28,7 @@ The Atlassian MCP (as of mid-2026, Anthropic's Claude AI connects to Jira and Co
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. The specific integration paths will change; the pattern of agents fetching ticket context before writing specs will not.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria.*
 
 ## Figma handoff: behavior in the spec, visuals via MCP
 
@@ -74,7 +74,7 @@ This loop maps directly onto the existing workflow. The Jira story (or brief, or
 
 "Delegate, review, own" is not a new ceremony. It is a name for what good spec authorship already looks like, applied consistently across the team.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the "delegate, review, own" operating model named in the prose above.*
 
 ## Honest caveats
 

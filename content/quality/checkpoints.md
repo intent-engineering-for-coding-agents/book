@@ -16,7 +16,7 @@ The design system is the part most teams skip until it breaks. UI components, AP
 
 The test convention belongs here alongside the design system: which test types the project uses, which frameworks cover each, how `@Tag` annotations are applied, what the coverage thresholds are. A `docs/architecture/test-strategy.md` document that the agent can read before it writes its first test is the difference between a consistent test suite and one that accumulated all its patterns by accident. The [Test Strategy and Convention](./test-strategy) chapter covers what goes in it.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024). AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing).*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.*
 
 ## During: the implementation gate
 
@@ -76,4 +76,4 @@ The gates are not project phases. A spec is not finished before implementation s
 
 The gates are also not equally costly. The before-gate is mostly maintenance: the architecture is already documented, `AGENTS.md` already exists, the design system already has its conventions. The during-gate is mostly automation. The after-gate is where most of the human attention goes, and it is also where the most value is created when the attention is spent well. Plan accordingly.
 
-The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid — including the broken one. The next chapter covers security failure modes that survive because they match the examples the agent was shown, not because any check missed them.
+The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid, including the broken one. The next chapter covers security failure modes that survive because they match the examples the agent was shown, not because any check missed them.

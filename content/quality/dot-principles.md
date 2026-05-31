@@ -14,11 +14,11 @@ A principle file states one established belief about how code should be shaped. 
 
 Structural design patterns get Mermaid class diagrams alongside the prose. The Gang of Four Bridge principle in the public catalogue includes the two-hierarchy decomposition as a diagram: readable by the developer as reference material, and readable by the agent as a structural specification to match code against. Violations that no lint rule can catch, like a class hierarchy multiplying along two orthogonal axes, become straightforward audit findings when the agent has the canonical diagram in context.
 
-*Sources: [GOF-BRIDGE](https://github.com/dot-principles/dot-principles/blob/main/principles/gof/bridge.md) — Gamma, Helm, Johnson, Vlissides. *Design Patterns*. Addison-Wesley, 1994. ISBN 978-0-201-63361-0.*
+*Sources: Gamma, Helm, Johnson, Vlissides, *Design Patterns* (Addison-Wesley, 1994), ISBN 978-0-201-63361-0, via the catalogue's [GOF-BRIDGE](https://github.com/dot-principles/dot-principles/blob/main/principles/gof/bridge.md) principle, the Bridge pattern as a structural principle the agent audits code against.*
 
 Security follows the same pattern. The public catalogue includes the full OWASP Top 10 and the Saltzer-Schroeder security design principles: zero trust, separation of privilege, threat modelling, supply chain security. Developers do not skip these because they disagree with them; they skip them because the principles are not in front of them when writing the handler. `dot-prime` puts them there. Injection and broken access control get caught during development, not at the pen test.
 
-*Sources: [OWASP Top 10](https://owasp.org/Top10/) (2021); Saltzer, J.H. and Schroeder, M.D. "The Protection of Information in Computer Systems." *Proceedings of the IEEE*, 1975.*
+*Sources: [OWASP Top 10](https://owasp.org/Top10/) (2021), the injection and broken-access-control risks the catalogue encodes; Saltzer, J.H. and Schroeder, M.D. "The Protection of Information in Computer Systems." *Proceedings of the IEEE*, 1975, the security design principles (least privilege, separation of privilege) the catalogue surfaces during development.*
 
 ## The dot-commands
 
@@ -30,7 +30,7 @@ Security follows the same pattern. The public catalogue includes the full OWASP 
 
 The framework does not teach the agent software engineering. The agent already knows SOLID, OWASP, DDD, and the rest. What `.principles` gives it is intent: which principles matter here, in this part of your codebase.
 
-*Sources: [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing).*
+*Sources: [.principles / dot-principles](https://github.com/dot-principles) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing), the dot-scout / dot-prime / dot-audit command model and the catalogue structure.*
 
 ## Where it fits
 

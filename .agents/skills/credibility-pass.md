@@ -28,6 +28,9 @@ Run a dedicated credibility and provenance pass on drafted or reviewed book cont
    - then `secondary commentary`
    - then `vendor-authored`
 3. For each section, verify that factual, historical, operational, or comparative claims have a local `*Sources:*` line.
+   - Verify each source on that line carries a claim-tag naming what it backs, and that the claim actually appears in the section.
+   - Flag any source that backs no claim in its section (decorative attribution) for removal, even if the source is strong.
+   - Verify load-bearing claims that lean on a named source are attributed inline in the prose, not only in the trailing line.
 4. Mark any taxonomy, split, workflow, or naming scheme that reads like field standard but is really book synthesis or repo convention.
 5. Mark any unstable or perishable claim that needs time-bounded wording, such as tool support, model behavior, workflow maturity, or current naming conventions.
 6. Downgrade or flag any claim whose wording is stronger than the available evidence.
@@ -42,6 +45,8 @@ Use these exact labels when the pass finds problems:
 - `Unlabeled synthesis`
 - `Perishable claim`
 - `Field-consensus overreach`
+- `Unmapped source` (a source on a `*Sources:*` line with no claim-tag, or whose claim does not appear in the section)
+- `Decorative source` (a source that backs no claim in its section and should be removed)
 
 ## Output
 

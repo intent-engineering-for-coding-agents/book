@@ -20,7 +20,7 @@ This chapter uses a working taxonomy rather than a field-standard one. The label
 
 **Tool misuse** is the agent using the wrong tool for the task: running a full test suite to verify a single change, or writing a one-off script where a targeted file edit would do. Signs: overhead that does not match the task size, side effects outside the expected scope. Recovery: interrupt and redirect. Tool misuse rarely compounds if caught early.
 
-*Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026). Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026). ThoughtWorks Technology Radar Vol 34 (April 2026).*
+*Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the looping/spin behavior of a stuck agent. Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026), clutter and complexity as drivers of agent failure. ThoughtWorks Technology Radar Vol 34 (April 2026), context-related failure as an emerging concern. The six-mode taxonomy itself is this book's working synthesis.*
 
 ## The framing that helps
 
@@ -32,7 +32,7 @@ A useful signal: when the agent is spending time but producing nothing, rerunnin
 
 The question to ask when you stop: why is the agent struggling here? Often the answer is the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is rarely "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
 
-*Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026). Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026). ThoughtWorks Technology Radar Vol. 34 (Apr 2026). Toyota, "What is Andon?" (ongoing).*
+*Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the loop signal of an agent spending time but producing nothing. Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026), the clueless-not-broken framing and fixing the context first. Toyota, "What is Andon?" (ongoing), stopping the line when a defect appears rather than letting it compound.*
 
 ## When to reset vs when to redirect
 

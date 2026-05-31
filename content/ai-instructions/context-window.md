@@ -12,7 +12,7 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 `docs/INDEX.md` exists for the same reason. One 40-line file, full orientation. The alternative is the agent discovering structure by navigating the directory tree, which costs tokens and produces unreliable results. An index file is context economy: one read, full picture.
 
-*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026). Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), context-window pressure as a practical constraint across agentic coding tools.*
 
 ## Short sessions beat long conversations
 
@@ -22,7 +22,7 @@ This is counterintuitive. The instinct is to keep context rich by not resetting.
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than instructions the agent may no longer have in active context.
 
-*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026). Anthropic, "Building effective agents" (Dec 2024). This repo's `AGENTS.md` and skill structure.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
 
 ## Loading selectively
 
@@ -36,7 +36,7 @@ Some tools support subagents: fresh context windows with a specific mandate. A s
 
 Several capability-class agents now support some form of context compaction: Claude Code's `/compact`, Cursor's conversation summarisation, and similar controls in other tools. The mechanism compresses accumulated conversation history into a summary, freeing context for the next steps. The tradeoff is lossy compression: fine for broad context, risky for specific decisions that need to survive verbatim. Use it when the session has accumulated substantial successful output and the next stage needs room. Do not use it when the constraints that remain are precise.
 
-*Sources: Anthropic docs for Claude Code `/compact` (ongoing). Cursor documentation on conversation summarisation (ongoing).*
+*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control. Cursor documentation on conversation summarisation (ongoing), the same lossy-compression tradeoff in another tool.*
 
 ## The discipline
 

@@ -8,13 +8,13 @@ It does not know the team chose against Redis last quarter. It cannot see why th
 
 AI amplifies the developer driving it. Bill Doerrfeld put it bluntly in early 2026: *AI doesn't create great developers, it amplifies them.* A clueless developer with AI ships clueless code faster. An experienced developer with AI ships experienced code faster. The amplifier is neutral; what it amplifies is not.
 
-*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026).*
+*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: AI multiplies whatever the developer brings to it.*
 
 This is the territory of *Agentic Software Engineering (ASE)*, the label this book uses for the practices that progressively make your AI agent less clueless about your system and intention. The term now appears in parts of the field, but the boundaries are still unsettled. Not a methodology or a process. Just practices you adopt as you need them. ASE sits within what some vendors and practitioners now call *Developer AI*: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
 
 An agent in ASE plays two roles. Labor is the obvious one: it writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch it into plan or architect mode and it pushes back on your design before a line is written. It surfaces the assumption you treated as settled. It asks what you haven't asked. The same agent that generates a payment service in twenty minutes can, five minutes earlier, point out that you haven't decided what happens when the payment provider times out.
 
-*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026). GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026). Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025).*
+*Sources: Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the Developer AI category this book situates ASE within. GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.*
 
 ## What you can expect
 
@@ -30,7 +30,7 @@ The book is organized around four topics. Each works on its own at a solo scale;
 
 Topics three and four are a pair. Spec-driven development has become more visible in 2025–2026 tooling and discussion, though the practice is still young and unevenly defined. This book takes the next step: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven without verification is only aim.
 
-*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026). SolGuruz, "Spec-Driven Development Guide" (2026). IntuitionLabs, "Spec-Driven Development & Spec-Kit" (2026).*
+*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development & Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025–2026 practice.*
 
 After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change; the ceremonies stay.
 
@@ -40,7 +40,7 @@ You are a senior developer or architect. You already use a capability-class CLI 
 
 You can run one agent or several. ASE works broadly the same way regardless of which agent runs it, though each tool has its own conventions for picking up `AGENTS.md` and `.agents/`. Wiring a specific agent into your repo is the agent's documentation problem, not this book's. The list of viable agents will shift through 2026 and beyond. The practices here should change more slowly, unless the tools themselves absorb these conventions and make some of the repo scaffolding unnecessary.
 
-*Sources: Anthropic Docs, "Claude Code overview" (ongoing). OpenAI Docs, "Codex CLI" (ongoing). OpenCode Docs (ongoing). Junie documentation in this repo. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025).*
+*Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); OpenCode Docs (ongoing); Junie documentation in this repo, the capability-class CLI agents named as the target class. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the category-level shift that outlasts any single vendor roster.*
 
 You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
@@ -56,13 +56,13 @@ ASE is the other side of the table. In this book's framing, the agent is the wor
 
 If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to make an agent that writes code less clueless about your system. The two disciplines borrow vocabulary. They do not solve the same problem.
 
-*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026). EPAM, "Agentic Development Lifecycle (ADLC) Explained" (2026). Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025). Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026).*
+*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026); EPAM, "Agentic Development Lifecycle (ADLC) Explained" (2026); Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025); Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), ADLC as building agents as products with runtime governance, the discipline this book contrasts ASE against.*
 
 ## The companion: `ase-cli`
 
 Every practice in this book is demonstrated in a companion repo, `ase-cli`. ADRs in MADR format, specs with stable AC IDs, tests that actually trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
 
-*Sources: `ase-cli` repository history and tags in this project family.*
+*Sources: `ase-cli` repository history and tags in this project family, each phase as a git tag the reader can check out as evidence.*
 
 ## How to read
 

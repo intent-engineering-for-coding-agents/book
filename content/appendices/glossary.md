@@ -4,7 +4,7 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2–4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone — deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2–4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
@@ -32,7 +32,7 @@ A codebase that predates ASE practices: typically years of code, undocumented de
 
 ## BFF (Backend for Frontend)
 
-An intermediate service layer that sits between front-end clients and back-end services. The BFF provides a client-specific API — aggregating, transforming, and authorizing calls — so the front-end does not talk directly to back-end services. When using OpenSpec in a multi-tier system, each tier (front-end, BFF, back-end) has its own `openspec/` directory. Cross-tier contracts are recorded in ADRs. See [OpenSpec Across Stacks](/team/openspec-across-stacks).
+An intermediate service layer that sits between front-end clients and back-end services. The BFF provides a client-specific API (aggregating, transforming, and authorizing calls) so the front-end does not talk directly to back-end services. When using OpenSpec in a multi-tier system, each tier (front-end, BFF, back-end) has its own `openspec/` directory. Cross-tier contracts are recorded in ADRs. See [OpenSpec Across Stacks](/team/openspec-across-stacks).
 
 ## BYOK (Bring Your Own Key)
 

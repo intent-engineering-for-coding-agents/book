@@ -12,9 +12,9 @@ This section covers why specs exist, what makes them work, and what makes them f
 
 ## Chapters
 
-1. [Why Specs?](./why-specs): drift, intent, and traceability — the practical motivation for writing down what you want before you ask an agent to build it
+1. [Why Specs?](./why-specs): drift, intent, and traceability, the practical motivation for writing down what you want before you ask an agent to build it
 2. [Why Small?](./why-small): context window economics, lean scope, and why the agent that finishes one small spec beats the one that drifts through a large one
 3. [Why Important Stuff First?](./why-important-first): agents read top-down and lose focus; constraints and non-goals go at the top, not the appendix
-4. [The Spectrum](./the-spectrum): from a raw prompt to OpenSpec — match formality to risk and team size
-5. [Spec Lifecycle](./spec-lifecycle): write, critique, review, implement, archive — and why multi-LLM critique catches what solo review misses
-6. [Spec > Code](./spec-gt-code): the book's load-bearing thesis — specifications are more important than the code they produce
+4. [The Spectrum](./the-spectrum): from a raw prompt to OpenSpec, matching formality to risk and team size
+5. [Spec Lifecycle](./spec-lifecycle): write, critique, review, implement, archive, and why multi-LLM critique catches what solo review misses
+6. [Spec > Code](./spec-gt-code): the book's load-bearing thesis, that specifications are more important than the code they produce

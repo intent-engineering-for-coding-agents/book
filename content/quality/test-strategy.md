@@ -8,7 +8,7 @@ The agent wrote unit tests because nobody told it to write anything else. It def
 
 Different test types prove different things at different boundaries. A unit test proves one component in isolation. An integration test proves two or more components interacting. Neither proves what the other proves. Most non-trivial systems need more than one kind of test.
 
-A working taxonomy — representative, not prescriptive. This is the book's synthesis, built to make test intent legible to humans and agents:
+A working taxonomy, representative rather than prescriptive. This is the book's synthesis, built to make test intent legible to humans and agents:
 
 | Type | What it proves | Scope |
 |---|---|---|
@@ -55,7 +55,7 @@ The convention document defines the types the project uses, the framework that c
 | Smoke             | No separate deployment pipeline             |
 ```
 
-The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific — some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
+The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
 
 The exclusions section is equally important. Without it, the agent has no way to distinguish *not applicable* from *nobody thought of it*. The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
 
@@ -63,11 +63,11 @@ The document is part of the project's architecture documentation. It belongs alo
 
 The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. In model2diagram, ADR-0005 documents why `[PREFIX-NNN]` bracket IDs and `Test-type:` fields were chosen over alternatives. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
-*Sources: model2diagram `docs/architecture/test-strategy.md`; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.*
+*Sources: model2diagram `docs/architecture/test-strategy.md`, the type/framework/location/level convention document; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`, the ADR recording why the convention was chosen.*
 
 ## Scenario complexity and minimum test count
 
-Not every scenario requires the same number of tests. In this book's convention, the minimum follows from the scenario's complexity — the number of conditions, branches, and error paths it contains.
+Not every scenario requires the same number of tests. In this book's convention, the minimum follows from the scenario's complexity: the number of conditions, branches, and error paths it contains.
 
 | Scenario complexity | Minimum tests |
 |---|---|
@@ -79,13 +79,13 @@ A positive test proves the THEN holds when the WHEN is satisfied. A negative tes
 
 This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template. When it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
 
-*Sources: model2diagram `test/scenario-template.md`; model2diagram `docs/architecture/test-strategy.md`.*
+*Sources: model2diagram `test/scenario-template.md`, the scenario format and complexity-to-minimum-test-count tiers; model2diagram `docs/architecture/test-strategy.md`, the strategy the agent reads when implementing those tests.*
 
 ## The AC registry
 
 The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are covered in [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
 
-*Sources: model2diagram `test/ac-registry.md`.*
+*Sources: model2diagram `test/ac-registry.md`, the per-component AC ID registry that prevents identifier collisions.*
 
 ## Tooling note
 

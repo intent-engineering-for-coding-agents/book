@@ -8,7 +8,7 @@ That pitch dies on first contact with any team that has working CI, an establish
 
 *Agentic Software Engineering (ASE)* extends the SDLC. The ceremonies stay. The artefacts inside them change.
 
-*Sources: Sommerville, *Software Engineering* (10th ed., Pearson, 2015), ch. 2.*
+*Sources: Sommerville, *Software Engineering* (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.*
 
 ## The map
 
@@ -67,7 +67,7 @@ PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour s
 
 AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival; six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
-*Sources: Microsoft, "An AI-led SDLC" (2026). IBM, "AI in SDLC" (ongoing). continuousdelivery.com, Farley, and Humble.*
+*Sources: Dave Farley and Jez Humble, [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.*
 
 ## Maintenance: the step everyone skips
 

@@ -6,7 +6,7 @@ A spec and a test suite that drift apart silently are worse than no spec at all.
 
 ## What an Acceptance Criterion ID (AC ID) is
 
-An AC ID is a stable, scenario-level identifier. Format: a bracketed prefix and a zero-padded number — `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one. Tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
+An AC ID is a stable, scenario-level identifier. Format: a bracketed prefix and a zero-padded number, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one. Tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
 The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognises the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
 
@@ -14,7 +14,7 @@ The ID is the contract between two files that change at different rates. The spe
 
 This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
 
-*Sources: OpenSpec (openspec.dev); openspec.dev FAQ (2026). Cucumber/Gherkin scenario structure (origin of the `Given/When/Then` form used in many spec frameworks). model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22).*
+*Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.*
 
 ## The recommended field: `Test-type:`
 
@@ -36,7 +36,7 @@ A pointer from the spec to a specific test file path is the wrong coupling direc
 
 ## Framework tagging: two annotations, two uses
 
-The two spec fields — `[SC-001]` and `Test-type: integration` — map directly to two `@Tag` annotations on the test. Every test has both.
+The two spec fields, `[SC-001]` and `Test-type: integration`, map directly to two `@Tag` annotations on the test. Every test has both.
 
 ```java
 @Test
@@ -59,7 +59,7 @@ Frameworks without a native tag mechanism fall back to a comment on the test met
 
 AC IDs are stable because they are monotone: numbers only go up. When a scenario is deleted, its ID is not reused. `GV-007` removed leaves a permanent gap. A changelog entry, a bug report, or a comment in code that references `GV-007` will find no scenario, which is the correct answer. No ambiguity about whether the slot was reassigned.
 
-The registry file — `test/ac-registry.md` in the repo — maintains one row per component:
+The registry file, `test/ac-registry.md` in the repo, maintains one row per component:
 
 ```markdown
 | Prefix | Component         | Next |

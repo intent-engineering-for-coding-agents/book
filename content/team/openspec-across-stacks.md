@@ -36,7 +36,7 @@ A unified `openspec/` across stacks gives the agent three codebases of context i
 
 This is book synthesis. There is no widely-adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing).*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on; the multi-tier split itself is this book's synthesis.*
 
 ## Front-end context: design system and Figma
 
@@ -52,7 +52,7 @@ Figma design metadata can also be fed to the agent at implementation time. Frame
 
 The availability and quality of Figma MCP connectors is a mid-2026 snapshot. The pattern is established; the specific tooling will evolve.
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing). Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing, 14.9k stars as of mid-2026; connector availability is a mid-2026 snapshot).*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder spec pattern, identical across stacks. Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), fetching Figma layout metadata into the agent at implementation time (14.9k stars and connector availability are a mid-2026 snapshot).*
 
 ## The integration contract belongs in an ADR
 
@@ -71,7 +71,7 @@ graph TD
 
 The ADR is permanent. The change folders are temporary; they are archived after implementation. The contract outlives both.
 
-*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011.*
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
 
 ## When a change spans tiers
 

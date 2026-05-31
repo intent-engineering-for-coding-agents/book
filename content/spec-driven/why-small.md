@@ -20,7 +20,7 @@ This framing has a useful property: the spec size is naturally bounded by the PR
 
 It has a second useful property: the spec is not supposed to freeze the scope. Changes emerge during implementation and PR review. The spec anchors the intent so the implementation does not drift from it, but anchors is not the same as locks. When the implementation reveals that scenario four was based on a wrong assumption, update the spec. The spec is a living document until the implementation merges. After that, it archives.
 
-*Sources: LeanSpec. Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: LeanSpec, the one-PR-scoped spec and small-spec discipline. Anthropic, "Building effective agents" (Dec 2024), keeping the agent's working context tight enough to hold the whole task.*
 
 ## The size argument
 

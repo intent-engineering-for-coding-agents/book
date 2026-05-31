@@ -12,7 +12,7 @@ The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill
 
 This is the open loop. The next sections describe how to close it.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026). Anthropic, "Building effective agents" (Dec 2024). Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as the missing piece across SDD tooling. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs.*
 
 ## Golden tests for the agent
 

@@ -20,7 +20,7 @@ The practical progression for a new function: happy path first, then the primary
 
 This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation; it proves nothing about the HTTP layer above it. An integration test proves a module pipeline; it proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
 
-*Sources: Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021). ThoughtWorks, Technology Radar Vol 34 (April 2026).*
+*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), mutation testing as the feedback control that detects decorative tests. Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), engineering as feedback loops that prove intent.*
 
 ## Done means proven
 

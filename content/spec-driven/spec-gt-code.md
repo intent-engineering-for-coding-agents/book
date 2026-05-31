@@ -18,7 +18,7 @@ In the agentic era, code can occupy some of the same position that the compiled 
 
 The practical consequence is a workflow rule, not a law of nature: when there is a conflict between the spec and the code, treat the spec as canonical until the mismatch is resolved explicitly. When the spec needs to change, change the spec and update the code to match. When the code is tangled beyond easy modification, regeneration from the spec becomes a viable option.
 
-*Sources: Fission AI, OpenSpec. LeanSpec. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026). Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021).*
+*Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artefact workflow rule (spec wins on conflict, regenerate code from spec). Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artefact. Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
 
 ## Why this inverts the default
 
@@ -32,7 +32,7 @@ Farley's *Modern Software Engineering* argues for feedback loops and reliable de
 
 This is not a new insight. What is new is that agentic speed makes the cost of ignoring it more visible. A team working at AI velocity without spec discipline can produce more broken things faster. The spec is not mere overhead. It is one mechanism that makes speed sustainable.
 
-*Sources: Fission AI, OpenSpec. LeanSpec. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026). Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021). GitHub Blog, "Spec-driven development with AI" (Sep 2, 2025).*
+*Sources: Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), feedback loops and reliable delivery of intent into production as the basis for treating the spec as source.*
 
 ## The rollback loop
 
@@ -44,7 +44,7 @@ Frederick P. Brooks called it in 1975: plan to throw one away. The first system 
 
 Vibe coding is a special case. A vibe session usually produces no durable spec: the specification is chat history, ephemeral and uncommitted. That makes it useful for exploration and mockups. The transition to production is: extract what you learned into a spec, discard the prototype code, and regenerate from the spec.
 
-*Sources: Frederick P. Brooks Jr., *The Mythical Man-Month* (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away". "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025).*
+*Sources: Frederick P. Brooks Jr., *The Mythical Man-Month* (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", the throwaway-first cost that agentic speed collapses from months to minutes. "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025), extracting a spec from a vibe prototype before production.*
 
 ## The bar a spec must clear
 
