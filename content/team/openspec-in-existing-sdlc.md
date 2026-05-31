@@ -6,11 +6,13 @@ None of those is the right frame. OpenSpec does not replace the existing workflo
 
 ## Change folder and ticket: the same event, different records
 
-A Jira ticket (or GitHub Issue, or Linear card) records that work is planned. The change folder records how that work was specified. These are not redundant; they serve different readers.
+A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant; they serve different readers.
 
 The ticket is for the team. It carries priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent. It carries the delta spec, acceptance criteria, task list, and archive record. The ticket answers "is this being worked on?" The change folder answers "what is being built and how do we know it's done?"
 
 Practically: create the change folder when you start the spec, link the Jira issue ID in the proposal. The spec references the ticket for context; the ticket links to the PR that implements it. The agent reads the spec; the sprint board reads the ticket. Neither replaces the other.
+
+The reverse link is automatic if you use the issue key in commit messages. Jira's development panel surfaces every commit and PR that contains `XXX-123` in the message, without any manual linking. Include that convention in `AGENTS.md` and the agent will prefix its commits correctly. The result is a full audit trail navigable from either end: the change folder links forward to the ticket; the commits link back.
 
 When should you skip the ticket entirely? For small behavioral changes (a one-line fix, a config key rename) where the spec is the only record that matters. The threshold is whether anyone other than the implementing developer needs to track the work. If yes, ticket. If the spec and the commit message are the entire record, skip the overhead.
 
@@ -64,7 +66,11 @@ Cross-cutting decisions (API contracts, authentication models, data retention po
 
 Rick Hightower describes the emerging cross-tool operating model in SDD writing as "delegate, review, own": the developer delegates spec drafting to the agent, reviews what it produced, and owns the result before handing it to implementation.
 
-This loop maps directly onto the existing workflow. The Jira story (or brief, or design document) is the input. The agent drafts the spec, fetching Jira story context and Confluence architecture pages via MCP. The developer reviews the draft, editing the acceptance criteria until they are accurate and complete. The developer then opens the PR with the spec delta. The reviewer reads the spec before the diff. The agent implements against the owned spec.
+"Owns" is not a bureaucratic sign-off. When the developer opens the PR with the spec delta, they are making a public assertion: the intent is right, and the acceptance criteria are sufficient proof of completion. "The AI wrote the first draft" is context, not a defense. The review step is what transferred accountability.
+
+That review has two questions, and both must be answered before the PR opens. First: does this spec match what the story actually intended? Second: are the acceptance criteria testable, and do they cover the failure modes? A developer who reads the spec without asking both questions has not reviewed it; they have read it.
+
+This loop maps directly onto the existing workflow. The Jira story (or brief, or design document) is the input. The agent drafts the spec, fetching Jira story context and Confluence architecture pages via MCP. The developer reviews the draft, editing until intent and proof are both correct. The developer then opens the PR with the spec delta. The reviewer reads the spec before the diff. The agent implements against the owned spec.
 
 "Delegate, review, own" is not a new ceremony. It is a name for what good spec authorship already looks like, applied consistently across the team.
 
