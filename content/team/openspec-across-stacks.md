@@ -48,12 +48,6 @@ The design system document lives in `docs/design/` alongside the architecture do
 
 User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The spec itself should cover behavior: states, validation, edge cases, loading/error/empty states. What happens when the network call fails? What does the component render when the list is empty? These are the questions the spec answers; the design system doc answers how it should look when it renders correctly.
 
-Figma design metadata can also be fed to the agent at implementation time. Framelink MCP (GLips/Figma-Context-MCP, 14.9k stars as of mid-2026) is a Model Context Protocol (MCP) server that lets agents fetch layout metadata, component structure, spacing, and colors from Figma files. A spec that includes the Figma frame link allows the agent to fetch design data during implementation: the spec covers behavior, the MCP call covers visuals. The agent does not have to guess the spacing from a screenshot.
-
-The availability and quality of Figma MCP connectors is a mid-2026 snapshot. The pattern is established; the specific tooling will evolve.
-
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder spec pattern, identical across stacks. Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), fetching Figma layout metadata into the agent at implementation time (14.9k stars and connector availability are a mid-2026 snapshot).*
-
 ## The integration contract belongs in an ADR
 
 A change in the front-end spec that depends on a new BFF endpoint needs a source of truth both stacks can reference. That source of truth is not a spec. Specs are scoped to a single change folder and a single stack. It is an Architectural Decision Record (ADR).

@@ -46,20 +46,6 @@ Large organizations have architecture review boards (ARBs). The ADR is the input
 
 Cross-cutting decisions (API contracts, authentication models, data retention policies) always go into ADRs. These are the decisions that the agent in one stack needs to know about even though they were made in another context. The ADR is permanent; the spec is temporary. The ADR outlives the change that necessitated it.
 
-## The delegate, review, own loop
-
-Rick Hightower describes the emerging cross-tool operating model in SDD writing as "delegate, review, own": the developer delegates spec drafting to the agent, reviews what it produced, and owns the result before handing it to implementation.
-
-"Owns" is not a bureaucratic sign-off. When the developer opens the PR with the spec delta, they are making a public assertion: the intent is right, and the acceptance criteria are sufficient proof of completion. "The AI wrote the first draft" is context, not a defense. The review step is what transferred accountability.
-
-That review has two questions, and both must be answered before the PR opens. First: does this spec match what the story actually intended? Second: are the acceptance criteria testable, and do they cover the failure modes? A developer who reads the spec without asking both questions has not reviewed it; they have read it.
-
-This loop maps directly onto the existing workflow. The Jira story (or brief, or design document) is the input. The agent drafts the spec, fetching Jira story context and Confluence architecture pages via MCP. The developer reviews the draft, editing until intent and proof are both correct. The developer then opens the PR with the spec delta. The reviewer reads the spec before the diff. The agent implements against the owned spec.
-
-"Delegate, review, own" is not a new ceremony. It is a name for what good spec authorship already looks like, applied consistently across the team.
-
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the "delegate, review, own" operating model named in the prose above.*
-
 ## Honest caveats
 
 The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams that have none of these in place need to establish the primitives before layering spec-driven practices on top. The spec does not replace the ticket; it assumes the ticket exists and is well-understood.

@@ -26,13 +26,11 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 
 Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
-*Sources: model2diagram `docs/architecture/test-strategy.md` (the working reference implementation of the convention this chapter describes).*
-
 ## The convention document
 
 The test taxonomy is only useful if it is written down where the agent can read it.
 
-The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. In model2diagram this is `docs/architecture/test-strategy.md`. The format can be as simple as a table:
+The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format can be as simple as a table:
 
 ```markdown
 ## Test types in use
@@ -61,9 +59,7 @@ The exclusions section is equally important. Without it, the agent has no way to
 
 The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
 
-The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. In model2diagram, ADR-0005 documents why `[PREFIX-NNN]` bracket IDs and `Test-type:` fields were chosen over alternatives. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
-
-*Sources: model2diagram `docs/architecture/test-strategy.md`, the type/framework/location/level convention document; model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`, the ADR recording why the convention was chosen.*
+The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
 ## Scenario complexity and minimum test count
 
@@ -79,16 +75,12 @@ A positive test proves the THEN holds when the WHEN is satisfied. A negative tes
 
 This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template. When it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
 
-*Sources: model2diagram `test/scenario-template.md`, the scenario format and complexity-to-minimum-test-count tiers; model2diagram `docs/architecture/test-strategy.md`, the strategy the agent reads when implementing those tests.*
-
 ## The AC registry
 
 The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are covered in [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
 
-*Sources: model2diagram `test/ac-registry.md`, the per-component AC ID registry that prevents identifier collisions.*
-
 ## Tooling note
 
-If you want to see this in practice, model2diagram at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the six types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running in that companion project.
+If you want to see this in practice, `ase-cli` at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running in that companion project.
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation. The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.

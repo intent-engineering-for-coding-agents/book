@@ -14,7 +14,7 @@ The ID is the contract between two files that change at different rates. The spe
 
 This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
 
-*Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. model2diagram ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.*
+*Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `ase-cli` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.*
 
 ## The recommended field: `Test-type:`
 
