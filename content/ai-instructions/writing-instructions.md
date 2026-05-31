@@ -59,3 +59,13 @@ One common gap found by a second-model critique pass is instructions that descri
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 
 Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It can fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
+
+## When instructions backfire
+
+Instructions constrain the agent's decisions. That is the point. But some decisions should not be constrained. An instruction that specifies the algorithm for sorting a list prevents the agent from choosing a better one when the data characteristics change. An instruction that dictates the exact structure of an API response prevents the agent from adapting to a new client's requirements. Over-constraining the agent turns it from a collaborator into a template filler.
+
+The balance is between decisions where only your repo's history matters and decisions where general engineering knowledge is useful. Library choices, module boundaries, naming conventions: those are repo-specific. The agent cannot infer them from the code alone, and getting them wrong violates decisions the team already made. Algorithm choice, function structure, API design: those are engineering problems. The agent's training data contains more examples of good solutions than your instruction file can specify.
+
+Instructions also backfire when they become stale. A constraint written for a codebase six months ago may no longer apply. The team migrated to a new library, restructured a module, or changed a naming convention. The instruction still says the old thing. The agent follows it confidently and produces code that violates the current architecture. Stale instructions are worse than no instructions because they create a false sense of control.
+
+The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the agent gets the decision wrong and the fix is general engineering knowledge, let the agent learn from the codebase. Instructions prevent drift against your decisions. They should not prevent the agent from making decisions you have not made yet.

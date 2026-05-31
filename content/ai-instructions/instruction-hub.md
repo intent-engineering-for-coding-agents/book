@@ -72,3 +72,13 @@ The point of `.agents/` is the same as the point of `AGENTS.md`: one source of t
 Per-tool instruction files create forks the moment two developers use different tools. `.agents/` prevents the fork before it starts. Vendor files stay thin pointers. Instructions, skills, and hooks stay in one place, maintained once, read by all.
 
 The hub gives the agent its orientation about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub briefs the agent on the rules. The spec briefs it on the intent. Both have to exist, and writing the spec well is its own discipline.
+
+## When the hub becomes overhead
+
+The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub prevents instruction drift. When neither of those is true, the hub is overhead without the payoff.
+
+A solo developer working with a single tool does not have a coordination problem. Their `CLAUDE.md` or `.cursorrules` is the source of truth because there is only one source. The hub adds a directory structure, a pointer file, and a maintenance ritual for a problem that does not exist yet. The coordination cost is real: every instruction file needs a load clause, every skill needs a trigger, every hook needs a definition. For a solo project, that cost buys nothing.
+
+The hub earns its keep when the coordination problem appears. A second developer joins the project and brings their own tool. A solo developer starts using Cursor for some tasks and Claude Code for others. A team grows from two to five and needs consistent agent behavior across all of them. At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
+
+The practical test: if you are maintaining one instruction file and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same brief, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is premature structure.

@@ -45,3 +45,11 @@ Context management is not a one-time configuration. It is an ongoing judgment: w
 An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what survived from an hour ago.
 
 Context management is the discipline of keeping the agent oriented. When the orientation fails, or when other parts of the session fail, the agent enters one of a small number of predictable failure modes. Knowing which mode you are in is the first step to recovering from it.
+
+## What context management can't fix
+
+Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the agent's reasoning is fundamentally flawed, the task is genuinely ambiguous, or the codebase has contradictions the agent cannot resolve. Context management fixes the problems caused by context loss. It does not fix problems caused by bad instructions, unclear requirements, or architectural confusion.
+
+The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream: the instructions are vague, the spec is unclear, or the codebase has competing patterns the agent cannot reconcile. Resetting the session will not fix those. Fixing the context will not fix a broken brief.
+
+Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too. Context management is the discipline of keeping the agent oriented. When the agent's reasoning is the problem, orientation is not enough.

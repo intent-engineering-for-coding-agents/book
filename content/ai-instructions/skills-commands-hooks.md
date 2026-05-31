@@ -52,4 +52,14 @@ Without the instruction, the agent does not know what the convention is and impr
 
 Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure appears in more than two sessions. Add a hook when missing the procedure causes a real problem rather than just a drift.
 
+## The learning curve
+
+Skills and hooks require upfront investment. A skill needs discrete steps, a completion condition, and failure handling. A hook needs a trigger definition, a script, and debugging when it blocks unexpectedly. Both require learning the tooling, which varies by agent and is not standardised across tools.
+
+Not every workflow justifies the investment. A procedure that appears once a month does not need a skill; an instruction is enough. A check that fails once a quarter does not need a hook; code review catches it. The automation pays off when the procedure is frequent or the failure is expensive. Below that threshold, the coordination cost exceeds the benefit.
+
+The tooling is still maturing. Hook syntax differs between Claude Code, Cursor, and Copilot. Debugging a hook that blocks unexpectedly requires understanding the agent's execution model, which is not always documented. A skill that works in one agent may need adjustments for another. The investment in skills and hooks is an investment in a moving target.
+
+The practical test: if the agent gets the procedure wrong twice, write a skill. If the agent skips the procedure and it causes a real problem, write a hook. Before that, instructions and code review are enough. The triangle is a progression, not a checklist. Start with instructions. Add enforcement when the cost of not having it becomes visible.
+
 Managing the context that skills and hooks assume is available is the next constraint. Sessions fill; context drops off; the agent that performed flawlessly in hour one is improvising in hour two. That is not a skill failure or a hook failure. It is a context window problem.

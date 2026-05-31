@@ -40,4 +40,12 @@ The same pressure applies to `AGENTS.md`, `docs/README.md`, every file the agent
 
 Specs that follow this principle consistently produce implementations that need fewer correction cycles. The agent implements what the spec intends rather than what the spec implies. Getting that right at the start costs a ten-minute reorder. Discovering it mid-implementation costs a diff that argues with itself.
 
+## When the important stuff changes
+
+The important-first principle assumes you know what is important before you start writing. Sometimes you do not. A constraint emerges during implementation: the API the spec assumed does not exist, the performance budget is tighter than expected, the security model has a gap nobody noticed. The spec was written in good faith, but the important stuff was not visible from the starting line.
+
+This is not a failure of the principle. It is a failure of the spec. When implementation reveals a constraint that should have been at the top, the spec needs to be updated and reordered. The agent is working from a document that no longer reflects what matters. Continuing to implement against the old ordering produces code that satisfies the spec as written and violates the constraint as discovered.
+
+The practical test: if you know the constraints before writing, put them first. If you discover them during implementation, stop, update the spec, reorder, and continue. The principle is about the final structure, not the drafting process. A spec that starts with the happy path and ends with constraints discovered mid-implementation is a spec that needs to be rewritten, not a spec that proves the principle wrong.
+
 The question of how formal the spec needs to be, and which tools support which level of formality, is the one this chapter does not answer.

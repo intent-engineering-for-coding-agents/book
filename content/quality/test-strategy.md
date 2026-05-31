@@ -84,3 +84,13 @@ The convention needs one more file: a registry at `test/ac-registry.md` that all
 If you want to see this in practice, `ase-cli` at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running in that companion project.
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation. The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
+
+## When the strategy needs to change
+
+Test strategies should be stable but not rigid. A strategy that never changes is either perfect (unlikely) or stale (more likely). The codebase evolves: new frameworks appear, new test types become necessary, the team's understanding of what needs testing deepens. The strategy document needs to evolve with it.
+
+The convention document is living, not frozen. When the team adopts a new testing framework, the document updates. When a new test type becomes necessary (contract tests for a new API, visual regression tests for a new UI), the document adds it. When the original strategy was wrong or incomplete, the document corrects it. The ADR captures the rationale for each change; the document captures the current state.
+
+The practical test: if the agent generates tests that do not match the team's current practice, the strategy is stale. If the team is writing tests the strategy does not cover, the strategy is incomplete. If the strategy excludes a test type the team now needs, the exclusions section needs an update. The strategy is a map of the territory. When the territory changes, the map changes.
+
+The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
