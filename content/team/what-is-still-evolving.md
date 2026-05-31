@@ -8,7 +8,7 @@ The individual and small-team practices described here are stable enough to teac
 
 ## What is known and working
 
-The individual-scale practices are practiced and documented in a growing body of evidence. Spec-driven development at the PR scope (one change folder, one spec, one PR) is used by teams using OpenSpec, SpecKit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is a natural extension that several teams have applied independently. Intent-first PR review is described and recommended by multiple practitioners.
+The individual-scale practices are practiced and documented in a growing body of evidence. Spec-driven development at the PR scope (one change folder, one spec, scoped to a single change) is used by teams using OpenSpec, SpecKit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is a natural extension that several teams have applied independently. Intent-first PR review is described and recommended by multiple practitioners.
 
 Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The ASE application of these follows from established principles rather than inventing new ones: change folder scope matches branch scope, PR class matches review style.
 

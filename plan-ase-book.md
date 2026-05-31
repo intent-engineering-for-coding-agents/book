@@ -266,14 +266,15 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Chapter: Trunk-Based Development with Agents
     - *Sources: Hammant trunkbaseddevelopment.com (canonical TBD); Hammant *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020); Farley *Modern Software Engineering* + continuousdelivery.com.*
     - Anchor: Paul Hammant's TBD as the canonical reference — small batches, short-lived branches, frequent integration. Farley's *MSE* and *Continuous Delivery* (with Humble) are the secondary anchors for the CI feedback-loop framing.
-    - OpenSpec change folder ↔ short-lived branch
+    - OpenSpec change folder ↔ short-lived branch(es): spec branch (`spec/<slug>`) then implementation branch (`<slug>`) for decision-heavy changes; one branch when intent is visible in the diff. Trigger is decision content, not size
     - Merge cadence with parallel changes; how spec deltas reduce merge pain
+    - CI gates archiving + `tasks.md` completion (verifier pattern); auto-delete branch on merge; dead-spec guard for a spec merged ahead of its implementation
 - [x] Chapter: Code Review for Agent-Generated Code
     - *Sources: ThoughtWorks Radar Vol 34 (mutation testing, feedback controls); Böckeler.*
     - Review the spec delta first, the diff second
     - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
     - PR size: a full change folder + implementation is not a small PR; the spec is what makes it reviewable
-    - Splitting the PR: spec documents first (intent review), implementation second (code review) — when this is worth the overhead
+    - Splitting the PR: spec PR first (intent review), implementation PR second (code review) — the default for changes with decision content; one PR when intent is visible in the diff (bug fixes, mechanical refactors). Trigger is decision content, not size
     - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `ase-cli` MCP `check_spec_quality`
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
@@ -305,6 +306,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [ ] Appendix: Credits and References
     - Dave Farley, Michael Nygard, LeanSpec, OpenSpec, SpecKit, dot-principles
 - [ ] Final review: full read-through, verify all git tags, cross-reference ase-cli
+    - [ ] Verify every present-tense `ase-cli` claim against the shipped CLI — command names, check names, MCP tools (`check_spec_quality` in `code-review-agent-code.md`, the `tasks-complete` / `change-archived` gates in `trunk-based-development.md`). Anything not yet shipped is marked forthcoming/planned or cut. A reference work names no unbuilt tool as present-tense reality. Pairs with the Book dependency notes in `plan-ase-cli.md`.
 - [ ] Tag: `v0.8.0`
 
 #### Phase V — Release (`v1.0.0`)

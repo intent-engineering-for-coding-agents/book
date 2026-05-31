@@ -56,7 +56,7 @@ Not every document labelled "spec" earns the treatment described above. A spec t
 
 **Sized to be readable**: the spec fits in a context window with room for the code. If it does not, it describes a change too large to implement in one PR without risk of incoherence.
 
-**Scoped to one change**: one PR, one spec. Not a domain model. Not a system design. Not a requirements document for the next quarter. One proposed change, one set of criteria, one archive on merge.
+**Scoped to one change**: one spec, one coherent change. Not a domain model. Not a system design. Not a requirements document for the next quarter. One proposed change, one set of criteria, one archive on merge.
 
 ## The hardest shift
 

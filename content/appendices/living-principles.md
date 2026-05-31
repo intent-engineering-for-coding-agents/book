@@ -104,7 +104,7 @@ Principles about team process, adoption, and culture.
 | ASE-TEAM-INTEGRATION-CONTRACT-IN-ADR | Cross-tier API contracts belong in ADRs, not in individual stack specs. |
 | ASE-TEAM-CHANGE-FOLDER-AS-ISOLATION | One change folder per developer-agent pair is the isolation primitive for parallel work. |
 | ASE-TEAM-SPEC-DELTA-FIRST-IN-REVIEW | In PR review, read the spec delta before the code diff — intent-first review. |
-| ASE-TEAM-TBD-CHANGE-FOLDER-BRANCH | An OpenSpec change folder corresponds to one short-lived branch — create together, archive and merge together. |
+| ASE-TEAM-TBD-CHANGE-FOLDER-BRANCH | A change folder maps onto branches that share its name; decision-heavy changes ship a spec PR before the implementation PR, which archives at merge. |
 | ASE-TEAM-STANDARDIZE-SHARED-DIVERGE-LOCAL | Standardize AI conventions that affect the codebase; leave local workflow choices divergent. |
 | ASE-TEAM-ADR-CROSS-TEAM | ADRs are the cross-team coordination primitive — permanent, public, already in the SDLC. |
 

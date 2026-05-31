@@ -24,15 +24,13 @@ The `AGENTS.md` instruction for this is: behavioral changes do not include drive
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing).*
 
-## PR size and the spec as the review handle
+## Split the spec PR from the implementation PR
 
-A change folder with a full spec, implementation, and tests is not a small PR. The spec alone might be a hundred lines. The test file might be two hundred. The implementation might be three hundred. A reviewer opening a six-hundred-line PR is a reviewer who will scan.
+For a change with real intent to get right, the spec ships first, on its own PR: the proposal and delta spec, no code. The reviewer reads and approves the intent (are the acceptance criteria right, are the edge cases named, is anything missing) before a line of implementation exists. Then the implementation lands on a second PR, against an already-approved spec. This is the default for feature work, and the reason is economic: an intent-level correction is cheap before the agent implements and expensive after. Catching a wrong acceptance criterion in the spec PR costs an edit. Catching it in the code PR costs the implementation.
 
-The spec is what makes a large PR reviewable. The reviewer does not need to hold the entire diff in working memory if the spec names the acceptance criteria and the diff can be checked against them one criterion at a time. `[EXP-001]`: find the test, find the implementation, verify alignment. `[EXP-002]`: repeat. The spec is the review handle; it structures attention across a large diff.
+Not every change earns the split. A bug fix, a mechanical refactor, a library upgrade: the intent is visible in the diff, there is no separable decision to lock, and a spec PR would be ceremony. Ship those as one PR with the spec delta riding along. The test for which shape to use is in the [trunk-based development chapter](/team/trunk-based-development): would an intent-level correction force the implementation to be redone?
 
-For very large changes, split the PR: spec documents first (intent review), implementation second (code review). The first PR contains the change folder's proposal and delta spec only, with no code changes. The reviewer reads and approves the intent before a line of implementation is written. The second PR contains the implementation against an already-approved spec.
-
-This split is overhead. It is worth the overhead when the change is large enough that an intent-level correction during code review would cause a significant implementation rework.
+Either way, the spec is the review handle. A change folder's implementation PR is not small (the test file might be two hundred lines, the implementation three hundred) and a reviewer opening it cold will scan. The spec is what makes it reviewable: the reviewer checks the diff against named acceptance criteria one at a time rather than holding the whole thing in working memory. `[EXP-001]`: find the test, find the implementation, verify alignment. `[EXP-002]`: repeat. That works whether the spec was approved on a prior PR or sits at the top of the same one.
 
 ## Multi-LLM critique
 
@@ -56,4 +54,4 @@ The review process works when humans and agents each cover their own gaps. Human
 
 Intent-first review requires that the spec is actually maintained and accurate. A spec that diverged from intent during implementation (because the implementation revealed a constraint the spec did not anticipate) needs to be updated before review. A reviewed PR should have a spec delta that matches the implementation; if the spec and the diff contradict each other, one of them is wrong. The developer owns resolving the contradiction before the PR is opened.
 
-The review works when there is one developer per PR, which is the rule the whole section rests on: one OpenSpec change, one developer, one branch. What makes that rule hold across a team is not more process. It is a shared set of conventions every agent reads, so two developers' agents make the same calls without having to negotiate them first.
+The review works when there is one developer per change, which is the rule the whole section rests on: one OpenSpec change, one developer. Whether that change ships as a single PR or as a spec PR followed by an implementation PR, one person owns it end to end. What makes that rule hold across a team is not more process. It is a shared set of conventions every agent reads, so two developers' agents make the same calls without having to negotiate them first.

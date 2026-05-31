@@ -40,6 +40,8 @@ The error is not choosing the wrong tool. The error is applying the same tool to
 
 This is a heuristic table, not a decision tree. The real question: what is the cost of discovering the wrong intent after implementation? Low cost, low formality. High cost, high formality.
 
+The same dial governs how you stage the change, not just which framework you reach for. A change carrying a real decision earns a spec PR before any implementation, so the intent is corrected while correcting it is cheap. A change whose intent is visible in the diff ships as one PR. The [trunk-based development chapter](/team/trunk-based-development) works the mechanics; the deciding question is the one above, applied to a single change: what does discovering the wrong intent after implementation cost here?
+
 *Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).*
 
 ## What GSD is

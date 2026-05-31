@@ -61,6 +61,8 @@ ase generate gemini        # Emit .gemini/settings.json context config
 | `secrets` | No secrets in plaintext (pre-commit hook) |
 | `agents-hub-structure` | `.agents/` has instructions/ and skills/ subdirs |
 | `file-size` | Configurable: any .md file exceeding N lines flagged |
+| `tasks-complete` | A change folder's `tasks.md` has no unchecked `- [ ]` items before merge |
+| `change-archived` | A completed change folder is archived (moved to `changes/archive/`, delta merged into `openspec/specs/`) — not left live on trunk |
 
 ### AI-assisted checks (via MCP, user's AI)
 
@@ -203,18 +205,31 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] New → Plan → Apply → Archive
 - [x] Tag: `v0.6.0`
 
+#### Phase G.1 — OpenSpec Change Lifecycle Checks (`v0.6.1`)
+
+Deterministic gates that back the two-PR / spec-then-implementation model from the book's *Trunk-Based Development with Agents* chapter (`content/team/trunk-based-development.md`). Verifier pattern (ADR-0003): the check gates the merge, it does not perform the archive. No MCP required, so this slots ahead of the MCP phase.
+
+- [ ] **Change 011 — Change lifecycle checks**
+    - `tasks-complete` — fail the implementation PR when the change folder's `tasks.md` has any unchecked `- [ ]` item
+    - `change-archived` — fail when a completed change folder under `openspec/changes/` (excluding `archive/`) has not been archived (moved to `changes/archive/<date>-<name>/`, delta merged into `openspec/specs/`)
+    - Context-free fallback (when no git/PR context is available): flag any non-archived change whose `tasks.md` is fully checked but which has not been archived — the "finished but not archived" dead-spec signal the book warns about
+    - [ ] New → Plan → Apply → Archive
+- [ ] (optional, lower priority) `branch-matches-slug` — verify the branch name matches the change folder slug (`<slug>` for implementation, `spec/<slug>` for the spec PR). Needs git context, so it ships as a CI snippet or skill, not a core `ase check` checker
+- [ ] Tag: `v0.6.1`
+
 #### Phase H — Spec-Driven: MCP Server + AI Checks (`v0.7.0`)
 
-- [ ] **Change 011 — MCP server**
+- [ ] **Change 012 — MCP server**
     - Start MCP server on demand, publish tools: `check_top_heavy`, `check_adr_scope`, `check_agents_toc`, `check_spec_quality`
     - Each tool constructs a structured prompt from a version-controlled template
     - [ ] New → Plan → Apply → Archive
+    - > **Book dependency:** `content/team/code-review-agent-code.md` references `check_spec_quality` in the present tense, as if it exists. Until this phase ships, that reference must be marked forthcoming/planned. A reference work does not name an unbuilt tool as present-tense reality. Either ship this phase before publishing, or soften the book line.
 - [ ] Wire `ase check --all` to start MCP server and await AI results
 - [ ] Tag: `v0.7.0`
 
 #### Phase I — Spec-Driven: Vendor Generators (`v0.8.0`)
 
-- [ ] **Change 012 — `ase generate` command**
+- [ ] **Change 013 — `ase generate` command**
     - [ ] `ase generate copilot` — emits `.github/copilot-instructions.md` pointer to AGENTS.md
     - [ ] `ase generate claude` — emits `CLAUDE.md` pointer to AGENTS.md
     - [ ] `ase generate gemini` — emits `.gemini/settings.json` with AGENTS.md context path
