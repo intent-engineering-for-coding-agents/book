@@ -1,6 +1,6 @@
 # Code Review for Agent-Generated Code
 
-The diff was clean. The agent had written tidy, well-tested code. The reviewer approved it in ten minutes. Three days later, a support ticket arrived: the new export endpoint was skipping validation on the `reason` field for premium-tier users. The spec had explicitly listed this as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` was present but asserted the wrong tier. The implementation had matched the wrong test. The reviewer had reviewed the diff; nobody had compared the diff to the spec.
+A clean diff is the easiest thing for an agent to produce, and the easiest thing for a reviewer to wave through. Tidy, well-tested code, approved in ten minutes. Three days later a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the diff. Nobody read the diff against the spec.
 
 The failure was not in the code. It was in the review sequence: the diff was read before the spec. The diff looked correct. It was the spec that would have caught the divergence.
 

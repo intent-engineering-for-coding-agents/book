@@ -1,6 +1,6 @@
 # Context Window Management
 
-The session started well. The agent read `AGENTS.md`, loaded two instruction files, and made four productive edits. Then the answers got shorter. It missed a constraint from the spec it had read forty minutes earlier. By hour two, the agent was producing code that contradicted a decision it had summarised in hour one. Nobody reset the session. The context window had filled, and the earliest context had quietly dropped off.
+A long agent session does not announce when it starts forgetting. The answers just get shorter and a little more generic. A constraint the agent read early stops being honoured. A decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything; the context window filled, and the earliest context quietly dropped off the back to make room.
 
 This is not a bug. Every token in the context window costs something, and it costs in two directions: reliability, because old tokens fall out as new ones arrive and the agent loses earlier context; and for teams billed per token, money. The context window will fill. The question is what fills it.
 

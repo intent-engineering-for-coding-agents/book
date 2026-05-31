@@ -1,6 +1,6 @@
 # Document Types
 
-The agent loaded the spec. Three months after the feature shipped, it was still sitting in `openspec/changes/` with its acceptance criteria intact and its status unmarked. The agent treated it as active instruction, implemented behaviour the system already had, and opened a PR nobody knew what to do with. Nobody had archived it. Nobody had done anything wrong. The type had been confused with a permanent record, and permanent records do not get cleaned up.
+Every document in a repo has a lifespan, and the trouble starts when one outlives the job it was written for. A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` with its acceptance criteria intact and its status unmarked, and the next agent reads it as live instruction, reimplements behaviour the system already has, and opens a PR nobody knows what to do with. Nobody archived it. Nobody did anything wrong. A temporary document got treated as a permanent one, and permanent documents do not get cleaned up.
 
 This is not a documentation problem. It is a *type* problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 

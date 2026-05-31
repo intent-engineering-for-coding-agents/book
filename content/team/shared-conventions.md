@@ -1,6 +1,8 @@
 # Shared AI Instruction Conventions
 
-Developer A's `AGENTS.md` said: "Never write raw SQL. Always use the ORM." Developer B had joined three months later and had not read the convention doc where this was discussed. Developer B's `AGENTS.md` didn't mention SQL at all. Developer B's agent, encountering a performance problem, wrote a raw query. It was the right call for the performance profile. It was also inconsistent with every other data access in the codebase, and the team spent a review cycle discussing whether to apply the convention retroactively or carve an exception.
+A convention only constrains the agents that can read it. On a solo project that is one file and one agent. On a team it is as many briefs as there are developers, and they drift apart quietly.
+
+One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A developer who joined later never saw the discussion where that was decided, and their own `AGENTS.md` says nothing about it. Their agent hits a performance problem and writes a raw query. It is the right call for that one query. It is also out of step with every other data access in the codebase, and the team burns a review cycle deciding whether to apply the rule retroactively or carve an exception.
 
 The agent was not wrong. The convention was not visible to it.
 

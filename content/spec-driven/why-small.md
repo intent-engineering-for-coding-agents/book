@@ -1,8 +1,8 @@
 # Why Small?
 
-The spec was thorough. Forty-seven acceptance criteria across twelve scenarios. Edge cases, rollback behaviour, audit trail requirements, error message copy, monitoring thresholds. All of it documented. The developer spent three days writing it and two hours having it reviewed. Then they gave it to the agent and watched it drift.
+A long spec does not fail loudly. It fails by quietly dropping things.
 
-By scenario eighteen, the agent was generating code that contradicted scenario three. By scenario thirty-two, it had lost track of the non-goals section entirely. By the end, it had implemented roughly the first twenty criteria reliably and improvised the rest. The spec had not been too short. It had been too long for the agent to hold at once.
+Imagine a thorough one: dozens of acceptance criteria across a dozen scenarios, every edge case and rollback rule and audit requirement written down, days of work and a careful review behind it. Hand it to the agent and watch the far end fray. The early criteria get implemented reliably. The later ones get code that contradicts the earlier ones. The non-goals section, somewhere in the middle, stops being weighed at all. The spec was not too short. It was too long for the agent to hold at once.
 
 ## Context window economics
 

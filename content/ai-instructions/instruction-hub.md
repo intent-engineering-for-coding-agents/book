@@ -1,6 +1,6 @@
 # From AGENTS.md to AI Instruction Hub
 
-The pull requests from the two developers looked like they came from different codebases. Same repo, same language, same CI pipeline. Different naming conventions, different ideas about which directories were off-limits, different test structures. Nobody had changed the rules. The rules had diverged: one developer was using Claude Code with `CLAUDE.md`, the other was using Cursor with `.cursorrules`. Both files had started as copies. A month later, they weren't.
+Two developers, same repo, same language, same CI pipeline. Why do their pull requests look like they came from different codebases? Different naming, different ideas about which directories are off-limits, different test structure. Nobody changed the rules. The rules diverged: one developer drives Claude Code with `CLAUDE.md`, the other drives Cursor with `.cursorrules`, both files started as copies of the same thing, and a month later they no longer agree.
 
 The fix is not better synchronisation between two files. It is one file that both tools point to.
 

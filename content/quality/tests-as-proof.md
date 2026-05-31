@@ -1,6 +1,8 @@
 # Tests as Proof, Not Ritual
 
-The spec said the file upload would validate the type, check the size limit, write the file to storage, and record the metadata. The implementation did all four on the happy path. It did not do it when the storage write failed partway through. The metadata was recorded, the file was not there, and every subsequent read produced a confusing error with no obvious cause. There were four tests. All four passed. None of them interrupted the storage write. The agent had written exactly the tests the prose suggested and no more. The deploy went out. The first failed write in production sat undetected for a week before a user complained.
+Green tests feel like done. They are not the same thing. A suite can run fully green over code that is quietly broken, because the tests cover the paths the prose happened to mention and nothing else.
+
+Imagine a spec for a file upload: validate the type, check the size limit, write the file to storage, record the metadata. The agent implements all four and writes a test for each. Every test passes. But none of them interrupts the storage write partway through, so nothing covers the case where the metadata row is saved and the file never lands. That path is in the code. It has no proof. In production, the first failed write sits undetected until a user complains about a file the database insists exists.
 
 The tests passed. The intent was not proven. Those are different sentences.
 
@@ -12,7 +14,7 @@ Most test suites contain a mix of both. Tests written to cover the happy path te
 
 The shift is small in code and large in intent. Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?"
 
-Positive tests are the floor, not the ceiling. A test that exercises the happy path proves the intended behaviour when everything cooperates. It proves nothing about what happens when inputs are invalid, when a dependency returns an error, when the resource does not exist, or when the function is called in the wrong state. The opening story is the canonical example. Three tests, all positive-path. The timeout path existed in the code and had zero proof.
+Positive tests are the floor, not the ceiling. A test that exercises the happy path proves the intended behaviour when everything cooperates. It proves nothing about what happens when inputs are invalid, when a dependency returns an error, when the resource does not exist, or when the function is called in the wrong state. The upload example above is the canonical case. Four tests, all positive-path. The failed-write path existed in the code and had zero proof.
 
 Coverage follows code structure, and code structure has more dimensions than a line counter sees. Every conditional branch is a path. Every distinct return type is a path. Every exception a function can raise is a path. Each path needs at least one test. A function with no branching needs two: the intended behaviour and the condition that falls outside it. A function with three `if` branches and two exception classes needs at least six. Agentic speed does not lower this minimum; it just makes it faster to reach the wrong answer.
 

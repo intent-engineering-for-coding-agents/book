@@ -1,6 +1,6 @@
 # OpenSpec in an Existing SDLC
 
-The team already has Jira. They already have sprint boards, PR review, a Confluence wiki, a changelog. They adopted OpenSpec because the SDD framing made sense, and now they have a question: where does the change folder go in relation to everything they already have? Does it replace the ticket? Does the spec replace the Confluence page? Is the PR review now two reviews, one for the spec and one for the code?
+You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog: all of it, working. Then you adopt OpenSpec because the Spec-Driven Development framing makes sense, and a question lands on the table. Where does the change folder sit relative to everything you already run? Does it replace the ticket? Does the spec replace the Confluence page? Is the PR review now two reviews, one for the spec and one for the code?
 
 None of those is the right frame. OpenSpec does not replace the existing workflow; it gives each existing slot its own artefact. The coordination already exists; the question is what lives where.
 

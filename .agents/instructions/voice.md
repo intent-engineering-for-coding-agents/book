@@ -37,13 +37,29 @@ Max 4 sentences per paragraph. Vary length aggressively. A 1-sentence paragraph 
 
 ### Open with tension, not framing
 
-A section that opens "Without X, Y is impossible" is opening with framing. A section that opens with a contradiction, a surprise, a failed deploy, or a scaling cliff is opening with tension. Tension goes first; framing comes after.
+A section that opens "Without X, Y is impossible" is opening with framing. A section that opens with a contradiction, a surprise, a constraint that bites, or a claim worth arguing is opening with tension. Tension goes first; framing comes after.
 
 Bad: *"Agentic systems are increasingly important".*
 
-Good: *"The first autonomous coding agent looked impressive right until it deleted the migration directory".*
+Good: *"Delete the code. Keep the spec. Regenerate".*
 
 The opening sentence should make the reader want the next one.
+
+### Never fake a memory
+
+Do not narrate a fabricated specific event in the past tense as if it happened. *"The spec had five scenarios. The PR had eight tests. The reviewer approved it"* reads as a recalled war story, but nobody lived it. An intelligent reader clocks the invented precision, and it quietly contradicts the book's provenance discipline: rigorous `*Sources:*` lines under prose that opens with an unsourced invented event. The book draws on the published evidence base; it does not invent personal experience or anonymous anecdotes dressed as observed fact.
+
+Invented round-but-precise numbers are the loudest tell. *"Forty-seven acceptance criteria across twelve scenarios", "by scenario eighteen", "three days writing it"*: drop them. A real memory carries fewer specifics, not more.
+
+When you need a concrete scenario, mark it as the hypothetical it is. Permitted, honest opening devices:
+
+- **A claim or thesis** stated and then defended: *"Code is increasingly generated. Specs are authored".*
+- **A second-person present situation** addressed to the reader: *"The architecture diagram for your most important service is in a Keynote file on a laptop that left the company two months ago".*
+- **An explicitly-marked hypothetical**: *"Imagine a spec with forty acceptance criteria. Hand it to the agent and the first twenty land; the rest get improvised".*
+- **A sourced fact or published failure** from the References base, attributed inline.
+- **A genuinely open rhetorical question**, or an imperative the chapter then unpacks.
+
+State what the chapter is about early, then reach for one of these. **Vary the device across chapters.** If three chapters in a row open "Imagine that...", that is the same monotony the past-tense anecdote created. Mix claim, question, second-person situation, sourced fact, and hypothetical.
 
 ### Engineer language, not marketer language
 
@@ -97,7 +113,9 @@ Context windows fail. Memory becomes inconsistent. Orchestration complexity expl
 
 ### Chapter openings
 
-Open with a strong observation, a surprising truth, or operational tension. The first paragraph creates curiosity. By the end of paragraph one, the reader should already be committed to paragraph two.
+Open with a strong observation, a surprising truth, a claim worth arguing, or operational tension. The first paragraph creates curiosity. By the end of paragraph one, the reader should already be committed to paragraph two. Use one of the honest devices in "Never fake a memory" above, and pick a different device from the chapters around it. Never open by narrating an invented event as though it occurred.
+
+Compliant exemplars already in the book: `foundation/honest-maturity.md` (second-person imperative), `foundation/plain-text-as-code.md` (second-person present situation), `spec-driven/spec-gt-code.md` (imperative thought experiment), `team/trunk-based-development.md` (sourced fact).
 
 ### Section endings
 

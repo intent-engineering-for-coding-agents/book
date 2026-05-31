@@ -1,6 +1,6 @@
 # PR Taxonomy
 
-The PR description read: "Fix the user profile bug, add the new export endpoint, and reformat the auth module". The diff was three hundred lines. The reviewer opened it, scrolled, scrolled again, and approved. A week later the auth module had a regression that traced back to the reformatting, which had silently changed the order in which two middleware decorators applied. The reformatting had not been in the spec. The fix had been. The export endpoint had been. The third change was a free rider, and it broke production.
+A pull request that does three unrelated things gets reviewed as if it did none of them. Picture the description: fix the user profile bug, add the export endpoint, reformat the auth module. Three hundred lines. The reviewer scrolls, scrolls again, approves. A week later the auth module regresses, traced to the reformatting, which had quietly changed the order two middleware decorators applied. The fix was in the spec. The export endpoint was in the spec. The reformat was a free rider, and it broke production.
 
 Mixed PRs make every kind of review harder. They mix high-stakes changes with low-stakes ones, intent-bearing changes with cosmetic ones, things that need careful review with things that need none. The reviewer is reduced to scanning, because reading carefully for one class of change while ignoring the rest is not how human attention works.
 

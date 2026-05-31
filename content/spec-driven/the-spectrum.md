@@ -1,6 +1,6 @@
 # The Spectrum
 
-The team adopted OpenSpec on a Tuesday. By Thursday, they had written fourteen change folders for a feature that a post-it note would have captured. The overhead was legitimate: proposal, design, tasks, delta spec, archive. For a large API redesign, this is the right level of ceremony. For renaming a config variable, it is process theatre.
+How much process does renaming a config variable deserve? Adopt a full Spec-Driven Development framework and the honest answer is: a great deal more than it needs. The ceremony is real, proposal, design, tasks, delta spec, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theatre. The structure that protects a risky change suffocates a trivial one.
 
 The team that writes no specs at all, operating on prompts and conversation history alone, ships features that work until the third session extends them. Then someone asks why the validation is in the controller and nobody can answer without reading git blame.
 

@@ -1,8 +1,8 @@
 # Security in Depth
 
-The agent suggested a one-line fix. A library version bump to resolve a Common Vulnerabilities and Exposures (CVE) entry the dependency scanner had flagged. The PR was small, the diff was clean, the tests passed.
+The most dangerous agent suggestion is the one that looks like obvious hygiene. Imagine a one-line fix: a library version bump to clear a Common Vulnerabilities and Exposures (CVE) entry the dependency scanner flagged. Small PR, clean diff, passing tests.
 
-The new version of the library introduced a transitive dependency that exfiltrated environment variables from build agents. The package was a typosquat of a real dependency, published two weeks earlier. The CVE the scanner flagged was real. The fix was wrong. The agent had no opinion about the supply chain; it had been asked to resolve a warning and resolved it.
+The new version pulls in a transitive dependency that exfiltrates environment variables from build agents. The package is a typosquat of a real dependency, published two weeks earlier. The flagged CVE was genuine. The fix was still wrong. The agent had no opinion about the supply chain; it was asked to clear a warning and it cleared it.
 
 Most security advice for agentic teams is standard practice rebranded. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see. The failure modes specific to an agent that writes code by matching patterns, that defers to the user on risk decisions, and that arrives at a codebase with no memory of why a particular control exists.
 

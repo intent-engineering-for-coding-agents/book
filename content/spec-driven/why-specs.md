@@ -1,8 +1,10 @@
 # Why Specs?
 
-The agent read the code, inferred the intent, and implemented the extension. The inference was reasonable. The original feature had handled validation in the controller because the original developer ran out of time and planned to move it. The agent moved validation into the service layer, where it belonged architecturally. This broke three tests that were testing controller behaviour that was never supposed to be there. The agent fixed the tests to match its implementation. Everything passed.
+An agent without a spec does not refuse to act. It guesses. A good guess is indistinguishable from the right answer until the day it is not.
 
-Nobody asked it to refactor the validation. Nobody told it not to. Nobody had written down what the original code was trying to do. The agent worked from what it could see, and what it could see did not include the intent.
+Suppose you ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable. But the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behaviour break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
+
+The agent worked from what it could see, and what it could see did not include the intent.
 
 ## What a spec actually is
 

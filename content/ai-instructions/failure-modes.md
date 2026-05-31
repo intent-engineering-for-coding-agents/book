@@ -1,8 +1,8 @@
 # Failure Modes and Recovery
 
-The agent had been working for twenty minutes when it sent the third variant of the same proposed function signature. It was not confused. It had found a constraint in the spec that conflicted with the existing interface, and it was cycling through options without the authority to pick one. This is a spin. The agent was stuck, not broken.
+Two stuck agents can look identical from the outside and need opposite fixes. One has lost the thread as its context filled, and it is drifting. The other has hit a real conflict it lacks the authority to resolve, and it is cycling through the same three function signatures waiting for someone to decide. That second one is a spin: stuck, not broken.
 
-Knowing which failure mode you are in determines the recovery. A spin and a drift look similar from the outside: both produce output that does not advance the task. But they require different responses. Treating a spin as a drift resets a session that just needed a decision. Treating a drift as a spin adds instructions to a session that needs fresh context.
+Knowing which mode you are in determines the recovery. Treating a spin as a drift resets a session that only needed a decision. Treating a drift as a spin piles fresh instructions onto a session that needed a clean reset instead. Same symptom, opposite cure.
 
 ## The six modes
 

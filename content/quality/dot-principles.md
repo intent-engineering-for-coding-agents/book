@@ -1,6 +1,6 @@
 # .principles: Raising the Bar
 
-The tests passed. The spec was matched. The PR taxonomy was clean. The reviewer had nothing to flag. The merged code was correct. It was also clumsy: nested conditionals where a guard clause would read better, a function named `processData` that processed three different things, a class with seven public methods of which two were used. Nothing was wrong. Nothing was good. The reviewer who would have caught the clumsiness was the senior developer the team was trying to free up by adopting agentic tooling.
+There is a kind of bad code that passes every check you can automate. The tests are green, the spec is matched, the PR taxonomy is clean, and the reviewer has nothing concrete to flag. The code is correct and also clumsy: nested conditionals where a guard clause would read better, a `processData` that does three unrelated things, a class with seven public methods and two callers. Nothing is wrong. Nothing is good. The person who would have caught it is the senior reviewer the team adopted agentic tooling to free up.
 
 Specs verify behaviour. Tests verify proof. PR taxonomy verifies hygiene. None of them verify quality in the sense that a senior reviewer means quality: the code's readability, its adherence to the principles the team values, the small choices that compound into a codebase the next developer can work in.
 

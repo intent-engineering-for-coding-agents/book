@@ -1,8 +1,8 @@
 # Test Strategy and Convention
 
-The agent wrote unit tests. That was fine for the core logic. The endpoint, though, needed an integration test: a real HTTP layer wired to a real database, with a real request shaping the response. The unit test the agent wrote mocked both. It passed. The integration broke in staging because the real ORM generated a slightly different SQL query than the mock expected. The test had proven the unit; it had proven nothing about the system.
+Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. That is fine for core logic and wrong for an endpoint, which needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green; the integration breaks in staging, because the real ORM emits slightly different SQL than the mock expected.
 
-The agent wrote unit tests because nobody told it to write anything else. It defaulted to the test type its training over-represented. The convention the team intended was in somebody's head.
+It is not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behaviour, so it defaulted, and the convention the team intended stayed in somebody's head.
 
 ## The test taxonomy
 

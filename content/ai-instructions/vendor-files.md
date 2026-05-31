@@ -1,6 +1,6 @@
 # Vendor Files That Point, Not Duplicate
 
-The team updated `CLAUDE.md` with the new library convention. Three weeks later, a developer using Copilot opened a PR that used the old library. The `copilot-instructions.md` file had not been updated. Both files had started as copies of `AGENTS.md`. The Claude update never propagated. Neither tool notified anyone. The drift was silent.
+You update `CLAUDE.md` with the new library convention and move on. Three weeks later a teammate using Copilot opens a PR that uses the old library, because `copilot-instructions.md` never got the memo. Both files began as copies of `AGENTS.md`. The update to one never reached the other, neither tool flagged it, and the drift stayed invisible until it shipped.
 
 This is what per-tool instruction files look like when maintained by hand. The first update happens. The second is forgotten. Keeping them synchronised manually is possible in theory: compare each file, identify which paragraphs conflict, pick the newer convention when they disagree. In practice, by the time the divergence surfaces, nobody remembers which change came first. Two instruction files that have drifted across six months do not diff cleanly, and there is no merge strategy that recovers intent rather than just text.
 

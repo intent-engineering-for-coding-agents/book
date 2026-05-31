@@ -1,6 +1,6 @@
 # Skills, Commands, and Hooks
 
-The same five steps appeared at the start of every session that touched `docs/`. Scan the directory. List the files. Read each heading. Update `docs/INDEX.md`. Update the subdirectory listings. The team had written all five steps in `index-maintenance.md`. The agent followed them, mostly. When a session started mid-task or after a context reset, step four got missed. The INDEX drifted. Nobody noticed until the agent in the next session loaded the INDEX and got the wrong map.
+Some work is a recipe, not a judgement call. Updating `docs/INDEX.md` after touching `docs/` is five fixed steps: scan the directory, list the files, read each heading, update the INDEX, update the subdirectory listings. Write those five steps into an instruction file and the agent follows them, mostly. Start a session mid-task or after a context reset and step four gets skipped. The INDEX drifts, and the next session loads it and gets the wrong map.
 
 The problem was not the instruction. The problem was treating a repeatable workflow as something the agent should decide to run. Skills exist for exactly this.
 

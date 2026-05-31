@@ -1,8 +1,8 @@
 # OpenSpec Across Stacks
 
-The agent found an API endpoint. It had the right name, the right path structure, the right method signature. It called it from the new filter component without hesitation. The PR review caught what the agent did not: the endpoint was the back-end service API, not the Backend for Frontend (BFF) API. The BFF API was the contract the front-end was supposed to use. The back-end API skipped authorization checks the BFF enforced.
+Give an agent the whole monorepo as context and it will confidently call the wrong half of it. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches what the agent did not: it called the back-end service API, not the Backend for Frontend (BFF) API the front-end was supposed to use. The back-end API skipped the authorization checks the BFF enforced.
 
-The spec had not mentioned which API to call. The agent had the entire monorepo as context and chose the wrong one with full confidence.
+The spec never said which API to call. With every tier's specs in reach and no signal about which tier it was working in, the agent resolved the ambiguity the wrong way, and felt certain doing it.
 
 This is not an agent failure. The context was ambiguous; the agent resolved the ambiguity as best it could. The problem is upstream: a single `openspec/` directory shared across three tiers of a system gives every agent access to every tier's specs, and no signal about which tier it is working in.
 

@@ -1,6 +1,6 @@
 # Why Important Stuff First?
 
-The spec listed the performance requirement on line sixty-eight, after the happy-path scenarios. The agent read the full spec, began implementing from the happy path, and by scenario three had committed to an architecture. When it reached line sixty-eight, the architecture was already built. The performance requirement would have required a different approach. The agent continued with the approach it had.
+Where a constraint sits in a spec decides whether the agent honours it. Bury the performance requirement near the bottom, after the happy-path scenarios, and watch what happens. The agent reads top to bottom, commits to an architecture by the third scenario, and reaches the requirement with the design already poured. Meeting it would have meant a different approach. The agent keeps the one it has, because going back means undoing everything built since scenario three.
 
 ## Agents read top-down
 

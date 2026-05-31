@@ -1,8 +1,8 @@
 # Cross-Team Coordination
 
-Team A changed the authentication service's token format in an ADR marked "Internal". Team B's agents had been reading the old token format from the architecture docs for six months and generating code that parsed it. The ADR was in Team A's repo. Team B had no visibility into Team A's decision log. The breaking change reached Team B in a production incident.
+A decision recorded where the other team's agents cannot read it is, to them, a decision that never happened. Team A changes the authentication service's token format and records it in an ADR marked Internal, in Team A's repo. Team B's agents have been parsing the old format out of the architecture docs for months, and they keep doing it, because Team A's decision log is not in their context. The breaking change reaches Team B the way these things usually do: as a production incident.
 
-The ADR had done its job for Team A. The cross-team coordination mechanism had not existed.
+The ADR did its job for Team A. The mechanism that would have carried it to Team B did not exist.
 
 Coordination across team boundaries is harder than coordination within a team, and the agentic layer makes it harder still. Multiple teams' agents are all reading their own architecture docs, their own AGENTS.md files, their own ADR logs. They share the runtime but not the context.
 

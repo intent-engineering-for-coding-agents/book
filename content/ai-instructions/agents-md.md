@@ -1,8 +1,10 @@
 # AGENTS.md: One File Changes Everything
 
-The agent was working on the auth module. The codebase used a custom token validation library the team had written to handle their Single Sign-On (SSO) provider's quirks. The agent didn't know it existed. It reached for `python-jwt`, implemented its own claims validation, and opened a PR that bypassed three security checks the custom library handled. The PR had tests. They passed. A reviewer caught it before merge, but only because they happened to have worked on the custom library two years earlier. Nobody else on the team would have known.
+An agent briefed on nothing reaches for what it knows. Usually that is fine. Once in a while it is a security hole.
 
-The agent didn't invent the vulnerability. It improvised in the absence of a briefing it was never given.
+Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses three checks the custom library handled. The PR has tests. They pass. A reviewer catches it before merge, but only because they happened to work on that library two years earlier. Nobody else on the team would have known.
+
+The agent did not invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
 `AGENTS.md` is that briefing. One file at the repo root. Several current coding agents read it natively or can be pointed to it with a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which can import it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 

@@ -34,6 +34,7 @@ Run a dedicated credibility and provenance pass on drafted or reviewed book cont
 4. Mark any taxonomy, split, workflow, or naming scheme that reads like field standard but is really book synthesis or repo convention.
 5. Mark any unstable or perishable claim that needs time-bounded wording, such as tool support, model behavior, workflow maturity, or current naming conventions.
 6. Downgrade or flag any claim whose wording is stronger than the available evidence.
+7. Flag any passage that narrates a fabricated specific event in the past tense as if it happened (an invented anecdote dressed as observed fact), especially chapter openings carrying invented precise numbers. Honest scenarios must be marked as hypothetical, framed in the second person, or sourced. See `voice.md`, "Never fake a memory".
 
 ## Failure labels
 
@@ -47,6 +48,7 @@ Use these exact labels when the pass finds problems:
 - `Field-consensus overreach`
 - `Unmapped source` (a source on a `*Sources:*` line with no claim-tag, or whose claim does not appear in the section)
 - `Decorative source` (a source that backs no claim in its section and should be removed)
+- `Fabricated anecdote` (a specific event narrated in the past tense as if it happened, with no source and no hypothetical framing)
 
 ## Output
 
