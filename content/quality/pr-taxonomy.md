@@ -61,7 +61,7 @@ The other exception is the small fix to documentation that lives inside the chan
 
 These exceptions exist; they are narrow; the default is separation. A team that finds itself making exceptions on most PRs has stopped applying the taxonomy and is now using it as decoration.
 
-## Honest caveats
+## Convention, not law
 
 The taxonomy is convention, not law. Different teams use different labels (`refactor`, `chore`, `feat`, `fix`, in conventional-commits style). The exact labels matter less than the discipline of one class per PR. What this book calls `structural`, conventional commits would split between `refactor` and `chore`. The mapping is straightforward; what matters is that the discipline is consistent within the team.
 

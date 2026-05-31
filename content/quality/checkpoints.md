@@ -70,7 +70,7 @@ Effective teams maximise the deterministic part, because deterministic checks sc
 
 The three-gate model is how to spend that judgement well. Use the before-gate to set up the conditions in which the agent can succeed. Use the during-gate to keep the work aligned. Use the after-gate to confirm the alignment held. Each gate has a small number of deterministic checks and one or two human questions. Anything more is overhead.
 
-## Honest caveats
+## The sequence is logical, not temporal
 
 The gates are not project phases. A spec is not finished before implementation starts in a calendar sense; the during-gate happens immediately after the before-gate, in the same afternoon. The sequence is logical, not temporal. Forcing the sequence to map to days or weeks recreates waterfall, which is exactly the failure mode `Why Specs?` argued against.
 

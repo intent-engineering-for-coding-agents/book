@@ -117,7 +117,7 @@ Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix becau
 
 What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate ASE by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
 
-## Honest caveats
+## The format is flexible, the link is not
 
 The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` as in `ase-cli` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
 

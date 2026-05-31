@@ -48,7 +48,7 @@ This works, but it requires human coordination that the change folder model was 
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), single-repository change-folder model and the roadmap's acknowledged multi-repo gap.*
 
-## Honest caveats
+## Governance without bureaucracy is still unsolved
 
 The shared architecture repository pattern works when organizations have the governance to maintain it. A shared repo with twenty teams committing ADRs is also a shared repo that requires clear ownership, contribution guidelines, and a review process for incoming decisions. The same organizational discipline that makes internal ADRs useful (consistent format, active maintenance, genuine use by teams and agents) applies doubly to a shared architecture repository.
 

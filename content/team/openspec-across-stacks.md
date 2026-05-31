@@ -77,7 +77,7 @@ When a change spans tiers, each tier gets its own change folder referencing the 
 
 The rare exception: infrastructure changes that have no clean tier boundary. A change to how authentication tokens are propagated through the stack affects all three tiers simultaneously. These are genuinely cross-cutting and warrant a cross-cutting spec, but they are rare enough that the exception should be labeled as such, not treated as the default.
 
-## Honest caveats
+## This is book synthesis, not a field standard
 
 Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end may need a different boundary than the one described here. The principle is scope context to the work being done; the directory layout is one way to enforce that principle.
 

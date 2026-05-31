@@ -44,7 +44,7 @@ Data access patterns: standardize. Security rules: standardize. Whether to use t
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces agents that are inflexible and developers who feel they cannot make local judgment calls. The team brief should specify conventions that affect the codebase; everything else is personal setup.
 
-## Honest caveats
+## Conventions are organizational, not technical
 
 Team conventions are organizational problems with technical artefacts. The `AGENTS.md` records what was agreed; it does not produce the agreement. A team that has never discussed data access conventions cannot resolve the problem by writing a convention file. They have to have the discussion first and record the outcome.
 

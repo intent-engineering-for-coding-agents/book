@@ -14,7 +14,7 @@ This book uses three distinct questions to separate the layers: what should the 
 
 This is a different gap from style. A linter handles indentation, naming conventions, line length. A style guide is the deterministic version of taste. Principles are the cases where deterministic rules do not fit: when nesting is excessive, when a function has grown beyond one purpose, when an abstraction is leaking, when a refactor was started and not finished. The judgement of "this is too nested" is something a senior reviewer makes; the principle file makes the judgement reusable across reviewers, including agent ones.
 
-## Honest caveats
+## Optional, experimental, and easy to overdo
 
 The framework is optional. A team using ASE without `.principles` has specs, tests, hooks, and PR taxonomy, which is most of the value of the book. Adding `.principles` is the next step for teams who notice that their reviews keep flagging the same shape issues and want to encode those issues somewhere the agent can read them.
 

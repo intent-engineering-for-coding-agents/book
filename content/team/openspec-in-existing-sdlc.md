@@ -46,7 +46,7 @@ Large organizations have architecture review boards (ARBs). The ADR is the input
 
 Cross-cutting decisions (API contracts, authentication models, data retention policies) always go into ADRs. These are the decisions that the agent in one stack needs to know about even though they were made in another context. The ADR is permanent; the spec is temporary. The ADR outlives the change that necessitated it.
 
-## Honest caveats
+## This assumes you already have the basics
 
 The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams that have none of these in place need to establish the primitives before layering spec-driven practices on top. The spec does not replace the ticket; it assumes the ticket exists and is well-understood.
 

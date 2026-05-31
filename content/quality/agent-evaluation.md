@@ -46,7 +46,7 @@ The investment becomes worthwhile when more than one developer shares the same `
 
 The book's central claim, repeated through Foundation and AI Instructions and Spec-Driven, is that at agentic speeds manual verification is not enough. The evidence base for that claim is the closed loop. The tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 
-## Honest caveats
+## Eval suites are still early practice
 
 Eval suites for agents are still early practice. There is no widely-shared tooling for this in 2026. Hightower's tool-comparison work and Anthropic's effective-agents guidance both point at evaluation as the missing piece; neither prescribes a complete framework. What is described above is the minimum viable shape: a fixed task, a structural check, a comparison.
 

@@ -36,7 +36,7 @@ A spec in this context is a change proposal scoped to one PR, written by the sam
 
 The distinction is not just framing. A pre-flight check catches the obvious problem before takeoff. It does not prevent you from diverting mid-flight when conditions change. A contract locks you in. Write specs for the former reason.
 
-## Honest caveats
+## Not every change earns a spec
 
 Specs add ceremony. A one-line change does not need one. A configuration tweak does not need one. A feature with zero ambiguity and a trivially recoverable failure mode might not need one. The heuristic: if the expected output is obvious and the failure mode is recoverable, skip it. If either of those is false, write the spec.
 

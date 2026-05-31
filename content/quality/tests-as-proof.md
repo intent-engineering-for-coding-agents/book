@@ -58,7 +58,7 @@ If the spec is wrong, the tests pass, the build is green, and the feature ships 
 
 The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readable and the reasoning stays findable.
 
-## Honest caveats
+## Ritual tests earn their place; proof has a ceiling
 
 Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent; they are proof of plumbing. They earn their place by being cheap and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
 

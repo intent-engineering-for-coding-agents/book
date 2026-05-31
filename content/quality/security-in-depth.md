@@ -48,7 +48,7 @@ Prompt injection is the most immediate case. The agent reading content from an e
 
 The honest answer in 2026 is that these new entries are not well-defended. The practices in this chapter cover the application security of code the agent writes. The security of the agent itself is still being figured out, and the books that cover it well do not exist yet.
 
-## Honest caveats
+## This does not replace the standard tools
 
 The standard security tools still catch most of what they always caught: secrets scanners, dependency checkers, static analysis. This chapter is not a replacement for them. It describes the failure modes that survive because they match the patterns the agent was shown, not because any tool failed.
 
