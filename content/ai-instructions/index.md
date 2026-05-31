@@ -8,10 +8,9 @@ The chapters in this section cover the mechanics: what goes in `AGENTS.md`, how 
 
 ## Chapters
 
-1. [AGENTS.md: One File Changes Everything](./agents-md): the TOC pattern, what goes in it, and why it has to stay short
+1. [AGENTS.md: One File Changes Everything](./agents-md): the TOC pattern, what goes in it, vendor pointers, and why it has to stay short
 2. [From AGENTS.md to AI Instruction Hub](./instruction-hub): `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`, one folder for all AI tools
 3. [Writing Instructions That Work](./writing-instructions): specific instructions, negative constraints, architecture boundaries, and how to test whether they work
 4. [Skills, Commands, and Hooks](./skills-commands-hooks): when to choose each type, how to write skills that run reliably, and the instruction/skill/hook triangle
 5. [Context Window Management](./context-window): why context fills, short sessions, selective loading, subagents, and the INDEX as context economy
 6. [Failure Modes and Recovery](./failure-modes): drift, spin, halt, hallucination, context poisoning, and tool misuse; when to reset vs redirect
-7. [Vendor Files That Point, Not Duplicate](./vendor-files): one canonical source, thin generated pointers, no authored duplicates

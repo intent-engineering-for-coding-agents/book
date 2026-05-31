@@ -14,15 +14,13 @@ On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared br
 
 The practical structure: `AGENTS.md` at the repo root is the team's brief. It covers the conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain their own parallel `AGENTS.md` files that override parts of the team brief. The team brief is the brief.
 
-Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. Keep the team brief short and link to detail files. `AGENTS.md` is a table of contents; the conventions live in `.agents/instructions/`.
+Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. The TOC pattern from [AGENTS.md: One File Changes Everything](../ai-instructions/agents-md) applies at team scale too: keep the brief short, link to detail files in `.agents/instructions/`.
 
 *Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project brief. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the brief short and linking out to detail files.*
 
 ## Shared `.agents/skills/` libraries
 
-A skill file is a reusable agent procedure. Skills worth writing once and sharing: generate a change folder from a template, run the credibility pass on a draft spec, check whether `tasks.md` is fully checked before pushing, validate that AC IDs are in the AC registry.
-
-These live in `.agents/skills/` and are referenced from `AGENTS.md`. On a team, the skills are committed to the repo and are available to every agent. They are tested the same way any other agent output is tested: run the skill on a representative input and verify the output matches expectations. A skill that has not been tested against a real change folder in three months may have drifted.
+Skills worth writing once and sharing: generate a change folder from a template, run the credibility pass on a draft spec, check whether `tasks.md` is fully checked before pushing, validate that AC IDs are in the AC registry. These live in `.agents/skills/` and are referenced from `AGENTS.md`. On a team, the skills are committed to the repo and are available to every agent.
 
 Skills can also be shared across repos via inner source: a shared `.agents/` repository that teams pull from, or a directory within a shared infrastructure repo. The shared skills define the team's common procedures; individual repos extend them with project-specific additions. The principle is the same as shared library dependencies: standardize what is common, extend for what is specific.
 

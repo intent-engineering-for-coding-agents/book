@@ -22,7 +22,7 @@ The other five types each carry constraints. Content documents do not. That asym
 
 The enforcement mechanism is directory placement. Structured documents live under `docs/`; content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `ase check` scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011). Kopp, Armbruster, Zimmermann, MADR template (2018). OpenSpec (openspec.dev). `ase-cli` repo conventions in this project family.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `ase-cli` repo conventions in this project family, the docs/ vs content/ directory placement.*
 
 **README files** live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory. The top-level `docs/README.md` is the architecture overview. It lives forever and is updated as the architecture changes.
 
@@ -57,7 +57,7 @@ Written before implementation, archived after. An un-archived spec is live instr
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018). OpenSpec (openspec.dev).*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline.*
 
 ## Tooling
 

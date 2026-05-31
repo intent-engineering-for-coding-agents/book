@@ -30,22 +30,6 @@ MCP connector availability for third-party tools is a mid-2026 snapshot. The spe
 
 *Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria.*
 
-## Figma handoff: behavior in the spec, visuals via MCP
-
-The Figma frame link goes in the spec. The agent fetches the design data via Framelink MCP at implementation time: layout metadata, component structure, spacing, colors. The spec covers behavior (states, validation, edge cases); the MCP call covers visuals.
-
-The front-end developer does not paste screenshots into the spec or write pixel dimensions into the acceptance criteria. The spec says "the filter panel renders in collapsed state by default; see Figma frame [link] for visual specification." The agent opens the link during implementation and retrieves the design intent directly.
-
-This pattern is described in more detail in the OpenSpec Across Stacks chapter, which covers the full front-end context model. The integration between Figma and the spec is a mid-2026 snapshot; see that chapter's caveats.
-
-## Spec delta and PR review: the same conversation, not two conversations
-
-The PR review is the place where the spec delta is read and the code diff is read. These are not sequential reviews. A spec review that finishes before the code starts is a waterfall pattern. They happen in the same review session, with the spec delta read first.
-
-Reading the spec delta first means the reviewer answers: does this intent match what was planned? Is anything missing from the acceptance criteria that will cause problems later? Only then do they open the diff and ask: does this implementation match the spec?
-
-This is intent-first review. The quality gate chapter described it in the individual developer context; at team scale it becomes a team norm written into the PR template. The template says: "Review the spec delta in `openspec/changes/` before the code diff." The spec delta is one section of the PR; the diff is another. The reviewer does not get to the diff before the spec.
-
 ## tasks.md and the sprint board
 
 The `tasks.md` file in the change folder is the agent's execution checklist. It lists the implementation steps in order, with checkboxes. The agent checks off tasks as it completes them. Not as a courtesy, but because an unchecked task is a task the agent might not have done.

@@ -14,7 +14,7 @@ It does not mean exporting your Confluence space to Markdown once and committing
 
 The fuller statement of the philosophy is in the *Plain Text as Code Manifest* (github.com/Plain-Text-as-Code); this chapter is its application to the ASE Foundation.
 
-*Sources: Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing). Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing).*
+*Sources: Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing), the plain-text-as-code philosophy. Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as established practice.*
 
 ## Markdown for prose
 
@@ -48,7 +48,7 @@ D2 is the more interesting format on its merits, but no major Git vendor renders
 
 The C4 model gives a useful set of diagram types (Context, Container, Component, Code) that map cleanly onto `docs/README.md` (architecture overview) and per-feature design docs.
 
-*Sources: Mermaid (mermaid.js.org). Mermaid live editor (mermaid.live). Mermaid diagram catalogue (mermaid.js.org/ecosystem/tutorials.html). D2 (d2lang.com). C4 model, Simon Brown (c4model.com). Structurizr (docs.structurizr.com).*
+*Sources: Mermaid (mermaid.js.org), the diagram format used throughout. Mermaid live editor (mermaid.live), the editing escape hatch. Mermaid diagram catalogue (mermaid.js.org/ecosystem/tutorials.html), the 26+ diagram types. D2 (d2lang.com), the alternative format not yet rendered by Git hosts. C4 model, Simon Brown (c4model.com), the diagram types mapping to architecture docs. Structurizr (docs.structurizr.com), C4 tooling.*
 
 ## MADR for decisions
 

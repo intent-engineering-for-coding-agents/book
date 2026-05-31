@@ -54,7 +54,7 @@ A test scoped to one scenario and linked to its AC ID is also the most reliable 
 
 Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
 
-If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Code Review for Agent-Generated Code](../team/code-review-agent-code) covers how that review runs; the point here is that no amount of test rigor substitutes for it.
+If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs; the point here is that no amount of test rigor substitutes for it.
 
 The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readable and the reasoning stays findable.
 

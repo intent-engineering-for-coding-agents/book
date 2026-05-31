@@ -38,7 +38,7 @@ The verification checks the things automation cannot catch on its own. Did the i
 
 Refactoring is the after-checkpoint where most teams stop. The agent generated code; the code worked; ship it. The book's position is opposite: the agent's first generation is rarely the right shape for the next change. Refactor at the merge boundary, not in a follow-up PR three weeks later. The cost of the refactor while the spec and the implementation are both fresh is small. The cost when the next developer arrives and has to interpret unfamiliar generated code is large.
 
-Review is the third part of the after-checkpoint, and the order is the one [Code Review for Agent-Generated Code](../team/code-review-agent-code) sets out: the spec first, then the diff against the spec, then the diff on its own merits. The after-gate is where that order is most often reversed under time pressure, and reversing it approves whether the code looks reasonable rather than whether it implements what was specified.
+Review is the third part of the after-checkpoint, and the order is the one [Trunk-Based Development with Agents](../team/trunk-based-development) sets out: the spec first, then the diff against the spec, then the diff on its own merits. The after-gate is where that order is most often reversed under time pressure, and reversing it approves whether the code looks reasonable rather than whether it implements what was specified.
 
 ## A worked sequence
 

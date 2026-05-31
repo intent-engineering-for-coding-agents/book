@@ -58,6 +58,18 @@ Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration discipline. Dave Farley with Jez Humble, *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a discipline the agent forgets into one it cannot skip.*
 
+## Review at merge
+
+A clean diff is the easiest thing for an agent to produce, and the easiest thing for a reviewer to wave through. Imagine tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the diff. Nobody read the diff against the spec.
+
+The failure is not in the code. It is in the review sequence: the diff was read before the spec. The diff looked correct. It was the spec that would have caught the divergence.
+
+Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff get opened. The diff-review question is different: does this implementation match the spec?
+
+Human reviewers have biases: they read the changed lines and skip the unchanged context. They approve changes that match their mental model of the feature, even when the spec says otherwise. Agents have different gaps. They miss intent: a change that passes all checks but produces behavior the spec did not anticipate. They miss context: a component that looks correct in isolation but fails when integrated with something the agent did not read. The review process works when humans and agents each cover their own gaps. Humans verify intent and integration. Agents verify coverage and consistency.
+
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.*
+
 ## Honest caveats
 
 Trunk-based development is not universally practiced. Many teams use longer-lived feature branches, Gitflow variants, or release branches that stay open for weeks. The practices described here work best with short-lived branches; they do not require it. A team using a release-branch model can still keep each change folder's scope on its own branch and the spec-before-implementation discipline for decision-heavy changes. The branches just live longer.
@@ -66,4 +78,4 @@ The argument for TBD over Gitflow is Hammant's to make, and he has made it thoro
 
 The two-PR shape for decision-heavy changes is this book's recommended default, not an industry standard. Plenty of teams ship spec and code in one PR and review the spec delta first inside it. That works, and it is lighter. The split earns its second PR when locking the intent before implementation would have saved a rework, and costs ceremony when it would not. Treat it as a dial, not a mandate.
 
-A short-lived branch that merges cleanly still needs a review. When the diff is agent-generated, the review changes shape.
+Shared conventions across the team are what make the one-change-per-developer rule hold without constant negotiation.

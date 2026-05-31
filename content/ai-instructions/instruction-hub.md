@@ -26,7 +26,7 @@ One file per domain, not one file per task. `coding-standards.md` covers all Pyt
 
 AgentPatterns.ai's evaluation of context files identifies this as the most common failure mode: files that are too large to be useful, or too granular to be discoverable. The instruction file that nobody loads is worse than no instruction file, because it creates a false confidence that the agent has been briefed.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help".*
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help", the most common failure mode of context files being too large or too granular.*
 
 ## `.agents/skills/`
 
@@ -75,7 +75,7 @@ Each file defines a trigger (a file edit matching that extension) and the comman
 
 The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardised across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. `.agents/hooks/` is the right place for them when they are ready. For most teams right now, they are not ready.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024).*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).*
 
 ## One folder, every tool
 

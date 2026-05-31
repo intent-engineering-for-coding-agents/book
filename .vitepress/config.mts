@@ -39,7 +39,6 @@ export default withMermaid(
             { text: 'Skills, Commands, and Hooks', link: '/ai-instructions/skills-commands-hooks' },
             { text: 'Context Window Management', link: '/ai-instructions/context-window' },
             { text: 'Failure Modes and Recovery', link: '/ai-instructions/failure-modes' },
-            { text: 'Vendor Files That Point, Not Duplicate', link: '/ai-instructions/vendor-files' },
           ]
         },
         {
@@ -75,7 +74,6 @@ export default withMermaid(
             { text: 'OpenSpec Across Stacks', link: '/team/openspec-across-stacks' },
             { text: 'OpenSpec in an Existing SDLC', link: '/team/openspec-in-existing-sdlc' },
             { text: 'Trunk-Based Development with Agents', link: '/team/trunk-based-development' },
-            { text: 'Code Review for Agent-Generated Code', link: '/team/code-review-agent-code' },
             { text: 'Shared AI Instruction Conventions', link: '/team/shared-conventions' },
             { text: 'Cross-Team Coordination', link: '/team/cross-team-coordination' },
             { text: 'What Is Still Evolving', link: '/team/what-is-still-evolving' },

@@ -48,6 +48,6 @@ A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. Th
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a *Last reviewed* date and revisit it on a schedule the team will actually keep.
 
-*Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026). Cockburn, *Crystal Clear* (2004).*
+*Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT), automated skeleton generation for complex legacy systems. Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing. Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation. Cockburn, *Crystal Clear* (2004), the walking-skeleton pattern this reverses.*
 
 The skeleton's job ends when ADRs and `docs/README.md` cover what it covered. At that point it can be archived. Most teams will never quite reach that point.
