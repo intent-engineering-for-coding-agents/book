@@ -18,13 +18,13 @@ Acceptance criteria are the core. Each scenario names a condition and an expecte
 
 Three things break without a spec, and they break in order.
 
-Intent disappears first. The agent that implements from a spec implements what you wrote. The agent that implements from a vague ticket or a chat message implements its best guess at what you meant. That guess is often close, sometimes right, occasionally very wrong in a direction that is hard to explain without something written down.
+Intent disappears first. The agent that implements from a spec implements what you wrote. The agent that implements from a vague ticket or a chat message implements its best guess at what you meant. That guess is often close, sometimes right, occasionally wrong in a direction that is hard to explain without something written down.
 
 Drift compounds second. Every session that extends or modifies the feature works from the code. The code reflects what the agent built. If the build was based on a misunderstanding, the misunderstanding compounds. Drift in an agentic codebase is faster than in a human-only one because the agent moves faster. A week of agent sessions on misunderstood intent produces more code than a week of human sessions.
 
-Traceability disappears third. A code review can ask "does this implementation match the spec?" only if there is a spec. A PR that arrives without one requires the reviewer to reconstruct intent from the diff, which is backward. Review the intent first, then the diff. Without the spec, the only thing to review is the diff.
+Traceability disappears third. A code review asks "does this implementation match the spec?" only if there is a spec. A PR that arrives without one requires the reviewer to reconstruct intent from the diff, which is backward. Review the intent first, then the diff. Without the spec, the only thing to review is the diff.
 
-*Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for.*
+Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for.
 
 ## The waterfall objection
 
@@ -34,7 +34,7 @@ Waterfall separates requirements from implementation across phases and teams wit
 
 A spec in this context is a change proposal scoped to one PR, written by the same person who will implement it. It takes an hour to write, not a month. It gets critiqued and iterated before implementation starts, but that critique is with one or two colleagues, not a steering committee. It is a pre-flight check, not a contract.
 
-The distinction is not just framing. A pre-flight check catches the obvious problem before takeoff. It does not prevent you from diverting mid-flight when conditions change. A contract locks you in. Write specs for the former reason.
+The distinction matters. A pre-flight check catches the obvious problem before takeoff. It does not prevent you from diverting mid-flight when conditions change. A contract locks you in. Write specs for the former reason.
 
 ## Not every change earns a spec
 

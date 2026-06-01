@@ -1,8 +1,8 @@
 # Test Strategy and Convention
 
-Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. That is fine for core logic and wrong for an endpoint, which needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green; the integration breaks in staging, because the real ORM emits slightly different SQL than the mock expected.
+Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green; the integration breaks in staging, because the real ORM emits slightly different SQL than the mock expected.
 
-It is not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behaviour, so it defaulted, and the convention the team intended stayed in somebody's head.
+Not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behaviour, so it defaulted, and the convention the team intended stayed in somebody's head.
 
 ## The test taxonomy
 
@@ -12,17 +12,17 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 
 | Type | What it proves | Scope |
 |---|---|---|
-| **Unit** | One component in isolation; logic, edge cases, error paths | Single class or function |
-| **Slice** | One framework layer with its wiring intact; external services stubbed | e.g. persistence layer, HTTP routing |
-| **Integration** | Components interacting within a module; real dependencies, no stubs | Module pipeline |
-| **Interface / Contract** | An API boundary or interop surface holds | Public API, Java/Kotlin interop |
-| **Architectural** | Structural rules hold: no forbidden dependencies, no layer violations | Module graph |
-| **Acceptance** | A user-visible scenario works end-to-end at the spec level | Feature, golden fixture |
-| **E2E** | The deployed system behaves as the user expects | CLI to output, browser to API |
-| **Visual regression** | Rendered output matches a stored reference; no layout shifts, no styling regressions | UI component or full-page render |
-| **Smoke** | The deployed system is alive and routing correctly after a release | Deployed surface entry points |
-| **Performance** | Latency or throughput stays within a defined bound | Load profile |
-| **Manual** | Intent is specified in the spec; automated proof not yet written, or cannot be | Any level |
+| Unit | One component in isolation; logic, edge cases, error paths | Single class or function |
+| Slice | One framework layer with its wiring intact; external services stubbed | e.g. persistence layer, HTTP routing |
+| Integration | Components interacting within a module; real dependencies, no stubs | Module pipeline |
+| Interface / Contract | An API boundary or interop surface holds | Public API, Java/Kotlin interop |
+| Architectural | Structural rules hold: no forbidden dependencies, no layer violations | Module graph |
+| Acceptance | A user-visible scenario works end-to-end at the spec level | Feature, golden fixture |
+| E2E | The deployed system behaves as the user expects | CLI to output, browser to API |
+| Visual regression | Rendered output matches a stored reference; no layout shifts, no styling regressions | UI component or full-page render |
+| Smoke | The deployed system is alive and routing correctly after a release | Deployed surface entry points |
+| Performance | Latency or throughput stays within a defined bound | Load profile |
+| Manual | Intent is specified in the spec; automated proof not yet written, or cannot be | Any level |
 
 Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
@@ -30,7 +30,7 @@ Not every project uses all types. A CLI tool may have no slice tests and no perf
 
 The test taxonomy is only useful if it is written down where the agent can read it.
 
-The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format can be as simple as a table:
+The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format is as simple as a table:
 
 ```markdown
 ## Test types in use
@@ -55,7 +55,7 @@ The convention document defines the types the project uses, the framework that c
 
 The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
 
-The exclusions section is equally important. Without it, the agent has no way to distinguish *not applicable* from *nobody thought of it*. The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
+The exclusions section is equally important. Without it, the agent has no way to distinguish "not applicable" from "nobody thought of it." The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
 
 The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
 

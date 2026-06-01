@@ -6,7 +6,7 @@ The new version pulls in a transitive dependency that exfiltrates environment va
 
 Most security advice for agentic teams is standard practice rebranded. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see. The failure modes specific to an agent that writes code by matching patterns, that defers to the user on risk decisions, and that arrives at a codebase with no memory of why a particular control exists.
 
-*Sources: OWASP, OWASP Top 10 (ongoing), the standard application-security baseline this chapter builds on. ThoughtWorks, Technology Radar Vol 34 (April 2026), the agent-specific security failure modes the standard tools do not see.*
+Sources: OWASP, OWASP Top 10 (ongoing), the standard application-security baseline this chapter builds on. ThoughtWorks, Technology Radar Vol 34 (April 2026), the agent-specific security failure modes the standard tools do not see.
 
 ## Pattern replication
 
@@ -42,9 +42,9 @@ This is the hardest failure mode to catch because the agent's conclusion is defe
 
 The agent is also a new entry in the threat model. A prompt-injected document from an external source becomes an instruction the agent follows. A tool definition that does something other than what its description claims. Compromised model weights. These are not application-security failures in the code the agent writes. They are failures in the agent itself.
 
-Prompt injection is the most immediate case. The agent reading content from an external source, summarising it, and acting on it has made the external source an instruction channel. The defence is architectural: constrain what the agent can do based on instructions in untrusted content, and treat anything the agent reads from outside the repo as data, not as instructions.
+Prompt injection is the most immediate case. The agent reading content from an external source, summarising it, and acting on it has made the external source an instruction channel. The defence is architectural: constrain what the agent does based on instructions in untrusted content, and treat anything the agent reads from outside the repo as data, not as instructions.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026): prompt injection as cross-cutting agentic security concern.*
+Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026): prompt injection as cross-cutting agentic security concern.
 
 The honest answer in 2026 is that these new entries are not well-defended. The practices in this chapter cover the application security of code the agent writes. The security of the agent itself is still being figured out, and the books that cover it well do not exist yet.
 
@@ -52,7 +52,7 @@ The honest answer in 2026 is that these new entries are not well-defended. The p
 
 The standard security tools still catch most of what they always caught: secrets scanners, dependency checkers, static analysis. This chapter is not a replacement for them. It describes the failure modes that survive because they match the patterns the agent was shown, not because any tool failed.
 
-Be specific about which failures are addressed and which are not. An AGENTS.md rule that says "dependencies must not change package name between versions" is enforceable. An AGENTS.md rule that says "be careful with security" is not. The rule has to be specific enough that a check can verify it, or the agent will ignore it as background noise.
+Be specific about which failures are addressed and which are not. An AGENTS.md rule that says "dependencies must not change package name between versions" is enforceable. An AGENTS.md rule that says "be careful with security" is not. The rule has to be specific enough that a check verifies it, or the agent will ignore it as background noise.
 
 A human reviewer who reads every PR through a security lens is still the most effective layer. The tools, rules, and pattern defences in this chapter make that reviewer's job possible at agentic speed. They do not replace it.
 

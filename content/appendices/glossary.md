@@ -4,7 +4,7 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2–4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
@@ -12,7 +12,7 @@ A file (`test/ac-registry.md` by convention) that maintains one row per componen
 
 ## ADLC (Agentic Development Lifecycle)
 
-The discipline of building AI agents *as products*: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from ASE, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+The discipline of building AI agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from ASE, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
 
 ## ADR (Architectural Decision Record)
 
@@ -56,7 +56,7 @@ The AI-era analogue to technical debt: undocumented decisions and assumptions th
 
 ## Greenfield
 
-A new codebase, or one being built from explicit intent. Greenfield ASE adoption assumes you can author `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
+A new codebase, or one being built from explicit intent. Greenfield ASE adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
 
 ## Golden test
 
@@ -112,4 +112,4 @@ The table-of-contents approach to writing `AGENTS.md`: a short file at the repo 
 
 ## Walking skeleton
 
-A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's *Crystal Clear* (2004). Etymological ancestor of the AI-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
+A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the AI-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.

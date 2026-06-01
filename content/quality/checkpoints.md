@@ -1,6 +1,6 @@
 # Before, During, After: The Three Checkpoints
 
-A change can clear every gate at merge time and still be wrong by the time it runs. Picture one that does: the spec is solid, the tests are real proof, the PR lands clean. Three weeks later an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
+A change clears every gate at merge time and is still wrong by the time it runs. Picture one that does: the spec is solid, the tests are real proof, the PR lands clean. Three weeks later an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
 
 Quality is not a single gate. It is three gates in sequence, each looking at something the others cannot see. Before: did the work start from a stable foundation? During: was the work carried out against a real spec, with the right context? After: does the artefact actually prove what it claims to prove?
 
@@ -14,9 +14,9 @@ Architecture legibility is the precondition for everything else. An agent workin
 
 The design system is the part most teams skip until it breaks. UI components, API patterns, error response shapes, naming conventions. If these are documented, the agent uses them. If they are not, the agent improvises a different convention every session. The cost of the missing design system is paid in slow drift across PRs.
 
-The test convention belongs here alongside the design system: which test types the project uses, which frameworks cover each, how `@Tag` annotations are applied, what the coverage thresholds are. A `docs/architecture/test-strategy.md` document that the agent can read before it writes its first test is the difference between a consistent test suite and one that accumulated all its patterns by accident. The [Test Strategy and Convention](./test-strategy) chapter covers what goes in it.
+The test convention belongs here alongside the design system: which test types the project uses, which frameworks cover each, how `@Tag` annotations are applied, what the coverage thresholds are. A `docs/architecture/test-strategy.md` document that the agent reads before it writes its first test is the difference between a consistent test suite and one that accumulated all its patterns by accident. The [Test Strategy and Convention](./test-strategy) chapter covers what goes in it.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.*
+Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.
 
 ## During: the implementation gate
 
@@ -64,11 +64,11 @@ Each gate has its own failure mode. Skip the before-gate and the agent improvise
 
 ## What automation can and cannot do
 
-Each gate has a deterministic part and a human part. The deterministic part is what tools like `ase check` enforce: link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what only attention can do: is the spec describing the right thing, is the implementation in the right shape, is the test actually proving the scenario rather than something adjacent.
+Each gate has a deterministic part and a human part. The deterministic part is what tools like `ase check` enforce: link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what only attention does: is the spec describing the right thing, is the implementation in the right shape, is the test actually proving the scenario rather than something adjacent.
 
 Effective teams maximise the deterministic part, because deterministic checks scale to agentic speeds. The hooks that run on every commit do not get tired. The link checker does not skip a file because it was busy. What humans contribute is the part that cannot be automated: the judgement about whether the work matches what the team actually needs. That judgement is scarce, and most quality programs fail by spending it on things automation could have caught.
 
-The three-gate model is how to spend that judgement well. Use the before-gate to set up the conditions in which the agent can succeed. Use the during-gate to keep the work aligned. Use the after-gate to confirm the alignment held. Each gate has a small number of deterministic checks and one or two human questions. Anything more is overhead.
+The three-gate model is how to spend that judgement well. Use the before-gate to set up the conditions in which the agent succeeds. Use the during-gate to keep the work aligned. Use the after-gate to confirm the alignment held. Each gate has a small number of deterministic checks and one or two human questions. Anything more is overhead.
 
 ## The sequence is logical, not temporal
 

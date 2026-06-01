@@ -8,9 +8,9 @@ An agent does not read a spec the way an engineer reads a spec. An engineer jump
 
 This is not a flaw. It is how autoregressive generation works. Each token is produced in the context of all previous tokens. Early decisions are load-bearing for everything that follows. A design assumption made at line twenty is not revisited at line eighty. By line eighty, it is scaffolding.
 
-The implication is direct: put the load-bearing information at the top. Constraints. Non-goals. The scope boundary. The one thing that, if misunderstood, corrupts the entire implementation. Not as a courtesy to the agent. Because if those constraints are not established before the agent begins designing, they may not be established at all.
+The implication is direct: put the load-bearing information at the top. Constraints. Non-goals. The scope boundary. The one thing that, if misunderstood, corrupts the entire implementation. Not as a courtesy to the agent. Because if those constraints are not established before the agent begins designing, they will not be established at all.
 
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", front-loading the constraints in agent-facing files. Anthropic, "Building effective agents" (Dec 2024), the agent's sequential, context-dependent reading that makes early information load-bearing.*
+Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", front-loading the constraints in agent-facing files. Anthropic, "Building effective agents" (Dec 2024), the agent's sequential, context-dependent reading that makes early information load-bearing.
 
 ## The first-fifty-lines test
 

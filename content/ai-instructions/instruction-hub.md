@@ -8,7 +8,7 @@ The fix is not better synchronisation between two files. It is one file that bot
 
 ## `.agents/instructions/`
 
-An agent modifying the authentication module does not need the CI pipeline rules. An agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain; the agent reads the relevant one and skips the rest.
+An agent modifying the authentication module does not need the CI pipeline rules. An agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain. The agent reads the relevant one and skips the rest.
 
 `ase-cli` at `v0.4.0` has four:
 
@@ -22,11 +22,11 @@ An agent modifying the authentication module does not need the CI pipeline rules
 
 `coding-standards.md` is 50 lines. Type hints, string quoting, the linting rules in `pyproject.toml`, test naming conventions. An agent working on a new checker reads it once and writes code that matches the rest of the codebase. An agent updating a dependency skips it entirely.
 
-One file per domain, not one file per task. `coding-standards.md` covers all Python style; it does not split into `typing-standards.md` and `testing-standards.md`. Splitting by domain keeps each file coherent. Splitting too fine creates a directory the agent has to enumerate before it can decide what to load.
+One file per domain, not one file per task. `coding-standards.md` covers all Python style. It does not split into `typing-standards.md` and `testing-standards.md`. Splitting by domain keeps each file coherent. Splitting too fine creates a directory the agent has to enumerate before it can decide what to load.
 
 AgentPatterns.ai's evaluation of context files identifies this as the most common failure mode: files that are too large to be useful, or too granular to be discoverable. The instruction file that nobody loads is worse than no instruction file, because it creates a false confidence that the agent has been briefed.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help", the most common failure mode of context files being too large or too granular.*
+Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help", the most common failure mode of context files being too large or too granular.
 
 ## `.agents/skills/`
 
@@ -36,15 +36,15 @@ Skills are workflows, not context. An instruction file tells the agent how thing
 
 The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. A workflow for generating a new checker from spec is a skill.
 
-Typed from the session, `/update-index` invokes the skill directly. In Claude Code, every file in `.agents/skills/` surfaces as a slash command. The autonomous trigger is still there: `AGENTS.md` tells the agent which skill to load when the task description matches. But the developer can also bypass that layer and invoke the skill explicitly, `/draft-section` to start a new chapter without composing a task description from scratch. Same file either way.
+Typed from the session, `/update-index` invokes the skill directly. In Claude Code, every file in `.agents/skills/` surfaces as a slash command. The autonomous trigger is still there: `AGENTS.md` tells the agent which skill to load when the task description matches. The developer can also bypass that layer and invoke the skill explicitly. `/draft-section` starts a new chapter without composing a task description from scratch. Same file either way.
 
-OpenSpec repos generate a full set of skills on `openspec init`: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. Each is a committed file in `.agents/skills/openspec-*/SKILL.md`. These are vendor pointers, generated once and committed, which is why they live alongside the hand-authored skills rather than somewhere separate. The directory does not distinguish between authored and generated; both are plain Markdown files the agent reads the same way.
+OpenSpec repos generate a full set of skills on `openspec init`: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. Each is a committed file in `.agents/skills/openspec-*/SKILL.md`. These are vendor pointers, generated once and committed, which is why they live alongside the hand-authored skills rather than somewhere separate. The directory does not distinguish between authored and generated. Both are plain Markdown files the agent reads the same way.
 
-The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and JetBrains AI each have their own slash command surfaces, and none of them read `.agents/skills/` as commands. They reach the instruction files through `AGENTS.md` pointers; the workflow logic is shared. The slash command that invokes it is not. Vendor-neutral structure gets you as far as the file. The keyboard shortcut stays local to each tool.
+The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and JetBrains AI each have their own slash command surfaces, and none of them read `.agents/skills/` as commands. They reach the instruction files through `AGENTS.md` pointers. The workflow logic is shared. The slash command that invokes it is not. Vendor-neutral structure gets you as far as the file. The keyboard shortcut stays local to each tool.
 
 ## `.agents/hooks/`
 
-Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `ase-cli`; it contains a `.gitkeep`.
+Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `ase-cli`. It contains a `.gitkeep`.
 
 A hook fires on a trigger: after a file edit, before a commit, when a session ends. It runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
 
@@ -63,7 +63,7 @@ Each file defines a trigger (a file edit matching that extension) and the comman
 
 The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardised across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. `.agents/hooks/` is the right place for them when they are ready. For most teams right now, they are not ready.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).*
+Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).
 
 ## One folder, every tool
 

@@ -2,7 +2,7 @@
 
 > Repo structure. The prerequisite for everything else.
 
-Foundation is the first topic of *Agentic Software Engineering (ASE)* for a reason. Without it, AI instructions have nowhere to live. Specs have no structure to enforce against. Quality checks have no conventions to validate.
+Foundation is the first topic of Agentic Software Engineering (ASE) for a reason. Without it, AI instructions have nowhere to live. Specs have no structure to enforce against. Quality checks have no conventions to validate.
 
 The chapters in this section address the underlying problem of agents that are productive but contextless, and give it a shape you can act on.
 

@@ -6,7 +6,7 @@ Suppose the agent is working on the auth module. The codebase has a custom token
 
 The agent did not invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Several current coding agents read it natively or can be pointed to it with a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which can import it with a single `@AGENTS.md` line. The team maintains one canonical file; each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing. One file at the repo root. Several current coding agents read it natively or can be pointed to it with a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which can import it with a single `@AGENTS.md` line. The team maintains one canonical file. Each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -14,17 +14,17 @@ The instinct when writing `AGENTS.md` is to fill it. Project history, coding sty
 
 Six weeks later the file is 300 lines. The agent reads every line before starting any task, because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed. It is more constrained.
 
-AgentPatterns.ai named the better approach the **table-of-contents (TOC) pattern**. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
+AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
+Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.
 
 ## What goes in it
 
 Three things belong in it, in this order.
 
-- **Project identity**: what the repo is and what it produces, in one paragraph or a short facts block, not the README
-- **Load-on-demand instructions**: links to `.agents/instructions/` files, each with a clause saying when to load it
-- **Commands and skills**: key commands and invocable skills, listed last as reference rather than orientation
+- Project identity: what the repo is and what it produces, in one paragraph or a short facts block, not the README
+- Load-on-demand instructions: links to `.agents/instructions/` files, each with a clause saying when to load it
+- Commands and skills: key commands and invocable skills, listed last as reference rather than orientation
 
 The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file just to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
 
@@ -57,7 +57,7 @@ Generated files can be committed without ambiguity. They are clearly outputs, no
 
 The direction of travel is convergence. Codex read `AGENTS.md` natively from its launch in early 2025. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 
-*Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
+Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.
 
 ## The size limit
 
@@ -69,9 +69,9 @@ The test is not the line count. Can someone open the file and, in under two minu
 
 `AGENTS.md` is the highest-leverage file in the repo. Every session loads it, via the entry-point file that imports it. That also means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today".
 
-A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error; both produce an agent that is confidently working from the wrong brief.
+A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent that is confidently working from the wrong brief.
 
-Two mitigations. First, treat `AGENTS.md` changes as load-bearing. Review them with the same care as an ADR. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session. Second, keep the file short enough that a person can review it in full in under two minutes. A small file is a file where staleness is visible.
+Two mitigations. First, treat `AGENTS.md` changes as load-bearing. Review them with the same care as an ADR. A stale ADR misleads one decision. A stale `AGENTS.md` misleads every session. Second, keep the file short enough that a person can review it in full in under two minutes. A small file is a file where staleness is visible.
 
 Keeping the entry point honest is the first discipline. What it points to requires the same treatment. The instruction files in `.agents/` accumulate stale content for the same reasons `AGENTS.md` does, and they do it without the visibility that comes from being the first file every session loads.
 
@@ -79,4 +79,4 @@ Keeping the entry point honest is the first discipline. What it points to requir
 
 If you want to see this in practice, `ase-cli`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `ase check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.*
+Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.

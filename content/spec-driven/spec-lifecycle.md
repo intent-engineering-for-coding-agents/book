@@ -1,26 +1,26 @@
 # Spec Lifecycle
 
-A spec with no lifecycle does not get retired. It just sits there looking exactly like a live one. Imagine the agent loading a spec that describes a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
+A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. Consider the agent loading a spec that describes a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
 
-A spec without a lifecycle is a spec that accumulates. Active specs look identical to abandoned ones. The agent cannot distinguish intent from archaeology.
+A spec without a lifecycle accumulates. Active specs look identical to abandoned ones. The agent cannot distinguish intent from archaeology.
 
 ## The five stages
 
-**Write**: create the spec when you are about to implement, not weeks in advance. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
+Write: create the spec when you are about to implement, not weeks in advance. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
-**Critique**: run the draft past a second model before human review. Not code review; spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer may have unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.
+Critique: run the draft past a second model before human review. Not code review. Spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer has unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.
 
-**Review**: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
+Review: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
 
 A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An AI agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
 
-**Implement**: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
+Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 
-**Archive**: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`. The change folder moves to `openspec/changes/archive/`. The implementation is in git. The intent is in the canonical spec. The change history is in the archive. Three things, three places, none of them confused.
+Archive: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`. The change folder moves to `openspec/changes/archive/`. The implementation is in git. The intent is in the canonical spec. The change history is in the archive. Three things, three places, none of them confused.
 
-The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was actually shipped.
+The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
-*Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).*
+Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).
 
 ## Writing the task list
 
@@ -42,16 +42,16 @@ A second model from a different family does not share those priors. Claude writi
 
 The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, a CLI agent pointed at the file. The mechanism does not matter. Iterate once. The critique adds twenty minutes and catches the kind of scenario the first model never thinks to write: the empty list case, the concurrent update case, the API returning a 200 with an error payload in the body.
 
-This is not a rigid practice. For small, low-risk specs, it is overhead. For specs touching security, payment, or anything that would constitute a very long day when it goes wrong, the second-model pass is worth it.
+This is not a rigid practice. For small, low-risk specs, it is overhead. For specs touching security, payment, or anything that would constitute a long day when it goes wrong, the second-model pass is worth it.
 
 ## The dead spec problem
 
 A dead spec is not a deleted spec. It is a change folder still sitting in `openspec/changes/`, still marked as in-flight, for a change that was implemented, abandoned, or pivoted away from weeks ago. The agent sees it, loads it as current intent, and acts on instructions that no longer apply.
 
-The fix is tight timing on both ends. Create the spec when you are about to implement. Not before sprint planning. Not as a backlog item. Archive it the moment the PR merges. Not at the end of the week. Not when you remember. The active folder should contain only what is actively being built right now. Anything else is noise the agent will act on.
+The fix is tight timing on both ends. Create the spec when you are about to implement. Not before sprint planning. Not as a backlog item. Archive it the moment the PR merges. Not at the end of the week. Not when you remember. The active folder should contain only what is being built right now. Anything else is noise the agent will act on.
 
 ## Tooling note
 
 If you want to see this workflow in practice, the `ase-cli` repo at tag `v0.5.0` runs `ase check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
-The archive is not an afterthought. It is what separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The change folder moves; the canonical spec stays; the code is in git. Three things, three places. The one that is most trusted when the code needs to change is almost certainly not the one most developers would guess.
+The archive is not an afterthought. It is what separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The change folder moves. The canonical spec stays. The code is in git. Three things, three places. The one that is most trusted when the code needs to change is almost certainly not the one most developers would guess.

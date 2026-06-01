@@ -1,6 +1,6 @@
 # Writing Instructions That Work
 
-Imagine the instruction reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
+Consider an instruction that reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
 
 Vague instructions are not neutral. They are instructions for the agent to improvise, from whatever evidence it can find. And the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent may not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
 
@@ -18,7 +18,7 @@ This keeps the file short. Short instruction files load faster, stay readable, a
 
 The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing. It is a straitjacket.
 
-*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.*
+Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.
 
 Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. Those are not areas where general engineering knowledge is useful. They are areas where only your repo's history matters, and the agent cannot read that history unless you tell it to.
 
@@ -36,7 +36,7 @@ Positive instructions tell the agent what to do. Negative instructions tell it w
 
 "Do not use the `requests` library; this repo uses `httpx` for all HTTP calls" is a negative instruction. Without it, the agent reaches for `requests` every session because it has read more code using `requests` than `httpx`. The instruction is not optional. It is the reason the repo uses `httpx` consistently.
 
-The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your repo diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone; the code looks like an exception, and the agent will treat it as one.
+The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your repo diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone. The code looks like an exception, and the agent will treat it as one.
 
 ## Architecture boundaries in plain language
 
@@ -46,7 +46,7 @@ Write them explicitly. "Do not modify files under `src/generated/`; they are pro
 
 The same applies to package boundaries. "The `payments` module has no dependency on `users`; if a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
 
-*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.*
+Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.
 
 ## Testing whether your instructions work
 
@@ -54,15 +54,15 @@ Instructions can be stale, vague, or simply wrong. The only way to know is to te
 
 Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is either missing, unclear, or not being loaded.
 
-One common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file; the second one actually controls behaviour.
+One common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file. The second one actually controls behaviour.
 
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 
-Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It can fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
+Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It cannot fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
 
 ## When instructions backfire
 
-Instructions constrain the agent's decisions. That is the point. But some decisions should not be constrained. An instruction that specifies the algorithm for sorting a list prevents the agent from choosing a better one when the data characteristics change. An instruction that dictates the exact structure of an API response prevents the agent from adapting to a new client's requirements. Over-constraining the agent turns it from a collaborator into a template filler.
+Instructions constrain the agent's decisions. That is the point. Some decisions should not be constrained. An instruction that specifies the algorithm for sorting a list prevents the agent from choosing a better one when the data characteristics change. An instruction that dictates the exact structure of an API response prevents the agent from adapting to a new client's requirements. Over-constraining the agent turns it from a collaborator into a template filler.
 
 The balance is between decisions where only your repo's history matters and decisions where general engineering knowledge is useful. Library choices, module boundaries, naming conventions: those are repo-specific. The agent cannot infer them from the code alone, and getting them wrong violates decisions the team already made. Algorithm choice, function structure, API design: those are engineering problems. The agent's training data contains more examples of good solutions than your instruction file can specify.
 

@@ -8,7 +8,7 @@ Less than the swarm pitch wants you to believe. Most of the agentic team problem
 
 So this is not a theory of agent swarms. It is how the one-change-per-developer rule slots into the ceremonies you already have. Where the architecture has clean boundaries, services behind API contracts, modules with explicit exports, parallel work across developers is safe almost by default, because the contracts coordinate for you. Where it does not, the fix is an ADR that draws the boundary, not a new process.
 
-The genuinely unsolved part comes last, in [What Is Still Evolving](./what-is-still-evolving): autonomous agent-to-agent handoff, where agents coordinate with no human in the loop, is not solved by anyone in mid-2026. This book does not pretend otherwise. It describes what works now, which is smaller and more boring than the swarm pitch, and which actually ships.
+The genuinely unsolved part comes last, in [What Is Still Evolving](./what-is-still-evolving): autonomous agent-to-agent handoff, where agents coordinate with no human in the loop, is not solved by anyone in mid-2026. This book does not pretend otherwise. It describes what works now, which is smaller and more boring than the swarm pitch, and which ships.
 
 ## Chapters
 

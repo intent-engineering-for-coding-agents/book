@@ -4,7 +4,7 @@ This book has argued from evidence throughout. Where a claim rested on a publish
 
 This chapter applies the same standard to the book itself.
 
-The individual and small-team practices described here are stable enough to teach. The team and cross-team practices are established in principle but not yet consistent in execution. Some of the problems this section names are real, documented, and unsolved. Saying so is not a weakness; it is the honest maturity model the book has been applying since the Foundation section.
+The individual and small-team practices described here are stable enough to teach. The team and cross-team practices are established in principle but not yet consistent in execution. Some of the problems this section names are real, documented, and unsolved. Saying so is not a weakness. It is the honest maturity model the book has been applying since the Foundation section.
 
 ## What is known and working
 
@@ -14,11 +14,11 @@ Short-lived branches, trunk-based development, and PR taxonomy have decades of d
 
 The failure modes behind all this (incompatible specs, stale AGENTS.md, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the team-scale failure modes as documented rather than speculative. Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the SDD frameworks (OpenSpec, SpecKit, LeanSpec, GSD) in active use as of mid-2026.*
+Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the team-scale failure modes as documented rather than speculative. Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the SDD frameworks (OpenSpec, SpecKit, LeanSpec, GSD) in active use as of mid-2026.
 
 ## What has patterns but not consensus
 
-Multi-team coordination via shared ADR repositories is practiced in organizations with mature architecture review cultures. It is not yet standardized: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear; the form it takes is not.
+Multi-team coordination via shared ADR repositories is practiced in organizations with mature architecture review cultures. It is not yet standardized: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear. The form it takes is not.
 
 Inner source for `.agents/` libraries follows well-understood inner source mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? Package management for agent instruction files does not yet exist in any recognizable form.
 
@@ -26,17 +26,17 @@ Multi-LLM critique (using a second model to review a spec before implementation)
 
 The "delegate, review, own" loop describes real practice. Whether it becomes the standard workflow, and what tooling emerges to support it, is being determined in 2026.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the "delegate, review, own" loop and the divergence across SDD tools. ThoughtWorks, Technology Radar Vol 34, April 2026, the fragmented, pre-consensus state of these patterns.*
+Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the "delegate, review, own" loop and the divergence across SDD tools. ThoughtWorks, Technology Radar Vol 34, April 2026, the fragmented, pre-consensus state of these patterns.
 
 ## What is genuinely open
 
-Multi-repo planning remains a gap across every SDD framework reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the single-repo workflow does not. OpenSpec's roadmap acknowledges this; so does SpecKit's. The problem is named; the solution is not.
+Multi-repo planning remains a gap across every SDD framework reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the single-repo workflow does not. OpenSpec's roadmap acknowledges this. So does SpecKit's. The problem is named. The solution is not.
 
-Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (possibly across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
+Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 
 Governance without bureaucracy is the aspiration that no framework has yet delivered at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a governance committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? The existing answer is "social pressure and champions." That is not a satisfying answer for an organization of two hundred developers.
 
-*Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, Mar 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the roadmap's acknowledged multi-repo gap.*
+Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, Mar 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the roadmap's acknowledged multi-repo gap.
 
 ## The honest bar for this book
 
@@ -44,8 +44,8 @@ The bar this book applies to itself is the same bar it applies to any claim: str
 
 The individual practices (Foundation, AI Instructions, Spec-Driven Development, Quality) meet a higher bar than the team practices. They are described with specificity because they have been practiced and observed with specificity. The team practices meet a lower bar by honest acknowledgment: they are directionally correct, they follow from the individual practices logically, and they are consistent with what the SDD community is building toward. Some of them will look different in two years.
 
-ThoughtWorks Radar Vol 34 (April 2026) described the current SDD landscape as fragmented: multiple frameworks with different trade-offs, no dominant approach, significant experimentation still underway. That assessment matches what this book found. The individual-developer story is substantially complete; the team and organization story is not.
+ThoughtWorks Radar Vol 34 (April 2026) described the current SDD landscape as fragmented: multiple frameworks with different trade-offs, no dominant approach, significant experimentation still underway. That assessment matches what this book found. The individual-developer story is substantially complete. The team and organization story is not.
 
 That is an accurate description of where agentic software engineering was in mid-2026.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the assessment of the SDD landscape as fragmented with no dominant approach.*
+Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the assessment of the SDD landscape as fragmented with no dominant approach.

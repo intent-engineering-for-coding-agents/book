@@ -8,19 +8,19 @@ Mixed PRs make every kind of review harder. They mix high-stakes changes with lo
 
 The taxonomy is small. Three types of change, each with its own review style, each shipped on its own PR.
 
-**Docs changes** modify Markdown, comments, or other non-executable text. They do not affect runtime behaviour. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
+Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behaviour. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
-**Structural changes** are reorganisations: renames, moves, formatting, refactors that preserve behaviour. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioural change". The diff is often large; the cognitive load is medium; the risk is the silent behavioural change that sneaks in because a refactor was assumed safe and was not.
+Structural changes are reorganisations: renames, moves, formatting, refactors that preserve behaviour. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioural change." The diff is often large; the cognitive load is medium; the risk is the silent behavioural change that sneaks in because a refactor was assumed safe and was not.
 
-**Behavioural changes** modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
+Behavioural changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
 
-Three classes. Three review styles. One PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades; what is new is that agents make the temptation to mix them stronger, because the agent can do all three in one session and feels efficient bundling them.
+Three classes. Three review styles. One PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades; what is new is that agents make the temptation to mix them stronger, because the agent does all three in one session and feels efficient bundling them.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
+Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, Modern Software Engineering (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.
 
 ## Why mixing makes review harder
 
-The reviewer's attention is finite per PR. When the PR is one class of change, the attention budget can be spent on the questions that class needs. When it is three classes, the budget gets split, and the high-stakes class loses out.
+The reviewer's attention is finite per PR. When the PR is one class of change, the attention budget is spent on the questions that class needs. When it is three classes, the budget gets split, and the high-stakes class loses out.
 
 The specific failure mode: a reviewer opening a 300-line diff that is 270 lines of formatting and 30 lines of behavioural change will read the formatting lines first (they come up first in the file) and arrive at the behavioural change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 lines that did not.
 
@@ -51,7 +51,7 @@ graph TD
 
 Four PRs, four reviews, four merges. None of them takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The reviewer of the export implementation reads the spec first. The reviewer of the README update scans for accuracy. The reviewer of the auth-module reformat checks completeness. The reviewer of the helper extraction checks that the extraction preserved behaviour and is referenced everywhere it should be.
 
-If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have got the same level of attention as the export logic. The duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
+If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have received the same level of attention as the export logic. The duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
 
 ## When the rule has exceptions
 
