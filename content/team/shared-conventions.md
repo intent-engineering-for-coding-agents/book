@@ -44,6 +44,8 @@ Data access patterns: standardize. Security rules: standardize. Whether to use t
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces agents that are inflexible and developers who feel they cannot make local judgment calls. The team brief should specify conventions that affect the codebase. Everything else is personal setup.
 
+Role-based personal briefs are not divergence. A QA engineer's personal `AGENTS.md` might load extra test-coverage instructions. A security engineer's might always run a threat-model pass. A database specialist's might include query-plan analysis steps. These extend the team brief for the developer's domain without contradicting it. The distinction is direction: a personal brief that adds depth is fine; one that overrides a team convention is a problem waiting to surface in review.
+
 ## Conventions are organizational, not technical
 
 Team conventions are organizational problems with technical artefacts. The `AGENTS.md` records what was agreed. It does not produce the agreement. A team that has never discussed data access conventions cannot resolve the problem by writing a convention file. They have to have the discussion first and record the outcome.

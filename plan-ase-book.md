@@ -291,7 +291,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: ThoughtWorks Radar Vol 34 (market fragmentation, term-coining); Hightower SDD-tools comparison.*
     - Maturity honesty applies to the book itself
     - What the SDD ecosystem has not yet figured out (multi-repo planning, agent-to-agent handoff, governance without bureaucracy)
-- [ ] Tag: `v0.7.0`  <!-- chapters complete; tag pending build verification -->
+- [x] Tag: `v0.7.0`
 
 #### Phase U — Appendices + Polish (`v0.8.0`)
 

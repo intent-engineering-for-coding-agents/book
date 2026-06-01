@@ -1,18 +1,16 @@
 # What Is Still Evolving
 
-This book has argued from evidence throughout. Where a claim rested on a published source, the source is cited. Where a taxonomy or pattern is the book's synthesis, that is labeled. Where a tool or practice is a mid-2026 snapshot, the time bound is explicit.
+The individual practices in this book are stable enough to teach. The team practices are not, and this chapter does not pretend otherwise.
 
-This chapter applies the same standard to the book itself.
-
-The individual and small-team practices described here are stable enough to teach. The team and cross-team practices are established in principle but not yet consistent in execution. Some of the problems this section names are real, documented, and unsolved. Saying so is not a weakness. It is the honest maturity model the book has been applying since the Foundation section.
+The team and cross-team practices are established in principle but not yet consistent in execution. Some of the problems named here are real, documented, and unsolved. That is the honest maturity model the book has applied since the Foundation section.
 
 ## What is known and working
 
-The individual-scale practices are practiced and documented in a growing body of evidence. Spec-driven development at the PR scope (one change folder, one spec, scoped to a single change) is used by teams using OpenSpec, SpecKit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is a natural extension that several teams have applied independently. Intent-first PR review is described and recommended by multiple practitioners.
+The individual-scale practices are practiced and documented in a growing body of evidence. Spec-driven development at the PR scope (one change folder, one spec, scoped to a single change) is used by teams across OpenSpec, SpecKit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is a natural extension that multiple teams have adopted. Intent-first PR review is described in the SDD community as a practice that matches review style to PR class.
 
-Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The ASE application of these follows from established principles rather than inventing new ones: change folder scope matches branch scope, PR class matches review style.
+Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The ASE application of these follows from established principles: change folder scope matches branch scope, PR class matches review style.
 
-The failure modes behind all this (incompatible specs, stale AGENTS.md, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025.
+The failure modes behind all this (incompatible specs, stale AGENTS.md, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025. That documentation is the solid ground. What sits above it is still being assembled.
 
 Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the team-scale failure modes as documented rather than speculative. Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the SDD frameworks (OpenSpec, SpecKit, LeanSpec, GSD) in active use as of mid-2026.
 
@@ -22,11 +20,9 @@ Multi-team coordination via shared ADR repositories is practiced in organization
 
 Inner source for `.agents/` libraries follows well-understood inner source mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? Package management for agent instruction files does not yet exist in any recognizable form.
 
-Multi-LLM critique (using a second model to review a spec before implementation) is practiced ad hoc but not codified as a standard review step. Which models to use, how to structure the critique prompt, and how to weight the critique output against the developer's judgment are still matters of individual preference.
+Multi-LLM critique (using a second model to review a spec before implementation) is not yet codified as a standard step in any SDD framework as of mid-2026. Which models to use, how to structure the critique prompt, and how to weight the critique output against the developer's judgment remain matters of individual preference.
 
-The "delegate, review, own" loop describes real practice. Whether it becomes the standard workflow, and what tooling emerges to support it, is being determined in 2026.
-
-Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the "delegate, review, own" loop and the divergence across SDD tools. ThoughtWorks, Technology Radar Vol 34, April 2026, the fragmented, pre-consensus state of these patterns.
+Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the divergence across SDD frameworks and the absence of standardized review steps. ThoughtWorks, Technology Radar Vol 34, April 2026, the fragmented, pre-consensus state of these patterns.
 
 ## What is genuinely open
 
@@ -34,7 +30,7 @@ Multi-repo planning remains a gap across every SDD framework reviewed for this b
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 
-Governance without bureaucracy is the aspiration that no framework has yet delivered at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a governance committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? The existing answer is "social pressure and champions." That is not a satisfying answer for an organization of two hundred developers.
+Governance without bureaucracy is the aspiration that no framework has yet delivered at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a governance committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? Across every SDD framework and community reviewed for this book, the answer is social pressure and champions. That is not a satisfying answer for an organization of two hundred developers.
 
 Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, Mar 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the roadmap's acknowledged multi-repo gap.
 
@@ -46,6 +42,6 @@ The individual practices (Foundation, AI Instructions, Spec-Driven Development, 
 
 ThoughtWorks Radar Vol 34 (April 2026) described the current SDD landscape as fragmented: multiple frameworks with different trade-offs, no dominant approach, significant experimentation still underway. That assessment matches what this book found. The individual-developer story is substantially complete. The team and organization story is not.
 
-That is an accurate description of where agentic software engineering was in mid-2026.
+The open problems are live research questions. Some will be solved by the time the next edition lands. Others will still be open, renamed, and slightly worse. That is not a pessimistic forecast; it is what the maturity curve looks like from the inside.
 
 Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the assessment of the SDD landscape as fragmented with no dominant approach.

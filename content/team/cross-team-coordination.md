@@ -24,9 +24,9 @@ A team that has written useful skill files (a spec-quality checker, a test-strat
 
 The mechanics are the same as any inner source contribution: the team publishes the skill to a shared repository, documents its interface (what the skill expects, what it produces), and maintains it as they would a shared library. Other teams reference it from their `.agents/` directory by pulling or copying.
 
-The pragmatic shortcut for smaller organizations: a single `shared-agents` repository with skills and instruction files that teams include in their `AGENTS.md` by reference. The team's local `AGENTS.md` loads the shared file first, then layers project-specific conventions on top. The shared file changes less often. The project-specific layer changes frequently.
+The pragmatic shortcut for smaller organizations: a single `shared-agents` repository with skills and instruction files that teams include in their `AGENTS.md` by reference. The team's local `AGENTS.md` loads the shared file first, then layers project-specific conventions on top. The shared file changes less often. The project-specific layer changes frequently. Some agents support a marketplace or extension mechanism that provides an alternative distribution path: skill libraries are published and installed directly, without a shared repository.
 
-Inner source for agent instructions is book synthesis. There is no widely-adopted standard for this pattern. The underlying practice borrows from how shared library dependencies work in a codebase.
+Inner source for agent instructions is book synthesis. As of mid-2026, there is no widely-adopted standard for this pattern. The underlying practice borrows from how shared library dependencies work in a codebase.
 
 ## Multi-repo realities
 
