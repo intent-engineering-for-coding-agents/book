@@ -28,7 +28,7 @@ Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment
 
 ## Short-lived means days, not weeks
 
-Hammant's trunk-based development discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that lives for two weeks accumulates two weeks of divergence from trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
+Hammant's trunk-based development (TBD) discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that lives for two weeks accumulates two weeks of divergence from trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
 
 At agentic speed, "one day" is generous. An agent can implement a small-to-medium feature spec in hours. The branch lifecycle is: create branch, write spec (in the change folder on the branch), implement, test, open PR, review, merge.
 
@@ -70,7 +70,7 @@ Human reviewers have biases: they read the changed lines and skip the unchanged 
 
 Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.
 
-## TBD is not universal, and neither is the two-PR shape
+## Trunk-Based Development is not universal, and neither is the two-PR shape
 
 Trunk-based development is not universally practiced. Many teams use longer-lived feature branches, Gitflow variants, or release branches that stay open for weeks. The practices described here work best with short-lived branches. They do not require it. A team using a release-branch model can still keep each change folder's scope on its own branch and the spec-before-implementation discipline for decision-heavy changes. The branches just live longer.
 

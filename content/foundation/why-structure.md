@@ -8,9 +8,9 @@ This is the small version. The codebase has hundreds of these. Each session burn
 
 ## Compounding drift
 
-The model did not fail. The agent reasoned correctly from the context it had. The constraint was the context.
+The model did not fail. The agent just reasoned correctly from the context it had. The constraint was the context.
 
-ThoughtWorks called this cognitive debt in their April 2026 Radar: the AI-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
+ThoughtWorks called this cognitive debt in their April 2026 Radar: the AI-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, weeks. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 

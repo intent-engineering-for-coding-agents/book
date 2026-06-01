@@ -8,7 +8,7 @@ Knowing which mode you are in determines the recovery. Treating a spin as a drif
 
 This chapter uses a working taxonomy rather than a field-standard one. The labels are meant to be operationally useful during a session, not to claim settled academic categories.
 
-Drift is the agent losing the thread of the task as context fills or as the task grows past the original brief. Signs: earlier constraints dropped from the output, code that contradicts the spec, increasingly generic responses that no longer reference the specific requirements. Recovery: reset the session with a fresh brief. The agent is not broken. It has lost context.
+Drift is the agent losing the thread of the task as context fills or as the task grows past the original brief. Signs: earlier constraints dropped from the output, code that contradicts the spec, increasingly generic responses that no longer reference the specific requirements. Recovery: reset the session with a fresh brief. The agent is not broken. It has just lost context.
 
 Spin is the agent stuck on a sub-problem it cannot resolve alone. Signs: multiple similar attempts at the same solution, requests for clarification about the same constraint, acknowledgment of a blocker without progress past it. Recovery: provide the missing information or make the decision the agent cannot make on its own. Spin is not hallucination. The agent knows something is wrong. It needs input, not a reset.
 

@@ -4,7 +4,7 @@ A convention only constrains the agents that can read it. On a solo project that
 
 One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A developer who joined later never saw the discussion where that was decided, and their own `AGENTS.md` says nothing about it. Their agent hits a performance problem and writes a raw query. It is the right call for that one query. It is also out of step with every other data access in the codebase, and the team burns a review cycle deciding whether to apply the rule retroactively or carve an exception.
 
-The agent was not wrong. The convention was not visible to it.
+The agent was not wrong. The convention was just not visible to it.
 
 Shared AI instruction conventions are the team-level answer to this problem: conventions that every agent in every session reads, regardless of who started the session or which developer they are working with.
 

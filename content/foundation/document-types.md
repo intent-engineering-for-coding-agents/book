@@ -8,7 +8,7 @@ An ADR gets edited because the design changed. The decision history is now a lie
 
 A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
 
-A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. The agent is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
+A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. The agent is just following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
 
 Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. The types exist to prevent the pruning.
 
