@@ -1,191 +1,190 @@
-# The ASE Book — From Vibe to Pro (Plan v2)
+# Intent Engineering for Coding Agents (Plan v3)
 
-> Your AI agent is productive, but clueless about your system and intention.
+> Structure, specs, and proof for agentic software engineering.
 
----
+> Your coding agent is productive, but clueless about your system and intention.
 
-## Two Repos, One Truth
+This plan supersedes Plan v2. It records the rename and rebrand of the book from
+"The ASE Book / Agentic Software Engineering" to "Intent Engineering for Coding
+Agents," and the work needed to carry that name through the repo. Earlier plan files
+(`plan-ase-book.md`, `plan-ase-cli.md`) and the v2 master live in git history.
 
-```
-ase-book/                        # GitHub org
-├── ase-cli/                     # The proof: CLI tool built with ASE practices
-└── ase-book/                    # The book: VitePress site that references ase-cli
-```
+## Why rename
 
-**`ase-cli` is built first.** It is a Python CLI tool that validates ASE practices.
-Every feature is spec-driven. Every check has AC IDs and test traceability.
-Git tags mark each phase. The repo is proof the practices work.
+"The ASE Book" leaned on an acronym that is opaque to newcomers and collides with
+unrelated meanings (Automotive Service Excellence, Sybase ASE). A title built on an
+acronym nobody says out loud is a discoverability tax.
 
-**`ase-book` is written second.** It teaches the practices.
-It references `ase-cli` throughout — real ADRs, real specs, real traceability.
-The book does not narrate building the tool. The tool stands as finished evidence.
+"Agentic Software Engineering" is a broad, emerging field term whose center of gravity
+(autonomy, orchestration, multi-agent delivery) is not what this book is about. The
+book's thesis is narrower and sharper: the engineer's deliverable is no longer code, it
+is well-engineered intent that an agent turns into code.
 
----
+The field has a clean stack above prompt engineering. Context engineering covers what
+the agent sees. Intent engineering covers what should be built and how to verify it. The
+book's four topics map onto it: Foundation and AI Instructions supply context; Spec-Driven
+Development and Quality/Verification are intent proper. The book is renamed to name what it
+teaches.
 
-## Vertical-Slice Strategy
+## Decisions (locked)
 
-Each topic completes — chapters, `ase-cli` features, and a worked example — before the next begins. We ship one topic at a time; we do not write all four in parallel. The phases below sequence Foundation → AI Instructions → Spec-Driven → Quality; each is shippable on its own before the next starts.
+- Practice name: Intent Engineering. The discipline, within agentic software engineering,
+  of directing AI agents by engineering intent rather than writing code. Context
+  (Foundation, AI Instructions) is the substrate that makes intent executable. Specs state
+  the target. Verification proves the hit.
+- Book title: Intent Engineering for Coding Agents. The domain qualifier differentiates
+  the book from the generic, already-used term "intent engineering" (intentengineering.dev,
+  vendor glossaries, the arXiv "Intent Formalization" paper) and removes the "intent =
+  UX/product intent" ambiguity. The public title intentionally omits "AI" because the book
+  focuses on coding agents as the working role, not artificial intelligence as a broad category.
+- Subtitle: Structure, specs, and proof for agentic software engineering. "Proof" means
+  executable evidence through tests, traceability, and reviewable artifacts, not formal
+  mathematical proof.
+- Book repo: intent-engineering-for-coding-agents. The full slug carries the same domain
+  qualifier as the title and avoids relying on the generic phrase "intent engineering" alone.
+- ASE stays as the umbrella. "Agentic software engineering" remains the broader discipline
+  the practice sits within. It is not deleted; the practice is named beneath it.
+- CLI stays `ase-cli` for now. The tooling rename is deferred and out of scope for this pass.
+  Public package distribution is out of scope. Contributor-facing notes may explain how to run
+  the companion CLI locally when readers inspect the tool as supporting evidence.
+- The principles catalog (`principles/ase/`, `groups/ase-book.yaml`, and the mirrored table
+  in `content/appendices/living-principles.md`) moves with the CLI later, as one unit. The
+  `ASE-*` principle IDs are not renamed in this pass.
 
-**Topic done** = at least one shipped chapter, the matching `ase-cli` features tagged at a release version, and a worked example a reader can checkout. No half-finished topics; no horizontal sweep.
+## The classification rule (the heart of this rename)
 
----
+Every existing "ASE" token is one of two things. Classify, do not blind-replace.
 
-## Canonical Directory Structure
+- Practice reference becomes "Intent Engineering". Anything meaning the framework, the four
+  topics, or the thing this book teaches. Examples: "the first topic of ASE", "adopt ASE",
+  "ASE practices", "When ASE Fails", "ASE and the SDLC", "the Foundation chapter applies it
+  to ASE". This is the large majority of occurrences.
+- Umbrella reference keeps "agentic software engineering". The places that situate the
+  practice within the broader field, or contrast it with adjacent fields (the ADLC contrast
+  in the introduction and glossary). Rewrite these so the relationship is explicit: "Intent
+  Engineering sits within agentic software engineering."
 
-One convention for both repos:
+Default for this book: an unqualified "ASE" almost always means the practice, so it becomes
+Intent Engineering. The umbrella term appears only where it is doing positioning work.
 
-```
-.
-├── AGENTS.md              # AI entry point — TOC pattern, under ~50 lines
-├── docs/                  # ASE documentation (the knowledge base)
-│   ├── README.md          # Architecture overview (GitHub renders this automatically)
-│   ├── INDEX.md            # Agent-facing map — every file listed with description
-│   ├── architecture/      # High-level design (C4 diagrams, Structurizr DSL sources)
-│   ├── decisions/         # Architectural decisions (ADRs in MADR format, immutable once closed)
-│   ├── design/            # Detailed design docs (per-feature, disposable)
-│   └── testing/           # Testing conventions and strategy
-│       ├── testing-convention.md  # Generic ASE testing conventions (invariant, copy-pasteable)
-│       └── testing-strategy.md    # Project-specific test strategy (instantiates convention)
-├── openspec/              # OpenSpec: change proposals, delta specs, tasks
-│   ├── changes/           # Active and proposed changes
-│   │   └── archive/       # Completed changes (historical record)
-│   └── specs/             # Canonical specs (current system behavior)
-├── .agents/               # AI instruction hub
-│   ├── instructions/      # Role-based context files
-│   ├── commands/          # Slash commands (generated by openspec init, committed)
-│   ├── skills/            # Reusable workflow skills (authored + generated)
-│   └── hooks/             # File-type specific rules
-├── .github/               # CI workflows (Actions, not Pages deploy from /docs)
-│   └── workflows/         # Build, test, deploy, AC traceability
-├── src/                   # Source code (Python for CLI, or app code)
-├── tests/                 # AC-tagged, positive/negative proof
-├── content/               # VitePress book prose (ase-book only, not ase-cli)
-│   ├── foundation/
-│   ├── ai-instructions/
-│   ├── spec-driven/
-│   ├── quality/
-│   ├── team-workflows/
-│   ├── cross-team/
-│   └── appendices/
-│── LICENSE                # Apache 2.0
-└── pyproject.toml         # or package.json (VitePress for ase-book)
-```
+## Changes: rename now
 
-### `docs/` is the canonical documentation directory
+### 1. Brand and config
 
-`docs/` is the one name that works everywhere. No framework collision. No GitHub Pages
-conflict (deploy via Actions). No tool claims it.
+- `.vitepress/config.mts`: `title: 'ASE Book'` becomes `'Intent Engineering'`. `description`
+  becomes `'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic
+  software engineering'`. The GitHub social link uses the selected repo slug,
+  `https://github.com/<owner>/intent-engineering-for-coding-agents`, once the owner is known.
+- `content/index.md` (home hero): `name` becomes `"Intent Engineering"`. `text` becomes
+  `"for Coding Agents"`. `tagline` becomes "Structure, specs, and proof for agentic software
+  engineering."
+- `package.json`: `name` becomes `"intent-engineering-for-coding-agents"`. `description`
+  becomes "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic
+  software engineering." (Cosmetic. This is the book's npm package, not the CLI.)
+- `package-lock.json`: root package `name` becomes `"intent-engineering-for-coding-agents"`
+  to match `package.json`.
+- `idea.md`: title line and the mindmap root and "When ASE Fails" node updated.
 
-Every `docs/` directory has two entry points:
-- **`README.md`** — architecture overview, renders automatically on GitHub/GitLab/Bitbucket
-- **`INDEX.md`** — agent-facing map, every file listed with a one-line description
+### 2. Prose migration (apply the classification rule)
 
-The book recommends **one directory name** and one convention.
+Files carrying "ASE" as the practice (execution applies the rule line by line):
+`content/introduction.md`, `content/foundation/index.md`,
+`content/foundation/when-ase-fails.md`, `content/foundation/ase-and-the-sdlc.md`,
+`content/foundation/plain-text-as-code.md`, `content/foundation/why-structure.md`,
+`content/foundation/document-types.md`, `content/foundation/honest-maturity.md`,
+`content/quality/ac-ids-coverage.md`, `content/quality/dot-principles.md`,
+`content/team/what-is-still-evolving.md`, `references.md`.
 
----
+Key prose rewrite, `content/introduction.md`: replace the "This is the territory of Agentic
+Software Engineering (ASE)..." paragraph with one that introduces Intent Engineering as the
+practice and positions it within agentic software engineering. Keep the Developer AI framing
+and the ADLC contrast intact.
 
-## Repo Plans
+### 3. Reframe the four-topics narrative (content, not find/replace)
 
-- [plan-ase-cli.md](plan-ase-cli.md) — ase-cli tool design, commands, checks, and phases A–L
-- [plan-ase-book.md](plan-ase-book.md) — ase-book VitePress site and chapter outlines, phases M–V
+The title promises intent, but two topics (Foundation, AI Instructions) are context. To keep
+the title honest, frame context as in service of intent wherever the four topics are
+introduced as a set.
 
----
+- `content/introduction.md` ("What to expect"): the first two topics give the agent context;
+  the last two are intent. Context is the substrate, intent is the point.
+- `content/foundation/index.md`: Foundation grounds the agent so your intent becomes
+  executable, not a co-equal subject.
+- `idea.md` topic descriptions and mindmap match.
 
-## Full Phase Map
+### 4. File and link renames (the two ase-slugged chapters)
 
-| Step | Repo | Tag | What |
-|---|---|---|---|
-| A | ase-cli | `v0.0.1` | Scaffold — pyproject.toml, CI, .gitignore |
-| B | ase-cli | `v0.1.0` | Foundation — directory structure, ADRs, architecture.md |
-| C | ase-cli | `v0.2.0` | AI Instructions — AGENTS.md, .agents/ hub |
-| D | ase-cli | `v0.3.0` | Spec-Driven — `ase init` + check framework (OpenSpec 001–002) |
-| E | ase-cli | `v0.4.0` | Spec-Driven — file & structure checks (OpenSpec 003–005) |
-| F | ase-cli | `v0.5.0` | Spec-Driven — spec quality checks (OpenSpec 006–008) |
-| G | ase-cli | `v0.6.0` | Spec-Driven — test traceability checks (OpenSpec 009–010) |
-| H | ase-cli | `v0.7.0` | Spec-Driven — MCP server + AI checks (OpenSpec 011) |
-| I | ase-cli | `v0.8.0` | Spec-Driven — vendor generators (OpenSpec 012) |
-| J | ase-cli | `v0.9.0` | Quality — test package, CI, self-validation |
-| K | ase-cli | `v0.10.0` | Polish — PR taxonomy, maturity labels |
-| L | ase-cli | `v1.0.0` | Ship to PyPI |
-| M | ase-book | `v0.0.1` | Scaffold — VitePress, CI, seed files |
-| N | ase-book | `v0.1.0` | Foundation — architecture.md, ADRs |
-| O | ase-book | `v0.2.0` | AI Instructions — AGENTS.md, .agents/ skills |
-| P | ase-book | `v0.3.0` | Write Foundation chapters |
-| Q | ase-book | `v0.4.0` | Write AI Instructions chapters |
-| R | ase-book | `v0.5.0` | Write Spec-Driven chapters |
-| S | ase-book | `v0.6.0` | Write Quality chapters |
-| T | ase-book | `v0.7.0` | Write Team + Cross-Team chapters |
-| U | ase-book | `v0.8.0` | Appendices + polish |
-| V | ase-book | `v1.0.0` | Release — domain, public |
+- `content/foundation/when-ase-fails.md` becomes `when-intent-engineering-fails.md`
+- `content/foundation/ase-and-the-sdlc.md` becomes `intent-engineering-and-the-sdlc.md`
 
----
+Use `git mv` to preserve history. Each rename requires updating every inbound link:
 
-## Technical Stack
+- `.vitepress/config.mts` sidebar entries (text and link): "The Map: ASE and the SDLC"
+  becomes "The Map: Intent Engineering and the SDLC". "When ASE Fails" becomes "When Intent
+  Engineering Fails".
+- `content/foundation/index.md` chapter list links (items 4 and 7).
+- `content/foundation/why-structure.md` cross-link to "When ASE Fails".
+- `content/appendices/glossary.md` "See ..." links.
+- `references.md` ("cited in 'The Map: ASE and the SDLC'").
+- Grep the old slugs across `content/` before finalizing to catch any other cross-references.
 
-| Concern | Choice | Why |
-|---|---|---|
-| Book prose | Markdown | Plain-Text-as-Code |
-| Book site | VitePress | Proven, clean, Mermaid built-in |
-| Book hosting | GitHub Pages via Actions | Free, git-native, `docs/` stays free |
-| Diagrams | Mermaid | Plain text, git-diffable, GitHub renders |
-| ADRs | MADR | Lightweight, plain text, structured |
-| Spec tool | OpenSpec | AC IDs, test traceability, archive flow |
-| CLI tool | Python + Typer | Universal, readable, `uv tool install` |
-| MCP | `mcp` Python SDK | BYOK, agent-agnostic |
-| Package manager | uv | Fast, single tool, pipx-compatible |
-| Lint | ruff | Fast, comprehensive |
-| CI | GitHub Actions | Free, git-native |
-| License | Apache 2.0 | Consistent with PTAC ecosystem |
+### 5. Glossary (`content/appendices/glossary.md`)
 
----
+- Repoint "## Agentic Software Engineering (ASE)" to define the umbrella field, not "the
+  framework this book describes."
+- Add "## Intent Engineering": the practice this book teaches, within agentic software
+  engineering. Context serves intent. Specs and verification are intent proper.
+- Update entries that reference the practice: ADLC entry ("Distinct from ASE"), Brownfield
+  ("predates ASE practices", "adopt ASE from intent"), Greenfield ("Greenfield ASE
+  adoption"), SDD ("one of the four topics in ASE").
+- Follow `.agents/instructions/glossary-maintenance.md` for first-use expansion.
 
-## Living Principles
+## Deferred: explicitly NOT in this pass
 
-*(Append as they emerge during building and writing)*
+- `ase-cli` CLI tool name (kept for now).
+- `principles/ase/` tree, `groups/ase-book.yaml`, and the mirrored `living-principles.md`
+  table. They move with the CLI later, as one unit.
+- GitHub owner for the selected repo slug `intent-engineering-for-coding-agents` and domain
+  `ase-book.dev`. Launch-time brand decisions, tracked in the launch checklist below.
+- `groups/ase-book.yaml`, `.idea/ase-book.iml`. Internal and editor config, low value.
 
-- Each document type has a different lifespan. ADRs are permanent. Specs are disposable. Conflating them corrupts both.
-- Documents must keep pace with code. Before AI, undocumented intent could live in heads; the senior dev carried the load. AI has no head. Code changes without matching doc updates create documentation debt that the agent will compound, because it cannot see what isn't written.
-- Put the most important context at the top — agents read top-down and lose focus.
-- Documents form a hypergraph, not a tree. Agents and humans pick the relevant context via links and skip the rest. Fast retrieval at every depth is part of the design, not an afterthought.
-- One concept per document. Splitting by concept makes the hypergraph navigable; splitting by size keeps each node within an agent's attention budget. The two rationales point the same way.
-- Small specs outperform large specs — an agent that finishes is better than one that drifts.
-- The spec is the durable artifact. The implementation is disposable.
-- AI generates code faster than you can verify manually. Automated proof is not optional — it is mathematically required at agentic speeds.
-- Distinguish practiced from documented from CI-enforced from target state. Maturity and honesty prevent process theater.
-- One source of truth for AI instructions. Vendor files are generated pointers, not authored duplicates.
-- Capability-class targeting beats vendor-agnostic vagueness. The book targets CLI agents with thinking + agent + plan mode. The knowledge lives in the repo (`AGENTS.md`, `.agents/`, specs) — portable across tested-class tools.
-- `docs/` is for architecture, decisions, and design. Not for your static site. Point your SSG elsewhere.
-- Every `docs/` directory has a `README.md` (human-readable, renders on Git hosts) and an `INDEX.md` (agent-facing map, context economy). They look similar but serve different readers.
-- Separate the invariant from the instance. `testing-convention.md` defines what doesn't change across projects (test layers, AC IDs, traceability). `testing-strategy.md` instantiates it for a specific project (tools, CI, directory layout).
-- Acceptance criteria are test definitions waiting to be executed. Every scenario needs a stable ID and a declared proof layer.
-- Give credit where credit is due. A book that hides its shoulders is weaker, not stronger.
-- Anchor team process to existing SDLC primitives (branches, PRs, tickets, ADRs). New ceremonies age fast; existing ones already have tooling, muscle memory, and review culture.
-- Adoption is pull, not push. Document what teams have made work; let the reader decide what to lift.
+## Order of operations
 
----
+1. Brand and config edits (section 1) and glossary (section 5). Establishes the canonical new
+   vocabulary.
+2. File renames and all inbound link updates (section 4).
+3. Prose migration pass applying the classification rule (section 2).
+4. Four-topics reframe (section 3).
+5. Build and verify.
 
-## Author Launch Checklist
+## Verification
 
-Things only the author can do — work through these around Phase V.
+- `npm run docs:build` completes with no dead-link errors (catches missed inbound links from
+  the two renamed files).
+- Grep `"ASE Book"` and `"The ASE Book"` across `content/`, configs, `package.json`, and
+  `idea.md`. Zero results.
+- Grep `\bASE\b` across `content/`. Only intentional umbrella references remain (and the
+  deferred `living-principles.md` table). Spot-read each to confirm it positions the practice
+  within the field rather than naming the practice. Tooling tokens `ase-cli` and
+  `principles/ase/` are expected and allowed.
+- `npm run docs:dev`. Visually confirm the hero, nav title, and the two renamed chapter pages
+  render and link correctly.
+- Read `content/introduction.md` and the glossary end to end for umbrella-versus-practice
+  coherence and the context-serves-intent framing.
 
-- [ ] Buy `ase-book.dev` domain (before any public announcement)
-- [ ] Verify PyPI package name `ase-cli` is available; claim it before Phase L ships
-- [ ] Submit PR to [jordimas/awesome-agentic-engineering](https://github.com/jordimas/awesome-agentic-engineering) on launch day — one-liner on why it helps teams adopt agentic engineering
-- [ ] Post "Show HN" on Hacker News on launch day — link the live site, lead with the ase-cli proof
-- [ ] Announce via [AI Engineer community](https://www.ai.engineer/newsletter) — correct audience, direct fit
-- [ ] Reach out to [Latent Space](https://www.latent.space) for a guest post or resource feature
-- [ ] Cross-post a chapter excerpt to dev.to and/or Medium (Javarevisited) — surfaces in "books every AI engineer should read" roundups
-- [ ] Consider submitting an experience paper to AGENT workshop at ICSE 2027
+## Open decisions (not blocking this pass)
 
----
+- CLI and tooling rename (`ase-cli`, `principles/ase/`): when, and to what. Keep future CLI
+  guidance scoped to developer-only local usage unless a separate distribution decision is made.
+- External brand at launch: GitHub owner and domain. The book title can ship before these are
+  settled.
 
-## Open Questions
+## Author launch checklist
 
-- When is the right moment to soft-launch (share with a small circle) vs. hard-launch publicly?
+Carried forward from v2. Work through these near public launch.
 
----
-
-## References
-
-See [references.md](references.md) for the full, dated bibliography.
-Each chapter outline in [plan-ase-book.md](plan-ase-book.md) carries an inline `*Sources:*` line pointing into that file.
+- [ ] Decide and buy the domain (was `ase-book.dev`; revisit under the new name).
+- [ ] Submit a PR to awesome-agentic-engineering on launch day.
+- [ ] Post "Show HN" on launch day, leading with the `ase-cli` proof.
+- [ ] Announce via the AI Engineer community and reach out to Latent Space.
+- [ ] Cross-post a chapter excerpt to dev.to and Medium.

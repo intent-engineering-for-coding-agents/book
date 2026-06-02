@@ -6,6 +6,9 @@ Part of [plan.md](plan.md). See also [plan-ase-book.md](plan-ase-book.md).
 
 ## The `ase-cli` Tool
 
+`ase-cli` remains the companion tool name for now. Public package distribution is out of scope.
+This plan covers local developer use and companion-repo evidence for the book.
+
 ### What it is
 
 A Python CLI that validates ASE practices in any repo. Two layers:
@@ -259,10 +262,10 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 - [ ] Maturity labels on all checks (which are CI-enforced vs tool-supported)
 - [ ] Tag: `v0.10.0`
 
-#### Phase L — Ship to PyPI (`v1.0.0`)
+#### Phase L — Local Developer Release (`v1.0.0`)
 
 - [ ] Package metadata, README, version bump
-- [ ] `uv publish` to PyPI
-- [ ] CI: publish on tag
-- [ ] Install verification: `uv tool install ase-cli` works
+- [ ] Local install verification for contributors
+- [ ] Document how to run the CLI from a local checkout
+- [ ] CI: lint, test, and self-check on tag
 - [ ] Tag: `v1.0.0`

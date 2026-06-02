@@ -1,4 +1,4 @@
-# ase-book — Site Design and Chapter Outlines
+# Intent Engineering for Coding Agents: Site Design and Chapter Outlines
 
 Part of [plan.md](plan.md). See also [plan-ase-cli.md](plan-ase-cli.md).
 
@@ -6,12 +6,13 @@ Chapter `*Sources:*` lines reference [references.md](references.md).
 
 ---
 
-## The `ase-book` Book
+## The `intent-engineering-for-coding-agents` Book
 
 ### What it is
 
-A VitePress site at `ase-book.dev`, deployed via GitHub Actions.
-Written in Markdown. Mermaid diagrams. No vendor lock-in.
+A VitePress site for `Intent Engineering for Coding Agents`, deployed via GitHub Actions.
+Subtitle: `Structure, specs, and proof for agentic software engineering`.
+The public domain is a launch-time decision. Written in Markdown with Mermaid diagrams. No vendor lock-in.
 
 ### VitePress conventions
 
@@ -21,11 +22,11 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 - Mermaid plugin for diagrams
 - GitHub Actions deploys to GitHub Pages (not the built-in `/docs` deploy)
 
-### ase-book phases and tags
+### Book phases and tags
 
 #### Phase M — Scaffold (`v0.0.1`)
 
-- [x] Init repo under `ase-book/ase-book`
+- [x] Init repo under `ase-book/ase-book` (historical name at scaffold time)
 - [x] Apache 2.0 license
 - [x] Init VitePress: `srcDir: 'content'`, Mermaid plugin, clean theme
 - [x] GitHub Actions: build + deploy to GitHub Pages on push to `main`
@@ -40,7 +41,7 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 - [x] Seed files: `idea.md`, `plan.md`, `principles.md`
 - [x] Tag: `v0.0.1`
 
-#### Phase N — ase-book Foundation (`v0.1.0`)
+#### Phase N — Book Foundation (`v0.1.0`)
 
 - [x] Write `docs/README.md` for the book site
     - VitePress as SSG, `content/` structure, Mermaid, Actions deploy
@@ -51,7 +52,7 @@ Written in Markdown. Mermaid diagrams. No vendor lock-in.
 - [x] Wire `ase check` in CI on the book repo itself
 - [x] Tag: `v0.1.0`
 
-#### Phase O — ase-book AI Instructions (`v0.2.0`)
+#### Phase O — Book Agent Instructions (`v0.2.0`)
 
 - [x] Write `AGENTS.md` for the book repo — TOC pattern
     - Role: book authoring agent
@@ -311,6 +312,6 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase V — Release (`v1.0.0`)
 
-- [ ] Buy `ase-book.dev`, make repo public
+- [ ] Choose launch domain, make `intent-engineering-for-coding-agents` repo public
 - [ ] Final VitePress build, deploy
 - [ ] Tag: `v1.0.0`
