@@ -30,4 +30,4 @@ Apply to: ASE, ADR, MADR, AC ID, MCP, BYOK, TBD, and any other abbreviation intr
 
 ## Why
 
-A reader landing on a chapter from a search engine has no upstream context. First-use expansion plus a single canonical glossary location prevents the reader (and the agent helping them) from spending cycles on "what does X stand for?" The glossary is also where new contributors and AI agents look first when they encounter unfamiliar shorthand.
+A reader landing on a chapter from a search engine has no upstream context. First-use expansion plus a single canonical glossary location prevents the reader (and the agent helping them) from spending cycles on "what does X stand for?" The glossary is also where new contributors and coding agents look first when they encounter unfamiliar shorthand.

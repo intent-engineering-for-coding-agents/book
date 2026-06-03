@@ -39,4 +39,4 @@ sidebar: [
 
 - Topic directories that have no content files yet get no sidebar entry
 - The `content/index.md` home page is not included in the sidebar
-- Preserve the topic ordering: Foundation → AI Instructions → Spec-Driven → Quality → Team Workflows → Cross-Team → Appendices
+- Preserve the topic ordering: Foundation → Agent Instructions → Spec-Driven → Quality → Team Workflows → Cross-Team → Appendices

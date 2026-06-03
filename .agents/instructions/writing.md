@@ -2,15 +2,15 @@
 
 ## Audience
 
-Senior or experienced developers who already use AI coding assistants and want to work more deliberately. They know what a PR is, what CI does, what a linter enforces. They do not need those explained. They are skeptical of hype and will notice if the book oversells.
+Senior or experienced developers who already use coding agents and want to work more deliberately. They know what a PR is, what CI does, what a linter enforces. They do not need those explained. They are skeptical of hype and will notice if the book oversells.
 
 Write for a practitioner, not a student. The book adds structure and accountability to something they are already doing.
 
 ## Tone and voice
 
-Direct, opinionated, practitioner voice. Credit sources explicitly. No hype about AI replacing developers; no doomerism about AI either.
+Direct, opinionated, practitioner voice. Credit sources explicitly. No hype about coding agents replacing developers; no doomerism about them either.
 
-See [voice.md](voice.md) for the full voice and craft guide: narrative tension, forbidden AI patterns, rhythm, and the bar a chapter must clear to feel lived-in. `writing.md` covers mechanics; `voice.md` covers how the prose should sound.
+See [voice.md](voice.md) for the full voice and craft guide: narrative tension, forbidden patterns, rhythm, and the bar a chapter must clear to feel lived-in. `writing.md` covers mechanics; `voice.md` covers how the prose should sound.
 
 ## Structure
 
@@ -38,9 +38,9 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - `Sources:` line at the end of any section that draws on a specific reference. Format: `Sources: Author "Title" (Year), claim it backs.` Every source listed must carry a short tag naming the specific claim in that section it supports; a source with no claim to back does not belong on the line. See "Source-to-claim mapping" below.
 - Use American English punctuation conventions: periods and commas go inside closing quotation marks (`"like this."` not `"like this".`)
 - Use straight quotes and apostrophes throughout (`"`, `'`). Never curly/smart quotes (`"`, `"`, `'`, `'`), in prose or code
-- Never use the em dash (`—`) anywhere in book content. It is an AI-writing tell. Rewrite using a comma, a colon, parentheses, or two sentences. This is a hard rule with no exceptions. See `voice.md`.
+- Never use the em dash (`—`) anywhere in book content. It is an agent-writing tell. Rewrite using a comma, a colon, parentheses, or two sentences. This is a hard rule with no exceptions. See `voice.md`.
 - Inline code for file names, paths, command names, and flag names
-- No bold or italic emphasis in prose. Do not use `**bold**` or `*italic*` to emphasise words in running text. Bold and italic are AI-writing tells. Use sentence structure to carry emphasis instead. Exception: inline code (backticks) is fine; book titles in Sources lines use quotes.
+- No bold or italic emphasis in prose. Do not use `**bold**` or `*italic*` to emphasise words in running text. Bold and italic are agent-writing tells. Use sentence structure to carry emphasis instead. Exception: inline code (backticks) is fine; book titles in Sources lines use quotes.
 
 ## Prose style rules
 

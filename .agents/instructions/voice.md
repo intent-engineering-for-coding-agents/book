@@ -12,7 +12,7 @@ The prose must never feel:
 - generic
 - academic
 - sanitized
-- AI-generated
+- agent-generated
 - excessively polished
 
 A reader who skims any paragraph at random should think: this came from experience, not from summarizing documentation.
@@ -33,7 +33,7 @@ Confidence without arrogance. Realism without cynicism. Enthusiasm without hype.
 
 ### Paragraph discipline
 
-Max 4 sentences per paragraph. Vary length aggressively. A 1-sentence paragraph after a 4-sentence paragraph is a rhythm, not a mistake. Three paragraphs of the same visual length in a row is an AI tell. Break one of them.
+Max 4 sentences per paragraph. Vary length aggressively. A 1-sentence paragraph after a 4-sentence paragraph is a rhythm, not a mistake. Three paragraphs of the same visual length in a row is an agent-writing tell. Break one of them.
 
 ### Open with tension, not framing
 
@@ -83,13 +83,13 @@ Notes:
 
 Cite the published failures: cognitive debt, agent-accelerated drift, dead specs, scaling cliffs in coordination. The book has a References section for a reason. Use it as texture, not as a footnote afterthought.
 
-The voice draws on the published evidence base. It does not invent personal experience. "ThoughtWorks Radar Vol 34 calls this cognitive debt: the AI-era version of the undocumented decision that quietly breaks a deploy at 3am" is both true and textured. "I once debugged this for 14 hours" is texture the agent cannot honestly claim.
+The voice draws on the published evidence base. It does not invent personal experience. "ThoughtWorks Radar Vol 34 calls this cognitive debt: the agentic-era version of the undocumented decision that quietly breaks a deploy at 3am" is both true and textured. "I once debugged this for 14 hours" is texture the agent cannot honestly claim.
 
 ### Vary rhythm aggressively
 
 Mix short sentences with long explanations. Mix abrupt observations with reflective paragraphs. Mix compact technical detail with broader implication.
 
-Avoid identical paragraph lengths. Avoid balanced cadence throughout a section. Symmetrical prose is what AI drift looks like at the paragraph level.
+Avoid identical paragraph lengths. Avoid balanced cadence throughout a section. Symmetrical prose is what agent drift looks like at the paragraph level.
 
 > The architecture looked elegant.
 >
@@ -141,12 +141,12 @@ The final paragraph of a chapter plants a seed for the next. Name the question o
 
 No em dashes anywhere in book content. Zero. The rule has no exceptions.
 
-Em dashes are an AI-writing tell. Engineers writing for engineers do not punctuate this way.
+Em dashes are an agent-writing tell. Engineers writing for engineers do not punctuate this way.
 
 Rewrite rules:
 
-- Aside: use a period and a new sentence. "The chapters compound. Foundation makes AI Instructions effective."
-- Definition or expansion of a term: use a colon. "Cognitive debt: the AI-era undocumented decision."
+- Aside: use a period and a new sentence. "The chapters compound. Foundation makes Agent Instructions effective."
+- Definition or expansion of a term: use a colon. "Cognitive debt: the agentic-era undocumented decision."
 - Tight parenthetical clause: use a comma or delete the dashes. "a CLI agent, one that combines a thinking model."
 
 ### Semicolons
@@ -155,7 +155,7 @@ No semicolons in prose. Replace with a period or a comma. The one acceptable exc
 
 ### Asterisks for emphasis
 
-No bold (`**word**`) or italic (`*word*`) emphasis in prose text. These are AI-writing tells and make text feel formatted rather than written. Use sentence structure to carry emphasis.
+No bold (`**word**`) or italic (`*word*`) emphasis in prose text. These are agent-writing tells and make text feel formatted rather than written. Use sentence structure to carry emphasis.
 
 Keep backtick inline code formatting. Keep fenced code blocks. Keep Mermaid diagram blocks. Keep tables. Book titles in Sources lines use quotes, not italics.
 

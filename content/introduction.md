@@ -10,9 +10,9 @@ Coding agents amplify the developer driving them. Bill Doerrfeld put it bluntly 
 
 Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.
 
-This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants. "Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. That practice in turn fits within what some vendors and practitioners now call Developer AI: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
+This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants. "Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. That practice in turn fits within what some vendors and practitioners now call Developer AI: agent tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
 
-"Intent engineering" as a phrase is not this book's coinage. It appears in requirements engineering, vendor AI glossaries, and in communities focused on formalizing intent for AI-powered products, where it covers product intent, UX intent, and AI system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
+"Intent engineering" as a phrase is not this book's coinage. It appears in requirements engineering, vendor agent glossaries, and in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
 Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.
 
@@ -50,7 +50,7 @@ Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex C
 
 You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
-What you will not find here: a vendor comparison matrix. The agent class is named, not ranked. Those matrices age in months, sometimes faster. Cost economics for seat-licensed AI gets one paragraph in the appendix and no chapter. And no prescription. This book is a report on what practitioners and toolmakers have described as workable so far, with attribution and caveats. Adoption is pull, not push.
+What you will not find here: a vendor comparison matrix. The agent class is named, not ranked. Those matrices age in months, sometimes faster. Cost economics for seat-licensed tooling gets one paragraph in the appendix and no chapter. And no prescription. This book is a report on what practitioners and toolmakers have described as workable so far, with attribution and caveats. Adoption is pull, not push.
 
 ## Intent Engineering is not ADLC
 

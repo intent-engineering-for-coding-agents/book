@@ -16,7 +16,7 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 
 - Would a skeptical senior developer find this credible, or does it read as hype?
 - Are any enterprise buzzwords present? Remove them.
-- Does the chapter over-claim? (e.g. "AI will transform your workflow" — cut; "this practice reduces drift" — keep if supported)
+- Does the chapter over-claim? (e.g. "coding agents will transform your workflow" — cut; "this practice reduces drift" — keep if supported)
 - Is the practitioner voice consistent with other chapters?
 
 ### Sources and attribution

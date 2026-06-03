@@ -77,7 +77,7 @@ Principles about the quality loop: checkpoints, agent evaluation, deterministic 
 
 | ID | Summary |
 |----|---------|
-| ASE-QUALITY-AUTOMATED-PROOF-MANDATORY | AI generates code faster than you can verify manually. Automated proof is mathematically required. |
+| ASE-QUALITY-AUTOMATED-PROOF-MANDATORY | Coding agents generate code faster than you can verify manually. Automated proof is mathematically required. |
 | ASE-QUALITY-THREE-GATES | Quality is three gates in sequence (before, during, after), each looking at what the others cannot see. |
 | ASE-QUALITY-MAXIMIZE-DETERMINISTIC | Maximize deterministic checks: they scale to agentic speeds; manual review does not. |
 | ASE-QUALITY-AGENT-EVAL-LOOP | Tests prove the code is right; agent evaluation proves the agent setup is right: two distinct loops. |
@@ -105,7 +105,7 @@ Principles about team process, adoption, and culture.
 | ASE-TEAM-CHANGE-FOLDER-AS-ISOLATION | One change folder per developer-agent pair is the isolation primitive for parallel work. |
 | ASE-TEAM-SPEC-DELTA-FIRST-IN-REVIEW | In PR review, read the spec delta before the code diff: intent-first review. |
 | ASE-TEAM-TBD-CHANGE-FOLDER-BRANCH | A change folder maps onto branches that share its name; decision-heavy changes ship a spec PR before the implementation PR, which archives at merge. |
-| ASE-TEAM-STANDARDIZE-SHARED-DIVERGE-LOCAL | Standardize AI conventions that affect the codebase; leave local workflow choices divergent. |
+| ASE-TEAM-STANDARDIZE-SHARED-DIVERGE-LOCAL | Standardize agent conventions that affect the codebase; leave local workflow choices divergent. |
 | ASE-TEAM-ADR-CROSS-TEAM | ADRs are the cross-team coordination primitive: permanent, public, already in the SDLC. |
 
 ---

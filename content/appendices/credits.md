@@ -24,7 +24,7 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 **Rick Hightower's** comparative survey of SDD tools (Medium, Feb 2026) is the most useful map of the current landscape and the source for several comparative claims in the Spec-Driven topic.
 
-## AI agent conventions
+## Agent conventions
 
 **AgentPatterns.ai** named and documented the TOC pattern for AGENTS.md. That framing runs through the Agent Instructions topic.
 
