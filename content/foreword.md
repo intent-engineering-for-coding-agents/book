@@ -18,6 +18,8 @@ But a vibe-coded prototype has no business growing into a production system. The
 
 The AI is not a magic box. An agent will not read your mind. The agent will not produce the code you intended on its own. Not today, and not by wishing harder at the prompt box. If you have something in mind, you have to tell the agent. Spell out the requirements. State the rules, the intention, the tech stack. Use the AI as a sparring partner to sharpen your architecture and tighten your design, but the thinking still starts with you.
 
+One more thing: this book does not review agents or rank them. The agent is the labor and the sparring partner. Which labor you hire is not the point. What you tell it is.
+
 Context is the whole game. Rather than cramming everything into one-shot prompts you'll retype the next day, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the AI re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. Skip this, and you'll be vibe-coding forever, wondering why your agent keeps "forgetting".
 
 ## From Vibe to Pro

@@ -24,7 +24,7 @@ A Jira user story provides the why and the what: "As a user, I want to filter re
 
 One story maps to one or more OpenSpec change folders. The story provides the intent. The spec provides the acceptance criteria. The spec references the Jira story ID for traceability. Any reviewer can navigate from the spec back to the planning decision that initiated it.
 
-The Atlassian MCP (as of mid-2026, Anthropic's Claude AI connects to Jira and Confluence via MCP) allows the agent to fetch story context and Confluence architecture pages during spec drafting. The `AGENTS.md` should instruct the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria actually address what the story intended. The agent reads the story. The developer reviews the criteria.
+Atlassian MCP connectors, available to several capability-class agents as of mid-2026, allow the agent to fetch story context and Confluence architecture pages during spec drafting. The `AGENTS.md` should instruct the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria actually address what the story intended. The agent reads the story. The developer reviews the criteria.
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. The specific integration paths will change. The pattern of agents fetching ticket context before writing specs will not.
 

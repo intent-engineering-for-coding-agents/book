@@ -40,7 +40,7 @@ A design principle where the tool uses the caller's AI provider credentials rath
 
 ## Capability-class agent
 
-A CLI agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically: Claude Sonnet/Opus 4+, Codex/GPT 5.4+, OpenCode + Deepseek 4 Pro, Junie CLI. IDE-only assistants and completion-only tools are out of scope.
+A CLI agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. At the time of writing, examples include Claude Code, Codex CLI, OpenCode, and Junie CLI. IDE-only assistants and completion-only tools are out of scope.
 
 ## CSRF (Cross-Site Request Forgery)
 

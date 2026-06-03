@@ -38,7 +38,7 @@ The task list makes the spec executable. It does not make the spec correct. That
 
 The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training. They share the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.
 
-A second model from a different family does not share those priors. Claude writing a spec and GPT-4 critiquing it catches different gaps than Claude writing and Claude critiquing. The difference is not always large, but for specs guiding production-critical implementations, it is consistently useful.
+A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. The difference is not always large, but for specs guiding production-critical implementations, it is consistently useful.
 
 The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, a CLI agent pointed at the file. The mechanism does not matter. Iterate once. The critique adds twenty minutes and catches the kind of scenario the first model never thinks to write: the empty list case, the concurrent update case, the API returning a 200 with an error payload in the body.
 
