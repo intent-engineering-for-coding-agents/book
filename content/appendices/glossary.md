@@ -36,7 +36,7 @@ An intermediate service layer that sits between front-end clients and back-end s
 
 ## BYOK (Bring Your Own Key)
 
-A design principle where the tool uses the caller's AI provider credentials rather than supplying its own. `ase-cli`'s AI-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
+A design principle where the tool uses the caller's AI provider credentials rather than supplying its own. `iec`'s AI-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
 
 ## Capability-class agent
 
@@ -76,7 +76,7 @@ A specific Markdown template for ADRs developed by Oliver Kopp, Anita Armbruster
 
 ## MCP (Model Context Protocol)
 
-The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `ase-cli` to expose AI-assisted checks via the user's own AI agent (BYOK: bring your own key).
+The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `iec` to expose AI-assisted checks via the user's own AI agent (BYOK: bring your own key).
 
 ## Mutation testing
 
@@ -88,7 +88,7 @@ A non-profit foundation publishing community-driven security resources for web a
 
 ## OpenSpec
 
-A spec-driven-development framework (openspec.dev) built around a change-folder pattern: proposal, delta spec, design, tasks, archive. The book uses OpenSpec end-to-end; `ase-cli` is built with it.
+A spec-driven-development framework (openspec.dev) built around a change-folder pattern: proposal, delta spec, design, tasks, archive. The book uses OpenSpec end-to-end; `iec` is built with it.
 
 ## skeleton.md
 

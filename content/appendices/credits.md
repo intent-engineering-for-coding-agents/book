@@ -6,7 +6,7 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 **Dave Farley** (*Modern Software Engineering*, 2021) and **Jez Humble** (*Continuous Delivery*, 2010) are the conceptual anchor for how this book thinks about feedback loops, small batches, and CI discipline. The Farley test — does *Modern Software Engineering* have an Operations chapter? No, because ops dissolves into feedback loops — shaped the scope discipline here.
 
-**Michael Nygard** coined the Architectural Decision Record in 2011. Every `docs/decisions/` directory in this book and in `ase-cli` is downstream of that post.
+**Michael Nygard** coined the Architectural Decision Record in 2011. Every `docs/decisions/` directory in this book and in `iec` is downstream of that post.
 
 **Oliver Kopp, Anita Armbruster, and Olaf Zimmermann** created the MADR template (2018). The structured, scannable ADR format used throughout is theirs.
 
@@ -16,7 +16,7 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 ## Spec-driven development
 
-**Fission AI** built OpenSpec (openspec.dev), the change-folder framework this book uses end-to-end. `ase-cli` was built with OpenSpec from its first commit.
+**Fission AI** built OpenSpec (openspec.dev), the change-folder framework this book uses end-to-end. `iec` was built with OpenSpec from its first commit.
 
 **LeanSpec** (lean-spec.dev) articulated the small-spec discipline: match formality to risk. The Why Small? chapter inherits that framing directly.
 

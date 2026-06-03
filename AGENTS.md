@@ -23,7 +23,7 @@ Load when relevant:
 
 - [VitePress](.agents/instructions/vitepress.md): config, sidebar, Mermaid, build commands
 - [Review](.agents/instructions/review.md): how to review and critique draft content
-- [Index maintenance](.agents/instructions/index-maintenance.md): keep `docs/INDEX.md` current. Mirrored in ase-cli: update both.
+- [Index maintenance](.agents/instructions/index-maintenance.md): keep `docs/INDEX.md` current. Mirrored in the `iec` repo (github.com/intent-engineering-for-coding-agents/cli): update both.
 - [Glossary maintenance](.agents/instructions/glossary-maintenance.md): first-use expansion of abbreviations; keep `content/appendices/glossary.md` current
 - [docs/INDEX.md](docs/INDEX.md): full map of all documentation
 

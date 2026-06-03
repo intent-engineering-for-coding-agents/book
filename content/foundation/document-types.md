@@ -20,9 +20,9 @@ Content documents are the baseline: wiki pages, guides, articles, reference docu
 
 The other five types each carry constraints. Content documents do not. That asymmetry is the point.
 
-The enforcement mechanism is directory placement. Structured documents live under `docs/`; content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `ase check` scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
+The enforcement mechanism is directory placement. Structured documents live under `docs/`; content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `iec check` scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
 
-Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `ase-cli` repo conventions in this project family, the docs/ vs content/ directory placement.
+Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs content/ directory placement.
 
 README files live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory. The top-level `docs/README.md` is the architecture overview. It lives forever and is updated as the architecture changes.
 
@@ -34,7 +34,7 @@ Architectural Decision Records (ADRs) are documents that manifest specific decis
 
 The decision itself is immutable once closed. Reversing it means writing a new ADR that references the old one. But supporting context can be updated in place: pros and cons, discovered consequences, implementation notes. The core decision does not change. When you do update, record an amendment at the bottom of the file: the date, what changed, and the before and after. This makes the edit history legible without requiring readers to dig through git blame.
 
-This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `ase check` validates format before a decision lands in the wrong state.
+This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates format before a decision lands in the wrong state.
 
 Specs are a manifestation of intent. Where an ADR records a decision that was made, a spec records what you want the system to do before you build it: acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order. The checkboxes matter. An agent that reads a list of unchecked tasks will execute them; an agent that reads prose will summarise it. Explicit tasks with checkmarks are how you prevent the agent from skimming past a step it found inconvenient.
 
@@ -61,7 +61,7 @@ Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011),
 
 ## Tooling
 
-If you want to see this in practice, `ase-cli` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `ase check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
+If you want to see this in practice, `iec` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `iec check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
 
 Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. Intent Engineering adds the agent to the list of beneficiaries.
 

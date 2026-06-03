@@ -18,7 +18,7 @@ A skill is a Markdown file. What it contains determines whether the agent runs i
 
 Discrete steps matter most. Not "update the documentation" but "scan `docs/` with `ls -R`; for each directory, read the heading of each Markdown file; regenerate `docs/INDEX.md` with file path and heading; regenerate each `README.md` with a sorted list". Discrete steps can be checked off. Prose cannot.
 
-Add a completion condition. How does the agent know it is done? "Run `ase check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realise there is a step five.
+Add a completion condition. How does the agent know it is done? "Run `iec check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realise there is a step five.
 
 Anticipate the most common failure. If the skill reads file headings and a file has no heading, what should the agent do? A skill that answers this question runs more reliably than one that leaves the agent to improvise at the moment it encounters the exception.
 

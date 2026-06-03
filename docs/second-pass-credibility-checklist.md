@@ -17,7 +17,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 #### Missing local sources
 - Add a local source line for the Intent Engineering / Developer AI framing in the opening definition section, or recast it as the book's working terminology.
 - Add a source line or caveat around the two-role framing for agents as labor plus sparring partner if it is presented as observed practice rather than author synthesis.
-- Add a source line or soften the `ase-cli` companion evidence claim if the tags are being used as proof of the book's practices in action.
+- Add a source line or soften the `iec` companion evidence claim if the tags are being used as proof of the book's practices in action.
 
 #### Claims to soften
 - Soften `a term in active circulation` unless the text names the exact source basis for that claim.

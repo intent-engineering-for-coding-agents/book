@@ -46,9 +46,9 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 - Chapter ending: is there a planted seed for the next chapter? Or does the chapter simply stop?
 - Paragraph rhythm: are there three or more paragraphs of the same visual length in sequence? Break one of them.
 
-### ase-cli cross-references
+### iec cross-references
 
-- Where the chapter claims a practice is demonstrated in `ase-cli`, verify the claim is accurate
+- Where the chapter claims a practice is demonstrated in `iec`, verify the claim is accurate
 - Reference the correct git tag or file path; do not invent them
 - Tool positioning: are all tool mentions either in the Tooling section (last) or as a single brief illustration in the body? If a tool appears more than once in the body, it is overselling — move the extras to Tooling or cut them.
 

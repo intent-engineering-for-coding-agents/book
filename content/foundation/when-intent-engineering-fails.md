@@ -8,7 +8,7 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 The entry point goes stale. `AGENTS.md` says to follow the old module layout. An ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`. The agent reads the instructions, not the ADR, and produces code shaped for the old system.
 
-The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR changing something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `ase check` rule catches "the convention you describe no longer matches the code". The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
+The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR changing something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `iec check` rule catches "the convention you describe no longer matches the code". The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
 
 ## Dead specs
 
@@ -42,7 +42,7 @@ The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff Firs
 
 The team has `AGENTS.md`, ADRs, specs, and good initial intentions. Six months later, six ADRs from the first month and nothing since. The most recent design doc is from March. `docs/INDEX.md` was last updated when someone new joined. Nobody violated a rule. There is no rule about update frequency. There is only drift, and nothing detecting it.
 
-`ase check` in CI closes part of this loop. It catches structural violations before they reach main. The tool cannot catch ADRs that should have been written and were not. It cannot detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
+`iec check` in CI closes part of this loop. It catches structural violations before they reach main. The tool cannot catch ADRs that should have been written and were not. It cannot detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 
 The Quality and Verification topic gets the most leverage on this. Specifically, the agent-evaluation chapter, which covers how to test whether your AGENTS.md has stopped working without waiting for the next outage to find out.
 

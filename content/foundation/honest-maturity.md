@@ -18,7 +18,7 @@ Documented means it is written down well enough that someone new can follow it w
 
 ### CI-enforced
 
-CI-enforced is the only level a team relies on without trust. The pipeline fails if the practice is violated. `ase check` catches a missing `docs/README.md` before the PR merges. A test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
+CI-enforced is the only level a team relies on without trust. The pipeline fails if the practice is violated. `iec check` catches a missing `docs/README.md` before the PR merges. A test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
 
 Each level carries a target annotation: practiced, target: CI-enforced by Q3. This distinguishes intent from claim. Writing target: CI-enforced when you are not there yet is honesty. Writing CI-enforced when you rely on code review to catch it is something else.
 

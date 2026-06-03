@@ -17,10 +17,10 @@ When you are ready to write a section of a chapter and have the outline bullet p
 2. Load [writing.md](.agents/instructions/writing.md), [voice.md](.agents/instructions/voice.md), and [credibility-pass.md](.agents/skills/credibility-pass.md) — `writing.md` covers mechanics, `voice.md` covers how the prose should sound, and `credibility-pass.md` defines the mandatory provenance check before handoff
 3. Draft in this order:
    - Opening paragraph: state the problem this chapter addresses (concrete, not abstract)
-   - Body: expand each bullet point into prose or a supporting example; keep `ase-cli` cross-references accurate
+   - Body: expand each bullet point into prose or a supporting example; keep `iec` cross-references accurate
    - Closing: honest caveats or where this practice has limits
 4. Add a `*Sources:*` line wherever a specific reference is drawn on
-5. Verify all referenced `ase-cli` tags and file paths exist before writing them
+5. Verify all referenced `iec` tags and file paths exist before writing them
 6. Run the credibility pass on the draft and fix every blocking finding before handing the file to `review-chapter`
 
 ## Output

@@ -51,7 +51,7 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: `ase generate claude` writes the `CLAUDE.md` pointer, `ase generate copilot` writes the `copilot-instructions.md` pointer. Both are one or two lines. Neither requires the developer to author anything. The convention is encoded in the generator, not in a human's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: `iec generate claude` writes the `CLAUDE.md` pointer, `iec generate copilot` writes the `copilot-instructions.md` pointer. Both are one or two lines. Neither requires the developer to author anything. The convention is encoded in the generator, not in a human's memory.
 
 Generated files can be committed without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
@@ -77,6 +77,6 @@ Keeping the entry point honest is the first discipline. What it points to requir
 
 ## Tooling
 
-If you want to see this in practice, `ase-cli`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `ase check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
+If you want to see this in practice, `iec`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
 
 Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.

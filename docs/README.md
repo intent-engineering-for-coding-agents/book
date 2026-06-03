@@ -1,6 +1,6 @@
 # Intent Engineering for Coding Agents — Architecture
 
-Intent Engineering for Coding Agents is a VitePress site at `ase-book.dev` (domain pending update), deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices and references `ase-cli` throughout as live evidence.
+Intent Engineering for Coding Agents is a VitePress site at a domain to be confirmed at launch, deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices and references `iec` throughout as live evidence.
 
 This repo dogfoods its own convention: `docs/` holds project documentation; `content/` holds the book prose.
 
@@ -27,7 +27,7 @@ flowchart LR
 | Site generator | VitePress 1.x | Clean theme, Mermaid built-in, Vite-fast builds |
 | Diagrams | vitepress-plugin-mermaid | Plain text, git-diffable, renders in GitHub too |
 | Hosting | GitHub Pages | Free, git-native |
-| CI/CD | GitHub Actions | Deploys on push to `main`, runs `ase check` on PRs |
+| CI/CD | GitHub Actions | Deploys on push to `main`, runs `iec check` on PRs |
 | Package manager | npm | Standard for VitePress ecosystem |
 
 ## Directory structure
@@ -39,7 +39,7 @@ flowchart LR
 | `openspec/` | Change proposals, delta specs, tasks |
 | `.agents/` | AI instruction hub (added Phase O) |
 | `.vitepress/` | VitePress config and theme |
-| `.github/workflows/` | CI — build+deploy, ase check |
+| `.github/workflows/` | CI — build+deploy, iec check |
 
 ## VitePress conventions
 
@@ -59,7 +59,7 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 ## CI checks
 
-`check.yml` installs `ase-cli` and runs `ase check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
+`check.yml` installs `iec` and runs `iec check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
 
 ## AI instruction hub
 

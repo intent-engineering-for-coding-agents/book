@@ -63,7 +63,7 @@ PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour s
 
 ## CI: the pipeline checks the conventions
 
-`ase check` runs on every push. The tool validates that `AGENTS.md` is present and well-formed. That `docs/README.md` and `docs/INDEX.md` exist. That Architectural Decision Records (ADRs) follow Markdown ADR (MADR) format. That spec scenarios have stable Acceptance Criterion IDs (AC IDs) and test declarations. Not a new pipeline. A new check inside the pipeline you already have.
+`iec check` runs on every push. The tool validates that `AGENTS.md` is present and well-formed. That `docs/README.md` and `docs/INDEX.md` exist. That Architectural Decision Records (ADRs) follow Markdown ADR (MADR) format. That spec scenarios have stable Acceptance Criterion IDs (AC IDs) and test declarations. Not a new pipeline. A new check inside the pipeline you already have.
 
 AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival; six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
@@ -75,7 +75,7 @@ After a change ships, archive the spec. Update `docs/INDEX.md` if any docs files
 
 This is the step where Intent Engineering most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
 
-`ase check` catches some of this. `docs-index-stale` flags the index that does not match the file tree. The tool cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
+`iec check` catches some of this. `docs-index-stale` flags the index that does not match the file tree. The tool cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
 
 ## Why not add ceremonies
 

@@ -26,7 +26,7 @@ The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `A
 
 Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own.
 
-Sources: `ase-cli` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.
+Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.
 
 ## The prerequisite
 

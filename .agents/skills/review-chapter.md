@@ -20,7 +20,7 @@ Load [review.md](.agents/instructions/review.md) and [credibility-pass.md](.agen
 3. **Sources** — every factual claim has a local `*Sources:*` line; attribution accurate; provenance class understood; weak sources force weaker wording
 4. **DRY** — no repeated explanation from other chapters; no contradictions
 5. **Structure** — length 600–1200 words, no H4+, code blocks have language tags
-6. **ase-cli cross-references** — claimed tags and file paths verified against the actual repo
+6. **iec cross-references** — claimed tags and file paths verified against the actual repo
 7. **Voice** — does the prose match `voice.md`? No forbidden AI patterns, varied rhythm, narrative tension at openings, no generic summary endings, sections difficult to skim
 8. **Credibility honesty** — book synthesis explicitly labeled; unstable conventions framed as emerging; perishable claims time-bounded
 9. **Credibility pass** — run the dedicated credibility-pass skill and treat any blocking finding as a review failure until fixed or explicitly returned to the author

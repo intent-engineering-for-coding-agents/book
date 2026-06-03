@@ -4,7 +4,7 @@ A starting point for applying the practices in this book to a new or existing re
 
 This is not a required sequence. Apply what fits your context. Stop when the cost exceeds the value. See [Honest Maturity](/foundation/honest-maturity) for how to label what you have versus what you are working toward.
 
-If you have `ase-cli` installed, `ase init` creates the directory scaffold and stub files. Edit each stub for your system before committing — unedited stubs are worse than no docs.
+If you have `iec` installed, `iec init` creates the directory scaffold and stub files. Edit each stub for your system before committing — unedited stubs are worse than no docs.
 
 **If brownfield:** generate `skeleton.md` before any of the below. Point a capability-class agent at the existing codebase and ask for a structural map — modules, dependencies, key decisions, business rules. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
@@ -36,7 +36,7 @@ If you have `ase-cli` installed, `ase init` creates the directory scaffold and s
 - [ ] `docs/architecture/test-strategy.md` — test types your project uses, frameworks, file locations, coverage thresholds
 - [ ] `test/ac-registry.md` — one row per component prefix with the next available number
 - [ ] Tests carry `@Tag` annotations for AC ID and test type
-- [ ] `ase check` wired in CI — validates structure, AGENTS.md presence, AC traceability
+- [ ] `iec check` wired in CI — validates structure, AGENTS.md presence, AC traceability
 
 ## Team scale
 
@@ -49,6 +49,6 @@ Apply these when solo practices are stable and a second developer joins.
 
 ## What not to do on day one
 
-Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, `ase check` in CI, and a shared `.agents/` library on the same week will abandon half of it by the end of the month. Pick one practice per topic. Get it to documented maturity. Add the next one when the first is stable.
+Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, `iec check` in CI, and a shared `.agents/` library on the same week will abandon half of it by the end of the month. Pick one practice per topic. Get it to documented maturity. Add the next one when the first is stable.
 
 Sources: This checklist is a practical synthesis of the four topics. The sources for each practice appear in the corresponding chapter.

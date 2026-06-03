@@ -54,7 +54,7 @@ Sources: Mermaid (mermaid.js.org), the diagram format used throughout. Mermaid l
 
 The MADR template (context, considered options, decision outcome, consequences) produces Architectural Decision Records (ADRs) that share a consistent shape. Consistent shape means the agent parses without understanding prose, and a human scans ten ADRs in two minutes to find the relevant one.
 
-The alternative is prose-format decision records with no template, which produce ADRs that each tell a different kind of story and resist any structural validation. `ase check`'s `adr-format` check exists because templated ADRs are validated; freeform ones cannot be.
+The alternative is prose-format decision records with no template, which produce ADRs that each tell a different kind of story and resist any structural validation. `iec check`'s `adr-format` check exists because templated ADRs are validated; freeform ones cannot be.
 
 The template does enough for validation; the contents stay free enough to write without ceremony. The same principle shows up in the Acceptance Criterion ID (AC ID) convention later in the book.
 

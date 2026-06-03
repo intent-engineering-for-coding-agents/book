@@ -10,7 +10,7 @@ The fix is not better synchronisation between two files. It is one file that bot
 
 An agent modifying the authentication module does not need the CI pipeline rules. An agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain. The agent reads the relevant one and skips the rest.
 
-`ase-cli` at `v0.4.0` has four:
+`iec` at `v0.4.0` has four:
 
 ```
 .agents/instructions/
@@ -32,7 +32,7 @@ Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More T
 
 Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a specific repeatable task.
 
-`update-index` in `ase-cli` is a skill. It scans `docs/`, reads each file's heading, and regenerates `docs/INDEX.md`, `docs/decisions/README.md`, and `docs/design/README.md`. Five steps, one outcome, invocable any time `docs/` changes. Without it, each agent session that creates a new file has to either remember to update the index or be told to. With it, `AGENTS.md` can state the rule once: after changing anything under `docs/`, run `update-index`.
+`update-index` in `iec` is a skill. It scans `docs/`, reads each file's heading, and regenerates `docs/INDEX.md`, `docs/decisions/README.md`, and `docs/design/README.md`. Five steps, one outcome, invocable any time `docs/` changes. Without it, each agent session that creates a new file has to either remember to update the index or be told to. With it, `AGENTS.md` can state the rule once: after changing anything under `docs/`, run `update-index`.
 
 The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. A workflow for generating a new checker from spec is a skill.
 
@@ -44,7 +44,7 @@ The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and Jet
 
 ## `.agents/hooks/`
 
-Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `ase-cli`. It contains a `.gitkeep`.
+Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `iec`. It contains a `.gitkeep`.
 
 A hook fires on a trigger: after a file edit, before a commit, when a session ends. It runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
 

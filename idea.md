@@ -43,7 +43,7 @@ coordination, and an honest look at what is still evolving in the field.
 A guide site built with VitePress, hosted on GitHub Pages.
 Written in Markdown — plain text, git-native, no vendor lock-in.
 
-The book references a companion CLI tool — `ase-cli` — built with the
+The book references a companion tool — Intent Engineering Checker (`iec`) — built with the
 same practices the book describes. Every check, every spec, every ADR
 in that tool is living proof. Git history tells the story — each phase
 is a git tag, each feature an OpenSpec change proposal. The reader can

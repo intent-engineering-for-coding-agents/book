@@ -64,11 +64,11 @@ If you arrived expecting eval suites, agent-architecture patterns, or governance
 
 Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026); EPAM, "Agentic Development Lifecycle (ADLC) Explained" (2026); Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025); Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), ADLC as building agents as products with runtime governance, the discipline this book contrasts Intent Engineering against.
 
-## The companion: `ase-cli`
+## The companion: Intent Engineering Checker
 
-Every practice in this book is demonstrated in a companion repo, `ase-cli`. ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
+Every practice in this book is demonstrated in a companion tool, Intent Engineering Checker (`iec`). ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
 
-Sources: `ase-cli` repository history and tags in this project family, each phase as a git tag the reader can check out as evidence.
+Sources: `iec` repository history and tags (github.com/intent-engineering-for-coding-agents/cli), each phase as a git tag the reader can check out as evidence.
 
 ## How to read
 

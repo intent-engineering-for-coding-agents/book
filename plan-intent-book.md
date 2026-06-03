@@ -1,6 +1,6 @@
 # Intent Engineering for Coding Agents: Site Design and Chapter Outlines
 
-Part of [plan.md](plan.md). See also [plan-ase-cli.md](plan-ase-cli.md).
+Part of [plan.md](plan.md). See also [plan-intent-cli.md](plan-intent-cli.md).
 
 Chapter `*Sources:*` lines reference [references.md](references.md).
 
@@ -49,7 +49,7 @@ The public domain is a launch-time decision. Written in Markdown with Mermaid di
 - [x] Write ADRs:
     - ADR-0001: VitePress over alternatives (Hugo, Docusaurus, mdBook)
     - ADR-0002: `content/` for VitePress prose — frees `docs/` for ASE documentation
-- [x] Wire `ase check` in CI on the book repo itself
+- [x] Wire `iec check` in CI on the book repo itself
 - [x] Tag: `v0.1.0`
 
 #### Phase O — Book Agent Instructions (`v0.2.0`)
@@ -151,7 +151,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: agents.md; agentpatterns.ai.*
     - `CLAUDE.md` → "See AGENTS.md"
     - `.github/copilot-instructions.md` → "See AGENTS.md"
-    - `ase generate` — why generated files are pointers, not authored duplicates
+    - `iec generate` — why generated files are pointers, not authored duplicates
     - Reference `ase-cli` implementation
 - [x] Tag: `v0.4.0`
 
@@ -276,7 +276,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Intent-first review; PR taxonomy (`docs`, `structural`, `behavior`)
     - PR size: a full change folder + implementation is not a small PR; the spec is what makes it reviewable
     - Splitting the PR: spec PR first (intent review), implementation PR second (code review) — the default for changes with decision content; one PR when intent is visible in the diff (bug fixes, mechanical refactors). Trigger is decision content, not size
-    - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `ase-cli` MCP `check_spec_quality`
+    - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `iec` MCP `check_spec_quality`
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
 - [x] Chapter: Shared AI Instruction Conventions
@@ -296,18 +296,19 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase U — Appendices + Polish (`v0.8.0`)
 
-- [ ] Appendix: Tooling Landscape (links to living page)
+- [x] Appendix: Tooling Landscape (links to living page)
     - CLI agents, spec tools, MCP essentials
     - Model selection and cost: capability-class criterion (thinking + agent + plan mode); per-token pricing matters for direct-API readers; per-seat pricing (Copilot Enterprise, Cursor Business) makes per-run accounting irrelevant. One paragraph, not a chapter — DevOps and SRE are out of scope.
-- [ ] Appendix: Instantiation Checklist
-    - How to adopt ASE practices in your repo
+- [x] Appendix: Instantiation Checklist
+    - How to adopt Intent Engineering practices in your repo
     - What to copy, what to adapt
-    - `ase init` as starting point
+    - `iec init` as starting point
 - [x] Appendix: Living Principles → dot-principles
-- [ ] Appendix: Credits and References
+- [x] Appendix: Credits and References
     - Dave Farley, Michael Nygard, LeanSpec, OpenSpec, SpecKit, dot-principles
-- [ ] Final review: full read-through, verify all git tags, cross-reference ase-cli
-    - [ ] Verify every present-tense `ase-cli` claim against the shipped CLI — command names, check names, MCP tools (`check_spec_quality` in `code-review-agent-code.md`, the `tasks-complete` / `change-archived` gates in `trunk-based-development.md`). Anything not yet shipped is marked forthcoming/planned or cut. A reference work names no unbuilt tool as present-tense reality. Pairs with the Book dependency notes in `plan-ase-cli.md`.
+- [ ] Final review: full read-through, verify all git tags, cross-reference `iec`
+    - [ ] Verify every present-tense `iec` claim against the shipped CLI — command names, check names, MCP tools (`check_spec_quality` in `code-review-agent-code.md`, the `tasks-complete` / `change-archived` gates in `trunk-based-development.md`). Anything not yet shipped is marked forthcoming/planned or cut. A reference work names no unbuilt tool as present-tense reality. Pairs with the Book dependency notes in `plan-intent-cli.md`.
+    - [ ] Confirm command name (`intent` vs `ase`) and propagate to all book references before v1.0.0.
 - [ ] Tag: `v0.8.0`
 
 #### Phase V — Release (`v1.0.0`)

@@ -54,6 +54,6 @@ The hardest part is keeping the suite calibrated. A task that the agent reliably
 
 ## Tooling note
 
-If you want to see this in practice, `ase-cli` ships an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example.
+If you want to see this in practice, `iec` ships an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example.
 
 The acceptance-criterion IDs the previous chapter assumed exist are the link between intent and proof. The next chapter is how to make those IDs durable enough to survive everything else in this section.

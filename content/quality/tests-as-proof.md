@@ -66,6 +66,6 @@ The harder caveat is that proof has a ceiling. A test proves what it asserts. It
 
 ## Tooling note
 
-If you want to see this in practice, `ase-cli` at tag `v0.6.0` will ship test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check. A test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
+If you want to see this in practice, `iec` at tag `v0.6.0` ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check. A test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
 
 A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised. The closing half is what runs in CI. Between them sits the thing the agent built. The next question is how the agent setup itself gets verified, because a test suite that catches code regressions does nothing to catch the agent setup regressing into a configuration that ships worse code.
