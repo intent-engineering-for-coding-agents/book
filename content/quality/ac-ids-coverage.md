@@ -12,7 +12,7 @@ The prefix is 2–4 letters from the component or feature abbreviation. `GV` for
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is exactly the thing that does not match for long. With an identifier, the test moves, the scenario heading changes, the file splits into two, and the linkage holds.
 
-This is an ASE convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
+This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
 
 Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `ase-cli` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.
 
@@ -115,7 +115,7 @@ Test-type: integration
 
 Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database; a unit test with a mocked repository would not prove the HTTP status codes or the ORM query. The positive case is USR-008. The two negative cases are USR-009 and USR-010. The coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test, whether it lives in `test_users.py` or somewhere else entirely.
 
-What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate ASE by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
+What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
 
 ## The format is flexible, the link is not
 

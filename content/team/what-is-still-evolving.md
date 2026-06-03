@@ -8,7 +8,7 @@ The team and cross-team practices are established in principle but not yet consi
 
 The individual-scale practices are practiced and documented in a growing body of evidence. Spec-driven development at the PR scope (one change folder, one spec, scoped to a single change) is used by teams across OpenSpec, SpecKit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is a natural extension that multiple teams have adopted. Intent-first PR review is described in the SDD community as a practice that matches review style to PR class.
 
-Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The ASE application of these follows from established principles: change folder scope matches branch scope, PR class matches review style.
+Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The Intent Engineering application of these follows from established principles: change folder scope matches branch scope, PR class matches review style.
 
 The failure modes behind all this (incompatible specs, stale AGENTS.md, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025. That documentation is the solid ground. What sits above it is still being assembled.
 

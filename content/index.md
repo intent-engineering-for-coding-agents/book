@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "ASE Book"
-  text: "From Vibe to Pro"
-  tagline: Agentic Software Engineering. Structure, specs, and accountability for AI-assisted development.
+  name: "Intent Engineering"
+  text: "for Coding Agents"
+  tagline: Structure, specs, and proof for agentic software engineering.
   actions:
     - theme: brand
       text: Start Reading

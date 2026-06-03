@@ -4,7 +4,7 @@ The architecture diagram for your most important service is in a Keynote file on
 
 Your agent cannot read the Keynote file or replay the slide review. The Confluence page is technically reachable through an Atlassian MCP: if the agent knows the page exists, if it knows to look there, if its permissions reach that far, if a 2023 edit is still trustworthy. The developer who joined yesterday meets the same gates.
 
-If the agent needs it, it lives in the repo. If it lives in the repo, it lives in plain text. That is the rule, and almost every other Agentic Software Engineering (ASE) Foundation practice is downstream of it.
+If the agent needs it, it lives in the repo. If it lives in the repo, it lives in plain text. That is the rule, and almost every other Intent Engineering Foundation practice is downstream of it.
 
 ## The constraint
 
@@ -12,7 +12,7 @@ Plain text means a format a human reads in a terminal, a Git diff shows line-by-
 
 It does not mean exporting your Confluence space to Markdown once and committing it. One-off exports drift from reality the moment they land. The source-of-truth question is unresolved, and within a quarter the wiki and the export disagree. Plain-text-as-code is a practice, not a migration. The document lives in the repo from creation, evolves alongside the code it describes, and is reviewed in the same PR.
 
-The fuller statement of the philosophy is in the Plain Text as Code Manifest (github.com/Plain-Text-as-Code); this chapter is its application to the ASE Foundation.
+The fuller statement of the philosophy is in the Plain Text as Code Manifest (github.com/Plain-Text-as-Code); this chapter is its application to the Intent Engineering Foundation.
 
 Sources: Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing), the plain-text-as-code philosophy. Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as established practice.
 

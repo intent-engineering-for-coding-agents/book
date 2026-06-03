@@ -2,7 +2,7 @@
 
 Ask the team if they practice spec-driven development. Most will say yes. Look at the last twenty PRs. Eight have specs. Six of those specs were written after the code. Two reference acceptance criteria no test exists for.
 
-The team is not lying. They believe they practice it. They probably did practice it for the first month after adoption. The gap between what we believe we do and what the repo shows we do is the most reliable failure mode in any engineering organisation, and ASE practices are no different.
+The team is not lying. They believe they practice it. They probably did practice it for the first month after adoption. The gap between what we believe we do and what the repo shows we do is the most reliable failure mode in any engineering organisation, and Intent Engineering practices are no different.
 
 The fix is not more process. It is honesty about where you are. The rest of the book attaches one of three labels to every practice: practiced, documented, CI-enforced. The label tells you where a team needs to be for the practice to work. This is where those labels come from.
 

@@ -16,7 +16,7 @@ This is a different gap from style. A linter handles indentation, naming convent
 
 ## Optional, experimental, and easy to overdo
 
-The framework is optional. A team using ASE without `.principles` has specs, tests, hooks, and PR taxonomy, which is most of the value of the book. Adding `.principles` is the next step for teams who notice that their reviews keep flagging the same shape issues and want to encode those issues somewhere the agent reads them.
+The framework is optional. A team using Intent Engineering without `.principles` has specs, tests, hooks, and PR taxonomy, which is most of the value of the book. Adding `.principles` is the next step for teams who notice that their reviews keep flagging the same shape issues and want to encode those issues somewhere the agent reads them.
 
 `.principles` is an experiment, not a settled practice. As of 2026 the framework is small, the catalogue is sparse, and the tooling is early. A team that adopts it is committing to maintaining their own catalogue and adapting the framework as it changes. This is fine for teams who want to be on the front edge of the practice; it is a reason to wait for teams who want to adopt only mature tooling.
 

@@ -4,7 +4,7 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An ASE convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
@@ -12,7 +12,7 @@ A file (`test/ac-registry.md` by convention) that maintains one row per componen
 
 ## ADLC (Agentic Development Lifecycle)
 
-The discipline of building AI agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from ASE, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+The discipline of building AI agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
 
 ## ADR (Architectural Decision Record)
 
@@ -24,11 +24,11 @@ The canonical entry point for an AI coding agent at the root of a repository. Ac
 
 ## Agentic Software Engineering (ASE)
 
-The framework this book describes. A set of practices that progressively make an AI coding agent less clueless about a system and the intent behind it. Organised around four topics: Foundation, AI Instructions, Spec-Driven Development, Quality and Verification.
+The broader discipline of building software with AI coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
 
 ## Brownfield
 
-A codebase that predates ASE practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt ASE from intent the way greenfield ones can; they bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+A codebase that predates Intent Engineering practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt Intent Engineering from intent the way greenfield ones can; they bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## BFF (Backend for Frontend)
 
@@ -56,11 +56,15 @@ The AI-era analogue to technical debt: undocumented decisions and assumptions th
 
 ## Greenfield
 
-A new codebase, or one being built from explicit intent. Greenfield ASE adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
+A new codebase, or one being built from explicit intent. Greenfield Intent Engineering adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
 
 ## Golden test
 
 A fixed, repeatable task with a known good output, used to detect regressions when something upstream changes. In this book, applied both to code (a stable input with an expected output) and to agent setups (a fixed task with structural properties the agent's output should satisfy). See [Agent Evaluation and Regression](/quality/agent-evaluation).
+
+## Intent Engineering
+
+The practice this book teaches. Within agentic software engineering, intent engineering is the discipline of directing AI coding agents by engineering well-structured intent rather than writing code directly. Context (Foundation, AI Instructions) is the substrate that makes intent executable. Specs state the target. Verification proves the result. See [Introduction](/introduction).
 
 ## LeanSpec
 
@@ -96,7 +100,7 @@ In this book's sense: the canonical specification of system behaviour. Acceptanc
 
 ## SDD (Spec-Driven Development)
 
-The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and treated as the durable artefact from which code is generated. One of the four topics in ASE. See [Spec-Driven Development](/spec-driven/).
+The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and treated as the durable artefact from which code is generated. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
 
 ## Test-type field
 

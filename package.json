@@ -1,7 +1,7 @@
 {
-  "name": "ase-book",
+  "name": "intent-engineering-for-coding-agents",
   "version": "0.0.1",
-  "description": "ASE Book — From Vibe to Pro",
+  "description": "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering",
   "license": "Apache-2.0",
   "scripts": {
     "docs:dev": "vitepress dev",

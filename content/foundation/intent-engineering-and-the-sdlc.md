@@ -1,4 +1,4 @@
-# The Map: ASE and the SDLC
+# The Map: Intent Engineering and the SDLC
 
 The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artefacts. New review process. Your existing tooling becomes legacy on contact.
 
@@ -6,7 +6,7 @@ The Software Development Life Cycle is the structured sequence a team runs to ta
 
 That pitch dies on first contact with any team with working CI, an established review culture, and a Jira board people use. So this book makes a different pitch.
 
-Agentic Software Engineering (ASE) extends the SDLC. The ceremonies stay. The artefacts inside them change.
+Intent Engineering extends the SDLC. The ceremonies stay. The artefacts inside them change.
 
 Sources: Sommerville, Software Engineering (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.
 
@@ -35,7 +35,7 @@ graph TD
     end
 ```
 
-Five phases, none of them new. Inside each, ASE adds exactly one thing.
+Five phases, none of them new. Inside each, Intent Engineering adds exactly one thing.
 
 ## Planning: from ticket to spec
 
@@ -53,7 +53,7 @@ The contrast matters at scale. A briefing in a chat session works for one develo
 
 ## Review: intent first, code second
 
-The agent commits. The PR opens. Most teams treat what comes next as one step. ASE treats it as two.
+The agent commits. The PR opens. Most teams treat what comes next as one step. Intent Engineering treats it as two.
 
 The spec delta says what the change is supposed to do. The code diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the code diff. Does the implementation match the intent?
 
@@ -73,12 +73,12 @@ Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the
 
 After a change ships, archive the spec. Update `docs/INDEX.md` if any docs files moved. Leave ADRs closed. Update `AGENTS.md` if the change altered a convention.
 
-This is the step where ASE most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
+This is the step where Intent Engineering most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
 
 `ase check` catches some of this. `docs-index-stale` flags the index that does not match the file tree. The tool cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
 
 ## Why not add ceremonies
 
-New ceremonies have a half-life. Teams adopt them at the start of a quarter and drift back under deadline pressure six months later. ASE sidesteps this by plugging into the ceremonies that already have tooling, habit, and buy-in. The ask is smaller. The persistence is better.
+New ceremonies have a half-life. Teams adopt them at the start of a quarter and drift back under deadline pressure six months later. Intent Engineering sidesteps this by plugging into the ceremonies that already have tooling, habit, and buy-in. The ask is smaller. The persistence is better.
 
 What still fails is the gap between what a team believes it is doing and what the repo shows it does. A team that added spec review to its PR process but skips it under pressure did not adopt the practice. It adopted the intent. No SDLC map tells you the difference, and nothing in the map closes that gap on its own.

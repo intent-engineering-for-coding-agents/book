@@ -1,6 +1,6 @@
-# When ASE Fails
+# When Intent Engineering Fails
 
-Agentic Software Engineering (ASE) does not make your codebase drift-proof. It makes drift detectable and recoverable, which is a meaningfully weaker claim, and the honest one.
+Intent Engineering does not make your codebase drift-proof. It makes drift detectable and recoverable, which is a meaningfully weaker claim, and the honest one.
 
 The five failure modes below survive good initial setup. They are not beginner mistakes. They are what goes wrong for teams that adopted these practices in earnest and then let them slip. That is what happens to most teams, because the slip is gradual and nothing alerts you to it. The chapter exists here, before the practices, so the rest of the book does not read as sales material for itself.
 

@@ -63,6 +63,6 @@ Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011),
 
 If you want to see this in practice, `ase-cli` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `ase check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
 
-Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. ASE adds the agent to the list of beneficiaries.
+Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. Intent Engineering adds the agent to the list of beneficiaries.
 
 All of it assumes the documents are in a format the agent processes. A type taxonomy tells you where to put things and how long to keep them. It does not guarantee the agent reads them. An architecture diagram embedded in a Keynote file is still a Keynote file, regardless of which directory it sits in.

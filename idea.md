@@ -1,4 +1,4 @@
-# The ASE Book — From Vibe to Pro
+# Intent Engineering for Coding Agents
 
 ## The Problem
 
@@ -106,7 +106,7 @@ inside Quality.
 
 ```mermaid
 mindmap
-  root((ASE Book))
+  root((Intent Engineering))
     The Problem
       Productive but clueless
       Compounding drift
@@ -122,7 +122,7 @@ mindmap
       Honest maturity
       Brownfield bootstrap
         skeleton.md
-      When ASE Fails
+      When Intent Engineering Fails
     AI Instructions
       AGENTS.md
       AI Instruction Hub
