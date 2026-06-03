@@ -8,7 +8,7 @@ The Foundation chapters in this topic work from intent. You know what the system
 
 ## skeleton.md is the bootstrap
 
-`skeleton.md` is the name this book uses for an AI-generated structural map of an existing codebase. Not a refactor plan. Not a list of improvements. Not a roadmap. A map.
+`skeleton.md` is the name this book uses for an agent-generated structural map of an existing codebase. Not a refactor plan. Not a list of improvements. Not a roadmap. A map.
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
@@ -24,7 +24,7 @@ On a first pass, the agent will often get the structure mostly right. The remain
 
 Commit the reviewed result. Update `docs/INDEX.md`. The skeleton is now part of the repo's context. It is not an artefact in a chat history that disappears the moment the session closes.
 
-Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates AI sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside current coding-agent toolchains such as Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent produces a useful skeleton against many codebases, given a domain expert and a few iterations.
+Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside current coding-agent toolchains such as Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent produces a useful skeleton against many codebases, given a domain expert and a few iterations.
 
 Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation of the same pattern.
 
@@ -32,7 +32,7 @@ Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Le
 
 Alistair Cockburn coined "walking skeleton" in "Crystal Clear" (2004). His version is a thin end-to-end implementation built forward from intent. Enough to prove the architecture works before you fill it in.
 
-The AI-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible so you reason about it and build on it.
+The agentic-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible so you reason about it and build on it.
 
 Sources: Cockburn, "Crystal Clear: A Human-Powered Methodology for Small Teams" (Addison-Wesley, 2004), origin of the walking-skeleton pattern.
 

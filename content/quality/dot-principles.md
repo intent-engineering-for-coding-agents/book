@@ -8,7 +8,7 @@ Specs verify behaviour. Tests verify proof. PR taxonomy verifies hygiene. None o
 
 The dot-principles project (github.com/dot-principles) is one experimental answer. Principles are written as version-controlled Markdown files, organised into catalogues, and applied through agent commands. Each principle states one established belief about how code should be shaped, backed by a citable published source: a book with an ISBN, a paper with a DOI, or an authoritative specification.
 
-The framework uses three commands: `dot-scout` (setup), `dot-prime` (load principles before coding), and `dot-audit` (check code against principles after). The check is AI-native: a deterministic linter cannot tell whether a function has one reason to change, but a model with the principle in context can make a defensible call.
+The framework uses three commands: `dot-scout` (setup), `dot-prime` (load principles before coding), and `dot-audit` (check code against principles after). The check is agent-native: a deterministic linter cannot tell whether a function has one reason to change, but a model with the principle in context can make a defensible call.
 
 This book uses three distinct questions to separate the layers: what should the code do, does it do it, and is it well-shaped. Specs answer the first. Tests answer the second. Principles answer the third.
 

@@ -35,7 +35,7 @@ Principles about briefing the agent: what goes in `AGENTS.md`, how to write inst
 | ASE-CONTEXT-INSTRUCTIONS-MUST-BE-TESTABLE | Can the agent produce concrete behavior from this instruction, or does it have to guess? |
 | ASE-CONTEXT-COVER-DEFAULTS | The most valuable negative instructions cover the agent's defaults from training data. |
 | ASE-CONTEXT-IMPORTANT-FIRST | Put the most important context at the top: agents read top-down and lose focus. |
-| ASE-CONTEXT-ONE-SOURCE-OF-TRUTH | One source of truth for AI instructions; vendor files are generated pointers, not authored duplicates. |
+| ASE-CONTEXT-ONE-SOURCE-OF-TRUTH | One source of truth for agent instructions; vendor files are generated pointers, not authored duplicates. |
 | ASE-CONTEXT-AGENT-CLUELESS-NOT-BROKEN | The agent is not broken, it is clueless. Fix the context before switching models. |
 | ASE-CONTEXT-INSTRUCTION-SKILL-HOOK | Get the instruction right first; add a skill when a procedure repeats; add a hook when forgetting hurts. |
 | ASE-CONTEXT-CAPABILITY-CLASS-TARGETING | Target capability class (thinking + agent + plan mode), not vendor-agnostic vagueness. |

@@ -8,7 +8,7 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 The entry point goes stale. `AGENTS.md` says to follow the old module layout. An ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`. The agent reads the instructions, not the ADR, and produces code shaped for the old system.
 
-The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR changing something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `iec check` rule catches "the convention you describe no longer matches the code". The AI Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
+The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR changing something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline; no `iec check` rule catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
 
 ## Dead specs
 
@@ -52,7 +52,7 @@ Each topic targets one or more of these modes directly:
 
 | Failure mode | Topic that addresses it |
 |---|---|
-| AGENTS.md rot | AI Instructions |
+| AGENTS.md rot | Agent Instructions |
 | Dead specs | Spec-Driven Development |
 | Agent-accelerated tech debt | Spec-Driven Development |
 | Over-spec | Spec-Driven Development (Why Small, Why Important First) |
@@ -60,6 +60,6 @@ Each topic targets one or more of these modes directly:
 
 The point is not zero drift. That is not on offer. The point is drift that is detectable while it is still cheap to fix.
 
-Drift with no detection is the hardest failure mode because nothing alerts you to it. You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the AI Instructions topic is for: what should the agent be reading, and how do you keep it honest.
+Drift with no detection is the hardest failure mode because nothing alerts you to it. You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
 
 Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.

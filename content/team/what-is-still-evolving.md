@@ -38,7 +38,7 @@ Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.co
 
 The bar this book applies to itself is the same bar it applies to any claim: strong where the evidence is strong, labeled where it is synthesis, time-bounded where the practice is evolving.
 
-The individual practices (Foundation, AI Instructions, Spec-Driven Development, Quality) meet a higher bar than the team practices. They are described with specificity because they have been practiced and observed with specificity. The team practices meet a lower bar by honest acknowledgment: they are directionally correct, they follow from the individual practices logically, and they are consistent with what the SDD community is building toward. Some of them will look different in two years.
+The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) meet a higher bar than the team practices. They are described with specificity because they have been practiced and observed with specificity. The team practices meet a lower bar by honest acknowledgment: they are directionally correct, they follow from the individual practices logically, and they are consistent with what the SDD community is building toward. Some of them will look different in two years.
 
 ThoughtWorks Radar Vol 34 (April 2026) described the current SDD landscape as fragmented: multiple frameworks with different trade-offs, no dominant approach, significant experimentation still underway. That assessment matches what this book found. The individual-developer story is substantially complete. The team and organization story is not.
 

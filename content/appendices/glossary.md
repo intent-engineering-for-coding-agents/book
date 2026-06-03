@@ -12,7 +12,7 @@ A file (`test/ac-registry.md` by convention) that maintains one row per componen
 
 ## ADLC (Agentic Development Lifecycle)
 
-The discipline of building AI agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+The discipline of building agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
 
 ## ADR (Architectural Decision Record)
 
@@ -20,11 +20,11 @@ A document recording a single architectural decision: context, options considere
 
 ## AGENTS.md
 
-The canonical entry point for an AI coding agent at the root of a repository. Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview. Documented at agents.md.
+The canonical entry point for a coding agent at the root of a repository. Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview. Documented at agents.md.
 
 ## Agentic Software Engineering (ASE)
 
-The broader discipline of building software with AI coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
+The broader discipline of building software with coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
 
 ## Brownfield
 
@@ -36,7 +36,7 @@ An intermediate service layer that sits between front-end clients and back-end s
 
 ## BYOK (Bring Your Own Key)
 
-A design principle where the tool uses the caller's AI provider credentials rather than supplying its own. `iec`'s AI-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
+A design principle where the tool uses the caller's model provider credentials rather than supplying its own. `iec`'s agent-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
 
 ## Capability-class agent
 
@@ -52,7 +52,7 @@ A public catalogue of disclosed security flaws in software, each with a unique i
 
 ## Cognitive debt
 
-The AI-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
+The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
 
 ## Greenfield
 
@@ -64,7 +64,7 @@ A fixed, repeatable task with a known good output, used to detect regressions wh
 
 ## Intent Engineering
 
-The practice this book teaches. Within agentic software engineering, intent engineering is the discipline of directing AI coding agents by engineering well-structured intent rather than writing code directly. Context (Foundation, AI Instructions) is the substrate that makes intent executable. Specs state the target. Verification proves the result. See [Introduction](/introduction).
+The practice this book teaches. Within agentic software engineering, intent engineering is the discipline of directing coding agents by engineering well-structured intent rather than writing code directly. Context (Foundation, Agent Instructions) is the substrate that makes intent executable. Specs state the target. Verification proves the result. See [Introduction](/introduction).
 
 ## LeanSpec
 
@@ -76,7 +76,7 @@ A specific Markdown template for ADRs developed by Oliver Kopp, Anita Armbruster
 
 ## MCP (Model Context Protocol)
 
-The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `iec` to expose AI-assisted checks via the user's own AI agent (BYOK: bring your own key).
+The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `iec` to expose agent-assisted checks via the user's own coding agent (BYOK: bring your own key).
 
 ## Mutation testing
 
@@ -92,7 +92,7 @@ A spec-driven-development framework (openspec.dev) built around a change-folder 
 
 ## skeleton.md
 
-An AI-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artefact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artefact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## Spec
 
@@ -112,8 +112,8 @@ A source-control discipline in which all developers commit to a single trunk bra
 
 ## TOC pattern
 
-The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: One File Changes Everything](/ai-instructions/agents-md).
+The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: One File Changes Everything](/agent-instructions/agents-md).
 
 ## Walking skeleton
 
-A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the AI-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
+A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the agentic-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.

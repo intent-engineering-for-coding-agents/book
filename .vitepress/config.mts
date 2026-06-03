@@ -30,15 +30,15 @@ export default withMermaid(
           ]
         },
         {
-          text: 'AI Instructions',
+          text: 'Agent Instructions',
           items: [
-            { text: 'Overview', link: '/ai-instructions/' },
-            { text: 'AGENTS.md: One File Changes Everything', link: '/ai-instructions/agents-md' },
-            { text: 'From AGENTS.md to AI Instruction Hub', link: '/ai-instructions/instruction-hub' },
-            { text: 'Writing Instructions That Work', link: '/ai-instructions/writing-instructions' },
-            { text: 'Skills, Commands, and Hooks', link: '/ai-instructions/skills-commands-hooks' },
-            { text: 'Context Window Management', link: '/ai-instructions/context-window' },
-            { text: 'Failure Modes and Recovery', link: '/ai-instructions/failure-modes' },
+            { text: 'Overview', link: '/agent-instructions/' },
+            { text: 'AGENTS.md: One File Changes Everything', link: '/agent-instructions/agents-md' },
+            { text: 'From AGENTS.md to Agent Instruction Hub', link: '/agent-instructions/instruction-hub' },
+            { text: 'Writing Instructions That Work', link: '/agent-instructions/writing-instructions' },
+            { text: 'Skills, Commands, and Hooks', link: '/agent-instructions/skills-commands-hooks' },
+            { text: 'Context Window Management', link: '/agent-instructions/context-window' },
+            { text: 'Failure Modes and Recovery', link: '/agent-instructions/failure-modes' },
           ]
         },
         {
@@ -74,7 +74,7 @@ export default withMermaid(
             { text: 'OpenSpec Across Stacks', link: '/team/openspec-across-stacks' },
             { text: 'OpenSpec in an Existing SDLC', link: '/team/openspec-in-existing-sdlc' },
             { text: 'Trunk-Based Development with Agents', link: '/team/trunk-based-development' },
-            { text: 'Shared AI Instruction Conventions', link: '/team/shared-conventions' },
+            { text: 'Shared Agent Instruction Conventions', link: '/team/shared-conventions' },
             { text: 'Cross-Team Coordination', link: '/team/cross-team-coordination' },
             { text: 'What Is Still Evolving', link: '/team/what-is-still-evolving' },
           ]

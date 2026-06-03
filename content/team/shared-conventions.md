@@ -1,4 +1,4 @@
-# Shared AI Instruction Conventions
+# Shared Agent Instruction Conventions
 
 A convention only constrains the agents that can read it. On a solo project that is one file and one agent. On a team it is as many briefs as there are developers, and they drift apart quietly.
 
@@ -6,7 +6,7 @@ One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A dev
 
 The agent was not wrong. The convention was just not visible to it.
 
-Shared AI instruction conventions are the team-level answer to this problem: conventions that every agent in every session reads, regardless of who started the session or which developer they are working with.
+Shared agent instruction conventions are the team-level answer to this problem: conventions that every agent in every session reads, regardless of who started the session or which developer they are working with.
 
 ## Team-level `AGENTS.md`
 
@@ -14,7 +14,7 @@ On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared br
 
 The practical structure: `AGENTS.md` at the repo root is the team's brief. It covers the conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain their own parallel `AGENTS.md` files that override parts of the team brief. The team brief is the brief.
 
-Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. The TOC pattern from [AGENTS.md: One File Changes Everything](../ai-instructions/agents-md) applies at team scale too: keep the brief short, link to detail files in `.agents/instructions/`.
+Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. The TOC pattern from [AGENTS.md: One File Changes Everything](../agent-instructions/agents-md) applies at team scale too: keep the brief short, link to detail files in `.agents/instructions/`.
 
 Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project brief. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the brief short and linking out to detail files.
 

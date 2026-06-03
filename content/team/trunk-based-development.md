@@ -1,6 +1,6 @@
 # Trunk-Based Development with Agents
 
-The branch strategy predates AI coding agents by two decades. Paul Hammant has been documenting it since the early 2000s, and the core discipline has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.
+The branch strategy predates coding agents by two decades. Paul Hammant has been documenting it since the early 2000s, and the core discipline has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.
 
 An agent can open and close a feature branch in the time a human developer would read the ticket. At agentic speed, the question is not whether to use short-lived branches but how to align the branch lifecycle with the change folder lifecycle. They are, it turns out, the same thing.
 

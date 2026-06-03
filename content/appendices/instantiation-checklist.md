@@ -1,6 +1,6 @@
 # Instantiation Checklist
 
-A starting point for applying the practices in this book to a new or existing repo. The list follows the order the topics compound: Foundation first, because AI Instructions have nowhere to live without it.
+A starting point for applying the practices in this book to a new or existing repo. The list follows the order the topics compound: Foundation first, because Agent Instructions have nowhere to live without it.
 
 This is not a required sequence. Apply what fits your context. Stop when the cost exceeds the value. See [Honest Maturity](/foundation/honest-maturity) for how to label what you have versus what you are working toward.
 
@@ -17,7 +17,7 @@ If you have `iec` installed, `iec init` creates the directory scaffold and stub 
 - [ ] `openspec/` — change proposals, delta specs, archived changes
 - [ ] `AGENTS.md` at the repo root — TOC pattern: short, links to `.agents/`, load clauses for each instruction file
 
-## AI Instructions
+## Agent Instructions
 
 - [ ] `.agents/instructions/` with at least one domain-specific instruction file covering coding standards and architecture constraints
 - [ ] Each instruction file has a load clause in `AGENTS.md` naming when to load it

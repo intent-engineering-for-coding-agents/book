@@ -12,7 +12,7 @@ Critique: run the draft past a second model before human review. Not code review
 
 Review: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
 
-A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An AI agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
+A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
 
 Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 

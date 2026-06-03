@@ -12,7 +12,7 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 **Paul Hammant** built the canonical reference for trunk-based development at trunkbaseddevelopment.com. The branch discipline and merge cadence running through the Team Workflows topic trace back there.
 
-**Alistair Cockburn's** walking skeleton pattern (*Crystal Clear*, 2004) is the etymological ancestor of the AI-era `skeleton.md`. Same metaphor, reversed direction.
+**Alistair Cockburn's** walking skeleton pattern (*Crystal Clear*, 2004) is the etymological ancestor of the agentic-era `skeleton.md`. Same metaphor, reversed direction.
 
 ## Spec-driven development
 
@@ -26,13 +26,13 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 ## AI agent conventions
 
-**AgentPatterns.ai** named and documented the TOC pattern for AGENTS.md. That framing runs through the AI Instructions topic.
+**AgentPatterns.ai** named and documented the TOC pattern for AGENTS.md. That framing runs through the Agent Instructions topic.
 
 **Andrej Karpathy** coined "vibe coding" on February 2, 2025. The Foreword's opening argument starts there.
 
 **ThoughtWorks Technology Radar Vol 34** (April 2026) named cognitive debt and assessed the SDD landscape as fragmented. Several chapters cite it as the primary evidence anchor for those claims.
 
-**Birgitta Böckeler** has written and spoken clearly about AI-assisted software delivery. Several framing decisions in the AI Instructions topic are downstream of that work.
+**Birgitta Böckeler** has written and spoken clearly about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic are downstream of that work.
 
 ## Quality and principles
 

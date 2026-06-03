@@ -2,9 +2,9 @@
 
 > A spec that nobody reads is documentation. A spec the agent loads before it writes code is something else entirely.
 
-AI Instructions equipped the agent to arrive briefed. The hub is built. The skills are ready. The hooks fire automatically. What is still missing is the one thing that changes every session: intent.
+Agent Instructions equipped the agent to arrive briefed. The hub is built. The skills are ready. The hooks fire automatically. What is still missing is the one thing that changes every session: intent.
 
-The AI is the labor. You write the spec; the agent generates the code from it. Reviewing a diff without having reviewed the spec first is reviewing output without knowing what the output was supposed to be.
+The agent is the labor. You write the spec; the agent generates the code from it. Reviewing a diff without having reviewed the spec first is reviewing output without knowing what the output was supposed to be.
 
 Intent is what you want this specific change to do, in this specific codebase, right now. It is not in `AGENTS.md` because it is not permanent. It is not in `docs/` because it is not architectural. It lives in a spec, gets used to guide an implementation, then gets archived where it can be found when someone asks, six months from now, why the code looks the way it does.
 

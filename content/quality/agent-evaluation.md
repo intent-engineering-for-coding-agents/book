@@ -44,7 +44,7 @@ Not every team needs this. A solo developer working with an agent on one project
 
 The investment becomes worthwhile when more than one developer shares the same `AGENTS.md`, when more than one agent runs against the same codebase, when the rate of change in the instruction files exceeds the rate at which any one person reviews the resulting code. At that point the eval suite is the only thing that catches a quiet regression before it has shaped a week of PRs.
 
-The book's central claim, repeated through Foundation and AI Instructions and Spec-Driven, is that at agentic speeds manual verification is not enough. The evidence base for that claim is the closed loop. The tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
+The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that at agentic speeds manual verification is not enough. The evidence base for that claim is the closed loop. The tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 
 ## Eval suites are still early practice
 

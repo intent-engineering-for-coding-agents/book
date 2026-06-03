@@ -10,7 +10,7 @@ This is the small version. The codebase has hundreds of these. Each session burn
 
 The model did not fail. The agent just reasoned correctly from the context it had. The constraint was the context.
 
-ThoughtWorks called this cognitive debt in their April 2026 Radar: the AI-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
+ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, weeks. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
@@ -30,7 +30,7 @@ Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ +
 
 ## The prerequisite
 
-The remaining Intent Engineering topics each assume Foundation is in place. AI Instructions need a `docs/` to point into. Spec-driven development needs structure for specs to live in. Quality checks need conventions to validate. Skip Foundation and the rest stops working.
+The remaining Intent Engineering topics each assume Foundation is in place. Agent Instructions need a `docs/` to point into. Spec-driven development needs structure for specs to live in. Quality checks need conventions to validate. Skip Foundation and the rest stops working.
 
 Foundation is also the topic with the lowest immediate payoff. A team adopting OpenSpec on Tuesday feels the difference Wednesday. A team adopting Foundation gets value over months: fewer PRs that quietly resurrect choices the team already made, less rediscovery of past decisions, agents that no longer reintroduce stacks the team paid migration cost to leave behind. The compounding works in both directions.
 

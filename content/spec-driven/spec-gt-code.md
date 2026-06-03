@@ -30,7 +30,7 @@ Code modification is often less expensive now. A session that regenerates a serv
 
 Farley's *Modern Software Engineering* argues for feedback loops and reliable delivery of intent into production. The spec is where intent is fixed. Without it, every deployment carries implicit assumptions that were never verified. With it, the path from intent to production is auditable.
 
-This is not a new insight. What is new is that agentic speed makes the cost of ignoring it more visible. A team working at AI velocity without spec discipline produces more broken things faster. The spec is not overhead. It is the mechanism that makes speed sustainable.
+This is not a new insight. What is new is that agentic speed makes the cost of ignoring it more visible. A team working at agentic velocity without spec discipline produces more broken things faster. The spec is not overhead. It is the mechanism that makes speed sustainable.
 
 Sources: Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), feedback loops and reliable delivery of intent into production as the basis for treating the spec as source.
 

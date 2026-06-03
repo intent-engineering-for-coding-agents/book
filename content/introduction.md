@@ -6,11 +6,11 @@ The agent has no idea what you decided.
 
 The agent does not know the team chose against Redis last quarter. The agent cannot see why the auth flow, which looks redundant, is load-bearing: the incident from 2024 lives only in someone's head. The database column the agent is about to add was deprecated by a decision never recorded in an ADR. The architect who made that call left in 2023. The agent reasons brilliantly from the context it has. The constraint is the context.
 
-AI amplifies the developer driving it. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them." A clueless developer with AI ships clueless code faster. An experienced developer with AI ships experienced code faster. The amplifier is neutral. What it amplifies is not.
+Coding agents amplify the developer driving them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them." A clueless developer with a coding agent ships clueless code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral. What it amplifies is not.
 
-Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: AI multiplies whatever the developer brings to it.
+Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.
 
-This is the territory of Intent Engineering, the practice this book teaches: progressively making your AI coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with AI agents as active participants. "Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. That practice in turn fits within what some vendors and practitioners now call Developer AI: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
+This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants. "Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. That practice in turn fits within what some vendors and practitioners now call Developer AI: AI tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
 
 "Intent engineering" as a phrase is not this book's coinage. It appears in requirements engineering, vendor AI glossaries, and in communities focused on formalizing intent for AI-powered products, where it covers product intent, UX intent, and AI system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
@@ -26,9 +26,9 @@ The book is organized around four topics. Each works on its own at a solo scale.
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are intent: they specify the target and prove the agent hit it. Context is the substrate. Intent is the point.
 
-Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The AI's non-determinism is the force you're paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
+Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The agent's non-determinism is the force you're paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
 
-AI Instructions: `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads.
+Agent Instructions: `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads.
 
 Spec-Driven Development: specs before code. The spec is the durable artifact. The code is downstream. Small specs ship. Large specs drift.
 
