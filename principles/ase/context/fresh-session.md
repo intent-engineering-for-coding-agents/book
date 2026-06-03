@@ -25,5 +25,5 @@ Heuristic: if the agent was working well before it went wrong, redirect. If the 
 
 ## Sources
 
-- ase-book, *"Context Window" chapter*, ai-instructions section.
-- ase-book, *"Failure Modes" chapter*, ai-instructions section.
+- ase-book, *"Context Window" chapter*, agent-instructions section.
+- ase-book, *"Failure Modes" chapter*, agent-instructions section.

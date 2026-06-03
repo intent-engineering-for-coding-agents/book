@@ -28,7 +28,7 @@ where. Each makes the others more effective.
 
 ```
 FOUNDATION              Context: repo structure grounds the agent's execution
-AI INSTRUCTIONS         Context: teach the agent your system
+AGENT INSTRUCTIONS         Context: teach the agent your system
 SPEC-DRIVEN DEV         Intent: state what the agent builds to
 QUALITY & VERIFICATION  Intent: prove the agent understood
 ```
@@ -125,9 +125,9 @@ mindmap
       Brownfield bootstrap
         skeleton.md
       When Intent Engineering Fails
-    AI Instructions
+    Agent Instructions
       AGENTS.md
-      AI Instruction Hub
+      Agent Instruction Hub
         .agents/instructions
         .agents/skills
         .agents/commands

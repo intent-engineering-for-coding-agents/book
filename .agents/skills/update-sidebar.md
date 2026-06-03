@@ -11,7 +11,7 @@ After adding, removing, or renaming any `.md` file under `content/`.
 1. List all `.md` files under `content/` recursively, excluding `index.md` files that serve as topic landing pages
 2. Group by top-level topic directory:
    - `foundation/`
-   - `ai-instructions/`
+   - `agent-instructions/`
    - `spec-driven/`
    - `quality/`
    - `team-workflows/`

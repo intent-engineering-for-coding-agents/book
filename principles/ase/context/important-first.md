@@ -25,5 +25,5 @@ Structure every document: what must the reader know first? Put it first. What ca
 
 ## Sources
 
-- ase-book, *"Context Window" chapter*, ai-instructions section.
+- ase-book, *"Context Window" chapter*, agent-instructions section.
 - AgentPatterns.ai, *"TOC pattern" and top-down attention*, ongoing.

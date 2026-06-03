@@ -25,4 +25,4 @@ The cycle: observe a failure → write the smallest instruction that prevents it
 
 ## Sources
 
-- ase-book, *"Writing Instructions" chapter*, ai-instructions section.
+- ase-book, *"Writing Instructions" chapter*, agent-instructions section.

@@ -39,7 +39,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - ["From Vibe Coding to Spec-Driven Development"](https://towardsdatascience.com/from-vibe-coding-to-spec-driven-development/). Towards Data Science, *2025*. Describes the transition from ephemeral chat-based prompting to version-controlled spec artefacts; confirms vibe coding produces no formal spec file by default.
 - Framelink — [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing, 14.9k★). MCP server bridging Figma design data to AI coding agents; fetches layout metadata, component structure, spacing, and colors from Figma files.
 
-## Agentic engineering & AI instructions
+## Agentic engineering & agent instructions
 
 - [intentengineering.dev](https://intentengineering.dev/) (ongoing). Community site using "intent engineering" in the broader sense of formalizing intent for AI-powered products, covering product, UX, and system design contexts. Cited in the Introduction as prior use of the phrase this book's title distinguishes from.
 - Tsinghua University et al. — ["GLM-5: From Vibe Coding to Agentic Engineering"](https://arxiv.org/abs/2602.15763). arXiv:2602.15763, *Feb 2026*. A major model paper whose subtitle mirrors this book's own framing — academic confirmation that "vibe coding → agentic engineering" is the recognized arc. Linked as a key resource in the jordimas/awesome-agentic-engineering list.

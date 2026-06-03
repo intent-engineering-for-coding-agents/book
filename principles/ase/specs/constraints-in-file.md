@@ -26,4 +26,4 @@ For every constraint the team enforces in review, ask: does this exist in a file
 ## Sources
 
 - ase-book, *"When Intent Engineering Fails" chapter*, foundation section.
-- ase-book, *"Writing Instructions" chapter*, ai-instructions section.
+- ase-book, *"Writing Instructions" chapter*, agent-instructions section.

@@ -117,7 +117,7 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
     - [x] `docs/design/` — empty, ready for features
     - [x] `docs/design/README.md` — auto-rendered design doc listing
     - [x] `openspec/` — empty, ready for spec-driven development
-    - [x] `.agents/` — empty, ready for AI instructions
+    - [x] `.agents/` — empty, ready for agent instructions
 - [x] Write ADRs capturing real decisions:
     - [x] ADR-0001: Python + Typer over alternatives
     - [x] ADR-0002: `docs/` as canonical documentation directory
@@ -129,7 +129,7 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 - [x] Write initial `docs/INDEX.md` (agent-facing map)
 - [x] Tag: `v0.1.0`
 
-#### Phase C — AI Instructions (`v0.2.0`)
+#### Phase C — Agent Instructions (`v0.2.0`)
 
 - [x] Write `AGENTS.md` for `intent-cli` — TOC pattern
     - [x] Project description, Python/CLI conventions

@@ -25,5 +25,5 @@ Describe what the agent needs to do, not which vendor command to run. "Resolve t
 
 ## Sources
 
-- ase-book, *"Capability-Class Targeting" concept*, ai-instructions section.
+- ase-book, *"Capability-Class Targeting" concept*, agent-instructions section.
 - ase-book, plan.md, Living Principles appendix.

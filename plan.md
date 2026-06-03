@@ -24,7 +24,7 @@ is well-engineered intent that an agent turns into code.
 
 The field has a clean stack above prompt engineering. Context engineering covers what
 the agent sees. Intent engineering covers what should be built and how to verify it. The
-book's four topics map onto it: Foundation and AI Instructions supply context; Spec-Driven
+book's four topics map onto it: Foundation and Agent Instructions supply context; Spec-Driven
 Development and Quality/Verification are intent proper. The book is renamed to name what it
 teaches.
 
@@ -32,7 +32,7 @@ teaches.
 
 - Practice name: Intent Engineering. The discipline, within agentic software engineering,
   of directing AI agents by engineering intent rather than writing code. Context
-  (Foundation, AI Instructions) is the substrate that makes intent executable. Specs state
+  (Foundation, Agent Instructions) is the substrate that makes intent executable. Specs state
   the target. Verification proves the hit.
 - Book title: Intent Engineering for Coding Agents. The domain qualifier differentiates
   the book from the generic, already-used term "intent engineering" (intentengineering.dev,
@@ -108,7 +108,7 @@ and the ADLC contrast intact.
 
 ### 3. Reframe the four-topics narrative (content, not find/replace)
 
-The title promises intent, but two topics (Foundation, AI Instructions) are context. To keep
+The title promises intent, but two topics (Foundation, Agent Instructions) are context. To keep
 the title honest, frame context as in service of intent wherever the four topics are
 introduced as a set.
 

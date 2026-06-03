@@ -9,7 +9,7 @@ metadata:
 
 **Layer**: 2
 **Categories**: team, conventions, adoption
-**Applies-to**: team AI instruction management
+**Applies-to**: team agent instruction management
 **Summary**: Standardize AI conventions that affect the codebase; leave local workflow choices divergent.
 
 ## Principle
@@ -32,5 +32,5 @@ Team `AGENTS.md` covers: code style, test naming, security rules, dependency hyg
 
 ## Sources
 
-- ase-book, ["Shared AI Instruction Conventions"](/team/shared-conventions) chapter.
+- ase-book, ["Shared Agent Instruction Conventions"](/team/shared-conventions) chapter.
 - [AGENTS.md](https://agents.md/) (ongoing).

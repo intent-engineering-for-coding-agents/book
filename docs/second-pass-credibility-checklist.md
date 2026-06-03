@@ -39,7 +39,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 #### Final fix target
 - Achieve the fix with all three: add sources, soften language, and label synthesis.
 
-### `content/ai-instructions/failure-modes.md`
+### `content/agent-instructions/failure-modes.md`
 
 #### Missing local sources
 - Add a local source line for the Andon cord analogy if it remains in the chapter.
@@ -155,7 +155,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 #### Final fix target
 - Label synthesis and bound emerging-practice claims.
 
-### `content/ai-instructions/agents-md.md`
+### `content/agent-instructions/agents-md.md`
 
 #### Missing local sources
 - Add local support in sections that describe adoption or effects of `AGENTS.md` beyond the current closing source line.
@@ -173,7 +173,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 #### Final fix target
 - Keep the practical guidance, but make the maturity level explicit.
 
-### `content/ai-instructions/context-window.md`
+### `content/agent-instructions/context-window.md`
 
 #### Missing local sources
 - Add local sources to later sections if they generalize session strategy beyond the opening citation block.
@@ -187,7 +187,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 #### Final fix target
 - Add local provenance and time-bound the operational advice.
 
-### `content/ai-instructions/writing-instructions.md`
+### `content/agent-instructions/writing-instructions.md`
 
 #### Missing local sources
 - Add local sources to later sections if the chapter moves from cited examples into generalized operational rules.
@@ -216,10 +216,10 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 - `content/foundation/why-structure.md`: the outline already supports the chapter's argument. The fix is local sourcing and bounded language, not new references.
 - `content/foundation/document-types.md`: the outline supports a document taxonomy, but the taxonomy should remain explicitly book-level synthesis unless stronger field-standard evidence is added.
 - `content/foundation/brownfield-vs-greenfield.md`: the outline already names `skeleton.md` as a bootstrap artefact. Keep it, but preserve the lineage note that it is an AI-era adaptation of Cockburn's older metaphor, not a standard term.
-- `content/ai-instructions/agents-md.md`: the outline can keep practical guidance if the prose says `AGENTS.md` is a de-facto convention with uneven tool support.
-- `content/ai-instructions/context-window.md`: the outline supports practical advice; no bibliography expansion is required if the chapter is framed as current operating guidance.
-- `content/ai-instructions/writing-instructions.md`: the outline supports the chapter as operational practice guidance; fix by tightening provenance and reducing guarantee language.
-- `content/ai-instructions/failure-modes.md`: the outline supports the recovery chapter, but the taxonomy should stay explicitly observational rather than pretending to be standard literature.
+- `content/agent-instructions/agents-md.md`: the outline can keep practical guidance if the prose says `AGENTS.md` is a de-facto convention with uneven tool support.
+- `content/agent-instructions/context-window.md`: the outline supports practical advice; no bibliography expansion is required if the chapter is framed as current operating guidance.
+- `content/agent-instructions/writing-instructions.md`: the outline supports the chapter as operational practice guidance; fix by tightening provenance and reducing guarantee language.
+- `content/agent-instructions/failure-modes.md`: the outline supports the recovery chapter, but the taxonomy should stay explicitly observational rather than pretending to be standard literature.
 - `content/spec-driven/spec-gt-code.md`: the outline supports the argument for spec primacy. The chapter should stay argumentative and bounded unless a concrete regeneration case study is added.
 - `content/quality/test-strategy.md`: the outline already anchors the chapter in `model2diagram`; keep the companion-repo grounding explicit so the taxonomy and complexity table do not read like universal standards.
 
@@ -237,9 +237,9 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 | `content/foundation/why-structure.md` | Supported | Adequate but under-exposed locally | Add sources + soften |
 | `content/foundation/document-types.md` | Supported | Partial for taxonomy-as-standard claim | Add sources + label synthesis |
 | `content/foundation/brownfield-vs-greenfield.md` | Supported | Practical but emerging | Label synthesis + soften |
-| `content/ai-instructions/agents-md.md` | Supported | De-facto convention, not standard | Add sources + soften |
-| `content/ai-instructions/context-window.md` | Supported | Adequate for guidance, not absolutes | Add sources + soften |
-| `content/ai-instructions/writing-instructions.md` | Supported | Adequate for guidance, not guarantees | Add sources + soften |
-| `content/ai-instructions/failure-modes.md` | Supported | Mixed; partly observational | Label synthesis + soften |
+| `content/agent-instructions/agents-md.md` | Supported | De-facto convention, not standard | Add sources + soften |
+| `content/agent-instructions/context-window.md` | Supported | Adequate for guidance, not absolutes | Add sources + soften |
+| `content/agent-instructions/writing-instructions.md` | Supported | Adequate for guidance, not guarantees | Add sources + soften |
+| `content/agent-instructions/failure-modes.md` | Supported | Mixed; partly observational | Label synthesis + soften |
 | `content/spec-driven/spec-gt-code.md` | Supported | Mixed; opening anecdote weakest | Soften + label synthesis + targeted source upgrade if found |
 | `content/quality/test-strategy.md` | Supported | Mostly project-convention support | Label synthesis + add sources |

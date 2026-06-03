@@ -25,4 +25,4 @@ The canonical instructions live in `.agents/`. A CI script or `dot-scout` genera
 
 ## Sources
 
-- ase-book, *"Vendor Files" chapter*, ai-instructions section.
+- ase-book, *"Vendor Files" chapter*, agent-instructions section.

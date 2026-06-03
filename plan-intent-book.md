@@ -115,13 +115,13 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
 - [x] Tag: `v0.3.0`
 
-#### Phase Q — Write AI Instructions Chapters (`v0.4.0`)
+#### Phase Q — Write Agent Instructions Chapters (`v0.4.0`)
 
 - [x] Chapter: AGENTS.md — One File Changes Everything
     - *Sources: agents.md (de-facto spec); agentpatterns.ai "AGENTS.md as Project-Level README" (TOC pattern); Böckeler.*
     - TOC pattern, what goes in it, tool-agnostic
     - Credit: agentpatterns.ai (TOC pattern framing)
-- [x] Chapter: From AGENTS.md to AI Instruction Hub
+- [x] Chapter: From AGENTS.md to Agent Instruction Hub
     - *Sources: agentpatterns.ai "Evaluating AGENTS.md"; Anthropic "Building effective agents" (Dec 2024).*
     - `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`
     - One folder for all AI tools
@@ -279,7 +279,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - AI-assisted review: agent checks implementation against spec scenarios for deviations, scope creep, missing scenarios; forward reference to `iec` MCP `check_spec_quality`
     - Pair review with another agent (multi-LLM critique)
     - What to look for that humans skip and agents miss
-- [x] Chapter: Shared AI Instruction Conventions
+- [x] Chapter: Shared Agent Instruction Conventions
     - *Sources: agents.md; agentpatterns.ai.*
     - Team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding
     - When to standardize, when to leave divergent

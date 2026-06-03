@@ -28,4 +28,4 @@ Treat `AGENTS.md` as part of the architecture. Any PR that changes something `AG
 
 - ase-book, *"When Intent Engineering Fails" chapter*, foundation section.
 - ase-book, *"Honest Maturity" chapter*, quality section.
-- ase-book, *"AGENTS.md" chapter*, ai-instructions section.
+- ase-book, *"AGENTS.md" chapter*, agent-instructions section.

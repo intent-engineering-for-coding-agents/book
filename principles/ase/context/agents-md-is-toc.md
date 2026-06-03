@@ -42,5 +42,5 @@ Short. Directive. Links to the right file for each task.
 
 ## Sources
 
-- ase-book, *"AGENTS.md" chapter*, ai-instructions section.
+- ase-book, *"AGENTS.md" chapter*, agent-instructions section.
 - AgentPatterns.ai, *"AGENTS.md: Project-Level README for AI Coding Agents"*, ongoing.

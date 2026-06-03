@@ -36,4 +36,4 @@ Before any commit, run: git diff --cached | rg 'sk-|api_key|SECRET'
 
 ## Sources
 
-- ase-book, *"Skills, Commands, and Hooks" chapter*, ai-instructions section.
+- ase-book, *"Skills, Commands, and Hooks" chapter*, agent-instructions section.

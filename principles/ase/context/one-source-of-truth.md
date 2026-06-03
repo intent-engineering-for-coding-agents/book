@@ -3,7 +3,7 @@
 **Layer**: 1
 **Categories**: context, instructions, vendor-files
 **Applies-to**: all
-**Summary**: One source of truth for AI instructions; vendor files are generated pointers, not authored duplicates.
+**Summary**: One source of truth for agent instructions; vendor files are generated pointers, not authored duplicates.
 
 ## Principle
 
@@ -25,6 +25,6 @@ The canonical instructions live in `.agents/`. Vendor files are generated or con
 
 ## Sources
 
-- ase-book, *"Vendor Files" chapter*, ai-instructions section.
-- ase-book, *"Instruction Hub" chapter*, ai-instructions section.
+- ase-book, *"Vendor Files" chapter*, agent-instructions section.
+- ase-book, *"Instruction Hub" chapter*, agent-instructions section.
 - ase-book, plan.md, Living Principles appendix.

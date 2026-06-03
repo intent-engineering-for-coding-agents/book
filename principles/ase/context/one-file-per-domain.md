@@ -36,4 +36,4 @@ framework choices, file naming, tag conventions.
 
 ## Sources
 
-- ase-book, *"Instruction Hub" chapter*, ai-instructions section.
+- ase-book, *"Instruction Hub" chapter*, agent-instructions section.

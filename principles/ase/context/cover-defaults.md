@@ -25,5 +25,5 @@ Identify the three patterns the agent gets wrong most often. Write the three ins
 
 ## Sources
 
-- ase-book, *"Writing Instructions" chapter*, ai-instructions section.
+- ase-book, *"Writing Instructions" chapter*, agent-instructions section.
 - ase-book, *"Test Strategy and Convention" chapter*, quality section.

@@ -25,4 +25,4 @@ When the agent fails: check what files it loaded, check what it was told, check 
 
 ## Sources
 
-- ase-book, *"Failure Modes" chapter*, ai-instructions section.
+- ase-book, *"Failure Modes" chapter*, agent-instructions section.

@@ -37,7 +37,7 @@ flowchart LR
 | `content/` | VitePress source — book prose, organized by topic |
 | `docs/` | project documentation — architecture (this file), ADRs, design docs |
 | `openspec/` | Change proposals, delta specs, tasks |
-| `.agents/` | AI instruction hub (added Phase O) |
+| `.agents/` | agent instruction hub (added Phase O) |
 | `.vitepress/` | VitePress config and theme |
 | `.github/workflows/` | CI — build+deploy, iec check |
 
@@ -61,7 +61,7 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 `check.yml` installs `iec` and runs `iec check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
 
-## AI instruction hub
+## agent instruction hub
 
 The repo-level [AGENTS.md](../AGENTS.md) is the entry point agents load first. It maps the `.agents/` directory — instructions ([writing](../.agents/instructions/writing.md), [voice](../.agents/instructions/voice.md), [VitePress](../.agents/instructions/vitepress.md), [review](../.agents/instructions/review.md), [index maintenance](../.agents/instructions/index-maintenance.md), [glossary maintenance](../.agents/instructions/glossary-maintenance.md)) and skills ([draft-section](../.agents/skills/draft-section.md), [review-chapter](../.agents/skills/review-chapter.md), [update-sidebar](../.agents/skills/update-sidebar.md), [update-index](../.agents/skills/update-index.md)). `docs/INDEX.md` is intentionally narrow — it maps `docs/` only; the AI hub lives outside that tree.
 
@@ -70,7 +70,7 @@ The repo-level [AGENTS.md](../AGENTS.md) is the entry point agents load first. I
 ```
 content/
 ├── foundation/         # Why structure, document types, plain-text-as-code
-├── ai-instructions/    # AGENTS.md, .agents/ hub, skills, context
+├── agent-instructions/    # AGENTS.md, .agents/ hub, skills, context
 ├── spec-driven/        # Why specs, lifecycle, Spec > Code
 ├── quality/            # Tests as proof, AC IDs, PR taxonomy
 ├── team-workflows/     # OpenSpec in an SDLC, TBD with agents

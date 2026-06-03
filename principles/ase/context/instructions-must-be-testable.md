@@ -26,4 +26,4 @@ Good: "Place business logic in `src/core/`. Controllers in `src/api/` delegate t
 
 ## Sources
 
-- ase-book, *"Writing Instructions" chapter*, ai-instructions section.
+- ase-book, *"Writing Instructions" chapter*, agent-instructions section.
