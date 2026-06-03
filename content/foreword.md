@@ -27,3 +27,9 @@ Here is the part the carousels leave out. Give your AI enough up-to-date informa
 Software development still demands skill and judgment. Humans must stay in the loop. The AI will catch up to more of this eventually, and when it does, I'll happily revise this foreword. But for now the responsibility is ours: to be deliberate, to be professional, and to do the part of the job humans still do best.
 
 This is what the rest of this book is about. The how.
+
+---
+
+I wrote this near Aalborg, in northern Denmark. Aalborg has been building software seriously and ambitiously for a long time, without much noise about it. That is the spirit this book tries to follow.
+
+*Flemming Nørnberg Larsen, 2026*
