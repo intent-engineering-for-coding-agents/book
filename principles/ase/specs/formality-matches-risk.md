@@ -26,4 +26,4 @@ Define the spec-eligibility threshold in `AGENTS.md` or `docs/architecture/spec-
 ## Sources
 
 - ase-book, *"The Spectrum" chapter*, specs section.
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.

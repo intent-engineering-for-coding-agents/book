@@ -15,7 +15,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 ### `content/introduction.md`
 
 #### Missing local sources
-- Add a local source line for the ASE / Developer AI framing in the opening definition section, or recast it as the book's working terminology.
+- Add a local source line for the Intent Engineering / Developer AI framing in the opening definition section, or recast it as the book's working terminology.
 - Add a source line or caveat around the two-role framing for agents as labor plus sparring partner if it is presented as observed practice rather than author synthesis.
 - Add a source line or soften the `ase-cli` companion evidence claim if the tags are being used as proof of the book's practices in action.
 
@@ -23,18 +23,18 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 - Soften `a term in active circulation` unless the text names the exact source basis for that claim.
 - Rework `Spec-driven development has hardened into a recognized practice through 2025-2026` to a more bounded statement about an emerging practice in current AI-coding discourse.
 - Rework the `tested set` of supported agents and model generations so it reads as a time-bounded snapshot, not a stable capability classification.
-- Soften `ASE works the same way regardless of which agent runs it` to allow for tool-specific constraints and partial applicability.
+- Soften `Intent Engineering works the same way regardless of which agent runs it` to allow for tool-specific constraints and partial applicability.
 - Soften `The practices here should not` in the model/tool churn paragraph; keep the principle, not the permanence claim.
-- Keep `ASE is not ADLC`, but lower certainty in the distinction where the literature itself is still unsettled and vendor-authored.
+- Keep `Intent Engineering is not ADLC`, but lower certainty in the distinction where the literature itself is still unsettled and vendor-authored.
 
 #### Synthesis to label
-- Mark ASE as the book's working frame where the field vocabulary is still unstable.
+- Mark Intent Engineering as the book's working frame where the field vocabulary is still unstable.
 - Mark the labor / sparring-partner split as book synthesis unless a direct source supports that exact framing.
 - Mark the four-topic structure as the book's operating model rather than an industry taxonomy.
 
 #### Reference upgrades
 - Replace or supplement vendor/explainer sources in the ADLC section with a stronger original or primary anchor if one exists.
-- Check whether the ASE naming section can cite a more direct source than scattered current-practice usage.
+- Check whether the Intent Engineering naming section can cite a more direct source than scattered current-practice usage.
 
 #### Final fix target
 - Achieve the fix with all three: add sources, soften language, and label synthesis.
@@ -130,7 +130,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 - Check for claims that imply the six-way document split is standard practice.
 
 #### Synthesis to label
-- Label the document-type taxonomy and lifecycle framing as a working taxonomy for ASE repositories.
+- Label the document-type taxonomy and lifecycle framing as a working taxonomy for Intent Engineering repositories.
 
 #### Reference upgrades
 - Prefer primary anchors for ADRs, design docs, and docs-as-code patterns where available.
@@ -212,7 +212,7 @@ This checklist turns the second-pass review into a file-by-file remediation plan
 
 ### Outline fit vs bibliography fit
 
-- `content/introduction.md`: keep the chapter within the existing outline by softening ASE / spec-driven / ADLC certainty rather than expanding the chapter's scope. Reference additions are optional; wording downgrade is the safe default.
+- `content/introduction.md`: keep the chapter within the existing outline by softening Intent Engineering / spec-driven / ADLC certainty rather than expanding the chapter's scope. Reference additions are optional; wording downgrade is the safe default.
 - `content/foundation/why-structure.md`: the outline already supports the chapter's argument. The fix is local sourcing and bounded language, not new references.
 - `content/foundation/document-types.md`: the outline supports a document taxonomy, but the taxonomy should remain explicitly book-level synthesis unless stronger field-standard evidence is added.
 - `content/foundation/brownfield-vs-greenfield.md`: the outline already names `skeleton.md` as a bootstrap artefact. Keep it, but preserve the lineage note that it is an AI-era adaptation of Cockburn's older metaphor, not a standard term.

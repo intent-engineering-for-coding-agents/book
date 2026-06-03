@@ -27,7 +27,7 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 - For each substantive claim, is the source class clear in the reviewer's head: primary/original, primary documentation, secondary commentary, or vendor-authored?
 - If the chapter relies on a secondary or vendor source, has the prose been downgraded accordingly instead of sounding like settled fact?
 - Does the chapter present any book-created taxonomy, split, or workflow as if it were an industry standard? If so, require explicit synthesis labeling.
-- Are any terms or conventions still unstable in the field (`ASE`, `AGENTS.md`, ADLC variants, test taxonomies, current agent workflow patterns)? If yes, require emerging-practice framing unless the source supports stronger language.
+- Are any terms or conventions still unstable in the field (Intent Engineering, `AGENTS.md`, ADLC variants, test taxonomies, current agent workflow patterns)? If yes, require emerging-practice framing unless the source supports stronger language.
 - Are any tool/model/workflow claims perishable? If yes, require time-bounded wording or review-date framing.
 
 ### Cross-chapter consistency — DRY check
@@ -65,4 +65,4 @@ Send the chapter back for revision if any of the following is true:
 
 ## Multi-LLM critique (optional)
 
-For chapters that carry significant claims (Spec > Code, When ASE Fails, Honest Maturity), submit the draft to a second model for an independent critique pass. Ask: "What is the weakest claim in this chapter, and what evidence would strengthen it?"
+For chapters that carry significant claims (Spec > Code, When Intent Engineering Fails, Honest Maturity), submit the draft to a second model for an independent critique pass. Ask: "What is the weakest claim in this chapter, and what evidence would strengthen it?"

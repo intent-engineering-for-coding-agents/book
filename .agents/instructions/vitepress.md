@@ -8,7 +8,7 @@ Config lives at `.vitepress/config.mts`. Key settings:
 srcDir: 'content'   // VitePress reads pages from content/, not root or docs/
 ```
 
-`docs/` is reserved for ASE documentation (ADRs, architecture overview). Do not change `srcDir`.
+`docs/` is reserved for project documentation (ADRs, architecture overview). Do not change `srcDir`.
 
 The Mermaid plugin is wired via `withMermaid()` wrapping `defineConfig()`. Do not unwrap it.
 

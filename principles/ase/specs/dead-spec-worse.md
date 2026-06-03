@@ -25,6 +25,6 @@ Archive specs when the PR merges. Do not leave them as permanent documentation. 
 
 ## Sources
 
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.
 - ase-book, *"Spec Lifecycle" chapter*, specs section.
 - OpenSpec archive flow.

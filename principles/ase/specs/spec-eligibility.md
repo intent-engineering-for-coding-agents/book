@@ -25,5 +25,5 @@ Document the threshold in `AGENTS.md` or `docs/architecture/spec-convention.md`.
 
 ## Sources
 
-- ase-book, *"ASE and the SDLC" chapter*, foundation section.
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"Intent Engineering and the SDLC" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.

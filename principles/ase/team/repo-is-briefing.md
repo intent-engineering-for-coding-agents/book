@@ -25,5 +25,5 @@ A complete briefing answers: what is this project? What does it depend on? Where
 
 ## Sources
 
-- ase-book, *"ASE and the SDLC" chapter*, foundation section.
+- ase-book, *"Intent Engineering and the SDLC" chapter*, foundation section.
 - ase-book, *"Why Structure" chapter*, foundation section.

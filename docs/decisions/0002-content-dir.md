@@ -1,14 +1,14 @@
 ---
 status: accepted
 date: 2026-05-09
-decision-makers: ASE Book Contributors
+decision-makers: Intent Engineering Contributors
 ---
 
 # ADR-0002: Use `content/` for VitePress Prose
 
 ## Context and Problem Statement
 
-VitePress defaults to reading pages from the project root or `docs/`. The ASE Book repos follow a canonical directory convention where `docs/` is reserved for ASE documentation (architecture overview, ADRs, design docs). If VitePress also claimed `docs/`, the two purposes would collide — the repo could not dogfood its own convention.
+VitePress defaults to reading pages from the project root or `docs/`. The Intent Engineering for Coding Agents repo follows a canonical directory convention where `docs/` is reserved for project documentation (architecture overview, ADRs, design docs). If VitePress also claimed `docs/`, the two purposes would collide — the repo could not dogfood its own convention.
 
 ## Considered Options
 
@@ -18,7 +18,7 @@ VitePress defaults to reading pages from the project root or `docs/`. The ASE Bo
 
 ## Decision Outcome
 
-Chosen option: "`content/`", because it is semantically correct (the directory holds book content), it avoids collision with the canonical `docs/` convention, and it frees `docs/` so this repo can demonstrate the ASE documentation structure it teaches.
+Chosen option: "`content/`", because it is semantically correct (the directory holds book content), it avoids collision with the canonical `docs/` convention, and it frees `docs/` so this repo can demonstrate the Intent Engineering documentation structure it teaches.
 
 ### Consequences
 
@@ -40,7 +40,7 @@ Chosen option: "`content/`", because it is semantically correct (the directory h
 
 * Good, because it is a common convention in many JavaScript projects
 * Bad, because `src/` implies source code — Markdown prose is content, not code
-* Neutral, because no collision with ASE conventions, but adds no clarity
+* Neutral, because no collision with Intent Engineering conventions, but adds no clarity
 
 ### `content/`
 
@@ -51,4 +51,4 @@ Chosen option: "`content/`", because it is semantically correct (the directory h
 
 ## Validation
 
-Verified by: `srcDir: 'content'` set in `.vitepress/config.mts`, `npm run docs:build` passes, `docs/` directory remains dedicated to ASE documentation.
+Verified by: `srcDir: 'content'` set in `.vitepress/config.mts`, `npm run docs:build` passes, `docs/` directory remains dedicated to project documentation.

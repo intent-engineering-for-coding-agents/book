@@ -1,14 +1,14 @@
-# ASE Book — Architecture
+# Intent Engineering for Coding Agents — Architecture
 
-The ASE Book is a VitePress site at `ase-book.dev`, deployed to GitHub Pages via GitHub Actions. It teaches Agentic Software Engineering practices and references `ase-cli` throughout as live evidence.
+Intent Engineering for Coding Agents is a VitePress site at `ase-book.dev` (domain pending update), deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices and references `ase-cli` throughout as live evidence.
 
-This repo dogfoods its own convention: `docs/` holds ASE documentation; `content/` holds the book prose.
+This repo dogfoods its own convention: `docs/` holds project documentation; `content/` holds the book prose.
 
 ## Design
 
 ```mermaid
 flowchart LR
-  subgraph repo["ase-book (this repo)"]
+  subgraph repo["intent-engineering-for-coding-agents (this repo)"]
     src["content/<br/>.vitepress/config"]
     wf[".github/workflows/<br/>deploy.yml"]
   end
@@ -35,7 +35,7 @@ flowchart LR
 | Path | Purpose |
 |---|---|
 | `content/` | VitePress source — book prose, organized by topic |
-| `docs/` | ASE documentation — architecture (this file), ADRs, design docs |
+| `docs/` | project documentation — architecture (this file), ADRs, design docs |
 | `openspec/` | Change proposals, delta specs, tasks |
 | `.agents/` | AI instruction hub (added Phase O) |
 | `.vitepress/` | VitePress config and theme |
@@ -43,7 +43,7 @@ flowchart LR
 
 ## VitePress conventions
 
-`srcDir` is set to `content/` in `.vitepress/config.mts`. VitePress reads pages from `content/` — not from the repo root or `docs/`. This is a deliberate architectural decision: `docs/` stays free for ASE documentation (see ADR-0002).
+`srcDir` is set to `content/` in `.vitepress/config.mts`. VitePress reads pages from `content/` — not from the repo root or `docs/`. This is a deliberate architectural decision: `docs/` stays free for project documentation (see ADR-0002).
 
 The Mermaid plugin is wired via `withMermaid()` in the config. Diagrams are authored in plain text inside fenced code blocks — no SVG exports, fully git-diffable.
 
@@ -59,7 +59,7 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 ## CI checks
 
-`check.yml` installs `ase-cli` and runs `ase check` on every push and PR. This validates that the book repo follows ASE conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
+`check.yml` installs `ase-cli` and runs `ase check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
 
 ## AI instruction hub
 

@@ -1,6 +1,6 @@
-# AGENTS.md: ASE Book
+# AGENTS.md: Intent Engineering for Coding Agents
 
-You are working on the **ASE Book**, a VitePress site teaching Agentic Software Engineering practices.
+You are working on **Intent Engineering for Coding Agents**, a VitePress site teaching Intent Engineering practices.
 
 ## Project
 

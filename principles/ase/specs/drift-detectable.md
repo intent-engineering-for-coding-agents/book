@@ -1,13 +1,13 @@
-# ASE-SPECS-DRIFT-DETECTABLE: ASE Makes Drift Detectable, Not Impossible
+# ASE-SPECS-DRIFT-DETECTABLE: Intent Engineering Makes Drift Detectable, Not Impossible
 
 **Layer**: 1
 **Categories**: specs, limits, honesty
 **Applies-to**: all
-**Summary**: ASE does not make your codebase drift-proof — it makes drift detectable and recoverable.
+**Summary**: Intent Engineering does not make your codebase drift-proof — it makes drift detectable and recoverable.
 
 ## Principle
 
-ASE does not make your codebase drift-proof. It makes drift detectable and recoverable, which is a meaningfully weaker claim, and the honest one. No process prevents drift entirely. What ASE provides is the machinery to notice when drift has happened and the procedures to recover from it.
+Intent Engineering does not make your codebase drift-proof. It makes drift detectable and recoverable, which is a meaningfully weaker claim, and the honest one. No process prevents drift entirely. What Intent Engineering provides is the machinery to notice when drift has happened and the procedures to recover from it.
 
 ## Why it matters
 
@@ -25,4 +25,4 @@ The drift detection stack: AC IDs link specs to tests → coverage reports show 
 
 ## Sources
 
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.

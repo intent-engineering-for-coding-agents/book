@@ -7,7 +7,7 @@
 
 ## Principle
 
-The agent will improvise wherever the repo stays silent. The choice is how much it has to. Nothing about ASE Foundation requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own. The fewer gaps the agent has to fill, the fewer improvisations the team has to catch in review.
+The agent will improvise wherever the repo stays silent. The choice is how much it has to. Nothing about Intent Engineering Foundation requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own. The fewer gaps the agent has to fill, the fewer improvisations the team has to catch in review.
 
 ## Why it matters
 

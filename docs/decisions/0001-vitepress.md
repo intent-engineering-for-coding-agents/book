@@ -1,14 +1,14 @@
 ---
 status: accepted
 date: 2026-05-09
-decision-makers: ASE Book Contributors
+decision-makers: Intent Engineering Contributors
 ---
 
 # ADR-0001: Use VitePress for the Book Site
 
 ## Context and Problem Statement
 
-The ASE Book needs a static site generator (SSG) to publish Markdown chapters as a readable website. The tool must support Mermaid diagrams, be easy to deploy via GitHub Actions, produce a clean readable theme without heavy customisation, and stay aligned with the plain-text-as-code principle.
+The Intent Engineering for Coding Agents book needs a static site generator (SSG) to publish Markdown chapters as a readable website. The tool must support Mermaid diagrams, be easy to deploy via GitHub Actions, produce a clean readable theme without heavy customisation, and stay aligned with the plain-text-as-code principle.
 
 ## Considered Options
 

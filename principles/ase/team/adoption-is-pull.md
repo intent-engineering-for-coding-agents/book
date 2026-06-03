@@ -7,7 +7,7 @@
 
 ## Principle
 
-Adoption is pull, not push. ASE does not prescribe a uniform process. It documents practices that teams have made work, with the evidence and the honest caveats, and lets each team decide what to lift. The book's job is to make the practices legible; the team's job is to choose which ones fit.
+Adoption is pull, not push. Intent Engineering does not prescribe a uniform process. It documents practices that teams have made work, with the evidence and the honest caveats, and lets each team decide what to lift. The book's job is to make the practices legible; the team's job is to choose which ones fit.
 
 ## Why it matters
 
@@ -15,7 +15,7 @@ A process imposed from above is resisted. A process a team discovers and adapts 
 
 ## Violations to detect
 
-- ASE described as a mandatory framework rather than a collection of adoptable practices
+- Intent Engineering described as a mandatory framework rather than a collection of adoptable practices
 - Practices recommended without describing the context they require
 - Teams adopting practices without understanding the trade-offs
 
@@ -26,4 +26,4 @@ Every chapter answers: what problem does this solve, what does it cost, when doe
 ## Sources
 
 - ase-book, plan.md, Living Principles appendix.
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.

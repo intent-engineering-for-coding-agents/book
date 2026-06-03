@@ -1,5 +1,5 @@
 name: ase-book
-description: "Agentic Software Engineering — the complete principle set from the ASE book"
+description: "Intent Engineering for Coding Agents — the complete principle set"
 
 globs:
   - "**/*"

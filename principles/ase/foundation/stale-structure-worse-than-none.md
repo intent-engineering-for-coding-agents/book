@@ -7,7 +7,7 @@
 
 ## Principle
 
-A repo that adopts ASE Foundation practices and then stops maintaining them is worse than a repo that never adopted them. An instruction file that describes how the team worked six months ago is not documented maturity — it is a historical record with delusions of authority. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session.
+A repo that adopts Intent Engineering Foundation practices and then stops maintaining them is worse than a repo that never adopted them. An instruction file that describes how the team worked six months ago is not documented maturity — it is a historical record with delusions of authority. A stale ADR misleads one decision; a stale `AGENTS.md` misleads every session.
 
 ## Why it matters
 
@@ -26,6 +26,6 @@ Treat `AGENTS.md` as part of the architecture. Any PR that changes something `AG
 
 ## Sources
 
-- ase-book, *"When ASE Fails" chapter*, foundation section.
+- ase-book, *"When Intent Engineering Fails" chapter*, foundation section.
 - ase-book, *"Honest Maturity" chapter*, quality section.
 - ase-book, *"AGENTS.md" chapter*, ai-instructions section.
