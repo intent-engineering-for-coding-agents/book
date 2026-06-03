@@ -20,6 +20,8 @@ The agent is not a magic box. The agent will not read your mind. The agent will 
 
 One more thing: this book does not review agents or rank them. The agent is the labor and the sparring partner. Which labor you hire is not the point. What you tell it is.
 
+This book says "coding agent" where most say "AI." The agent is a large language model used as a development tool. Calling it intelligence is a marketing choice, not a technical one, and this book is not in the marketing business.
+
 Context is the whole game. Rather than cramming everything into one-shot prompts you'll retype the next day, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the agent re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. Skip this, and you'll be vibe-coding forever, wondering why your agent keeps "forgetting".
 
 ## From Vibe to Pro

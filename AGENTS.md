@@ -14,7 +14,7 @@ You are working on **Intent Engineering for Coding Agents**, a VitePress site te
 **Always load before writing or reviewing any content:**
 
 - [Writing](.agents/instructions/writing.md): audience, structure, sources, formatting mechanics
-- [Voice](.agents/instructions/voice.md): narrative tension, forbidden AI patterns, engineer-flavoured prose — contains hard rules that apply to every sentence written in this repo
+- [Voice](.agents/instructions/voice.md): narrative tension, forbidden patterns, engineer-flavoured prose — contains hard rules that apply to every sentence written in this repo
 - [Credibility pass](.agents/skills/credibility-pass.md): mandatory provenance and overconfidence pass before any draft or review is considered complete
 
 Before treating a claim as settled, check whether the source is primary, secondary, or vendor-authored; label book synthesis honestly and time-bound perishable tool claims.
