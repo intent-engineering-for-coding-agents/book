@@ -91,7 +91,7 @@ export default withMermaid(
         }
       ],
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/ase-book/intent-engineering-for-coding-agents' }
+        { icon: 'github', link: 'https://github.com/intent-engineering-for-coding-agents/book' }
       ]
     }
   })

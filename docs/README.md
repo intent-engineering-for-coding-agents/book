@@ -8,7 +8,7 @@ This repo dogfoods its own convention: `docs/` holds project documentation; `con
 
 ```mermaid
 flowchart LR
-  subgraph repo["intent-engineering-for-coding-agents (this repo)"]
+  subgraph repo["intent-engineering-for-coding-agents/book (this repo)"]
     src["content/<br/>.vitepress/config"]
     wf[".github/workflows/<br/>deploy.yml"]
   end

@@ -15,6 +15,6 @@ jobs:
         with:
           version: "latest"
       - name: Install ase-cli
-        run: uv tool install git+https://github.com/ase-book/ase-cli.git
+        run: uv tool install git+https://github.com/intent-engineering-for-coding-agents/cli.git
       - name: Run ase check
         run: ase check
