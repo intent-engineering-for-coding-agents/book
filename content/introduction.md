@@ -26,7 +26,7 @@ The book is organized around four topics. Each works on its own at a solo scale.
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are intent: they specify the target and prove the agent hit it. Context is the substrate. Intent is the point.
 
-Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The AI's non-determinism is the force you're paying for. Briefing keeps the agent from choosing wrong out of ignorance. Prerequisite for everything else, with the lowest immediate payoff.
+Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The AI's non-determinism is the force you're paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
 
 AI Instructions: `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads.
 

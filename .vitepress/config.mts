@@ -84,6 +84,9 @@ export default withMermaid(
           items: [
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Living Principles', link: '/appendices/living-principles' },
+            { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
+            { text: 'Instantiation Checklist', link: '/appendices/instantiation-checklist' },
+            { text: 'Credits', link: '/appendices/credits' },
           ]
         }
       ],
