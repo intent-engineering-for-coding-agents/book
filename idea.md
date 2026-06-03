@@ -27,11 +27,13 @@ where. Each makes the others more effective.
 ## The Four Topics
 
 ```
-FOUNDATION              Repo structure — the prerequisite for everything
-AI INSTRUCTIONS         Teach the agent your system
-SPEC-DRIVEN DEV         Teach the agent your intention
-QUALITY & VERIFICATION  Prove the agent understood
+FOUNDATION              Context: repo structure grounds the agent's execution
+AI INSTRUCTIONS         Context: teach the agent your system
+SPEC-DRIVEN DEV         Intent: state what the agent builds to
+QUALITY & VERIFICATION  Intent: prove the agent understood
 ```
+
+Context is the substrate. Intent is the point.
 
 Beyond the core four, the guide covers team workflows, cross-team
 coordination, and an honest look at what is still evolving in the field.
