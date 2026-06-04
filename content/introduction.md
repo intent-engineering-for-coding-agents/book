@@ -66,7 +66,7 @@ Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineerin
 
 ## The companion: Intent Engineering Checker
 
-Every practice in this book is demonstrated in a companion tool, Intent Engineering Checker (`iec`). ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. Each phase is a git tag. Check out `v0.3.0` and see what the practices look like applied to a working tool. The tags are evidence, not decoration.
+Every practice in this book is demonstrated in a companion repo, Intent Engineering Checker (`iec`). ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. The repo accumulates all of it. The git history also records how it got there, phase by phase, for anyone curious about the evolution. See [Companion Repo](./appendices/companion-repo) for the structure and how to browse it.
 
 Sources: `iec` repository history and tags (github.com/intent-engineering-for-coding-agents/cli), each phase as a git tag the reader can check out as evidence.
 

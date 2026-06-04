@@ -47,7 +47,7 @@ Sources: Model Context Protocol (modelcontextprotocol.io, ongoing); Framelink Fi
 
 ## Companion tool
 
-`iec` is the companion CLI for this book. Every practice described here is demonstrated in its git history. Each phase is a git tag the reader can check out. The introduction covers what `iec` demonstrates and how to run it locally.
+`iec` is the companion CLI for this book. Every practice described here is demonstrated in its git history. See [Companion Repo](./companion-repo) for the structure, phase tags, and how to browse it.
 
 ## Model selection and cost
 
