@@ -195,11 +195,11 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 
 #### Phase J — Team & Polish (`v0.9.0`)
 
-- [ ] PR taxonomy in practice: `docs`, `structural`, `behavior`
-- [ ] CI gates: lint, test, AC traceability, `iec check` on self
-- [ ] Documentation: expand README, add contributing guide
-- [ ] Maturity labels on all checks (which are CI-enforced vs tool-supported)
-- [ ] Tag: `v0.9.0`
+- [x] PR taxonomy in practice: `docs`, `structural`, `behavior`
+- [x] CI gates: lint, test, AC traceability, `iec check` on self
+- [x] Documentation: expand README, add contributing guide
+- [x] Maturity labels on all checks (which are CI-enforced vs tool-supported)
+- [x] Tag: `v0.9.0`
 
 #### Phase K — Local Developer Release (`v1.0.0`)
 
