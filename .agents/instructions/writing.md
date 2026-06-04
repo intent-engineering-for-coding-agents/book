@@ -32,7 +32,7 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 
 - Prose paragraphs for explanation; code blocks for anything the reader will type or copy
 - Markdown tables for comparisons
-- Diagrams: Mermaid by default. Author every diagram as Mermaid in a fenced ` ```mermaid ` block. Mermaid renders in the VitePress build and on GitHub, and stays diffable as plain text. Use ASCII / box-art only as a fallback when Mermaid genuinely cannot express the shape (rare; one common case is a directory tree, which reads better as indented text)
+- Diagrams: Mermaid by default. Author every diagram as Mermaid in a fenced ` ```mermaid ` block. Mermaid renders in the VitePress build and on GitHub, and stays diffable as plain text. Use `<br>` for line breaks inside node labels, not `\n`. Use ASCII / box-art only as a fallback when Mermaid genuinely cannot express the shape (rare; one common case is a directory tree, which reads better as indented text)
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `Sources:` line at the end of any section that draws on a specific reference. Format: `Sources: Author "Title" (Year), claim it backs.` Every source listed must carry a short tag naming the specific claim in that section it supports; a source with no claim to back does not belong on the line. See "Source-to-claim mapping" below.

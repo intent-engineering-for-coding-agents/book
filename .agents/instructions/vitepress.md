@@ -52,6 +52,15 @@ graph TD
 ```
 ````
 
+For line breaks inside node labels, use `<br>`, not `\n`:
+
+````md
+```mermaid
+flowchart TD
+  A["First line<br>Second line"] --> B
+```
+````
+
 ## Frontmatter
 
 Regular chapter pages need no frontmatter. The home page (`content/index.md`) uses `layout: home` with a `hero` block.
