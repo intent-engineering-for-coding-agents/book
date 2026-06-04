@@ -166,7 +166,7 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
     - [x] New → Plan → Apply → Archive
 - [x] Tag: `v0.6.0`
 
-#### Phase G.1 — OpenSpec Change Lifecycle Checks (`v0.6.1`)
+#### Phase H — OpenSpec Change Lifecycle Checks (`v0.7.0`)
 
 Deterministic gates that back the two-PR / spec-then-implementation model from the book's *Trunk-Based Development with Agents* chapter (`content/team/trunk-based-development.md`). Verifier pattern (ADR-0003): the check gates the merge, it does not perform the archive.
 
@@ -176,9 +176,9 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
     - Context-free fallback (when no git/PR context is available): flag any non-archived change whose `tasks.md` is fully checked but which has not been archived — the "finished but not archived" dead-spec signal the book warns about
     - [ ] New → Plan → Apply → Archive
 - [ ] (optional, lower priority) `branch-matches-slug` — verify the branch name matches the change folder slug (`<slug>` for implementation, `spec/<slug>` for the spec PR). Needs git context, so it ships as a CI snippet or skill, not a core `iec check` checker
-- [ ] Tag: `v0.6.1`
+- [ ] Tag: `v0.7.0`
 
-#### Phase H — Quality Verification on intent-cli itself (`v0.7.0`)
+#### Phase I — Quality Verification on intent-cli itself (`v0.8.0`)
 
 - [ ] **Convention artefacts** — establish the quality convention the book describes
     - [ ] `docs/architecture/test-strategy.md`: test types used (unit, integration, e2e), pytest frameworks per type, file locations, coverage thresholds
@@ -190,17 +190,17 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 - [ ] CI: run `iec check` on itself (the tool validates its own repo)
 - [ ] CI: AC traceability scan — every spec scenario has test proof
 - [ ] Pre-commit hooks: lint (ruff), format (ruff format), secrets scan
-- [ ] Tag: `v0.7.0`
+- [ ] Tag: `v0.8.0`
 
-#### Phase I — Team & Polish (`v0.8.0`)
+#### Phase J — Team & Polish (`v0.9.0`)
 
 - [ ] PR taxonomy in practice: `docs`, `structural`, `behavior`
 - [ ] CI gates: lint, test, AC traceability, `iec check` on self
 - [ ] Documentation: README, contributing guide
 - [ ] Maturity labels on all checks (which are CI-enforced vs tool-supported)
-- [ ] Tag: `v0.8.0`
+- [ ] Tag: `v0.9.0`
 
-#### Phase J — Local Developer Release (`v1.0.0`)
+#### Phase K — Local Developer Release (`v1.0.0`)
 
 - [ ] Package metadata, README, version bump
 - [ ] Local install verification for contributors
