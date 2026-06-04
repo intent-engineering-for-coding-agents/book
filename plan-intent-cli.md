@@ -11,16 +11,7 @@ This plan covers local developer use and companion-repo evidence for the book.
 
 ### What it is
 
-A Python CLI that validates Intent Engineering practices in any repo. Two layers:
-
-| Layer | Technology | What it checks |
-|---|---|---|
-| Deterministic | Pure Python | File size, structure, MADR format, AC ID patterns, test markers, secrets |
-| AI-assisted | MCP server | Top-heavy content, ADR scope leakage, AGENTS.md TOC quality, spec semantics |
-
-The deterministic layer works on any machine. No AI required.
-The AI layer starts an MCP server — the user's AI agent connects and runs semantic checks.
-BYOK: the user brings their own AI. The tool doesn't care which one.
+A Python CLI that validates Intent Engineering practices in any repo. Deterministic checks only, using pure Python. No AI required.
 
 ### Commands
 
@@ -32,16 +23,9 @@ iec init                  # Scaffold canonical directory structure in current re
 iec init --path <dir>     # Target a specific directory
 iec init --dry-run        # Preview without creating files
 iec init --force          # Overwrite existing files
-iec init --with-claude    # Also emit CLAUDE.md with @AGENTS.md import
-iec init --with-gemini    # Also emit .gemini/settings.json pointing to AGENTS.md
 
-iec check                 # Run deterministic checks only
-iec check --all           # Run deterministic + AI-assisted (via MCP)
+iec check                 # Run deterministic checks
 iec check --path src/     # Scope to a directory or file
-
-iec generate copilot      # Emit Copilot-facing pointer + optional .github/instructions/ slices
-iec generate claude       # Emit CLAUDE.md pointer
-iec generate gemini       # Emit .gemini/settings.json context config
 ```
 
 ### Deterministic checks (runs without AI)
@@ -66,32 +50,6 @@ iec generate gemini       # Emit .gemini/settings.json context config
 | `file-size` | Configurable: any .md file exceeding N lines flagged |
 | `tasks-complete` | A change folder's `tasks.md` has no unchecked `- [ ]` items before merge |
 | `change-archived` | A completed change folder is archived (moved to `changes/archive/`, delta merged into `openspec/specs/`) — not left live on trunk |
-
-### AI-assisted checks (via MCP, user's AI)
-
-| MCP Tool | What the AI evaluates |
-|---|---|
-| `check_top_heavy` | Does the file put constraints/non-goals/requirements in the first ~25%? |
-| `check_adr_scope` | Is the ADR about architectural decisions only (no design rationale, no impl details)? |
-| `check_agents_toc` | Does AGENTS.md act as a proper TOC — each link has a reason to be loaded? |
-| `check_spec_quality` | Are acceptance criteria specific and testable? Scenarios complete? |
-
-### MCP server architecture
-
-The tool starts a lightweight MCP server. The user's AI agent discovers it.
-Each semantic check is an MCP tool. The tool constructs a structured prompt,
-sends the file content, gets a structured response, parses it, and reports findings.
-
-```text
-User's AI Agent ──MCP──> intent-cli MCP server ──> reads repo files
-                                               ──> constructs check prompt
-                                               ──> sends to user's AI (via MCP)
-                                               ──> parses structured response
-                                               ──> reports finding to user
-```
-
-The AI prompt for each check is version-controlled inside `intent-cli` itself —
-a spec for an AI check. Dogfooding spec-driven development on the tool's own checks.
 
 ### intent-cli phases and tags
 
@@ -210,7 +168,7 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 #### Phase G.1 — OpenSpec Change Lifecycle Checks (`v0.6.1`)
 
-Deterministic gates that back the two-PR / spec-then-implementation model from the book's *Trunk-Based Development with Agents* chapter (`content/team/trunk-based-development.md`). Verifier pattern (ADR-0003): the check gates the merge, it does not perform the archive. No MCP required, so this slots ahead of the MCP phase.
+Deterministic gates that back the two-PR / spec-then-implementation model from the book's *Trunk-Based Development with Agents* chapter (`content/team/trunk-based-development.md`). Verifier pattern (ADR-0003): the check gates the merge, it does not perform the archive.
 
 - [ ] **Change 011 — Change lifecycle checks**
     - `tasks-complete` — fail the implementation PR when the change folder's `tasks.md` has any unchecked `- [ ]` item
@@ -220,27 +178,7 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 - [ ] (optional, lower priority) `branch-matches-slug` — verify the branch name matches the change folder slug (`<slug>` for implementation, `spec/<slug>` for the spec PR). Needs git context, so it ships as a CI snippet or skill, not a core `iec check` checker
 - [ ] Tag: `v0.6.1`
 
-#### Phase H — Spec-Driven: MCP Server + AI Checks (`v0.7.0`)
-
-- [ ] **Change 012 — MCP server**
-    - Start MCP server on demand, publish tools: `check_top_heavy`, `check_adr_scope`, `check_agents_toc`, `check_spec_quality`
-    - Each tool constructs a structured prompt from a version-controlled template
-    - [ ] New → Plan → Apply → Archive
-    - > **Book dependency:** `content/team/code-review-agent-code.md` references `check_spec_quality` in the present tense, as if it exists. Until this phase ships, that reference must be marked forthcoming/planned. A reference work does not name an unbuilt tool as present-tense reality. Either ship this phase before publishing, or soften the book line.
-- [ ] Wire `iec check --all` to start MCP server and await AI results
-- [ ] Tag: `v0.7.0`
-
-#### Phase I — Spec-Driven: Vendor Generators (`v0.8.0`)
-
-- [ ] **Change 013 — `iec generate` command**
-    - [ ] `iec generate copilot` — emits `.github/copilot-instructions.md` pointer to AGENTS.md
-    - [ ] `iec generate claude` — emits `CLAUDE.md` pointer to AGENTS.md
-    - [ ] `iec generate gemini` — emits `.gemini/settings.json` with AGENTS.md context path
-    - Codex reads `AGENTS.md` + `.agents/` natively — no generator needed
-    - [ ] New → Plan → Apply → Archive
-- [ ] Tag: `v0.8.0`
-
-#### Phase J — Quality Verification on intent-cli itself (`v0.9.0`)
+#### Phase H — Quality Verification on intent-cli itself (`v0.7.0`)
 
 - [ ] **Convention artefacts** — establish the quality convention the book describes
     - [ ] `docs/architecture/test-strategy.md`: test types used (unit, integration, e2e), pytest frameworks per type, file locations, coverage thresholds
@@ -249,20 +187,20 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
     - [ ] ADR: `docs/decisions/NNNN-ac-id-and-test-type-convention.md` — records the decision to adopt `[PREFIX-NNN]` IDs and `Test-type:` field in all intent-cli specs
 - [ ] **Retrofit pytest markers** — add `@pytest.mark.<AC_ID>` and `@pytest.mark.<test_type>` to all existing intent-cli tests; update CI filter config
 - [ ] Test package for every check: AC-tagged, positive/negative proof
-- [ ] CI: run `iec check --deterministic` on itself (the tool validates its own repo)
+- [ ] CI: run `iec check` on itself (the tool validates its own repo)
 - [ ] CI: AC traceability scan — every spec scenario has test proof
 - [ ] Pre-commit hooks: lint (ruff), format (ruff format), secrets scan
-- [ ] Tag: `v0.9.0`
+- [ ] Tag: `v0.7.0`
 
-#### Phase K — Team & Polish (`v0.10.0`)
+#### Phase I — Team & Polish (`v0.8.0`)
 
 - [ ] PR taxonomy in practice: `docs`, `structural`, `behavior`
 - [ ] CI gates: lint, test, AC traceability, `iec check` on self
 - [ ] Documentation: README, contributing guide
 - [ ] Maturity labels on all checks (which are CI-enforced vs tool-supported)
-- [ ] Tag: `v0.10.0`
+- [ ] Tag: `v0.8.0`
 
-#### Phase L — Local Developer Release (`v1.0.0`)
+#### Phase J — Local Developer Release (`v1.0.0`)
 
 - [ ] Package metadata, README, version bump
 - [ ] Local install verification for contributors

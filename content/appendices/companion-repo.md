@@ -52,8 +52,8 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 ## What it does not do
 
-`iec` has no command to run against your repo. An MCP server for agent-assisted checks was in the design backlog but not shipped as of `v0.6.0`.
+`iec` has no command to run against your repo. It checks alignment in its own development workflow, not in yours.
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 
-Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`; `content/appendices/tooling-landscape.md`, planned MCP server status as of `v0.6.0`.
+Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.

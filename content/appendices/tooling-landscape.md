@@ -39,7 +39,6 @@ The Model Context Protocol (modelcontextprotocol.io) lets agents reach external 
 |---|---|---|
 | Atlassian MCP | Jira and Confluence access | Fetches story context during spec drafting |
 | Framelink MCP (GLips/Figma-Context-MCP) | Figma design data | For front-end specs; 14.9k★ as of mid-2026 |
-| `iec` MCP (planned) | Agent-assisted quality checks | BYOK via the user's own agent; not yet shipped as of `v0.6.0` |
 
 MCP server availability, permission scope, and reliability vary by environment. Verify connectivity before relying on any external MCP server in a CI or automated context. What an agent can reach through MCP is determined by configuration and permissions, not by the tool existing.
 
