@@ -17,7 +17,7 @@ The public domain is a launch-time decision. Written in Markdown with Mermaid di
 ### VitePress conventions
 
 - `srcDir: 'content'` — book prose lives in `content/`, not `docs/`
-- `docs/` is reserved for ASE documentation (the repo dogfoods its own convention)
+- `docs/` is reserved for Intent Engineering documentation (the repo dogfoods its own convention)
 - Sidebar maps to chapter structure
 - Mermaid plugin for diagrams
 - GitHub Actions deploys to GitHub Pages (not the built-in `/docs` deploy)
@@ -26,7 +26,7 @@ The public domain is a launch-time decision. Written in Markdown with Mermaid di
 
 #### Phase M — Scaffold (`v0.0.1`)
 
-- [x] Init repo under `ase-book/ase-book` (historical name at scaffold time)
+- [x] Init repo under `intent-book/intent-book` (historical name at scaffold time)
 - [x] Apache 2.0 license
 - [x] Init VitePress: `srcDir: 'content'`, Mermaid plugin, clean theme
 - [x] GitHub Actions: build + deploy to GitHub Pages on push to `main`
@@ -48,7 +48,7 @@ The public domain is a launch-time decision. Written in Markdown with Mermaid di
 - [x] Write `docs/INDEX.md` — agent-facing map of all docs
 - [x] Write ADRs:
     - ADR-0001: VitePress over alternatives (Hugo, Docusaurus, mdBook)
-    - ADR-0002: `content/` for VitePress prose — frees `docs/` for ASE documentation
+    - ADR-0002: `content/` for VitePress prose — frees `docs/` for Intent Engineering documentation
 - [x] Wire `iec check` in CI on the book repo itself
 - [x] Tag: `v0.1.0`
 
@@ -92,10 +92,10 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: Write the Docs "Docs as Code"; Mermaid; C4 model; Structurizr.*
     - Markdown, Mermaid, MADR as substrate
     - Git-diffable, vendor-independent, agent-readable
-- [x] Chapter: The Map — ASE and the SDLC
+- [x] Chapter: The Map — Intent Engineering and the SDLC
     - *Sources: Farley *Modern Software Engineering*; continuousdelivery.com; Microsoft "An AI-led SDLC"; IBM "AI in SDLC".*
-    - One-page diagram: SDLC phases → ASE touchpoints
-    - ASE extends, does not replace
+    - One-page diagram: SDLC phases → Intent Engineering touchpoints
+    - Intent Engineering extends, does not replace
 - [x] Chapter: Honest Maturity
     - *Sources: ThoughtWorks Radar adoption rings (Hold/Assess/Trial/Adopt) as lineage; CMM noted briefly to dismiss process-theatre framing.*
     - Practiced / documented / CI-enforced / target state
@@ -103,16 +103,16 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Lineage: rhymes with ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings; this is staged-maturity-honesty, not CMM-style process compliance.
 - [x] Chapter: Brownfield vs Greenfield — Bootstrap with skeleton.md
     - *Sources: Reversa (sandeco/reversa) — 5-phase legacy → spec pipeline for AI coding agents (Claude Code / Cursor / Codex); Schwab "AI as Your Legacy Code Archaeologist" (Caimito, Feb 7, 2026); Cockburn *Crystal Clear* (2004) — original "walking skeleton" lineage; Fujitsu Application Transform (Mar 2026) — industry-scale validation.*
-    - Greenfield ASE assumes you can author AGENTS.md, ADRs, and specs from intent. Brownfield cannot — the intent is buried in years of code, dead comments, and tribal knowledge.
-    - **`skeleton.md`** as the brownfield bootstrap artefact: an AI-generated structural map of an existing codebase (modules, dependencies, data flow, business-rule outline, C4 views) that seeds the agent's understanding before any new ASE work begins.
+    - Greenfield Intent Engineering assumes you can author AGENTS.md, ADRs, and specs from intent. Brownfield cannot — the intent is buried in years of code, dead comments, and tribal knowledge.
+    - **`skeleton.md`** as the brownfield bootstrap artefact: an AI-generated structural map of an existing codebase (modules, dependencies, data flow, business-rule outline, C4 views) that seeds the agent's understanding before any new Intent Engineering work begins.
     - How to generate one: point a capability-class CLI agent at the legacy tree; ask for a structural skeleton, not a refactor. Iterate with a domain expert. Reversa is one toolchain that automates this end-to-end.
     - Why it's essential: most enterprise readers are in brownfield, not greenfield. Without a skeleton, the agent improvises against a system it doesn't understand and compounds drift.
     - Lineage note: Cockburn's "walking skeleton" (a thin end-to-end implementation, *Crystal Clear* 2004) is the etymology. The AI-era `skeleton.md` is a *reverse-engineered* map of an existing system, not a thin forward-built one. Same metaphor, different direction.
-- [x] Chapter: When ASE Fails
+- [x] Chapter: When Intent Engineering Fails
     - *Sources: ThoughtWorks Radar Vol 34 (cognitive debt); Yegge "Revenge of the junior developer"; De Schryver "Keep Agentic AI Simple".*
     - Failure modes that survive even good foundation: AGENTS.md rot, dead specs, agent-accelerated tech debt, over-spec, drift with no detection.
-    - Honest framing before the practices: ASE doesn't make your code perfect; it gives you the surface area to detect and recover. Each later topic aims a fix at one of these modes.
-- [x] Throughout: reference `ase-cli` ADRs, specs, tags as evidence
+    - Honest framing before the practices: Intent Engineering doesn't make your code perfect; it gives you the surface area to detect and recover. Each later topic aims a fix at one of these modes.
+- [x] Throughout: reference `iec-cli` ADRs, specs, tags as evidence
 - [x] Tag: `v0.3.0`
 
 #### Phase Q — Write Agent Instructions Chapters (`v0.4.0`)
@@ -152,7 +152,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - `CLAUDE.md` → "See AGENTS.md"
     - `.github/copilot-instructions.md` → "See AGENTS.md"
     - `iec generate` — why generated files are pointers, not authored duplicates
-    - Reference `ase-cli` implementation
+    - Reference `iec-cli` implementation
 - [x] Tag: `v0.4.0`
 
 #### Phase R — Write Spec-Driven Chapters (`v0.5.0`)
@@ -204,7 +204,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Regression detection when a skill or hook is updated.
     - The evidence base for the central claim: at agentic speeds, manual verification is not enough. This is the feedback loop that closes it.
 - [x] Chapter: AC IDs + Positive/Negative Coverage
-    - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; ASE convention disclaimer (AC-IDs note); model2diagram ADR-0005.*
+    - *Sources: Cucumber/Gherkin (briefly, as anchor); OpenSpec; Intent Engineering convention disclaimer (AC-IDs note); model2diagram ADR-0005.*
     - Stable IDs in bracket format `[PREFIX-NNN]`; prefix 2–4 letters from component abbreviation (e.g. `GV`, `AUTH`, `CONF`) so meaning is immediately clear; monotone counter
     - `Test-type:` field on its own line in the scenario, before WHEN/THEN — intent captured at design time
     - Mandatory `**Test:**` field
@@ -241,7 +241,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 
 #### Phase T — Write Team + Cross-Team Chapters (`v0.7.0`)
 
-> **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing ASE-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
+> **Framing:** anchor every chapter to a well-known SDLC primitive (TBD, PR review, sprint board, ADR) rather than inventing IEC-branded ceremonies. **Patterns, not prescription.** Adoption is pull, not push — the book describes what teams have made work, not what they must do.
 
 - [x] Chapter: OpenSpec Across Stacks *(precedes bridge chapter; pairs with it)*
     - *Sources: Fission AI, OpenSpec; Framelink MCP for Figma (GLips/Figma-Context-MCP, 14.9k★ as of mid-2026). Multi-tier directory guidance is book synthesis.*
@@ -307,8 +307,10 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Appendix: Credits and References
     - Dave Farley, Michael Nygard, LeanSpec, OpenSpec, SpecKit, dot-principles
 - [ ] Final review: full read-through, verify all git tags, cross-reference `iec`
-    - [ ] Verify every present-tense `iec` claim against the shipped CLI — command names, check names, MCP tools (`check_spec_quality` in `code-review-agent-code.md`, the `tasks-complete` / `change-archived` gates in `trunk-based-development.md`). Anything not yet shipped is marked forthcoming/planned or cut. A reference work names no unbuilt tool as present-tense reality. Pairs with the Book dependency notes in `plan-intent-cli.md`.
-    - [ ] Confirm command name (`intent` vs `ase`) and propagate to all book references before v1.0.0.
+    - [x] Verify every present-tense `iec` claim against the shipped CLI (tags v0.0.1–v0.6.0). Four unshipped features softened to forthcoming: `iec generate` (`agents-md.md`), `eval-demo` (`agent-evaluation.md`), convention artifacts at `main` (`test-strategy.md`), `iec` MCP row in tooling landscape. `tasks-complete`/`change-archived` in `trunk-based-development.md` are framed as recommendation, not shipped claim — left as-is. `check_spec_quality` concern is moot: `code-review-agent-code.md` was never written.
+    - [ ] Confirm command name: CLI `pyproject.toml` still registers entry point as `ase`, not `iec`. All book references correctly use `iec`. Fix is on the CLI side (rename entry point in `pyproject.toml` and package to `iec`/`iec_cli`).
+    - [ ] Write missing chapter: "Code Review for Agent-Generated Code" (`content/team/code-review-agent-code.md`). Marked `[x]` in plan but file does not exist and team index has no entry. Do not reference `check_spec_quality` in present tense until Phase H ships.
+    - [ ] Full prose read-through (tone, voice, coherence end-to-end)
 - [ ] Tag: `v0.8.0`
 
 #### Phase V — Release (`v1.0.0`)

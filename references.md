@@ -2,7 +2,7 @@
 
 *Last reviewed: 2026-05-25.*
 
-Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines in [plan-ase-book.md](plan-ase-book.md) point into this section.
+Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines in [plan-intent-book.md](plan-intent-book.md) point into this section.
 
 ## Foundations — engineering practice, decision records, plain-text-as-code
 

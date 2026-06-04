@@ -108,7 +108,7 @@ A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming
 
 ## TBD (Trunk-Based Development)
 
-A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the ASE context, an OpenSpec change folder maps onto one or two short-lived branches that carry its name: a spec branch followed by an implementation branch for decision-heavy changes, or a single branch when the intent is visible in the diff. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
+A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the Intent Engineering context, an OpenSpec change folder maps onto one or two short-lived branches that carry its name: a spec branch followed by an implementation branch for decision-heavy changes, or a single branch when the intent is visible in the diff. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
 
 ## TOC pattern
 

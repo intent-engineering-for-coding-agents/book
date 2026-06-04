@@ -7,8 +7,8 @@
 This plan supersedes Plan v2. It records the rename and rebrand of the book from
 "The ASE Book / Agentic Software Engineering" to "Intent Engineering for Coding
 Agents," and the work needed to carry that name through the repo. Earlier plan files
-(`plan-ase-book.md`, `plan-ase-cli.md`) were renamed to `plan-intent-book.md` and
-`plan-intent-cli.md` when the CLI companion repo was renamed from `ase-cli` to
+(`plan-intent-book.md`, `plan-iec-cli.md`) were renamed to `plan-intent-book.md` and
+`plan-intent-cli.md` when the CLI companion repo was renamed from `iec-cli` to
 `intent-cli`. The v2 master lives in git history.
 
 ## Why rename
@@ -47,14 +47,14 @@ teaches.
 - ASE stays as the umbrella. "Agentic software engineering" remains the broader discipline
   the practice sits within. It is not deleted; the practice is named beneath it.
 - CLI renamed to `intent-cli`, command name `iec`. The companion CLI repo was renamed from
-  `ase-cli` to `intent-cli`; the command is `iec` (Intent Engineering Checker). Short,
+  `iec-cli` to `intent-cli`; the command is `iec` (Intent Engineering Checker). Short,
   distinctive, same shape as `ase`, no collision risk. Nothing is published so no backwards
   compatibility constraint applies. Public package distribution remains out of scope.
   Contributor-facing notes explain how to run the CLI locally when readers inspect the tool as
   supporting evidence.
-- The principles catalog (`principles/ase/`, `groups/ase-book.yaml`, and the mirrored table
+- The principles catalog (`principles/iec/`, `groups/intent-book.yaml`, and the mirrored table
   in `content/appendices/living-principles.md`) moves with the CLI later, as one unit. The
-  `ASE-*` principle IDs are not renamed in this pass. (The CLI repo rename to `intent-cli`
+  `IEC-*` principle IDs are not renamed in this pass. (The CLI repo rename to `intent-cli`
   does not constitute the full principles migration; that remains deferred.)
 
 ## The classification rule (the heart of this rename)
@@ -147,12 +147,12 @@ Use `git mv` to preserve history. Each rename requires updating every inbound li
 
 ## Deferred: explicitly NOT in this pass
 
-- `ase-cli` CLI tool name (kept for now — subsequently renamed to `intent-cli` with command `iec`).
-- `principles/ase/` tree, `groups/ase-book.yaml`, and the mirrored `living-principles.md`
+- `iec-cli` CLI tool name (kept for now — subsequently renamed to `intent-cli` with command `iec`).
+- `principles/iec/` tree, `groups/intent-book.yaml`, and the mirrored `living-principles.md`
   table. They move with the CLI later, as one unit.
 - GitHub owner for the selected repo slug `intent-engineering-for-coding-agents` and domain
-  `ase-book.dev`. Launch-time brand decisions, tracked in the launch checklist below.
-- `groups/ase-book.yaml`, `.idea/ase-book.iml`. Internal and editor config, low value.
+  `intent-book.dev`. Launch-time brand decisions, tracked in the launch checklist below.
+- `groups/intent-book.yaml`, `.idea/intent-book.iml`. Internal and editor config, low value.
 
 ## Order of operations
 
@@ -171,8 +171,8 @@ Use `git mv` to preserve history. Each rename requires updating every inbound li
   `idea.md`. Zero results.
 - Grep `\bASE\b` across `content/`. Only intentional umbrella references remain (and the
   deferred `living-principles.md` table). Spot-read each to confirm it positions the practice
-  within the field rather than naming the practice. Tooling token `principles/ase/` is expected
-  and allowed; `ase-cli` should no longer appear — it is now `intent-cli` / `iec`.
+  within the field rather than naming the practice. Tooling token `principles/iec/` is expected
+  and allowed; `iec-cli` should no longer appear — it is now `intent-cli` / `iec`.
 - `npm run docs:dev`. Visually confirm the hero, nav title, and the two renamed chapter pages
   render and link correctly.
 - Read `content/introduction.md` and the glossary end to end for umbrella-versus-practice
@@ -182,7 +182,7 @@ Use `git mv` to preserve history. Each rename requires updating every inbound li
 
 - CLI command name locked as `iec` (Intent Engineering Checker). Propagate to all book
   references (`iec init`, `iec check`, `iec generate`) before v1.0.0.
-- Principles migration (`principles/ase/`, `groups/ase-book.yaml`): moves with the CLI as one
+- Principles migration (`principles/iec/`, `groups/intent-book.yaml`): moves with the CLI as one
   unit when the CLI is ready for it.
 - External brand at launch: GitHub org is `intent-engineering-for-coding-agents` (confirmed);
   domain remains a launch-time decision.
@@ -191,7 +191,7 @@ Use `git mv` to preserve history. Each rename requires updating every inbound li
 
 Carried forward from v2. Work through these near public launch.
 
-- [ ] Decide and buy the domain (was `ase-book.dev`; revisit under the new name).
+- [ ] Decide and buy the domain (was `intent-book.dev`; revisit under the new name).
 - [ ] Submit a PR to awesome-agentic-engineering on launch day.
 - [ ] Post "Show HN" on launch day, leading with the `iec` proof.
 - [ ] Announce via the AI Engineer community and reach out to Latent Space.

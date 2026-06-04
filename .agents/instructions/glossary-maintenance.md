@@ -10,7 +10,7 @@ Every abbreviation expands on its first occurrence within each chapter:
 
 After the first use, the abbreviation alone is correct. The rule is per-chapter, not per-book — a VitePress site has no fixed reading order, and any chapter can be a landing page from search.
 
-Apply to: ASE, ADR, MADR, AC ID, MCP, BYOK, TBD, and any other abbreviation introduced in the chapter.
+Apply to: IEC, ADR, MADR, AC ID, MCP, BYOK, TBD, and any other abbreviation introduced in the chapter.
 
 ## Glossary upkeep
 

@@ -45,7 +45,7 @@ Chosen option: "`content/`", because it is semantically correct (the directory h
 ### `content/`
 
 * Good, because semantically accurate — the directory holds book content
-* Good, because no collision with any ASE convention or GitHub Pages default
+* Good, because no collision with any Intent Engineering convention or GitHub Pages default
 * Good, because reinforces the repo's role as a live example of the practices it teaches
 * Neutral, because slightly non-standard for VitePress — requires explicit `srcDir: 'content'` in config
 

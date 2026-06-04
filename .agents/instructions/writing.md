@@ -111,8 +111,8 @@ A source that does not back any claim in its section must be removed, not annota
 Every chapter expresses normative claims: rules about how things should be done. When you draft a new chapter or substantively edit an existing one, extract any new principles that emerged and add them to the catalogue.
 
 1. After completing the draft, scan for normative claims: "must", "should", "always", "never", "the rule is", load-bearing theses, claims about how to structure work the agent does
-2. For each new principle not already in `principles/ase/`, create a new `.md` file in the appropriate category directory (`principles/ase/foundation/`, `principles/ase/context/`, `principles/ase/specs/`, `principles/ase/testing/`, `principles/ase/quality/`, `principles/ase/team/`)
+2. For each new principle not already in `principles/iec/`, create a new `.md` file in the appropriate category directory (`principles/iec/foundation/`, `principles/iec/context/`, `principles/iec/specs/`, `principles/iec/testing/`, `principles/iec/quality/`, `principles/iec/team/`)
 3. Follow the `.principles` file schema: `# ID: Title`, `Layer: 1|2|3`, `Summary:`, `## Principle`, `## Why it matters`, `## Violations to detect`, `## Good practice`, `## Sources`
-4. Add the new ID to `groups/ase-book.yaml`
+4. Add the new ID to `groups/intent-book.yaml`
 5. Add the principle's row to the table in `content/appendices/living-principles.md` under the correct category
 6. If a chapter edit invalidates an existing principle, update or remove the principle file and the appendix table row

@@ -6,12 +6,12 @@ Part of [plan.md](plan.md). See also [plan-intent-book.md](plan-intent-book.md).
 
 ## The `intent-cli` Tool
 
-`intent-cli` is the companion CLI tool (renamed from `ase-cli`). Public package distribution is out of scope.
+`intent-cli` is the companion CLI tool (renamed from `iec-cli`). Public package distribution is out of scope.
 This plan covers local developer use and companion-repo evidence for the book.
 
 ### What it is
 
-A Python CLI that validates ASE practices in any repo. Two layers:
+A Python CLI that validates Intent Engineering practices in any repo. Two layers:
 
 | Layer | Technology | What it checks |
 |---|---|---|
@@ -99,7 +99,7 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 
 #### Phase A — Scaffold (`v0.0.1`, commit zero)
 
-- [x] Init repo under `ase-book/ase-cli` (historical name at scaffold time; repo later moved to `intent-engineering-for-coding-agents/cli`)
+- [x] Init repo under `intent-book/iec-cli` (historical name at scaffold time; repo later moved to `intent-engineering-for-coding-agents/cli`)
 - [x] Apache 2.0 license
 - [x] `pyproject.toml` (uv-based, Typer, Python 3.12+)
 - [x] `.gitignore` for Python
@@ -107,11 +107,11 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 
 #### Phase B — Foundation (`v0.1.0`)
 
-- [x] Create canonical directory structure in `ase-cli` itself
+- [x] Create canonical directory structure in `iec-cli` itself
     - [x] `docs/README.md` — architecture overview (CLI + MCP server design)
     - [x] `docs/INDEX.md` — agent-facing map of all docs
-    - [x] `docs/testing-convention.md` — generic ASE testing conventions (test layers, AC IDs, traceability)
-    - [x] `docs/testing-strategy.md` — ase-cli specific test strategy (layers, markers, CI wiring)
+    - [x] `docs/testing-convention.md` — generic Intent Engineering testing conventions (test layers, AC IDs, traceability)
+    - [x] `docs/testing-strategy.md` — iec-cli specific test strategy (layers, markers, CI wiring)
     - [x] `docs/decisions/` — ADRs in MADR format
     - [x] `docs/decisions/README.md` — auto-rendered ADR listing
     - [x] `docs/design/` — empty, ready for features
@@ -150,7 +150,7 @@ Each phase maps to a book chapter. Each tag is a checkpoint the reader can inspe
 
 OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the change folder), **plan** (`/opsx:ff` fast-forwards proposal → specs → design → tasks), **apply** (`/opsx:apply` implements tasks), **archive** (`/opsx:archive` merges delta specs into `openspec/specs/`, moves to `changes/archive/<YYYY-MM-DD>-<name>/`). Artifacts can be updated anytime — no rigid phase gates. Helper commands: `/opsx:continue`, `/opsx:explore`, `/opsx:verify`, `/opsx:sync`, `/opsx:onboard`, `/opsx:bulk-archive`.
 
-> **AC IDs are an ASE convention, not canonical OpenSpec.** OpenSpec prescribes no AC ID format; the `[PREFIX-NNN]` pattern and `**Test:**` field are layered on top to enable test traceability checks.
+> **AC IDs are an Intent Engineering convention, not canonical OpenSpec.** OpenSpec prescribes no AC ID format; the `[PREFIX-NNN]` pattern and `**Test:**` field are layered on top to enable test traceability checks.
 
 > **Use a model in the capability class (thinking + agent + plan mode) for OpenSpec work.** Proposals, delta specs, and design docs are where intent gets fixed — weak models produce shallow specs that read fine but miss edge cases and architectural consequences. Default to a top-tier reasoning model (Claude Sonnet/Opus 4+, GPT 5.4+, Deepseek 4 Pro — the tested set from `idea.md`'s Audience section) for `/opsx:ff` and `/opsx:apply`; cheaper models are fine for archive merges and mechanical edits.
 

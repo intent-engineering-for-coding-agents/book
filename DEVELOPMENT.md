@@ -1,4 +1,4 @@
-# Development Guide for ase-book
+# Development Guide for intent-book
 
 ## Setup
 

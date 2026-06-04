@@ -81,7 +81,7 @@ The convention needs one more file: a registry at `test/ac-registry.md` that all
 
 ## Tooling note
 
-If you want to see this in practice, `iec` at `main` has the full convention applied: `docs/architecture/test-strategy.md` defines the types and frameworks, `test/scenario-template.md` defines the scenario format and complexity tiers, `test/ac-registry.md` holds the prefixes. Every test has two `@Tag` annotations. Every spec scenario has a `Test-type:` field. The convention is not aspirational; it is running in that companion project.
+The `iec` companion repo is planned to ship the full convention: `docs/architecture/test-strategy.md` defining the types and frameworks, `test/scenario-template.md` defining the scenario format and complexity tiers, `test/ac-registry.md` holding the prefixes, and every test double-tagged with AC ID and test type. (Not yet present as of `v0.6.0`; check the companion repo for current status.)
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation. The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
 

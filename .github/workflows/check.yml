@@ -1,4 +1,4 @@
-name: ase check
+name: iec check
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
       - uses: astral-sh/setup-uv@v8.1.0
         with:
           version: "latest"
-      - name: Install ase-cli
+      - name: Install iec-cli
         run: uv tool install git+https://github.com/intent-engineering-for-coding-agents/cli.git
-      - name: Run ase check
-        run: ase check
+      - name: Run iec check
+        run: iec check

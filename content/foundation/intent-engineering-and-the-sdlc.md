@@ -26,7 +26,7 @@ graph TD
         E --> F[PR: docs / structural / behavior]
     end
     subgraph CI
-        F --> G[ase check<br/>AC traceability<br/>tests]
+        F --> G[iec check<br/>AC traceability<br/>tests]
         G --> H[Deploy]
     end
     subgraph Maintenance

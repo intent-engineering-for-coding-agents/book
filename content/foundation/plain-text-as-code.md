@@ -34,7 +34,7 @@ Mermaid is different. The source is plain text that diffs cleanly, and the synta
 graph TD
     A[Planning] -->|OpenSpec change| B[Spec]
     B --> C[Implementation]
-    C -->|ase check| D[CI gate]
+    C -->|iec check| D[CI gate]
     D --> E[Archive]
 ```
 

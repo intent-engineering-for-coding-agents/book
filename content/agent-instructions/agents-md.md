@@ -51,7 +51,7 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: `iec generate claude` writes the `CLAUDE.md` pointer, `iec generate copilot` writes the `copilot-instructions.md` pointer. Both are one or two lines. Neither requires the developer to author anything. The convention is encoded in the generator, not in a human's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: `iec generate claude` writes the `CLAUDE.md` pointer, `iec generate copilot` writes the `copilot-instructions.md` pointer. Both are one or two lines. Neither requires the developer to author anything. The convention is encoded in the generator, not in a human's memory. (The `generate` subcommand is planned for a future `iec` release; see the companion repo for current status.)
 
 Generated files can be committed without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
