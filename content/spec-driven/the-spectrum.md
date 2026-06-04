@@ -1,6 +1,6 @@
 # The Spectrum
 
-How much process does renaming a config variable deserve? Adopt a full Spec-Driven Development framework and the honest answer is: far more than it needs. The ceremony is real, proposal, design, tasks, delta spec, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theatre. The structure that protects a risky change suffocates a trivial one.
+How much process does renaming a config variable deserve? Adopt a full Spec-Driven Development framework and the honest answer is: far more than it needs. The ceremony is real, proposal, design, specs, tasks, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theatre. The structure that protects a risky change suffocates a trivial one.
 
 The team that writes no specs at all, operating on prompts and conversation history alone, ships features that work until the third session extends them. Then someone asks why the validation is in the controller and nobody can answer without reading git blame.
 
@@ -14,9 +14,22 @@ One step up: a `spec.md` file in the repo. A Markdown file, no framework. Purpos
 
 Sources: GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), the plain `spec.md` file as the starting point for teams new to spec-driven development.
 
-OpenSpec is the next level. A structured change-folder workflow: proposal, delta specs, design document, task list, archive. Adds lifecycle management and the archive as a historical record. Designed for teams working on production systems with multiple developers. The overhead is real and intentional: the ceremony is proportional to the risk.
+OpenSpec is the next level. A structured change-folder workflow with four parts, each answering a distinct question:
 
-Sources: Fission AI, OpenSpec, the structured change-folder workflow (proposal, delta specs, design, tasks, archive) and its proportional ceremony.
+| Part | File | Question |
+|---|---|---|
+| Propose | `proposal.md` | What is this change about and why? |
+| Design | `design.md` | How do we intend to execute it? |
+| Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
+| Tasks | `tasks.md` | What is the execution plan? |
+
+Acceptance criteria are written in Gherkin (GIVEN-WHEN-THEN): abstract enough to write quickly, concrete enough to drive test implementation. When the change is archived, the per-capability acceptance criteria merge into the canonical `/openspec/specs/<capability>/spec.md`, building a living source-of-truth for each capability's behaviour. This is the mechanism that closes the loop between intent and proof.
+
+A change proposal is a delta on the system's capability model: adding, updating, or removing the acceptance criteria that define what the system does. The `design.md` and `tasks.md` describe how to execute that delta; the `proposal.md` describes why. The specs are the thing that actually changes, which is why archiving merges them into the canonical capability model and the rest is discarded.
+
+Adds lifecycle management and the archive as a historical record. Designed for teams working on production systems with multiple developers. The overhead is real and intentional: the ceremony is proportional to the risk.
+
+Sources: Fission AI, OpenSpec, the four-part change-folder workflow and its proportional ceremony.
 
 At the enterprise end, GitHub Spec-Kit targets large-scale, multi-team environments with compliance requirements. Tooling, integrations, governance hooks. The formality is designed for the scale.
 

@@ -6,6 +6,8 @@ A spec without a lifecycle accumulates. Active specs look identical to abandoned
 
 ## The five stages
 
+One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken; the spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency — you may finish the implementation before discovering the intent was wrong at the decision level. The full chain: **ADR → Design doc → Spec → Implementation → Archive**.
+
 Write: create the spec when you are about to implement, not weeks in advance. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
 Critique: run the draft past a second model before human review. Not code review. Spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer has unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.

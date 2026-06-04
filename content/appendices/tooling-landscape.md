@@ -22,7 +22,7 @@ Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex C
 
 | Tool | Scope | Notes |
 |---|---|---|
-| OpenSpec (openspec.dev) | Change-folder + delta-spec lifecycle | Used end-to-end in this book |
+| OpenSpec (openspec.dev) | Change-folder lifecycle (proposal, design, specs, tasks) | Used end-to-end in this book |
 | LeanSpec (lean-spec.dev) | Lightweight spec | Small-spec discipline |
 | GitHub Spec-Kit (github.com/github/spec-kit) | Enterprise toolchain | Full lifecycle, GitHub-integrated |
 | GSD | Minimal ceremony | See Hightower's comparison for trade-offs |

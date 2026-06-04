@@ -16,7 +16,7 @@ front-end/
     changes/
       add-filter-component/
         proposal.md
-        delta-spec.md
+        design.md
         tasks.md
 
 bff/
@@ -24,7 +24,7 @@ bff/
     changes/
       add-filter-endpoint/
         proposal.md
-        delta-spec.md
+        design.md
         tasks.md
 
 back-end/
@@ -57,8 +57,8 @@ The ADR in `docs/decisions/` records the API contract: endpoint path, request sh
 ```mermaid
 graph TD
   ADR["ADR-0042: Filter API Contract<br/>docs/decisions/"]
-  FE["front-end/openspec/<br/>changes/add-filter-component/<br/>delta-spec.md"]
-  BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>delta-spec.md"]
+  FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md"]
+  BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md"]
   FE -- "references" --> ADR
   BFF -- "implements" --> ADR
 ```
