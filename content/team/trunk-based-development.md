@@ -78,4 +78,4 @@ The argument for TBD over Gitflow is Hammant's to make, and he has made it thoro
 
 The two-PR shape for decision-heavy changes is this book's recommended default, not an industry standard. Plenty of teams ship spec and code in one PR and review the spec delta first inside it. That works, and it is lighter. The split earns its second PR when locking the intent before implementation would have saved a rework, and costs ceremony when it would not. Treat it as a dial, not a mandate.
 
-Shared conventions across the team are what make the one-change-per-developer rule hold without constant negotiation.
+The one-change-per-developer rule contains the work in a reviewable unit. What happens when that unit reaches the review queue is a different discipline entirely.

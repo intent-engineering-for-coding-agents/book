@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter; together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make agentic software engineering work.
 
-This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 61 principles are active by default.
+This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 63 principles are active by default.
 
 ## Foundation
 
@@ -105,6 +105,8 @@ Principles about team process, adoption, and culture.
 | IEC-TEAM-CHANGE-FOLDER-AS-ISOLATION | One change folder per developer-agent pair is the isolation primitive for parallel work. |
 | IEC-TEAM-SPEC-DELTA-FIRST-IN-REVIEW | In PR review, read the spec delta before the code diff: intent-first review. |
 | IEC-TEAM-TBD-CHANGE-FOLDER-BRANCH | A change folder maps onto branches that share its name; decision-heavy changes ship a spec PR before the implementation PR, which archives at merge. |
+| IEC-TEAM-MULTILM-COVERAGE | Use a fresh-session agent to trace acceptance criteria to tests before approving high-stakes behavioral PRs. |
+| IEC-TEAM-REVIEW-COMPLEMENTARITY | Human reviewers verify intent and integration; agent reviewers verify coverage and consistency; neither replaces the other. |
 | IEC-TEAM-STANDARDIZE-SHARED-DIVERGE-LOCAL | Standardize agent conventions that affect the codebase; leave local workflow choices divergent. |
 | IEC-TEAM-ADR-CROSS-TEAM | ADRs are the cross-team coordination primitive: permanent, public, already in the SDLC. |
 

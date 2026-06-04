@@ -33,4 +33,5 @@ The first section of the PR description links to the change folder. The reviewer
 ## Sources
 
 - intent-book, ["Trunk-Based Development with Agents"](/team/trunk-based-development) chapter, "Review at merge" section.
+- intent-book, ["Code Review for Agent-Generated Code"](/team/code-review-agent-code) chapter, "PR shape: the spec as the load-bearing document" section.
 - Fission AI, [OpenSpec](https://openspec.dev/) (ongoing).
