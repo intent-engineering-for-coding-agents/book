@@ -37,15 +37,16 @@ iec check --path src/     # Scope to a directory or file
 | `agents-links` | Every link in AGENTS.md has a description (not bare URL) |
 | `docs-readme-exists` | `docs/README.md` present with architecture overview |
 | `adr-format` | All ADRs follow MADR template (`docs/decisions/NNNN-title.md`) |
-| `adr-readme` | `docs/decisions/README.md` exists and lists all ADRs |
+| `adr-index` | `docs/decisions/README.md` exists and lists all ADRs |
 | `docs-index-exists` | `docs/INDEX.md` present, agents load this first |
 | `docs-index-stale` | `docs/INDEX.md` entries match actual files (no broken links, no orphans) |
+| `docs-index-scope` | Each `INDEX.md` maps only its own directory, no cross-directory entries |
 | `spec-ac-ids` | Every spec scenario has a `[PREFIX-NNN]` AC ID |
 | `spec-test-category` | Every scenario has a `**Test:**` field |
 | `spec-size` | Spec files under configurable line limit (default 500) |
 | `test-traceability` | Test markers reference valid, non-removed AC IDs |
 | `test-coverage` | Non-`Manual` ACs have positive + negative proof tasks |
-| `secrets` | No secrets in plaintext (pre-commit hook) |
+| `secrets` | No secrets in plaintext |
 | `agents-hub-structure` | `.agents/` has instructions/ and skills/ subdirs |
 | `file-size` | Configurable: any .md file exceeding N lines flagged |
 | `tasks-complete` | A change folder's `tasks.md` has no unchecked `- [ ]` items before merge |
@@ -189,20 +190,20 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 - [ ] Test package for every check: AC-tagged, positive/negative proof
 - [ ] CI: run `iec check` on itself (the tool validates its own repo)
 - [ ] CI: AC traceability scan — every spec scenario has test proof
-- [ ] Pre-commit hooks: lint (ruff), format (ruff format), secrets scan
+- [ ] Pre-commit hooks: lint (ruff), format (ruff format) — secrets already covered by the `secrets` checker
 - [ ] Tag: `v0.8.0`
 
 #### Phase J — Team & Polish (`v0.9.0`)
 
 - [ ] PR taxonomy in practice: `docs`, `structural`, `behavior`
 - [ ] CI gates: lint, test, AC traceability, `iec check` on self
-- [ ] Documentation: README, contributing guide
+- [ ] Documentation: expand README, add contributing guide
 - [ ] Maturity labels on all checks (which are CI-enforced vs tool-supported)
 - [ ] Tag: `v0.9.0`
 
 #### Phase K — Local Developer Release (`v1.0.0`)
 
-- [ ] Package metadata, README, version bump
+- [ ] Package metadata, finalize README, version bump
 - [ ] Local install verification for contributors
 - [ ] Document how to run the CLI from a local checkout
 - [ ] CI: lint, test, and self-check on tag
