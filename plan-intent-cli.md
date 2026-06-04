@@ -171,27 +171,27 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 
 Deterministic gates that back the two-PR / spec-then-implementation model from the book's *Trunk-Based Development with Agents* chapter (`content/team/trunk-based-development.md`). Verifier pattern (ADR-0003): the check gates the merge, it does not perform the archive.
 
-- [ ] **Change 011 — Change lifecycle checks**
+- [x] **Change 011 — Change lifecycle checks**
     - `tasks-complete` — fail the implementation PR when the change folder's `tasks.md` has any unchecked `- [ ]` item
     - `change-archived` — fail when a completed change folder under `openspec/changes/` (excluding `archive/`) has not been archived (moved to `changes/archive/<date>-<name>/`, delta merged into `openspec/specs/`)
     - Context-free fallback (when no git/PR context is available): flag any non-archived change whose `tasks.md` is fully checked but which has not been archived — the "finished but not archived" dead-spec signal the book warns about
-    - [ ] New → Plan → Apply → Archive
+    - [x] New → Plan → Apply → Archive
 - [ ] (optional, lower priority) `branch-matches-slug` — verify the branch name matches the change folder slug (`<slug>` for implementation, `spec/<slug>` for the spec PR). Needs git context, so it ships as a CI snippet or skill, not a core `iec check` checker
-- [ ] Tag: `v0.7.0`
+- [x] Tag: `v0.7.0`
 
 #### Phase I — Quality Verification on intent-cli itself (`v0.8.0`)
 
-- [ ] **Convention artefacts** — establish the quality convention the book describes
-    - [ ] `docs/architecture/test-strategy.md`: test types used (unit, integration, e2e), pytest frameworks per type, file locations, coverage thresholds
-    - [ ] `test/ac-registry.md`: one row per component prefix; monotone counter
-    - [ ] `test/scenario-template.md`: exact scenario format + complexity-tier coverage requirements (simple: 1+1, medium: 2-3+2, complex: several+several)
-    - [ ] ADR: `docs/decisions/NNNN-ac-id-and-test-type-convention.md` — records the decision to adopt `[PREFIX-NNN]` IDs and `Test-type:` field in all intent-cli specs
-- [ ] **Retrofit pytest markers** — add `@pytest.mark.<AC_ID>` and `@pytest.mark.<test_type>` to all existing intent-cli tests; update CI filter config
-- [ ] Test package for every check: AC-tagged, positive/negative proof
-- [ ] CI: run `iec check` on itself (the tool validates its own repo)
-- [ ] CI: AC traceability scan — every spec scenario has test proof
-- [ ] Pre-commit hooks: lint (ruff), format (ruff format) — secrets already covered by the `secrets` checker
-- [ ] Tag: `v0.8.0`
+- [x] **Convention artefacts** — establish the quality convention the book describes
+    - [x] `docs/architecture/test-strategy.md`: test types used (unit, integration, e2e), pytest frameworks per type, file locations, coverage thresholds
+    - [x] `tests/ac-registry.md`: one row per component prefix; monotone counter
+    - [x] `tests/scenario-template.md`: exact scenario format + complexity-tier coverage requirements (simple: 1+1, medium: 2-3+2, complex: several+several)
+    - [x] ADR: `docs/decisions/0007-ac-id-and-test-type-convention.md` — records the decision to adopt `[PREFIX-NNN]` IDs and `Test-type:` field in all intent-cli specs
+- [x] **Retrofit pytest markers** — add `@pytest.mark.<AC_ID>` and `@pytest.mark.<test_type>` to all existing intent-cli tests; update CI filter config
+- [x] Test package for every check: AC-tagged, positive/negative proof
+- [x] CI: run `iec check` on itself (the tool validates its own repo)
+- [x] CI: AC traceability scan — every spec scenario has test proof
+- [x] Pre-commit hooks: lint (ruff), format (ruff format) — secrets already covered by the `secrets` checker
+- [x] Tag: `v0.8.0`
 
 #### Phase J — Team & Polish (`v0.9.0`)
 
