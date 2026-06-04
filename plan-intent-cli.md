@@ -203,8 +203,8 @@ Deterministic gates that back the two-PR / spec-then-implementation model from t
 
 #### Phase K — Local Developer Release (`v1.0.0`)
 
-- [ ] Package metadata, finalize README, version bump
-- [ ] Local install verification for contributors
-- [ ] Document how to run the CLI from a local checkout
-- [ ] CI: lint, test, and self-check on tag
-- [ ] Tag: `v1.0.0`
+- [x] Package metadata, finalize README, version bump
+- [x] Local install verification for contributors
+- [x] Document how to run the CLI from a local checkout
+- [x] CI: lint, test, and self-check on tag
+- [x] Tag: `v1.0.0`
