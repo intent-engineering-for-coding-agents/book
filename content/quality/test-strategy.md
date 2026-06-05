@@ -87,10 +87,6 @@ The strategy document is what separates a test suite that knows what it is provi
 
 ## When the strategy needs to change
 
-Test strategies should be stable but not rigid. A strategy that never changes is either perfect (unlikely) or stale (more likely). The codebase evolves: new frameworks appear, new test types become necessary, the team's understanding of what needs testing deepens. The strategy document needs to evolve with it.
-
-The convention document is living, not frozen. When the team adopts a new testing framework, the document updates. When a new test type becomes necessary (contract tests for a new API, visual regression tests for a new UI), the document adds it. When the original strategy was wrong or incomplete, the document corrects it. The ADR captures the rationale for each change; the document captures the current state.
-
-The practical test: if the agent generates tests that do not match the team's current practice, the strategy is stale. If the team is writing tests the strategy does not cover, the strategy is incomplete. If the strategy excludes a test type the team now needs, the exclusions section needs an update. The strategy is a map of the territory. When the territory changes, the map changes.
+A test strategy that never changes is either perfect or, far more often, stale. The convention document is living: it gains a row when the team adopts a framework or needs a new test type, and it gets corrected when the original call was wrong, with the ADR holding the rationale. The drift signal is concrete. If the agent generates tests that miss current practice the strategy is stale, and if the team writes tests the strategy does not cover it is incomplete.
 
 The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
