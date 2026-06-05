@@ -64,7 +64,7 @@ Each gate has its own failure mode. Skip the before-gate and the agent improvise
 
 ## What automation can and cannot do
 
-Each gate has a deterministic part and a human part. The deterministic part is what tools like `iec check` enforce: link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what only attention does: is the spec describing the right thing, is the implementation in the right shape, is the test actually proving the scenario rather than something adjacent.
+Each gate has a deterministic part and a human part. The deterministic part is what automated checks enforce: link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what only attention does: is the spec describing the right thing, is the implementation in the right shape, is the test actually proving the scenario rather than something adjacent.
 
 Effective teams maximise the deterministic part, because deterministic checks scale to agentic speeds. The hooks that run on every commit do not get tired. The link checker does not skip a file because it was busy. What humans contribute is the part that cannot be automated: the judgement about whether the work matches what the team actually needs. That judgement is scarce, and most quality programs fail by spending it on things automation could have caught.
 

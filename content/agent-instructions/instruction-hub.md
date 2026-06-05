@@ -10,7 +10,7 @@ The fix is not better synchronisation between two files. It is one file that bot
 
 An agent modifying the authentication module does not need the CI pipeline rules. An agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain. The agent reads the relevant one and skips the rest.
 
-`iec` at `v0.4.0` has four:
+A focused hub stays small. Four instruction files is a realistic count:
 
 ```
 .agents/instructions/
@@ -32,7 +32,7 @@ Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More T
 
 Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a specific repeatable task.
 
-`update-index` in `iec` is a skill. It scans `docs/`, reads each file's heading, and regenerates `docs/INDEX.md`, `docs/decisions/README.md`, and `docs/design/README.md`. Five steps, one outcome, invocable any time `docs/` changes. Without it, each agent session that creates a new file has to either remember to update the index or be told to. With it, `AGENTS.md` can state the rule once: after changing anything under `docs/`, run `update-index`.
+`update-index` is a skill. It scans `docs/`, reads each file's heading, and regenerates `docs/INDEX.md`, `docs/decisions/README.md`, and `docs/design/README.md`. Five steps, one outcome, invocable any time `docs/` changes. Without it, each agent session that creates a new file has to either remember to update the index or be told to. With it, `AGENTS.md` can state the rule once: after changing anything under `docs/`, run `update-index`.
 
 The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. A workflow for generating a new checker from spec is a skill.
 
@@ -44,7 +44,7 @@ The same shortcut does not travel to IDEs. Cursor, VS Code with Copilot, and Jet
 
 ## `.agents/hooks/`
 
-Hooks are the part of the hub that most teams have not wired up yet. The directory exists in `iec`. It contains a `.gitkeep`.
+Hooks are the part of the hub that most teams have not wired up yet. Often the directory exists with nothing in it. It contains a `.gitkeep`.
 
 A hook fires on a trigger: after a file edit, before a commit, when a session ends. It runs a script without waiting for the agent to decide whether it should. Anthropic's guidance on building effective agents draws a hard line between instructions, which are advisory, and hooks, which are deterministic. Instructions prevent drift when the agent reads and follows them. Hooks prevent drift regardless.
 
@@ -82,3 +82,7 @@ A solo developer working with a single tool does not have a coordination problem
 The hub earns its keep when the coordination problem appears. A second developer joins the project and brings their own tool. A solo developer starts using Cursor for some tasks and Claude Code for others. A team grows from two to five and needs consistent agent behavior across all of them. At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
 
 The practical test: if you are maintaining one instruction file and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same brief, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is premature structure.
+
+## Tooling
+
+If you want to see this in practice, `iec`'s `.agents/` hub at `git tag v0.4.0` has the four instruction files above, the `update-index` skill, and an `.agents/hooks/` directory waiting to be filled. See [Companion Repo](../appendices/companion-repo) for how to browse it.

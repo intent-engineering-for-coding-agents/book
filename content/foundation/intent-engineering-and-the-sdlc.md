@@ -26,7 +26,7 @@ graph TD
         E --> F[PR: docs / structural / behavior]
     end
     subgraph CI
-        F --> G[iec check<br/>AC traceability<br/>tests]
+        F --> G[Conventions check<br/>AC traceability<br/>tests]
         G --> H[Deploy]
     end
     subgraph Maintenance
@@ -63,9 +63,9 @@ PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour s
 
 ## CI: the pipeline checks the conventions
 
-`iec check` runs on every push. The tool validates that `AGENTS.md` is present and well-formed. That `docs/README.md` and `docs/INDEX.md` exist. That Architectural Decision Records (ADRs) follow Markdown ADR (MADR) format. That spec scenarios have stable Acceptance Criterion IDs (AC IDs) and test declarations. Not a new pipeline. A new check inside the pipeline you already have.
+A conventions check runs on every push. It validates that `AGENTS.md` is present and well-formed, that `docs/README.md` and `docs/INDEX.md` exist, that Architectural Decision Records (ADRs) follow Markdown ADR (MADR) format, and that spec scenarios carry stable Acceptance Criterion IDs (AC IDs) and test declarations. Not a new pipeline. A new check inside the pipeline you already have.
 
-AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival; six months later, the audit trail still answers "which test covered this?" without grep guessing.
+AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival. Six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
 Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.
 
@@ -75,7 +75,11 @@ After a change ships, archive the spec. Update `docs/INDEX.md` if any docs files
 
 This is the step where Intent Engineering most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
 
-`iec check` catches some of this. `docs-index-stale` flags the index that does not match the file tree. The tool cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
+A conventions check catches some of this. An index-staleness rule flags the index that does not match the file tree. The check cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
+
+## Tooling
+
+If you want to see this in practice, `iec check` runs these conventions checks on every push in this book's companion repo: `AGENTS.md` presence, MADR format for ADRs, AC traceability from scenarios to tests, and index staleness. It is one implementation of the gate, not a requirement for the practice. See [Companion Repo](../appendices/companion-repo) for how to browse it.
 
 ## Why not add ceremonies
 

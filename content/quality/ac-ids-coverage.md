@@ -81,7 +81,7 @@ The rule: every acceptance criterion has at least one positive test and at least
 
 This sounds like doubling the work. It doubles the test count, not the work. The two tests share setup, share the request structure, share the fixtures. What differs is the assertion. A 400 is asserted instead of a 201; an error payload is asserted instead of a success payload. The cost is small. The defect class it catches is the one that ships when the positive test passes and nobody wrote the negative.
 
-The coverage check in `iec` at `v0.6.0` makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). The check does not measure quality; it measures the shape of the suite.
+A coverage check makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). The check does not measure quality. It measures the shape of the suite.
 
 ## A worked example
 
@@ -119,7 +119,7 @@ What is unusual here, by general industry practice, is not the structure. Accept
 
 ## The format is flexible, the link is not
 
-The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` as in `iec` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
+The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
 
 Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behaviour than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists. It does not verify the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
 
