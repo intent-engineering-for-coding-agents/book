@@ -11,6 +11,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Ian Sommerville — *Software Engineering* (10th ed., Pearson, 2015). SDLC definition and phases; cited in "The Map: Intent Engineering and the SDLC".
 - Dave Farley — *Modern Software Engineering* (Addison-Wesley, 2021); with Jez Humble: *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing). Feedback loops, sampling, CI/CD vocabulary.
 - Paul Hammant — [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
+- Yue Jia and Mark Harman — ["An Analysis and Survey of the Development of Mutation Testing"](https://doi.org/10.1109/TSE.2010.62). IEEE Transactions on Software Engineering, vol. 37 no. 5, *2011*, pp. 649-678. Standard survey of mutation testing; primary anchor for the technique behind the mutation-kill argument in "Tests as Proof, Not Ritual".
 - Michael Nygard — ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions). Cognitect blog, *Nov 15, 2011*. Origin of the ADR practice.
 - Oliver Kopp, Anita Armbruster, Olaf Zimmermann — [MADR template](https://adr.github.io/madr/) (ongoing) and ["Markdown Architectural Decision Records: Format and Tool Support"](https://ceur-ws.org/Vol-2072/paper9.pdf), CEUR-WS Vol-2072, *2018*. Markdown ADR template used in `docs/decisions/`.
 - Flemming N. Larsen — [Plain Text as Code Manifest](https://github.com/Plain-Text-as-Code). GitHub, *March 2026, ongoing*. Author's foundational statement of the philosophy; the Foundation chapter applies it to Intent Engineering.
@@ -68,3 +69,5 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ## Security
 
 - [OWASP](https://owasp.org/) (ongoing) and [OWASP Top 10](https://owasp.org/www-project-top-ten/) (ongoing). Review checklist anchor for the Security in Depth chapter.
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (ongoing). LLM01: Prompt Injection; the catalogued-risk anchor for the agent-as-attack-surface section of Security in Depth.
+- Simon Willison — ["Prompt injection attacks against GPT-3"](https://simonwillison.net/2022/Sep/12/prompt-injection/). simonwillison.net, *Sep 12, 2022*. Coined the term "prompt injection"; cited in Security in Depth.

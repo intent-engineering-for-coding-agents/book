@@ -44,7 +44,7 @@ The agent is also a new entry in the threat model. A prompt-injected document fr
 
 Prompt injection is the most immediate case. The agent reading content from an external source, summarising it, and acting on it has made the external source an instruction channel. The defence is architectural: constrain what the agent does based on instructions in untrusted content, and treat anything the agent reads from outside the repo as data, not as instructions.
 
-Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026): prompt injection as cross-cutting agentic security concern.
+Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, Sep 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a catalogued LLM risk. ThoughtWorks, Technology Radar Vol 34 (April 2026), prompt injection as a cross-cutting concern in agentic coding workflows.
 
 The honest answer in 2026 is that these new entries are not well-defended. The practices in this chapter cover the application security of code the agent writes. The security of the agent itself is still being figured out, and the books that cover it well do not exist yet.
 
