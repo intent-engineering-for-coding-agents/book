@@ -2,7 +2,7 @@
 
 > One OpenSpec change per developer. Most of the team coordination problem dissolves right there.
 
-The individual practices in the previous sections work at solo scale. This section is about what changes when there is more than one developer, and more than one agent, in the same codebase.
+The individual practices in the previous topics work at solo scale. This section is about what changes when there is more than one developer, and more than one agent, in the same codebase.
 
 Less than the swarm pitch wants you to believe. Most of the agentic team problem is manufactured by skipping the one rule that prevents it: one developer owns one OpenSpec change at a time. Each change is an isolated proposal, on its own short-lived branch, reviewed in its own PR. Nobody points two agents at the same component from two unreconciled specs. Keep that rule and there is no special "coordination wall" left to scale. What remains is the SDLC every team already runs: branches, pull requests, tickets, ADRs.
 

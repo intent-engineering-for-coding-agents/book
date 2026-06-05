@@ -4,7 +4,7 @@
 
 Foundation is the first topic of Intent Engineering for a reason, and not the obvious one. It does not sit as a co-equal subject alongside intent. It grounds the agent so your intent becomes executable. Without it, agent instructions have nowhere to live. Specs have no structure to enforce against. Quality checks have no conventions to validate.
 
-The chapters in this section address the underlying problem of agents that are productive but contextless, and give it a shape you can act on.
+The chapters in this topic address the underlying problem of agents that are productive but contextless, and give it a shape you can act on.
 
 ## Chapters
 

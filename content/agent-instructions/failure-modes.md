@@ -48,4 +48,4 @@ This chapter describes what the book asserts and what it leaves open. The taxono
 
 The most under-documented aspect of agentic engineering is not how to start well. Plenty covers that. It is how to recover when things go wrong. Operational experience is accumulating, but the field is early. Expect these practices to be refined.
 
-The failure modes described here are session-level. There is a quieter, slower failure mode that operates across sessions: the same instruction written in three vendor files, diverging gradually, corrupting three different tools simultaneously. That one has a structural fix.
+The recoveries in this chapter all reduce to one move: give the agent the information it was missing. Instructions supply what the system is. They do not supply what this particular change is meant to do. That per-change intent is the one input the Agent Instructions hub cannot carry, and supplying it is where the next topic begins.

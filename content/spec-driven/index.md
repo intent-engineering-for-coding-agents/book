@@ -8,7 +8,7 @@ The agent is the labor. You write the spec; the agent generates the code from it
 
 Intent is what you want this specific change to do, in this specific codebase, right now. It is not in `AGENTS.md` because it is not permanent. It is not in `docs/` because it is not architectural. It lives in a spec, gets used to guide an implementation, then gets archived where it can be found when someone asks, six months from now, why the code looks the way it does.
 
-This section covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, what structure, which tool, what lifecycle, and finally the thesis the whole book leads to.
+This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, what structure, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
 ## Chapters
 

@@ -4,7 +4,7 @@
 
 The Foundation topic gave the repo its structure. Agent Instructions is what makes that structure legible to the agent. Without it, the agent improvises from general training data. With it, the agent arrives briefed.
 
-The chapters in this section cover the mechanics: what goes in `AGENTS.md`, how to build the instruction hub it points into, how to write instructions that change agent behaviour, and how to manage the context window budget those instructions consume.
+The chapters in this topic cover the mechanics: what goes in `AGENTS.md`, how to build the instruction hub it points into, how to write instructions that change agent behaviour, and how to manage the context window budget those instructions consume.
 
 ## Chapters
 

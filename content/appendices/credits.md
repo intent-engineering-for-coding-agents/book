@@ -4,7 +4,7 @@ The full bibliography appears in the `Sources:` lines at the end of each chapter
 
 ## Foundational engineering practice
 
-**Dave Farley** (*Modern Software Engineering*, 2021) and **Jez Humble** (*Continuous Delivery*, 2010) are the conceptual anchor for how this book thinks about feedback loops, small batches, and CI discipline. The Farley test — does *Modern Software Engineering* have an Operations chapter? No, because ops dissolves into feedback loops — shaped the scope discipline here.
+**Dave Farley** (*Modern Software Engineering*, 2021) and **Jez Humble** (*Continuous Delivery*, 2010) are the conceptual anchor for how this book thinks about feedback loops, small batches, and CI discipline. The Farley test shaped the scope discipline here. Does *Modern Software Engineering* have an Operations chapter? No, because ops dissolves into feedback loops.
 
 **Michael Nygard** coined the Architectural Decision Record in 2011. Every `docs/decisions/` directory in this book and in `iec` is downstream of that post.
 
