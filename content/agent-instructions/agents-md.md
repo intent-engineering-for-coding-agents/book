@@ -77,6 +77,6 @@ Keeping the entry point honest is the first discipline. What it points to requir
 
 ## Tooling
 
-If you want to see this in practice, `iec`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
+If you want to see this in practice, `iec`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer; the next problem is the instruction hub it points into.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.*

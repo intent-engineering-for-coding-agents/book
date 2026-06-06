@@ -20,7 +20,7 @@ A golden test for the agent is a fixed task with a known good output. The task i
 
 The output rarely matches byte for byte. A useful golden test does not demand it. It checks structural properties: did the agent put the validation in the service layer? Did it write tests against the acceptance criterion IDs the spec named? Did it update the index after creating a new file under `docs/`? Each of those is a yes-or-no question with an unambiguous answer.
 
-A small suite of these tasks is the eval set. Five tasks covering the workflows the team relies on is enough to start. Each task has the same shape: starting repo state, spec to implement, properties the output must satisfy. Re-run the suite when the agent configuration changes. The score is the count of properties satisfied. A score moving down on a configuration change is a regression that has nothing to do with the code under test.
+A small suite of these tasks is the eval set. Five tasks covering the workflows the team relies on is enough to start. Each task has the same shape: starting repo state, spec to implement, properties the output must satisfy. Re-run the suite when the agent configuration changes. The score is the count of properties satisfied. A score moving down on a configuration change is a regression that has nothing to do with the code under test. The suite shape and the five-task starting point are this book's convention, not a settled industry standard.
 
 ## A/B comparison of two AGENTS.md versions
 
@@ -56,4 +56,4 @@ The hardest part is keeping the suite calibrated. A task that the agent reliably
 
 The `iec` companion repo is planned to ship an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example. (Not yet shipped as of `v0.6.0`; check the companion repo for current status.)
 
-The acceptance-criterion IDs the previous chapter assumed exist are the link between intent and proof. The next chapter is how to make those IDs durable enough to survive everything else in this section.
+The strategy chapter introduced acceptance-criterion IDs as part of the convention surface, and this chapter showed why agent setup needs its own regression loop. The next chapter turns those IDs into a durable link between intent and proof.

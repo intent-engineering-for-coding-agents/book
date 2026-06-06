@@ -4,7 +4,7 @@ This page is a mid-2026 snapshot. The roster of agents, spec tools, and MCP serv
 
 ## Capability-class agents
 
-This book targets agents that combine a thinking-capable model, real tool use, and a plan or architect mode. At time of writing, that class includes:
+This book targets coding agents that combine a thinking-capable model, real tool use, and a plan or architect mode. At time of writing, that class includes:
 
 | Agent | Type | AGENTS.md support |
 |---|---|---|
@@ -46,7 +46,7 @@ MCP server availability, permission scope, and reliability vary by environment. 
 
 ## Companion tool
 
-`iec` is the companion CLI for this book. Every practice described here is demonstrated in its git history. See [Companion Repo](./companion-repo) for the structure, phase tags, and how to browse it.
+`iec` is the companion CLI for this book. Its history is the evidence trail for the practices the book claims are demonstrated. See [Companion Repo](./companion-repo) for phase tags, current gaps, and how to browse it.
 
 ## Model selection and cost
 

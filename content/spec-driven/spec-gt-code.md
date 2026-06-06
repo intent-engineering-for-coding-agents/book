@@ -2,7 +2,7 @@
 
 Delete the code. Keep the spec. Regenerate.
 
-This is no longer a thought experiment. Some teams using agentic tools report doing exactly this: deleting an implementation that was tangled, unmaintainable, accreted over years of hotfixes, and replacing it in a session from the canonical spec. When it works, the new implementation passes the same tests and preserves the feature set. The code is often cleaner.
+This is no longer only a thought experiment. Tool vendors and practitioners have reported teams doing exactly this: deleting an implementation that was tangled, unmaintainable, accreted over years of hotfixes, and replacing it in a session from the canonical spec. Treat that as a bounded practice, not a general industry baseline. It is safe only when the spec and tests are strong enough to catch regressions. When it works, the new implementation passes the same tests and preserves the feature set. The code is often cleaner.
 
 Now try the reverse. Delete the spec. Keep the code. Regenerate the spec.
 
@@ -18,7 +18,7 @@ In the agentic era, code can occupy the same position that the compiled binary u
 
 The practical consequence is a workflow rule this book adopts, not a law of nature: when there is a conflict between the spec and the code, treat the spec as canonical until the mismatch is resolved explicitly. When the spec needs to change, change the spec and update the code to match. When the code is tangled beyond easy modification, regeneration from the spec becomes a viable option.
 
-*Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
+*Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). These are tool-vendor sources, so the regeneration claim is kept bounded above rather than treated as industry baseline. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
 
 ## Why this inverts the default
 

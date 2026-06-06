@@ -11,6 +11,58 @@ Agents," and the work needed to carry that name through the repo. Earlier plan f
 `plan-intent-cli.md` when the CLI companion repo was renamed from `iec-cli` to
 `intent-cli`. The v2 master lives in git history.
 
+## Current book outline for review alignment
+
+Use this section, not the rename checklist below, when running `review-chapter` or
+checking a draft against the intended book arc. The book is OpenSpec-first: Intent
+Engineering is the portable practice, and OpenSpec is the concrete workflow used for
+the worked examples and the `iec` companion repo.
+
+- Foreword: establish the practical tension around agentic speed, durable intent, and
+  why this book argues for structure rather than prompt cleverness.
+- Introduction: define Intent Engineering for Coding Agents, distinguish it from ADLC,
+  name the four-topic arc, and state that OpenSpec is the reference workflow used in the book.
+- Foundation: make the repo legible to an agent before any per-change intent exists.
+  - Why Structure Matters: undocumented context is cognitive debt the agent cannot infer reliably.
+  - Document Types: separate ADRs, design docs, specs, indexes, and generated maps by job.
+  - Plain-Text-as-Code: explain why durable agent context should live in reviewable text.
+  - The Map: Intent Engineering and the SDLC: locate the practice inside existing delivery loops.
+  - Honest Maturity: show what is ready now, what is experimental, and what should not be oversold.
+  - Brownfield vs Greenfield: contrast bootstrapping from existing code with building from explicit intent.
+  - When Intent Engineering Fails: name the failure modes that survive good structure.
+- Agent Instructions: turn repo knowledge into instructions agents can load consistently.
+  - AGENTS.md: One File Changes Everything: introduce the canonical entry point and TOC pattern.
+  - From AGENTS.md to Agent Instruction Hub: split instructions, skills, and hooks by job.
+  - Writing Instructions That Work: make rules specific, loadable, and verifiable.
+  - Skills, Commands, and Hooks: distinguish advisory guidance from repeatable workflows and deterministic checks.
+  - Context Window Management: keep agent attention focused on current work.
+  - Failure Modes and Recovery: recover from stale, oversized, conflicting, or missing instructions.
+- Spec-Driven Development: make the change-specific intent durable before code is generated.
+  - Why Specs?: show why the agent needs per-change intent, not only permanent context.
+  - Why Small?: keep each spec within the size a session and reviewer can hold.
+  - Why Important Stuff First?: put constraints, non-goals, and acceptance criteria where agents read them.
+  - The Spectrum: compare raw prompts, lightweight specs, OpenSpec, and heavier SDD tooling.
+  - Spec Lifecycle: follow an OpenSpec change from proposal through critique, implementation, and archive.
+  - Spec > Code: argue that the authored spec is the durable source and generated code is downstream.
+- Quality and Verification: connect spec intent to executable proof.
+  - Tests as Proof, Not Ritual: treat tests as evidence that the implementation matches intent.
+  - Test Strategy and Convention: declare which test type proves which boundary.
+  - Agent Evaluation and Regression: test the agent setup itself when instructions, skills, or hooks change.
+  - AC IDs and Positive/Negative Coverage: keep scenarios traceable to tests with stable IDs and coverage pairs.
+  - Before, During, After Checkpoints: place checks across the change lifecycle.
+  - Security in Depth: keep security review layered around agent-generated work.
+  - PR Taxonomy: make review shape match risk and uncertainty.
+  - .principles: Raising the Bar: connect local rules to a living principle catalog.
+- Team Workflows: show how the OpenSpec-first workflow fits normal team delivery.
+  - OpenSpec Across Stacks: scope change folders by stack and use ADRs for cross-tier contracts.
+  - OpenSpec in an Existing SDLC: map change folders onto tickets, boards, PRs, ADRs, and changelogs.
+  - Trunk-Based Development with Agents: keep change folders and branches short-lived.
+  - Code Review for Agent-Generated Code: review intent first, then generated diff.
+  - Shared Agent Instruction Conventions: keep team instructions shared without erasing role-specific briefs.
+  - Cross-Team Coordination: use ADRs and inner-source instruction libraries where one repo is not enough.
+  - What Is Still Evolving: be explicit about immature practices and mid-2026 limits.
+- Appendices: provide reference material only: glossary, principles, tool snapshot, companion repo, checklist, and credits.
+
 ## Why rename
 
 "The ASE Book" leaned on an acronym that is opaque to newcomers and collides with

@@ -16,7 +16,7 @@ This map goes into `docs/`, typically as `docs/skeleton.md` to mark it as bootst
 
 ## Generating one
 
-Point a capability-class CLI agent at the legacy tree. Ask for a structural map, not a refactor. A useful prompt:
+Point a capability-class coding agent at the legacy tree. Ask for a structural map, not a refactor. A useful prompt:
 
 > Produce a structural map of this codebase. Cover the major modules and their responsibilities, how they depend on each other, the main data flows, and any business rules you can infer from the implementation. Note anything you cannot determine from the code alone.
 

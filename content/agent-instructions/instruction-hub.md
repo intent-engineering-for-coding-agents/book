@@ -85,4 +85,4 @@ The practical test: if you are maintaining one instruction file and it works, ke
 
 ## Tooling
 
-If you want to see this in practice, `iec`'s `.agents/` hub at `git tag v0.4.0` has the four instruction files above, the `update-index` skill, and an `.agents/hooks/` directory waiting to be filled. See [Companion Repo](../appendices/companion-repo) for how to browse it.
+If you want to see this in practice, `iec`'s `.agents/` hub at `git tag v0.4.0` has the four instruction files above, the `update-index` skill, and an `.agents/hooks/` directory waiting to be filled. See [Companion Repo](../appendices/companion-repo) for how to browse it. The hub gives the agent standing context. The next constraint is per-change intent: the spec that says what this session is supposed to build.

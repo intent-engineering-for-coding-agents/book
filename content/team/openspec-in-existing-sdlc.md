@@ -2,7 +2,7 @@
 
 You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog: all of it, working. Then you adopt OpenSpec because the Spec-Driven Development framing makes sense, and a question lands on the table. Where does the change folder sit relative to everything you already run? Does it replace the ticket? Does the spec replace the Confluence page? Is the PR review now two reviews, one for the spec and one for the code?
 
-None of those is the right frame. OpenSpec does not replace the existing workflow. It gives each existing slot its own artifact. The coordination already exists. The question is what lives where.
+None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It gives each existing slot its own artifact. The coordination already exists. The question is what lives where. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
 
 ## Change folder and ticket: the same event, different records
 
@@ -16,7 +16,7 @@ The reverse link is automatic if you use the issue key in commit messages. Jira'
 
 When should you skip the ticket entirely? For small behavioral changes (a one-line fix, a config key rename) where the spec is the only record that matters. The threshold is whether anyone other than the implementing developer needs to track the work. If yes, ticket. If the spec and the commit message are the entire record, skip the overhead.
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder as the spec-of-record kept distinct from the planning ticket.*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder as the spec-of-record. The ticket/change-folder split above is this book's workflow mapping, not an OpenSpec requirement.*
 
 ## User story to acceptance criteria: the conversion
 
@@ -28,7 +28,7 @@ Atlassian MCP connectors, available to several capability-class agents as of mid
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. The specific integration paths will change. The pattern of agents fetching ticket context before writing specs will not.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation and Atlassian MCP documentation (mid-2026 snapshot), the general connector pattern; exact availability is perishable.*
 
 ## tasks.md and the sprint board
 

@@ -26,7 +26,7 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 
 Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows and the complexity-to-test-count tiers below are this book's synthesis.*
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows above are this book's synthesis.*
 
 ## The convention document
 
@@ -75,11 +75,13 @@ Not every scenario requires the same number of tests. In this book's convention,
 
 A positive test proves the THEN holds when the WHEN is satisfied. A negative test proves the THEN does not fire when the WHEN is not satisfied: no false positives, no silent accepts. Both are required at every complexity tier; only the count scales.
 
+This complexity-to-test-count table is the book's convention. It is not an OpenSpec field and not a common industry standard; it is the minimum shape this book uses so agents do not collapse every scenario to one happy-path test.
+
 This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template. When it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
 
 ## The AC registry
 
-The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are covered in [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
+The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a short mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are the next chapter's subject: [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
 
 ## Tooling note
 

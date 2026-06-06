@@ -10,7 +10,7 @@ Shared agent instruction conventions are the team-level answer to this problem: 
 
 ## Team-level `AGENTS.md`
 
-On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared brief: it documents conventions that every developer and every agent should operate under. The difference is ownership. Personal briefs can drift. Team briefs need an owner and a review process.
+On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared brief: it documents conventions that every developer and every agent should operate under. The difference is ownership. Personal briefs can drift. Team briefs need an owner and a review process. That ownership rule is this book's convention for team use of the AGENTS.md pattern.
 
 The practical structure: `AGENTS.md` at the repo root is the team's brief. It covers the conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain their own parallel `AGENTS.md` files that override parts of the team brief. The team brief is the brief.
 

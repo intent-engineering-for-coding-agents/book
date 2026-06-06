@@ -30,7 +30,7 @@ Optional, maturity-dependent:
 
 ## Spec-Driven Development
 
-The required practice is per-change intent with testable acceptance criteria. The `openspec/` layout below is the demonstration substrate this book uses, not a requirement. The same practice works with a plain `spec.md` or another framework. See [The Spectrum](/spec-driven/the-spectrum).
+This checklist is OpenSpec-first because the book and `iec` are OpenSpec-first. The portable practice is per-change intent with testable acceptance criteria; if your team uses a plain `spec.md` or another framework, translate the `openspec/` paths below to your per-change spec location. See [The Spectrum](/spec-driven/the-spectrum).
 
 - [ ] First change proposal in `openspec/changes/<slug>/` with a proposal, delta spec, and tasks file
 - [ ] Spec scenarios have AC IDs in bracket format (`[PREFIX-NNN]`) and `Test-type:` fields

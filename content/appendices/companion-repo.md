@@ -1,12 +1,10 @@
 # Companion Repo
 
-Reading a description of a practice and reading a repo that embodies it are different things. `iec` is the latter.
-
-`iec` (Intent Engineering Checker) is the companion repository for this book. It is a real project applying the practices described in each chapter: ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs, `AGENTS.md` wired to `.agents/` instructions and skills. The repo is the point. Browse it the way you would browse any unfamiliar codebase.
+`iec` (Intent Engineering Checker) is the companion repository for this book. Its job is evidence, not product adoption: ADRs in MADR format, OpenSpec changes, stable AC IDs, tests that trace back to those IDs, and `AGENTS.md` wired to `.agents/` instructions and skills.
 
 `iec` is not a validator for arbitrary repos. It does not scan your codebase against a checklist and report findings. The name reflects the tool it ships: a CLI for checking alignment in its own development workflow. Your conventions will differ from the ones here. They should.
 
-It is also not production-grade. It is a teaching artifact.
+It is also not production-grade. It is a teaching artifact, and this page records what to inspect.
 
 ## Repo structure
 
