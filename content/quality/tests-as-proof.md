@@ -32,6 +32,8 @@ The working definition in this book: a change is done when the approved intent h
 
 Farley's Modern Software Engineering makes the same argument from a different angle. Engineering, as a discipline, is the application of feedback loops to produce reliable outcomes. The spec is the input to the loop. The test is what closes it. Without the closing step, you have a process that produces artifacts, not engineering. The term for doing this intentionally is vibe coding. The term for doing it by accident is most agentic workflows.
 
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), engineering as feedback loops that prove intent. The done-means-proven definition is this book's synthesis.*
+
 ## Why agentic speed forces the issue
 
 A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully. The change is small. The reviewer remembers the discussion. Memory carries some of the load.
@@ -68,4 +70,4 @@ The harder caveat is that proof has a ceiling. A test proves what it asserts. It
 
 If you want to see this in practice, `iec` at tag `v0.6.0` ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check. A test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
 
-A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised. The closing half is what runs in CI. Between them sits the thing the agent built. The next question is how the agent setup itself gets verified, because a test suite that catches code regressions does nothing to catch the agent setup regressing into a configuration that ships worse code.
+A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised. The closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior, and writing that down before the agent picks a test type on its own.

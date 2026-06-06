@@ -26,6 +26,8 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 
 Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows and the complexity-to-test-count tiers below are this book's synthesis.*
+
 ## The convention document
 
 The test taxonomy is only useful if it is written down where the agent can read it.
@@ -83,10 +85,10 @@ The convention needs one more file: a registry at `test/ac-registry.md` that all
 
 The `iec` companion repo is planned to ship the full convention: `docs/architecture/test-strategy.md` defining the types and frameworks, `test/scenario-template.md` defining the scenario format and complexity tiers, `test/ac-registry.md` holding the prefixes, and every test double-tagged with AC ID and test type. (Not yet present as of `v0.6.0`; check the companion repo for current status.)
 
-The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation. The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
+The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation.
 
 ## When the strategy needs to change
 
 A test strategy that never changes is either perfect or, far more often, stale. The convention document is living: it gains a row when the team adopts a framework or needs a new test type, and it gets corrected when the original call was wrong, with the ADR holding the rationale. The drift signal is concrete. If the agent generates tests that miss current practice the strategy is stale, and if the team writes tests the strategy does not cover it is incomplete.
 
-The next chapter ties the convention to the rest of the quality loop: the before-gate that checks the convention is in place before the agent writes its first test.
+A living strategy keeps the test suite honest as the project changes. What it cannot keep honest is the setup that writes the tests. The `AGENTS.md` and instruction files are code too, and they regress without anyone touching the application. That is the next chapter.

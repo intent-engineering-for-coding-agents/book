@@ -44,7 +44,7 @@ The implementation agent has context that biases its review. By the time the PR 
 
 Birgitta Böckeler describes using a second model or a fresh session to critique a spec before implementation begins: the second agent reads without the context that shaped the first agent's decisions and finds gaps the author's session learned to overlook. The same approach extends to the review stage.
 
-Open a fresh session. Provide the approved spec and the implementation diff, with no prior context from the implementation conversation. Ask it to enumerate the acceptance criteria and verify each one against the test suite. Ask it to flag anything in the diff with no acceptance criterion. Ask it to flag any acceptance criterion with no test.
+Open a fresh session. Provide the approved spec and the implementation diff, with no prior context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The difference here is not the checklist. It is the absence of the bias that the implementation session accumulated.
 
 The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps. The fresh agent locates where to look. The human decides whether the divergence is a defect, a spec omission, or an intentional extension that needs to be documented before it becomes undocumented behavior.
 
