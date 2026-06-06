@@ -20,7 +20,7 @@ This framing has a useful property: the spec size is naturally bounded by the PR
 
 It has a second useful property: the spec is not supposed to freeze the scope. Changes emerge during implementation and PR review. The spec anchors the intent so the implementation does not drift from it, but anchoring is not the same as locking. When the implementation reveals that scenario four was based on a wrong assumption, update the spec. The spec is a living document until the implementation merges. After that, it archives.
 
-Sources: LeanSpec, the one-PR-scoped spec and small-spec discipline. Anthropic, "Building effective agents" (Dec 2024), keeping the agent's working context tight enough to hold the whole task.
+*Sources: LeanSpec, the one-PR-scoped spec and small-spec discipline. Anthropic, "Building effective agents" (Dec 2024), keeping the agent's working context tight enough to hold the whole task.*
 
 ## The size argument
 
@@ -58,6 +58,6 @@ File count is a rougher signal than task count. Ten files is a soft default. Fif
 
 The `openspec/changes/<name>/` folder and everything in it, the proposal, delta spec, design doc, and task list, does not count toward the file total. That is intent, not implementation.
 
-Sources: LeanSpec, small-spec discipline and formality-to-risk matching.
+*Sources: LeanSpec, small-spec discipline and formality-to-risk matching.*
 
 Once the task list has the right number of items, the next question is which one the agent tackles first.

@@ -16,7 +16,7 @@ Six weeks later the file is 300 lines. The agent reads every line before startin
 
 AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
-Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
 
 ## What goes in it
 
@@ -28,7 +28,7 @@ Three things belong in it, in this order.
 
 The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file just to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
 
-```
+```markdown
 - [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
 - [Coding standards](.agents/instructions/coding-standards.md): Python style, project structure, testing
 - [OpenSpec workflow](.agents/instructions/openspec.md): Specs, AC IDs, test traceability
@@ -57,7 +57,7 @@ Generated files can be committed without ambiguity. They are clearly outputs, no
 
 The direction of travel is convergence. Codex read `AGENTS.md` natively from its launch in early 2025. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 
-Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.
+*Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
 
 ## The size limit
 
@@ -79,4 +79,4 @@ Keeping the entry point honest is the first discipline. What it points to requir
 
 If you want to see this in practice, `iec`'s `AGENTS.md` at `git tag v0.4.0` fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does.
 
-Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.*

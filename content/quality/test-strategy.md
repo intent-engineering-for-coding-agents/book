@@ -2,7 +2,7 @@
 
 Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green; the integration breaks in staging, because the real ORM emits slightly different SQL than the mock expected.
 
-Not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behaviour, so it defaulted, and the convention the team intended stayed in somebody's head.
+Not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behavior, so it defaulted, and the convention the team intended stayed in somebody's head.
 
 ## The test taxonomy
 

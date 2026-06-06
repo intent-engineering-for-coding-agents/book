@@ -1,6 +1,6 @@
 # AC IDs and Positive/Negative Coverage
 
-A spec and its tests are supposed to be the same promise written twice. Imagine a spec with five scenarios and a PR that ships eight tests. Two scenarios have no test at all; three tests cover behaviour the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
+A spec and its tests are supposed to be the same promise written twice. Imagine a spec with five scenarios and a PR that ships eight tests. Two scenarios have no test at all. Three tests cover behavior the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
 
 A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability. The drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 
@@ -8,13 +8,13 @@ A spec and a test suite that drift apart silently are worse than no spec at all.
 
 An AC ID is a stable, scenario-level identifier. Format: a bracketed prefix and a zero-padded number, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one. Tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
-The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognises the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
+The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognizes the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is exactly the thing that does not match for long. With an identifier, the test moves, the scenario heading changes, the file splits into two, and the linkage holds.
 
-This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
+This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behavior.
 
-Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.
+*Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.*
 
 ## The recommended field: `Test-type:`
 
@@ -121,8 +121,8 @@ What is unusual here, by general industry practice, is not the structure. Accept
 
 The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
 
-Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behaviour than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists. It does not verify the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
+Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists. It does not verify the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
 
-Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine; the ID stays, the wording changes, the test still proves the new wording because the new wording describes the same behaviour. A scenario being rewritten to specify a different behaviour, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artefact gets a new identifier.
+Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine; the ID stays, the wording changes, the test still proves the new wording because the new wording describes the same behavior. A scenario being rewritten to specify a different behavior, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artifact gets a new identifier.
 
 IDs and pairs are the mechanics. The next chapter is where those mechanics fit into a project's calendar: when each check is paid attention to, before and during and after the change.

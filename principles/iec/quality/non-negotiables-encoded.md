@@ -7,7 +7,7 @@
 
 ## Principle
 
-Encode the non-negotiable decisions so the question does not get asked. The agent defers to the user on safety-critical decisions — "should I disable this check?" — and accepts any answer. The defence is to encode the decision in a hook or an automated check that the agent cannot bypass, not in an instruction it can talk its way around.
+Encode the non-negotiable decisions so the question does not get asked. The agent defers to the user on safety-critical decisions — "should I disable this check?" — and accepts any answer. The defense is to encode the decision in a hook or an automated check that the agent cannot bypass, not in an instruction it can talk its way around.
 
 ## Why it matters
 

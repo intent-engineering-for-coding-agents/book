@@ -24,7 +24,7 @@ The test is not size. It is whether an intent-level correction found during code
 
 The discipline that survives both shapes is not a branch count. Every branch that traces back to this change folder carries its name and its scope, and nothing else rides along. The change folder is the unit of intent. Its branches are the units of delivery. A branch that folds in a second change folder's work is the violation, whether you used one branch or two.
 
-Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020), short-lived branches and the trunk-based discipline the change-folder lifecycle maps onto. Dave Farley, *Modern Software Engineering* (Addison-Wesley, 2021), small changes integrated continuously.
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and "Trunk-Based Development and Branch by Abstraction" (Leanpub, 2020), short-lived branches and the trunk-based discipline the change-folder lifecycle maps onto. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small changes integrated continuously.*
 
 ## Short-lived means days, not weeks
 
@@ -56,7 +56,7 @@ Instructions drift. Checks do not. The two steps most worth promoting from instr
 
 Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and un-implemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle, and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
 
-Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration discipline. Dave Farley with Jez Humble, *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a discipline the agent forgets into one it cannot skip.
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration discipline. Dave Farley with Jez Humble, "Continuous Delivery" (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a discipline the agent forgets into one it cannot skip.*
 
 ## Review at merge
 
@@ -68,7 +68,7 @@ Intent-first review reads the spec delta before the code diff. The questions to 
 
 Human reviewers have biases: they read the changed lines and skip the unchanged context. They approve changes that match their mental model of the feature, even when the spec says otherwise. Agents have different gaps. They miss intent: a change that passes all checks but produces behavior the spec did not anticipate. They miss context: a component that looks correct in isolation but fails when integrated with something the agent did not read. The review process works when humans and agents each cover their own gaps. Humans verify intent and integration. Agents verify coverage and consistency.
 
-Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.*
 
 ## Trunk-Based Development is not universal, and neither is the two-PR shape
 

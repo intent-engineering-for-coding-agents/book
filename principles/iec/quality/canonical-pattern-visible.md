@@ -7,7 +7,7 @@
 
 ## Principle
 
-The defence against pattern replication — the agent copying broken patterns because it does not distinguish trusted from untested — is to make the pattern the agent should follow the easiest pattern to find. The canonical implementation of an auth check, an error handler, or a database access pattern must be more visible to the agent than the legacy code that does it wrong.
+The defense against pattern replication — the agent copying broken patterns because it does not distinguish trusted from untested — is to make the pattern the agent should follow the easiest pattern to find. The canonical implementation of an auth check, an error handler, or a database access pattern must be more visible to the agent than the legacy code that does it wrong.
 
 ## Why it matters
 

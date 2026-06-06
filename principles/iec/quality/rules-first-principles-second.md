@@ -11,13 +11,13 @@ The dividing line between a rule and a principle is whether a deterministic chec
 
 ## Why it matters
 
-Conflating rules and principles wastes both. A rule that stays advisory could have been automated. A principle that blocks CI is performing judgment a machine cannot make. The discipline is to keep the principle catalogue small, the principles concrete, and the audit pass advisory until the catalogue has earned trust.
+Conflating rules and principles wastes both. A rule that stays advisory could have been automated. A principle that blocks CI is performing judgment a machine cannot make. The discipline is to keep the principle catalog small, the principles concrete, and the audit pass advisory until the catalog has earned trust.
 
 ## Violations to detect
 
 - Principle-like rules that could be deterministic but are left as prose
 - Rule-like principles that block CI but depend on subjective judgment
-- Principle catalogues that grow without corresponding automated checks
+- Principle catalogs that grow without corresponding automated checks
 
 ## Good practice
 

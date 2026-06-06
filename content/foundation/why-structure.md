@@ -14,7 +14,7 @@ ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-e
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, weeks. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
-Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier.
+*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier.*
 
 ## Structure as briefing
 
@@ -26,7 +26,7 @@ The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `A
 
 Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own.
 
-Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.
+*Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 
 ## The prerequisite
 

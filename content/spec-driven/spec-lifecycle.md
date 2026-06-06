@@ -6,6 +6,8 @@ A spec without a lifecycle accumulates. Active specs look identical to abandoned
 
 ## The five stages
 
+The five stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
+
 One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you may finish the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
 
 Write: create the spec when you are about to implement, not weeks in advance. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
@@ -22,7 +24,7 @@ Archive: when the PR merges, archive the change folder. Delta specs merge into `
 
 The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
-Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).
+*Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
 
 ## Writing the task list
 

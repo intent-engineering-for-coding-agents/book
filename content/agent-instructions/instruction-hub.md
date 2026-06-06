@@ -2,7 +2,7 @@
 
 Two developers, same repo, same language, same CI pipeline. Why do their pull requests look like they came from different codebases? Different naming, different ideas about which directories are off-limits, different test structure. Nobody changed the rules. The rules diverged: one developer drives Claude Code with `CLAUDE.md`, the other drives Cursor with `.cursorrules`, both files started as copies of the same thing, and a month later they no longer agree.
 
-The fix is not better synchronisation between two files. It is one file that both tools point to.
+The fix is not better synchronization between two files. It is one file that both tools point to.
 
 `AGENTS.md` is the entry point. `.agents/` is what it points into. One directory, no vendor in the name, readable by every tool. Instructions live there. Skills live there. Hooks live there. Whichever agent is doing the work, it loads from the same place.
 
@@ -12,7 +12,7 @@ An agent modifying the authentication module does not need the CI pipeline rules
 
 A focused hub stays small. Four instruction files is a realistic count:
 
-```
+```text
 .agents/instructions/
 ├── build-and-ci.md       # uv commands, lint, test, CI pipeline
 ├── coding-standards.md   # Python style, project structure, testing
@@ -26,7 +26,7 @@ One file per domain, not one file per task. `coding-standards.md` covers all Pyt
 
 AgentPatterns.ai's evaluation of context files identifies this as the most common failure mode: files that are too large to be useful, or too granular to be discoverable. The instruction file that nobody loads is worse than no instruction file, because it creates a false confidence that the agent has been briefed.
 
-Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help", the most common failure mode of context files being too large or too granular.
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help", the most common failure mode of context files being too large or too granular.*
 
 ## `.agents/skills/`
 
@@ -52,7 +52,7 @@ The most common hook candidates: run the linter after any source file edit, vali
 
 Doc comment formatting is a cleaner hook candidate than it first appears. An agent editing a `.java` file produces Javadoc that compiles but may not match the codebase's conventions: wrong tag order, missing `@return`, summary lines that exceed the configured limit. Instructing the agent to fix this competes with the rest of the task. A hook does not. In `.agents/hooks/` that becomes three files:
 
-```
+```text
 .agents/hooks/
 ├── java.md   # checkstyle on modified .java files
 ├── cs.md     # dotnet-format on modified .cs files
@@ -61,9 +61,9 @@ Doc comment formatting is a cleaner hook candidate than it first appears. An age
 
 Each file defines a trigger (a file edit matching that extension) and the command to run. The agent does not get a vote.
 
-The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardised across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. `.agents/hooks/` is the right place for them when they are ready. For most teams right now, they are not ready.
+The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. `.agents/hooks/` is the right place for them when they are ready. For most teams right now, they are not ready.
 
-Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).
+*Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).*
 
 ## One folder, every tool
 

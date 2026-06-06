@@ -14,9 +14,9 @@ On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared br
 
 The practical structure: `AGENTS.md` at the repo root is the team's brief. It covers the conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain their own parallel `AGENTS.md` files that override parts of the team brief. The team brief is the brief.
 
-Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines, the agents load it and hit the context limit before reading the last two hundred, and the last two hundred happen to cover the security conventions. The TOC pattern from [AGENTS.md: One File Changes Everything](../agent-instructions/agents-md) applies at team scale too: keep the brief short, link to detail files in `.agents/instructions/`.
+Where teams get into trouble: the team brief grows to cover every edge case any developer has ever had to explain to an agent. Six months in, it is eight hundred lines and the agent hits the context limit before reaching the security conventions at the bottom. The [TOC pattern](../agent-instructions/agents-md) is the fix at team scale exactly as it is for a solo brief: keep `AGENTS.md` short, link to detail files in `.agents/instructions/`.
 
-Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project brief. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the brief short and linking out to detail files.
+*Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project brief. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the brief short and linking out to detail files.*
 
 ## Shared `.agents/skills/` libraries
 
@@ -24,7 +24,7 @@ Skills worth writing once and sharing: generate a change folder from a template,
 
 Skills can also be shared across repos via inner source: a shared `.agents/` repository that teams pull from, or a directory within a shared infrastructure repo. The shared skills define the team's common procedures. Individual repos extend them with project-specific additions. The principle is the same as shared library dependencies: standardize what is common, extend for what is specific.
 
-Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context and instruction files for quality and drift.
+*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context and instruction files for quality and drift.*
 
 ## Onboarding: the first agent session
 
@@ -48,7 +48,7 @@ Role-based personal briefs are not divergence. A QA engineer's personal `AGENTS.
 
 ## Conventions are organizational, not technical
 
-Team conventions are organizational problems with technical artefacts. The `AGENTS.md` records what was agreed. It does not produce the agreement. A team that has never discussed data access conventions cannot resolve the problem by writing a convention file. They have to have the discussion first and record the outcome.
+Team conventions are organizational problems with technical artifacts. The `AGENTS.md` records what was agreed. It does not produce the agreement. A team that has never discussed data access conventions cannot resolve the problem by writing a convention file. They have to have the discussion first and record the outcome.
 
 Convention drift on a team is slower than on a solo project and harder to detect. A solo developer feels the immediate pain when their own `AGENTS.md` is stale. A team member may not notice that the brief is out of date until a new developer's agent produces something unexpected. Regular reviews of the team brief (quarterly, or after major architecture changes) are maintenance, not overhead.
 

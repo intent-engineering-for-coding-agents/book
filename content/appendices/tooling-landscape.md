@@ -16,7 +16,7 @@ This book targets agents that combine a thinking-capable model, real tool use, a
 
 IDE-only completion tools and chat-only assistants are out of scope. The practices in this book target the capability class, not a frozen vendor list. New tools that combine thinking models with real tool use will fit the same patterns.
 
-Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025); OpenCode Docs (ongoing); Junie documentation (ongoing), the named agents and their AGENTS.md support status as of mid-2026.
+*Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025); OpenCode Docs (ongoing); Junie documentation (ongoing), the named agents and their AGENTS.md support status as of mid-2026.*
 
 ## Spec-driven tools
 
@@ -29,7 +29,7 @@ Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex C
 
 No dominant framework has emerged as of mid-2026. ThoughtWorks Radar Vol 34 describes the SDD landscape as fragmented. Pick the tool whose lifecycle discipline matches your team's appetite for structure.
 
-Sources: Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Medium, Feb 2026), the tool-tradeoff map. ThoughtWorks, Technology Radar Vol 34 (April 2026), the fragmented landscape assessment.
+*Sources: Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Medium, Feb 2026), the tool-tradeoff map. ThoughtWorks, Technology Radar Vol 34 (April 2026), the fragmented landscape assessment.*
 
 ## MCP servers
 
@@ -42,7 +42,7 @@ The Model Context Protocol (modelcontextprotocol.io) lets agents reach external 
 
 MCP server availability, permission scope, and reliability vary by environment. Verify connectivity before relying on any external MCP server in a CI or automated context. What an agent can reach through MCP is determined by configuration and permissions, not by the tool existing.
 
-Sources: Model Context Protocol (modelcontextprotocol.io, ongoing); Framelink Figma-Context-MCP (github.com/GLips/Figma-Context-MCP, ongoing), the two external MCP servers cited in the book's chapter content.
+*Sources: Model Context Protocol (modelcontextprotocol.io, ongoing); Framelink Figma-Context-MCP (github.com/GLips/Figma-Context-MCP, ongoing), the two external MCP servers cited in the book's chapter content.*
 
 ## Companion tool
 

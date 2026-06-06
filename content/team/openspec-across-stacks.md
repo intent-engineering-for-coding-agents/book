@@ -10,7 +10,7 @@ This is not an agent failure. The context was ambiguous. The agent resolved the 
 
 The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or sub-directory. The agent working on the front-end never sees the back-end specs. It knows its contracts, its acceptance criteria, its pending changes. The back-end specs are not its context.
 
-```
+```text
 front-end/
   openspec/
     changes/
@@ -36,7 +36,7 @@ A unified `openspec/` across stacks gives the agent three codebases of context i
 
 This is book synthesis. There is no widely-adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
-Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
 ## Front-end context: design system and Figma
 
@@ -65,7 +65,7 @@ graph TD
 
 The ADR is permanent. The change folders are temporary. They are archived after implementation. The contract outlives both.
 
-Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
 
 ## When a change spans tiers
 

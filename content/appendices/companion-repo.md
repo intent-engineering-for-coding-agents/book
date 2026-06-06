@@ -12,7 +12,7 @@ It is also not production-grade. It is a teaching artifact.
 
 The repository at `github.com/intent-engineering-for-coding-agents/cli` is organized as follows:
 
-```
+```text
 docs/         ADRs, design docs, INDEX.md, testing strategy
 openspec/     OpenSpec spec files (changes/ and specs/)
 .agents/      instructions/, skills/, commands/, hooks/
@@ -56,4 +56,4 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 
-Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.
+*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.*

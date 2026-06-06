@@ -7,7 +7,7 @@
 
 ## Principle
 
-Every artefact an agent needs to reason about the codebase must live in the repo as plain text. Diagrams are Mermaid. ADRs are Markdown. Specs are Markdown. Instructions are Markdown. If it is not plain text, the agent cannot read it. If it is not in the repo, the agent cannot find it.
+Every artifact an agent needs to reason about the codebase must live in the repo as plain text. Diagrams are Mermaid. ADRs are Markdown. Specs are Markdown. Instructions are Markdown. If it is not plain text, the agent cannot read it. If it is not in the repo, the agent cannot find it.
 
 ## Why it matters
 

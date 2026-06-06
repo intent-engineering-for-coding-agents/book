@@ -8,17 +8,17 @@ The agent does not know the team chose against Redis last quarter. The agent can
 
 Coding agents amplify the developer driving them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them." A clueless developer with a coding agent ships clueless code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral. What it amplifies is not.
 
-Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.
+*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
 This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants. "Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. That practice in turn fits within what some vendors and practitioners now call Developer AI: agent tooling aimed at the development workflow rather than at end users or production systems. The practices here apply wherever that category lands, regardless of which tool you use.
 
 "Intent engineering" as a phrase is not this book's coinage. It appears in requirements engineering, vendor agent glossaries, and in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
-Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.
+*Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.*
 
 An agent in Intent Engineering plays two roles. Labor is the obvious one: the agent writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch the agent into plan or architect mode and it pushes back on your design before a line is written. The agent surfaces the assumption you treated as settled. The agent asks what you haven't asked. The same agent that generates a payment service in twenty minutes will, five minutes earlier, point out you haven't decided what happens when the payment provider times out.
 
-Sources: Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the Developer AI category this book situates Intent Engineering within. GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.
+*Sources: Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the Developer AI category this book situates Intent Engineering within. GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.*
 
 ## What to expect
 
@@ -36,7 +36,7 @@ Quality and Verification: tests as proof of intent. Stable acceptance-criterion 
 
 Topics three and four are a pair. Spec-driven development has become more visible in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined. This book takes the next step: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven without verification is only aim.
 
-Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.
+*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
 After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change. The ceremonies stay.
 
@@ -46,7 +46,7 @@ You are a senior developer or architect. You already use a capability-class CLI 
 
 Run one agent or run several. Intent Engineering works broadly the same way regardless of which agent runs it, though each tool has its own conventions for picking up `AGENTS.md` and `.agents/`. Wiring a specific agent into your repo is the agent's documentation problem, not this book's. The list of viable agents will shift through 2026 and beyond. The practices here should change more slowly, unless the tools themselves absorb these conventions and make some of the repo scaffolding unnecessary.
 
-Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); OpenCode Docs (ongoing); Junie documentation in this repo, the capability-class CLI agents named as the target class. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the category-level shift that outlasts any single vendor roster.
+*Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); OpenCode Docs (ongoing); Junie documentation in this repo, the capability-class CLI agents named as the target class. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the category-level shift that outlasts any single vendor roster.*
 
 You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
@@ -62,13 +62,13 @@ Intent Engineering is the other side of the table. In this book's framing, the a
 
 If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to make an agent that writes code less clueless about your system. The two disciplines borrow vocabulary. They do not solve the same problem.
 
-Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026); EPAM, "Agentic Development Lifecycle (ADLC) Explained" (2026); Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025); Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), ADLC as building agents as products with runtime governance, the discipline this book contrasts Intent Engineering against.
+*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026); EPAM, "Agentic Development Lifecycle (ADLC) Explained" (2026); Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025); Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), ADLC as building agents as products with runtime governance, the discipline this book contrasts Intent Engineering against.*
 
 ## The companion: Intent Engineering Checker
 
-Every practice in this book is demonstrated in a companion repo, Intent Engineering Checker (`iec`). ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. The repo accumulates all of it. The git history also records how it got there, phase by phase, for anyone curious about the evolution. See [Companion Repo](./appendices/companion-repo) for the structure and how to browse it.
+The companion repo, Intent Engineering Checker (`iec`), demonstrates the core practices: ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs. The repo accumulates them as it grows, and a few demonstrations are still in progress, the agent-evaluation demo among them. The git history records how it got there, phase by phase, for anyone curious about the evolution. See [Companion Repo](./appendices/companion-repo) for the structure, the current status of each practice, and how to browse it.
 
-Sources: `iec` repository history and tags (github.com/intent-engineering-for-coding-agents/cli), each phase as a git tag the reader can check out as evidence.
+*Sources: `iec` repository history and tags (github.com/intent-engineering-for-coding-agents/cli), each phase as a git tag the reader can check out as evidence.*
 
 ## How to read
 

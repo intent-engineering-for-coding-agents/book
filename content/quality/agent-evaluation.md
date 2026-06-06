@@ -6,13 +6,13 @@ Tests prove the code is right. They say nothing about whether the agent setup is
 
 ## Two different feedback loops
 
-The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent." That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artefact under scrutiny.
+The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent." That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
 The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect is visible only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to `AGENTS.md` that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 
 This is the open loop. The next sections describe how to close it.
 
-Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as the missing piece across SDD tooling. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs.
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as the missing piece across SDD tooling. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs.*
 
 ## Golden tests for the agent
 
@@ -34,7 +34,7 @@ This is the same discipline that A/B testing applies to product changes, scaled 
 
 Skills and hooks have the same problem. A skill that used to update the index reliably starts skipping the README files because a step was rewritten. A hook that used to catch missing tests starts passing because the pattern was tightened too far. Neither change shows up in the diff as obviously broken. The skill still runs. The hook still fires. The outcomes drift.
 
-The defence is the same: a fixed task that exercises the skill or hook, run before and after the change. The skill that regenerates the index runs against a known directory state and is checked against the expected index output. The hook that catches missing tests runs against a known PR diff that is supposed to fail and against another that is supposed to pass. The same kind of golden test, scoped to a single component.
+The defense is the same: a fixed task that exercises the skill or hook, run before and after the change. The skill that regenerates the index runs against a known directory state and is checked against the expected index output. The hook that catches missing tests runs against a known PR diff that is supposed to fail and against another that is supposed to pass. The same kind of golden test, scoped to a single component.
 
 Most teams will not maintain this for every skill. The economics work out only for the ones that fail expensively. The skill that touches the documentation index is worth a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file is not, because its failure mode is the agent immediately seeing the wrong output and asking the user.
 
@@ -50,7 +50,7 @@ The book's central claim, repeated through Foundation and Agent Instructions and
 
 Eval suites for agents are still early practice. There is no widely-shared tooling for this in 2026. Hightower's tool-comparison work and Anthropic's effective-agents guidance both point at evaluation as the missing piece; neither prescribes a complete framework. What is described above is the minimum viable shape: a fixed task, a structural check, a comparison.
 
-The hardest part is keeping the suite calibrated. A task that the agent reliably nails today becomes uninformative tomorrow when the underlying model improves. A task that the agent reliably fails today tests a property the agent cannot satisfy with any configuration. The suite drifts in both directions and needs periodic curation. Treat it as a living artefact, not a one-time setup.
+The hardest part is keeping the suite calibrated. A task that the agent reliably nails today becomes uninformative tomorrow when the underlying model improves. A task that the agent reliably fails today tests a property the agent cannot satisfy with any configuration. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
 ## Tooling note
 

@@ -112,4 +112,4 @@ Principles about team process, adoption, and culture.
 
 ---
 
-Sources: This catalogue is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the dot-principles specification (https://github.com/dot-principles/dot-principles).
+*Sources: This catalog is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the dot-principles specification (https://github.com/dot-principles/dot-principles).*

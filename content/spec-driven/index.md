@@ -10,6 +10,8 @@ Intent is what you want this specific change to do, in this specific codebase, r
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, what structure, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
+A note on tooling before the chapters. This book uses OpenSpec as the demonstration substrate. It is the framework `iec` was built with, and the examples reach for it because concrete examples need a concrete tool. The practice does not require OpenSpec. Per-change intent with testable acceptance criteria works with a plain `spec.md`, with Spec-Kit, or with whatever your team already runs. Where a chapter shows an `openspec/` layout, read it as one implementation of the practice, not the practice itself.
+
 ## Chapters
 
 1. [Why Specs?](./why-specs): drift, intent, and traceability, the practical motivation for writing down what you want before you ask an agent to build it
