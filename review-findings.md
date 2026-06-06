@@ -1,6 +1,14 @@
 # Review findings
 
-Verdict: the book has a coherent macro-argument: context makes intent executable, specs state the target, and verification proves the result. The sequence from `Foundation` through `Quality and Verification` mostly compounds, and many chapter endings carry the reader forward instead of summarizing. It is not release-clean yet. The largest book-level risks are tool-neutrality drift toward `OpenSpec`, uneven provenance for operational claims, and the missing evidence that chapter-level review has already passed. Treat this as a global review, not as certification that each chapter has passed `review-chapter`.
+## Remediation status, 2026-06-06
+
+Status: closed for the remaining findings from this review. The book now intentionally uses an `OpenSpec-first` contract, based on the author's direction, rather than pretending to be tool-neutral. The remaining source-policy and provenance gaps were addressed by adding an explicit review-policy exception for navigational pages, splitting source lines closer to operational claims in the named Quality and Team chapters, and labeling book-created or `iec` conventions where the prose prescribes them.
+
+Chapter-level review evidence: `plan.md` now contains the current book outline used for alignment. The reviewed chapters match that outline at the book-arc level: Foundation supplies repo context, Agent Instructions turns context into loadable agent guidance, Spec-Driven Development supplies per-change intent through the OpenSpec-first workflow, Quality and Verification connects that intent to proof, and Team Workflows maps the same workflow onto team delivery. The mandatory credibility pass was rerun on the edited material: vendor-adjacent claims remain bounded, perishable claims are time-labeled, and synthesized book conventions are labeled rather than presented as field consensus.
+
+Additional follow-up handled: `.principles` references in book-facing content now point to `https://dot-principles.github.io/` as the canonical site. The Plain-Text-as-Code principle source was corrected to cite the Plain Text as Code Manifest, not `.principles`.
+
+Original verdict: the book had a coherent macro-argument: context makes intent executable, specs state the target, and verification proves the result. The sequence from `Foundation` through `Quality and Verification` mostly compounded, and many chapter endings carried the reader forward instead of summarizing. It was not release-clean yet. The largest book-level risks were tool-neutrality drift toward `OpenSpec`, uneven provenance for operational claims, and the missing evidence that chapter-level review had already passed. Treat the findings below as the original global review record. The remediation status above is the current status.
 
 ## Scope and review basis
 

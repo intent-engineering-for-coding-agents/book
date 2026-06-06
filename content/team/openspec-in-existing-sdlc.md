@@ -38,6 +38,8 @@ The sprint board tracks the same work at team level. The story moves from "In Pr
 
 The synchronization point is the PR. A change folder with incomplete tasks (`- [ ]` lines still present) is a change folder that should not have a PR open. The PR template can check for this. The `AGENTS.md` should instruct the agent to verify `tasks.md` is complete before pushing.
 
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), `tasks.md` as part of the change-folder workflow. The sprint-board synchronization rule is this book's OpenSpec-first workflow mapping, not an OpenSpec requirement.*
+
 ## ADRs and the architecture review
 
 An Architecture Decision Record (ADR) is the artifact that replaces an architecture review meeting when the team is disciplined about ADRs, and supplements it when they are not.
@@ -46,10 +48,14 @@ Large organizations have architecture review boards (ARBs). The ADR is the input
 
 Cross-cutting decisions (API contracts, authentication models, data retention policies) always go into ADRs. These are the decisions that the agent in one stack needs to know about even though they were made in another context. The ADR is permanent. The spec is temporary. The ADR outlives the change that necessitated it.
 
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (2011), ADRs as durable records for architecture decisions. The ARB mapping and cross-stack agent-context rule are this book's workflow guidance.*
+
 ## This assumes you already have the basics
 
 The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams that have none of these in place need to establish the primitives before layering spec-driven practices on top. The spec does not replace the ticket. It assumes the ticket exists and is well-understood.
 
 The MCP integrations described here (Jira, Confluence, Figma) are mid-2026 tools. The underlying patterns are stable even as the specific tooling evolves.
+
+*Sources: Model Context Protocol documentation and Atlassian MCP documentation (mid-2026 snapshot), perishable connector availability. The ticket, PR, ADR, and changelog mapping is this book's synthesis for mature team workflows.*
 
 The workflow fits because it follows branches. Short-lived branches, specifically. That is where trunk-based development has been pointing for decades.

@@ -36,7 +36,7 @@ Birgitta Böckeler has written and spoken clearly about agent-assisted software 
 
 ## Quality and principles
 
-The dot-principles project (github.com/dot-principles) is the experiment this book describes in the Quality and Verification topic. The principle catalog for this book is maintained as a companion set against that framework.
+The [.principles project](https://dot-principles.github.io/) is the experiment this book describes in the Quality and Verification topic. The principle catalog for this book is maintained as a companion set against that framework.
 
 ## Plain text and diagrams
 

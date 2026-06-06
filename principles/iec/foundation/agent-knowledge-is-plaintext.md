@@ -27,4 +27,4 @@ Keep everything the agent needs — ADRs, design docs, test strategy, convention
 ## Sources
 
 - intent-book, *"Plain Text as Code" chapter*, foundation section.
-- dot-principles, *Plain-Text-as-Code philosophy*, https://github.com/dot-principles/dot-principles.
+- Plain Text as Code Manifest, https://github.com/Plain-Text-as-Code.

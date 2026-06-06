@@ -34,6 +34,8 @@ If the output is inconsistent (wrong test style, wrong data access pattern, miss
 
 Onboarding is a forcing function for keeping the team brief current. Every new developer who hits an inconsistency between `AGENTS.md` and actual team practice is identifying a drift. Treating it as an onboarding task masks the drift. Treating it as a documentation debt surfaces it.
 
+*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context files for quality and drift. The first-session onboarding test is this book's team workflow heuristic.*
+
 ## When to standardize, when to leave divergent
 
 Not every developer convention needs to be in the team brief. Some conventions are personal preference with no team impact: how the developer structures their own notes, which model they use for exploratory work, how they name their local branches before the change folder is created.
@@ -46,10 +48,14 @@ Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies ev
 
 Role-based personal briefs are not divergence. A QA engineer's personal `AGENTS.md` might load extra test-coverage instructions. A security engineer's might always run a threat-model pass. A database specialist's might include query-plan analysis steps. These extend the team brief for the developer's domain without contradicting it. The distinction is direction: a personal brief that adds depth is fine; one that overrides a team convention is a problem waiting to surface in review.
 
+*Sources: [AGENTS.md](https://agents.md/) (ongoing), project-level instructions as a repo convention. The standardize-versus-diverge test is this book's synthesis for team use.*
+
 ## Conventions are organizational, not technical
 
 Team conventions are organizational problems with technical artifacts. The `AGENTS.md` records what was agreed. It does not produce the agreement. A team that has never discussed data access conventions cannot resolve the problem by writing a convention file. They have to have the discussion first and record the outcome.
 
 Convention drift on a team is slower than on a solo project and harder to detect. A solo developer feels the immediate pain when their own `AGENTS.md` is stale. A team member may not notice that the brief is out of date until a new developer's agent produces something unexpected. Regular reviews of the team brief (quarterly, or after major architecture changes) are maintenance, not overhead.
+
+*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), recurring evaluation of agent instruction quality. The quarterly-or-after-architecture-change cadence is this book's maintenance convention.*
 
 Shared conventions work within a team. Cross-team coordination needs a different mechanism, one that is already part of the SDLC and does not require a shared repo.

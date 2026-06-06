@@ -183,5 +183,5 @@ mindmap
 - AGENTS.md (agents.md) and AgentPatterns.ai — TOC pattern for AI
   instruction files
 - Andrej Karpathy — origin of the term "vibe coding" (Feb 2, 2025)
-- dot-principles (github.com/dot-principles) — principle-as-code,
+- .principles (https://dot-principles.github.io/) — principle-as-code,
   AI-native quality audit

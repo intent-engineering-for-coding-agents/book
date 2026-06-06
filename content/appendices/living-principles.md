@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter; together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make agentic software engineering work.
 
-This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 64 principles are active by default.
+This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 64 principles are active by default.
 
 ## Foundation
 
@@ -112,4 +112,4 @@ Principles about team process, adoption, and culture.
 
 ---
 
-*Sources: This catalog is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the dot-principles specification (https://github.com/dot-principles/dot-principles).*
+*Sources: This catalog is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the [`.principles`](https://dot-principles.github.io/) specification.*

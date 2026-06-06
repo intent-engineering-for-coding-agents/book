@@ -6,13 +6,13 @@ Specs verify behavior. Tests verify proof. PR taxonomy verifies hygiene. None of
 
 ## The gap
 
-The dot-principles project (github.com/dot-principles) is one experimental answer. Principles are written as version-controlled Markdown files, organized into catalogs, and applied through agent commands. Each principle states one established belief about how code should be shaped, backed by a citable published source: a book with an ISBN, a paper with a DOI, or an authoritative specification.
+The [.principles project](https://dot-principles.github.io/) is one experimental answer. Principles are written as version-controlled Markdown files, organized into catalogs, and applied through agent commands. Each principle states one established belief about how code should be shaped, backed by a citable published source: a book with an ISBN, a paper with a DOI, or an authoritative specification.
 
 The framework uses three commands: `dot-scout` (setup), `dot-prime` (load principles before coding), and `dot-audit` (check code against principles after). The check is agent-native: a deterministic linter cannot tell whether a function has one reason to change, but a model with the principle in context can make a defensible call.
 
 This book uses three distinct questions to separate the layers: what should the code do, does it do it, and is it well-shaped. Specs answer the first. Tests answer the second. Principles answer the third.
 
-*Sources: dot-principles project (github.com/dot-principles) (ongoing), the principle-as-code framework, its `dot-scout`/`dot-prime`/`dot-audit` commands, and the citable-published-source requirement. The three-question split across specs, tests, and principles is this book's framing.*
+*Sources: [.principles](https://dot-principles.github.io/) (ongoing), the principle-as-code framework, its `dot-scout`/`dot-prime`/`dot-audit` commands, and the citable-published-source requirement. The three-question split across specs, tests, and principles is this book's framing.*
 
 This is a different gap from style. A linter handles indentation, naming conventions, line length. A style guide is the deterministic version of taste. Principles are the cases where deterministic rules do not fit: when nesting is excessive, when a function has grown beyond one purpose, when an abstraction is leaking, when a refactor was started and not finished. The judgment of "this is too nested" is something a senior reviewer makes; the principle file makes the judgment reusable across reviewers, including agent ones.
 

@@ -30,6 +30,8 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 - Are any terms or conventions still unstable in the field (Intent Engineering, `AGENTS.md`, ADLC variants, test taxonomies, current agent workflow patterns)? If yes, require emerging-practice framing unless the source supports stronger language.
 - Are any tool/model/workflow claims perishable? If yes, require time-bounded wording or review-date framing.
 
+Source policy exception: purely navigational pages, front matter, and glossary entries do not need a local `*Sources:*` line for every cross-reference or internal definition. They still need local source support for dated claims, external tool claims, historical claims, named practices, or any definition borrowed from outside the book. If a glossary entry defines a book-created term, label it as the book's usage rather than field consensus.
+
 ### Cross-chapter consistency — DRY check
 
 - Does this chapter repeat explanation that belongs in another chapter?

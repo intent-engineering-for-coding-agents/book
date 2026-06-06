@@ -26,4 +26,4 @@ For every desirable property of the codebase, ask: can I write a deterministic c
 ## Sources
 
 - intent-book, *".principles — Raising the Bar" chapter*, quality section.
-- dot-principles, https://github.com/dot-principles/dot-principles.
+- .principles, https://dot-principles.github.io/.

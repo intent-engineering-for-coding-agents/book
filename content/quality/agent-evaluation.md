@@ -22,13 +22,17 @@ The output rarely matches byte for byte. A useful golden test does not demand it
 
 A small suite of these tasks is the eval set. Five tasks covering the workflows the team relies on is enough to start. Each task has the same shape: starting repo state, spec to implement, properties the output must satisfy. Re-run the suite when the agent configuration changes. The score is the count of properties satisfied. A score moving down on a configuration change is a regression that has nothing to do with the code under test. The suite shape and the five-task starting point are this book's convention, not a settled industry standard.
 
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as a gap in SDD tooling. The fixed-task shape and five-task starting point are this book's convention.*
+
 ## A/B comparison of two AGENTS.md versions
 
 The simplest evaluation is comparative. Take the current `AGENTS.md`, run the eval suite, record the score. Apply the proposed change. Run the suite again. The delta is the evidence.
 
 What this catches is the change that sounds reasonable and is not. "Add a section explaining our convention for naming" looks like an improvement. If the eval suite shows the agent produces less reliable code on three of five tasks, the change is regressing the agent's attention budget. The context file got longer; the parts that mattered got crowded out. Without the comparison, that tradeoff is invisible. With it, the choice is concrete: which file produced better outcomes?
 
-This is the same discipline that A/B testing applies to product changes, scaled down to the size that fits a single repo. The point is not statistical rigour. The point is that the change has consequences you cannot otherwise observe, and a five-task suite catches more of them than intuition does.
+This is the same discipline that A/B testing applies to product changes, scaled down to the size that fits a single repo. The point is not statistical rigor. The point is that the change has consequences you cannot otherwise observe, and a five-task suite catches more of them than intuition does.
+
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as a feedback loop for agent behavior. The repo-sized A/B workflow is this book's adaptation, not a statistical testing claim.*
 
 ## Regression when a skill or hook changes
 
@@ -38,13 +42,17 @@ The defense is the same: a fixed task that exercises the skill or hook, run befo
 
 Most teams will not maintain this for every skill. The economics work out only for the ones that fail expensively. The skill that touches the documentation index is worth a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file is not, because its failure mode is the agent immediately seeing the wrong output and asking the user.
 
+*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as a discipline for agentic development. The skill-and-hook examples are this book's workflow guidance.*
+
 ## When to invest
 
-Not every team needs this. A solo developer working with an agent on one project has the option of paying attention. The eval suite for them is in their head: they remember what the agent used to do and they notice the day it stops doing it. The investment in formalising the eval is wasted on this scale.
+Not every team needs this. A solo developer working with an agent on one project has the option of paying attention. The eval suite for them is in their head: they remember what the agent used to do and they notice the day it stops doing it. The investment in formalizing the eval is wasted on this scale.
 
 The investment becomes worthwhile when more than one developer shares the same `AGENTS.md`, when more than one agent runs against the same codebase, when the rate of change in the instruction files exceeds the rate at which any one person reviews the resulting code. At that point the eval suite is the only thing that catches a quiet regression before it has shaped a week of PRs.
 
 The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that at agentic speeds manual verification is not enough. The evidence base for that claim is the closed loop. The tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
+
+*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control in agentic development. Anthropic, "Building effective agents" (Dec 2024), evaluation as an operating discipline for agent systems.*
 
 ## Eval suites are still early practice
 
@@ -52,8 +60,12 @@ Eval suites for agents are still early practice. There is no widely-shared tooli
 
 The hardest part is keeping the suite calibrated. A task that the agent reliably nails today becomes uninformative tomorrow when the underlying model improves. A task that the agent reliably fails today tests a property the agent cannot satisfy with any configuration. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
+*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation gaps across current SDD tools. Anthropic, "Building effective agents" (Dec 2024), evaluation as guidance rather than a complete framework.*
+
 ## Tooling note
 
 The `iec` companion repo is planned to ship an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example. (Not yet shipped as of `v0.6.0`; check the companion repo for current status.)
+
+*Sources: `iec` companion repo status at `v0.6.0`, planned `eval-demo` not yet shipped.*
 
 The strategy chapter introduced acceptance-criterion IDs as part of the convention surface, and this chapter showed why agent setup needs its own regression loop. The next chapter turns those IDs into a durable link between intent and proof.
