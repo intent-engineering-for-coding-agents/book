@@ -6,7 +6,7 @@ Tests prove the code is right. They say nothing about whether the agent setup is
 
 ## Two different feedback loops
 
-The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent." That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
+The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent". That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
 The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect is visible only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to `AGENTS.md` that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 

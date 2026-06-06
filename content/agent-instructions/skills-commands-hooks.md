@@ -24,7 +24,7 @@ Anticipate the most common failure. If the skill reads file headings and a file 
 
 There is a shortcut for the whole section above. You do not need to write the skill yourself. Describe the workflow to the agent, tell it you want a reusable skill file it can invoke as a slash command, and let it draft the Markdown. Review the output, correct any steps that are wrong, and commit. The agent that authored the skill is the same agent that will run it. It tends to know its own edge cases.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design. Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the agent authoring its own skill files.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design.*
 
 ## Commands are skills with a human trigger
 

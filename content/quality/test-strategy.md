@@ -57,7 +57,7 @@ The convention document defines the types the project uses, the framework that c
 
 The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
 
-The exclusions section is equally important. Without it, the agent has no way to distinguish "not applicable" from "nobody thought of it." The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
+The exclusions section is equally important. Without it, the agent has no way to distinguish "not applicable" from "nobody thought of it". The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
 
 The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
 

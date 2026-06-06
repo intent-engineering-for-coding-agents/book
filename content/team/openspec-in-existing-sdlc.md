@@ -8,7 +8,7 @@ None of those is the right frame. In this book's OpenSpec-first workflow, OpenSp
 
 A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant. They serve different readers.
 
-The ticket is for the team. It carries priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent. It carries the delta spec, acceptance criteria, task list, and archive record. The ticket answers "is this being worked on?" The change folder answers "what is being built and how do we know it's done?"
+The ticket is for the team. It carries priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent. It carries the delta spec, acceptance criteria, task list, and archive record. The ticket answers "is this being worked on?" The change folder answers "what is being built and how do we know it is done?"
 
 Practically: create the change folder when you start the spec, link the Jira issue ID in the proposal. The spec references the ticket for context. The ticket links to the PR that implements it. The agent reads the spec. The sprint board reads the ticket. Neither replaces the other.
 
@@ -20,7 +20,7 @@ When should you skip the ticket entirely? For small behavioral changes (a one-li
 
 ## User story to acceptance criteria: the conversion
 
-A Jira user story provides the why and the what: "As a user, I want to filter results by date, so that I find recent items." The story does not provide the testable how: what happens when the date range is invalid? What does the empty state look like? What is the minimum acceptable date?
+A Jira user story provides the why and the what: "As a user, I want to filter results by date, so that I find recent items". The story does not provide the testable how: what happens when the date range is invalid? What does the empty state look like? What is the minimum acceptable date?
 
 One story maps to one or more OpenSpec change folders. The story provides the intent. The spec provides the acceptance criteria. The spec references the Jira story ID for traceability. Any reviewer can navigate from the spec back to the planning decision that initiated it.
 

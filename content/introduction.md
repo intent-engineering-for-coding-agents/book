@@ -6,7 +6,7 @@ The agent has no idea what you decided.
 
 The agent does not know the team chose against Redis last quarter. The agent cannot see why the auth flow, which looks redundant, is load-bearing: the incident from 2024 lives only in someone's head. The database column the agent is about to add was deprecated by a decision never recorded in an ADR. The architect who made that call left in 2023. The agent reasons brilliantly from the context it has. The constraint is the context.
 
-Coding agents amplify the developer driving them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them." A clueless developer with a coding agent ships clueless code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral. What it amplifies is not.
+Coding agents amplify the developer driving them. Bill Doerrfeld put it bluntly in early 2026: "AI does not create great developers, it amplifies them". A clueless developer with a coding agent ships clueless code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral. What it amplifies is not.
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
@@ -18,7 +18,7 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 *Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.*
 
-An agent in Intent Engineering plays two roles. Labor is the obvious one: the agent writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch the agent into plan or architect mode and it pushes back on your design before a line is written. The agent surfaces the assumption you treated as settled. The agent asks what you haven't asked. The same agent that generates a payment service in twenty minutes will, five minutes earlier, point out you haven't decided what happens when the payment provider times out.
+An agent in Intent Engineering plays two roles. Labor is the obvious one: the agent writes the code, drafts the spec, runs the tests, opens the PR. The less-discussed role is sparring partner. Switch the agent into plan or architect mode and it pushes back on your design before a line is written. The agent surfaces the assumption you treated as settled. The agent asks what you have not asked. The same agent that generates a payment service in twenty minutes will, five minutes earlier, point out you have not decided what happens when the payment provider times out.
 
 *Sources: Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the Developer AI category this book situates Intent Engineering within. GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.*
 
@@ -28,7 +28,7 @@ The book is organized around four topics. Each works on its own at a solo scale.
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are intent: they specify the target and prove the agent hit it. Context is the substrate. Intent is the point.
 
-Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The agent's non-determinism is the force you're paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
+Foundation: repo structure as the agent's briefing. ADRs, design docs, specs, and an agent-facing index. Not a determinism harness. The agent's non-determinism is the force you are paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
 
 Agent Instructions: `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads.
 
@@ -50,7 +50,7 @@ Run one agent or run several. Intent Engineering works broadly the same way rega
 
 *Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); OpenCode Docs (ongoing); Junie documentation in this repo, the capability-class coding agents named as the target class. Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the category-level shift that outlasts any single vendor roster.*
 
-You have shipped production code under pressure. You're skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
+You have shipped production code under pressure. You are skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
 
 What you will not find here: a vendor comparison matrix. The agent class is named, not ranked. Those matrices age in months, sometimes faster. Cost economics for seat-licensed tooling gets one paragraph in the appendix and no chapter. The spec workflow is different: OpenSpec is named, used, and inspected because the book needs a concrete operating system for change. Adoption is still pull, not push; the portability notes explain how to adapt the pattern instead of copying the repo shape blindly.
 
@@ -60,7 +60,7 @@ Some readers will arrive having just finished an ADLC explainer and wonder why t
 
 Agentic Development Lifecycle (ADLC) usually refers to building agents as products. The development side is reasoning loops, evals, hallucination budgets, the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, escalation paths that wrap a probabilistic agent in a deterministic cage. The deliverable is the agent.
 
-Intent Engineering is the other side of the table. In this book's framing, the agent is the worker, not the product. Labor is only half of it. The agent also sharpens your design and reminds you of what you haven't yet considered. The deliverable is the same software your team has always shipped, with an agent loaded into your repo conventions to write more of it. Your tests stay tests, not evals. CI checks Acceptance Criterion (AC) traceability rather than agent-behavior drift, and the spec describes the change rather than the agent.
+Intent Engineering is the other side of the table. In this book's framing, the agent is the worker, not the product. Labor is only half of it. The agent also sharpens your design and reminds you of what you have not yet considered. The deliverable is the same software your team has always shipped, with an agent loaded into your repo conventions to write more of it. Your tests stay tests, not evals. CI checks Acceptance Criterion (AC) traceability rather than agent-behavior drift, and the spec describes the change rather than the agent.
 
 If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to make an agent that writes code less clueless about your system. The two disciplines borrow vocabulary. They do not solve the same problem.
 
@@ -78,7 +78,7 @@ Reading linearly works. The chapters compound; earlier topics make later ones ef
 
 Landing here from a chapter search? Jump to the start of the topic the chapter belongs to. The four topic introductions are the smallest complete unit.
 
-## What Intent Engineering doesn't do
+## What Intent Engineering does not do
 
 Intent Engineering does not stop your agent from drifting. It gives you the surface area to detect drift and recover from it. That is a weaker claim than what most agentic-engineering material promises, and it is the one this book defends. The chapter [When Intent Engineering Fails](./foundation/when-intent-engineering-fails) lists the failure modes that survive even good initial setup. It sits inside Foundation, before any of the practices.
 

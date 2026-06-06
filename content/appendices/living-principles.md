@@ -65,7 +65,7 @@ Principles about test strategy, acceptance criteria, and what makes a test proof
 | IEC-TESTING-TEST-IS-PROOF | A test is proof when it would fail if the implementation diverged from the spec. Otherwise it is decoration. |
 | IEC-TESTING-EVERY-PATH | Every conditional branch, distinct return type, and exception path needs at least one test. |
 | IEC-TESTING-DECLARE-TEST-TYPES | Declare which test types the project uses: the agent defaults to unit tests for everything otherwise. |
-| IEC-TESTING-EXPLICIT-EXCLUSIONS | The agent cannot distinguish "not applicable" from "nobody thought of it." Exclude explicitly. |
+| IEC-TESTING-EXPLICIT-EXCLUSIONS | The agent cannot distinguish "not applicable" from "nobody thought of it". Exclude explicitly. |
 | IEC-TESTING-AC-ARE-TEST-DEFINITIONS | Every acceptance criterion is a test definition waiting to be executed: it needs a stable ID and a proof layer. |
 | IEC-TESTING-POSITIVE-NEGATIVE-MINIMUM | Every acceptance criterion has at least one positive and one negative test. Happy-path-only is not proof. |
 | IEC-TESTING-AC-ID-MONOTONE | AC IDs are stable: numbers only go up, prefix is permanent, deleted IDs leave a gap. |

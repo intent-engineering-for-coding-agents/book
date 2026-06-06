@@ -15,6 +15,6 @@ None of these are new individually. What is new is the speed at which they have 
 3. [Agent Evaluation and Regression](./agent-evaluation): golden tests for the agent setup itself, A/B comparison of instruction-file changes
 4. [AC IDs and Positive/Negative Coverage](./ac-ids-coverage): bracket-format IDs, `Test-type:` field, dual `@Tag` tagging, the AC registry, positive and negative pairs
 5. [Before, During, After: The Three Checkpoints](./checkpoints): the foundation gate, the implementation gate, and the verification gate, and what each catches that the others cannot
-6. [Security in Depth](./security-in-depth): the failure modes standard tools don't see: pattern replication, deference to the user, and cleanup PRs that remove controls
+6. [Security in Depth](./security-in-depth): the failure modes standard tools do not see: pattern replication, deference to the user, and cleanup PRs that remove controls
 7. [PR Taxonomy](./pr-taxonomy): docs, structural, behavioral; three review styles, one class per PR
 8. [.principles: Raising the Bar](./dot-principles): principle-as-code as an optional complement to specs and tests

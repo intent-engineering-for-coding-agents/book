@@ -10,7 +10,7 @@ The taxonomy is small. Three types of change, each with its own review style, ea
 
 Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
-Structural changes are reorganisations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change." The diff is often large; the cognitive load is medium; the risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
+Structural changes are reorganisations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large; the cognitive load is medium; the risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
 
 Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
 

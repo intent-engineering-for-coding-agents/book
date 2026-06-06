@@ -14,9 +14,9 @@ The agent writes a new endpoint. It looks at the nearest existing endpoint and c
 
 The agent does not distinguish between a pattern it should follow and a pattern it should not. Given the same codebase, it treats every existing pattern as valid. It sees an authorisation check and concludes that this is how authorisation is done here. It does not know that the check is incomplete, that it was implemented under time pressure and never revisited, or that the security review flagged it as a known hole. The pattern is all it has.
 
-The human reviewer catches this because they remember. They know which endpoint has the inherited hole. They know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorisation model needs revision."
+The human reviewer catches this because they remember. They know which endpoint has the inherited hole. They know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorisation model needs revision".
 
-The defense is to make the pattern the agent should follow the easiest pattern to find. A `docs/architecture/authorisation.md` that shows the canonical auth check. A comment on the broken endpoint that says "do not copy, see ADR-0012." An `AGENTS.md` rule that says authorisation patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
+The defense is to make the pattern the agent should follow the easiest pattern to find. A `docs/architecture/authorisation.md` that shows the canonical auth check. A comment on the broken endpoint that says "do not copy, see ADR-0012". An `AGENTS.md` rule that says authorisation patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
 
 ## Deference to the user
 

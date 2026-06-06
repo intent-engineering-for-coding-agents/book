@@ -36,7 +36,7 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `Sources:` line at the end of any section that draws on a specific reference. Format: `Sources: Author "Title" (Year), claim it backs.` Every source listed must carry a short tag naming the specific claim in that section it supports; a source with no claim to back does not belong on the line. See "Source-to-claim mapping" below.
-- Use American English spelling and punctuation throughout prose: `behavior` not `behavior`, `artifact` not `artifact`, `organize` not `organize`, `catalog` not `catalog`. Periods and commas go inside closing quotation marks (`"like this."` not `"like this".`). The one exception is verbatim quoted source titles, which keep their original spelling.
+- Use American English spelling and punctuation throughout prose: `behavior` not `behavior`, `artifact` not `artifact`, `organize` not `organize`, `catalog` not `catalog`. Periods and commas go outside closing quotation marks (`"like this".` not `"like this."`). The one exception is verbatim quoted source titles, which keep their original spelling.
 - Use straight quotes and apostrophes throughout (`"`, `'`). Never curly/smart quotes (`"`, `"`, `'`, `'`), in prose or code
 - Never use the em dash (`—`) anywhere in book content. It is an agent-writing tell. Rewrite using a comma, a colon, parentheses, or two sentences. This is a hard rule with no exceptions. See `voice.md`.
 - Inline code for file names, paths, command names, and flag names
@@ -45,6 +45,8 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 ## Prose style rules
 
 These rules apply to every sentence in every chapter.
+
+No contractions. Write "do not" not "don't", "cannot" not "can't", "it is" not "it's". Expanded forms read more deliberately and suit the book's register.
 
 No semicolons in prose. Replace with a period or a comma. The one exception is structured lists inside Sources lines where semicolons separate citation entries.
 
