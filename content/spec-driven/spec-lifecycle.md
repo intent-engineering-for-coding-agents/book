@@ -1,6 +1,6 @@
 # Spec Lifecycle
 
-A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. Consider the agent loading a spec that describes a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
+A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent loads a spec describing a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
 
 A spec without a lifecycle accumulates. Active specs look identical to abandoned ones. The agent cannot distinguish intent from archaeology.
 
@@ -14,7 +14,7 @@ Write: create the spec when you are about to implement, not weeks in advance. A 
 
 Critique: run the draft past a second model before human review. Not code review. Spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer has unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.
 
-Review: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
+Review: the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
 A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
 

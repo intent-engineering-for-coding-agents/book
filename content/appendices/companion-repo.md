@@ -42,6 +42,7 @@ The repo accumulated its structure in phases, each represented by a git tag. If 
 | `v0.0.1` | Bare scaffold: `pyproject.toml`, `.gitignore`, CI, source stubs |
 | `v0.1.0` | Foundation: `docs/`, ADRs 0001-0006, `openspec/` structure, `.agents/` scaffold |
 | `v0.2.0` | Agent instructions: `AGENTS.md`, `.agents/instructions/`, `update-index` skill |
+| `v0.3.0` | Version-tagging conventions; no new structure |
 | `v0.4.0` | File and structure checkers |
 | `v0.5.0` | Agent hub structure and secrets checkers |
 | `v0.6.0` | Test traceability and test coverage checkers |

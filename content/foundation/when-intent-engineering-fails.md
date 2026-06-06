@@ -16,7 +16,7 @@ Open `openspec/changes/`. There are eleven directories. Three were implemented. 
 
 The agent reads all of them as active context.
 
-A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. And it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record. It is live instruction.
+A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. And it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record. It is live instruction. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 
 *Sources: De Schryver, "Keep Agentic AI Simple" (2025), clutter as a compounding factor in agent context.*
 

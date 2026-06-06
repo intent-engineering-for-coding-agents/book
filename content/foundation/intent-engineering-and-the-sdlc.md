@@ -23,7 +23,7 @@ graph TD
     end
     subgraph Review
         D --> E[Spec review before code review]
-        E --> F[PR: docs / structural / behavior]
+        E --> F[PR: docs / structural / behavioral]
     end
     subgraph CI
         F --> G[Conventions check<br/>AC traceability<br/>tests]
@@ -57,9 +57,9 @@ The agent commits. The PR opens. Most teams treat what comes next as one step. I
 
 The spec delta says what the change is supposed to do. The code diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the code diff. Does the implementation match the intent?
 
-This sequencing is cheap to adopt and surprisingly effective. A reviewer who reads the code diff first anchors on whether the code is well-written. A reviewer who reads the spec first asks whether the change is the right change at all. That second question rarely gets asked when the diff is already in front of you.
+This sequencing is cheap to adopt and surprisingly effective: a reviewer who reads the spec first asks whether the change is the right change at all, a question that rarely gets asked once the diff is in front of you. Why it works and how to make it the default rather than the disciplined choice is the subject of [Code Review for Agent-Generated Code](../team/code-review-agent-code).
 
-PR taxonomy keeps the review focused. A `docs`-only PR does not need behavior scrutiny. A `behavior` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is PR discipline with names.
+PR taxonomy keeps the review focused. A `docs`-only PR does not need behavior scrutiny. A `behavioral` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is PR discipline with names.
 
 ## CI: the pipeline checks the conventions
 

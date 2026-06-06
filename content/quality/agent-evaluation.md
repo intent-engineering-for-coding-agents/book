@@ -1,6 +1,6 @@
 # Agent Evaluation and Regression
 
-The agent setup is code too, and it regresses without anyone touching a line of the application. Suppose someone adds one bullet to `AGENTS.md`: prefer composition over inheritance. It looks harmless. The next week the agent starts flattening service classes into helper functions, even where the inheritance carried real invariants. Each PR looks plausible on its own, so each passes review, and the shape of the codebase shifts in a direction nobody asked for. The line gets removed eventually. Nobody says when the drift started.
+The agent setup is code too, and it regresses without anyone touching a line of the application. Someone adds one bullet to `AGENTS.md`: prefer composition over inheritance. It looks harmless. The next week the agent starts flattening service classes into helper functions, even where the inheritance carried real invariants. Each PR looks plausible on its own, so each passes review, and the shape of the codebase shifts in a direction nobody asked for. The line gets removed eventually. Nobody says when the drift started.
 
 Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the missing one in most teams.
 

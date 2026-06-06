@@ -54,6 +54,10 @@ A public catalog of disclosed security flaws in software, each with a unique ide
 
 The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
 
+## Dead spec
+
+An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is live instruction, not historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+
 ## Greenfield
 
 A new codebase, or one being built from explicit intent. Greenfield Intent Engineering adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
@@ -61,6 +65,10 @@ A new codebase, or one being built from explicit intent. Greenfield Intent Engin
 ## Golden test
 
 A fixed, repeatable task with a known good output, used to detect regressions when something upstream changes. In this book, applied both to code (a stable input with an expected output) and to agent setups (a fixed task with structural properties the agent's output should satisfy). See [Agent Evaluation and Regression](/quality/agent-evaluation).
+
+## GSD (Get Shit Done)
+
+The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not justify OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
 
 ## Intent Engineering
 

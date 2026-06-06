@@ -1,6 +1,6 @@
 # Before, During, After: The Three Checkpoints
 
-A change clears every gate at merge time and is still wrong by the time it runs. Picture one that does: the spec is solid, the tests are real proof, the PR lands clean. Three weeks later an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
+How does a change clear every gate at merge time and still run wrong three weeks later? The spec is solid, the tests are real proof, the PR lands clean. Then an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
 
 Quality is not a single gate. It is three gates in sequence, each looking at something the others cannot see. Before: did the work start from a stable foundation? During: was the work carried out against a real spec, with the right context? After: does the artifact actually prove what it claims to prove?
 

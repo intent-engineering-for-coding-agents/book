@@ -50,7 +50,7 @@ Apply these when solo practices are stable and a second developer joins.
 
 - [ ] Shared instruction conventions extracted from `.agents/instructions/` into a team-level repo or inner-source library
 - [ ] Spec-review step added to the PR template
-- [ ] PR taxonomy defined and communicated (`docs`, `structural`, `behavior`)
+- [ ] PR taxonomy defined and communicated (`docs`, `structural`, `behavioral`)
 - [ ] Cross-team ADR location established if the codebase has architectural dependencies with other teams
 
 ## What not to do on day one

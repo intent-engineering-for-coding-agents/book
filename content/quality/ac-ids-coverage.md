@@ -1,6 +1,6 @@
 # AC IDs and Positive/Negative Coverage
 
-A spec and its tests are supposed to be the same promise written twice. Imagine a spec with five scenarios and a PR that ships eight tests. Two scenarios have no test at all. Three tests cover behavior the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
+A spec and its tests are supposed to be the same promise written twice. Your spec has five scenarios. The PR ships eight tests. Two scenarios have no test at all. Three tests cover behavior the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
 
 A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability. The drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 

@@ -1,6 +1,6 @@
 # Security in Depth
 
-The most dangerous agent suggestion is the one that looks like obvious hygiene. Imagine a one-line fix: a library version bump to clear a Common Vulnerabilities and Exposures (CVE) entry the dependency scanner flagged. Small PR, clean diff, passing tests.
+The most dangerous agent suggestion is the one that looks like obvious hygiene. The fix is one line: a library version bump to clear a Common Vulnerabilities and Exposures (CVE) entry the dependency scanner flagged. Small PR, clean diff, passing tests.
 
 The new version pulls in a transitive dependency that exfiltrates environment variables from build agents. The package is a typosquat of a real dependency, published two weeks earlier. The flagged CVE was genuine. The fix was still wrong. The agent had no opinion about the supply chain; it was asked to clear a warning and it cleared it.
 

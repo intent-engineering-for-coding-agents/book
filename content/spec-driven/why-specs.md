@@ -2,7 +2,7 @@
 
 An agent without a spec does not refuse to act. It guesses. A good guess is indistinguishable from the right answer until the day it is not.
 
-Suppose you ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable. But the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behavior break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
+You ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable. But the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behavior break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
 
 The agent worked from what it could see, and what it could see did not include the intent.
 

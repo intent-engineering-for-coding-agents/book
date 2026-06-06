@@ -46,7 +46,7 @@ One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the
 
 A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing a proposal, a design doc, specs per capability, and a task list. The spec itself is one artifact inside that structure. Some teams keep a simpler `/specs` folder with files named by feature. That works too, and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them. This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
 
-Written before implementation, archived after. An un-archived spec is live instruction. The agent does not know the work is done.
+Written before implementation, archived after. Leave it un-archived and the agent keeps reading finished work as a current instruction.
 
 ## The lifespans matter more than the names
 

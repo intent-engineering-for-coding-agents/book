@@ -1,6 +1,6 @@
 # Writing Instructions That Work
 
-Consider an instruction that reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
+An instruction in your repo reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
 
 Vague instructions are not neutral. They are instructions for the agent to improvise, from whatever evidence it can find. And the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent may not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
 
