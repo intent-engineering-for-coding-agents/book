@@ -6,7 +6,7 @@ export default withMermaid(
     title: 'Intent Engineering',
     description: 'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering',
     srcDir: 'content',
-    appearance: 'force-auto',
+    appearance: true,
     themeConfig: {
       nav: [
         { text: 'Home', link: '/' },
