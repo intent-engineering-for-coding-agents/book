@@ -10,6 +10,8 @@ So this is not a theory of agent swarms. It is how the one-change-per-developer 
 
 The genuinely unsolved part comes last, in [What Is Still Evolving](./what-is-still-evolving): autonomous agent-to-agent handoff, where agents coordinate with no human in the loop, is not solved by anyone in mid-2026. This book does not pretend otherwise. It describes what works now, which is smaller and more boring than the swarm pitch, and which ships.
 
+This section assumes OpenSpec because that is the workflow the book and `iec` use end-to-end. If your team uses another spec tool, translate "OpenSpec change" to the per-change spec artifact your team reviews, implements, and archives. The coordination rule is the durable part: one owned change at a time, scoped tightly enough that the branch, PR, and review all describe the same intent.
+
 ## Chapters
 
 1. [OpenSpec Across Stacks](./openspec-across-stacks): when the system has multiple tiers, one `openspec/` per stack prevents cross-tier context confusion

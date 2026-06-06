@@ -1,14 +1,14 @@
 # The Map: Intent Engineering and the SDLC
 
-The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artefacts. New review process. Your existing tooling becomes legacy on contact.
+The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artifacts. New review process. Your existing tooling becomes legacy on contact.
 
 The Software Development Life Cycle is the structured sequence a team runs to take software from idea to production: plan, build, review, integrate, deploy, maintain. Every team runs some version of it, whether they call it that or not.
 
 That pitch dies on first contact with any team with working CI, an established review culture, and a Jira board people use. So this book makes a different pitch.
 
-Intent Engineering extends the SDLC. The ceremonies stay. The artefacts inside them change.
+Intent Engineering extends the SDLC. The ceremonies stay. The artifacts inside them change.
 
-Sources: Sommerville, Software Engineering (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.
+*Sources: Sommerville, Software Engineering (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.*
 
 ## The map
 
@@ -23,7 +23,7 @@ graph TD
     end
     subgraph Review
         D --> E[Spec review before code review]
-        E --> F[PR: docs / structural / behavior]
+        E --> F[PR: docs / structural / behavioral]
     end
     subgraph CI
         F --> G[Conventions check<br/>AC traceability<br/>tests]
@@ -39,11 +39,11 @@ Five phases, none of them new. Inside each, Intent Engineering adds exactly one 
 
 ## Planning: from ticket to spec
 
-The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artefact, `openspec/changes/<name>/`, containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
+The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artifact, `openspec/changes/<name>/`, containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
 
 Not every change earns a spec. A typo fix does not. A dependency bump does not. A bug fix is less clear-cut: if the correct behavior is self-evident, skip it; if figuring out what the system was supposed to do is the hard part, that reasoning belongs in a spec before anyone writes a line to restore it. Anything touching architecture, or intended for an agent to implement: write the spec first. Planning is where intent gets fixed. Fixed intent is what the agent works from. Unfixed intent is what makes the agent produce code nobody wanted.
 
-Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.
+*Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.*
 
 ## Implementation: brief the agent through the repo
 
@@ -57,9 +57,9 @@ The agent commits. The PR opens. Most teams treat what comes next as one step. I
 
 The spec delta says what the change is supposed to do. The code diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the code diff. Does the implementation match the intent?
 
-This sequencing is cheap to adopt and surprisingly effective. A reviewer who reads the code diff first anchors on whether the code is well-written. A reviewer who reads the spec first asks whether the change is the right change at all. That second question rarely gets asked when the diff is already in front of you.
+This sequencing is cheap to adopt and surprisingly effective: a reviewer who reads the spec first asks whether the change is the right change at all, a question that rarely gets asked once the diff is in front of you. Why it works and how to make it the default rather than the disciplined choice is the subject of [Code Review for Agent-Generated Code](../team/code-review-agent-code).
 
-PR taxonomy keeps the review focused. A `docs`-only PR does not need behaviour scrutiny. A `behavior` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is PR discipline with names.
+PR taxonomy keeps the review focused. A `docs`-only PR does not need behavior scrutiny. A `behavioral` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is PR discipline with names.
 
 ## CI: the pipeline checks the conventions
 
@@ -67,7 +67,7 @@ A conventions check runs on every push. It validates that `AGENTS.md` is present
 
 AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival. Six months later, the audit trail still answers "which test covered this?" without grep guessing.
 
-Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.
+*Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.*
 
 ## Maintenance: the step everyone skips
 

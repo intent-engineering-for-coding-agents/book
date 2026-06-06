@@ -16,7 +16,7 @@ The shared architecture repository pattern: a repository (or sub-directory in a 
 
 This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The only addition is the instruction to agents to read the shared repo as part of their pre-spec context loading.
 
-Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the durable, human-readable decision record.
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the durable, human-readable decision record.*
 
 ## Inner source for `.agents/` libraries
 
@@ -46,7 +46,7 @@ The current practice is: one change folder per repository, each referencing the 
 
 This works, but it requires human coordination that the change folder model was designed to reduce. OpenSpec's roadmap includes better multi-repo support. As of mid-2026, teams building cross-repo features should plan for the manual coordination overhead.
 
-Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), single-repository change-folder model and the roadmap's acknowledged multi-repo gap.
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), single-repository change-folder model and the roadmap's acknowledged multi-repo gap.*
 
 ## Governance without bureaucracy is still unsolved
 

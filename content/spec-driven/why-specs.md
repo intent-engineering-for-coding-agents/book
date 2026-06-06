@@ -2,7 +2,7 @@
 
 An agent without a spec does not refuse to act. It guesses. A good guess is indistinguishable from the right answer until the day it is not.
 
-Suppose you ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable. But the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behaviour break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
+You ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable. But the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behavior break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
 
 The agent worked from what it could see, and what it could see did not include the intent.
 
@@ -14,6 +14,10 @@ It is not a requirements document in the enterprise sense. No mandatory sections
 
 Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created and the 201 is returned with the ID. These scenarios double as test definitions: each one maps to a test. The spec is not done when the prose is written. It is done when the tests pass.
 
+This change-scoped definition is the working synthesis this book uses. It distills the lightweight spec frameworks rather than enterprise requirements practice: the spec stays small, lives beside the code, and earns its keep through acceptance criteria a test verifies.
+
+*Sources: Fission AI, OpenSpec; LeanSpec, the change-scoped spec and acceptance-criteria structure this book's working definition distills.*
+
 ## The practical motivation
 
 Three things break without a spec, and they break in order.
@@ -24,7 +28,7 @@ Drift compounds second. Every session that extends or modifies the feature works
 
 Traceability disappears third. A code review asks "does this implementation match the spec?" only if there is a spec. A PR that arrives without one requires the reviewer to reconstruct intent from the diff, which is backward. Review the intent first, then the diff. Without the spec, the only thing to review is the diff.
 
-Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for.
+*Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for.*
 
 ## The waterfall objection
 

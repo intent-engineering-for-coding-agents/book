@@ -12,13 +12,13 @@ The fix is structural and slightly painful. Treat `AGENTS.md` as part of the arc
 
 ## Dead specs
 
-Open `openspec/changes/`. There are eleven directories. Three were implemented. Two were cancelled. One was implemented but never archived. One is partially done and the original author left. Three are competing proposals for the same change. One is from when the team tried OpenSpec for a week and stopped.
+Open `openspec/changes/`. There are eleven directories. Three were implemented. Two were canceled. One was implemented but never archived. One is partially done and the original author left. Three are competing proposals for the same change. One is from when the team tried OpenSpec for a week and stopped.
 
 The agent reads all of them as active context.
 
-A dead spec is worse than no spec. It tells the agent authoritatively about behaviour the system no longer has, decisions that were reversed, and acceptance criteria never proven. And it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record. It is live instruction.
+A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. And it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record. It is live instruction. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 
-Sources: De Schryver, "Keep Agentic AI Simple" (2025), clutter as a compounding factor in agent context.
+*Sources: De Schryver, "Keep Agentic AI Simple" (2025), clutter as a compounding factor in agent context.*
 
 ## Agent-accelerated tech debt
 
@@ -26,7 +26,7 @@ Without spec-first discipline, the agent produces code that satisfies the immedi
 
 The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the constraints it needs. ADRs the agent reads are constraints the agent will follow. Constraints living only in human memory are constraints the agent will violate.
 
-Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (Mar 22, 2025), agent velocity as amplifier.
+*Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (Mar 22, 2025), agent velocity as amplifier.*
 
 ## Over-spec
 
@@ -34,7 +34,7 @@ The team writes 500-line specs for a config rename. The spec becomes the bottlen
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
-Sources: LeanSpec (lean-spec.dev), small-spec discipline and formality-to-risk matching.
+*Sources: LeanSpec (lean-spec.dev), small-spec discipline and formality-to-risk matching.*
 
 The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further. The summary is: small specs get implemented. Long ones get drift.
 
@@ -46,7 +46,7 @@ A conventions check in CI closes part of this loop. It catches structural violat
 
 The Quality and Verification topic gets the most leverage on this. Specifically, the agent-evaluation chapter, which covers how to test whether your AGENTS.md has stopped working without waiting for the next outage to find out.
 
-## Why the rest of the book is organised the way it is
+## Why the rest of the book is organized the way it is
 
 Each topic targets one or more of these modes directly:
 
@@ -62,4 +62,4 @@ The point is not zero drift. That is not on offer. The point is drift that is de
 
 Drift with no detection is the hardest failure mode because nothing alerts you to it. You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
 
-Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.
+*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*

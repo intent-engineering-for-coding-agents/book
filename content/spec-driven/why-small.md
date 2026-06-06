@@ -20,7 +20,7 @@ This framing has a useful property: the spec size is naturally bounded by the PR
 
 It has a second useful property: the spec is not supposed to freeze the scope. Changes emerge during implementation and PR review. The spec anchors the intent so the implementation does not drift from it, but anchoring is not the same as locking. When the implementation reveals that scenario four was based on a wrong assumption, update the spec. The spec is a living document until the implementation merges. After that, it archives.
 
-Sources: LeanSpec, the one-PR-scoped spec and small-spec discipline. Anthropic, "Building effective agents" (Dec 2024), keeping the agent's working context tight enough to hold the whole task.
+*Sources: LeanSpec, the one-PR-scoped spec and small-spec discipline. Anthropic, "Building effective agents" (Dec 2024), keeping the agent's working context tight enough to hold the whole task.*
 
 ## The size argument
 
@@ -42,9 +42,7 @@ Write small and write precisely. The constraint is not "fewer words". It is "one
 
 Quantity has a threshold, and a decent rule of thumb is ten. Ten tasks in a spec. Ten files in a PR. The number is not magic and it is not a rule in any strict sense. Eight would work, twelve would work. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. A rule of thumb you cannot hold in your head under deadline pressure is not useful as that. It is a footnote.
 
-The limit is for the humans in the loop, not the agent. The agent can re-read a twenty-three-task spec on every step. The reviewer cannot re-read a twenty-three-file diff while also judging whether the intent was right in the first place. Ten is roughly the point where a change still fits in one reviewer's head across a single sitting.
-
-Why ten and not twenty? The number is not a property of the code. It is a property of the reviewer: the point past which a person stops holding the whole change in their head and starts approving it in pieces, trusting that the pieces add up. Twenty distinct, unrelated edits is past that point for almost everyone. You have not reviewed it. You have scrolled it.
+The limit is for the humans in the loop, not the agent. The agent can re-read a twenty-three-task spec on every step. The reviewer cannot re-read a twenty-three-file diff while also judging whether the intent was right in the first place. Ten is roughly the point past which a person stops holding the whole change in their head and starts approving it in pieces, trusting that the pieces add up. Twenty distinct, unrelated edits is past that point for almost everyone. You have not reviewed it. You have scrolled it.
 
 That also means the number is yours to calibrate. A language that fans every change across many files (Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit) pushes the honest ceiling up. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack, and expect to adjust it as you learn where your own reviews start to skim. What does not move is the reason the number exists: one reviewer, one sitting, the whole change in view. Write down twenty and you have not raised the ceiling. You have stopped measuring it.
 
@@ -58,6 +56,6 @@ File count is a rougher signal than task count. Ten files is a soft default. Fif
 
 The `openspec/changes/<name>/` folder and everything in it, the proposal, delta spec, design doc, and task list, does not count toward the file total. That is intent, not implementation.
 
-Sources: LeanSpec, small-spec discipline and formality-to-risk matching.
+*Sources: LeanSpec, small-spec discipline and formality-to-risk matching.*
 
 Once the task list has the right number of items, the next question is which one the agent tackles first.

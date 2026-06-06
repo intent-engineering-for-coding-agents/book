@@ -36,11 +36,11 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
 - No heading levels deeper than H3 inside a chapter
 - `Sources:` line at the end of any section that draws on a specific reference. Format: `Sources: Author "Title" (Year), claim it backs.` Every source listed must carry a short tag naming the specific claim in that section it supports; a source with no claim to back does not belong on the line. See "Source-to-claim mapping" below.
-- Use American English punctuation conventions: periods and commas go inside closing quotation marks (`"like this."` not `"like this".`)
+- Use American English spelling and punctuation throughout prose: `behavior` not `behavior`, `artifact` not `artifact`, `organize` not `organize`, `catalog` not `catalog`. Periods and commas go inside closing quotation marks (`"like this."` not `"like this".`). The one exception is verbatim quoted source titles, which keep their original spelling.
 - Use straight quotes and apostrophes throughout (`"`, `'`). Never curly/smart quotes (`"`, `"`, `'`, `'`), in prose or code
 - Never use the em dash (`—`) anywhere in book content. It is an agent-writing tell. Rewrite using a comma, a colon, parentheses, or two sentences. This is a hard rule with no exceptions. See `voice.md`.
 - Inline code for file names, paths, command names, and flag names
-- No bold or italic emphasis in prose. Do not use `**bold**` or `*italic*` to emphasise words in running text. Bold and italic are agent-writing tells. Use sentence structure to carry emphasis instead. Exception: inline code (backticks) is fine; book titles in Sources lines use quotes.
+- No bold or italic emphasis in prose. Do not use `**bold**` or `*italic*` to emphasize words in running text. Bold and italic are agent-writing tells. Use sentence structure to carry emphasis instead. Exceptions: inline code (backticks) is fine; book titles in Sources lines use quotes; the `Sources:` citation line itself is wrapped whole in italics (`*Sources: ...*`) to set it apart from body prose. The italic wrapper is sanctioned only for the complete Sources line, not for emphasizing words inside it.
 
 ## Prose style rules
 
@@ -65,7 +65,7 @@ Notes on the list:
 
 Avoid constructions like "not just X, but also Y." Rewrite as two direct sentences.
 
-No setup language: no "in conclusion," "in closing," "to summarise," "as mentioned above."
+No setup language: no "in conclusion," "in closing," "to summarize," "as mentioned above."
 
 No unnecessary adjectives or adverbs. If the word does not change what the sentence says, cut it.
 
@@ -108,7 +108,7 @@ A source that does not back any claim in its section must be removed, not annota
 
 ## Living principles
 
-Every chapter expresses normative claims: rules about how things should be done. When you draft a new chapter or substantively edit an existing one, extract any new principles that emerged and add them to the catalogue.
+Every chapter expresses normative claims: rules about how things should be done. When you draft a new chapter or substantively edit an existing one, extract any new principles that emerged and add them to the catalog.
 
 1. After completing the draft, scan for normative claims: "must", "should", "always", "never", "the rule is", load-bearing theses, claims about how to structure work the agent does
 2. For each new principle not already in `principles/iec/`, create a new `.md` file in the appropriate category directory (`principles/iec/foundation/`, `principles/iec/context/`, `principles/iec/specs/`, `principles/iec/testing/`, `principles/iec/quality/`, `principles/iec/team/`)

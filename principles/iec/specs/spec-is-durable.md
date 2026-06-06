@@ -7,11 +7,11 @@
 
 ## Principle
 
-The specification is the durable artefact. The implementation is disposable. With agentic regeneration, code is downstream of spec. Review intent before diff. Specs outlive the codebase; agents regenerate code from spec, not the reverse. This inverts the historical default where code was the canonical artefact and specs were a temporary alignment tool.
+The specification is the durable artifact. The implementation is disposable. With agentic regeneration, code is downstream of spec. Review intent before diff. Specs outlive the codebase; agents regenerate code from spec, not the reverse. This inverts the historical default where code was the canonical artifact and specs were a temporary alignment tool.
 
 ## Why it matters
 
-If the code is the canonical artefact, every regeneration is a rewrite from scratch with no anchor. If the spec is canonical, regeneration is repeatable. The team's investment shifts from preserving code to preserving intent. The code can be thrown away and rebuilt because the spec tells the agent what to build.
+If the code is the canonical artifact, every regeneration is a rewrite from scratch with no anchor. If the spec is canonical, regeneration is repeatable. The team's investment shifts from preserving code to preserving intent. The code can be thrown away and rebuilt because the spec tells the agent what to build.
 
 ## Violations to detect
 

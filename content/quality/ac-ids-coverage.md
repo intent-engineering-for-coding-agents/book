@@ -1,6 +1,6 @@
 # AC IDs and Positive/Negative Coverage
 
-A spec and its tests are supposed to be the same promise written twice. Imagine a spec with five scenarios and a PR that ships eight tests. Two scenarios have no test at all; three tests cover behaviour the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
+A spec and its tests are supposed to be the same promise written twice. Consider a spec with five scenarios. The PR ships eight tests. Two scenarios have no test at all. Three tests cover behavior the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
 
 A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability. The drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 
@@ -8,13 +8,13 @@ A spec and a test suite that drift apart silently are worse than no spec at all.
 
 An AC ID is a stable, scenario-level identifier. Format: a bracketed prefix and a zero-padded number, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one. Tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
-The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognises the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
+The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognizes the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is exactly the thing that does not match for long. With an identifier, the test moves, the scenario heading changes, the file splits into two, and the linkage holds.
 
-This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behaviour.
+This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible." OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behavior. In `iec`, the convention is recorded in ADR-0005.
 
-Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC ID and `Test-type:` convention this chapter documents.
+*Sources: OpenSpec (openspec.dev) and its FAQ (2026), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber/Gherkin scenario structure, the `Given/When/Then` form this builds on. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the book convention for AC IDs and `Test-type:` as demonstrated in the companion repo.*
 
 ## The recommended field: `Test-type:`
 
@@ -33,6 +33,8 @@ Test-type: integration
 `Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses; with it, the category is locked at spec review.
 
 A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed. Test methods get extracted. A path hardcoded in the spec goes stale without anyone noticing, which is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
+
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the `Test-type:` field and test-back-to-spec tagging convention. This field is a book and `iec` convention layered onto OpenSpec, not an OpenSpec requirement.*
 
 ## Framework tagging: two annotations, two uses
 
@@ -55,6 +57,8 @@ Two tags, two independent uses. The traceability scanner greps for `SC-001` to v
 
 Frameworks without a native tag mechanism fall back to a comment on the test method: `// AC: SC-001 | integration`. The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag; it is better than nothing.
 
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), dual tagging by AC ID and test type. Framework-specific syntax above is illustrative implementation guidance.*
+
 ## The AC registry
 
 AC IDs are stable because they are monotone: numbers only go up. When a scenario is deleted, its ID is not reused. `GV-007` removed leaves a permanent gap. A changelog entry, a bug report, or a comment in code that references `GV-007` will find no scenario, which is the correct answer. No ambiguity about whether the slot was reassigned.
@@ -73,6 +77,8 @@ When adding a new scenario: look up the prefix, use the `Next` value as the ID, 
 
 The prefix itself is permanent. Never reassign it to a different component. `GV` means graph-validator for the lifetime of the project. If the component is renamed, the prefix stays.
 
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), monotone IDs, registry allocation, and permanent prefixes as repo convention.*
+
 ## Positive proof is not enough
 
 The default test for "user submits a valid form" passes when the form is accepted. That is one half of the proof. The other half is that an invalid form is rejected, with the right error, at the right layer. Both halves are required. The happy-path-only test suite proves that the feature works in the easy case. It says nothing about the failure case, which is where features break in production.
@@ -82,6 +88,8 @@ The rule: every acceptance criterion has at least one positive test and at least
 This sounds like doubling the work. It doubles the test count, not the work. The two tests share setup, share the request structure, share the fixtures. What differs is the assertion. A 400 is asserted instead of a 201; an error payload is asserted instead of a success payload. The cost is small. The defect class it catches is the one that ships when the positive test passes and nobody wrote the negative.
 
 A coverage check makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). The check does not measure quality. It measures the shape of the suite.
+
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as executable feedback against behavior. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), positive and negative coverage as the companion-repo convention.*
 
 ## A worked example
 
@@ -117,12 +125,16 @@ Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix becau
 
 What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
 
+*Sources: Cucumber/Gherkin scenario structure, the `Given/When/Then` acceptance-scenario form. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), strict AC ID and `Test-type:` pairing as the companion-repo convention.*
+
 ## The format is flexible, the link is not
 
 The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
 
-Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behaviour than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists. It does not verify the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
+Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists. It does not verify the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
 
-Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine; the ID stays, the wording changes, the test still proves the new wording because the new wording describes the same behaviour. A scenario being rewritten to specify a different behaviour, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artefact gets a new identifier.
+Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine; the ID stays, the wording changes, the test still proves the new wording because the new wording describes the same behavior. A scenario being rewritten to specify a different behavior, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artifact gets a new identifier.
+
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), stable IDs, non-reuse, and traceability rules. Michael Nygard, "Documenting Architecture Decisions" (2011), new identifiers for changed decisions as the ADR analogy used here.*
 
 IDs and pairs are the mechanics. The next chapter is where those mechanics fit into a project's calendar: when each check is paid attention to, before and during and after the change.

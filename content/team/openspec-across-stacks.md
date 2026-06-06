@@ -4,13 +4,13 @@ Give an agent the whole monorepo as context and it will confidently call the wro
 
 The spec never said which API to call. With every tier's specs in reach and no signal about which tier it was working in, the agent resolved the ambiguity the wrong way, and felt certain doing it.
 
-This is not an agent failure. The context was ambiguous. The agent resolved the ambiguity as best it could. The problem is upstream: a single `openspec/` directory shared across three tiers of a system gives every agent access to every tier's specs, and no signal about which tier it is working in.
+The problem is upstream. A single `openspec/` directory shared across three tiers of a system gives every agent access to every tier's specs, and no signal about which tier it is working in.
 
 ## One `openspec/` per stack
 
 The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or sub-directory. The agent working on the front-end never sees the back-end specs. It knows its contracts, its acceptance criteria, its pending changes. The back-end specs are not its context.
 
-```
+```text
 front-end/
   openspec/
     changes/
@@ -36,7 +36,7 @@ A unified `openspec/` across stacks gives the agent three codebases of context i
 
 This is book synthesis. There is no widely-adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
-Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
 ## Front-end context: design system and Figma
 
@@ -65,7 +65,7 @@ graph TD
 
 The ADR is permanent. The change folders are temporary. They are archived after implementation. The contract outlives both.
 
-Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
 
 ## When a change spans tiers
 

@@ -4,7 +4,7 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognisable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
@@ -40,7 +40,7 @@ A design principle where the tool uses the caller's model provider credentials r
 
 ## Capability-class agent
 
-A CLI agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. At the time of writing, examples include Claude Code, Codex CLI, OpenCode, and Junie CLI. IDE-only assistants and completion-only tools are out of scope.
+A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. At the time of writing, examples include Claude Code, Codex CLI, OpenCode, and Junie. Completion-only tools are out of scope.
 
 ## CSRF (Cross-Site Request Forgery)
 
@@ -48,11 +48,15 @@ A web attack class in which an authenticated user's browser is induced to submit
 
 ## CVE (Common Vulnerabilities and Exposures)
 
-A public catalogue of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [Security in Depth](/quality/security-in-depth).
+A public catalog of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [Security in Depth](/quality/security-in-depth).
 
 ## Cognitive debt
 
 The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
+
+## Dead spec
+
+An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is live instruction, not historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 ## Greenfield
 
@@ -61,6 +65,10 @@ A new codebase, or one being built from explicit intent. Greenfield Intent Engin
 ## Golden test
 
 A fixed, repeatable task with a known good output, used to detect regressions when something upstream changes. In this book, applied both to code (a stable input with an expected output) and to agent setups (a fixed task with structural properties the agent's output should satisfy). See [Agent Evaluation and Regression](/quality/agent-evaluation).
+
+## GSD (Get Shit Done)
+
+The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not justify OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
 
 ## Intent Engineering
 
@@ -92,15 +100,15 @@ A spec-driven-development framework (openspec.dev) built around a change-folder 
 
 ## skeleton.md
 
-An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artefact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artifact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## Spec
 
-In this book's sense: the canonical specification of system behaviour. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
+In this book's sense: the canonical specification of system behavior. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
 
 ## SDD (Spec-Driven Development)
 
-The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and treated as the durable artefact from which code is generated. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
+The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and treated as the durable artifact from which code is generated. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
 
 ## Test-type field
 

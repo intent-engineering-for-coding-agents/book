@@ -1,6 +1,6 @@
 # Skills, Commands, and Hooks
 
-Some work is a recipe, not a judgement call. Updating `docs/INDEX.md` after touching `docs/` is five fixed steps: scan the directory, list the files, read each heading, update the INDEX, update the subdirectory listings. Write those five steps into an instruction file and the agent follows them, mostly. Start a session mid-task or after a context reset and step four gets skipped. The INDEX drifts, and the next session loads it and gets the wrong map.
+Some work is a recipe, not a judgment call. Updating `docs/INDEX.md` after touching `docs/` is five fixed steps: scan the directory, list the files, read each heading, update the INDEX, update the subdirectory listings. Write those five steps into an instruction file and the agent follows them, mostly. Start a session mid-task or after a context reset and step four gets skipped. The INDEX drifts, and the next session loads it and gets the wrong map.
 
 The problem was not the instruction. The problem was treating a repeatable workflow as something the agent should decide to run. Skills exist for exactly this.
 
@@ -18,13 +18,13 @@ A skill is a Markdown file. What it contains determines whether the agent runs i
 
 Discrete steps matter most. Not "update the documentation" but "scan `docs/` with `ls -R`; for each directory, read the heading of each Markdown file; regenerate `docs/INDEX.md` with file path and heading; regenerate each `README.md` with a sorted list". Discrete steps can be checked off. Prose cannot.
 
-Add a completion condition. How does the agent know it is done? "Run `iec check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realise there is a step five.
+Add a completion condition. How does the agent know it is done? "Run `iec check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realize there is a step five.
 
 Anticipate the most common failure. If the skill reads file headings and a file has no heading, what should the agent do? A skill that answers this question runs more reliably than one that leaves the agent to improvise at the moment it encounters the exception.
 
 There is a shortcut for the whole section above. You do not need to write the skill yourself. Describe the workflow to the agent, tell it you want a reusable skill file it can invoke as a slash command, and let it draft the Markdown. Review the output, correct any steps that are wrong, and commit. The agent that authored the skill is the same agent that will run it. It tends to know its own edge cases.
 
-Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design. Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the agent authoring its own skill files.
+*Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design. Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the agent authoring its own skill files.*
 
 ## Commands are skills with a human trigger
 
@@ -42,7 +42,7 @@ The design question for a hook is not "what should the agent remember to do?" It
 
 Effective hooks are narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every file edit will block the agent at every step and either get disabled or teach the agent to avoid editing files. Hooks should prevent specific drift, not rerun CI.
 
-The tradeoff: hook tooling is still maturing. Syntax is not standardised across tools. Failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
+The tradeoff: hook tooling is still maturing. Syntax is not standardized across tools. Failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
 
 ## The instruction/skill/hook triangle
 
@@ -54,7 +54,7 @@ Stack them in that order. Get the instruction right first: specific, testable, c
 
 ## The learning curve
 
-Skills and hooks require upfront investment. A skill needs discrete steps, a completion condition, and failure handling. A hook needs a trigger definition, a script, and debugging when it blocks unexpectedly. Both require learning the tooling, which varies by agent and is not standardised across tools.
+Skills and hooks require upfront investment. A skill needs discrete steps, a completion condition, and failure handling. A hook needs a trigger definition, a script, and debugging when it blocks unexpectedly. Both require learning the tooling, which varies by agent and is not standardized across tools.
 
 Not every workflow justifies the investment. A procedure that appears once a month does not need a skill. An instruction is enough. A check that fails once a quarter does not need a hook. Code review catches it. The automation pays off when the procedure is frequent or the failure is expensive. Below that threshold, the coordination cost exceeds the benefit.
 

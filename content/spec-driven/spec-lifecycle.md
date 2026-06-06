@@ -1,10 +1,12 @@
 # Spec Lifecycle
 
-A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. Consider the agent loading a spec that describes a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
+A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent loads a spec describing a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
 
 A spec without a lifecycle accumulates. Active specs look identical to abandoned ones. The agent cannot distinguish intent from archaeology.
 
 ## The five stages
+
+The five stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
 
 One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you may finish the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
 
@@ -12,7 +14,7 @@ Write: create the spec when you are about to implement, not weeks in advance. A 
 
 Critique: run the draft past a second model before human review. Not code review. Spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer has unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.
 
-Review: the same PR review culture that applies to code applies here. One difference: review the spec before the implementation, not after. A reviewer who reads the diff before the spec reverse-engineers the intent from the code and evaluates whether the code is correct. A reviewer who reads the spec first evaluates whether the intent is correct and whether the implementation matches. These are different reviews.
+Review: the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
 A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
 
@@ -22,7 +24,7 @@ Archive: when the PR merges, archive the change folder. Delta specs merge into `
 
 The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
-Sources: Fission AI, OpenSpec. GitHub, Spec-Kit. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026).
+*Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
 
 ## Writing the task list
 

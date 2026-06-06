@@ -3,11 +3,11 @@
 **Layer**: 1
 **Categories**: quality, pr, review
 **Applies-to**: code
-**Summary**: `docs`, `structural`, and `behavior` PRs use different review styles — one PR per class.
+**Summary**: `docs`, `structural`, and `behavioral` PRs use different review styles — one PR per class.
 
 ## Principle
 
-Three PR classes: `docs`, `structural`, `behavior`. Three review styles. One PR per class. A docs PR that contains a single character of code change is no longer a docs PR. A behavioral change bundled with a structural refactor hides the signal in the noise. Separating them makes each diff reviewable against its own standard.
+Three PR classes: `docs`, `structural`, `behavioral`. Three review styles. One PR per class. A docs PR that contains a single character of code change is no longer a docs PR. A behavioral change bundled with a structural refactor hides the signal in the noise. Separating them makes each diff reviewable against its own standard.
 
 ## Why it matters
 
@@ -21,7 +21,7 @@ When a PR mixes behavioral and structural changes, the reviewer must simultaneou
 
 ## Good practice
 
-Label every PR: `docs`, `structural`, `behavior`. The label tells reviewers what lens to apply. Behavioral changes do not include drive-by formatting — surface the observation in the PR description as a follow-up, not a side effect.
+Label every PR: `docs`, `structural`, `behavioral`. The label tells reviewers what lens to apply. Behavioral changes do not include drive-by formatting — surface the observation in the PR description as a follow-up, not a side effect.
 
 ## Sources
 

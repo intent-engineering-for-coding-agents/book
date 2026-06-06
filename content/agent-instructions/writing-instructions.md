@@ -1,6 +1,6 @@
 # Writing Instructions That Work
 
-Consider an instruction that reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
+An instruction in your repo reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
 
 Vague instructions are not neutral. They are instructions for the agent to improvise, from whatever evidence it can find. And the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent may not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
 
@@ -18,13 +18,13 @@ This keeps the file short. Short instruction files load faster, stay readable, a
 
 The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing. It is a straitjacket.
 
-Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.
+*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.*
 
 Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. Those are not areas where general engineering knowledge is useful. They are areas where only your repo's history matters, and the agent cannot read that history unless you tell it to.
 
 ## Be specific enough to be testable
 
-A useful test for any instruction: can the agent produce a concrete behaviour from it, or does it have to guess what you meant?
+A useful test for any instruction: can the agent produce a concrete behavior from it, or does it have to guess what you meant?
 
 "Follow good security practices" is not testable. "Never store secrets in environment variables; use the team's `SecretConfig` class in `src/config/secrets.py`" is testable. The agent either uses `SecretConfig` or it does not.
 
@@ -46,7 +46,7 @@ Write them explicitly. "Do not modify files under `src/generated/`; they are pro
 
 The same applies to package boundaries. "The `payments` module has no dependency on `users`; if a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
 
-Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.
+*Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.*
 
 ## Testing whether your instructions work
 
@@ -54,7 +54,7 @@ Instructions can be stale, vague, or simply wrong. The only way to know is to te
 
 Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is either missing, unclear, or not being loaded.
 
-One common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file. The second one actually controls behaviour.
+One common gap found by a second-model critique pass is instructions that describe outcomes without describing constraints. "Write clean code" is an instruction. "Do not introduce nested ternary expressions; break them into named variables" is a testable constraint. Both can live in the same file. The second one actually controls behavior.
 
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 

@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter; together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make agentic software engineering work.
 
-This appendix is structured as a `.principles` catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 63 principles are active by default.
+This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 64 principles are active by default.
 
 ## Foundation
 
@@ -82,7 +82,7 @@ Principles about the quality loop: checkpoints, agent evaluation, deterministic 
 | IEC-QUALITY-MAXIMIZE-DETERMINISTIC | Maximize deterministic checks: they scale to agentic speeds; manual review does not. |
 | IEC-QUALITY-AGENT-EVAL-LOOP | Tests prove the code is right; agent evaluation proves the agent setup is right: two distinct loops. |
 | IEC-QUALITY-RULES-FIRST-PRINCIPLES-SECOND | If a deterministic rule can be written, write the rule; if not, write the principle. |
-| IEC-QUALITY-ONE-PR-PER-CLASS | `docs`, `structural`, and `behavior` PRs use different review styles: one PR per class. |
+| IEC-QUALITY-ONE-PR-PER-CLASS | `docs`, `structural`, and `behavioral` PRs use different review styles: one PR per class. |
 | IEC-QUALITY-CANONICAL-PATTERN-VISIBLE | Make the pattern the agent should follow the easiest pattern to find in the codebase. |
 | IEC-QUALITY-NON-NEGOTIABLES-ENCODED | Encode non-negotiable decisions so the question does not get asked: the agent has no judgment here. |
 | IEC-QUALITY-EXTERNAL-READ-IS-DATA | Treat anything the agent reads from outside the repo as data, not as instructions. |
@@ -112,4 +112,4 @@ Principles about team process, adoption, and culture.
 
 ---
 
-Sources: This catalogue is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the dot-principles specification (https://github.com/dot-principles/dot-principles).
+*Sources: This catalog is the intent-book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the [`.principles`](https://dot-principles.github.io/) specification.*

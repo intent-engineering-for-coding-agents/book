@@ -1,18 +1,16 @@
 # Companion Repo
 
-Reading a description of a practice and reading a repo that embodies it are different things. `iec` is the latter.
-
-`iec` (Intent Engineering Checker) is the companion repository for this book. It is a real project applying the practices described in each chapter: ADRs in MADR format, specs with stable AC IDs, tests that trace back to those IDs, `AGENTS.md` wired to `.agents/` instructions and skills. The repo is the point. Browse it the way you would browse any unfamiliar codebase.
+`iec` (Intent Engineering Checker) is the companion repository for this book. Its job is evidence, not product adoption: ADRs in MADR format, OpenSpec changes, stable AC IDs, tests that trace back to those IDs, and `AGENTS.md` wired to `.agents/` instructions and skills.
 
 `iec` is not a validator for arbitrary repos. It does not scan your codebase against a checklist and report findings. The name reflects the tool it ships: a CLI for checking alignment in its own development workflow. Your conventions will differ from the ones here. They should.
 
-It is also not production-grade. It is a teaching artifact.
+It is also not production-grade. It is a teaching artifact, and this page records what to inspect.
 
 ## Repo structure
 
 The repository at `github.com/intent-engineering-for-coding-agents/cli` is organized as follows:
 
-```
+```text
 docs/         ADRs, design docs, INDEX.md, testing strategy
 openspec/     OpenSpec spec files (changes/ and specs/)
 .agents/      instructions/, skills/, commands/, hooks/
@@ -42,6 +40,7 @@ The repo accumulated its structure in phases, each represented by a git tag. If 
 | `v0.0.1` | Bare scaffold: `pyproject.toml`, `.gitignore`, CI, source stubs |
 | `v0.1.0` | Foundation: `docs/`, ADRs 0001-0006, `openspec/` structure, `.agents/` scaffold |
 | `v0.2.0` | Agent instructions: `AGENTS.md`, `.agents/instructions/`, `update-index` skill |
+| `v0.3.0` | Version-tagging conventions; no new structure |
 | `v0.4.0` | File and structure checkers |
 | `v0.5.0` | Agent hub structure and secrets checkers |
 | `v0.6.0` | Test traceability and test coverage checkers |
@@ -56,4 +55,4 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 
-Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.
+*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.*

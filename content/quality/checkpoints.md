@@ -1,8 +1,8 @@
 # Before, During, After: The Three Checkpoints
 
-A change clears every gate at merge time and is still wrong by the time it runs. Picture one that does: the spec is solid, the tests are real proof, the PR lands clean. Three weeks later an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
+How does a change clear every gate at merge time and still run wrong three weeks later? The spec is solid, the tests are real proof, the PR lands clean. Then an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
 
-Quality is not a single gate. It is three gates in sequence, each looking at something the others cannot see. Before: did the work start from a stable foundation? During: was the work carried out against a real spec, with the right context? After: does the artefact actually prove what it claims to prove?
+Quality is not a single gate. It is three gates in sequence, each looking at something the others cannot see. Before: did the work start from a stable foundation? During: was the work carried out against a real spec, with the right context? After: does the artifact actually prove what it claims to prove?
 
 ## Before: the foundation gate
 
@@ -16,7 +16,7 @@ The design system is the part most teams skip until it breaks. UI components, AP
 
 The test convention belongs here alongside the design system: which test types the project uses, which frameworks cover each, how `@Tag` annotations are applied, what the coverage thresholds are. A `docs/architecture/test-strategy.md` document that the agent reads before it writes its first test is the difference between a consistent test suite and one that accumulated all its patterns by accident. The [Test Strategy and Convention](./test-strategy) chapter covers what goes in it.
 
-Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.
+*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.*
 
 ## During: the implementation gate
 
@@ -32,9 +32,9 @@ The minimum during-checkpoint is three questions. Is the spec the same one the a
 
 ## After: the verification gate
 
-The after-checkpoint runs on what was produced. The spec is done. The implementation is done. The tests pass. The question is whether the artefact actually closes the loop.
+The after-checkpoint runs on what was produced. The spec is done. The implementation is done. The tests pass. The question is whether the artifact actually closes the loop.
 
-The verification checks the things automation cannot catch on its own. Did the implementation introduce code unrelated to the spec? Scope creep in agentic PRs is common; the agent passing through a file fixes things it noticed along the way, and those fixes ship without review. Did the tests added actually exercise the acceptance criteria, or did they assert behaviour the agent invented? An AC ID linking a scenario to a test that asserts something different is the silent-drift failure mode.
+The verification checks the things automation cannot catch on its own. Did the implementation introduce code unrelated to the spec? Scope creep in agentic PRs is common; the agent passing through a file fixes things it noticed along the way, and those fixes ship without review. Did the tests added actually exercise the acceptance criteria, or did they assert behavior the agent invented? An AC ID linking a scenario to a test that asserts something different is the silent-drift failure mode.
 
 Refactoring is the after-checkpoint where most teams stop. The agent generated code; the code worked; ship it. The book's position is opposite: the agent's first generation is rarely the right shape for the next change. Refactor at the merge boundary, not in a follow-up PR three weeks later. The cost of the refactor while the spec and the implementation are both fresh is small. The cost when the next developer arrives and has to interpret unfamiliar generated code is large.
 
@@ -60,15 +60,15 @@ flowchart TD
   before --> w --> during --> after --> m
 ```
 
-Each gate has its own failure mode. Skip the before-gate and the agent improvises against unknowns. Skip the during-gate and the work drifts inside the session. Skip the after-gate and the merged artefact does not match the merged intent. The three gates are not redundant. They catch different problems at different points in the lifecycle.
+Each gate has its own failure mode. Skip the before-gate and the agent improvises against unknowns. Skip the during-gate and the work drifts inside the session. Skip the after-gate and the merged artifact does not match the merged intent. The three gates are not redundant. They catch different problems at different points in the lifecycle.
 
 ## What automation can and cannot do
 
 Each gate has a deterministic part and a human part. The deterministic part is what automated checks enforce: link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what only attention does: is the spec describing the right thing, is the implementation in the right shape, is the test actually proving the scenario rather than something adjacent.
 
-Effective teams maximise the deterministic part, because deterministic checks scale to agentic speeds. The hooks that run on every commit do not get tired. The link checker does not skip a file because it was busy. What humans contribute is the part that cannot be automated: the judgement about whether the work matches what the team actually needs. That judgement is scarce, and most quality programs fail by spending it on things automation could have caught.
+Effective teams maximize the deterministic part, because deterministic checks scale to agentic speeds. The hooks that run on every commit do not get tired. The link checker does not skip a file because it was busy. What humans contribute is the part that cannot be automated: the judgment about whether the work matches what the team actually needs. That judgment is scarce, and most quality programs fail by spending it on things automation could have caught.
 
-The three-gate model is how to spend that judgement well. Use the before-gate to set up the conditions in which the agent succeeds. Use the during-gate to keep the work aligned. Use the after-gate to confirm the alignment held. Each gate has a small number of deterministic checks and one or two human questions. Anything more is overhead.
+The three-gate model is how to spend that judgment well. Use the before-gate to set up the conditions in which the agent succeeds. Use the during-gate to keep the work aligned. Use the after-gate to confirm the alignment held. Each gate has a small number of deterministic checks and one or two human questions. Anything more is overhead.
 
 ## The sequence is logical, not temporal
 

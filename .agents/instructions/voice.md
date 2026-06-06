@@ -105,7 +105,7 @@ Cut every sentence that re-explains. Cut every transition that announces what th
 
 ### Explain through situations
 
-Show runtime behaviour. Describe execution paths. Demonstrate what fails when it fails.
+Show runtime behavior. Describe execution paths. Demonstrate what fails when it fails.
 
 Bad: "Coordination between components is important."
 
@@ -117,7 +117,7 @@ When presenting an architecture or practice, name the tradeoff in the same parag
 
 ### Emphasize reality
 
-Context windows fail. Memory becomes inconsistent. Orchestration complexity explodes. Tool reliability matters. Evaluation is hard. Autonomous behaviour becomes unpredictable at scale. Ground abstract claims in operational consequences.
+Context windows fail. Memory becomes inconsistent. Orchestration complexity explodes. Tool reliability matters. Evaluation is hard. Autonomous behavior becomes unpredictable at scale. Ground abstract claims in operational consequences.
 
 ## Structural style
 
@@ -159,6 +159,8 @@ No bold (`**word**`) or italic (`*word*`) emphasis in prose text. These are agen
 
 Keep backtick inline code formatting. Keep fenced code blocks. Keep Mermaid diagram blocks. Keep tables. Book titles in Sources lines use quotes, not italics.
 
+One sanctioned italic exception: the `Sources:` citation line is wrapped whole in italics (`*Sources: ...*`) so it reads as a citation strip, not body prose. This applies to the entire line only. Do not italicize words for emphasis inside it.
+
 ## Preferred techniques
 
 Use occasionally, not on every page:
@@ -182,7 +184,7 @@ Never: jokes that reach, pop-culture references, self-congratulation, forced opt
 
 A section should:
 
-- read in a register a senior engineer would recognise as their own
+- read in a register a senior engineer would recognize as their own
 - contain enough specificity that a reader assumes it came from experience
 - be difficult to skim: every paragraph earns its presence
 - include at least one observation a reader might highlight
