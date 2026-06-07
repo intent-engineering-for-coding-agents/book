@@ -1,30 +1,34 @@
 # Why Structure Matters
 
-The agent adds a `POST /orders` REST endpoint.
+The agent adds a new `POST /orders` REST endpoint.
 
-The team moved to gRPC months ago. Typed contracts, streaming, performance reasons that live in one architect's head, and zero files in the repo. Every other service in the codebase is gRPC. The new endpoint is REST, because every tutorial uses REST and the agent's training data is steeped in it. The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. The PR is approved. Three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
+The team moved to gRPC months ago due to typed contracts, streaming, performance reasons that live in one architect's head, and zero files in the repo. Every other service in the codebase is gRPC.
 
-This is the small version. The codebase has hundreds of these. Each session burns a little more of the gap between what the team decided and what the codebase expresses.
+REST is what the agent's model absorbed during its base training. The decision to leave it behind and replace it for gRPC happened in a team meeting but never became a file anyone, including the agent, could read. Hence, this crucial information now only lives in the heads of the team members that happen to remember the decision.
+
+The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. The PR is approved. Three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
+
+This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be quietly overwritten. And the count keeps climbing. Every agent session is one more chance to widen the gap between what the team decided and what the code now says.
 
 ## Compounding drift
 
-The model did not fail. The agent just reasoned correctly from the context it had. The constraint was the context.
+The model did not fail. The agent just reasoned correctly from the context made available to it. The constraint was the lack of context.
 
 ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
 
-At human speed, drift like this used to take quarters to compound. At agentic speed, weeks. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
+At human speed, drift like this used to take quarters to compound. At agentic speed, weeks or just days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier.*
 
 ## Structure as briefing
 
-Whatever lives in `docs/`, `AGENTS.md`, and `openspec/` is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
+Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's brief), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
 
-Run the gRPC case forward with structure in place:
+Run the gRPC case forward with the structure in place:
 
-The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who happened to remember the migration meeting from 2024.
+The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
 
-Nothing about this requires policing the agent. It requires giving the agent enough briefing to make plausible guesses on its own.
+None of this is about policing the agent. It is about handing the agent enough context to reason instead of guess.
 
 *Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 

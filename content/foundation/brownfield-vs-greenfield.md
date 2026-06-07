@@ -28,17 +28,19 @@ Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy syst
 
 *Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation of the same pattern.*
 
-## The walking skeleton, reversed
+## The walking skeleton reversed
 
 Alistair Cockburn coined "walking skeleton" in "Crystal Clear" (2004). His version is a thin end-to-end implementation built forward from intent. Enough to prove the architecture works before you fill it in.
 
-The agentic-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible so you reason about it and build on it.
+The agentic-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible, so you reason about it and build on it.
 
 *Sources: Cockburn, "Crystal Clear: A Human-Powered Methodology for Small Teams" (Addison-Wesley, 2004), origin of the walking-skeleton pattern.*
 
 ## After the skeleton
 
 Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds with the same Foundation practices as a greenfield one, with realistic constraints. `AGENTS.md` is written based on what the skeleton reveals, not from scratch. ADRs capture decisions that were made implicitly and are now being made explicit. Specs cover new changes, not retrofitted to existing behavior wholesale.
+
+Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function, the migration, the module boundary, and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not be the actual meeting. It is the documented best guess a domain expert can correct, and the documented best guess beats the silence that put the team here.
 
 The skeleton does not eliminate the brownfield condition. The system is still what it is. What changes is that the agent now knows what it is. That is the prerequisite for any of the practices in this book working at all.
 

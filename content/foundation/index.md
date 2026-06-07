@@ -2,9 +2,11 @@
 
 > Repo structure. The prerequisite for everything else.
 
-Foundation is the first topic of Intent Engineering for a reason, and not the obvious one. It does not sit as a co-equal subject alongside intent. It grounds the agent so your intent becomes executable. Without it, agent instructions have nowhere to live. Specs have no structure to enforce against. Quality checks have no conventions to validate.
+Foundation looks like the least interesting topic in this book. Skip it, and the rest stops making sense.
 
-The chapters in this topic address the underlying problem of agents that are productive but contextless, and give it a shape you can act on.
+It does not sit beside intent as a coequal subject. It is the ground that makes intent executable. Strip it away, and agent instructions have nowhere to live. Specs have nothing to enforce against. Quality checks have no conventions to validate.
+
+The chapters in this topic address the underlying problem of agents that are productive but contextless and give it a shape you can act on.
 
 ## Chapters
 
