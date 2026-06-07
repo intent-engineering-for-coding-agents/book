@@ -1,15 +1,8 @@
 ---
-layout: home
-
-hero:
-  name: "Intent Engineering"
-  text: "for Coding Agents"
-  tagline: Structure, specs, and proof for agentic software engineering.
-  actions:
-    - theme: brand
-      text: Start Reading
-      link: /introduction
-    - theme: alt
-      text: Foundation
-      link: /foundation/
+title: Intent Engineering for Coding Agents
+description: "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering"
+head:
+  - - meta
+    - http-equiv: refresh
+      content: "0; url=/foreword"
 ---
