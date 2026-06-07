@@ -8,6 +8,10 @@ export default withMermaid(
     srcDir: 'content',
     appearance: true,
     themeConfig: {
+      logo: {
+        light: '/logo-light.svg',
+        dark: '/logo-dark.svg',
+      },
       nav: [
         { text: 'Home', link: '/' },
         { text: 'Introduction', link: '/introduction' },
