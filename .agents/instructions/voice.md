@@ -153,13 +153,15 @@ Rewrite rules:
 
 No semicolons in prose. Replace with a period or a comma. The one acceptable exception is structured lists inside `Sources:` lines where semicolons separate citation entries.
 
-### Asterisks for emphasis
+### Bold and italic for emphasis
 
-No bold (`**word**`) or italic (`*word*`) emphasis in prose text. These are agent-writing tells and make text feel formatted rather than written. Use sentence structure to carry emphasis.
+Bold (`**word**`) and italic (`*word*`) are a deliberate authorial choice, not a reflex. Used on every other page they read as agent-formatting. Used rarely and on purpose, they read as someone shaping a sentence by hand. The author decides when a word needs that weight.
+
+When a coding or AI agent drafts a section, hold a higher bar: default to sentence structure for emphasis, and reach for bold or italic only on the rare occasion nothing else will do, not as a default habit.
 
 Keep backtick inline code formatting. Keep fenced code blocks. Keep Mermaid diagram blocks. Keep tables. Book titles in Sources lines use quotes, not italics.
 
-One sanctioned italic exception: the `Sources:` citation line is wrapped whole in italics (`*Sources: ...*`) so it reads as a citation strip, not body prose. This applies to the entire line only. Do not italicize words for emphasis inside it.
+One sanctioned italic exception remains: the `Sources:` citation line is wrapped whole in italics (`*Sources: ...*`) so it reads as a citation strip, not body prose. This applies to the entire line only, never to emphasizing words inside it.
 
 ## Preferred techniques
 

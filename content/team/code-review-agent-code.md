@@ -50,6 +50,8 @@ The output is a checklist, not a verdict. The human reviewer uses it to direct a
 
 This step is not free. It costs a context load and a review pass. For high-stakes behavioral changes where the spec has dozens of acceptance criteria, the tracing it provides is worth it. For a change with three acceptance criteria and three tests, skipping this step is defensible.
 
+A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: a different vendor's training data, different defaults, different blind spots. This is one of the concrete payoffs of keeping `AGENTS.md` and `.agents/` vendor-neutral. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and diff costs nothing extra in briefing, because the briefing was never tool-specific to begin with. Run that across enough changes and a second thing falls out for free: a rough read on which tool earns its keep on this particular codebase, not the one with the loudest release notes.
+
 *Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec without implementation-context bias.*
 
 ## What human reviewers miss, what agent reviewers miss

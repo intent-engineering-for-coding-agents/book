@@ -36,7 +36,9 @@ Skills are workflows, not context. An instruction file tells the agent how thing
 
 The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. A workflow for generating a new checker from spec is a skill.
 
-Typed from the session, `/update-index` invokes the skill directly. In Claude Code, every file in `.agents/skills/` surfaces as a slash command. The autonomous trigger is still there: `AGENTS.md` tells the agent which skill to load when the task description matches. The developer can also bypass that layer and invoke the skill explicitly. `/draft-section` starts a new chapter without composing a task description from scratch. Same file either way.
+Typed from the session, `/update-index` invokes the skill directly. Claude Code surfaces slash commands from `.claude/skills/`, not `.agents/skills/` itself. Keeping one source of truth means symlinking `.claude/skills` to `.agents/skills`, and `.claude/hooks` to `.agents/hooks` for the directory below, which only works if your Git setup and your operating system both tolerate symlinks cleanly.
+
+None of that touches the autonomous trigger: `AGENTS.md` tells the agent which skill to load when the task description matches, whether or not the slash command resolves. The developer can also bypass that layer and invoke the skill explicitly. `/draft-section` starts a new chapter without composing a task description from scratch. Same file either way.
 
 OpenSpec repos generate a full set of skills on `openspec init`: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. Each is a committed file in `.agents/skills/openspec-*/SKILL.md`. These are vendor pointers, generated once and committed, which is why they live alongside the hand-authored skills rather than somewhere separate. The directory does not distinguish between authored and generated. Both are plain Markdown files the agent reads the same way.
 
