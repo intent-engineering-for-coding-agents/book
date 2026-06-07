@@ -20,7 +20,7 @@ Let me say a few things up front.
 
 Vibe coding is fine. In its place. Vibe coding excels at fast prototyping and mockups. It is useful when you need to put something on a screen for a customer or your colleagues, get a feel for the shape of a feature, pull requirements out of someone who cannot quite articulate them, or try three competing frameworks side by side to see which one fights you the least. I use it for exactly that.
 
-But a vibe-coded prototype has no business growing into a production system. The right move, almost always, is to throw away the prototype and start over with the real requirements in mind. This is not new advice. It has been a mantra for decades, and decades ago it came with a caveat: throwing away hurt. Rebuilding from scratch costs weeks. Today with a coding agent doing most of the construction, the rebuild cost collapses. Throwing away the prototype is no longer a painful decision. The second build is better for every lesson the prototype taught. The requirements are sharpened, dead ends already got eliminated, and the framework already got chosen. The prototype was the conversation, but not the product.
+But a vibe-coded prototype has no business growing into a production system. The right move, almost always, is to throw away the prototype and start over with the real requirements in mind. This is not new advice. It has been a mantra for decades, and decades ago it came with a caveat: throwing away hurt. Rebuilding from scratch costs weeks. Today with a coding agent doing most of the construction, the rebuild cost collapses. Throwing away the prototype is no longer a painful decision. The second build is better for every lesson the prototype taught. The requirements are sharper, the dead ends are already gone, and the framework is already chosen. The prototype was the conversation, but not the product.
 
 This book says "coding agent" where most say "AI". A coding agent is a large language model (LLM) used as a development tool. Calling it "intelligence" is a marketing choice, not a technical one, and this book is not in the marketing business.
 
@@ -28,7 +28,7 @@ A coding agent is not a magic box and will not be able to read your mind. It wil
 
 One more thing: this book does not review agents or rank them. The agent is the labor and the sparring partner. Which labor you choose to hire is not the point, but what you tell it is.
 
-Context is the whole game. Rather than cramming everything into one-shot prompts, you will retype the next day, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the agent re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. If you skip this, you will be vibe-coding forever and wondering why your agent keeps "forgetting" things.
+Context is the whole game. Rather than cramming everything into one-shot prompts you will retype the next day, persist your context in documents instead: plain text and diagrams with real semantics, the shared memory both you and the agent re-read a month from now. Do this and the quality of the work jumps in a way that feels almost unreasonable. If you skip this, you will be vibe-coding forever and wondering why your agent keeps "forgetting" things.
 
 ## From Vibe to Pro
 
