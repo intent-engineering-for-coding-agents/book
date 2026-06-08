@@ -4,17 +4,17 @@ Every document in a repo has a lifespan, and the trouble starts when one outlive
 
 This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 
-An ADR gets edited because the design changed. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The why, the thing that made the ADR valuable, has been overwritten by the what. The ADR still passes review. It is wrong.
+The design changes, and instead of writing a new ADR that supersedes the old one, someone edits the original to match. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The what has overwritten the why, the thing that made the ADR valuable. The ADR still passes review. It is wrong.
 
-A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
+A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended when it was created, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
 
-A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. The agent is just following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
+A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as a live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. The agent is just following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
 
-Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. The types exist to prevent the pruning.
+Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. Recognizing the type is where this starts. What you do with it next is what the rest of this chapter is about.
 
 ## The types
 
-The taxonomy below is book synthesis. It combines established document forms such as ADRs with repo conventions that make those forms legible to coding agents.
+The taxonomy below is a book synthesis. It combines established document forms such as ADRs with repo conventions that make those forms legible to coding agents.
 
 Content documents are the baseline: wiki pages, guides, articles, reference documentation. They carry no lifecycle constraint, no structural requirement, and no size limit the agent must respect. Write them, update them in place, and let them grow or shrink as the subject demands. The agent treats them as prose to read, not instructions to execute. No archiving trigger, no immutability rule, no checkbox discipline.
 
@@ -22,51 +22,93 @@ The other five types each carry constraints. Content documents do not. That asym
 
 The enforcement mechanism is directory placement. Structured documents live under `docs/`; content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `iec check` scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs content/ directory placement.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
-README files live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory. The top-level `docs/README.md` is the architecture overview. It lives forever and is updated as the architecture changes.
+## README and INDEX files
 
-INDEX files serve a different reader: the agent. A table listing every file under the directory with a one-line description. No prose, no story. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else. README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser; an agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
+README files live at the root of every documentation directory. Every Git host renders them automatically when a user navigates to that directory, and that rendering is what a README is for: a human reading on a Git host like GitHub or GitLab, where prose, headings, and diagrams read the way they were written. The architecture overview lives in `docs/architecture/README.md`. The top-level `docs/README.md` does different work: it orients a reader to the documentation tree itself, what exists under `docs/` and where to start, not to the architecture the tree documents. Both live forever, each updated as the thing it describes changes.
 
-Design docs live in `docs/design/`. Per-feature thinking: options, approach, risks. Not a decision record. Too narrow, too feature-specific. Not a spec. Describes the approach, not the behavior. What you do with them afterward is a matter of preference. Some teams write them and move on; the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
+INDEX files serve a different reader: the agent. A table listing every file under the directory, each row carrying a one-line description. Its job is not to summarize the file. It is to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else, which means a stale entry costs more than a missing one: it sends the agent toward a file that moved, or hides one that just landed. The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
 
-Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is why. Six months later, when a developer proposes to reintroduce the stack the team migrated away from, the ADR answers before it reaches a meeting.
+README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser; an agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
 
-The decision itself is immutable once closed. Reversing it means writing a new ADR that references the old one. But supporting context can be updated in place: pros and cons, discovered consequences, implementation notes. The core decision does not change. When you do update, record an amendment at the bottom of the file: the date, what changed, and the before and after. This makes the edit history legible without requiring readers to dig through git blame.
+## Design docs
 
-This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates format before a decision lands in the wrong state.
+Design docs live in `docs/design/`. They hold the per-feature thinking: the options weighed, the approach chosen, the risks named. They are not decision records, too narrow and too feature-specific to carry that weight. They are not specs either. A design doc describes the approach. A spec defines the behavior. What you do with them afterward is a matter of preference.
+
+Some teams write them and move on; the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
+
+## Architectural Decision Records
+
+Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is why. Six months later, when a developer proposed to reintroduce the stack, the team migrated away from the ADR answers before it will reach a meeting.
+
+While an ADR is still proposed, change it as much as the discussion requires. That is what the proposal stage exists for. Once its status moves to `accepted`, the decision freezes. Reversing it means writing a new ADR that references the old one and supersedes it, not rewriting the original to say something different. Supporting context can still move within an accepted ADR: pros and cons, discovered consequences, implementation notes, the kind of adjustment that sharpens the record without changing what was decided. When you make that kind of adjustment, record an amendment at the bottom of the file: the date, what changed, and the before and after.
+
+The proposed and accepted statuses come from MADR itself, recorded in a YAML front matter block at the top of the file: `status: accepted`, `date: 2024-03-01`. That structure is what turns the gate into something `iec check` or an agent can verify directly, rather than a rule a reader has to infer from prose. The amendment record does not come from MADR. It is this book's own recommendation, made because it keeps the edit history legible without sending a reader to dig through git blame.
+
+## MADR
+
+This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates the format before a decision lands in the wrong state.
 
 The "considered options" section is not boilerplate. Rejected options tell the agent which paths were already evaluated and ruled out. An agent that sees only the chosen option will re-propose the alternatives on its own; one that sees the rejected options with their reasoning will not. The why-not carries the same weight as the why.
 
-A secondary reason MADR works: agents already know it from training. When you write `## Considered Options`, the agent brings its own understanding of the section without any documentation from you. The same holds for Gherkin for acceptance criteria, OpenAPI for contracts, and other field standards the agent has encountered at scale. Using well-known formats means the agent's training does the work your documentation would otherwise have to. Inventing a custom format forces you to explain it; using a standard means you do not have to.
+A secondary reason MADR works: its headings are plain English doing real labor. Write `## Considered Options` and the agent fills it correctly without a footnote, the same way it would under `## Risks` or `## Open Questions`. That is not the agent recognizing MADR. It is the agent reading words that already say what they mean, and MADR's template is built from exactly those kinds of headings. You get the benefit whether or not the agent has ever seen the standard by name.
 
-Specs are a manifestation of intent. Where an ADR records a decision that was made, a spec records what you want the system to do before you build it: acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order. The checkboxes matter. An agent that reads a list of unchecked tasks will execute them; an agent that reads prose will summarize it. Explicit tasks with checkmarks are how you prevent the agent from skimming past a step it found inconvenient.
+Some formats need more than that. Gherkin's `Given/When/Then` and OpenAPI's schema structure are not self-explanatory from the words alone. An agent either has encountered that exact convention at scale, in which case it produces the real thing, or it has not, in which case it produces something that merely looks like it. That is where naming a field standard genuinely substitutes for writing your own specification of it: the agent's training carries the convention, and your documentation does not have to. Inventing a custom format forces you to explain it from nothing. Naming a standard the agent already knows means you do not have to. That only pays off where the convention itself is the hard part, not the words around it.
+
+## Specs
+
+Specs are a manifestation of _intent_. Where an ADR records a _decision_ that was made, a spec records what you want the system to do before you build it. And it comes with acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order.
+
+The structure matters. An agent that reads a list of discrete, unchecked steps works through them one at a time. An agent that reads the same content as prose summarizes it, and a step it finds inconvenient quietly becomes part of the summary instead of part of the work. The checklist format is what keeps that step from disappearing. The checkbox itself does something else, and it is worth a separate instruction to get it right.
 
 One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the agent to check off each task immediately upon completion, not at the end of the run. This gives you live progress visibility. It also means you interrupt safely. When you resume, the checked boxes tell you and the agent exactly where things stand. Without it, an interrupted run leaves you guessing which tasks finished and which were just started.
 
-A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing a proposal, a design doc, specs per capability, and a task list. The spec itself is one artifact inside that structure. Some teams keep a simpler `/specs` folder with files named by feature. That works too, and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them. This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
+## Specs and OpenSpec
 
-Written before implementation, archived after. Leave it un-archived and the agent keeps reading finished work as a current instruction.
+A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing a proposal, a design doc, specs per capability, and a task list. The spec itself is one artifact inside that structure. Some teams keep a simpler `/specs` folder with files named by feature. That works too and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them. This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
+
+## Archiving
+
+A spec lives in two moments: written before the work begins, archived once it ends. Skip the second, and the agent spends every session treating settled work as an open task.
+
+Archiving moves the folder. It does not erase it. OpenSpec relocates a finished change to `openspec/changes/archive/YYYY-MM-DD-<name>/` as a single piece: proposal, design, tasks, and however many delta specs the change carries move together as one audit unit, not left scattered across separate files. The agent does not need a rule telling it to skip that folder. The same directory placement that separates content documents from structured ones does the filtering here too: `openspec list` reports only what it labels active changes, read straight from `openspec/changes/`, and an archived folder never surfaces in that output unless something points the agent there directly. The same immutability discipline that governs a closed ADR applies here.
+
+An archived spec is read-only history. The gap between what the team intended and what it built is exactly what a future reader wants to see, and editing it away erases the only record of it. The one genuine annoyance: archives age. Links rot, referenced tools move on, and decisions written with full context read strangely once that context is gone. None of that makes the archive wrong to keep. It makes it old, and that is what archives are.
+
+OpenSpec's documentation describes the move into `changes/archive/` and the audit-trail reasoning behind it, but stops short of a retention policy. This book's answer: keep the archive indefinitely, for the same reason you keep git history completely. The cost of carrying it is near zero, and the cost of needing a record later and finding it gone is high. The merged spec in `openspec/specs/` already tells the agent what the system does now.
+
+The archive tells a human, or an agent asked to investigate, how the system got there and why: the same job an ADR does, at the resolution of a single change. None of that costs the agent anything during ordinary work, for the structural reason already given: nothing surfaces the archive unless someone goes looking for it on purpose, the same way a developer only opens an old git tag deliberately. If the folder eventually grows large enough that a person struggles to navigate it, the fix is an INDEX for `changes/archive/`, not a policy that throws the record away.
+
+*Sources: OpenSpec documentation, `concepts.md` and `commands.md` (Fission-AI/OpenSpec, github.com/Fission-AI/OpenSpec), the archive folder mechanics and audit-trail rationale. OpenSpec documentation, `cli.md` (Fission-AI/OpenSpec), the `openspec list` active-changes filter, current as of this writing and worth rechecking against the version in use. Retention itself is this book's synthesis, since OpenSpec's documentation does not prescribe one.*
 
 ## The lifespans matter more than the names
 
 | Type | Lifespan | What that means in practice |
 |---|---|---|
 | Content documents | Permanent, updated | Write and evolve in place; no lifecycle or size constraints |
-| README files | Permanent, updated | Always rewritten in place to stay current |
+| README files | Permanent, updated | Updated in place; written for human readers on Git hosts, not the agent |
 | INDEX files | Permanent, updated | Maintained on every file change in the directory |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
-| ADRs | Permanent; decision frozen | Reversal = new ADR. Status changes and cross-reference edits are fine |
+| ADRs | Permanent; decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
 | Specs | Temporary, archived | Moved to archive after implementation |
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
+
+Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. Intent Engineering adds the agent to the list of beneficiaries.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline.*
 
 ## Tooling
 
-If you want to see this in practice, `iec` at `git tag v0.4.0` has the structure live: ADRs in `docs/decisions/`, design docs in `docs/design/`, specs in `openspec/specs/` with completed changes archived. Run `iec check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
+If you want to see this in practice, the `iec` CLI repository has the structure live:
 
-Structure is the cheapest discipline available. Maven and Rails called it convention over configuration. Intent Engineering adds the agent to the list of beneficiaries.
+- ADRs in `docs/decisions/`,
+- design docs in `docs/design/`,
+- specs in `openspec/specs/` with completed changes archived.
+
+Run `iec check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
+
+*Sources: `iec` CLI (github.com/intent-engineering-for-coding-agents/cli), the document taxonomy applied to a live project.*
 
 All of it assumes the documents are in a format the agent processes. A type taxonomy tells you where to put things and how long to keep them. It does not guarantee the agent reads them. An architecture diagram embedded in a Keynote file is still a Keynote file, regardless of which directory it sits in.
