@@ -96,7 +96,7 @@ A non-profit foundation publishing community-driven security resources for web a
 
 ## OpenSpec
 
-A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, `design.md`, delta specs per capability, `tasks.md`, then archive (with delta specs merging into `/openspec/specs/`). The book uses OpenSpec end-to-end; `iec` is built with it.
+A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, delta specs per capability under `specs/`, `tasks.md`, and optional `design.md`. On archive, delta specs are applied to the canonical `openspec/specs/` and the full change folder moves to `openspec/changes/archive/`. The book uses OpenSpec end-to-end; `iec` is built with it.
 
 ## skeleton.md
 

@@ -19,7 +19,7 @@ OpenSpec is the next level. A structured change-folder workflow with four parts,
 | Part | File | Question |
 |---|---|---|
 | Propose | `proposal.md` | What is this change about and why? |
-| Design | `design.md` | How do we intend to execute it? |
+| Design | `design.md` *(optional)* | How do we intend to execute it? |
 | Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
 | Tasks | `tasks.md` | What is the execution plan? |
 

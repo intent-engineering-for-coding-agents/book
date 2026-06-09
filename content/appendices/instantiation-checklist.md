@@ -33,7 +33,7 @@ Optional, maturity-dependent:
 
 This checklist is OpenSpec-first because the book and `iec` are OpenSpec-first. The portable practice is per-change intent with testable acceptance criteria; if your team uses a plain `spec.md` or another framework, translate the `openspec/` paths below to your per-change spec location. See [The Spectrum](/spec-driven/the-spectrum).
 
-- [ ] First change proposal in `openspec/changes/<slug>/` with `proposal.md`, `design.md`, a delta spec under `specs/`, and `tasks.md`
+- [ ] First change proposal in `openspec/changes/<slug>/` with `proposal.md`, a delta spec under `specs/`, and `tasks.md` (add `design.md` if the change requires technical design decisions)
 - [ ] Spec scenarios have AC IDs in bracket format (`[PREFIX-NNN]`) and `Test-type:` fields
 - [ ] Spec-eligibility threshold documented in `AGENTS.md`: what change earns a spec, what does not
 - [ ] Archive discipline in place: spec moves to `openspec/archive/` when the PR merges
