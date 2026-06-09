@@ -68,4 +68,4 @@ The `iec` companion repo is planned to ship an `eval-demo` directory with a runn
 
 *Sources: `iec` companion repo status at `v0.6.0`, planned `eval-demo` not yet shipped.*
 
-The strategy chapter introduced acceptance-criterion IDs as part of the convention surface, and this chapter showed why agent setup needs its own regression loop. The next chapter turns those IDs into a durable link between intent and proof.
+The eval suite tells you when the agent setup regresses. What it does not tell you is whether the link between the spec and the proof has held. That is a different kind of rot, and it needs its own check.

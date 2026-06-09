@@ -2,8 +2,7 @@
 
 A coding agent works fast. It has been trained and has read more code than you ever will, and it generates a payment service in five minutes that might have taken you a week or two.
 
-The agent has no idea what you decided. And the agent does not know the team has actively chosen against Redis last quarter. The agent cannot see why the auth flow, which looks redundant, is load-bearing. The incident from last year lives only in someone's head. The database column the agent is about to add was deprecated by a decision never recorded in any ADR. The architect who made that call left a couple of years ago. The agent reasons brilliantly from exactly the context it has available. And 
-the constraint here is the limited context.
+The agent has no idea what you decided. And the agent does not know the team has actively chosen against Redis last quarter. The agent cannot see why the auth flow, which looks redundant, is load-bearing. The incident from last year lives only in someone's head. The database column the agent is about to add was deprecated by a decision never recorded in any ADR. The architect who made that call left a couple of years ago. The agent reasons brilliantly from exactly the context it has available.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI does not create great developers, it amplifies them". A coding agent in the hands of a clueless developer ships "clueless" code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral, but not what it amplifies.
 
@@ -52,7 +51,7 @@ OpenSpec, Spec-Kit, and the rest hand you that aim, then stop. This book walks d
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies (can) stay.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay.
 
 What you will not find here: a vendor comparison matrix. The agent class is named, not ranked, because those matrices age in months, sometimes faster. Cost economics for seat-licensed tooling gets one paragraph in the appendix, not a chapter.
 

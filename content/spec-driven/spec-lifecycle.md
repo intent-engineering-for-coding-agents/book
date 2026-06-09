@@ -58,4 +58,4 @@ The fix is tight timing on both ends. Create the spec when you are about to impl
 
 If you want to see this workflow in practice, the `iec` repo at tag `v0.5.0` runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
-The archive is not an afterthought. It is what separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The change folder moves. The canonical spec stays. The code is in git. Three things, three places. The one that is most trusted when the code needs to change is almost certainly not the one most developers would guess.
+The archive is not an afterthought. It is what separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The one that is most trusted when the code needs to change is almost certainly not the one most developers would guess.

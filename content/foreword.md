@@ -14,7 +14,7 @@ Fine. Good for them. But I keep scrolling and waiting for the part that never co
 
 That part is always missing. I think it is missing on purpose because the honest answer does not fit on a one-pager.
 
-This book is my attempt at the honest answer. This book is about using coding agents responsibly and professionally to build real software. Not the kind that demos well on a Tuesday and falls apart on a Friday.
+This book is my attempt at the honest answer: how to use coding agents responsibly and professionally to build real software. Not the kind that demos well on a Tuesday and falls apart on a Friday.
 
 Let me say a few things up front.
 
@@ -36,7 +36,7 @@ Here is the part the carousels leave out. Give the agent enough up-to-date infor
 
 Software development still demands skill and judgment. Humans must stay in the loop. The agent will catch up to more of this eventually, and when it does, I will happily revise this foreword. But for now the responsibility is ours: to be deliberate, to be professional, and to do the part of the job humans still do best.
 
-This is what the rest of this book is about. The how.
+This is what the rest of this book is about.
 
 ---
 

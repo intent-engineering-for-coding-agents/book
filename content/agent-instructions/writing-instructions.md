@@ -58,7 +58,7 @@ One common gap found by a second-model critique pass is instructions that descri
 
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 
-Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It cannot fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
+Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It can fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
 
 ## When instructions backfire
 

@@ -36,7 +36,7 @@ Spec length is a cost, not a quality signal. Every token spent reading the spec 
 
 *Sources: LeanSpec (lean-spec.dev), small-spec discipline and formality-to-risk matching.*
 
-The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further. The summary is: small specs get implemented. Long ones get drift.
+The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further.
 
 ## Drift with no detection
 
@@ -60,6 +60,6 @@ Each topic targets one or more of these modes directly:
 
 The point is not zero drift. That is not on offer. The point is drift that is detectable while it is still cheap to fix.
 
-Drift with no detection is the hardest failure mode because nothing alerts you to it. You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
+You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*

@@ -26,6 +26,4 @@ The audit step depends on the model. A model that does not have the principle in
 
 Principles also become bureaucracy. A catalog of 50 principles that nobody applies is a long document. The discipline is to keep the catalog small, the principles concrete, and the audit pass advisory rather than blocking until the catalog has earned trust. Start with three principles the team agrees on. Audit against those. Add more when the first three have proven their worth.
 
-The Quality and Verification section closes here. Specs say what the code should do. Tests prove the code does it. AC IDs link the two. The before-during-after gates catch the lapses in the lifecycle. Security in depth defends against the failure modes the agent introduces. PR taxonomy keeps reviews readable. Principles raise the bar past correctness to shape. Each layer is small. Together they are the difference between an agent that ships work quickly and an agent that ships work well.
-
 What survives a single developer applying all of this is a personal practice. What survives a team applying it is something else, and the next section is where the discipline meets the calendar, the sprint, and the coworker who has their own opinion about how this should work.
