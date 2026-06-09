@@ -54,7 +54,7 @@ Some features survive the split test. One coherent thing, twelve tasks, no clean
 
 File count is a rougher signal than task count. Ten files is a soft default. Fifteen or twenty is fine when the change has a unifying shape. A rename propagated across fifty files is trivially reviewable: the description states the pattern, every diff is identical, the reviewer confirms it and moves on. A behavior change touching four deeply coupled files can be genuinely hard. The real question is whether the reviewer can understand the change from the description and a quick scan. File count is a proxy for that, nothing more. Where it becomes a real signal: a PR touching fifteen files with different changes in each, no unifying pattern, and a description that struggles to say what was done. That is a scope problem wearing a file-count disguise, and the fix is the same. Find the seam and split.
 
-The `openspec/changes/<name>/` folder and everything in it, the proposal, delta spec, design doc, and task list, does not count toward the file total. That is intent, not implementation.
+The `openspec/changes/<name>/` folder and everything in it, `propose.md`, `design.md`, delta specs, and `tasks.md`, does not count toward the file total. That is intent, not implementation.
 
 *Sources: LeanSpec, small-spec discipline and formality-to-risk matching.*
 

@@ -16,7 +16,7 @@ graph LR
   BR -- "merges + archives to" --> TRUNK
 ```
 
-For a change with real intent to get right (business rules, edge cases, an architectural choice), the spec rides its own PR first. The branch `spec/add-filter-endpoint` carries the change folder (proposal, design, tasks, delta spec) and no code. It is reviewed for intent, the acceptance criteria get corrected while correcting them is still cheap, and it merges. Then the implementation branch, named for the change folder slug, delivers the code against an already-approved spec and archives the folder on merge.
+For a change with real intent to get right (business rules, edge cases, an architectural choice), the spec rides its own PR first. The branch `spec/add-filter-endpoint` carries the change folder (`propose.md`, `design.md`, delta specs, `tasks.md`) and no code. It is reviewed for intent, the acceptance criteria get corrected while correcting them is still cheap, and it merges. Then the implementation branch, named for the change folder slug, delivers the code against an already-approved spec and archives the folder on merge.
 
 For a change whose intent is fully visible in the diff, that split is pure ceremony. A bug fix, a mechanical refactor, a library bump like `Refactor observer to Jackson 3`: there is no acceptance criterion a reviewer could veto independently of the code, so locking the spec first buys nothing. One branch, one PR, spec delta and implementation together. Intent-first review still applies. It just happens inside the single PR.
 

@@ -39,7 +39,7 @@ Five phases, none of them new. Inside each, Intent Engineering adds exactly one 
 
 ## Planning: from ticket to spec
 
-The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artifact, `openspec/changes/<name>/`, containing a proposal, a delta spec, a design doc, and a tasks file. The ticket is still the unit of tracking. The spec is the unit of intent.
+The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artifact, `openspec/changes/<name>/`, containing `propose.md`, `design.md`, delta specs (one per capability under `specs/`), and `tasks.md`. The ticket is still the unit of tracking. The spec is the unit of intent.
 
 Not every change earns a spec. A typo fix does not. A dependency bump does not. A bug fix is less clear-cut: if the correct behavior is self-evident, skip it; if figuring out what the system was supposed to do is the hard part, that reasoning belongs in a spec before anyone writes a line to restore it. Anything touching architecture, or intended for an agent to implement: write the spec first. Planning is where intent gets fixed. Fixed intent is what the agent works from. Unfixed intent is what makes the agent produce code nobody wanted.
 

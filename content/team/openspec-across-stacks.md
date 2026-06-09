@@ -15,16 +15,22 @@ front-end/
   openspec/
     changes/
       add-filter-component/
-        proposal.md
+        propose.md
         design.md
+        specs/
+          filter-component/
+            spec.md
         tasks.md
 
 bff/
   openspec/
     changes/
       add-filter-endpoint/
-        proposal.md
+        propose.md
         design.md
+        specs/
+          filter-endpoint/
+            spec.md
         tasks.md
 
 back-end/
