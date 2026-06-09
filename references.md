@@ -16,7 +16,7 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Oliver Kopp, Anita Armbruster, Olaf Zimmermann — [MADR template](https://adr.github.io/madr/) (ongoing) and ["Markdown Architectural Decision Records: Format and Tool Support"](https://ceur-ws.org/Vol-2072/paper9.pdf), CEUR-WS Vol-2072, *2018*. Markdown ADR template used in `docs/decisions/`.
 - Flemming N. Larsen — [Plain Text as Code Manifest](https://github.com/Plain-Text-as-Code). GitHub, *March 2026, ongoing*. Author's foundational statement of the philosophy; the Foundation chapter applies it to Intent Engineering.
 - [Docs as Code — Write the Docs guide](https://www.writethedocs.org/guide/docs-as-code.html) (ongoing). Plain-text-as-code practice.
-- [Mermaid](https://mermaid.js.org/) (ongoing). Text-defined diagrams; includes [live editor](https://mermaid.live) and [diagram catalogue](https://mermaid.js.org/ecosystem/tutorials.html).
+- [Mermaid](https://mermaid.ai/) (ongoing). Text-defined diagrams; includes [live editor](https://mermaid.live) and [diagram catalogue](https://mermaid.ai/open-source/intro/index.html).
 - Simon Brown — [C4 model](https://c4model.com/) (ongoing). Architecture views.
 - Simon Brown — [Structurizr](https://docs.structurizr.com/) (ongoing). Models-as-code tooling for C4 DSL.
 - Terrastruct — [D2](https://d2lang.com/) (ongoing). A modern diagram scripting language; produces richer layouts than Mermaid but as of 2026 is not rendered inline by major Git hosts. Referenced in the Plain-Text-as-Code chapter as context for why Mermaid is the current practical choice.

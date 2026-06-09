@@ -26,7 +26,38 @@ Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's 
 
 Run the gRPC case forward with the structure in place:
 
-The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
+The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint.
+
+```markdown
+---
+status: accepted
+date: 2026-03-11
+---
+
+# Migrate service endpoints from REST to gRPC
+
+## Context and Problem Statement
+
+REST endpoints lack typed contracts and cannot support streaming.
+Performance profiling identified protocol overhead as a bottleneck.
+
+## Considered Options
+
+- gRPC: typed contracts via protobuf, streaming, language-agnostic
+- REST with OpenAPI: typed via schema, widely understood, no streaming
+- GraphQL subscriptions: streaming support, heavier client tooling
+
+## Decision Outcome
+
+Chosen option: gRPC. It is the only option that satisfies all three constraints.
+
+### Consequences
+
+- All new endpoints must be defined as .proto methods.
+- REST handlers are deprecated; do not add new ones.
+```
+
+The agent does not have to read the reasoning to find the constraint. It reads `## Decision Outcome` and `### Consequences`. The structure is what makes that possible. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
 
 None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
 

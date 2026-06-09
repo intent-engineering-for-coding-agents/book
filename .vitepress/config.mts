@@ -1,11 +1,15 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { bundledLanguages } from 'shiki'
 
 export default withMermaid(
   defineConfig({
     title: 'Intent Engineering',
     description: 'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering',
     srcDir: 'content',
+    markdown: {
+      languages: [bundledLanguages.mermaid],
+    },
     appearance: true,
     themeConfig: {
       logo: {
