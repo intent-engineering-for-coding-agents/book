@@ -15,7 +15,7 @@ front-end/
   openspec/
     changes/
       add-filter-component/
-        propose.md
+        proposal.md
         design.md
         specs/
           filter-component/
@@ -26,7 +26,7 @@ bff/
   openspec/
     changes/
       add-filter-endpoint/
-        propose.md
+        proposal.md
         design.md
         specs/
           filter-endpoint/

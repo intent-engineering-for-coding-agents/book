@@ -18,14 +18,14 @@ OpenSpec is the next level. A structured change-folder workflow with four parts,
 
 | Part | File | Question |
 |---|---|---|
-| Propose | `propose.md` | What is this change about and why? |
+| Propose | `proposal.md` | What is this change about and why? |
 | Design | `design.md` | How do we intend to execute it? |
 | Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
 | Tasks | `tasks.md` | What is the execution plan? |
 
 Acceptance criteria are written in Gherkin (GIVEN-WHEN-THEN): abstract enough to write quickly, concrete enough to drive test implementation. When the change is archived, the per-capability acceptance criteria merge into the canonical `/openspec/specs/<capability>/spec.md`, building a living source-of-truth for each capability's behavior. This is the mechanism that closes the loop between intent and proof.
 
-A change proposal is a delta on the system's capability model: adding, updating, or removing the acceptance criteria that define what the system does. The `design.md` and `tasks.md` describe how to execute that delta; the `propose.md` describes why. The specs are the thing that actually changes, which is why archiving merges them into the canonical capability model and the rest is discarded.
+A change proposal is a delta on the system's capability model: adding, updating, or removing the acceptance criteria that define what the system does. The `design.md` and `tasks.md` describe how to execute that delta; the `proposal.md` describes why. The specs are the thing that actually changes, which is why archiving merges them into the canonical capability model and the rest is discarded.
 
 Adds lifecycle management and the archive as a historical record. Designed for teams working on production systems with multiple developers. The overhead is real and intentional: the ceremony is proportional to the risk.
 
