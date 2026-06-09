@@ -1,12 +1,10 @@
-# The Map: Intent Engineering and the SDLC
+# Intent Engineering and the SDLC
 
 The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artifacts. New review process. Your existing tooling becomes legacy on contact.
 
-The Software Development Life Cycle is the structured sequence a team runs to take software from idea to production: plan, build, review, integrate, deploy, maintain. Every team runs some version of it, whether they call it that or not.
-
 That pitch dies on first contact with any team with working CI, an established review culture, and a Jira board people use. So this book makes a different pitch.
 
-Intent Engineering extends the SDLC. The ceremonies stay. The artifacts inside them change.
+Spec-Driven Development is the broader practice of writing intent before writing code. Intent Engineering is this book's specific form of it. Both extend the Software Development Life Cycle (SDLC) rather than replace it. The ceremonies stay. The artifacts inside them change.
 
 *Sources: Sommerville, Software Engineering (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.*
 
@@ -14,23 +12,31 @@ Intent Engineering extends the SDLC. The ceremonies stay. The artifacts inside t
 
 ```mermaid
 graph TD
+    classDef existing fill:#64748b,stroke:#475569,color:#fff
+    classDef ie fill:#0d9488,stroke:#0f766e,color:#fff
+
+    subgraph Legend
+        direction LR
+        L1[Existing SDLC]:::existing
+        L2[Intent Engineering]:::ie
+    end
     subgraph Planning
-        A[Ticket / story] --> B[OpenSpec change folder<br/>spec + design + tasks]
+        A[Ticket / story]:::existing --> B[OpenSpec change folder<br/>spec + design + tasks]:::ie
     end
     subgraph Implementation
-        C["AGENTS.md + .agents/"] --> D[Agent-assisted coding]
+        C["AGENTS.md + .agents/"]:::ie --> D[Agent-assisted coding]:::existing
         B --> D
     end
     subgraph Review
-        D --> E[Spec review before code review]
-        E --> F[PR: docs / structural / behavioral]
+        D --> E[Spec review before code review]:::ie
+        E --> F[PR: docs / structural / behavioral]:::ie
     end
     subgraph CI
-        F --> G[Conventions check<br/>AC traceability<br/>tests]
-        G --> H[Deploy]
+        F --> G[Conventions check<br/>AC traceability tests]:::ie
+        G --> H[Deploy]:::existing
     end
     subgraph Maintenance
-        H --> I[Archive spec<br/>Update INDEX.md<br/>ADRs stay closed]
+        H --> I[Archive spec, update INDEX.md</>ADRs stay closed]:::ie
         I --> A
     end
 ```
