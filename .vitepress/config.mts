@@ -33,7 +33,6 @@ export default withMermaid(
             { text: 'Document Types', link: '/foundation/document-types' },
             { text: 'Plain-Text-as-Code', link: '/foundation/plain-text-as-code' },
             { text: 'Intent Engineering and the SDLC', link: '/foundation/intent-engineering-and-the-sdlc' },
-            { text: 'Honest Maturity', link: '/foundation/honest-maturity' },
             { text: 'Brownfield vs Greenfield', link: '/foundation/brownfield-vs-greenfield' },
             { text: 'When Intent Engineering Fails', link: '/foundation/when-intent-engineering-fails' },
           ]
@@ -96,6 +95,7 @@ export default withMermaid(
             { text: 'Living Principles', link: '/appendices/living-principles' },
             { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
             { text: 'Companion Repo', link: '/appendices/companion-repo' },
+            { text: 'Honest Maturity', link: '/appendices/honest-maturity' },
             { text: 'Instantiation Checklist', link: '/appendices/instantiation-checklist' },
             { text: 'Credits', link: '/appendices/credits' },
           ]

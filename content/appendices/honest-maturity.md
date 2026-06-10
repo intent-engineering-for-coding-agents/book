@@ -14,15 +14,15 @@ Practiced means the team does the work in its actual workflow, even informally. 
 
 ### Documented
 
-Documented means the practice is written down well enough for someone new to follow without asking the person who already knows. A convention in `AGENTS.md` or `.agents/instructions/` that accurately describes how the team works is documented maturity. Note the word accurately. An instruction file that describes how the team worked six months ago is not documented maturity. It is a historical record with delusions of authority.
+Documented means the practice is written down well enough for someone new to follow without asking the person who already knows. Agent instructions that accurately describe how the team works are documented maturity. Note the word accurately. An instruction file that describes how the team worked six months ago is not documented maturity. It is a historical record with delusions of authority.
 
 ### CI-enforced
 
-CI-enforced is the only level a team relies on without trust. The pipeline fails when the practice is violated: `iec check` catches a missing `docs/README.md` before the PR merges, and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
+CI-enforced is the only level a team relies on without trust. The pipeline fails when the practice is violated: a CI step catches a missing `docs/README.md` before the PR merges (tools like `iec check` can do this), and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
 
-Each level carries a target annotation: practiced, target: CI-enforced by Q3. This distinguishes intent from claim. Writing target: CI-enforced when you are not there yet is honesty. Writing CI-enforced when you rely on code review to catch it is something else.
+A level can carry a target annotation, `practiced, target: CI-enforced by Q3`, separating current state from intent. Writing target: CI-enforced when you are not there yet is honest roadmapping. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy was built to name.
 
-These are not CMM audit levels. No certification, no maturity score, no report for management. One team, honest with itself about one practice. A practice stays at practiced indefinitely if the enforcement cost is not worth the work. The discipline is calling things by the right name, not upgrading the label to look good in a retrospective.
+These are not CMM audit levels. No certification, no maturity score, no report for management. The discipline is calling things by the right name, not upgrading the label to look good in a retrospective.
 
 ## Why the labels matter
 
