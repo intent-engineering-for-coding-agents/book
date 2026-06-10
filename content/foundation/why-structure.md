@@ -24,6 +24,8 @@ At human speed, drift like this used to take quarters to compound. At agentic sp
 
 Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's brief), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
 
+Chat briefings decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same briefing, every time. The repo becomes the briefing.
+
 Run the gRPC case forward with the structure in place:
 
 The migration to gRPC was recorded as `docs/decisions/0014-grpc-services.md`. `AGENTS.md` lists `docs/decisions/` as canonical and instructs the agent to read it before adding a new service endpoint.

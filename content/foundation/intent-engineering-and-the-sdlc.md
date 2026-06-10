@@ -57,11 +57,11 @@ Architecture changes and agent-led implementation need the target before code ex
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.*
 
-## Implementation: brief the agent through the repo
+## Implementation: use the repo briefing
 
-Once the spec exists, the agent needs the repo briefing: `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change. `AGENTS.md` loads first and points outward. From there the agent finds the relevant instructions, docs, and specs.
+Implementation uses the repo briefing. The agent enters the coding step through `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change.
 
-Chat briefings decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same briefing, every time. The repo becomes the briefing.
+[Why Structure Matters](./why-structure) explains the deeper rule: the repo is the briefing. The SDLC map only needs the placement. Implementation is where durable context meets code generation.
 
 ## Review: intent first, code second
 
