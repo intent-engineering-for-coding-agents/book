@@ -10,7 +10,7 @@ This book uses Spec-Driven Development for the broader practice of _writing inte
 
 ## The map
 
-Read the diagram as an overlay. Gray marks existing process or repo context. Teal marks Intent Engineering context, an intent artifact, a review step, or a check.
+Read the diagram as an overlay. Gray marks existing process. Teal marks the Intent Engineering context, artifact, review step, or check added to the loop.
 
 ```mermaid
 graph TD
@@ -26,9 +26,9 @@ graph TD
         A[Ticket / story]:::existing --> B[OpenSpec change folder<br/>spec + design + tasks]:::ie
     end
     subgraph Implementation
-        C["AGENTS.md + .agents/"]:::ie --> D[Agent-assisted coding]:::existing
-        J["docs/"]:::existing --> D
-        K["openspec/specs/"]:::ie --> D
+        C["Agent instructions<br/>AGENTS.md + .agents/"]:::ie --> D["Coding<br/>(agent assisted)"]:::existing
+        J["Structured documentation<br/>docs/"]:::ie --> D
+        K["Acceptance criteria<br/>openspec/specs"]:::ie --> D
         B --> D
     end
     subgraph Review
