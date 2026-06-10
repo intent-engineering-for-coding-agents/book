@@ -51,7 +51,7 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 ## What it does not do
 
-`iec` has no command to run against your repo. It checks alignment in its own development workflow, not in yours.
+`iec` is not a validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions; uninitialized repos will fail most checks by design. The companion repo is the canonical example of a repo where all checks pass.
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 

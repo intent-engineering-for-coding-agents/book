@@ -38,9 +38,9 @@ Small specs create their own failure mode: a spec too vague to be useful.
 
 Write small and write precisely. The constraint is not "fewer words", but "one PR's scope, one concrete outcome per scenario, nothing else". Scope comes first. Quantity comes second: how many tasks the spec should generate, how many files the PR should touch, and what to do when those numbers start climbing.
 
-## Ten is a rule of thumb
+## The Rule of Ten
 
-Quantity has a threshold, and a decent rule of thumb is ten: ten tasks in a spec, ten files in a PR. The number is not magic and it is not a rule in any strict sense. Eight would work, twelve would work. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. A rule of thumb you cannot hold in your head under deadline pressure is not useful as that. It is a footnote.
+Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. The number is not magic and it is not a rule in any strict sense. Eight would work, twelve would work. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. A rule of thumb you cannot hold in your head under deadline pressure is not useful as that. It is a footnote.
 
 The limit is for the humans in the loop, not the agent. The agent can re-read a twenty-three-task spec on every step. The reviewer cannot re-read a twenty-three-file diff while also judging whether the intent was right in the first place. Ten is roughly the point past which a person stops holding the whole change in their head and starts approving it in pieces, trusting that the pieces add up. Twenty distinct, unrelated edits is past that point for almost everyone. You have not reviewed it. You have scrolled it.
 
@@ -58,4 +58,4 @@ The `openspec/changes/<name>/` folder and everything in it, `proposal.md`, `desi
 
 *Sources: LeanSpec, small-spec discipline and formality-to-risk matching.*
 
-Once the task list has the right number of items, the next question is which one the agent tackles first.
+A spec with the right number of tasks is still only half-formed if the constraints and non-goals sit at the bottom where the agent reads them last. The next chapter is about where that load-bearing information has to go.

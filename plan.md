@@ -27,7 +27,6 @@ the worked examples and the `iec` companion repo.
   - Document Types: separate ADRs, design docs, specs, indexes, and generated maps by job.
   - Plain-Text-as-Code: explain why durable agent context should live in reviewable text.
   - The Map: Intent Engineering and the SDLC: locate the practice inside existing delivery loops.
-  - Honest Maturity: show what is ready now, what is experimental, and what should not be oversold.
   - Brownfield vs Greenfield: contrast bootstrapping from existing code with building from explicit intent.
   - When Intent Engineering Fails: name the failure modes that survive good structure.
 - Agent Instructions: turn repo knowledge into instructions agents can load consistently.
@@ -61,7 +60,7 @@ the worked examples and the `iec` companion repo.
   - Shared Agent Instruction Conventions: keep team instructions shared without erasing role-specific briefs.
   - Cross-Team Coordination: use ADRs and inner-source instruction libraries where one repo is not enough.
   - What Is Still Evolving: be explicit about immature practices and mid-2026 limits.
-- Appendices: provide reference material only: glossary, principles, tool snapshot, companion repo, checklist, and credits.
+- Appendices: provide reference material only: glossary, principles, tool snapshot, companion repo, checklist, credits, and Honest Maturity (what is ready now, what is experimental, what should not be oversold).
 
 ## Why rename
 

@@ -76,17 +76,11 @@ A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing s
 
 ## Archiving
 
-A spec lives in two moments: written before the work begins, archived once it ends. Skip the second, and the agent spends every session treating settled work as an open task.
+A spec lives in two moments: written before the work begins, archived once it ends. Skip the second, and the agent treats settled work as an open task.
 
-Archiving moves the folder. It does not erase it. The delta specs are applied to the canonical `openspec/specs/<capability>/spec.md`, updating the system's capability record. The entire change folder, including its `specs/` subdirectory, then moves to `openspec/changes/archive/YYYY-MM-DD-<name>/` as historical record. The agent does not need a rule telling it to skip that folder. The same directory placement that separates content documents from structured ones does the filtering here too: `openspec list` reports only what it labels active changes, read straight from `openspec/changes/`, and an archived folder never surfaces in that output unless something points the agent there directly. The same immutability discipline that governs a closed ADR applies here.
+Specs are temporary: they move to `openspec/changes/archive/` after implementation. The full archiving mechanics, the retention discipline, and the dead-spec failure mode that results from skipping this step are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
-An archived spec is read-only history. The gap between what the team intended and what it built is exactly what a future reader wants to see, and editing it away erases the only record of it. The one genuine annoyance: archives age. Links rot, referenced tools move on, and decisions written with full context read strangely once that context is gone. None of that makes the archive wrong to keep. It makes it old, and that is what archives are.
-
-OpenSpec's documentation describes the move into `changes/archive/` and the audit-trail reasoning behind it, but stops short of a retention policy. This book's answer: keep the archive indefinitely, for the same reason you keep git history completely. The cost of carrying it is near zero, and the cost of needing a record later and finding it gone is high. The merged spec in `openspec/specs/` already tells the agent what the system does now.
-
-The archive tells a human, or an agent asked to investigate, how the system got there and why: the same job an ADR does, at the resolution of a single change. If the folder eventually grows large enough that navigation becomes difficult, the fix is an INDEX for `changes/archive/`, not a policy that discards the record.
-
-*Sources: OpenSpec documentation, `concepts.md` and `commands.md` (Fission-AI/OpenSpec, github.com/Fission-AI/OpenSpec), the archive folder mechanics and audit-trail rationale. OpenSpec documentation, `cli.md` (Fission-AI/OpenSpec), the `openspec list` active-changes filter, current as of this writing and worth rechecking against the version in use. Retention itself is this book's synthesis, since OpenSpec's documentation does not prescribe one.*
+*Sources: OpenSpec documentation, `concepts.md` (Fission-AI/OpenSpec), the archive folder mechanics.*
 
 ## The lifespans matter more than the names
 

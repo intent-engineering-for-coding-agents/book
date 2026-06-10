@@ -40,17 +40,15 @@ A `check_spec_quality` command for `iec`'s MCP interface is planned: it will com
 
 ## Multi-LLM critique
 
-The implementation agent has context that biases its review. By the time the PR opens, it has resolved the spec's ambiguities, decided which edge cases were in scope, and written tests that confirm its choices. Asking it to review the same code produces the same choices confirmed again.
+The fresh-session technique from [Spec Lifecycle](../spec-driven/spec-lifecycle) applies here with different inputs and a different goal. Pre-implementation, the second agent critiques the spec. At review, it traces the implementation.
 
-Birgitta Böckeler describes using a second model or a fresh session to critique a spec before implementation begins: the second agent reads without the context that shaped the first agent's decisions and finds gaps the author's session learned to overlook. The same approach extends to the review stage.
+The implementation agent has context that biases its review. It resolved the spec's ambiguities, decided which edge cases were in scope, and wrote tests that confirm its choices. Asking it to review the same code confirms the same choices again.
 
-Open a fresh session. Provide the approved spec and the implementation diff, with no prior context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The difference here is not the checklist, but the absence of the bias that the implementation session accumulated.
+Open a fresh session with the approved spec and the implementation diff, and no context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps.
 
-The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps. The fresh agent locates where to look, and the human decides whether the divergence is a defect, a spec omission, or an intentional extension that needs to be documented before it becomes undocumented behavior.
+This step is not free. For high-stakes behavioral changes with many acceptance criteria, the tracing is worth it. For a change with three acceptance criteria and three tests, skip it.
 
-This step is not free. It costs a context load and a review pass. For high-stakes behavioral changes where the spec has dozens of acceptance criteria, the tracing it provides is worth it. For a change with three acceptance criteria and three tests, skipping this step is defensible.
-
-A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: a different vendor's training data, different defaults, different blind spots. This is one of the concrete payoffs of keeping `AGENTS.md` and `.agents/` vendor-neutral. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and diff costs nothing extra in briefing, because the briefing was never tool-specific to begin with. Run that across enough changes and a second thing falls out for free: a rough read on which tool earns its keep on this particular codebase, not the one with the loudest release notes.
+A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: different training data, different defaults, different blind spots. Keeping `AGENTS.md` and `.agents/` vendor-neutral makes this free in briefing cost. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and diff costs nothing extra, because the briefing was never tool-specific. Run that across enough changes and a second thing falls out: a rough read on which tool earns its keep on this codebase, not the one with the loudest release notes.
 
 *Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec without implementation-context bias.*
 

@@ -101,4 +101,4 @@ New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), sustainable process over heavyweight ceremony.*
 
-When a team adds spec review to the PR checklist and skips the step under pressure, the practice exists in intention only. No process map catches that. The missing archived spec does. The harder question is whether the team knows it is missing.
+When a team adds spec review to the PR checklist and skips the step under pressure, the practice exists in intention only. No process map catches that. The missing archived spec does. The harder question is whether the team knows it is missing. That question sharpens in codebases where the decisions were never written down at all.

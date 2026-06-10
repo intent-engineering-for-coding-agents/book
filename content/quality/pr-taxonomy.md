@@ -65,7 +65,7 @@ These exceptions exist, but they are narrow and the default is separation. A tea
 
 The taxonomy is convention, not law. Different teams use different labels (`refactor`, `chore`, `feat`, `fix`, in conventional-commits style). The exact labels matter less than the discipline of one class per PR. What this book calls `structural`, conventional commits would split between `refactor` and `chore`. The mapping is straightforward; what matters is that the discipline is consistent within the team.
 
-Some teams skip the docs PRs entirely and bundle docs with the behavioral change they describe. This works as long as the docs are short and do not bury the behavioral change in the diff. It stops working when the docs grow large enough to become their own review burden. The threshold is hard to specify in advance; the symptom is the reviewer skipping the docs section because there is too much else to read.
+Some teams bundle short docs changes with the behavioral PR they describe. That works when the documentation is shorter than the diff. When the documentation section runs longer than a screen, it has become its own review burden. Ship it separately.
 
 The agent will resist the discipline at first and offer combined PRs as the natural output of its work. The discipline is an instruction in `AGENTS.md` and a habit in the developer, not a behavior the agent comes with by default. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small, while the cost of letting it lapse is the 300-line mixed PR that broke production.
 
