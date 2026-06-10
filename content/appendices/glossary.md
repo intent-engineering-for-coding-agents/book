@@ -16,7 +16,7 @@ The discipline of building agents as products: reasoning loops, evals, hallucina
 
 ## ADR (Architectural Decision Record)
 
-A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once closed (reversing a decision creates a new ADR that references the old one), though status updates and cross-references can still be edited. Originated in Michael Nygard's 2011 post; the structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
+A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted (reversing a decision creates a new ADR that supersedes the old one), though status updates and cross-references can still be edited. Originated in Michael Nygard's 2011 post; the structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
 
 ## AGENTS.md
 
