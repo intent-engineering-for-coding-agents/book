@@ -4,13 +4,13 @@ A spec is meant to die when its feature ships. Leave one sitting in `openspec/ch
 
 This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 
-The design changes, and instead of writing a new ADR that supersedes the old one, someone edits the original to match. The decision history is now a lie. Readers see the current state and assume that was always the chosen option. The what has overwritten the why, the thing that made the ADR valuable. The ADR still passes review. It is wrong.
+The design changes, and someone edits the original ADR instead of writing a new one. Decision history becomes a lie: readers see the current state and assume the current state was always the chosen option. The what has overwritten the why, the part that made the ADR valuable. The ADR still passes review, but it is wrong.
 
 A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended when it was created, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
 
-A spec gets parked in `docs/` because someone thought the team should keep it for reference. Now the agent reads it on every session as a live instruction. Half its context window is documentation of work that finished last quarter. The agent is not confused. The agent is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
+A spec gets parked in `docs/` because someone thought the team should keep it for reference. The agent now reads work from last quarter as live instruction, burning half its context window on stale guidance. The agent is not confused. It is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
 
-Each of these is reversible. Each of them, in a real repo, takes weeks of careful pruning to undo. Recognizing the type is where this starts. What you do with it next is what the rest of this chapter is about.
+Each case is reversible, but in a real repo, each takes weeks of careful pruning to undo. Recognizing the type is where this starts. What you do with it next is what the rest of this chapter is about.
 
 ## The types
 
@@ -28,7 +28,7 @@ The enforcement mechanism is directory placement. Structured documents live unde
 
 README files live at the root of every documentation directory. GitHub, GitLab, and most hosted Git platforms render them automatically when a user navigates to that directory, and that rendering is what a README is for: a human reading on a Git host where prose, headings, and diagrams read the way they were written. The architecture overview lives in `docs/architecture/README.md`. The top-level `docs/README.md` does different work: it orients a reader to the documentation tree itself, what exists under `docs/` and where to start, not to the architecture the tree documents. Both live forever, each updated as the thing it describes changes.
 
-INDEX files serve a different reader: the agent. A table listing every file under the directory, each row carrying a one-line description. Its job is not to summarize the file. It is to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else, which means a stale entry costs more than a missing one: it sends the agent toward a file that moved, or hides one that recently landed. The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
+INDEX files serve a different reader: the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map. The agent loads `docs/INDEX.md` at the start of a session to orient itself before reading anything else, which means a stale entry costs more than a missing one: it sends the agent toward a file that moved, or hides one that recently landed. The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
 
 README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser; an agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
 
@@ -36,7 +36,7 @@ README and INDEX live in the same directory, serve the same lifespan, and are th
 
 ## Design docs
 
-Design docs live in `docs/design/`. They hold the per-feature thinking: the options weighed, the approach chosen, the risks named. They are not decision records, too narrow and too feature-specific to carry that weight. They are not specs either. A design doc describes the approach. A spec defines the behavior. What you do with them afterward is a matter of preference.
+Design docs live in `docs/design/` and hold per-feature thinking: options weighed, approach chosen, risks named. They are not decision records, too narrow and too feature-specific to carry that weight, and they are not specs either. A design doc describes the approach. A spec defines the behavior. What you do with them afterward is a matter of preference.
 
 Some teams write them and move on; the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
 

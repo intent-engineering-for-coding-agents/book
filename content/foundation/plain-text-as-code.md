@@ -8,7 +8,7 @@ If the agent needs it, it lives in the repo. If it lives in the repo, it lives i
 
 ## The constraint
 
-Plain text means a format a human reads in a terminal, a Git diff shows line-by-line, and a language model processes without conversion. Markdown for prose. Mermaid for diagrams. Markdown Architectural Decision Records (MADR) for the decisions. Nothing exotic.
+Plain text means a format a human reads in a terminal, a Git diff shows line-by-line, and a language model processes without conversion: Markdown for prose, Mermaid for diagrams, Markdown Architectural Decision Records (MADR) for the decisions. Nothing exotic.
 
 It is not a migration. The document lives in the repo from creation, evolves there, and is reviewed in the same PR as the code it describes. If someone needs it in Confluence, in a PowerPoint deck, or on a wiki, that is an export, a one-way snapshot made when needed. The repo is the source of truth. Everything else is a derivative.
 
@@ -20,7 +20,7 @@ The fuller statement of the philosophy is in the Plain Text as Code Manifest (gi
 
 Markdown is the unremarkable choice: renders on every major Git host, readable without a renderer, no tooling required to write. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. As of mid-2026, it is effectively universal in public codebases and current models handle it fluently. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
 
-If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. Not in a PR description: the agent rarely knows which closed PR to read, and description quality is too uneven to rely on. Not in a commit message: some developers write essays, others write `fix`. The log is not a reliable index of decisions. Not in a code comment: a coding agent treats code as freely modifiable. Comments get rewritten or removed without hesitation. Humans expect documentation, not annotations buried in source files. In a file, with a name, at a known location.
+If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. PR descriptions are too hard for the agent to find, and description quality is too uneven to rely on. Commit messages are no better: some developers write essays, others write `fix`, and the log is not a reliable index of decisions. Code comments are worse, because a coding agent treats code as freely modifiable and rewrites or removes comments without hesitation. Humans expect documentation, not annotations buried in source files. Put the decision in a file, with a name, at a known location.
 
 **The question:** can the agent reach it in a fresh session with no chat history, only the repo? If not, it is not documented. Where it lives and how carefully it was written do not matter.
 
@@ -116,4 +116,4 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 
 ## The compound effect
 
-A team that practices this consistently accumulates structured context. Each ADR adds to the agent's understanding of the system's history. Each skill file adds a workflow the agent invokes. The architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
+A team that practices this consistently accumulates structured context. ADRs add to the agent's understanding of system history, skill files add workflows the agent invokes, and the architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.

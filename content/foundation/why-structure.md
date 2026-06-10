@@ -6,13 +6,13 @@ The team moved to gRPC months ago due to typed contracts, streaming, performance
 
 REST is what the agent's model absorbed during its base training. The decision to leave it behind and replace it for gRPC happened in a team meeting but never became a readable file, for the agent or anyone else. This crucial information now only lives in the heads of the team members who happen to remember the decision.
 
-The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. The PR is approved. Three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
+The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. Review approves the PR, then three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
 
 This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be quietly overwritten. And the count keeps climbing. Every agent session is one more chance to widen the gap between what the team decided and what the code now says.
 
 ## Compounding drift
 
-The model did not fail. The agent reasoned correctly from the context made available to it. The constraint was the lack of context.
+The model did not fail. Given the available context, the agent reasoned correctly. The constraint was missing.
 
 ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
 
@@ -59,7 +59,7 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 - REST handlers are deprecated; do not add new ones.
 ```
 
-The agent does not have to read the reasoning to find the constraint. It reads `## Decision Outcome` and `### Consequences`. The structure is what makes that possible. The agent surfaces the constraint and proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
+The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
 
 None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
 

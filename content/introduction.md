@@ -2,7 +2,7 @@
 
 A coding agent works fast. It has been trained and has read more code than you ever will, and it generates a payment service in five minutes that might have taken you a week or two.
 
-The agent has no idea what you decided. And the agent does not know the team has actively chosen against Redis last quarter. The agent cannot see why the auth flow, which looks redundant, is load-bearing. The incident from last year lives only in someone's head. The database column the agent is about to add was deprecated by a decision never recorded in any ADR. The architect who made that call left a couple of years ago. The agent reasons brilliantly from exactly the context it has available.
+The agent has no idea what you decided. No model sees the team's Redis decision from last quarter, the incident living only in someone's head, or the reason the redundant-looking auth flow is load-bearing. The database column about to be added was deprecated by a decision never recorded in an ADR. The architect who made the call left a couple of years ago. From the available context, the agent reasons brilliantly.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI does not create great developers, it amplifies them". A coding agent in the hands of a clueless developer ships "clueless" code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral, but not what it amplifies.
 
@@ -10,7 +10,7 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 This is the territory of "Intent Engineering", the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
-"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology or a process. Practices you adopt as you need them. Intent Engineering in turn fits within what some vendors and practitioners now call Developer AI: agent tooling aimed at the development workflow rather than at end users or production systems.
+"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Not a methodology, not a process, but practices you adopt as you need them. Intent Engineering in turn fits within what some vendors and practitioners now call Developer AI: agent tooling aimed at the development workflow rather than at end users or production systems.
 
 The book is OpenSpec-first on purpose. Intent Engineering is the portable practice; OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers can inspect. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
 
@@ -33,15 +33,15 @@ That is not a lucky prompt or a generous model run. It is what a skilled colleag
 
 ## What to expect
 
-The book is organized around four topics. Each works on its own at a solo scale. They couple at a team scale, and the book flags where.
+The book is organized around four topics. Each works at solo scale and couples with the others at team scale. The book flags those coupling points.
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the **target** and **prove** that the agent hit it. Context is the substrate and the intent is the point.
 
-**Foundation:** repo structure as the agent's briefing. Decisions, design docs, specs, and an agent-facing index. Not a determinism harness. The agent's non-determinism is the force you are paying for. Briefing keeps the agent from choosing wrong out of ignorance. Context, not intent: the prerequisite for everything else, with the lowest immediate payoff.
+**Foundation:** repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: briefing keeps the agent from choosing wrong out of ignorance.
 
 **Agent Instructions:** `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
-**Spec-Driven Development:** specs before code. The spec _is_ the durable artifact. The code is downstream. Small specs ship. Large specs drift.
+**Spec-Driven Development:** specs before code. The spec becomes the durable artifact, with code downstream from intent. Small specs ship. Large specs drift.
 
 **Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that survives both files being rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
@@ -59,7 +59,7 @@ What you will not find here: a vendor comparison matrix. The agent class is name
 
 You are a senior developer or architect. You already use a capability-class coding agent: one with a reasoning-capable model, real tool use, and enough autonomy to carry out a plan without checking in for every decision. At the time of writing, that class includes tools such as Claude Code, GitHub Copilot, Cursor, Codex, and OpenCode. The exact model roster will keep moving. The practices in this book target the class, not a frozen vendor list.
 
-You have shipped production code under pressure. You are skeptical of hype and want more control and consistency at scale. You know what a PR is. You take it as given that developers are here to stay and humans must stay in the loop.
+You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
 Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one in costs something today, a cost later chapters name honestly rather than wave away.
 
