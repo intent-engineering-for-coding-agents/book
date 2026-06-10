@@ -1,21 +1,23 @@
 # Intent Engineering and the SDLC
 
-The pitch most agentic-engineering material makes is implicit: throw out your SDLC and adopt the new one. New ceremonies. New artifacts. New review process. Your existing tooling becomes legacy on contact.
+This chapter rejects a tempting pitch: replace your SDLC with a new one. New ceremonies, new artifacts, new review process. Existing tooling becomes legacy on contact.
 
-That pitch dies on first contact with any team with working CI, an established review culture, and a Jira board people use. So this book makes a different pitch.
+The pitch fails where engineering process already has teeth: Continuous Integration (CI) catches mistakes, reviewers defend standards, and the Jira board drives planning. This chapter makes the opposite move. Keep the delivery loop. Change the artifacts moving through the loop.
 
-Spec-Driven Development is the broader practice of writing intent before writing code. Intent Engineering is this book's specific form of it. Both extend the Software Development Life Cycle (SDLC) rather than replace it. The ceremonies stay. The artifacts inside them change.
+This book uses Spec-Driven Development for the broader practice of _writing intent before writing code_. Intent Engineering is this book's version of the practice. The Software Development Life Cycle (SDLC) stays in place.
 
 *Sources: Sommerville, Software Engineering (10th ed., Pearson, 2015), ch. 2, the SDLC as the structured sequence from idea to production.*
 
 ## The map
+
+Read the diagram as an overlay. Gray marks existing process or repo context. Teal marks Intent Engineering context, an intent artifact, a review step, or a check.
 
 ```mermaid
 graph TD
     classDef existing fill:#64748b,stroke:#475569,color:#fff
     classDef ie fill:#0d9488,stroke:#0f766e,color:#fff
 
-    subgraph Legend
+    subgraph Legend:
         direction LR
         L1[Existing SDLC]:::existing
         L2[Intent Engineering]:::ie
@@ -25,70 +27,74 @@ graph TD
     end
     subgraph Implementation
         C["AGENTS.md + .agents/"]:::ie --> D[Agent-assisted coding]:::existing
+        J["docs/"]:::existing --> D
+        K["openspec/specs/"]:::ie --> D
         B --> D
     end
     subgraph Review
         D --> E[Spec review before code review]:::ie
         E --> F[PR: docs / structural / behavioral]:::ie
     end
-    subgraph CI
+    subgraph "Continuous Integration (CI)"
         F --> G[Conventions check<br/>AC traceability tests]:::ie
         G --> H[Deploy]:::existing
     end
     subgraph Maintenance
-        H --> I[Archive spec, update INDEX.md</>ADRs stay closed]:::ie
+        H --> I[Archive spec<br/>Refresh INDEX.md]:::ie
         I --> A
     end
 ```
 
-Five phases, none of them new. Inside each, Intent Engineering adds exactly one thing.
+The phases are familiar. The overlay changes what evidence each phase leaves behind.
 
 ## Planning: from ticket to spec
 
-The change starts the way it always has. A ticket. A story. A Linear card. OpenSpec adds a sibling artifact, `openspec/changes/<name>/`, containing `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket is still the unit of tracking. The spec is the unit of intent.
+The change starts in the usual place: a ticket, a story, a Linear card. In this book's OpenSpec workflow, the sibling artifact is `openspec/changes/<name>/`: `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket tracks the work. The spec captures intent.
 
-Not every change earns a spec. A typo fix does not. A dependency bump does not. A bug fix is less clear-cut: if the correct behavior is self-evident, skip it; if figuring out what the system was supposed to do is the hard part, that reasoning belongs in a spec before anyone writes a line to restore it. Anything touching architecture, or intended for an agent to implement: write the spec first. Planning is where intent gets fixed. Fixed intent is what the agent works from. Unfixed intent is what makes the agent produce code nobody wanted.
+Most changes do not need a spec. Typo fixes and dependency bumps should stay light. Bugs need judgment. If correct behavior is obvious, skip the spec. If reconstructing intended behavior is the hard part, put the reasoning in a spec before restoring the code.
+
+Architecture changes and agent-led implementation need the target before code exists. Without a target, the agent fills the empty space with plausible work nobody requested.
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.*
 
 ## Implementation: brief the agent through the repo
 
-With the spec in place, the agent needs to find it, along with the architecture overview, the constraints, and the conventions for the codebase it is about to change. That is what `AGENTS.md` is for. It loads first. From there it finds the relevant instructions and the spec for the current change. The briefing is in the repo, not in a chat message that disappears when the session ends.
+Once the spec exists, the agent needs the repo briefing: `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change. `AGENTS.md` loads first and points outward. From there the agent finds the relevant instructions, docs, and specs.
 
-The contrast matters at scale. A briefing in a chat session works for one developer for one hour. A briefing in `AGENTS.md` and `.agents/instructions/` works for every agent session, every developer, every CI run, on every machine. Same briefing, every time. The repo is the briefing.
+Chat briefings decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same briefing, every time. The repo becomes the briefing.
 
 ## Review: intent first, code second
 
-The agent commits. The PR opens. Most teams treat what comes next as one step. Intent Engineering treats it as two.
+The agent commits. The PR opens. A normal review path collapses intent and code into one diff conversation. Intent Engineering separates them.
 
-The spec delta says what the change is supposed to do. The code diff says what got built. Review the spec first. Does the intent match what was agreed? Then review the code diff. Does the implementation match the intent?
+The spec delta says what the change is supposed to do. The code diff says what got built. Read the spec first. Does intent match agreement? Then read the code. Does implementation match intent?
 
-This sequencing is cheap to adopt and surprisingly effective: a reviewer who reads the spec first asks whether the change is the right change at all, a question that rarely gets asked once the diff is in front of you. Why it works and how to make it the default rather than the disciplined choice is the subject of [Code Review for Agent-Generated Code](../team/code-review-agent-code).
+The sequence moves one question earlier: are we building the right change at all? Once the diff dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
-PR taxonomy keeps the review focused. A `docs`-only PR does not need behavior scrutiny. A `behavioral` PR does not get cluttered by formatting changes that should have been their own `structural` PR. The taxonomy sounds bureaucratic. In practice it is PR discipline with names.
+PR taxonomy gives the reviewer a second guardrail. A `docs`-only PR does not need behavior scrutiny. A `behavioral` PR does not belong in the same diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
 
 ## CI: the pipeline checks the conventions
 
-A conventions check runs on every push. It validates that `AGENTS.md` is present and well-formed, that `docs/README.md` and `docs/INDEX.md` exist, that Architectural Decision Records (ADRs) follow Markdown ADR (MADR) format, and that spec scenarios carry stable Acceptance Criterion IDs (AC IDs) and test declarations. Not a new pipeline. A new check inside the pipeline you already have.
+A conventions check runs on every push. The check validates `AGENTS.md`, the presence of `docs/README.md` and `docs/INDEX.md`, Markdown ADR (MADR) format for Architectural Decision Records (ADRs), and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. Not a new pipeline. A new check inside the pipeline you already have.
 
-AC traceability links scenarios to tests. A test marked `@pytest.mark.ac("SCAFFOLD-001")` proves that scenario when it passes. The traceability survives spec archival. Six months later, the audit trail still answers "which test covered this?" without grep guessing.
+AC traceability links scenarios to tests. A passing test marked `@pytest.mark.ac("SCAFFOLD-001")` proves the named scenario. The traceability survives spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
 
 *Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.*
 
 ## Maintenance: the step everyone skips
 
-After a change ships, archive the spec. Update `docs/INDEX.md` if any docs files moved. Leave ADRs closed. Update `AGENTS.md` if the change altered a convention.
+After a change ships, archive the spec. Update `docs/INDEX.md` when docs move. Leave ADRs closed. Update `AGENTS.md` when a convention changes.
 
-This is the step where Intent Engineering most reliably falls apart in practice. Archiving takes two minutes. The cost of skipping it shows up months later, when the agent reads four half-implemented proposals as live context and produces code that satisfies none of them. By then archiving costs an afternoon of triage instead of two minutes per change.
+Maintenance is where Intent Engineering often falls apart. Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. By then archive work has become triage.
 
-A conventions check catches some of this. An index-staleness rule flags the index that does not match the file tree. The check cannot catch the design doc that should have become an ADR, or the convention that quietly changed without a corresponding `AGENTS.md` edit. That part stays human.
+Checks catch the mechanical part. An index-staleness rule compares the index with the file tree. No check knows a design doc deserved ADR promotion or an undocumented convention changed. Judgment stays human.
 
 ## Tooling
 
-If you want to see this in practice, `iec check` runs these conventions checks on every push in this book's companion repo: `AGENTS.md` presence, MADR format for ADRs, AC traceability from scenarios to tests, and index staleness. It is one implementation of the gate, not a requirement for the practice. See [Companion Repo](../appendices/companion-repo) for how to browse it.
+If you want to see this in practice, `iec check` runs these conventions checks on every push in this book's companion repo: `AGENTS.md` presence, MADR format for ADRs, AC traceability from scenarios to tests, and index staleness. This is one implementation of the gate, not a requirement for the practice. See [Companion Repo](../appendices/companion-repo) for the repo layout.
 
 ## Why not add ceremonies
 
-New ceremonies have a half-life. Teams adopt them at the start of a quarter and drift back under deadline pressure six months later. Intent Engineering sidesteps this by plugging into the ceremonies that already have tooling, habit, and buy-in. The ask is smaller. The persistence is better.
+New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. Intent Engineering sidesteps the churn by plugging into ceremonies with tooling, habit, and buy-in. A smaller ask survives longer.
 
-What still fails is the gap between what a team believes it is doing and what the repo shows it does. A team that added spec review to its PR process but skips it under pressure did not adopt the practice. It adopted the intent. No SDLC map tells you the difference, and nothing in the map closes that gap on its own.
+The remaining failure mode is the gap between claimed process and repo evidence. When a team adds spec review to the PR checklist and skips the step under pressure, the practice exists in intention only. The map cannot expose the gap. Repo evidence has to.

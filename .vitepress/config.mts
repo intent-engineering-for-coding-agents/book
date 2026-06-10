@@ -32,7 +32,7 @@ export default withMermaid(
             { text: 'Why Structure Matters', link: '/foundation/why-structure' },
             { text: 'Document Types', link: '/foundation/document-types' },
             { text: 'Plain-Text-as-Code', link: '/foundation/plain-text-as-code' },
-            { text: 'The Map: Intent Engineering and the SDLC', link: '/foundation/intent-engineering-and-the-sdlc' },
+            { text: 'Intent Engineering and the SDLC', link: '/foundation/intent-engineering-and-the-sdlc' },
             { text: 'Honest Maturity', link: '/foundation/honest-maturity' },
             { text: 'Brownfield vs Greenfield', link: '/foundation/brownfield-vs-greenfield' },
             { text: 'When Intent Engineering Fails', link: '/foundation/when-intent-engineering-fails' },
