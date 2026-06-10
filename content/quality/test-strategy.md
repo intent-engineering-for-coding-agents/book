@@ -1,6 +1,6 @@
 # Test Strategy and Convention
 
-Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green; the integration breaks in staging, because the real ORM emits slightly different SQL than the mock expected.
+Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green, but the integration breaks in staging because the real ORM emits slightly different SQL than the mock expected.
 
 Not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behavior, so it defaulted, and the convention the team intended stayed in somebody's head.
 
@@ -55,11 +55,11 @@ The convention document defines the types the project uses, the framework that c
 | Smoke             | No separate deployment pipeline             |
 ```
 
-The Level column is the second axis. Type answers what the test proves; level answers when it runs. Pre-commit tests run locally before a PR. Pre-merge tests run in CI on every branch push. Post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
+The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
 
 The exclusions section is equally important. Without it, the agent has no way to distinguish "not applicable" from "nobody thought of it". The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
 
-The document is part of the project's architecture documentation. It belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises; with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
+The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises, and with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
 
 The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
@@ -79,7 +79,7 @@ A positive test proves the THEN holds when the WHEN is satisfied. A negative tes
 
 This complexity-to-test-count table is the book's convention. It is not an OpenSpec field and not a common industry standard; it is the minimum shape this book uses so agents do not collapse every scenario to one happy-path test.
 
-This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template. When it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
+This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template, and when it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. The complexity tiers and minimum counts are this book's convention, not an external standard.*
 

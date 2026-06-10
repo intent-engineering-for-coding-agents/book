@@ -6,17 +6,17 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 ## AGENTS.md rot
 
-The entry point goes stale. `AGENTS.md` says to follow the old module layout. An ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`. The agent reads the instructions, not the ADR, and produces code shaped for the old system.
+The entry point goes stale. `AGENTS.md` says to follow the old module layout, while an ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated `AGENTS.md`, so the agent reads the instructions, not the ADR, and produces code shaped for the old system.
 
 The fix is structural and slightly painful. Treat `AGENTS.md` as part of the architecture, not part of the initial setup. Any PR changing something `AGENTS.md` describes must update `AGENTS.md` in the same commit. This is a human discipline. No CI check catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
 
 ## Dead specs
 
-Open `openspec/changes/`. There are eleven directories. Three were implemented. Two were canceled. One was implemented but never archived. One is partially done and the original author left. Three are competing proposals for the same change. One is from when the team tried OpenSpec for a week and stopped.
+Open `openspec/changes/` and find eleven directories: three implemented, two canceled, one implemented but never archived, one partially done before the original author left, three competing proposals for the same change, and one from when the team tried OpenSpec for a week and stopped.
 
 The agent reads all of them as active context.
 
-A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. And it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record. It is live instruction. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
+A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. Worse, it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not historical record, but live instruction. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 
 *Sources: De Schryver, "Keep Agentic AI Simple" (2025), clutter as a compounding factor in agent context.*
 
@@ -40,7 +40,7 @@ The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff Firs
 
 ## Drift with no detection
 
-The team has `AGENTS.md`, ADRs, specs, and good initial intentions. Six months later, six ADRs from the first month and nothing since. The most recent design doc is from March. `docs/INDEX.md` was last updated when someone new joined. Nobody violated a rule. There is no rule about update frequency. There is only drift, and nothing detecting it.
+The team has `AGENTS.md`, ADRs, specs, and good initial intentions. Six months later, the repo has six ADRs from the first month and nothing since, a design doc last touched in March, and a `docs/INDEX.md` last updated when someone new joined. Nobody violated a rule, because there is no rule about update frequency. There is only drift, and nothing detecting it.
 
 A conventions check in CI closes part of this loop. It catches structural violations before they reach main. The check cannot catch ADRs that should have been written and were not. It cannot detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 

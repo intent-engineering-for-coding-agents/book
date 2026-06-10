@@ -16,7 +16,7 @@ The failure modes behind all this (incompatible specs, stale AGENTS.md, context 
 
 ## What has patterns but not consensus
 
-Multi-team coordination via shared ADR repositories is practiced in organizations with mature architecture review cultures. It is not yet standardized: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear. The form it takes is not.
+Multi-team coordination via shared ADR repositories is practiced in organizations with mature architecture review cultures. It is not yet standardized: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear, but the form is not.
 
 Inner source for `.agents/` libraries follows well-understood inner source mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? Package management for agent instruction files does not yet exist in any recognizable form.
 
@@ -26,7 +26,7 @@ Multi-LLM critique (using a second model to review a spec before implementation)
 
 ## What is genuinely open
 
-Multi-repo planning remains a gap across every SDD framework reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the single-repo workflow does not. OpenSpec's roadmap acknowledges this. So does Spec-Kit's. The problem is named. The solution is not.
+Multi-repo planning remains a gap across every SDD framework reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the single-repo workflow does not. OpenSpec's roadmap acknowledges this, and so does Spec-Kit's. The problem is named. The solution is not.
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 

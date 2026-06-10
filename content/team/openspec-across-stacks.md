@@ -8,7 +8,7 @@ The problem is upstream. A single `openspec/` directory shared across three tier
 
 ## One `openspec/` per stack
 
-The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or sub-directory. The agent working on the front-end never sees the back-end specs. It knows its contracts, its acceptance criteria, its pending changes. The back-end specs are not its context.
+The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or sub-directory. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, its pending changes. The back-end specs are not its context.
 
 ```text
 front-end/
@@ -38,7 +38,7 @@ back-end/
     changes/  # (unchanged by this feature)
 ```
 
-A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. It makes every ambiguity resolution harder. Keeping them separate makes each agent's context legible and bounded.
+A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's context legible and bounded.
 
 This is book synthesis. There is no widely-adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
@@ -50,15 +50,15 @@ The spec pattern for front-end work is identical to the pattern for back-end wor
 
 A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document: component conventions, animation rules, accessibility requirements, state management patterns. What Figma captures visually, the design system doc captures as convention.
 
-The design system document lives in `docs/design/` alongside the architecture documentation. It is not a one-time design artifact. It is a living brief. An agent implementing a new component reads it the way a back-end agent reads the architecture overview: not to understand the full system, but to understand the constraints it is working within.
+The design system document lives in `docs/design/` alongside the architecture documentation. It is not a one-time design artifact, but a living brief. An agent implementing a new component reads it the way a back-end agent reads the architecture overview: not to understand the full system, but to understand the constraints it is working within.
 
-User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The spec itself should cover behavior: states, validation, edge cases, loading/error/empty states. What happens when the network call fails? What does the component render when the list is empty? These are the questions the spec answers. The design system doc answers how it should look when it renders correctly.
+User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The spec itself should cover behavior: states, validation, edge cases, loading/error/empty states. What happens when the network call fails? What does the component render when the list is empty? The spec answers those questions. The design system doc answers how the component should look when it renders correctly.
 
 ## The integration contract belongs in an ADR
 
-A change in the front-end spec that depends on a new BFF endpoint needs a source of truth both stacks can reference. That source of truth is not a spec. Specs are scoped to a single change folder and a single stack. It is an Architectural Decision Record (ADR).
+A change in the front-end spec that depends on a new BFF endpoint needs a source of truth shared by both stacks. That source of truth is not a spec, because specs are scoped to a single change folder and a single stack. The shared source is an Architectural Decision Record (ADR).
 
-The ADR in `docs/decisions/` records the API contract: endpoint path, request shape, response shape, error handling, authentication boundary. Both stacks reference the same ADR in their respective change folders. The front-end spec says "see ADR-0042 for the BFF contract". The BFF spec says "implements the contract in ADR-0042". When the contract changes, one ADR update is the source of truth. The specs do not need to repeat the contract details.
+The ADR in `docs/decisions/` records the API contract: endpoint path, request shape, response shape, error handling, authentication boundary. Both stacks reference the same ADR in their respective change folders. The front-end spec says "see ADR-0042 for the BFF contract", while the BFF spec says "implements the contract in ADR-0042". When the contract changes, one ADR update is the source of truth. The specs do not need to repeat the contract details.
 
 ```mermaid
 graph TD
@@ -69,7 +69,7 @@ graph TD
   BFF -- "implements" --> ADR
 ```
 
-The ADR is permanent. The change folders are temporary. They are archived after implementation. The contract outlives both.
+The ADR is permanent, while the change folders are temporary and archived after implementation. The contract outlives both.
 
 *Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
 
@@ -77,9 +77,9 @@ The ADR is permanent. The change folders are temporary. They are archived after 
 
 Most features touch multiple tiers. A new filter endpoint requires front-end work, BFF work, and possibly back-end work. The temptation is to create one change folder that covers all three.
 
-That temptation compounds every problem described above. The agent working the front-end change does not need the back-end implementation details. The reviewer of the BFF PR does not need to read the front-end acceptance criteria. The archive of the change is three times as large, three times as hard to search.
+That temptation compounds every problem described above. The front-end agent does not need the back-end implementation details, and the BFF reviewer does not need to read the front-end acceptance criteria. The archive of the change becomes three times as large and three times as hard to search.
 
-When a change spans tiers, each tier gets its own change folder referencing the same cross-cutting ADR. The coordination is at the ADR level. The implementation is separate. Each PR is one tier, one spec, one reviewer context.
+When a change spans tiers, each tier gets its own change folder referencing the same cross-cutting ADR. Coordination happens at the ADR level, while implementation stays separate. Each PR is one tier, one spec, one reviewer context.
 
 The rare exception: infrastructure changes that have no clean tier boundary. A change to how authentication tokens are propagated through the stack affects all three tiers simultaneously. These are genuinely cross-cutting and warrant a cross-cutting spec, but they are rare enough that the exception should be labeled as such, not treated as the default.
 

@@ -10,7 +10,7 @@ Shared agent instruction conventions are the team-level answer to this problem: 
 
 ## Team-level `AGENTS.md`
 
-On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared brief: it documents conventions that every developer and every agent should operate under. The difference is ownership. Personal briefs can drift. Team briefs need an owner and a review process. That ownership rule is this book's convention for team use of the AGENTS.md pattern.
+On a solo project, `AGENTS.md` is a personal brief. On a team, it is a shared brief: it documents conventions that every developer and every agent should operate under. The difference is ownership. Personal briefs drift, while team briefs need an owner and a review process. That ownership rule is this book's convention for team use of the AGENTS.md pattern.
 
 The practical structure: `AGENTS.md` at the repo root is the team's brief. It covers the conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain their own parallel `AGENTS.md` files that override parts of the team brief. The team brief is the brief.
 
@@ -42,11 +42,11 @@ Not every developer convention needs to be in the team brief. Some conventions a
 
 The test: if developer A and developer B both follow a convention independently, and the outputs would be inconsistent in the same codebase, standardize it. If the outputs would be independent (the convention affects only each developer's local workflow and does not show up in committed code), leave it divergent.
 
-Data access patterns: standardize. Security rules: standardize. Whether to use the architect mode for spec drafting: leave divergent. Whether to run the credibility pass skill manually or via a hook: leave divergent.
+Data access patterns and security rules should be standardized. Architect mode for spec drafting, or whether to run the credibility pass skill manually or via a hook, stays divergent.
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces agents that are inflexible and developers who feel they cannot make local judgment calls. The team brief should specify conventions that affect the codebase. Everything else is personal setup.
 
-Role-based personal briefs are not divergence. A QA engineer's personal `AGENTS.md` might load extra test-coverage instructions. A security engineer's might always run a threat-model pass. A database specialist's might include query-plan analysis steps. These extend the team brief for the developer's domain without contradicting it. The distinction is direction: a personal brief that adds depth is fine; one that overrides a team convention is a problem waiting to surface in review.
+Role-based personal briefs are not divergence. A QA engineer's personal `AGENTS.md` might load extra test-coverage instructions, a security engineer's might always run a threat-model pass, and a database specialist's might include query-plan analysis steps. These extend the team brief for the developer's domain without contradicting it. The distinction is direction: a personal brief that adds depth is fine, while one that overrides a team convention is a problem waiting to surface in review.
 
 *Sources: [AGENTS.md](https://agents.md/) (ongoing), project-level instructions as a repo convention. The standardize-versus-diverge test is this book's synthesis for team use.*
 

@@ -2,9 +2,9 @@
 
 `iec` (Intent Engineering Checker) is the companion repository for this book. Its job is evidence, not product adoption: ADRs in MADR format, OpenSpec changes, stable AC IDs, tests that trace back to those IDs, and `AGENTS.md` wired to `.agents/` instructions and skills.
 
-`iec` is not a validator for arbitrary repos. It does not scan your codebase against a checklist and report findings. The name reflects the tool it ships: a CLI for checking alignment in its own development workflow. Your conventions will differ from the ones here. They should.
+`iec` is not a validator for arbitrary repos. It does not scan your codebase against a checklist and report findings. The name reflects the tool it ships: a CLI for checking alignment in its own development workflow. Your conventions will differ from the ones here, as they should.
 
-It is also not production-grade. It is a teaching artifact, and this page records what to inspect.
+It is also not production-grade. The repo is a teaching artifact, and this page records what to inspect.
 
 ## Repo structure
 
@@ -23,7 +23,7 @@ tests/        test suite
 
 ## How to browse
 
-Read it on GitHub to see the current state of every file. That is the primary path. `AGENTS.md` and `docs/INDEX.md` are the readable entry points; both describe the repo's conventions and where things live.
+Read it on GitHub to see the current state of every file. That is the primary path. `AGENTS.md` and `docs/INDEX.md` are the readable entry points, and both describe the repo's conventions and where things live.
 
 To clone it locally:
 

@@ -10,13 +10,13 @@ Most security advice for agentic teams is standard practice rebranded. Secrets s
 
 ## Pattern replication
 
-The agent writes a new endpoint. It looks at the nearest existing endpoint and copies its shape: the route structure, the request parsing, the response format, the authorisation check. The authorisation check is the one the team has been meaning to fix for three sprints. The new endpoint has it too.
+The agent writes a new endpoint and copies the nearest existing endpoint: the route structure, the request parsing, the response format, the authorization check. The authorization check is the one the team has been meaning to fix for three sprints. The new endpoint has it too.
 
-The agent does not distinguish between a pattern it should follow and a pattern it should not. Given the same codebase, it treats every existing pattern as valid. It sees an authorisation check and concludes that this is how authorisation is done here. It does not know that the check is incomplete, that it was implemented under time pressure and never revisited, or that the security review flagged it as a known hole. The pattern is all it has.
+The agent does not distinguish between a pattern it should follow and a pattern it should not. Given the same codebase, it treats every existing pattern as valid. It sees an authorization check and concludes this is how authorization is done here. It does not know the check is incomplete, implemented under time pressure, never revisited, or flagged by security review as a known hole. The pattern is all it has.
 
-The human reviewer catches this because they remember. They know which endpoint has the inherited hole. They know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorisation model needs revision".
+The human reviewer catches this because they remember which endpoint has the inherited hole and know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorization model needs revision".
 
-The defense is to make the pattern the agent should follow the easiest pattern to find. A `docs/architecture/authorisation.md` that shows the canonical auth check. A comment on the broken endpoint that says "do not copy, see ADR-0012". An `AGENTS.md` rule that says authorisation patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
+The defense is to make the pattern the agent should follow the easiest pattern to find: a `docs/architecture/authorization.md` that shows the canonical auth check, a comment on the broken endpoint that says "do not copy, see ADR-0012", and an `AGENTS.md` rule that says authorization patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
 
 ## Deference to the user
 
@@ -26,13 +26,13 @@ There is one safe answer to this question, and the agent will accept any answer 
 
 The same pattern repeats across security decisions. The agent hardcodes a token from a test fixture into production config, because the fixture was the nearest example of how to set that parameter. It generates a debug endpoint during development and forgets to remove it, because nothing in the spec said it was temporary. It adds verbose error messages that leak stack traces and internal paths, because the existing error handler already did that and the agent copied the pattern.
 
-The defense is to encode the non-negotiable decisions so the question does not get asked. Certificate verification stays on. Transport security is not negotiable.
+The defense is to encode the non-negotiable decisions so the question does not get asked. Certificate verification stays on, and transport security is not negotiable.
 
 If the test environment needs an exception, the exception is scoped to test code and gated behind a CI check that blocks production builds containing test-only exceptions. Debug endpoints get a naming convention that a lint rule catches at build time. The agent will honor explicit rules it reads before the session starts. It will not invent them.
 
 ## The cleanup PR that removes a control
 
-A rate limiter that did not fire during testing. A Cross-Site Request Forgery (CSRF) token check that was duplicated by middleware. An audit log that did not appear in the spec. Each looks redundant on inspection. Each was there for a reason the agent cannot see.
+A rate limiter that did not fire during testing. A Cross-Site Request Forgery (CSRF) token check that was duplicated by middleware. An audit log that did not appear in the spec. Each looks redundant on inspection, and each was there for a reason the agent cannot see.
 
 The rate limiter did not fire because the tests sent traffic below the threshold. The threshold was tuned for production load. The CSRF check was duplicated because one layer was recently added and the old one had not been retired yet. The audit log was requested by compliance and the spec was never updated to reflect it. The agent sees unused code. It does not see the production traffic pattern, the migration timeline, or the compliance requirement.
 
@@ -40,7 +40,7 @@ This is the hardest failure mode to catch because the agent's conclusion is defe
 
 ## The agent as attack surface
 
-The agent is also a new entry in the threat model. A prompt-injected document from an external source becomes an instruction the agent follows. A tool definition that does something other than what its description claims. Compromised model weights. These are not application-security failures in the code the agent writes. They are failures in the agent itself.
+The agent is also a new entry in the threat model. A prompt-injected document from an external source becomes an instruction the agent follows. A tool definition that does something other than what its description claims, or compromised model weights, sits outside application security entirely. These are not failures in the code the agent writes. They are failures in the agent itself.
 
 Prompt injection is the most immediate case. The agent reading content from an external source, summarizing it, and acting on it has made the external source an instruction channel. The defense is architectural: constrain what the agent does based on instructions in untrusted content, and treat anything the agent reads from outside the repo as data, not as instructions.
 

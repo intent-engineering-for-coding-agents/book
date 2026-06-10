@@ -6,15 +6,15 @@ Mixed PRs make every kind of review harder. They mix high-stakes changes with lo
 
 ## Three classes that should not mix
 
-The taxonomy is small. Three types of change, each with its own review style, each shipped on its own PR.
+The taxonomy is small: three types of change, each with its own review style, each shipped on its own PR.
 
 Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
-Structural changes are reorganisations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large; the cognitive load is medium; the risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
+Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large; the cognitive load is medium; the risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
 
 Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
 
-Three classes. Three review styles. One PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades; what is new is that agents make the temptation to mix them stronger, because the agent does all three in one session and feels efficient bundling them.
+Three classes, three review styles, one PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades. What is new is that agents make the temptation to mix them stronger, because the agent does all three in one session and feels efficient bundling them.
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, Modern Software Engineering (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
 
@@ -49,9 +49,9 @@ graph TD
   B & D & F & H --> I[main]
 ```
 
-Four PRs, four reviews, four merges. None of them takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The reviewer of the export implementation reads the spec first. The reviewer of the README update scans for accuracy. The reviewer of the auth-module reformat checks completeness. The reviewer of the helper extraction checks that the extraction preserved behavior and is referenced everywhere it should be.
+Four PRs, four reviews, four merges. None takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The export reviewer reads the spec first, the README reviewer scans for accuracy, the auth-module reviewer checks completeness, and the helper-extraction reviewer checks that the extraction preserved behavior and is referenced everywhere it should be.
 
-If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have received the same level of attention as the export logic. The duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
+If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have received the same level of attention as the export logic, and the duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
 
 ## When the rule has exceptions
 
@@ -59,7 +59,7 @@ A behavioral change that genuinely requires a structural change to land cleanly 
 
 The other exception is the small fix to documentation that lives inside the changed file. Updating a docstring on a function whose signature changed in this PR is part of the behavioral change. Updating an unrelated docstring in the same file is a separate docs PR. The boundary is "does the doc change describe what this PR did?" If yes, it stays. If no, it goes.
 
-These exceptions exist; they are narrow; the default is separation. A team that finds itself making exceptions on most PRs has stopped applying the taxonomy and is now using it as decoration.
+These exceptions exist, but they are narrow and the default is separation. A team that finds itself making exceptions on most PRs has stopped applying the taxonomy and is now using it as decoration.
 
 ## Convention, not law
 
@@ -67,6 +67,6 @@ The taxonomy is convention, not law. Different teams use different labels (`refa
 
 Some teams skip the docs PRs entirely and bundle docs with the behavioral change they describe. This works as long as the docs are short and do not bury the behavioral change in the diff. It stops working when the docs grow large enough to become their own review burden. The threshold is hard to specify in advance; the symptom is the reviewer skipping the docs section because there is too much else to read.
 
-The agent will resist the discipline at first. It will offer combined PRs as the natural output of its work. The discipline is an instruction in `AGENTS.md` and a habit in the developer; it is not a behavior the agent comes with by default. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small; the cost of letting it lapse is the 300-line mixed PR that broke production.
+The agent will resist the discipline at first and offer combined PRs as the natural output of its work. The discipline is an instruction in `AGENTS.md` and a habit in the developer, not a behavior the agent comes with by default. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small, while the cost of letting it lapse is the 300-line mixed PR that broke production.
 
 The taxonomy is what makes PRs reviewable. The next chapter looks at what runs alongside specs and tests when the team wants something more than reviewability: a way to encode the qualities the code is supposed to have, separately from the behavior it is supposed to exhibit.

@@ -10,7 +10,7 @@ This chapter covers three things: how to shape the PR so intent-first review hap
 
 ## PR shape: the spec as the load-bearing document
 
-A change folder plus an implementation in one PR creates a size and sequencing problem simultaneously. The spec delta is forty lines. The implementation is three hundred lines. The diff view opens on the first file changed. If the implementation files appear before the change folder in the directory tree, the reviewer arrives at the acceptance criteria after reading three hundred lines of code with a model of the feature already formed.
+A change folder plus an implementation in one PR creates a size and sequencing problem simultaneously. The spec delta is forty lines, the implementation is three hundred lines, and the diff view opens on the first file changed. If the implementation files appear before the change folder in the directory tree, the reviewer arrives at the acceptance criteria after reading three hundred lines of code with a model of the feature already formed.
 
 A reviewer who has read the implementation first reads the spec to confirm what they already understood. They verify that the spec matches the code they read, not that the code matches the spec as written. The two documents contain different information, and reading them in the wrong order treats one of them as a formality.
 
@@ -26,9 +26,9 @@ The [PR Taxonomy](../quality/pr-taxonomy) chapter establishes that `docs`, `stru
 
 A common failure mode in reviewing agent-generated code: the implementation agrees with the tests, the tests agree with each other, and neither agrees with the acceptance criteria. All three artifacts are internally consistent. All three are wrong relative to the spec.
 
-An agent brought into the review with the spec and the implementation checks one thing efficiently: does every acceptance criterion have a corresponding test, and does the test assert what the criterion requires? This is coverage tracing. It is tedious enough that human reviewers skip it in practice. The agent does not find it tedious.
+An agent brought into the review with the spec and the implementation checks one thing efficiently: does every acceptance criterion have a corresponding test, and does the test assert what the criterion requires? This is coverage tracing, tedious enough that human reviewers skip it in practice. The agent does not find it tedious.
 
-Ask it to enumerate each acceptance criterion, locate the corresponding test, and state what the test asserts. Flag any criterion with no test. Flag any test whose assertion does not match the criterion's requirement. Flag any test with no corresponding criterion.
+Ask it to enumerate each acceptance criterion, locate the corresponding test, and state what the test asserts. Flag any criterion with no test, any test whose assertion does not match the criterion's requirement, and any test with no corresponding criterion.
 
 The agent also checks scope. A behavioral implementation should deliver what the spec describes and nothing more. An agent working inside a long session accumulates context and adds small improvements: a helper function it needed, a config flag that seemed useful, a refactor it noticed while passing through. These additions are not in the spec. A reviewing agent, comparing the diff against the acceptance criteria, flags each changed line with no criterion to trace to.
 
@@ -44,9 +44,9 @@ The implementation agent has context that biases its review. By the time the PR 
 
 Birgitta Böckeler describes using a second model or a fresh session to critique a spec before implementation begins: the second agent reads without the context that shaped the first agent's decisions and finds gaps the author's session learned to overlook. The same approach extends to the review stage.
 
-Open a fresh session. Provide the approved spec and the implementation diff, with no prior context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The difference here is not the checklist. It is the absence of the bias that the implementation session accumulated.
+Open a fresh session. Provide the approved spec and the implementation diff, with no prior context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The difference here is not the checklist, but the absence of the bias that the implementation session accumulated.
 
-The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps. The fresh agent locates where to look. The human decides whether the divergence is a defect, a spec omission, or an intentional extension that needs to be documented before it becomes undocumented behavior.
+The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps. The fresh agent locates where to look, and the human decides whether the divergence is a defect, a spec omission, or an intentional extension that needs to be documented before it becomes undocumented behavior.
 
 This step is not free. It costs a context load and a review pass. For high-stakes behavioral changes where the spec has dozens of acceptance criteria, the tracing it provides is worth it. For a change with three acceptance criteria and three tests, skipping this step is defensible.
 
@@ -56,7 +56,7 @@ A fresh session of the same model removes the implementation bias. A genuinely d
 
 ## What human reviewers miss, what agent reviewers miss
 
-The gaps are complementary. Each reviewer covers what the other does not.
+The gaps are complementary: each reviewer covers what the other does not.
 
 Human reviewers tend to miss three things in agent-generated code. These are analytical observations from the structure of spec-driven review, not sourced findings.
 
@@ -68,15 +68,15 @@ Constraints past the top. The [Why Important Stuff First?](../spec-driven/why-im
 
 Agent reviewers tend to miss two things.
 
-Integration context. The implementation is correct against the spec. The service it calls has a latency the spec did not model. The middleware runs in a different order in production than in test. The agent reviewed the code and the spec. It did not review the runtime behavior of the system the code will integrate with.
+Integration context. The implementation is correct against the spec, but the service it calls has a latency the spec did not model, or the middleware runs in a different order in production than in test. The agent reviewed the code and the spec. It did not review the runtime behavior of the system the code will integrate with.
 
-Silent ambiguity resolution. Ambiguous acceptance criteria get resolved. The agent resolves them in the direction that makes the implementation simplest, without surfacing the choice as a choice. The implementation is internally consistent. Whether the resolution was correct is a question nobody asked.
+Silent ambiguity resolution. Ambiguous acceptance criteria get resolved in the direction that makes the implementation simplest, without surfacing the choice as a choice. The implementation is internally consistent. Whether the resolution was correct is a question nobody asked.
 
 A human doing intent-and-integration review and an agent doing coverage-and-consistency review together cover more of the failure surface than either alone. Neither covers it completely.
 
 ## The review is one gate
 
-These practices raise the quality of what ships. They are not a guarantee. ThoughtWorks Technology Radar Vol 34 names cognitive debt as the agentic-era failure mode: the undocumented assumption that propagates through subsequent changes until it surfaces in production. The review catches divergences between spec and implementation. It does not catch divergences between the spec and reality, or the spec and what the user actually needed.
+These practices raise the quality of what ships. They are not a guarantee. ThoughtWorks Technology Radar Vol 34 names cognitive debt as the agentic-era failure mode: the undocumented assumption that propagates through subsequent changes until it surfaces in production. Review catches divergences between spec and implementation, not divergences between the spec and reality or the spec and what the user actually needed.
 
 At agentic speeds, the review gate handles more volume than before. The quality of what reaches it depends on the spec that preceded it. The quality of the spec depends on the discipline applied upstream: intent stated clearly, scope constrained, constraints at the top.
 

@@ -8,9 +8,9 @@ The team that writes no specs at all, operating on prompts and conversation hist
 
 The Spec-Driven Development (SDD) ecosystem in early 2026 had settled into a recognizable spectrum.
 
-At the minimal end: a raw prompt to the agent. Describe the feature in the chat window, let it implement. No artifact. No audit trail. Acceptable for throwaway code, local experiments, prototypes that will not survive the week.
+At the minimal end: a raw prompt to the agent. Describe the feature in the chat window and let it implement. No artifact, no audit trail. Acceptable for throwaway code, local experiments, prototypes that will not survive the week.
 
-One step up: a `spec.md` file in the repo. A Markdown file, no framework. Purpose, acceptance criteria, a few scenarios. Written before implementation, committed with the code, left in place or deleted. Adopted by teams who want the intent artifact without ceremony. The GitHub blog post launching Spec-Kit describes this as the starting point for most teams coming to spec-driven development for the first time.
+One step up: a `spec.md` file in the repo. A Markdown file, no framework, with purpose, acceptance criteria, and a few scenarios. Written before implementation, committed with the code, left in place or deleted. Adopted by teams who want the intent artifact without ceremony. The GitHub blog post launching Spec-Kit describes this as the starting point for most teams coming to spec-driven development for the first time.
 
 *Sources: GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), the plain `spec.md` file as the starting point for teams new to spec-driven development.*
 
@@ -27,7 +27,7 @@ Acceptance criteria are written in Gherkin (GIVEN-WHEN-THEN): abstract enough to
 
 A change proposal is a delta on the system's capability model: adding, updating, or removing the acceptance criteria that define what the system does. The `design.md` and `tasks.md` describe how to execute that delta; the `proposal.md` describes why. The specs are the thing that actually changes, which is why archiving merges them into the canonical capability model and the rest is discarded.
 
-Adds lifecycle management and the archive as a historical record. Designed for teams working on production systems with multiple developers. The overhead is real and intentional: the ceremony is proportional to the risk.
+OpenSpec adds lifecycle management and the archive as a historical record. The workflow is designed for teams working on production systems with multiple developers. The overhead is real and intentional: the ceremony is proportional to the risk.
 
 *Sources: Fission AI, OpenSpec, the four-part change-folder workflow and its proportional ceremony.*
 
@@ -59,7 +59,7 @@ The same dial governs how you stage the change, not which framework you reach fo
 
 ## What GSD is
 
-GSD (Get Shit Done) is the lightest structured point on the spectrum: structured prompting without a framework. No change folder. No formal lifecycle. Write a concise intent document, run the agent, commit. Hightower describes it as "spec-driven development without the ceremony".
+GSD (Get Shit Done) is the lightest structured point on the spectrum: structured prompting without a framework. No change folder, no formal lifecycle. Write a concise intent document, run the agent, commit. Hightower describes it as "spec-driven development without the ceremony".
 
 It is not sloppy. GSD produces a usable artifact. It does not produce an archive, a task log, or a traceability trail. For teams where OpenSpec's overhead exceeds their risk profile, GSD is the practical alternative. For teams where traceability is required, it is not.
 
@@ -69,7 +69,7 @@ It is not sloppy. GSD produces a usable artifact. It does not produce an archive
 
 More formality means more audit trail, better traceability, and less improvisation surface. It also means more upfront time, more overhead per change, and more places for the process to become theater if nobody tends it.
 
-Teams underestimate the theater risk. A heavy spec framework adopted by a small team will produce specs written to satisfy the framework rather than guide the implementation. The structure will be right. The content will be shallow, written in twenty minutes by a developer who wants to get to the code. Shallow specs with correct structure are worse than short specs with precise content: they look complete and are not.
+Teams underestimate the theater risk. A heavy spec framework adopted by a small team will produce specs written to satisfy the framework rather than guide the implementation. The structure will be right, but the content will be shallow, written in twenty minutes by a developer who wants to get to the code. Shallow specs with correct structure are worse than short specs with precise content: they look complete and are not.
 
 The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it. The question is what that pain looks like, and what it teaches about where on the spectrum a team belongs.
 

@@ -6,7 +6,7 @@ The problem was not the instruction. The problem was treating a repeatable workf
 
 ## Instructions vs skills: the design question
 
-An instruction tells the agent how your codebase works. A skill tells it how to perform a specific repeatable task. The agent reads instructions for context. It runs skills for outcomes.
+An instruction tells the agent how your codebase works, while a skill tells it how to perform a specific repeatable task. The agent reads instructions for context and runs skills for outcomes.
 
 Get this wrong and you end up with instructions that describe workflows in prose ("when you finish modifying `docs/`, remember to update...") and skills that describe conventions instead of steps. The result is context the agent skims and procedures the agent improvises.
 
@@ -16,7 +16,7 @@ The test: if a developer would describe it as a recipe, a sequence of discrete s
 
 A skill is a Markdown file. What it contains determines whether the agent runs it correctly.
 
-Discrete steps matter most. Not "update the documentation" but "scan `docs/` with `ls -R`; for each directory, read the heading of each Markdown file; regenerate `docs/INDEX.md` with file path and heading; regenerate each `README.md` with a sorted list". Discrete steps can be checked off. Prose cannot.
+Discrete steps matter most. Not "update the documentation", but "scan `docs/` with `ls -R`, read each Markdown heading, regenerate `docs/INDEX.md` with file path and heading, and regenerate each `README.md` with a sorted list". Discrete steps are checkable. Prose is not.
 
 Add a completion condition. How does the agent know it is done? "Run `iec check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realize there is a step five.
 
@@ -42,7 +42,7 @@ The design question for a hook is not "what should the agent remember to do?" It
 
 Effective hooks are narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every file edit will block the agent at every step and either get disabled or teach the agent to avoid editing files. Hooks should prevent specific drift, not rerun CI.
 
-The tradeoff: hook tooling is still maturing. Syntax is not standardized across tools. Failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
+The tradeoff: hook tooling is still maturing. Syntax differs across tools, and failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
 
 ## The instruction/skill/hook triangle
 
@@ -56,10 +56,10 @@ Stack them in that order. Get the instruction right first: specific, testable, c
 
 Skills and hooks require upfront investment. A skill needs discrete steps, a completion condition, and failure handling. A hook needs a trigger definition, a script, and debugging when it blocks unexpectedly. Both require learning the tooling, which varies by agent and is not standardized across tools.
 
-Not every workflow justifies the investment. A procedure that appears once a month does not need a skill. An instruction is enough. A check that fails once a quarter does not need a hook. Code review catches it. The automation pays off when the procedure is frequent or the failure is expensive. Below that threshold, the coordination cost exceeds the benefit.
+Not every workflow justifies the investment. A procedure that appears once a month does not need a skill, because an instruction is enough. A check that fails once a quarter does not need a hook if code review catches it. The automation pays off when the procedure is frequent or the failure is expensive. Below that threshold, the coordination cost exceeds the benefit.
 
 The tooling is still maturing. Hook syntax differs between Claude Code, Cursor, and Copilot. Debugging a hook that blocks unexpectedly requires understanding the agent's execution model, which is not always documented. A skill that works in one agent may need adjustments for another. The investment in skills and hooks is an investment in a moving target.
 
-The practical test: if the agent gets the procedure wrong twice, write a skill. If the agent skips the procedure and it causes a real problem, write a hook. Before that, instructions and code review are enough. The triangle is a progression, not a checklist. Start with instructions. Add enforcement when the cost of not having it becomes visible.
+The practical test: if the agent gets the procedure wrong twice, write a skill. If the agent skips the procedure and it causes a real problem, write a hook. Before that, instructions and code review are enough. The triangle is a progression, not a checklist. Start with instructions and add enforcement when the cost of not having it becomes visible.
 
-Managing the context that skills and hooks assume is available is the next constraint. Sessions fill. Context drops off. The agent that performed flawlessly in hour one is improvising in hour two. That is not a skill failure or a hook failure. It is a context window problem.
+Managing the context that skills and hooks assume is available is the next constraint. Sessions fill, context drops off, and the agent that performed flawlessly in hour one is improvising in hour two. That is not a skill failure or a hook failure. It is a context window problem.

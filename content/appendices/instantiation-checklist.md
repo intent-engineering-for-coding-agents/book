@@ -56,6 +56,6 @@ Apply these when solo practices are stable and a second developer joins.
 
 ## What not to do on day one
 
-Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, `iec check` in CI, and a shared `.agents/` library on the same week will abandon half of it by the end of the month. Pick one practice per topic. Get it to documented maturity. Add the next one when the first is stable.
+Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, `iec check` in CI, and a shared `.agents/` library on the same week will abandon half of it by the end of the month. Pick one practice per topic, get it to documented maturity, and add the next one when the first is stable.
 
 *Sources: This checklist is a practical synthesis of the four topics. The sources for each practice appear in the corresponding chapter.*

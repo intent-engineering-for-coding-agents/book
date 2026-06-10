@@ -1,6 +1,6 @@
 # Context Window Management
 
-A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honoured. A decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context window filled, and the earliest context quietly dropped off the back to make room.
+A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honored, or a decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context window filled, and the earliest context quietly dropped off the back to make room.
 
 This is not a bug. Every token in the context window costs something, and it costs in two directions: reliability, because old tokens fall out as new ones arrive and the agent loses earlier context; and for teams billed per token, money. The context window will fill. The question is what fills it.
 
@@ -16,9 +16,9 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 ## Short sessions beat long conversations
 
-The practical implication: do not try to accomplish a large change in a single session. Write the spec in one session and commit it. Implement in a second session with the spec loaded fresh. The second session reads the spec from the repo, not from session memory. It arrives with the full specification intact, not with a summary of a summary.
+The practical implication: do not try to accomplish a large change in a single session. Write the spec in one session and commit it, then implement in a second session with the spec loaded fresh. The second session reads the spec from the repo, not from session memory. It arrives with the full specification intact, not with a summary of a summary.
 
-This is counterintuitive. The instinct is to keep context rich by not resetting. The reality is that a fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The agent in the fresh session reads what you decided. The agent in the hour-three session is reconstructing it.
+This is counterintuitive. The instinct is to keep context rich by not resetting. A fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The agent in the fresh session reads what you decided. The agent in the hour-three session is reconstructing it.
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than instructions the agent no longer has in active context.
 
@@ -32,11 +32,11 @@ If the clauses are not specific enough, the agent loads conservatively, which us
 
 ## Subagents and compaction
 
-Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec. The main agent reviews it. A subagent searches for usages of an API. The main agent decides what to do with the results. Each runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need. It delegates the parts that would fill its context to agents that do not carry its history.
+Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec for the main agent to review, or searches for usages of an API so the main agent decides what to do with the results. Each subagent runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need. It delegates the parts that would fill its context to agents that do not carry its history.
 
-Several capability-class agents now support some form of context compaction: Claude Code's `/compact`, Cursor's conversation summarisation, and similar controls in other tools. The mechanism compresses accumulated conversation history into a summary, freeing context for the next steps. The tradeoff is lossy compression: fine for broad context, risky for specific decisions that need to survive verbatim. Use it when the session has accumulated substantial successful output and the next stage needs room. Do not use it when the constraints that remain are precise.
+Several capability-class agents now support some form of context compaction: Claude Code's `/compact`, Cursor's conversation summarization, and similar controls in other tools. The mechanism compresses accumulated conversation history into a summary, freeing context for the next steps. The tradeoff is lossy compression: fine for broad context, risky for specific decisions that need to survive verbatim. Use it when the session has accumulated substantial successful output and the next stage needs room. Do not use it when the constraints that remain are precise.
 
-*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control. Cursor documentation on conversation summarisation (ongoing), the same lossy-compression tradeoff in another tool.*
+*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control. Cursor documentation on conversation summarization (ongoing), the same lossy-compression tradeoff in another tool.*
 
 ## The discipline
 
@@ -52,4 +52,4 @@ Context management is necessary but not sufficient. A fresh session with perfect
 
 The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream: the instructions are vague, the spec is unclear, or the codebase has competing patterns the agent cannot reconcile. Resetting the session will not fix those. Fixing the context will not fix a broken brief.
 
-Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too. Context management is the discipline of keeping the agent oriented. When the agent's reasoning is the problem, orientation is not enough.
+Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too. Context management keeps the agent oriented. When the agent's reasoning is the problem, orientation is not enough.

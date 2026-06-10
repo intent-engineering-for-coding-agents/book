@@ -2,7 +2,7 @@
 
 Green tests feel like done. They are not the same thing. A suite runs fully green over code that is quietly broken, because the tests cover the paths the prose happened to mention and nothing else.
 
-Imagine a spec for a file upload: validate the type, check the size limit, write the file to storage, record the metadata. The agent implements all four and writes a test for each. Every test passes. But none of them interrupts the storage write partway through, so nothing covers the case where the metadata row is saved and the file never lands. That path is in the code. It has no proof. In production, the first failed write sits undetected until a user complains about a file the database insists exists.
+Imagine a spec for a file upload: validate the type, check the size limit, write the file to storage, record the metadata. The agent implements all four and writes a test for each. Every test passes. But none interrupts the storage write partway through, so nothing covers the case where the metadata row is saved and the file never lands. That path is in the code, with no proof. In production, the first failed write sits undetected until a user complains about a file the database insists exists.
 
 The tests passed. The intent was not proven. Those are different sentences.
 
@@ -14,9 +14,9 @@ Most test suites contain a mix of both. Tests written to cover the happy path te
 
 The shift is small in code and large in intent. Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?"
 
-Positive tests are the floor, not the ceiling. A test that exercises the happy path proves the intended behavior when everything cooperates. It proves nothing about what happens when inputs are invalid, when a dependency returns an error, when the resource does not exist, or when the function is called in the wrong state. The upload example above is the canonical case. Four tests, all positive-path. The failed-write path existed in the code and had zero proof.
+Positive tests are the floor, not the ceiling. A test that exercises the happy path proves the intended behavior when everything cooperates. It proves nothing about what happens when inputs are invalid, when a dependency returns an error, when the resource does not exist, or when the function is called in the wrong state. The upload example above is the canonical case: four tests, all positive-path, while the failed-write path existed in the code with zero proof.
 
-Coverage follows code structure, and code structure has more dimensions than a line counter sees. Every conditional branch is a path. Every distinct return type is a path. Every exception a function raises is a path. Each path needs at least one test. A function with no branching needs two: the intended behavior and the condition that falls outside it. A function with three `if` branches and two exception classes needs at least six. Agentic speed does not lower this minimum; it makes it faster to reach the wrong answer.
+Coverage follows code structure, and code structure has more dimensions than a line counter sees. Every conditional branch, distinct return type, and exception a function raises is a path, and each path needs at least one test. A function with no branching needs two: the intended behavior and the condition that falls outside it. A function with three `if` branches and two exception classes needs at least six. Agentic speed does not lower this minimum, but makes it faster to reach the wrong answer.
 
 The practical progression for a new function: happy path first, then the primary error path, then one test per branch, then one test per exception class, then boundary values at the edges of valid input. That order matches where defects cluster in practice. It is not the order most agents default to, which is happy path followed by whatever scenarios the prose most obviously suggested. The prose suggested the normal case. The defects live in the paths the prose did not think to name.
 
@@ -36,7 +36,7 @@ Farley's Modern Software Engineering makes the same argument from a different an
 
 ## Why agentic speed forces the issue
 
-A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully. The change is small. The reviewer remembers the discussion. Memory carries some of the load.
+A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully, the change is small, and the reviewer remembers the discussion. Memory carries some of the load.
 
 An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scanning. The reviewer who scanned the diff and approved it cannot, a week later, reconstruct what they were assuring. Without automated proof, the only thing standing between intent and production is whatever attention the human paid in the moment. That attention is exactly what the agent's speed is consuming.
 
@@ -48,9 +48,9 @@ This is not a call for more tests. It is a call for tests that do the job. A sui
 
 Tests prove intent only if you can tell which test proves which part of the intent. A test named `test_retry_logic` covering five scenarios proves nothing in particular. A failure in it says "something about retries broke" and leaves the reader to read the test body to find out what.
 
-The fix is the acceptance criterion identifier. Each spec scenario gets a stable ID. Each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test that is not linked to a spec scenario proves general behavior, not specified intent.
+The fix is the acceptance criterion identifier. Each spec scenario gets a stable ID, and each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test that is not linked to a spec scenario proves general behavior, not specified intent.
 
-A test scoped to one scenario and linked to its AC ID is also the most reliable worked example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface drifts silently. A test that fails in CI when the code diverges does not. It is executable documentation, and it is free. You get it automatically when you write the test right.
+A test scoped to one scenario and linked to its AC ID is also the most reliable worked example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface drifts silently, while a test that fails in CI when the code diverges does not. It is executable documentation, and it is free. You get it automatically when you write the test right.
 
 ## Reviewing the spec before the code
 
@@ -64,10 +64,10 @@ The spec does not have to contain everything it references. An ADR documenting w
 
 Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent; they are proof of plumbing. They earn their place by being cheap and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
 
-The harder caveat is that proof has a ceiling. A test proves what it asserts. It does not prove what the spec did not think to specify. The mutation that survives the suite reveals that the suite has a hole. The scenario that was not considered reveals that the spec has a hole. Both holes are real. The first is fixable with more assertions. The second is fixable only by improving the spec. Proof closes the loop between spec and implementation. It does not close the loop between intent and reality.
+The harder caveat is that proof has a ceiling. A test proves what it asserts, not what the spec did not think to specify. The mutation that survives the suite reveals that the suite has a hole, while the scenario that was not considered reveals that the spec has a hole. Both holes are real. The first is fixable with more assertions, the second only by improving the spec. Proof closes the loop between spec and implementation. It does not close the loop between intent and reality.
 
 ## Tooling note
 
-If you want to see this in practice, `iec` at tag `v0.6.0` ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check. A test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
+If you want to see this in practice, `iec` at tag `v0.6.0` ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check, and a test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
 
-A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised. The closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior, and writing that down before the agent picks a test type on its own.
+A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised, and the closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior, and writing that down before the agent picks a test type on its own.

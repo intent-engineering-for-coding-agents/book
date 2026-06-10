@@ -2,11 +2,11 @@
 
 An instruction in your repo reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
 
-Vague instructions are not neutral. They are instructions for the agent to improvise, from whatever evidence it can find. And the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent may not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
+Vague instructions are not neutral. They tell the agent to improvise from available evidence, and the evidence in a codebase is not evenly distributed. Old code is plentiful. Recent decisions live in ADRs the agent might not have loaded. A vague instruction tilts improvisation toward the wrong end of history.
 
 ## Write when you have to, not before
 
-The instinct is to fill the instruction file before the agent starts work. Anticipate the conventions it will need to follow. Cover everything it might get wrong.
+The instinct is to fill the instruction file before the agent starts work: anticipate the conventions it will need to follow, cover everything it might get wrong.
 
 The problem: you do not know what the agent will get wrong until it gets it wrong.
 
@@ -16,7 +16,7 @@ The practical approach in this book is: start minimal and add reactively. The ag
 
 This keeps the file short. Short instruction files load faster, stay readable, and are easier to maintain when conventions change. A file full of preemptive instructions typically contains many that have never been exercised. A file built from observed failures contains nothing that is not load-bearing.
 
-The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing. It is a straitjacket.
+The goal is not to eliminate improvisation. For most of what the agent does, choosing an algorithm, structuring a function, designing an API response, you want it to draw on everything it knows. An instruction file that tries to constrain every decision is not a briefing, but a straitjacket.
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.*
 
@@ -58,7 +58,7 @@ One common gap found by a second-model critique pass is instructions that descri
 
 The second failure mode is instructions that are never loaded. An instruction in a file the agent does not know to read is a note to yourself. The TOC pattern in `AGENTS.md` closes this gap: every instruction file has a clause saying when to load it, so the agent makes the loading decision correctly before it has read the file.
 
-Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. It can fail to read them, misread them, or interpret them too narrowly. There is a harder type of enforcement: the kind that fires regardless of what the agent decides. That is what skills and hooks are for.
+Instructions are passive. They tell the agent how to behave, and the agent decides whether to follow them. Failure modes include not reading them, misreading them, or interpreting them too narrowly. A harder type of enforcement fires regardless of what the agent decides. That is what skills and hooks are for.
 
 ## When instructions backfire
 

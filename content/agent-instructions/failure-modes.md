@@ -8,11 +8,11 @@ Knowing which mode you are in determines the recovery. Treating a spin as a drif
 
 This chapter uses a working taxonomy rather than a field-standard one. The labels are meant to be operationally useful during a session, not to claim settled academic categories.
 
-Drift is the agent losing the thread of the task as context fills or as the task grows past the original brief. Signs: earlier constraints dropped from the output, code that contradicts the spec, increasingly generic responses that no longer reference the specific requirements. Recovery: reset the session with a fresh brief. The agent is not broken. It has just lost context.
+Drift is the agent losing the thread of the task as context fills or as the task grows past the original brief. Signs: earlier constraints dropped from the output, code that contradicts the spec, increasingly generic responses that no longer reference the specific requirements. Recovery: reset the session with a fresh brief. The agent is not broken, only out of context.
 
-Spin is the agent stuck on a sub-problem it cannot resolve alone. Signs: multiple similar attempts at the same solution, requests for clarification about the same constraint, acknowledgment of a blocker without progress past it. Recovery: provide the missing information or make the decision the agent cannot make on its own. Spin is not hallucination. The agent knows something is wrong. It needs input, not a reset.
+Spin is the agent stuck on a sub-problem it cannot resolve alone. Signs: multiple similar attempts at the same solution, requests for clarification about the same constraint, acknowledgment of a blocker without progress past it. Recovery: provide the missing information or make the decision the agent cannot make on its own. Spin is not hallucination: the agent knows something is wrong and needs input, not a reset.
 
-Halt is the agent stopping before the task is done, usually because it hit an unexpected state and defaulted to caution. Signs: the agent reports completion but leaves tasks unchecked, or reports a blocker and waits. Recovery: resume explicitly. "Continue with step 4" is often enough. Halt is the most benign mode. It wastes time but does not produce incorrect output.
+Halt is the agent stopping before the task is done, usually because it hit an unexpected state and defaulted to caution. Signs: the agent reports completion but leaves tasks unchecked, or reports a blocker and waits. Recovery: resume explicitly. "Continue with step 4" is often enough. Halt is the most benign mode: wasted time, not incorrect output.
 
 Hallucination is the agent inventing facts: files that do not exist, APIs that do not match the actual interface, library methods that were removed two versions ago. Signs: code that references non-existent paths, confident claims about behavior the agent cannot have verified. Recovery: verify the claim directly, correct the agent's understanding, and if the hallucination was load-bearing, reset and load the relevant documentation explicitly before continuing.
 
@@ -26,11 +26,11 @@ Tool misuse is the agent using the wrong tool for the task: running a full test 
 
 None of these modes are agent failures in the sense of the model being broken. They are predictable consequences of the architecture: context windows that fill, instructions that go stale, tasks that require decisions the agent was not given authority to make.
 
-The framing that usually produces the right remediation is: the agent is not broken, it is clueless. Fix the context. A broken agent needs a different model. A clueless agent needs better information. In many day-to-day failures, the second diagnosis is the useful one, which means the fix is in the repo or the session, not in the model.
+The framing that usually produces the right remediation is: the agent is not broken, it is clueless. Fix the context. A broken agent needs a different model, while a clueless agent needs better information. In many day-to-day failures, the second diagnosis is the useful one, which means the fix is in the repo or the session, not in the model.
 
 A useful signal: when the agent is spending time but producing nothing, rerunning the same check, generating nearly identical variants, stalling on a tool call, something is wrong. Do not let it run unchecked. Toyota's production philosophy calls this pulling the Andon cord: stop the line when a defect appears rather than letting the problem compound downstream. The analogy is imperfect, but the intervention logic is the useful part.
 
-The question to ask when you stop: why is the agent struggling here? Often the answer is the same. The agent lacks information. It is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is rarely "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
+The question to ask when you stop: why is the agent struggling here? Often the answer is the same: the agent lacks information, is missing a constraint, cannot find a file it needs, or has hit a decision it was never given authority to make. The fix is rarely "let it keep trying". The fix is to give it what it is missing, or to make the decision on its behalf.
 
 *Sources: Geoffrey Huntley, "Everything is a Ralph Loop" (Jan 17, 2026), the loop signal of an agent spending time but producing nothing. Tim De Schryver, "Keep Agentic AI Simple: A Practical Workflow for Software Development" (May 2026), the clueless-not-broken framing and fixing the context first. Toyota, "What is Andon?" (ongoing), stopping the line when a defect appears rather than letting it compound.*
 
@@ -46,6 +46,6 @@ In practice, the distinction is: if the agent was working well before it went wr
 
 This chapter describes what the book asserts and what it leaves open. The taxonomy above is observation, not settled science. Failure mode categories are a useful mental model, not a formal specification. Recovery strategies are what teams have found effective, not what the literature has proven.
 
-The most under-documented aspect of agentic engineering is not how to start well. Plenty covers that. It is how to recover when things go wrong. Operational experience is accumulating, but the field is early. Expect these practices to be refined.
+The most under-documented aspect of agentic engineering is not how to start well. Plenty covers the start. Recovery is thinner. Operational experience is accumulating, but the field is early. Expect these practices to be refined.
 
 The recoveries in this chapter all reduce to one move: give the agent the information it was missing. Instructions supply what the system is. They do not supply what this particular change is meant to do. That per-change intent is the one input the Agent Instructions hub cannot carry, and supplying it is where the next topic begins.

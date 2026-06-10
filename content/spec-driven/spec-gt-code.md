@@ -4,15 +4,15 @@ Delete the code. Keep the spec. Regenerate.
 
 This is no longer only a thought experiment. Tool vendors and practitioners have reported teams doing exactly this: deleting an implementation that was tangled, unmaintainable, accreted over years of hotfixes, and replacing it in a session from the canonical spec. Treat that as a bounded practice, not a general industry baseline. It is safe only when the spec and tests are strong enough to catch regressions. When it works, the new implementation passes the same tests and preserves the feature set. The code is often cleaner.
 
-Now try the reverse. Delete the spec. Keep the code. Regenerate the spec.
+Now try the reverse: delete the spec, keep the code, regenerate the spec.
 
-The agent will infer. It will read the code and produce a document describing what the code appears to do. That document will miss the intent behind every non-obvious decision. It will describe the hotfix paths as if they were designed. It will not tell you which of the three slightly different validation methods in the codebase is canonical. What it produces is an archaeology report, not a spec.
+The agent will infer. It will read the code and produce a document describing what the code appears to do. That document will miss the intent behind every non-obvious decision, describe the hotfix paths as if they were designed, and fail to tell you which of the three slightly different validation methods in the codebase is canonical. What it produces is an archaeology report, not a spec.
 
 ## The argument
 
 Code is increasingly generated. Specs are authored. Code is output. Specs are input.
 
-Generated artifacts have always been treated as downstream of their sources. The compiled binary is downstream of the source code. The minified bundle is downstream of the modules. The Docker image is downstream of the Dockerfile. We do not edit the binary directly and we do not treat it as the source of truth.
+Generated artifacts have always been treated as downstream of their sources. The compiled binary is downstream of the source code, the minified bundle is downstream of the modules, and the Docker image is downstream of the Dockerfile. We do not edit the binary directly and we do not treat it as the source of truth.
 
 In the agentic era, code can occupy the same position that the compiled binary used to. It is the output of a process. The spec, the acceptance criteria, the intent: that is the source. Agents can regenerate the output from the source. They do not reliably regenerate the source from the output.
 
@@ -24,7 +24,7 @@ The practical consequence is a workflow rule this book adopts, not a law of natu
 
 Before agentic tools, modifying code was expensive. Writing a spec and then implementing from it often doubled the work. Code became the source of truth because it was the hard part. Documentation was aspiration.
 
-The mantra: code is self-documenting. It is not. Code tells you what it does. It cannot tell you what was decided against, what assumptions it carries, or why the validation ended up in the controller rather than the service layer. A spec can.
+The mantra: code is self-documenting. It is not. Code tells you what it does, but not what was decided against, what assumptions it carries, or why the validation ended up in the controller rather than the service layer. A spec does.
 
 Code modification is often less expensive now. A session that regenerates a service can take an afternoon. A session that regenerates a service without a spec can also take an afternoon and still produce something the next developer cannot extend without reverse-engineering the intent. Code that is cheap to regenerate should not be treated as more valuable than the spec that makes it reproducible.
 
@@ -50,9 +50,9 @@ Vibe coding is a special case. A vibe session usually produces no durable spec: 
 
 Not every document labeled "spec" earns the treatment described above. A spec that deserves to be treated as the durable artifact has to meet a minimum standard.
 
-Testable: each acceptance criterion maps to an observable, verifiable outcome. Not "the API should handle errors gracefully". "When the upstream service returns a 503, the API should retry once after 1 second, then return a 503 with `{ error: 'upstream unavailable' }`". The criterion is correct or it is not.
+Testable: each acceptance criterion maps to an observable, verifiable outcome. Not "the API should handle errors gracefully", but "When the upstream service returns a 503, the API should retry once after 1 second, then return a 503 with `{ error: 'upstream unavailable' }`". The criterion is correct or it is not.
 
-AC-tagged: each scenario has a stable identifier. `[FEAT-001]`. Not a description. An ID. The ID survives the scenario being reworded, the file being moved, the section being reordered. Tests reference the ID, not the prose. This is what makes traceability work: the link between the spec and the tests that prove it does not break when someone edits the heading.
+AC-tagged: each scenario has a stable identifier, such as `[FEAT-001]`. Not a description, but an ID. The ID survives the scenario being reworded, the file being moved, the section being reordered. Tests reference the ID, not the prose. This is what makes traceability work: the link between the spec and the tests that prove it does not break when someone edits the heading.
 
 Sized to be readable: the spec fits in a context window with room for the code. If it does not, it describes a change too large to implement in one PR without risk of incoherence.
 
@@ -60,10 +60,10 @@ Scoped to one change: one spec, one coherent change. Not a domain model. Not a s
 
 ## The hardest shift
 
-Most developers reading this chapter are not yet convinced. The intuition is that the code is what matters. The spec is scaffolding. The code runs in production. The spec sits in a file.
+Most developers reading this chapter are not yet convinced. The intuition is that the code is what matters: the spec is scaffolding, the code runs in production, and the spec sits in a file.
 
 The code runs. The spec does not. This is true. It is also true that the spec describes what the code should do and the code reflects what the agent decided to implement. When the code and the spec disagree, one of them is wrong. Only one of them was authored by a person with intent.
 
-Stop treating code review as the only primary quality gate. In a spec-driven workflow, spec review should happen before or alongside code review. If the spec is correct, the code is more likely to be correct. If the spec is wrong, code review will still miss the implementation of the wrong thing. Review the intent first. Then the diff.
+Stop treating code review as the only primary quality gate. In a spec-driven workflow, spec review should happen before or alongside code review. If the spec is correct, the code is more likely to be correct. If the spec is wrong, code review will still miss the implementation of the wrong thing. Review the intent first, then the diff.
 
-This claim holds up only if the spec is connected to something harder than intent. Not a document that describes the expected behavior. Executable proof that the implementation delivers it. Not a human scanning the diff. Tests that run in CI and fail when the implementation diverges from the spec. Intent without proof is still a document.
+This claim holds up only if the spec is connected to something harder than intent: not a document that describes expected behavior, but executable proof that the implementation delivers it. Not a human scanning the diff, but tests that run in CI and fail when the implementation diverges from the spec. Intent without proof is still a document.

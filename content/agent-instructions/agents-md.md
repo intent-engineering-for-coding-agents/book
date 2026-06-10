@@ -2,17 +2,17 @@
 
 An agent briefed on nothing reaches for what it knows. Usually that is fine. Once in a while it is a security hole.
 
-Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses three checks the custom library handled. The PR has tests. They pass. A reviewer catches it before merge, but only because they happened to work on that library two years earlier. Nobody else on the team would have known.
+Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses three checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they happened to work on that library two years earlier. Nobody else on the team would have known.
 
 The agent did not invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
-`AGENTS.md` is that briefing. One file at the repo root. Several current coding agents read it natively or can be pointed to it with a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which can import it with a single `@AGENTS.md` line. The team maintains one canonical file. Each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that briefing: one file at the repo root. Several current coding agents read it natively or reach it through a thin vendor-specific entry file. Claude Code reads `CLAUDE.md`, which imports it with a single `@AGENTS.md` line. The team maintains one canonical file, and each tool reaches it through its own entry point. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-Six weeks later the file is 300 lines. The agent reads every line before starting any task, because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed. It is more constrained.
+Six weeks later the file is 300 lines. The agent reads every line before starting any task, because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed, only more constrained.
 
 AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
@@ -61,7 +61,7 @@ The direction of travel is convergence. Codex read `AGENTS.md` natively from its
 
 ## The size limit
 
-The TOC pattern has a failure mode: gradual accumulation. Branch naming conventions. Deployment reminders. Clauses that grew from one sentence to four because the original was too vague. Six months later, the file is 200 lines, and it started as 20. It still says `AGENTS.md` at the top.
+The TOC pattern has a failure mode: gradual accumulation. Branch naming conventions, deployment reminders, and clauses that grew from one sentence to four because the original was too vague. Six months later, the file is 200 lines, and it started as 20. It still says `AGENTS.md` at the top.
 
 The test is not the line count. Can someone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
@@ -71,7 +71,7 @@ The test is not the line count. Can someone open the file and, in under two minu
 
 A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent that is confidently working from the wrong brief.
 
-Two mitigations. First, treat `AGENTS.md` changes as load-bearing. Review them with the same care as an ADR. A stale ADR misleads one decision. A stale `AGENTS.md` misleads every session. Second, keep the file short enough that a person can review it in full in under two minutes. A small file is a file where staleness is visible.
+Two mitigations help: treat `AGENTS.md` changes as load-bearing, and keep the file short enough for a person to review in full in under two minutes. A stale ADR misleads one decision. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
 
 Keeping the entry point honest is the first discipline. What it points to requires the same treatment. The instruction files in `.agents/` accumulate stale content for the same reasons `AGENTS.md` does, and they do it without the visibility that comes from being the first file every session loads.
 

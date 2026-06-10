@@ -20,9 +20,9 @@ A PR that bundles a full change folder with the implementation is not small. The
 
 Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 
-Archive: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`. The change folder moves to `openspec/changes/archive/`. The implementation is in git. The intent is in the canonical spec. The change history is in the archive. Three things, three places, none of them confused.
+Archive: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`, and the change folder moves to `openspec/changes/archive/`. The implementation is in git, the intent is in the canonical spec, and the change history is in the archive. Three things, three places, none of them confused.
 
-The entire lifecycle lives on a branch. Create the branch, create the spec. Implement on the branch. Archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
+The entire lifecycle lives on a branch. Create the branch and the spec, implement on the branch, then archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
 *Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
 
@@ -32,7 +32,7 @@ The task list is where the spec becomes executable. A spec without one leaves th
 
 The rule: one task per acceptance-criteria cluster. If three scenarios test the same endpoint, they belong to one task. Write it as an imperative: not "Rate limiting?" but "Add rate-limiting to the login endpoint with scenarios ACC-003 and ACC-004". The AC IDs go in the task. The connection between intent and proof survives the archive.
 
-Tasks are checkboxes. The agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
+Tasks are checkboxes, and the agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
 
 For sizing guidance on how many tasks belong in a list, and when a list that grows past ten signals a scope problem, see the Rule of Ten in [Why Small?](./why-small).
 
@@ -40,7 +40,7 @@ The task list makes the spec executable. It does not make the spec correct. That
 
 ## Multi-LLM critique
 
-The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training. They share the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.
+The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training and the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.
 
 A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. The difference is not always large, but for specs guiding production-critical implementations, it is consistently useful.
 
@@ -52,10 +52,10 @@ This is not a rigid practice. For small, low-risk specs, it is overhead. For spe
 
 A dead spec is not a deleted spec. It is a change folder still sitting in `openspec/changes/`, still marked as in-flight, for a change that was implemented, abandoned, or pivoted away from weeks ago. The agent sees it, loads it as current intent, and acts on instructions that no longer apply.
 
-The fix is tight timing on both ends. Create the spec when you are about to implement. Not before sprint planning. Not as a backlog item. Archive it the moment the PR merges. Not at the end of the week. Not when you remember. The active folder should contain only what is being built right now. Anything else is noise the agent will act on.
+The fix is tight timing on both ends. Create the spec when you are about to implement, not before sprint planning or as a backlog item. Archive it the moment the PR merges, not at the end of the week and not when you remember. The active folder should contain only what is being built right now. Anything else is noise the agent will act on.
 
 ## Tooling note
 
 If you want to see this workflow in practice, the `iec` repo at tag `v0.5.0` runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
-The archive is not an afterthought. It is what separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The one that is most trusted when the code needs to change is almost certainly not the one most developers would guess.
+The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The artifact most trusted when the code needs to change is likely not the one most developers would guess.

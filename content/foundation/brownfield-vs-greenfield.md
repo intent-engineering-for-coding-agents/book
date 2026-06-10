@@ -1,6 +1,6 @@
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-The retry policy lives in a function called `do_it_again_lol`. The author left years ago. Nobody knows what it retries, how many times, or why the count is three. The system has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
+The retry policy lives in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries, how many times, or why the count is three. The system has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
 
@@ -8,7 +8,7 @@ The Foundation chapters in this topic work from intent. You know what the system
 
 ## skeleton.md is the bootstrap
 
-`skeleton.md` is the name this book uses for an agent-generated structural map of an existing codebase. Not a refactor plan. Not a list of improvements. Not a roadmap. A map.
+`skeleton.md` is the name this book uses for an agent-generated structural map of an existing codebase. Not a refactor plan, not a list of improvements, not a roadmap. A map.
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
@@ -22,7 +22,7 @@ Point a capability-class coding agent at the legacy tree. Ask for a structural m
 
 On a first pass, the agent will often get the structure mostly right. The remaining slice is business rules that exist only in institutional memory, and that requires a human who holds that memory. The skeleton is not done until a domain expert has reviewed it and corrected what the agent could not see.
 
-Commit the reviewed result. Update `docs/INDEX.md`. The skeleton is now part of the repo's context. It is not an artifact in a chat history that disappears the moment the session closes.
+Commit the reviewed result and update `docs/INDEX.md`. The skeleton is now part of the repo's context, not an artifact in a chat history that disappears the moment the session closes.
 
 Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside current coding-agent toolchains such as Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent produces a useful skeleton against many codebases, given a domain expert and a few iterations.
 
@@ -32,7 +32,7 @@ Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy syst
 
 Alistair Cockburn coined "walking skeleton" in "Crystal Clear" (2004). His version is a thin end-to-end implementation built forward from intent. Enough to prove the architecture works before you fill it in.
 
-The agentic-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture. You are uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible, so you reason about it and build on it.
+The agentic-era `skeleton.md` reverses the direction. You are not building a skeleton to prove an architecture, but uncovering the skeleton of an architecture built without one. Same metaphor, opposite direction. The result has the same purpose: it makes the invisible structure visible, so you reason about it and build on it.
 
 *Sources: Cockburn, "Crystal Clear: A Human-Powered Methodology for Small Teams" (Addison-Wesley, 2004), origin of the walking-skeleton pattern.*
 
@@ -42,11 +42,11 @@ Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds wi
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function, the migration, the module boundary, and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not be the actual meeting. It is the documented best guess a domain expert can correct, and the documented best guess beats the silence that put the team here.
 
-The skeleton does not eliminate the brownfield condition. The system is still what it is. What changes is that the agent now knows what it is. That is the prerequisite for any of the practices in this book working at all.
+The skeleton does not eliminate the brownfield condition. The system is still what it is, but the agent now knows what it is. That is the prerequisite for any of the practices in this book working at all.
 
 ## How the skeleton dies
 
-A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. The map drifts from the territory. A skeleton written eighteen months ago for a system refactored three times since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
+A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. When the map drifts from the territory, a skeleton written eighteen months ago for a system refactored three times since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will actually keep.
 
