@@ -4,7 +4,7 @@ The retry policy lives in a function called `do_it_again_lol`. The author left y
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
 
-The Foundation chapters in this topic work from intent. You know what the system is supposed to do, so you write `AGENTS.md` from that knowledge, author Architectural Decision Records (ADRs) as decisions are made, write specs from requirements. If you are reading this book at work, you are looking at a codebase where none of that is possible. The intent is buried. Before any of those practices apply, the brownfield repo needs a different starting move.
+The Foundation chapters in this topic work from intent. You know what the system is supposed to do, so you write agent instructions from that knowledge, author Architectural Decision Records (ADRs) as decisions are made, write specs from requirements. If you are reading this book at work, you are looking at a codebase where none of that is possible. The intent is buried. Before any of those practices apply, the brownfield repo needs a different starting move.
 
 ## skeleton.md is the bootstrap
 
@@ -12,7 +12,7 @@ The Foundation chapters in this topic work from intent. You know what the system
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
-This map goes into `docs/`, typically as `docs/skeleton.md` to mark it as bootstrap rather than current architecture, and becomes the starting context for every subsequent agent session. Before the team has written a single ADR or filled out an `AGENTS.md`, the agent reads the skeleton and reasons about what already exists.
+This map goes into `docs/`, typically as `docs/skeleton.md` to mark it as bootstrap rather than current architecture, and becomes the starting context for every subsequent agent session. Before the team has written a single ADR or written agent instructions, the agent reads the skeleton and reasons about what already exists.
 
 ## Generating one
 

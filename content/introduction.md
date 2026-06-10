@@ -39,7 +39,7 @@ The first two give the agent context: the structural knowledge to execute your i
 
 **Foundation:** repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: briefing keeps the agent from choosing wrong out of ignorance.
 
-**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
+**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
 **Spec-Driven Development:** specs before code. The spec becomes the durable artifact, with code downstream from intent. Small specs ship. Large specs drift.
 
