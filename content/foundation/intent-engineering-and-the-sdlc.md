@@ -65,7 +65,7 @@ Implementation uses the repo briefing. The agent enters the coding step through 
 
 ## Review: intent first, code second
 
-The agent commits. The PR opens. A normal review path collapses intent and code into one diff conversation. Intent Engineering separates them.
+After the agent commits and the PR opens, a normal review path collapses intent and code into one diff conversation. Intent Engineering separates them.
 
 The spec delta says what the change is supposed to do. The code diff says what got built. Read the spec first. Does intent match agreement? Then read the code. Does implementation match intent?
 

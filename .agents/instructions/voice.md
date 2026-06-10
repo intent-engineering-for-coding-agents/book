@@ -95,6 +95,8 @@ Avoid identical paragraph lengths. Avoid balanced cadence throughout a section. 
 >
 > Production disagreed.
 
+Avoid serial staccato openings that repeat the same subject shape: "The agent commits. The PR opens. The reviewer..." This is grammatical English, but repeated use sounds staged and agent-written. Use it only as a rare deliberate beat. Most of the time, combine the action into a natural sentence or put the tension first.
+
 ### Respect reader intelligence
 
 Do not define obvious engineering concepts. Do not repeat the same idea three times in different words. Do not summarize excessively. Do not explain what a PR is, what CI does, what a feature flag is.
