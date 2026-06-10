@@ -45,7 +45,7 @@ graph TD
     end
 ```
 
-Familiar phases, different evidence. The overlay changes what each phase leaves behind.
+Familiar phases, different evidence. What the agent reads when it starts work is what the previous phase filed.
 
 ## Planning: from ticket to spec
 
@@ -79,13 +79,13 @@ A convention check runs on every push and validates `AGENTS.md`, the presence of
 
 AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` proves the named scenario, and the traceability survives spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
 
-*Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026); IBM, "AI in SDLC" (ongoing), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.*
+*Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026, vendor-authored); IBM, "AI in SDLC" (ongoing, vendor-authored), the broader move to fold AI-era checks into the existing pipeline rather than standing up a new one.*
 
 ## Maintenance: the step everyone skips
 
 After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark ADRs accepted or rejected and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
 
-Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request — that is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
+Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request. That is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
 
 Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. By then archive work has become triage.
 
@@ -97,6 +97,8 @@ Checks catch the mechanical part: an index-staleness rule compares the index wit
 
 ## Why not add ceremonies
 
-New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. Intent Engineering sidesteps the churn by plugging into ceremonies with tooling, habit, and buy-in. A smaller ask survives longer.
+New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. The design is to sidestep the churn by plugging into existing ceremonies rather than replacing them. A smaller ask survives longer.
 
-When a team adds spec review to the PR checklist and skips the step under pressure, the practice exists in intention only. No process map catches that. The missing archived spec does.
+*Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), sustainable process over heavyweight ceremony.*
+
+When a team adds spec review to the PR checklist and skips the step under pressure, the practice exists in intention only. No process map catches that. The missing archived spec does. The harder question is whether the team knows it is missing.
