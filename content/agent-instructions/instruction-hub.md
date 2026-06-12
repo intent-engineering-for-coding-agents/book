@@ -1,4 +1,4 @@
-# From AGENTS.md to Agent Instruction Hub
+# Agent Instruction Hub
 
 Two developers, same repo, same language, same CI pipeline. Why do their pull requests look like they came from different codebases? Different naming, different ideas about which directories are off-limits, different test structure. Nobody changed the rules. The rules diverged: one developer drives Claude Code with `CLAUDE.md`, the other drives Cursor with `.cursorrules`, both files started as copies of the same thing, and a month later they no longer agree.
 

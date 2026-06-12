@@ -84,7 +84,7 @@ The lightest structured point on the spec-driven spectrum: structured prompting 
 
 ## Hook
 
-A deterministic script wired to a file-system or session event (post-edit, pre-commit, etc.) that runs automatically, independent of agent memory. Hooks enforce rules the agent might otherwise forget to apply. Stored in `.agents/hooks/`. Distinct from skills (invocable on demand) and instruction files (advisory). See [From AGENTS.md to Agent Instruction Hub](/agent-instructions/instruction-hub).
+A deterministic script wired to a file-system or session event (post-edit, pre-commit, etc.) that runs automatically, independent of agent memory. Hooks enforce rules the agent might otherwise forget to apply. Stored in `.agents/hooks/`. Distinct from skills (invocable on demand) and instruction files (advisory). See [Agent Instruction Hub](/agent-instructions/instruction-hub).
 
 ## `iec`
 
@@ -136,7 +136,7 @@ An agent-generated structural map of an existing codebase: modules, dependencies
 
 ## Skill
 
-A named, reusable agent workflow stored as a Markdown file in `.agents/skills/`. Invocable via slash command (`/draft-section`) or an autonomous trigger in the agent instructions. A skill describes a multi-step procedure: what to load, what to do, what to produce. Distinct from an instruction file (standing rules) and a hook (fires automatically). See [From AGENTS.md to Agent Instruction Hub](/agent-instructions/instruction-hub).
+A named, reusable agent workflow stored as a Markdown file in `.agents/skills/`. Invocable via slash command (`/draft-section`) or an autonomous trigger in the agent instructions. A skill describes a multi-step procedure: what to load, what to do, what to produce. Distinct from an instruction file (standing rules) and a hook (fires automatically). See [Agent Instruction Hub](/agent-instructions/instruction-hub).
 
 ## Spec
 

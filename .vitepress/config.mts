@@ -42,7 +42,7 @@ export default withMermaid(
           items: [
             { text: 'Overview', link: '/agent-instructions/' },
             { text: 'AGENTS.md: One File Changes Everything', link: '/agent-instructions/agents-md' },
-            { text: 'From AGENTS.md to Agent Instruction Hub', link: '/agent-instructions/instruction-hub' },
+            { text: 'Agent Instruction Hub', link: '/agent-instructions/instruction-hub' },
             { text: 'Writing Instructions That Work', link: '/agent-instructions/writing-instructions' },
             { text: 'Skills, Commands, and Hooks', link: '/agent-instructions/skills-commands-hooks' },
             { text: 'Context Window Management', link: '/agent-instructions/context-window' },
