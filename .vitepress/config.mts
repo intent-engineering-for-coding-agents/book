@@ -41,7 +41,7 @@ export default withMermaid(
           text: 'Agent Instructions',
           items: [
             { text: 'Overview', link: '/agent-instructions/' },
-            { text: 'AGENTS.md: One File Changes Everything', link: '/agent-instructions/agents-md' },
+            { text: 'AGENTS.md: The Entry Point', link: '/agent-instructions/agents-md' },
             { text: 'Agent Instruction Hub', link: '/agent-instructions/instruction-hub' },
             { text: 'Writing Instructions That Work', link: '/agent-instructions/writing-instructions' },
             { text: 'Skills, Commands, and Hooks', link: '/agent-instructions/skills-commands-hooks' },

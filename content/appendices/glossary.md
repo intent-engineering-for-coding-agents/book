@@ -108,7 +108,7 @@ A lightweight spec-driven development framework focused on small, focused specs 
 
 ## Load clause
 
-A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading; without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: One File Changes Everything](/agent-instructions/agents-md).
+A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading; without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
 ## MADR (Markdown Architectural Decision Record)
 
@@ -160,7 +160,7 @@ A source-control discipline in which all developers commit to a single trunk bra
 
 ## TOC pattern
 
-The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: One File Changes Everything](/agent-instructions/agents-md).
+The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
 ## Walking skeleton
 

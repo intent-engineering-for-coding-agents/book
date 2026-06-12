@@ -1,4 +1,4 @@
-# AGENTS.md: One File Changes Everything
+# AGENTS.md: The Entry Point
 
 An agent briefed on nothing reaches for what it knows. Usually that is fine. Once in a while it is a security hole.
 

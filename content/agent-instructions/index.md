@@ -8,7 +8,7 @@ The chapters in this topic cover the mechanics: what goes in `AGENTS.md`, how to
 
 ## Chapters
 
-1. [AGENTS.md: One File Changes Everything](./agents-md): the TOC pattern, what goes in it, vendor pointers, and why it has to stay short
+1. [AGENTS.md: The Entry Point](./agents-md): the TOC pattern, what goes in it, vendor pointers, and why it has to stay short
 2. [Agent Instruction Hub](./instruction-hub): `.agents/instructions/`, `.agents/skills/`, `.agents/hooks/`, one folder for all agents
 3. [Writing Instructions That Work](./writing-instructions): specific instructions, negative constraints, architecture boundaries, and how to test whether they work
 4. [Skills, Commands, and Hooks](./skills-commands-hooks): when to choose each type, how to write skills that run reliably, and the instruction/skill/hook triangle
