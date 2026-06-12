@@ -8,13 +8,13 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 The entry point goes stale. The agent instructions say to follow the old module layout, while an ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated the agent instructions, so the agent reads them, not the ADR, and produces code shaped for the old system.
 
-The fix is structural and slightly painful. Treat agent instructions as part of the architecture, not part of the initial setup. Any PR changing something the agent instructions describe must update them in the same commit. This is a human discipline. No CI check catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md`. Keeping it current stays your job.
+The fix is structural and slightly painful. Treat agent instructions as part of the architecture, not part of the initial setup. Any PR changing something the agent instructions describe must update them in the same commit. This is a human discipline. No CI check catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md` and `.agents/instructions/...`. Keeping these current stays your job.
 
 ## Dead specs
 
 Open `openspec/changes/` and find eleven directories: three implemented, two canceled, one implemented but never archived, one partially done before the original author left, three competing proposals for the same change, and one from when the team tried OpenSpec for a week and stopped.
 
-The agent reads all of them as active context.
+Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction.
 
 A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. Worse, it does so as the agent's first read of the change folder. Archive immediately after implementation. An un-archived spec is not a historical record, but live instruction. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 
@@ -24,7 +24,7 @@ A dead spec is worse than no spec. It tells the agent authoritatively about beha
 
 Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this used to grow across quarters. Ten agent-assisted PRs landed on Tuesday, and the codebase had measurably more contradictions by Wednesday afternoon.
 
-The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the constraints it needs. ADRs the agent reads are constraints the agent will follow. Constraints living only in human memory are constraints the agent will violate.
+The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the constraints it needs. Decisions written down as ADRs are constraints the agent will follow. Constraints living only in human memory are constraints the agent will violate.
 
 *Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (Mar 22, 2025), agent velocity as amplifier.*
 

@@ -71,7 +71,7 @@ The test is not the line count. Can someone open the file and, in under two minu
 
 A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent that is confidently working from the wrong brief.
 
-Two mitigations help: treat `AGENTS.md` changes as load-bearing, and keep the file short enough for a person to review in full in under two minutes. A stale ADR misleads one decision. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
+Two mitigations help: treat `AGENTS.md` changes as load-bearing, and keep the file short enough for a person to review in full in under two minutes. A stale ADR misleads one change. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
 
 Keeping the entry point honest is the first discipline. What it points to requires the same treatment. The instruction files in `.agents/` accumulate stale content for the same reasons `AGENTS.md` does, and they do it without the visibility that comes from being the first file every session loads.
 
