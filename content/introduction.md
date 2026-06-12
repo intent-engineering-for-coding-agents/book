@@ -10,7 +10,7 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 This is the territory of "Intent Engineering", the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
-"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything can be done. Not a methodology, not a process, but practices you adopt as you need them. Intent Engineering in turn fits within what some vendors and practitioners now call Developer AI: agent tooling aimed at the development workflow rather than at end users or production systems.
+"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything can be done. Not a methodology, not a process, but practices you adopt as you need them. Intent Engineering fits within the broader category of agent tooling aimed at the development workflow rather than at end users or production systems.
 
 The book is OpenSpec-first on purpose. Intent Engineering is the portable practice; OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers can inspect. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
 
@@ -29,7 +29,7 @@ Switch a well-briefed agent into **plan mode** (or architect mode), and it pushe
 
 That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session, is a large part of what this book teaches: a _deliberate_ result of how much the agent knows about your system before you ask it to think, not a roll of the dice. The same agent that generates a payment service in five minutes will, half a minute earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
 
-*Sources: Gartner, "Developer AI Is Reshaping the Software Development Life Cycle" (2025), the Developer AI category this book situates Intent Engineering within. GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.*
+*Sources: GLM Team, "GLM-5: Agentic, Reasoning, and Coding" (Z.ai, 2026), the reasoning-capable agent behind the sparring-partner role.*
 
 ## What to expect
 
