@@ -38,6 +38,14 @@ Small specs create their own failure mode: a spec too vague to be useful.
 
 Write small and write precisely. The constraint is not "fewer words", but "one PR's scope, one concrete outcome per scenario, nothing else". Scope comes first. Quantity comes second: how many tasks the spec should generate, how many files the PR should touch, and what to do when those numbers start climbing.
 
+## When the agent writes the spec
+
+Ask the agent to draft the spec and watch what comes back: nominal case, edge cases, rollback behavior, a constraint inferred from three different files, a note about the migration path nobody asked for. The agent defaults to thoroughness. From its frame, missing a scenario is a defect. Adding an unrequested one is not.
+
+The fix is a directive in your agent instructions, not a setting: require specs to stay within a page, forbid restating requirements already in the referenced ADR, and specify what the output must contain rather than what to avoid. Every major agent instruction format accepts style rules governing generated output. A conciseness directive placed in a skill file carries forward to every spec the agent writes.
+
+The size discipline belongs in the instructions the agent reads when writing, not only in the instructions a human reads when reviewing.
+
 ## The Rule of Ten
 
 Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. The number is not magic and it is not a rule in any strict sense. Eight would work, twelve would work. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. A rule of thumb you cannot hold in your head under deadline pressure is not useful as that. It is a footnote.

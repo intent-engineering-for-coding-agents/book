@@ -34,9 +34,9 @@ The team writes 500-line specs for a config rename. The spec becomes the bottlen
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
-*Sources: LeanSpec (lean-spec.dev), small-spec discipline, and formality-to-risk matching.*
-
 The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further.
+
+*Sources: LeanSpec (lean-spec.dev), small-spec discipline, and formality-to-risk matching.*
 
 ## Drift with no detection
 

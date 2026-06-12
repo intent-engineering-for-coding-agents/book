@@ -56,6 +56,6 @@ A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. Wh
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will actually keep.
 
-*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing.*
-
 When ADRs and architecture documentation cover what the skeleton approximated, delete it. Most teams will never quite reach that point. The ones who do learn that structure is a prerequisite, not a guarantee.
+
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing.*
