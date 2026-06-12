@@ -1,10 +1,16 @@
-# Brownfield vs Greenfield: Bootstrap with skeleton.md
+# Brownfield vs. Greenfield: Bootstrap with skeleton.md
 
 The retry policy lives in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries, how many times, or why the count is three. The system has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
 
-The Foundation chapters in this topic work from intent. You know what the system is supposed to do, so you write agent instructions from that knowledge, author Architectural Decision Records (ADRs) as decisions are made, write specs from requirements. If you are reading this book at work, you are looking at a codebase where none of that is possible. The intent is buried. Before any of those practices apply, the brownfield repo needs a different starting move.
+The Foundation chapters work from intent, and so does greenfield development (a codebase built from scratch, with no prior decisions to inherit) with coding agents. Before the first commit, you plan the tech stack with the agent as a sparring partner, weigh tradeoffs, and record decisions as ADRs. Specs exist before implementations do. This is the structural advantage greenfield gives you: a complete history, built forward from the beginning.
+
+Brownfield teams adopt most of these practices immediately, without a rewrite. Agent instructions get written this week. New decisions get ADRs from this point forward. A spec-driven workflow starts on the next ticket.
+
+The historical record is not gone. Wikis, ticket systems, internal communications, old PRs: the reasoning behind decisions is scattered across sources nobody synthesized. Feed those to the agent and ask it to produce ADRs and design documents, updating stale documentation in the same pass. Before the Foundation practices work, the brownfield repo needs that record assembled.
+
+One warning: incorrect or outdated documentation is worse than none. The agent treats whatever you feed it as ground truth. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
 
 ## skeleton.md is the bootstrap
 
@@ -16,17 +22,17 @@ This map goes into `docs/`, typically as `docs/skeleton.md` to mark it as bootst
 
 ## Generating one
 
-Point a capability-class coding agent at the legacy tree. Ask for a structural map, not a refactor. A useful prompt:
+Point a capability-class coding agent at the legacy tree. Ask for a structural map, not a refactor. A starting prompt:
 
-> Produce a structural map of this codebase. Cover the major modules and their responsibilities, how they depend on each other, the main data flows, and any business rules you can infer from the implementation. Note anything you cannot determine from the code alone.
+> Produce a structural map of this codebase. Cover the major modules and their responsibilities, how they depend on each other, the main data flows, and any business rules visible in the implementation. Note anything you cannot determine from the code alone.
 
-On a first pass, the agent will often get the structure mostly right. The remaining slice is business rules that exist only in institutional memory, and that requires a human who holds that memory. The skeleton is not done until a domain expert has reviewed it and corrected what the agent could not see.
+This is a goal statement, not a one-shot script. The agent works through it by reading files, tracing imports, and following dependency declarations. On a large codebase, expect multiple passes across different modules before the structure becomes clear. Let it run.
 
-Commit the reviewed result and update `docs/INDEX.md`. The skeleton is now part of the repo's context, not an artifact in a chat history that disappears the moment the session closes.
+The structural output tends to land well: modules, dependencies, data flows. Business rules are harder. Some rules read directly from the code: constraint checks, guard clauses, state machines inlined in service logic. Others exist only in institutional memory, and no amount of static analysis surfaces them. The "Note anything you cannot determine" clause is load-bearing. The skeleton is not done until a domain expert has reviewed it and corrected what the agent flagged as missing.
 
-Reversa (sandeco/reversa, MIT) automates this end-to-end for complex legacy systems. It is a five-phase framework that coordinates sub-agents to extract C4 diagrams, entity-relationship diagrams, state machines, and API contracts, running inside current coding-agent toolchains such as Claude Code, Cursor, or Codex. Reversa is one toolchain. The principle generalises: a capable agent produces a useful skeleton against many codebases, given a domain expert and a few iterations.
+The same prompt accepts an output layout. Append the target `docs/` structure and the agent writes the files directly: `architecture.md` for the module map, `design/` for data flows and component views, `decisions/` for anything it reconstructs from the implementation. That structure also becomes the team's docs convention from the first commit.
 
-*Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT). Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026). Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation of the same pattern.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), agents successfully extracting structure from legacy codebases.*
 
 ## The walking skeleton reversed
 
@@ -42,7 +48,7 @@ Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds wi
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function, the migration, the module boundary, and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not be the actual meeting. It is the documented best guess a domain expert can correct, and the documented best guess beats the silence that put the team here.
 
-The skeleton does not eliminate the brownfield condition. The system is still what it is, but the agent now knows what it is. That is the prerequisite for any of the practices in this book working at all.
+The skeleton does not eliminate the brownfield condition. The system is still what it is, but now the agent knows it too. That is the prerequisite for any of the practices in this book working at all.
 
 ## How the skeleton dies
 
@@ -50,6 +56,6 @@ A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. Wh
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will actually keep.
 
-*Sources: Reversa, sandeco/reversa (GitHub, ongoing, MIT), automated skeleton generation for complex legacy systems. Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing. Fujitsu, "Generative AI service that analyzes source code and automatically generates design documents" (Mar 30, 2026), industry-scale validation. Cockburn, "Crystal Clear" (2004), the walking-skeleton pattern this reverses.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing. Cockburn, "Crystal Clear" (2004), the walking-skeleton pattern this reverses.*
 
-The skeleton's job ends when ADRs and `docs/README.md` cover what it covered. At that point it can be archived. Most teams will never quite reach that point.
+When ADRs and architecture documentation cover what the skeleton approximated, delete it. Most teams will never quite reach that point.
