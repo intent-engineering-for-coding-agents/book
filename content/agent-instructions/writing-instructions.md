@@ -1,4 +1,4 @@
-# Writing Instructions That Work
+# Instructions That Work
 
 An instruction in your repo reads: use the team's naming conventions. The agent obliges and names a new service `orderProcessor`, matching the pattern in the oldest files. The team migrated to kebab-case eighteen months ago, but nobody updated the instruction, so the convention is still there and still confidently wrong.
 
