@@ -60,6 +60,6 @@ Each topic targets one or more of these modes directly:
 
 Zero drift is not the goal. Catching it before it compounds is.
 
-You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
+Six months of accumulated mismatch trace back to what the agent was reading. What the agent should have been reading is the question the Agent Instructions topic exists to answer.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*
