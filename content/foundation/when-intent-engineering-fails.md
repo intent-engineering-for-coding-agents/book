@@ -58,7 +58,7 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small, Why Important First) |
 | Drift with no detection | Quality and Verification |
 
-The point is not zero drift. That is not on offer. The point is a drift that is detectable while it is still inexpensive to fix.
+Zero drift is not the goal. Catching it before it compounds is.
 
 You find out when something breaks in a way that traces back, through six months of accumulated mismatch, to what the agent was reading. The question that follows is what the Agent Instructions topic is for: what should the agent be reading, and how do you keep it honest.
 
