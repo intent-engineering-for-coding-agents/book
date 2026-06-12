@@ -44,7 +44,7 @@ The team has agent instructions, ADRs, specs, and good initial intentions. Six m
 
 A convention check in CI closes part of this loop. It catches structural violations before they reach the main. The check cannot catch ADRs that should have been written and were not. It cannot detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 
-The Quality and Verification topic gets the most leverage on this. Specifically, the agent-evaluation chapter, which covers how to test whether your agent instructions have stopped working without waiting for the next outage to find out.
+The Quality and Verification topic covers what automated detection is available, and where the limits are. The agent-evaluation chapter specifically addresses how to test whether your agent instructions have stopped working without waiting for the next outage to find out.
 
 ## Why the rest of the book is organized the way it is
 
