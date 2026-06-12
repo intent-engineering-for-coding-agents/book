@@ -18,6 +18,10 @@ The discipline of building agents as products: reasoning loops, evals, hallucina
 
 A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted (reversing a decision creates a new ADR that supersedes the old one), though status updates and cross-references can still be edited. Originated in Michael Nygard's 2011 post; the structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
 
+## Agent instructions
+
+This book's term for the full instruction set the agent loads: `AGENTS.md` (the entry-point file) and the `.agents/` hub it points into (instruction files, skills, and hooks). The entry point is a table of contents; the content lives in `.agents/`. "Agent instructions" refers to both together. See [Agent Instructions](/agent-instructions/).
+
 ## AGENTS.md
 
 The canonical entry point for a coding agent at the root of a repository. Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview. Documented at agents.md.
@@ -42,6 +46,10 @@ A design principle where the tool uses the caller's model provider credentials r
 
 A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. At the time of writing, examples include Claude Code, Codex CLI, OpenCode, and Junie. Completion-only tools are out of scope.
 
+## Change folder
+
+The unit of work in OpenSpec: a directory under `openspec/changes/` named with a slug matching the branch. Contains `proposal.md`, delta specs under `specs/`, `tasks.md`, and optionally `design.md`. Moves to `openspec/changes/archive/` when the PR merges. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+
 ## CSRF (Cross-Site Request Forgery)
 
 A web attack class in which an authenticated user's browser is induced to submit an unintended request to a site they are logged into. Defended against with CSRF tokens, same-site cookies, or origin checks. Listed in [Security in Depth](/quality/security-in-depth).
@@ -54,9 +62,13 @@ A public catalog of disclosed security flaws in software, each with a unique ide
 
 The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
 
+## Context poisoning
+
+A failure mode in which stale, incorrect, or irrelevant documents loaded into the agent's context cause it to act on false premises. The agent treats provided context as authoritative, so an outdated architecture doc, a superseded spec, or wrong instruction files produce wrong output with apparent confidence. See [When Intent Engineering Fails](/foundation/when-intent-engineering-fails).
+
 ## Dead spec
 
-An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is live instruction, not historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is a live instruction, not a historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 ## Greenfield
 
@@ -70,6 +82,18 @@ A fixed, repeatable task with a known good output, used to detect regressions wh
 
 The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not justify OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
 
+## Hook
+
+A deterministic script wired to a file-system or session event (post-edit, pre-commit, etc.) that runs automatically, independent of agent memory. Hooks enforce rules the agent might otherwise forget to apply. Stored in `.agents/hooks/`. Distinct from skills (invocable on demand) and instruction files (advisory). See [From AGENTS.md to Agent Instruction Hub](/agent-instructions/instruction-hub).
+
+## `iec`
+
+The companion CLI for this book (Intent Engineering Checker). Validates the structural conventions the book describes: `docs/` layout, ADR format (MADR), `AGENTS.md` presence, AC ID traceability, and spec lifecycle. Runs as a CI check and as an MCP server for agent-assisted review. Source at github.com/intent-engineering-for-coding-agents/intent-cli. See [Companion Repository](/appendices/companion-repo).
+
+## Inner source
+
+The practice of sharing `.agents/` skill and instruction files across team boundaries within an organization, using the same contribution and review patterns as shared libraries. Teams publish useful skills to a shared repository; other teams pull from it. As of mid-2026, no widely-adopted standard exists for this pattern. See [Cross-Team Coordination](/team/cross-team-coordination).
+
 ## Intent Engineering
 
 The practice this book teaches. Within agentic software engineering, intent engineering is the discipline of directing coding agents by engineering well-structured intent rather than writing code directly. Context (Foundation, Agent Instructions) is the substrate that makes intent executable. Specs state the target. Verification proves the result. See [Introduction](/introduction).
@@ -77,6 +101,10 @@ The practice this book teaches. Within agentic software engineering, intent engi
 ## LeanSpec
 
 A lightweight spec-driven development framework focused on small, focused specs (lean-spec.dev). Source for the small-spec discipline this book inherits.
+
+## Load clause
+
+A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading; without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: One File Changes Everything](/agent-instructions/agents-md).
 
 ## MADR (Markdown Architectural Decision Record)
 
@@ -102,6 +130,10 @@ A spec-driven-development framework (openspec.dev) built around a change-folder 
 
 An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artifact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
+## Skill
+
+A named, reusable agent workflow stored as a Markdown file in `.agents/skills/`. Invocable via slash command (`/draft-section`) or an autonomous trigger in the agent instructions. A skill describes a multi-step procedure: what to load, what to do, what to produce. Distinct from an instruction file (standing rules) and a hook (fires automatically). See [From AGENTS.md to Agent Instruction Hub](/agent-instructions/instruction-hub).
+
 ## Spec
 
 In this book's sense: the canonical specification of system behavior. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
@@ -113,6 +145,10 @@ The practice of writing intent as structured, acceptance-criterion-tagged specif
 ## Test-type field
 
 A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming the category of test that proves the scenario (e.g. `unit`, `integration`, `e2e`). Captures the intended test level at spec-authoring time so the agent generates the right kind of test. Resolved against the project's test strategy document at implementation time. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+
+## `tasks.md`
+
+A checklist file inside an OpenSpec change folder that lists the implementation steps for a change. The agent checks off tasks as it completes them. A change folder with unchecked tasks should not have a PR open. See [Document Types](/foundation/document-types).
 
 ## TBD (Trunk-Based Development)
 
