@@ -1,4 +1,4 @@
-> *For my father, Bent N. Larsen (d. 2022), who gave me my first computers, a Lambda 8300 and a Commodore VIC 20, and kickstarted my career.*
+> *For my colleagues at Elsevier in Aalborg, and for my closest friends, who are always ready to talk about AI.*
 
 # Foreword
 
