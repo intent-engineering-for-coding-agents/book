@@ -94,6 +94,10 @@ The companion CLI for this book (Intent Engineering Checker). Validates the stru
 
 The practice of sharing `.agents/` skill and instruction files across team boundaries within an organization, using the same contribution and review patterns as shared libraries. Teams publish useful skills to a shared repository; other teams pull from it. As of mid-2026, no widely-adopted standard exists for this pattern. See [Cross-Team Coordination](/team/cross-team-coordination).
 
+## Intent
+
+What a developer encodes for a coding agent to act on. In this book, intent takes two forms: per-change specs that state what to build right now (the immediate intention), and the permanent architectural decisions and coded conventions that constrain how anything may be built. See [Spec-Driven Development](/spec-driven/) for the per-change form; see [Foundation](/foundation/) and [Agent Instructions](/agent-instructions/) for the permanent substrate. See [Intent Engineering](#intent-engineering).
+
 ## Intent Engineering
 
 The practice this book teaches. Within agentic software engineering, intent engineering is the discipline of directing coding agents by engineering well-structured intent rather than writing code directly. Context (Foundation, Agent Instructions) is the substrate that makes intent executable. Specs state the target. Verification proves the result. See [Introduction](/introduction).

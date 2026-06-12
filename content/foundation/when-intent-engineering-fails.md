@@ -24,7 +24,7 @@ A dead spec is worse than no spec. It tells the agent authoritatively about beha
 
 Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this used to grow across quarters. Ten agent-assisted PRs landed on Tuesday, and the codebase had measurably more contradictions by Wednesday afternoon.
 
-The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the constraints it needs. Decisions written down as ADRs are constraints the agent will follow. Constraints living only in human memory are constraints the agent will violate.
+The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the intention it needs. Decisions written down as ADRs are constraints the agent will follow. Intent and constraints living only in human memory will be violated.
 
 *Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (Mar 22, 2025), agent velocity as amplifier.*
 
