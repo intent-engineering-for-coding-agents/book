@@ -44,7 +44,7 @@ The agentic-era `skeleton.md` reverses the direction. You are not building a ske
 
 ## After the skeleton
 
-Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds with the same Foundation practices as a greenfield one, with realistic constraints. `AGENTS.md` is written based on what the skeleton reveals, not from scratch. ADRs capture decisions that were made implicitly and are now being made explicit. Specs cover new changes, not retrofitted to existing behavior wholesale.
+Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions are written based on what the skeleton reveals, not from scratch. ADRs capture decisions that were made implicitly and are now being made explicit. Specs cover new changes, not retrofitted to existing behavior wholesale.
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function, the migration, the module boundary, and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not be the actual meeting. It is the documented best guess a domain expert can correct, and the documented best guess beats the silence that put the team here.
 

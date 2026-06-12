@@ -4,7 +4,7 @@ A decision recorded where the other team's agents cannot read it is, to them, a 
 
 The ADR did its job for Team A. The mechanism that would have carried it to Team B did not exist.
 
-Coordination across team boundaries is harder than coordination within a team, and the agentic layer makes it harder still. Multiple teams' agents are all reading their own architecture docs, their own AGENTS.md files, their own ADR logs. They share the runtime but not the context.
+Coordination across team boundaries is harder than coordination within a team, and the agentic layer makes it harder still. Multiple teams' agents are all reading their own architecture docs, their own agent instructions, their own ADR logs. They share the runtime but not the context.
 
 ## ADRs as the cross-team mechanism
 
@@ -30,7 +30,7 @@ Inner source for agent instructions is book synthesis. As of mid-2026, there is 
 
 ## Multi-repo realities
 
-Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/`, its own `.agents/`, its own `AGENTS.md`. Coordination between them requires agents to navigate across this boundary.
+Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/`, its own `.agents/`, its own agent instructions. Coordination between them requires agents to navigate across this boundary.
 
 Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
 

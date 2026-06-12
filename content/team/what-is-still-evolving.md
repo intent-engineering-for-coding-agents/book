@@ -10,7 +10,7 @@ The individual-scale practices are practiced and documented in a growing body of
 
 Short-lived branches, trunk-based development, and PR taxonomy have decades of documented practice behind them. The Intent Engineering application of these follows from established principles: change folder scope matches branch scope, PR class matches review style.
 
-The failure modes behind all this (incompatible specs, stale AGENTS.md, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025. That documentation is the solid ground. What sits above it is still being assembled.
+The failure modes behind all this (incompatible specs, stale agent instructions, context poisoning, agent-accelerated drift) are not speculative. They are the team-scale versions of failure modes individual developers already hit, documented in the published literature since 2025. That documentation is the solid ground. What sits above it is still being assembled.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the team-scale failure modes as documented rather than speculative. Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the SDD frameworks (OpenSpec, Spec-Kit, LeanSpec, GSD) in active use as of mid-2026.*
 

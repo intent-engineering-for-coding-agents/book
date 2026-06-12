@@ -16,7 +16,7 @@ The agent does not distinguish between a pattern it should follow and a pattern 
 
 The human reviewer catches this because they remember which endpoint has the inherited hole and know not to copy its auth pattern. The agent has no memory of the security review, no access to the conversation in which the hole was acknowledged, no context for the ADR comment that says "authorization model needs revision".
 
-The defense is to make the pattern the agent should follow the easiest pattern to find: a `docs/architecture/authorization.md` that shows the canonical auth check, a comment on the broken endpoint that says "do not copy, see ADR-0012", and an `AGENTS.md` rule that says authorization patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
+The defense is to make the pattern the agent should follow the easiest pattern to find: a `docs/architecture/authorization.md` that shows the canonical auth check, a comment on the broken endpoint that says "do not copy, see ADR-0012", and an agent instruction that says authorization patterns must match the canonical example, not the nearest existing endpoint. The agent follows the pattern you put in front of it. Put the right one in front.
 
 ## Deference to the user
 
@@ -52,7 +52,7 @@ The honest answer in 2026 is that these new entries are not well-defended. The p
 
 The standard security tools still catch most of what they always caught: secrets scanners, dependency checkers, static analysis. This chapter is not a replacement for them. It describes the failure modes that survive because they match the patterns the agent was shown, not because any tool failed.
 
-Be specific about which failures are addressed and which are not. An AGENTS.md rule that says "dependencies must not change package name between versions" is enforceable. An AGENTS.md rule that says "be careful with security" is not. The rule has to be specific enough that a check verifies it, or the agent will ignore it as background noise.
+Be specific about which failures are addressed and which are not. An agent instruction that says "dependencies must not change package name between versions" is enforceable. An agent instruction that says "be careful with security" is not. The rule has to be specific enough that a check verifies it, or the agent will ignore it as background noise.
 
 A human reviewer who reads every PR through a security lens is still the most effective layer. The tools, rules, and pattern defenses in this chapter make that reviewer's job possible at agentic speed. They do not replace it.
 

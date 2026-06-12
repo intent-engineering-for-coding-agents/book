@@ -24,7 +24,7 @@ A Jira user story provides the why and the what: "As a user, I want to filter re
 
 One story maps to one or more OpenSpec change folders. The story provides the intent, the spec provides the acceptance criteria, and the spec references the Jira story ID for traceability. Any reviewer reaches the planning decision that initiated it from the spec.
 
-Atlassian MCP connectors, available to several capability-class agents as of mid-2026, allow the agent to fetch story context and Confluence architecture pages during spec drafting. The `AGENTS.md` should instruct the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria actually address what the story intended. The agent reads the story, and the developer reviews the criteria.
+Atlassian MCP connectors, available to several capability-class agents as of mid-2026, allow the agent to fetch story context and Confluence architecture pages during spec drafting. The agent instructions should tell the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria actually address what the story intended. The agent reads the story, and the developer reviews the criteria.
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. The specific integration paths will change. The pattern of agents fetching ticket context before writing specs will not.
 
@@ -36,7 +36,7 @@ The `tasks.md` file in the change folder is the agent's execution checklist. It 
 
 The sprint board tracks the same work at team level. The story moves from "In Progress" to "In Review" when the PR is opened, and `tasks.md` is exhausted before the PR is opened. These are parallel, not competing.
 
-The synchronization point is the PR. A change folder with incomplete tasks (`- [ ]` lines still present) is a change folder that should not have a PR open. The PR template checks for this, and `AGENTS.md` should instruct the agent to verify `tasks.md` is complete before pushing.
+The synchronization point is the PR. A change folder with incomplete tasks (`- [ ]` lines still present) is a change folder that should not have a PR open. The PR template checks for this, and the agent instructions should require verifying `tasks.md` is complete before pushing.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), `tasks.md` as part of the change-folder workflow. The sprint-board synchronization rule is this book's OpenSpec-first workflow mapping, not an OpenSpec requirement.*
 
