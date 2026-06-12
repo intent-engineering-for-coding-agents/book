@@ -2,7 +2,7 @@
 
 The retry policy lives in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries, how many times, or why the count is three. The system has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
 
-An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift faster than human-pace work ever did.
+An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift.
 
 The Foundation chapters work from intent, and so does greenfield development (a codebase built from scratch, with no prior decisions to inherit) with coding agents. Before the first commit, you plan the tech stack with the agent as a sparring partner, weigh tradeoffs, and record decisions as ADRs. Specs exist before implementations do. This is the structural advantage greenfield gives you: a complete history, built forward from the beginning.
 
@@ -10,7 +10,7 @@ Brownfield teams adopt most of these practices immediately, without a rewrite. A
 
 The historical record is not gone. Wikis, ticket systems, internal communications, old PRs: the reasoning behind decisions is scattered across sources nobody synthesized. Feed those to the agent and ask it to produce ADRs and design documents, updating stale documentation in the same pass. Before the Foundation practices work, the brownfield repo needs that record assembled.
 
-One warning: incorrect or outdated documentation is worse than none. The agent treats whatever you feed it as ground truth. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
+One warning: incorrect or outdated documentation does not sit inertly in the repo. The agent treats provided context as authoritative. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
 
 ## skeleton.md is the bootstrap
 
@@ -56,6 +56,6 @@ A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. Wh
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will actually keep.
 
-*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing. Cockburn, "Crystal Clear" (2004), the walking-skeleton pattern this reverses.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing.*
 
-When ADRs and architecture documentation cover what the skeleton approximated, delete it. Most teams will never quite reach that point.
+When ADRs and architecture documentation cover what the skeleton approximated, delete it. Most teams will never quite reach that point. The ones who do learn that structure is a prerequisite, not a guarantee.
