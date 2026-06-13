@@ -20,7 +20,7 @@ AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. 
 
 ## What goes in it
 
-Three things belong in it, in this order.
+The TOC pattern implies three things, in this order:
 
 - **Project identity:** what the repo is and what it produces, in one paragraph or a short facts block, not the README
 - **Load-on-demand instructions:** links to `.agents/instructions/...` files, each with a clause saying when to load it
@@ -38,7 +38,7 @@ The test: does the clause tell the agent *when* to load the file, or just *where
 
 ## Tool-agnostic by design
 
-The ecosystem has been converging on `AGENTS.md` faster than many teams expected. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
+Several major coding agents now read `AGENTS.md` natively. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
 
 ```markdown
 # CLAUDE.md
@@ -51,11 +51,11 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short Python script that writes the pointer from `AGENTS.md`. Python ships on macOS and most Linux distributions and handles file tasks without third-party dependencies; TypeScript is the natural choice for JavaScript-first repos. One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short Python script that writes the pointer from `AGENTS.md`. Python ships on macOS and most Linux distributions and handles file tasks without third-party dependencies. TypeScript is the natural choice for JavaScript-first repos. One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
 
 Generated files can be committed without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
-The direction of travel is convergence. Codex read `AGENTS.md` natively from its launch in early 2025. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
+The direction of travel is convergence. Codex read `AGENTS.md` natively from the start. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 
 *Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
 
@@ -65,14 +65,14 @@ The TOC pattern has a failure mode: gradual accumulation. Branch naming conventi
 
 The test is not the line count. Can anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-leverage file in the repo — every session loads it — which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today". A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong brief.
+Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-leverage file in the repo. Every session loads it, which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today". A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong brief.
 
 Treat `AGENTS.md` changes as load-bearing. A stale ADR misleads one change. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
 
-`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires. Staleness in `.agents/instructions/` is invisible until a session loads a file that no longer describes the repo. The entry point is only the first thing to keep accurate.
+`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires. Staleness in `.agents/instructions/` is invisible until a session loads a file that no longer describes the repo. Keeping it accurate is necessary. It is not sufficient.
 
 ## Tooling
 
-If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer; the next problem is the instruction hub it points into.
+If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer. The next problem is the instruction hub it points into.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.*
