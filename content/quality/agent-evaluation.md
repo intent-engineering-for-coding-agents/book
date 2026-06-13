@@ -64,8 +64,8 @@ The hardest part is keeping the suite calibrated. A task the agent reliably nail
 
 ## Tooling note
 
-The `iec` companion repo is planned to ship an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example. (Not yet shipped as of `v0.6.0`; check the companion repo for current status.)
+The `iec` companion repo is planned to ship an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example. (Check the [companion repo](https://github.com/intent-engineering-for-coding-agents/cli) for current status.)
 
-*Sources: `iec` companion repo status at `v0.6.0`, planned `eval-demo` not yet shipped.*
+*Sources: `iec` companion repo (github.com/intent-engineering-for-coding-agents/cli), planned `eval-demo` not yet shipped.*
 
 The eval suite tells you when the agent setup regresses. What it does not tell you is whether the link between the spec and the proof has held. That is a different kind of rot, and it needs its own check.

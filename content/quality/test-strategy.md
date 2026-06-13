@@ -91,11 +91,11 @@ The convention needs one more file: a registry at `test/ac-registry.md` that all
 
 ## Tooling note
 
-The `iec` companion repo is planned to ship the full convention: `docs/architecture/test-strategy.md` defining the types and frameworks, `test/scenario-template.md` defining the scenario format and complexity tiers, `test/ac-registry.md` holding the prefixes, and every test double-tagged with AC ID and test type. (Not yet present as of `v0.6.0`; check the companion repo for current status.)
+The `iec` companion repo is planned to ship the full convention: `docs/architecture/test-strategy.md` defining the types and frameworks, `test/scenario-template.md` defining the scenario format and complexity tiers, `test/ac-registry.md` holding the prefixes, and every test double-tagged with AC ID and test type. (Check the [companion repo](https://github.com/intent-engineering-for-coding-agents/cli) for current status.)
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation.
 
-*Sources: `iec` companion repo status at `v0.6.0`, planned test-strategy, scenario-template, AC registry, and double-tagging demo not yet shipped.*
+*Sources: `iec` companion repo (github.com/intent-engineering-for-coding-agents/cli), planned test-strategy, scenario-template, AC registry, and double-tagging demo not yet shipped.*
 
 ## When the strategy needs to change
 

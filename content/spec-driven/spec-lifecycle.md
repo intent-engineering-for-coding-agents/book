@@ -56,6 +56,6 @@ The fix is tight timing on both ends. Create the spec when you are about to impl
 
 ## Tooling note
 
-If you want to see this workflow in practice, the `iec` repo at tag `v0.5.0` runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
+If you want to see this workflow in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
 The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The artifact most trusted when the code needs to change is likely not the one most developers would guess.

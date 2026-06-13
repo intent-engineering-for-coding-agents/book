@@ -55,4 +55,4 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 
-*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli, verified at `v0.6.0`), phase descriptions from `git tag -n1`.*
+*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli), phase descriptions from `git tag -n1`.*
