@@ -97,6 +97,18 @@ Avoid identical paragraph lengths. Avoid balanced cadence throughout a section. 
 
 Avoid serial staccato openings that repeat the same subject shape: "The agent commits. The PR opens. The reviewer..." This is grammatical English, but repeated use sounds staged and agent-written. Use it only as a rare deliberate beat. Most of the time, combine the action into a natural sentence or put the tension first.
 
+### Vary construction, not just length
+
+Rhythm is sentence shape, not only paragraph height. A section can vary its paragraph lengths perfectly and still read like a wall of aphorisms, because every sentence is built the same way. Three constructions are the usual agent tells. Each is a sharp tool once. Stacked, they read as staged.
+
+- **Copula maxims.** Short "X is Y" or "X is not Y" equations: "Instructions are passive." "Vague instructions are not neutral." "That is the point." More than two carrying the argument of a section is a tell. Rewrite some to show the thing happening instead of defining it.
+- **Balanced contrast pairs.** "X does A. Y does B.": "Positive instructions tell the agent what to do. Negative instructions tell it what not to do." One per section is a tool. Two or more turns the section into a metronome. Dissolve the extra pairs into ordinary prose.
+- **Triple parallels.** Three items in matched cadence: "the library you chose, the module boundary you drew, the naming convention your team settled." One or two across a chapter is fine, especially when each lists genuinely distinct things. Three or more is the agent reaching for the same rhythm. Cut some to two items, or break the parallelism.
+
+Those thresholds are per section. There is a chapter-level version that hides from them: a contrast pair in one section, a copula stack in the next, a triple parallel in the one after. No single section trips a count, yet the whole chapter runs on the same three-tool kit. That is the same monotony spread thin, and it is the more common form. Read the chapter end to end and ask which shapes carry it. If the answer is these three, vary them even where no section is over its count.
+
+The test: read a section aloud. If you predict the shape of the next sentence before you reach it, the construction is too regular. Break the pattern that repeats. These are thresholds that trigger a rewrite, not absolute bans. The point is variety, not a quota.
+
 ### Respect reader intelligence
 
 Do not define obvious engineering concepts. Do not repeat the same idea three times in different words. Do not summarize excessively. Do not explain what a PR is, what CI does, what a feature flag is.

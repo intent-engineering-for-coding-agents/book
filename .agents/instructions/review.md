@@ -47,6 +47,7 @@ Source policy exception: purely navigational pages, front matter, and glossary e
 - Transition check: does each section end with tension, implication, or a forward-pointing question — or does it trail off into summary? Summary endings are a cut.
 - Chapter ending: is there a planted seed for the next chapter? Or does the chapter simply stop?
 - Paragraph rhythm: are there three or more paragraphs of the same visual length in sequence? Break one of them.
+- Sentence construction (distinct from the length check above: length can vary while every sentence is built the same way): count the tells from `voice.md` — copula maxims ("X is Y"), balanced contrast pairs ("X does A. Y does B."), triple parallels. Per section: more than two copula maxims, two or more contrast pairs, or (counted across the whole chapter) three or more triple parallels is a metronome. There is also a spread-thin version: if these three shapes carry most sections, one tell here and another there, the chapter runs on one toolkit even when no section trips a count. That is the more common failure. Either pattern is symmetric prose. Send it back to be varied.
 
 ### iec cross-references
 
