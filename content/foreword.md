@@ -14,7 +14,7 @@ Fine. Good for them. But I keep scrolling and waiting for the part that never co
 
 That part is always missing. I think it is missing on purpose because the honest answer does not fit on a one-pager.
 
-This book is my attempt at the honest answer: how to use coding agents responsibly and professionally to build real software. Not the kind that demos well on a Tuesday and falls apart on a Friday.
+This book is my attempt at that answer: how to use coding agents responsibly and professionally to build real software. Not the kind that demos well on a Tuesday and falls apart on a Friday.
 
 Let me say a few things up front.
 

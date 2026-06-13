@@ -101,4 +101,4 @@ The strategy document is what separates a test suite that knows what it is provi
 
 A test strategy that never changes is either perfect or, far more often, stale. The convention document is living: it gains a row when the team adopts a framework or needs a new test type, and it gets corrected when the original call was wrong, with the ADR holding the rationale. The drift signal is concrete. If the agent generates tests that miss current practice the strategy is stale, and if the team writes tests the strategy does not cover it is incomplete.
 
-A living strategy keeps the test suite honest as the project changes. What it cannot keep honest is the setup that writes the tests. The `AGENTS.md` and instruction files are code too, and they regress without anyone touching the application. That is the next chapter.
+A living strategy keeps the test suite honest as the project changes. The setup that writes the tests is outside its reach. The `AGENTS.md` and instruction files are code too, and they regress without anyone touching the application. That is the next chapter.

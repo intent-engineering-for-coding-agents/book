@@ -40,6 +40,8 @@ A hook fires without the agent deciding to fire it. Instructions are advisory. S
 
 The design question for a hook is not "what should the agent remember to do?" It is "what can the team not afford to have the agent forget?" Code review is advisory. A pre-commit hook is not. Both prevent the same problem, but one requires a human to apply it and one does not.
 
+Write hook scripts in Python, or TypeScript for JavaScript-first repos. Both handle file and subprocess tasks without third-party dependencies and are straightforward for a coding agent to generate and debug.
+
 Effective hooks are narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every file edit will block the agent at every step and either get disabled or teach the agent to avoid editing files. Hooks should prevent specific drift, not rerun CI.
 
 The tradeoff: hook tooling is still maturing. Syntax differs across tools, and failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
