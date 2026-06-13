@@ -67,12 +67,6 @@ The honest caveat: hook authoring is immature. The tooling varies by agent, the 
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).*
 
-## One folder, every tool
-
-The point of `.agents/` is the same as the point of `AGENTS.md`: one source of truth reachable by any tool. Claude Code loads `.agents/instructions/coding-standards.md` when `AGENTS.md` tells it to, the Copilot coding agent loads the same file via the same pointer, and a new tool added to the stack next year reads from the same directory.
-
-Per-tool instruction files create forks the moment two developers use different tools. `.agents/` prevents the fork before it starts. Vendor files stay thin pointers. Instructions, skills, and hooks stay in one place, maintained once, read by all.
-
 The hub gives the agent its orientation about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub briefs the agent on the rules. The spec briefs it on the intent. Both have to exist, and writing the spec well is its own discipline.
 
 ## When the hub becomes overhead
