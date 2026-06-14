@@ -4,9 +4,9 @@
 
 Foundation looks like the least interesting topic in this book. Skip it, and the rest stops making sense.
 
-Foundation does not sit beside intent as a coequal subject. It is the ground that makes intent executable. Strip it away, and agent instructions have nowhere to live, specs have nothing to enforce against, and quality checks have no conventions to validate.
+It does not sit beside intent as an equal. It is the ground that makes intent executable. Strip it away, and agent instructions have nowhere to live, specs have nothing to enforce against, and quality checks have no conventions to validate.
 
-The chapters in this topic address the underlying problem of agents that are productive but contextless and give it a shape you can act on.
+These chapters take one problem, agents that are productive but contextless, and turn it into conventions you can put in the repo: which documents hold which knowledge, why that knowledge lives in plain text, where it slots into your SDLC, and how to bootstrap it on a codebase that has none.
 
 ## Chapters
 
