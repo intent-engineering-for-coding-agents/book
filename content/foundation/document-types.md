@@ -95,9 +95,9 @@ Specs are temporary: they move to `openspec/changes/archive/` after implementati
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
 
-Structure is the cheapest discipline available. Convention over configuration is not a new argument. Intent Engineering extends it to a new reader: the agent.
+Structure is the cheapest discipline available. Convention over configuration is an old argument, one Maven and Rails built ecosystems on. Intent Engineering extends it to a new reader: the agent.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
 
 ## Tooling
 

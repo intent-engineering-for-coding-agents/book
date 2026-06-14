@@ -43,7 +43,6 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ## Agentic engineering & agent instructions
 
 - [intentengineering.dev](https://intentengineering.dev/) (ongoing). Community site using "intent engineering" in the broader sense of formalizing intent for AI-powered products, covering product, UX, and system design contexts. Cited in the Introduction as prior use of the phrase this book's title distinguishes from.
-- Tsinghua University et al. — ["GLM-5: From Vibe Coding to Agentic Engineering"](https://arxiv.org/abs/2602.15763). arXiv:2602.15763, *Feb 2026*. A major model paper whose subtitle mirrors this book's own framing — academic confirmation that "vibe coding → agentic engineering" is the recognized arc. Linked as a key resource in the jordimas/awesome-agentic-engineering list.
 - [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
 - GitHub Changelog — ["Copilot coding agent now supports AGENTS.md custom instructions"](https://github.blog/changelog/2025-08-28-copilot-coding-agent-now-supports-agents-md-custom-instructions/). *Aug 28, 2025*. Confirms native AGENTS.md support in the Copilot coding agent.
 - Anthropic — ["Building effective agents"](https://www.anthropic.com/research/building-effective-agents). *Dec 2024*. Design philosophy behind the MCP-driven check architecture.
