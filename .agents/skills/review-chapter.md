@@ -21,7 +21,7 @@ Load [review.md](.agents/instructions/review.md) and [credibility-pass.md](.agen
 4. **DRY** — no repeated explanation from other chapters; no contradictions
 5. **Structure** — length 600–1200 words, no H4+, code blocks have language tags
 6. **iec cross-references** — claimed tags and file paths verified against the actual repo
-7. **Voice** — does the prose match `voice.md`? No forbidden patterns, varied rhythm, varied sentence construction (not just paragraph length: count copula maxims, contrast pairs, triple parallels), narrative tension at openings, no generic summary endings, sections difficult to skim
+7. **Voice** — does the prose match `voice.md`? No forbidden patterns, varied rhythm, varied sentence construction (not just paragraph length: count copula maxims, contrast pairs, triple parallels), narrative tension at openings, no generic summary endings, sections difficult to skim. Apply the paraphrase test ("Technical term over literary paraphrase"): flag everyday metaphor or personification where a standard software term names the same concept
 8. **Concreteness** — apply voice.md's substitution and referent tests ("Concrete over abstract"). Flag any paragraph that floats on abstract nouns or asserts a failure without showing the symptom. Concrete details must be real, not invented (cross-check "Never fake a memory")
 9. **Credibility honesty** — book synthesis explicitly labeled; unstable conventions framed as emerging; perishable claims time-bounded
 10. **Credibility pass** — run the dedicated credibility-pass skill and treat any blocking finding as a review failure until fixed or explicitly returned to the author

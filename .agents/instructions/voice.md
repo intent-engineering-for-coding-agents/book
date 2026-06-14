@@ -67,6 +67,18 @@ Forbidden words and phrases (full list below). Preferred language: retries, dead
 
 Concrete operational nouns. Verbs that describe what the code does, not what the code aspires to. The reader is an engineer; speak like one.
 
+#### Technical term over literary paraphrase
+
+Reach for the precise software term before any everyday metaphor. The book documents machine behavior. It is not a poem. When a standard term names the thing, an event, a trigger, an exit code, a retry, a race, a queue, cache invalidation, that term is clearer than a phrase that gestures at it.
+
+The paraphrase test. If a sentence describes a runtime concept with an everyday image, and a standard term names that same concept, the image is a rewrite. The substitution test catches abstraction; this one catches dressed-up prose with a real referent underneath.
+
+- "the moment has come" describes an event firing. Write "the triggering event fires."
+- "anything that chooses can choose wrong" hides the actual failure. Name it: the command is never typed, or the event is never registered.
+- "two doorbells" stands in for two trigger paths. Name them.
+
+Personifying the agent past what it does is the same failure in miniature. "The agent gets no vote" is borderline; "the agent does not decide" says it straight. Reserve the figure of speech for the rare beat that earns it, and default to the term.
+
 ### Forbidden words
 
 Never use these words or phrases. Replace or rephrase:
@@ -195,7 +207,7 @@ Use occasionally, not on every page:
 
 - A rhetorical question, where the question is genuinely open
 - Dry or dark humour: the precise observation that is slightly too true to be comfortable
-- A compact analogy
+- A compact analogy, the rare exception to "Technical term over literary paraphrase": use it when it maps precisely onto the mechanism (the database trigger that fires on every event), never as a substitute for a term that already exists
 - A strong opinion, owned and defended
 - A surprising comparison
 
