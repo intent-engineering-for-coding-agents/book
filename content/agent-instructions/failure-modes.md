@@ -1,6 +1,6 @@
 # Failure Modes and Recovery
 
-Two stuck agents can look identical from the outside and need opposite fixes. One has lost the thread as its context filled, and it is drifting. The other has hit a real conflict it lacks the authority to resolve, and it is cycling through the same three function signatures waiting for someone to decide. That second one is a spin: stuck, not broken.
+Two stuck agents look identical from the outside and need opposite fixes. One has lost the thread as its context filled, and it is drifting. The other has hit a real conflict it lacks the authority to resolve, and it is cycling through the same three function signatures waiting for someone to decide. That second one is a spin: stuck, not broken.
 
 Knowing which mode you are in determines the recovery. Treating a spin as a drift resets a session that only needed a decision. Treating a drift as a spin piles fresh instructions onto a session that needed a clean reset instead. Same symptom, opposite cure.
 

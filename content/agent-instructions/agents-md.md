@@ -26,7 +26,7 @@ The TOC pattern implies three things, in this order:
 - **Load-on-demand instructions:** links to `.agents/instructions/...` files, each with a clause saying when to load it
 - **Commands and skills:** key commands and invocable skills, listed last as reference rather than orientation
 
-The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file just to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
+The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file only to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
 
 ```markdown
 - [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
@@ -34,11 +34,11 @@ The clause on each instruction link is where most teams cut corners. Without one
 - [OpenSpec workflow](.agents/instructions/openspec.md): Specs, AC IDs, test traceability
 ```
 
-The test: does the clause tell the agent *when* to load the file, or just *where* to find it? "Load when working on authentication" is an instruction. "See auth docs" is not. The first lets the agent decide without opening the file. The second forces it to open the file to find out whether it matters.
+The test: does the clause tell the agent *when* to load the file, or only *where* to find it? "Load when working on authentication" is an instruction. "See auth docs" is not. The first lets the agent decide without opening the file. The second forces it to open the file to find out whether it matters.
 
 ## Tool-agnostic by design
 
-Several major coding agents now read `AGENTS.md` natively. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file can be a single line:
+Several major coding agents now read `AGENTS.md` natively. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file is a single line:
 
 ```markdown
 # CLAUDE.md
@@ -53,7 +53,7 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short Python script that writes the pointer from `AGENTS.md`. Python ships on macOS and most Linux distributions and handles file tasks without third-party dependencies. TypeScript is the natural choice for JavaScript-first repos. One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
 
-Generated files can be committed without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
+Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
 The direction of travel is convergence. Codex read `AGENTS.md` natively from the start. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 

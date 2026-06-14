@@ -38,7 +38,7 @@ Typed from the session, `/update-changelog` invokes the skill directly. Claude C
 
 None of that touches the autonomous trigger. Agent instructions tell the agent which skill to load when the task description matches, whether or not the slash command resolves. The developer bypasses that layer by invoking the skill explicitly. `/update-changelog` runs it directly without waiting for a matching task description. Same file either way.
 
-At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output goes to a vendor-specific directory, not `.agents/skills/`; the workaround is to copy the generated files there after initialization (native `.agents/` support is tracked in [OpenSpec issue #1104](https://github.com/Fission-AI/OpenSpec/issues/1104)).
+At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output goes to a vendor-specific directory, not `.agents/skills/`. The workaround is to copy the generated files there after initialization (native `.agents/` support is tracked in [OpenSpec issue #1104](https://github.com/Fission-AI/OpenSpec/issues/1104)).
 
 CLI agents scan `.agents/skills/` natively. Most IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. The workflow logic is shared, but the slash command invoking it is not. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill on any given session, though, depends on its judgment. That is the gap hooks close.
 
@@ -46,7 +46,7 @@ CLI agents scan `.agents/skills/` natively. Most IDE integrations reach skill fi
 
 ## `.agents/hooks/`
 
-Few teams use agent hooks yet. The case for them comes down to one word: guarantee. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full; here the point is only where the files live.
+Few teams use agent hooks yet. The case for them comes down to one word: guarantee. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full. Here the point is only where the files live.
 
 Hooks scope to file types too. A hook configured to fire on `.java` file edits runs checkstyle every time the agent touches a Java file, not because the agent remembered to, but because the trigger matched. The Javadoc use case is a clean example: an agent adding a new public method often skips the Javadoc comment. A hook configured on `.java` edits checks every public and protected method and forces the agent to fill in what is missing.
 

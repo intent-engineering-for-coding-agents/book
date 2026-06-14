@@ -2,7 +2,7 @@
 
 A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honored, or a decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context window filled, and the earliest context quietly dropped off the back to make room.
 
-This is not a bug. Every token in the context window costs something, and it costs in two directions: reliability, because old tokens fall out as new ones arrive and the agent loses earlier context; and for teams billed per token, money. The context window will fill. The question is what fills it.
+This is not a bug. Every token in the context window costs something, and it costs in two directions. Reliability is the first: old tokens fall out as new ones arrive, and the agent loses earlier context. Money is the second, for teams billed per token. The context window will fill. The question is what fills it.
 
 ## What eats the context
 
