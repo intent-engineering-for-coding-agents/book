@@ -12,13 +12,13 @@ Plain text means a format a human reads in a terminal, a Git diff shows line-by-
 
 It is not a migration. The document lives in the repo from creation, evolves there, and is reviewed in the same PR as the code it describes. If someone needs it in Confluence, in a PowerPoint deck, or on a wiki, that is an export, a one-way snapshot made when needed. The repo is the source of truth. Everything else is a derivative.
 
-The fuller statement of the philosophy is in the Plain Text as Code Manifest (github.com/Plain-Text-as-Code). This chapter applies it to the Intent Engineering Foundation. The boundary is easier to state than to enforce: which formats belong, and where in the repo they live.
+Docs-as-code is the established version of this idea, narrowed here to one rule and extended past prose to diagrams and decisions. The book author's Plain Text as Code Manifest (github.com/Plain-Text-as-Code) is the fuller statement. This chapter applies it to the Intent Engineering Foundation. The boundary is easier to state than to enforce: which formats belong, and where in the repo they live.
 
-*Sources: Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing), the plain-text-as-code philosophy. Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as established practice.*
+*Sources: Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as the established practice this extends. Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing), the book author's statement of the philosophy.*
 
 ## Markdown for prose
 
-Markdown is the unremarkable choice: renders on every major Git host, readable without a renderer, no tooling required to write. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. As of mid-2026, it is effectively universal in public codebases and current models handle it fluently. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
+Markdown is the unremarkable choice. It renders on every major Git host and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. As of mid-2026, it is effectively universal in public codebases and current models handle it fluently. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
 
 If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. PR descriptions are too hard for the agent to find, and description quality is too uneven to rely on. Commit messages are no better: some developers write essays, others write `fix`, and the log is not a reliable index of decisions. Code comments are worse, because a coding agent treats code as freely modifiable and rewrites or removes comments without hesitation. Humans expect documentation, not annotations buried in source files. Put the decision in a file, with a name, at a known location.
 
@@ -37,7 +37,7 @@ Mermaid diagram embedded in Markdown:
 ````mmd
 ```mermaid
 graph TD
-    A[Planning] -->|OpenSpec change| B[Spec]
+    A[Planning] -->|spec change| B[Spec]
     B --> C[Implementation]
     C -->|CI check| D[CI gate]
     D --> E[Archive]
@@ -48,7 +48,7 @@ Diagram rendered by Mermaid:
 
 ```mermaid
 graph TD
-    A[Planning] -->|OpenSpec change| B[Spec]
+    A[Planning] -->|spec change| B[Spec]
     B --> C[Implementation]
     C -->|CI check| D[CI gate]
     D --> E[Archive]
@@ -68,7 +68,7 @@ The C4 model gives a useful set of diagram types (**C**ontext, **C**ontainer, **
 
 ## MADR for decisions
 
-The MADR template (context, considered options, decision outcome, consequences) produces Architectural Decision Records (ADRs) that share a consistent shape. Consistent shape means the agent parses without understanding prose, and a human scans ten ADRs in two minutes to find the relevant one. A minimal example:
+An Architectural Decision Record (ADR) records a decision. MADR makes it a plain Markdown file: front matter for `status` and `date`, fixed headings for context, options, and outcome. Document Types covers why that shape helps a reader. What earns it a place here is narrower: a format check can enforce a fixed shape. A minimal example:
 
 ```markdown
 ---
@@ -98,9 +98,7 @@ Chosen option: Mermaid. It satisfies all three constraints.
 - Layout is agent-controlled and occasionally needs correction.
 ```
 
-The agent finds the decision in a known field. It does not have to read the reasoning to extract the conclusion. Neither does the developer who joins on Monday.
-
-The alternative is prose-format decision records with no template, which produce ADRs that each tell a different kind of story and resist any structural validation. A format check on ADRs is possible because templated ADRs follow a known shape. Freeform ones cannot be validated.
+A linter reads this ADR the way it reads code: front matter present, required headings in place, `status` drawn from a known set. The alternative is freeform decision records with no template, where every record tells a different kind of story and no rule fits all of them. Templated ADRs follow a known shape, so CI validates them. A freeform record gives the check nothing to grab.
 
 Tight enough to validate mechanically. Loose enough that nobody avoids it. The AC ID convention later in the book makes the same bet.
 
@@ -116,4 +114,4 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 
 ## The compound effect
 
-A team that practices this consistently accumulates structured context. ADRs add to the agent's understanding of system history, skill files add workflows the agent invokes, and the architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
+A team that practices this consistently accumulates structured context. ADRs build up the agent's picture of system history. Skill files add workflows it can invoke, and the architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.

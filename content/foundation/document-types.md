@@ -54,7 +54,7 @@ The proposed and accepted statuses come from MADR itself, recorded in a YAML fro
 
 ## MADR
 
-This book uses MADR (Markdown Architectural Decision Record), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates the format before a decision lands in the wrong state.
+This book uses MADR (Markdown Architectural Decision Records), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates the format before a decision lands in the wrong state.
 
 The "considered options" section is not boilerplate. Rejected options tell the agent which paths were already evaluated and ruled out. An agent that sees only the chosen option will re-propose the alternatives on its own. One that sees the rejected options with their reasoning will not. The why-not carries the same weight as the why.
 
