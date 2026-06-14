@@ -14,7 +14,7 @@ Instructions and prompts describe the work. This chapter is about the three mech
 
 ## Skills: automate the work you keep repeating
 
-A skill is pure automation. Take a workflow you run the same way every time, cutting a release, regenerating types from a spec, refreshing a changelog, rebuilding a status report, and write the steps down as a procedure the agent executes. None of it is creative work. It is the rote sequence around the creative work, the part a shell script would handle if a shell script knew what to do with a malformed file.
+A skill is pure automation. Take a workflow you run the same way every time, cutting a release, regenerating types from a spec, refreshing a changelog, rebuilding a status report, and write the steps down as a procedure the agent executes. None of those steps demands judgment. They wrap the creative work, the rote part a shell script would handle if a shell script knew what to do with a malformed file.
 
 The hub chapter placed skills in `.agents/skills/` and drew the line against instructions: an instruction says how the repo works, a skill does one repeatable task. The harder question is what makes one skill execute the same steps every run while another leaves the agent to guess what the steps were.
 
@@ -28,9 +28,9 @@ Add a completion condition. How does the agent know it is done? "Run `tsc --noEm
 
 Expect the most common failure. If `npm run generate:types` exits non-zero because the spec is malformed, what should the agent do? Answer it in the file, and the agent stops and reports the malformed spec. Leave it silent and the agent improvises: it hand-edits the generated types by guesswork or carries on as if the command had succeeded.
 
-You do not have to write any of this yourself. Set the agent in plan mode. Describe the workflow to the agent, tell it you want a reusable skill file it can invoke as a slash command, and let it draft the Markdown. Review the output, fix the steps that are wrong, and commit. The agent that wrote the skill is the agent that will run it, and it tends to know its own edge cases.
+You do not have to write any of this yourself. Set the agent in plan mode. Describe the workflow to the agent, tell it you want a reusable skill file to invoke as a slash command, and let it draft the Markdown. Review the output, fix the steps that are wrong, and commit. The agent that wrote the skill is the agent that will run it, and it tends to know its own edge cases.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), workflows as predefined code paths versus agents that direct their own process.*
 
 ## Commands: a skill you trigger by hand
 
@@ -54,7 +54,7 @@ Keep each hook narrow. A hook that runs `ruff` on every modified Python file doe
 
 Hook syntax is tool-specific. As of mid-2026, a hook written for Claude Code does not drop into Cursor or Copilot unchanged, and one that blocks unexpectedly is awkward to debug. Expect those details to shift as the tooling matures. Start with the one check you cannot afford to skip. Add a second only after the first has caught real drift without blocking the agent into disabling it.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), the line between advisory instructions and deterministic hooks.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), predefined deterministic paths versus leaving the choice to the agent.*
 
 ## Which one, and when
 
@@ -64,7 +64,7 @@ Stack them in that order. Get the instruction right first: specific, testable, c
 
 The cost is real, so weigh it. A simple workflow you run once a month does not need a skill, the instruction covers it. A check that fails once a quarter does not need a hook, because code review catches it. Below that line, the wiring costs more than the drift it prevents.
 
-Frequency is not the only reason to write a skill. A release procedure whose steps must run in a fixed order, where publishing before the signing step ships an unsigned artifact, belongs in a skill you, however, rarely cut a release. The skill pins the correct order, so the agent and every developer run it the same way instead of reconstructing it under pressure.
+Frequency is not the only reason to write a skill. A release procedure whose steps must run in a fixed order, where publishing before the signing step ships an unsigned artifact, belongs in a skill even if you rarely cut a release. The skill pins the correct order, so the agent and every developer run it the same way instead of reconstructing it under pressure.
 
 The practical test: if the agent gets the procedure wrong twice, write the skill. Write it sooner when one wrong run is too expensive to risk even once, like that release. If the agent skips it and something breaks, write the hook. Until then, an instruction and a code review are enough.
 
