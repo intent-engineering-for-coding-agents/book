@@ -71,7 +71,7 @@ Concrete operational nouns. Verbs that describe what the code does, not what the
 
 Never use these words or phrases. Replace or rephrase:
 
-> can, may, just, that, very, really, literally, actually, certainly, probably, basically, could, maybe, delve, embark, enlightening, esteemed, shed light, craft, crafting, imagine, realm, game-changer, unlock, discover, skyrocket, abyss, not alone, in a world where, revolutionize, disruptive, utilize, utilizing, dive deep, tapestry, illuminate, unveil, pivotal, intricate, elucidate, hence, furthermore, however, harness, exciting, groundbreaking, cutting-edge, remarkable, it, remains to be seen, glimpse into, navigating, landscape, stark, testament, in summary, in conclusion, moreover, boost, skyrocketing, opened up, powerful, inquiries, ever-evolving, leverage, robust, transformative, unlock potential, seamless, holistic, comprehensive solution
+> can, may, just, that, very, really, literally, actually, certainly, probably, basically, could, maybe, delve, embark, enlightening, esteemed, shed light, craft, crafting, imagine, realm, game-changer, unlock, discover, skyrocket, abyss, not alone, in a world where, revolutionize, disruptive, utilize, utilizing, dive deep, tapestry, illuminate, unveil, pivotal, intricate, elucidate, hence, furthermore, however, harness, exciting, groundbreaking, cutting-edge, remarkable, it, remains to be seen, glimpse into, navigating, landscape, stark, testament, in summary, in conclusion, moreover, boost, skyrocketing, opened up, powerful, inquiries, ever-evolving, leverage, robust, transformative, unlock potential, seamless, holistic, comprehensive solution, recipe
 
 Notes:
 - "cannot" is acceptable as a negation; "can" as a positive modal is not
@@ -124,6 +124,18 @@ Show runtime behavior. Describe execution paths. Demonstrate what fails when it 
 Bad: "Coordination between components is important."
 
 Good: "The planner generated valid subtasks. The executor completed them. Then the reconciliation layer quietly merged incompatible state."
+
+### Concrete over abstract
+
+Abstraction with no referent is the book's most common failure mode, and the easiest for an agent to produce. Every claim has to point at something a reader could observe: a named file, a command, a flag, an error message, a number, a runtime behavior. This subsection turns "Explain through situations" into a test you can fail.
+
+The substitution test. If a sentence stays true after you swap its subject for an unrelated system, it is abstract. "This practice reduces friction in the development workflow" survives the swap, so it says nothing. "Rename a field in `api-spec.yaml`, skip the regeneration, and the stale types still compile while the client breaks at runtime" does not survive it. Rewrite until the sentence only makes sense for the specific thing you are describing.
+
+The referent test. Read each paragraph and find the concrete noun: a named file, command, flag, error, metric, or observable behavior. A paragraph built only from abstract nouns (workflow, process, mechanism, approach, solution, capability) is a rewrite, not a polish.
+
+Show the break. When you claim something fails, show the symptom. Not "the types drift" but "the client reads a field the server no longer sends." Not "context degrades" but "the agent re-derives in hour two the same import path it knew in hour one."
+
+The honest boundary. Concrete comes from real referents, never invented ones. Naming a real file is concrete. Inventing "forty-seven acceptance criteria" is fabrication. Reach for a named artifact, a real command, a sourced fact, or an explicitly marked hypothetical, and never a precise number you made up. See "Never fake a memory."
 
 ### Every design has a cost
 

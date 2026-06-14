@@ -1,67 +1,67 @@
 # Skills, Commands, and Hooks
 
-Some work is a recipe, not a judgment call. Updating `docs/INDEX.md` after touching `docs/` is five fixed steps: scan the directory, list the files, read each heading, update the INDEX, update the subdirectory listings. Write those five steps into an instruction file and the agent follows them, mostly. Start a session mid-task or after a context reset and step four gets skipped. The INDEX drifts, and the next session loads it and gets the wrong map.
+The same workflow has more than one home, and where you put it decides whether it runs.
 
-The problem was not the instruction. The problem was treating a repeatable workflow as something the agent should decide to run. Skills exist for exactly this.
+Take a concrete one: after modifying `api-spec.yaml`, regenerate the TypeScript types so the client stays in sync with the contract.
 
-## Instructions vs skills: the design question
+Write it as an instruction, a line in `AGENTS.md` or an instruction file, and you have described the workflow. The agent loads the instruction, reads "regenerate the types after editing the spec", and decides whether this is the moment to act. Type it as a prompt at the moment, and nothing fundamental changes: the agent still decides. Both are advisory.
 
-An instruction tells the agent how your codebase works, while a skill tells it how to perform a specific repeatable task. The agent reads instructions for context and runs skills for outcomes.
+In a session focused on making a failing test pass, the agent renames a field in `api-spec.yaml` and skips the regeneration. The generated types still describe the old field, every file that imports them still compiles, and the test goes green. The drift surfaces later, at runtime, when the client reads a field the server no longer sends.
 
-Get this wrong and you end up with instructions that describe workflows in prose ("when you finish modifying `docs/`, remember to update...") and skills that describe conventions instead of steps. The result is context the agent skims and procedures the agent improvises.
+Write it as a skill and you have automated the workflow. A skill is a procedure the agent runs as discrete steps, not prose it weighs against the task in front of it. Expose that skill as a command, and a developer fires the same steps by hand. Write it as a hook and the decision disappears: the script runs on the triggering event whether the agent considered it or not.
 
-The test: if a developer would describe it as a recipe, a sequence of discrete steps, it is a skill. If they would describe it as background knowledge, this is how we do things here, it is an instruction. Instructions prevent drift by keeping the agent oriented. Skills fix it when it happens.
+Instructions and prompts describe the work. This chapter is about the three mechanisms that make it run: skills, commands, and hooks.
 
-## Writing a skill that actually runs
+## Skills: automate the work you keep repeating
 
-A skill is a Markdown file. What it contains determines whether the agent runs it correctly.
+A skill is pure automation. Take a workflow you run the same way every time, cutting a release, regenerating types from a spec, refreshing a changelog, rebuilding a status report, and write the steps down as a procedure the agent executes. None of it is creative work. It is the rote sequence around the creative work, the part a shell script would handle if a shell script knew what to do with a malformed file.
 
-Discrete steps matter most. Not "update the documentation", but "scan `docs/` with `ls -R`, read each Markdown heading, regenerate `docs/INDEX.md` with file path and heading, and regenerate each `README.md` with a sorted list". Discrete steps are checkable. Prose is not.
+The hub chapter placed skills in `.agents/skills/` and drew the line against instructions: an instruction says how the repo works, a skill does one repeatable task. What matters here is narrower. What separates a skill that runs from one the agent improvises around?
 
-Add a completion condition. How does the agent know it is done? "Run `iec check docs-index-stale`. If it passes, the skill is complete". Without this, the agent may finish step four and not realize there is a step five.
+A skill runs two ways. You invoke it by name when you want it now, or the agent triggers it on its own when the task in front of it matches. Same file, same steps, two doorbells.
 
-Anticipate the most common failure. If the skill reads file headings and a file has no heading, what should the agent do? A skill that answers this question runs more reliably than one that leaves the agent to improvise at the moment it encounters the exception.
+What the skill file contains decides whether either path works.
 
-There is a shortcut for the whole section above. You do not need to write the skill yourself. Describe the workflow to the agent, tell it you want a reusable skill file it can invoke as a slash command, and let it draft the Markdown. Review the output, correct any steps that are wrong, and commit. The agent that authored the skill is the same agent that will run it. It tends to know its own edge cases.
+Discrete steps matter most. Not "regenerate the types", but "run `npm run generate:types`, check that `tsc --noEmit` passes with zero errors, and update any import paths that reference the stale generated file". Discrete steps are checkable. Prose is not.
+
+Add a completion condition. How does the agent know it is done? "Run `tsc --noEmit`. Zero errors mean the skill is complete". Without this, the agent finishes step four and never learns there was step five.
+
+Expect the most common failure. If `npm run generate:types` exits non-zero because the spec is malformed, what should the agent do? A skill that answers that question runs more reliably than one that leaves the agent to improvise the moment it hits the exception.
+
+You do not have to write any of this yourself. Describe the workflow to the agent, tell it you want a reusable skill file it can invoke as a slash command, and let it draft the Markdown. Review the output, fix the steps that are wrong, and commit. The agent that wrote the skill is the agent that will run it, and it tends to know its own edge cases.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), discrete steps and completion conditions in skill design.*
 
-## Commands are skills with a human trigger
+## Commands: a skill you trigger by hand
 
-In Claude Code, every file in `.agents/skills/` surfaces as a `/skill-name` slash command. The same file, two invocation paths: the agent loads it autonomously when the task matches, or the developer types `/update-index` and invokes it directly.
+A command is not a second kind of thing to build. Take any skill, type its name as a slash command, and you have invoked it by hand instead of waiting for the agent to reach for it. Same file, same steps. The only thing that changed is who pulled the trigger.
 
-Design for both. The autonomous path needs clear trigger criteria in `AGENTS.md` ("after modifying any file under `docs/`, run `update-index`"). The command path needs a name a developer will remember at the moment they need it. `/update-index` is memorable. `/synchronize-documentation-index-file` is not.
+So why have them? The agent will not always recognize the moment. You finished the change and you want the release cut now, not whenever some future task description happens to match. Typing `/generate-types` runs the procedure on demand.
 
-Cursor, VS Code with Copilot, and JetBrains AI each have their own slash command surfaces and do not read `.agents/skills/` as commands. The skill file is shared. The keyboard shortcut is per-tool.
+Give the command a name you will remember under pressure. `/generate-types` is one you reach for. `/synchronize-openapi-typescript-types` is one you look up. Each tool exposes its own command surface, and the keys differ, but the skill file underneath is the one you already wrote.
 
-## Hooks: the enforcement that does not ask
+## Hooks: determinism, like a database trigger
 
-A hook fires without the agent deciding to fire it. Instructions are advisory. Skills are invocable. Hooks are deterministic: the trigger happens, the script runs.
+A skill still waits for a trigger. You invoke it, or the agent decides the moment has come. Either way something chooses to run it, and anything that chooses can choose wrong.
 
-The design question for a hook is not "what should the agent remember to do?" It is "what can the team not afford to have the agent forget?" Code review is advisory. A pre-commit hook is not. Both prevent the same problem, but one requires a human to apply it and one does not.
+A hook does not wait and does not choose. It fires on the event, every time, the way a database trigger fires on every INSERT whether the application remembered to call it or not. Edit a `.py` file, the formatter runs. Stage a commit, the secret scan runs. The agent gets no vote.
 
-Write hook scripts in Python, or TypeScript for JavaScript-first repos. Both handle file and subprocess tasks without third-party dependencies and are straightforward for a coding agent to generate and debug.
+That is the whole reason hooks exist next to skills. A skill automates the work. A hook removes the decision to run it. When skipping a step once costs more than running it every time, you want the trigger, not the reminder.
 
-Effective hooks are narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every file edit will block the agent at every step and either get disabled or teach the agent to avoid editing files. Hooks should prevent specific drift, not rerun CI.
+Keep each hook narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every edit blocks the agent at every step, and a blocked agent gets the hook disabled. A hook prevents one specific drift. It does not rerun CI.
 
-The tradeoff: hook tooling is still maturing. Syntax differs across tools, and failure modes when a hook blocks unexpectedly require debugging. Start with one hook that catches the one thing you cannot afford to miss. Five hooks that together try to replace CI are five ways for something to go wrong.
+Of the three mechanisms, hooks are the least settled. As of mid-2026 the syntax is tool-specific: a hook written for Claude Code does not drop into Cursor or Copilot unchanged, and one that blocks unexpectedly is awkward to debug. Expect those details to shift as the tooling matures. The advice that outlasts them is simple: start with the one check you cannot afford to have skipped, and add a second only when the first has earned its keep.
 
-## The instruction/skill/hook triangle
+*Sources: Anthropic, "Building effective agents" (Dec 2024), the line between advisory instructions and deterministic hooks.*
 
-Each type of enforcement has a different failure mode when it is missing.
+## Which one, and when
 
-Without the instruction, the agent does not know what the convention is and improvises. Without the skill, the agent knows what to do but has to re-derive the steps in every session, and sometimes gets them wrong. Without the hook, the agent knows what to do and usually does it, but "usually" is not good enough for the things that matter most.
+Each mechanism fails differently when it is missing. Without the instruction, the agent does not know the convention and improvises. Without the skill, it knows what to do but re-derives the steps every session and sometimes gets them wrong. Without the hook, it knows what to do and usually does it, and "usually" is the problem for the steps that cannot be skipped.
 
-Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure appears in more than two sessions. Add a hook when missing the procedure causes a real problem rather than a drift.
+Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure shows up in more than two sessions. Add a hook when skipping the procedure causes real damage rather than drift.
 
-## The learning curve
+The cost is real, so weigh it. A workflow you run once a month does not need a skill because the instruction covers it. A check that fails once a quarter does not need a hook, because code review catches it. Automation pays off when the procedure is frequent or the failure is expensive. Below that line, the wiring costs more than the drift it prevents.
 
-Skills and hooks require upfront investment. A skill needs discrete steps, a completion condition, and failure handling. A hook needs a trigger definition, a script, and debugging when it blocks unexpectedly. Both require learning the tooling, which varies by agent and is not standardized across tools.
+The practical test: if the agent gets the procedure wrong twice, write the skill. If the agent skips it and something breaks, write the hook. Until then, an instruction and a code review are enough.
 
-Not every workflow justifies the investment. A procedure that appears once a month does not need a skill, because an instruction is enough. A check that fails once a quarter does not need a hook if code review catches it. The automation pays off when the procedure is frequent or the failure is expensive. Below that threshold, the coordination cost exceeds the benefit.
-
-The tooling is still maturing. Hook syntax differs between Claude Code, Cursor, and Copilot. Debugging a hook that blocks unexpectedly requires understanding the agent's execution model, which is not always documented. A skill that works in one agent may need adjustments for another. The investment in skills and hooks is an investment in a moving target.
-
-The practical test: if the agent gets the procedure wrong twice, write a skill. If the agent skips the procedure and it causes a real problem, write a hook. Before that, instructions and code review are enough. The triangle is a progression, not a checklist. Start with instructions and add enforcement when the cost of not having it becomes visible.
-
-Managing the context that skills and hooks assume is available is the next constraint. Sessions fill, context drops off, and the agent that performed flawlessly in hour one is improvising in hour two. That is not a skill failure or a hook failure. It is a context window problem.
+Managing the context that skills and hooks assume is available is the next constraint. Sessions fill, context drops off, and the agent improvising in hour two is not failing. It is working with a different set of inputs than the one that started the session. Skills and hooks cannot fix that. Context management is the next layer.

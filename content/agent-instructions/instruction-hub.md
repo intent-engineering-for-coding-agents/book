@@ -32,7 +32,7 @@ Skills are workflows, not context. An instruction file tells the agent how thing
 
 Take `update-changelog` as an example: scan commits since the last tag, extract the relevant entries, regenerate `CHANGELOG.md`. Five steps, one outcome, invocable any time a feature merges. Without the skill, each agent session has to remember to update the changelog or be told to. With the skill, the agent instructions state the rule once: after merging a feature, run `update-changelog`.
 
-The distinction between instructions and skills: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. Scaffolding a new module is a skill.
+The short version: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. Scaffolding a new module is a skill. [Skills, Commands, and Hooks](./skills-commands-hooks) covers when to reach for each and how to write a skill that runs.
 
 Typed from the session, `/update-changelog` invokes the skill directly. Claude Code surfaces slash commands from `.claude/skills/`, not `.agents/skills/` itself. Keeping one source of truth means symlinking `.claude/skills` to `.agents/skills`, and `.claude/hooks` to `.agents/hooks` for the directory below, which only works if your Git setup and your operating system both tolerate symlinks cleanly.
 
@@ -46,7 +46,7 @@ CLI agents scan `.agents/skills/` natively. Most IDE integrations reach skill fi
 
 ## `.agents/hooks/`
 
-Few teams use agent hooks yet. The case for them comes down to one word: guarantee. An instruction tells the agent to run the linter after editing a source file. The agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. Anthropic's guidance on building effective agents draws a hard line between the two: instructions are advisory, hooks are deterministic.
+Few teams use agent hooks yet. The case for them comes down to one word: guarantee. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full; here the point is only where the files live.
 
 Hooks scope to file types too. A hook configured to fire on `.java` file edits runs checkstyle every time the agent touches a Java file, not because the agent remembered to, but because the trigger matched. The Javadoc use case is a clean example: an agent adding a new public method often skips the Javadoc comment. A hook configured on `.java` edits checks every public and protected method and forces the agent to fill in what is missing.
 
@@ -65,7 +65,7 @@ Each file defines a trigger (a file edit matching that extension) and the comman
 
 The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool actually looks for hook definitions also varies. For most teams right now, hooks are not ready.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), the hard line between instructions (advisory) and hooks (deterministic).*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision.*
 
 The hub gives the agent its orientation about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub briefs the agent on the rules. The spec briefs it on the intent.
 

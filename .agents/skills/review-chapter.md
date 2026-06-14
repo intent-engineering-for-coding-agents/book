@@ -22,12 +22,13 @@ Load [review.md](.agents/instructions/review.md) and [credibility-pass.md](.agen
 5. **Structure** — length 600–1200 words, no H4+, code blocks have language tags
 6. **iec cross-references** — claimed tags and file paths verified against the actual repo
 7. **Voice** — does the prose match `voice.md`? No forbidden patterns, varied rhythm, varied sentence construction (not just paragraph length: count copula maxims, contrast pairs, triple parallels), narrative tension at openings, no generic summary endings, sections difficult to skim
-8. **Credibility honesty** — book synthesis explicitly labeled; unstable conventions framed as emerging; perishable claims time-bounded
-9. **Credibility pass** — run the dedicated credibility-pass skill and treat any blocking finding as a review failure until fixed or explicitly returned to the author
+8. **Concreteness** — apply voice.md's substitution and referent tests ("Concrete over abstract"). Flag any paragraph that floats on abstract nouns or asserts a failure without showing the symptom. Concrete details must be real, not invented (cross-check "Never fake a memory")
+9. **Credibility honesty** — book synthesis explicitly labeled; unstable conventions framed as emerging; perishable claims time-bounded
+10. **Credibility pass** — run the dedicated credibility-pass skill and treat any blocking finding as a review failure until fixed or explicitly returned to the author
 
 ## Output
 
-A list of issues by category. For each issue: what it is, where it is (heading or line reference), why it fails the review bar, and the fix. Call out missing local sources, unsupported certainty, unlabeled synthesis, perishable claims, and any unresolved credibility-pass failure labels explicitly. If the draft passes all checks, say so explicitly.
+A list of issues by category. For each issue: what it is, where it is (heading or line reference), why it fails the review bar, and the fix. Call out missing local sources, unsupported certainty, unlabeled synthesis, perishable claims, `Abstract claim` findings (a claim with no concrete referent, or a failure asserted without its symptom), and any unresolved credibility-pass failure labels explicitly. If the draft passes all checks, say so explicitly.
 
 ## Optional: multi-LLM pass
 

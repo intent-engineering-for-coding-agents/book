@@ -19,6 +19,15 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 - Does the chapter over-claim? (e.g. "coding agents will transform your workflow" — cut; "this practice reduces drift" — keep if supported)
 - Is the practitioner voice consistent with other chapters?
 
+### Concreteness
+
+Apply the tests in `voice.md` ("Concrete over abstract"); do not restate them, run them:
+
+- Substitution test: per section, would the claim survive swapping its subject for an unrelated system? If yes, it is abstract. Send it back.
+- Referent test: does every paragraph name a concrete referent (file, command, flag, error, number, behavior), or does it float on abstract nouns?
+- Show the break: when a section claims a failure, does it show the symptom, or only assert that something breaks?
+- Boundary: are the concrete details real (named files, real commands, sourced facts, marked hypotheticals), not invented specifics? Cross-ref "Never fake a memory" and credibility-pass `Fabricated anecdote`.
+
 ### Sources and attribution
 
 - Does every factual claim or named practice have a `*Sources:*` line pointing to a reference in `plan.md`?
@@ -64,6 +73,7 @@ Send the chapter back for revision if any of the following is true:
 - A book-specific synthesis reads like field consensus.
 - A time-sensitive claim is written as if it were durable fact.
 - The provenance is too weak for the wording and the chapter does not acknowledge that weakness.
+- A section makes a claim with no concrete referent, or asserts a failure without showing the symptom.
 - The credibility pass was not run, or it still reports blocking findings.
 
 ## Multi-LLM critique (optional)
