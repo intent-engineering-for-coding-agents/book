@@ -10,7 +10,7 @@ Brownfield teams adopt most of these practices immediately, without a rewrite. A
 
 The historical record is not gone. Wikis, ticket systems, internal communications, old PRs: the reasoning behind decisions is scattered across sources nobody synthesized. Feed those to the agent and ask it to produce ADRs and design documents, updating stale documentation in the same pass. Before the Foundation practices work, the brownfield repo needs that record assembled.
 
-One warning: incorrect or outdated documentation does not sit inertly in the repo. The agent treats provided context as authoritative. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
+One warning: incorrect or outdated documentation does not sit inertly in the repo. The agent treats the provided context as authoritative. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
 
 ## skeleton.md is the bootstrap
 
@@ -46,7 +46,7 @@ The agentic-era `skeleton.md` reverses the direction. You are not building a ske
 
 Once `skeleton.md` exists and has been reviewed, the brownfield repo proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions are written based on what the skeleton reveals, not from scratch. ADRs capture decisions that were made implicitly and are now being made explicit. Specs cover new changes, not retrofitted to existing behavior wholesale.
 
-Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary, and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not reproduce the actual meeting. A domain expert corrects it, and the documented best guess beats the silence that put the team here.
+Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not reproduce the actual meeting. A domain expert corrects it, and the documented best guess beats the silence that put the team here.
 
 The skeleton does not eliminate the brownfield condition. The system is still what it is, but now the agent knows it too. That is the prerequisite for any of the practices in this book working at all.
 

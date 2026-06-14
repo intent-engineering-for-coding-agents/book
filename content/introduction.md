@@ -31,7 +31,7 @@ That is not a lucky prompt or a generous model run. It is what a skilled colleag
 
 ## What to expect
 
-The book is organized around four topics. Each works at solo scale and couples with the others at team scale. The book flags those coupling points.
+The book is organized around four topics. Each works at a solo scale and couples with the others at a team scale. The book flags those coupling points.
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it. Context is the substrate and the intent is the point.
 
