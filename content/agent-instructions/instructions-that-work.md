@@ -2,7 +2,7 @@
 
 An instruction in your repo reads: follow the team's naming conventions. Reasonable, until you notice it never says which ones. The agent fills the gap by matching the pattern it sees most often, and names a new service `orderProcessor`. The team moved to kebab-case a year ago. The old camelCase files still dominate the tree, so that is what the agent learned.
 
-Vague instructions are not neutral. They hand the choice back to the agent, which infers it from the surrounding code. There is far more old code than new, so the pattern it keeps meeting is the outdated one. The convention the team moved to was never written into the instructions the agent loads. So the agent writes code in the convention the team abandoned a year ago.
+Vague instructions are not neutral. They hand the choice back to the agent, which infers it from the surrounding code. The convention the team moved to was never written into the instructions the agent loads, so the code it sees outvotes the decision nobody wrote down.
 
 ## Write when you have to, not before
 
@@ -12,9 +12,9 @@ The problem: you do not know what the agent will get wrong until it gets it wron
 
 An instruction written before a failure is a guess. The agent might never need it. Or the agent reads it in a situation you did not foresee, and the guess produces a failure of its own.
 
-The practical approach in this book is: start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is grounded in a real failure. It states the constraint that bit and prevents a repeat, instead of guarding against a problem you only guessed at. Write it immediately: the failure is in front of you, so you can point to the exact wrong output and say what to do instead. Wait a day and you are writing from memory, not from evidence.
+The practical approach in this book is: start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is grounded in a real failure. It states the constraint that bit and prevents a repeat, instead of guarding against a problem you only guessed at. Write it immediately: the failure is in front of you, so you point to the exact wrong output and say what to do instead. Wait a day and you are writing from memory, not from evidence.
 
-Only writing when something fails keeps the file short: nothing enters unless a real failure earned it. A short instruction file loads fast and stays readable, and it is easier to keep current when conventions change. A file full of preemptive rules carries many that have never once been exercised. A file built from real failures carries nothing that is not load-bearing.
+Only writing when something fails keeps the file short: nothing enters unless a real failure earned it. A short file loads fast, stays readable, and carries nothing that is not load-bearing. A file full of preemptive rules fills with guesses that never once get exercised.
 
 The goal is not to eliminate improvisation. For most of what the agent does, from choosing an algorithm to shaping an API response, you want it drawing on everything it knows. Constrain every decision and the instruction file stops being a briefing. It becomes a straitjacket.
 
@@ -28,11 +28,13 @@ A useful test for any instruction: does the agent produce a concrete behavior fr
 
 "Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables; use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
 
-The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines; extract when you exceed this" can, which means it can also be followed consistently.
+The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines; extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one the agent follows the same way every session.
+
+*Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
 
 ## Negative instructions do the work
 
-Positive instructions tell the agent what to do. Negative instructions tell it what not to do. Teams write the positive ones and forget the negative, then wonder why the agent keeps doing the thing nobody told it to stop.
+Teams write the rules for what the agent should do and forget the rules for what it should not. Then they wonder why the agent keeps doing the thing nobody told it to stop. Positive instructions tell the agent what to do. Negative instructions tell it what not to do.
 
 Negative instructions are the more important category. The agent already has defaults, built from everything it was trained on, and a negative instruction is the only thing that overrides them. The opening example in this chapter was a negative instruction failure: the team never wrote "do not use camelCase." A positive rule saying "use kebab-case" might have helped, but the agent saw far more camelCase in the existing code and weighted that over the instruction. The prohibition is what closes the door.
 
@@ -54,11 +56,11 @@ Package boundaries need the same treatment. "The `payments` module has no depend
 
 ## Let the agent draft the instruction
 
-When a failure happens, the agent has the full context: it just produced the wrong output, and the task that triggered it is still in the session. That makes it the right tool to draft the instruction that prevents a repeat. It also knows what phrasing it responds to, which a human writing in the abstract does not.
+When a failure happens, the agent has the full context: it produced the wrong output moments ago, and the task that triggered it is still in the session. That makes it the right tool to draft the instruction that prevents a repeat. It also knows what phrasing it responds to, which a human writing in the abstract does not.
 
 Give it the failure and ask for the instruction:
 
-```
+```text
 The agent just produced [X] when it should have produced [Y].
 Write one instruction for the agent instructions file that prevents this.
 
@@ -73,17 +75,15 @@ The "any coding agent or human" requirement is the key addition. Without it the 
 
 ## Testing whether your instructions work
 
-Instructions get stale, vague, or simply wrong. The only way to know is to test them with the agent, not with a linter.
+Instructions go stale. Others were too vague to follow from the day someone wrote them. The only way to know is to test them with the agent, not with a linter.
 
-Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is either missing, unclear, or not being loaded.
+Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is unclear, or the agent never loaded it.
 
-Once it works, raise a PR. The review catches instructions that are too broad, too narrow, or contradict something already in the file. The PR thread also informs your teammates of the new rule: an instruction merged silently is a constraint your colleagues do not know exists and cannot challenge.
+Once it works, raise a PR. The review catches instructions that are too broad or too narrow, and instructions that quietly contradict a rule already in the file. The PR thread also informs your teammates of the new rule: an instruction merged silently is a constraint your colleagues do not know exists and cannot challenge.
 
-If you wrote the instruction on a strong model, test it on a weaker one before merging. A strong model fills in gaps the instruction leaves open; a weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not just the most capable one in the room.
+If you wrote the instruction on a strong model, test it on a weaker one before merging. A strong model fills in gaps the instruction leaves open; a weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
 
 A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions; break them into named variables," states the constraint behind it, and only the second changes what the agent produces.
-
-When an instruction does not hold, a skill or hook enforces the same constraint without asking the agent to comply.
 
 ## When instructions backfire
 
@@ -94,3 +94,5 @@ Where is the line? Write instructions for a senior colleague who has read the en
 Instructions also backfire by going stale: a constraint written for last quarter's architecture gets followed confidently into today's, the same false-confidence failure stale instructions produce at the entry point.
 
 The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the agent gets the decision wrong and the fix is general engineering knowledge, let the agent learn from the codebase. Instructions prevent drift against your decisions. They should not prevent the agent from making decisions you have not made yet.
+
+There is a harder limit. Some constraints the agent reads and improvises against anyway, and a louder instruction does not fix it. The rule has to move somewhere the agent cannot quietly skip: a skill that runs the workflow on its behalf, or a hook that fails the build the moment the rule breaks.
