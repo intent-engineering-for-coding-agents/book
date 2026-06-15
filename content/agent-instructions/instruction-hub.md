@@ -24,6 +24,8 @@ A focused hub stays small. Here is what one looks like in practice:
 
 `coding-standards.md` is 50 lines. Type hints, string quoting, linting rules, test naming conventions. An agent working on a new checker reads it once and writes code that matches the rest of the codebase. An agent updating a dependency skips it entirely.
 
+`openspec.md` is the same move applied to a tool. It holds the conventions that extend OpenSpec, a unique AC ID per criterion and a test bound to the task that proves it, without editing OpenSpec's own commands. [Spec Lifecycle](../spec-driven/spec-lifecycle) shows the rules it carries and why forking the tool is the worst trade.
+
 One file per domain, not one file per task. `coding-standards.md` covers all style conventions instead of splitting into `naming-conventions.md` and `formatting.md`. Splitting by domain keeps each file coherent. Splitting too fine creates a directory the agent has to enumerate before deciding what to load.
 
 ## `.agents/skills/`

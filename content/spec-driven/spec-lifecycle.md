@@ -16,13 +16,13 @@ Critique: run the draft past a second model before human review. Not code review
 
 Review: the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
-A PR that bundles a full change folder with the implementation is not small. The spec is what makes it navigable: intent is established before the diff is opened, and code review becomes verification rather than reconstruction. An agent can help here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
+The proposal earns its own review before any implementation opens. Approve the change folder on its own pull request, the spec and its scenarios, and the intent is settled before a line of code is written. Implementation then lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. Code review becomes verification rather than reconstruction: the reviewer judges whether the diff matches an intent already signed off, not what the author was trying to say. An agent helps here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
 
 Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 
-Archive: when the PR merges, archive the change folder. Delta specs merge into `openspec/specs/`, and the change folder moves to `openspec/changes/archive/`. The implementation is in git, the intent is in the canonical spec, and the change history is in the archive. Three things, three places, none of them confused.
+Archive: when the implementation merges and every task is checked off, archive the change folder. Delta specs merge into `openspec/specs/`, and the change folder moves to `openspec/changes/archive/`. CI is the natural place to trigger this, the last task box ticked is the signal. The implementation is in git, the intent is in the canonical spec, and the change history is in the archive. Three things, three places, none of them confused.
 
-The entire lifecycle lives on a branch. Create the branch and the spec, implement on the branch, then archive when the branch merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
+The lifecycle runs across more than one pull request. Open the proposal and get it approved, branch the implementation off the agreed intent, then archive the change folder when the last of it merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
 *Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
 
@@ -33,6 +33,20 @@ The task list is where the spec becomes executable. A spec without one leaves th
 The rule: one task per acceptance-criteria cluster. If three scenarios test the same endpoint, they belong to one task. Write it as an imperative: not "Rate limiting?" but "Add rate-limiting to the login endpoint with scenarios ACC-003 and ACC-004". The AC IDs go in the task. The connection between intent and proof survives the archive.
 
 Tasks are checkboxes, and the agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
+
+Each task carries the tests that prove its cluster, not a deferred "write the tests" task at the end. A task is done when its scenarios are green, so the box it checks is the box a reviewer trusts. This is what lets a large implementation split across several PRs without losing safety: each PR closes a handful of tasks, ships the tests that prove them, and merges on a passing suite. Defer the tests to a final task, the shape OpenSpec's default scaffolding tends toward, and the early PRs merge unproven.
+
+None of these patches OpenSpec. Its commands and templates stay untouched. The rules ride in `.agents/instructions/openspec.md`, the file the agent loads next to the OpenSpec workflow:
+
+```markdown
+# openspec.md  (.agents/instructions/)
+- Every acceptance criterion gets a unique AC ID (FEATURE-001, FEATURE-002, ...).
+- Every task names the AC IDs it implements and ships a test per AC.
+- State each test's type: unit, integration, or end-to-end.
+- Do not defer tests to a final task. A task is done when its tests pass.
+```
+
+A unique AC ID per criterion, a test and its type bound to the task that proves it, the AC ID carried from spec to test so the trail survives the archive. Fork the tool and you own the merge conflict on its next release. Layer an instruction file and the conventions are yours while the workflow stays standard.
 
 For sizing guidance on how many tasks belong in a list, and when a list that grows past ten signals a scope problem, see the Rule of Ten in [Why Small?](./why-small).
 

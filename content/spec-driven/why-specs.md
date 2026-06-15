@@ -10,7 +10,7 @@ The agent worked from what it could see, and what it could see did not include t
 
 A spec is written intent: what this change is supposed to do, what it should not do, and how you will know when it is done.
 
-It is not a requirements document in the enterprise sense. No mandatory sections about stakeholder sign-off, no phase boundary, no month-long handoff. The developer who will implement it writes it, reviews it in the same PR as the code, and archives it when done. The entire lifecycle fits inside a single branch.
+It is not a requirements document in the enterprise sense. No mandatory sections about stakeholder sign-off, no phase boundary, no month-long handoff. The developer who will implement it writes it, gets the intent approved before any code exists, and archives it when the work ships. The lifecycle is lightweight: a pull request for the proposal, one or more for the implementation, the same developer carrying it end to end.
 
 Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created and the 201 is returned with the ID. These scenarios double as test definitions: each one maps to a test. The spec is not done when the prose is written. It is done when the tests pass.
 
