@@ -35,7 +35,6 @@ the worked examples and the `iec` companion repo.
   - Writing Instructions That Work: make rules specific, loadable, and verifiable.
   - Skills, Commands, and Hooks: distinguish advisory guidance from repeatable workflows and deterministic checks.
   - Context Window Management: keep agent attention focused on current work.
-  - Failure Modes and Recovery: recover from stale, oversized, conflicting, or missing instructions.
 - Spec-Driven Development: make the change-specific intent durable before code is generated.
   - Why Specs?: show why the agent needs per-change intent, not only permanent context.
   - Why Small?: keep each spec within the size a session and reviewer can hold.

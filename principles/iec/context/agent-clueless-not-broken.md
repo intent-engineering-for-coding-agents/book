@@ -25,4 +25,4 @@ When the agent fails: check what files it loaded, check what it was told, check 
 
 ## Sources
 
-- intent-book, *"Failure Modes" chapter*, agent-instructions section.
+- intent-book, *"Context Window Management" chapter*, agent-instructions section.

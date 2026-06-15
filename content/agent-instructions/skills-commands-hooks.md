@@ -22,11 +22,7 @@ A skill runs two ways. You trigger it explicitly, typing its name as a slash com
 
 Whichever path fires, the agent runs what the file spells out and improvises the rest.
 
-Discrete steps matter most. Not "regenerate the types", but "run `npm run generate:types`, check that `tsc --noEmit` passes with zero errors, and update any import paths that reference the stale generated file". Discrete steps are checkable. Prose is not.
-
-Add a completion condition. How does the agent know it is done? "Run `tsc --noEmit`. Zero errors mean the skill is complete". Leave it out, and the agent runs the generator, sees new files on disk, and reports done, never running `tsc --noEmit` to catch the import paths still pointing at the old file.
-
-Expect the most common failure. If `npm run generate:types` exits non-zero because the spec is malformed, what should the agent do? Answer it in the file, and the agent stops and reports the malformed spec. Leave it silent and the agent improvises: it hand-edits the generated types by guesswork or carries on as if the command had succeeded.
+What separates a skill that runs the same way every time from one the agent reconstructs on the fly is specificity. Spell out discrete, checkable steps instead of prose: not "regenerate the types", but "run `npm run generate:types`, confirm `tsc --noEmit` passes with zero errors, and fix any import paths still pointing at the stale file". Give it a completion condition, so done means zero errors and not new files on disk. Name the failure you expect, so a malformed spec makes the agent stop and report instead of hand-editing the generated types by guesswork.
 
 You do not have to write any of this yourself. Set the agent in plan mode. Describe the workflow to the agent, tell it you want a reusable skill file to invoke as a slash command, and let it draft the Markdown. Review the output, fix the steps that are wrong, and commit. The agent that wrote the skill is the agent that will run it, and it tends to know its own edge cases.
 

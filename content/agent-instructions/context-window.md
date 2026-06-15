@@ -22,11 +22,11 @@ By mid-2026 a million-token context window is common across the frontier model f
 
 Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step loop that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests.
 
-The second cost is attention. Liu et al. found that a model retrieves information placed in the middle of a long input less reliably than information at the edges, the effect they named "lost in the middle", and accuracy falls as the input grows. A window with room to spare still dilutes the signal when you fill it with files the task never reads.
+The second is attention. Filling a roomy window with files the task never reads buries the load-bearing tokens the same way a small window does, and the model attends to them less reliably even though they remain in the window.
 
-So the larger window changes the failure, not the fix. You overflow less often. You drown the load-bearing tokens as easily as a small window does. Load what the task needs, and the extra capacity buys headroom instead of a slower, more expensive, less reliable session.
+So the larger window changes the failure, not the fix. You overflow less often, and you dilute the signal exactly as before. Load what the task needs, and the extra capacity buys headroom instead of a slower, more expensive, less reliable session.
 
-*Sources: Liu et al., "Lost in the Middle: How Language Models Use Long Contexts" (TACL 2024), retrieval accuracy degrades for information in the middle of long inputs and as input length grows. Paula Hingel, Augment Code, "AI Agent Loop Token Costs" (Apr 2026), a naive agent loop re-bills the full history each turn, so cumulative input tokens follow the triangular series N(N+1)/2: a 20-step run bills ~210,000 tokens against a 20,000-token per-step estimate.*
+*Sources: Paula Hingel, Augment Code, "AI Agent Loop Token Costs" (Apr 2026), a naive agent loop re-bills the full history each turn, so cumulative input tokens follow the triangular series N(N+1)/2: a 20-step run bills ~210,000 tokens against a 20,000-token per-step estimate.*
 
 ## Short sessions beat long conversations
 
@@ -52,15 +52,9 @@ If the clauses are not specific enough, the agent loads conservatively, which us
 
 ## Subagents and compaction
 
-Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec for the main agent to review, or searches for usages of an API, so the main agent decides what to do with the results. Review runs the same way: a subagent reads a diff the main agent produced in a context that never saw the reasoning behind it. Each subagent runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need. It delegates the parts that would fill its context to agents that do not carry its history.
+Two mechanisms reclaim context without ending the session, and both carry a limit worth knowing. A subagent runs a delegated task in a clean window and returns only the result, so the main agent never accumulates the history behind it. Review is the case that pays off most: a subagent reads a diff the main agent produced without ever seeing the reasoning that justified it. Compaction is the other lever. Tools that summarize accumulated history reclaim space, not attention, and the summary is lossy: "use camelCase for the API fields" becomes "fixed naming", and the rule is gone. A larger context window only pushes back the moment you reach for either one.
 
-Several capability-class agents now support context compaction: Claude Code's `/compact`, Cursor's conversation summarization, and similar controls elsewhere. Each compresses accumulated history into a summary, freeing context for the steps that follow. The tradeoff is lossy: the summary keeps the gist but paraphrases away exact detail. "Use camelCase for the API fields" becomes "fixed naming", and the rule is gone.
-
-Compaction reclaims space, not attention. A summary that is still large dilutes the signal as much as the history it replaced. Compact when the session has piled up successful output and the next step needs room. Keep the history when the remaining constraints are precise.
-
-A larger context window only pushes back the moment you reach for `/compact`. It does not remove the tradeoff.
-
-*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control. Cursor documentation on conversation summarization (ongoing), the same lossy-compression tradeoff in another tool.*
+*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control that summarizes history at the cost of exact detail.*
 
 ## The discipline
 
@@ -68,7 +62,7 @@ Context management is not a one-time configuration. It is an ongoing judgment, r
 
 An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what survived from an hour ago.
 
-Context management is the discipline of keeping the agent oriented. When the orientation fails, or when other parts of the session fail, the agent enters one of a small number of predictable [failure modes](./failure-modes). Knowing which mode you are in is the first step to recovering from it.
+Context management is the discipline of keeping the agent oriented. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures survive a perfectly managed window.
 
 ## What context management cannot fix
 
@@ -76,4 +70,6 @@ Context management is necessary but not sufficient. A fresh session with perfect
 
 The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the brief or the codebase itself. Resetting the session will not fix those. Fixing the context will not fix a broken brief.
 
-Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too. Context management keeps the agent oriented. When the agent's reasoning is the problem, orientation is not enough.
+Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
+
+Context management keeps the agent oriented, and orientation is the whole of what the Agent Instructions topic delivers: a session that arrives briefed on the system. Briefing is what the system is. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry, and supplying it is where the next topic begins.

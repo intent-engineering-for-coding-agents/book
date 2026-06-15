@@ -13,4 +13,3 @@ The chapters in this topic cover the mechanics: what goes in `AGENTS.md`, how to
 3. [Instructions That Work](./instructions-that-work): specific instructions, negative constraints, architecture boundaries, and how to test whether they work
 4. [Skills, Commands, and Hooks](./skills-commands-hooks): when to choose each type, how to write skills that run reliably, and the instruction/skill/hook triangle
 5. [Context Window Management](./context-window): why context fills, short sessions, selective loading, subagents, and the INDEX as context economy
-6. [Failure Modes and Recovery](./failure-modes): drift, spin, halt, hallucination, context poisoning, and tool misuse, and when to reset versus redirect

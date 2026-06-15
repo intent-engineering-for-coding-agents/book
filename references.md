@@ -1,6 +1,6 @@
 # References
 
-*Last reviewed: 2026-05-25.*
+*Last reviewed: 2026-06-15.*
 
 Grouped by theme. Each entry includes the publication date, or "(ongoing)" with the last-reviewed date for living sites. Inline `*Sources:*` lines in [plan-intent-book.md](plan-intent-book.md) point into this section.
 
@@ -46,14 +46,12 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
 - GitHub Changelog — ["Copilot coding agent now supports AGENTS.md custom instructions"](https://github.blog/changelog/2025-08-28-copilot-coding-agent-now-supports-agents-md-custom-instructions/). *Aug 28, 2025*. Confirms native AGENTS.md support in the Copilot coding agent.
 - Anthropic — ["Building effective agents"](https://www.anthropic.com/research/building-effective-agents). *Dec 2024*. Design philosophy behind the MCP-driven check architecture.
-- Nelson F. Liu et al. — ["Lost in the Middle: How Language Models Use Long Contexts"](https://arxiv.org/abs/2307.03172). *TACL 2024* (arXiv Jul 2023). Primary evidence that retrieval accuracy degrades for information mid-context and as input length grows; cited in Context Window Management for why a large window still dilutes signal.
 - Paula Hingel — ["AI Agent Loop Token Costs: How to Constrain Context"](https://www.augmentcode.com/guides/ai-agent-loop-token-cost-context-constraints). Augment Code, *Apr 6, 2026*. Vendor guide; the underlying arithmetic is verifiable: a naive agent loop re-bills the full transcript each turn, so cumulative input tokens follow the triangular series N(N+1)/2 and a session's cost grows quadratically with its length. Cited in Context Window Management for why a long session's bill compounds.
 - [Model Context Protocol](https://modelcontextprotocol.io) (ongoing). Agent-tool bridge standard.
 - ThoughtWorks — Technology Radar Vol 34: [press release](https://www.thoughtworks.com/about-us/news/2026/combat-ai-cognitive-debt-radar-v34) and [PDF](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2026/04/tr_technology_radar_vol_34_en.pdf). *April 2026*. Cognitive debt, harness engineering, named SDD frameworks.
 - Birgitta Böckeler — [publications hub](https://birgitta.info/) (ongoing) and ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows) (Refactoring.fm interview). ThoughtWorks Distinguished Engineer, AI-assisted software delivery lead.
 - Steve Yegge — ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer). Sourcegraph blog, *Mar 22, 2025*. Six-wave model for the agentic shift (Manual → Completions → Chat → Coding Agents → Agent Clusters → Agent Fleets).
 - Bill Doerrfeld — ["AI doesn't create great developers, it amplifies them"](https://leaddev.com/ai/ai-doesnt-create-great-developers-it-amplifies-them). LeadDev, *Jan 20, 2026*. The amplification thesis: AI multiplies the developer's existing skill. Bad inputs ship bad code faster; experienced inputs ship experienced code faster. A touchstone reference for why Intent Engineering targets senior developers.
-- Geoffrey Huntley — ["Everything is a Ralph loop"](https://ghuntley.com/loop/). *Jan 17, 2026*. Harness / back-pressure engineering primer.
 - Microsoft — ["An AI-led SDLC: Building an end-to-end agentic software development lifecycle"](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896). *Feb 5, 2026*. Industry-view backdrop.
 - IBM — ["AI in SDLC"](https://www.ibm.com/think/topics/ai-in-sdlc) (ongoing). Industry-view backdrop.
 - Outshift (Cisco) — ["Agentic SDLC: A New Evolution in Software Engineering"](https://outshift.cisco.com/blog/ai-ml/agentic-sdlc-new-evolution-in-software-engineering). *Apr 14, 2026*. Specs-and-harnesses framing of the coding-agent SDLC; closest in scope to this book.

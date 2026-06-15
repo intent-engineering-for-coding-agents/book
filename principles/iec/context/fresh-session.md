@@ -31,5 +31,4 @@ Review is a distinct case for the same reason. Hand a diff to a fresh session or
 ## Sources
 
 - intent-book, *"Context Window" chapter*, agent-instructions section.
-- intent-book, *"Failure Modes" chapter*, agent-instructions section.
 - Liu et al., *"Lost in the Middle: How Language Models Use Long Contexts"* (TACL 2024). Retrieval degrades mid-context and as input length grows.
