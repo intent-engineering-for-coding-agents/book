@@ -13,6 +13,8 @@ A fresh session with the right files loaded is more reliable than a long session
 
 Long sessions accumulate context that the agent may have compressed, summarized, or lost. The agent appears to remember but is reasoning from degraded information. The symptoms are subtle: tangents that seem relevant but drift, repetition of already-resolved issues, forgetting constraints stated early in the session.
 
+A large context window does not retire this. Even when nothing is dropped, a window filled with files the task never needed buries the load-bearing tokens, and retrieval accuracy falls as the input grows (Liu et al., "Lost in the Middle"). The fix is the same at one million tokens as at one hundred thousand: load what the task needs, and reset when the session has drifted.
+
 ## Violations to detect
 
 - Sessions running longer than the agent's effective context window
@@ -27,3 +29,4 @@ Heuristic: if the agent was working well before it went wrong, redirect. If the 
 
 - intent-book, *"Context Window" chapter*, agent-instructions section.
 - intent-book, *"Failure Modes" chapter*, agent-instructions section.
+- Liu et al., *"Lost in the Middle: How Language Models Use Long Contexts"* (TACL 2024). Retrieval degrades mid-context and as input length grows.
