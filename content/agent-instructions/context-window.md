@@ -34,6 +34,8 @@ The practical implication: do not try to achieve a large change in a single sess
 
 This is counterintuitive. The instinct is to keep context rich by not resetting. A fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The agent in the fresh session reads what you decided. The agent in the hour-three session is reconstructing it.
 
+Review is the third case, and the sharpest. An agent that reviews its own work in the same session does not read the diff cold: every justification for every choice it made is still in context, so it defends the code instead of auditing it. The prior reasoning does more than fill the window, it primes the conclusion, and the review confirms what a fresh reader would have questioned. Hand the review to a new session or a subagent, and the reviewer reads what is on the page, with no stake in the decisions.
+
 Cost runs the same direction. A long session re-bills its growing transcript on every turn, so the reset that protects attention is also where the bill stops compounding.
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than instructions the agent no longer has in active context.
@@ -50,7 +52,7 @@ If the clauses are not specific enough, the agent loads conservatively, which us
 
 ## Subagents and compaction
 
-Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec for the main agent to review, or searches for usages of an API, so the main agent decides what to do with the results. Each subagent runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need. It delegates the parts that would fill its context to agents that do not carry its history.
+Some tools support subagents: fresh context windows with a specific mandate. A subagent writes a spec for the main agent to review, or searches for usages of an API, so the main agent decides what to do with the results. Review runs the same way: a subagent reads a diff the main agent produced in a context that never saw the reasoning behind it. Each subagent runs in a clean context, does one thing, and returns a result. The main agent does not accumulate everything it might need. It delegates the parts that would fill its context to agents that do not carry its history.
 
 Several capability-class agents now support context compaction: Claude Code's `/compact`, Cursor's conversation summarization, and similar controls elsewhere. Each compresses accumulated history into a summary, freeing context for the steps that follow. The tradeoff is lossy: the summary keeps the gist but paraphrases away exact detail. "Use camelCase for the API fields" becomes "fixed naming", and the rule is gone.
 

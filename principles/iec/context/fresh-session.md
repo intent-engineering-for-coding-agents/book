@@ -20,10 +20,13 @@ A large context window does not retire this. Even when nothing is dropped, a win
 - Sessions running longer than the agent's effective context window
 - Sessions where the earliest context is no longer visible
 - Continuing a session after the agent has shown clear signs of context loss
+- Reviewing work in the same session that produced it: the reviewer is anchored on its own prior reasoning and defends the code instead of auditing it
 
 ## Good practice
 
 Heuristic: if the agent was working well before it went wrong, redirect. If the session has been running long enough that you are unsure what the agent still has in context, reset. A reset costs a minute; recovering from a bad decision the agent made on degraded context costs much more.
+
+Review is a distinct case for the same reason. Hand a diff to a fresh session or a subagent rather than the session that produced it, so the reviewer reads what is on the page with no stake in the choices behind it.
 
 ## Sources
 
