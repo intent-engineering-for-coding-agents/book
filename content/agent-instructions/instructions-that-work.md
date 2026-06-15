@@ -26,9 +26,9 @@ Instructions cover one specific failure mode: the agent improvising against your
 
 A useful test for any instruction: does the agent produce a concrete behavior from it, or does it have to guess what you meant?
 
-"Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables; use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
+"Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables. Use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
 
-The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines; extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one the agent follows the same way every session.
+The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one the agent follows the same way every session.
 
 *Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
 
@@ -38,7 +38,7 @@ Teams write the rules for what the agent should do and forget the rules for what
 
 Negative instructions are the more important category. The agent already has defaults, built from everything it was trained on, and a negative instruction is the only thing that overrides them. The opening example in this chapter was a negative instruction failure: the team never wrote "do not use camelCase." A positive rule saying "use kebab-case" might have helped, but the agent saw far more camelCase in the existing code and weighted that over the instruction. The prohibition is what closes the door.
 
-"Do not use the `requests` library; this repo uses `httpx` for all HTTP calls" is a negative instruction. Without it, the agent reaches for `requests` every session, because it has read more code using `requests` than `httpx`. That one negative line is the only thing keeping `httpx` consistent.
+"Do not use the `requests` library. This repo uses `httpx` for all HTTP calls" is a negative instruction. Without it, the agent reaches for `requests` every session, because it has read more code using `requests` than `httpx`. That one negative line is the only thing keeping `httpx` consistent.
 
 The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your repo diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone. The code looks like an exception, and the agent will treat it as one.
 
@@ -46,11 +46,11 @@ The most valuable negative instructions cover the agent's defaults. Defaults com
 
 Some instructions protect architecture. The agent should not touch certain directories, add dependencies outside the approved list, or overwrite generated files. These are structural constraints, not style preferences. Violate one and something downstream breaks.
 
-Write them explicitly. "Do not modify files under `src/generated/`; they are produced by the code generator and any hand-edit will be overwritten on the next build" is an architecture boundary the agent follows. It cannot infer this from the directory name alone.
+Write them explicitly. "Do not modify files under `src/generated/`. They are produced by the code generator, and any hand-edit will be overwritten on the next build" is an architecture boundary the agent follows. It cannot infer this from the directory name alone.
 
 Most languages have an architectural constraint testing framework that encodes exactly these rules: ArchUnit for Java, NetArchTest for .NET, `dependency-cruiser` for JavaScript and TypeScript, `import-linter` for Python. If yours does, consult it when writing instructions and run it after agent changes to catch what the instructions missed.
 
-Package boundaries need the same treatment. "The `payments` module has no dependency on `users`; if a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
+Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.*
 
@@ -81,9 +81,9 @@ Give the agent a task that should trigger the instruction and observe the output
 
 Once it works, raise a PR. The review catches instructions that are too broad or too narrow, and instructions that quietly contradict a rule already in the file. The PR thread also informs your teammates of the new rule: an instruction merged silently is a constraint your colleagues do not know exists and cannot challenge.
 
-If you wrote the instruction on a strong model, test it on a weaker one before merging. A strong model fills in gaps the instruction leaves open; a weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
+If you wrote the instruction on a strong model, test it on a weaker one before merging. A strong model fills in gaps the instruction leaves open. A weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
 
-A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions; break them into named variables," states the constraint behind it, and only the second changes what the agent produces.
+A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions. Break them into named variables", states the constraint behind it, and only the second changes what the agent produces.
 
 ## When instructions backfire
 

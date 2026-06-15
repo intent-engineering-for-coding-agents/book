@@ -130,7 +130,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Specific, negative instructions, architecture boundaries
     - Testing: how should the agent verify its own work?
 - [x] Chapter: Skills, Commands, and Hooks
-    - *Sources: Anthropic "Building effective agents"; ThoughtWorks Radar Vol 34 (harness engineering); Huntley "Everything is a Ralph Loop".*
+    - *Sources: Anthropic "Building effective agents".*
     - Skills: agent-invoked workflows
     - Commands: user-triggered
     - Hooks: automated quality gates
@@ -141,12 +141,6 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Why context fills, small sessions > long conversations
     - Subagents, /compact, loading skills selectively
     - `INDEX.md` as context economy — agents load one 40-line file instead of 10×200-line files
-- [x] Chapter: Failure Modes & Recovery
-    - *Sources: Huntley "Everything is a Ralph Loop" (back-pressure engineering); De Schryver "Keep Agentic AI Simple"; ThoughtWorks Radar Vol 34 (cognitive debt).*
-    - The taxonomy: drift (loses context mid-task), spin (loops on a sub-problem), halt (stops before done), hallucination (invents files/APIs), context poisoning (bad AGENTS.md compounds across sessions), tool misuse (wrong tool for the job).
-    - Signs to watch for in each mode; recovery strategies; when to reset context vs when to redirect.
-    - "The agent is not broken — it is clueless. Fix the context".
-    - Maturity-honest: this is the most under-documented part of agentic engineering. The chapter says what the book asserts vs what it leaves open.
 - [x] Chapter: Vendor Files That Point, Not Duplicate
     - *Sources: agents.md; agentpatterns.ai.*
     - `CLAUDE.md` → "See AGENTS.md"

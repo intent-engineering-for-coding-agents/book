@@ -14,7 +14,9 @@ This one PR is the smallest version of the problem. The codebase holds hundreds 
 
 The model did not fail. Given the available context, the agent reasoned correctly. The constraint was missing.
 
-ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase. There is a flip side: the same agents that introduce documentation debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
+ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
+
+There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
@@ -59,7 +61,7 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 - REST handlers are deprecated; do not add new ones.
 ```
 
-The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from 2024.
+The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from a few months back.
 
 None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
 
@@ -67,7 +69,7 @@ None of this is about policing the agent. The point is handing the agent enough 
 
 ## The prerequisite
 
-The remaining Intent Engineering topics each assume Foundation is in place. Agent Instructions need a `docs/` to point into. Spec-driven development needs structure for specs to live in. Quality checks need conventions to validate. Skip Foundation and the rest stops working.
+The remaining Intent Engineering topics each assume Foundation is in place. Agent Instructions need a `docs/` to point into. Spec-driven development needs somewhere for specs to live, and quality checks have no conventions to validate against until Foundation supplies them. Skip Foundation and the rest stops working.
 
 Foundation is also the topic with the lowest immediate payoff. A team adopting OpenSpec on Tuesday feels the difference Wednesday. A team adopting Foundation gets value over months: fewer PRs that quietly resurrect choices the team already made, less rediscovery of past decisions, agents that no longer reintroduce stacks the team paid migration cost to leave behind. The compounding works in both directions.
 

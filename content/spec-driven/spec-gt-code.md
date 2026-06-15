@@ -44,7 +44,7 @@ Frederick P. Brooks called it in 1975: plan to throw one away. The first system 
 
 Vibe coding is a special case. A vibe session usually produces no durable spec: the specification is chat history, ephemeral and uncommitted. That makes it useful for exploration and mockups. The transition to production is: extract what you learned into a spec, discard the prototype code, and regenerate from the spec.
 
-*Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", the throwaway-first cost that agentic speed collapses from months to minutes. "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025), extracting a spec from a vibe prototype before production.*
+*Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", the throwaway-first cost that agentic speed collapses from months to minutes. "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025), extracting a spec from a vibe prototype before production. Simon Willison, "Not all AI-assisted programming is vibe coding" (simonwillison.net, Mar 19, 2025), vibe coding as a narrow mode distinct from disciplined AI-assisted work.*
 
 ## The bar a spec must clear
 

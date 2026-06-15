@@ -23,7 +23,7 @@ graph TD
         L2[Intent Engineering]:::ie
     end
     subgraph Planning
-        A[Ticket / story]:::existing --> B[OpenSpec change folder<br/>spec + design + tasks]:::ie
+        A[Ticket / story]:::existing --> B[OpenSpec change folder<br/>proposal + delta specs + tasks]:::ie
     end
     subgraph Implementation
         C["Agent instructions<br/>AGENTS.md + .agents/"]:::ie --> D["Coding<br/>(agent assisted)"]:::existing
@@ -49,7 +49,7 @@ Familiar phases, different evidence. What the agent reads when it starts work is
 
 ## Planning: from ticket to spec
 
-The change starts in the usual place: a ticket, a story, a Linear card. In this book's OpenSpec workflow, the sibling artifact is `openspec/changes/<name>/`: `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket tracks the work, while the spec captures intent.
+The change starts in the usual place: a ticket, a story, a Linear card. In this book's OpenSpec workflow, the sibling artifact is `openspec/changes/<name>/`: `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket tracks the work, and the spec is where intent lives.
 
 Most changes do not need a spec. Typo fixes and dependency bumps should stay light. Bugs need judgment. If the correct behavior is obvious, skip the spec. If reconstructing the intended behavior is the hard part, put the reasoning in a spec before restoring the code.
 
@@ -71,11 +71,11 @@ The spec delta describes the intended behavior, while the code diff shows what g
 
 The sequence moves one question earlier: are we building the right change at all? Once the diff dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
-PR taxonomy gives the reviewer a second guardrail: `docs`-only PRs skip behavior scrutiny, while `behavioral` PRs do not belong in the same diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
+PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
 
 ## CI: the pipeline checks the conventions
 
-A convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` and `docs/INDEX.md`, Markdown ADR (MADR) format for Architectural Decision Records (ADRs), and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
+A convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` and `docs/INDEX.md`, Markdown Architectural Decision Record (MADR) format for ADRs, and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
 
 AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` proves the named scenario, and the traceability survives spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
 
@@ -90,6 +90,8 @@ Update agent instructions when a convention changes. Agent instructions are code
 Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. By then archive work has become triage.
 
 Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. Judgment stays human.
+
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (Cognitect, 2011), a reversed decision becomes a new superseding ADR rather than an edit to the original. The archive-on-ship discipline and the agent instructions-as-code rule are this book's workflow guidance.*
 
 ## Tooling
 

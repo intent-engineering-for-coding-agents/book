@@ -46,7 +46,6 @@ export default withMermaid(
             { text: 'Instructions That Work', link: '/agent-instructions/instructions-that-work' },
             { text: 'Skills, Commands, and Hooks', link: '/agent-instructions/skills-commands-hooks' },
             { text: 'Context Window Management', link: '/agent-instructions/context-window' },
-            { text: 'Failure Modes and Recovery', link: '/agent-instructions/failure-modes' },
           ]
         },
         {
