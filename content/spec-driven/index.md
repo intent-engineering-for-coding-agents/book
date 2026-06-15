@@ -6,11 +6,13 @@ Agent Instructions equipped the agent to arrive briefed. The hub is built, the s
 
 The agent is the labor. You write the spec, and the agent generates the code from it. Reviewing a diff without having reviewed the spec first is reviewing output without knowing what the output was supposed to be.
 
-Intent is what you want this specific change to do, in this specific codebase, right now. It is not in `AGENTS.md` because it is not permanent. It is not in `docs/` because it is not architectural. It lives in a spec, gets used to guide an implementation, then gets archived where it can be found when someone asks, six months from now, why the code looks the way it does.
+Intent is what you want this specific change to do, in this specific codebase, right now. It is not in agent instructions because it is not permanent. It is not in `docs/` because it is not architectural. It lives in a spec. The spec guides the implementation, then moves to the archive. Six months later, when someone asks why the code looks the way it does, the answer is still there.
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, what structure, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
-A note on tooling before the chapters. This book is OpenSpec-first. It is the framework `iec` was built with, and the chapters use its change-folder lifecycle because concrete examples need a concrete tool. The portable practice is per-change intent with testable acceptance criteria. If your team uses a plain `spec.md`, Spec-Kit, LeanSpec, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
+A note on tooling before the chapters. This book is OpenSpec-first. OpenSpec is the framework `iec`, the companion CLI ([cli](https://github.com/intent-engineering-for-coding-agents/cli)), was built with, and the chapters use its change-folder lifecycle because concrete examples need a concrete tool. `iec` is there to show the concepts working in a real repo, not a tool you have to adopt.
+
+The portable practice is per-change intent with testable acceptance criteria. If your team uses a plain `spec.md`, Spec-Kit, LeanSpec, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
 
 ## Chapters
 
