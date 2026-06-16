@@ -1,6 +1,6 @@
 # Spec Lifecycle
 
-A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent loads a spec describing a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
+A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent opens a change folder for a payment integration the team abandoned eight months ago: never merged, never archived, still sitting in `openspec/changes/` with a `proposal.md` and `tasks.md` pointing at a third-party API the company has since replaced. The agent, being helpful, starts implementing it.
 
 A spec without a lifecycle accumulates. The agent cannot distinguish intent from archaeology.
 
