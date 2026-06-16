@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter; together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make agentic software engineering work.
 
-This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 64 principles are active by default.
+This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`; the selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 65 principles are active by default.
 
 ## Foundation
 
@@ -21,6 +21,7 @@ Principles about how to structure a repository so that agents (and humans) can f
 | IEC-FOUNDATION-DECISIONS-LIVE-IN-DOCS | Architectural decisions and conventions live in `docs/`, not in PR descriptions or code comments. |
 | IEC-FOUNDATION-MATURITY-LADDER | Distinguish practiced from documented from CI-enforced from target state. Honesty prevents process theater. |
 | IEC-FOUNDATION-BRIEFING-NOT-POLICING | Structure gives the agent enough briefing to make plausible guesses. It is not about policing. |
+| IEC-FOUNDATION-DISCIPLINE-MATCHES-SCOPE | Match the discipline to project scope: skip it for throwaway work, write specs at weeks, adopt full Intent Engineering for production. |
 
 ## Context
 
