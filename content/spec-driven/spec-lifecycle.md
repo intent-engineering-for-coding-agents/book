@@ -2,7 +2,7 @@
 
 A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent loads a spec describing a payment integration the team abandoned eight months ago: the implementation folder is gone, but the spec is still in `openspec/specs/`, still referencing a third-party API that was replaced. The agent, being helpful, starts implementing it.
 
-A spec without a lifecycle accumulates. Active specs look identical to abandoned ones. The agent cannot distinguish intent from archaeology.
+A spec without a lifecycle accumulates. The agent cannot distinguish intent from archaeology.
 
 ## The five stages
 
@@ -16,13 +16,11 @@ Critique: run the draft past a second model before human review. Not code review
 
 Review: the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
-The proposal earns its own review before any implementation opens. Approve the change folder on its own pull request, the spec and its scenarios, and the intent is settled before a line of code is written. Implementation then lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. Code review becomes verification rather than reconstruction: the reviewer judges whether the diff matches an intent already signed off, not what the author was trying to say. An agent helps here too, checking that the implementation matches the spec scenarios before the human reviewer opens the diff.
+Approve the change folder on its own pull request, the spec and its scenarios, and the intent is settled before a line of code is written. Implementation then lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. Code review becomes verification rather than reconstruction: the reviewer judges whether the diff matches an intent already signed off, not what the author was trying to say. An agent helps here too, checking the implementation against the spec scenarios before the human reviewer opens the diff.
 
 Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is the source of truth during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
 
 Archive: when the implementation merges and every task is checked off, archive the change folder. Delta specs merge into `openspec/specs/`, and the change folder moves to `openspec/changes/archive/`. CI is the natural place to trigger this, the last task box ticked is the signal. The implementation is in git, the intent is in the canonical spec, and the change history is in the archive. Three things, three places, none of them confused.
-
-The lifecycle runs across more than one pull request. Open the proposal and get it approved, branch the implementation off the agreed intent, then archive the change folder when the last of it merges. The `main` branch only ever sees the canonical spec in `openspec/specs/`, the version that reflects what was shipped.
 
 *Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
 
@@ -66,7 +64,7 @@ This is not a rigid practice. For small, low-risk specs, it is overhead. For spe
 
 A dead spec is not a deleted spec. It is a change folder still sitting in `openspec/changes/`, still marked as in-flight, for a change that was implemented, abandoned, or pivoted away from weeks ago. The agent sees it, loads it as current intent, and acts on instructions that no longer apply.
 
-The fix is tight timing on both ends. Create the spec when you are about to implement, not before sprint planning or as a backlog item. Archive it the moment the PR merges, not at the end of the week and not when you remember. The active folder should contain only what is being built right now. Anything else is noise the agent will act on.
+The fix is the timing the Write and Archive stages already prescribe: the active folder holds only what is being built right now. Anything else is noise the agent will act on.
 
 ## Tooling note
 
