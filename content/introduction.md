@@ -10,7 +10,9 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 This is the territory of "Intent Engineering", the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
-"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code. Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. Not a methodology, not a process, but practices you adopt as you need them. Intent Engineering fits within the broader category of agent tooling aimed at the development workflow rather than at end users or production systems.
+"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
+
+Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. These are practices you adopt as you need them, not a methodology you install.
 
 The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
 
@@ -65,13 +67,21 @@ The payoff arrives once switching is inexpensive: running several agents side by
 
 *Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025); Cursor documentation (ongoing); OpenCode Docs (ongoing), the capability-class coding agents named as the target class.*
 
+## When a project earns this
+
+Most of what you build does not need any of this. A script you run once, a glue function, a prototype that exists to answer a question and then gets deleted: reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
+
+The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
+
+For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions brief the agent on the system it is changing. Specs and verification point it at the target and prove it arrived. None of this is all-or-nothing. You take on more of the discipline as the cost of getting it wrong climbs, the same dial you reach for when deciding how much process a single change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project: whether to bring the discipline to bear at all.
+
 ## Intent Engineering is not ADLC
 
 Some readers will arrive having recently finished an ADLC explainer and wonder why they need a second framework. They do not. ADLC and Intent Engineering solve different problems.
 
 Agentic Development Lifecycle (ADLC) usually refers to building agents as products. The development side is reasoning loops, evals, hallucination budgets, the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, escalation paths that wrap a probabilistic agent in a deterministic cage. The deliverable _is_ the agent.
 
-Intent Engineering is the other side of the table. In this book's framing, the agent is the worker, _not_ the product. Labor is only half of the agent's job here. The agent also sharpens your design and reminds you of what you have not yet considered. The deliverable is the same software your team has always shipped, with an agent that knows your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) checks Acceptance Criterion (AC) traceability rather than agent-behavior drift, and the spec describes the change rather than the agent itself.
+Intent Engineering is the other side of the table. In this book's framing, the agent is the worker, _not_ the product. Labor is only half of the agent's job here. The agent also sharpens your design and reminds you of what you have not yet considered. The deliverable is the same software your team has always shipped, with an agent that knows your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) keeps checking that every Acceptance Criterion (AC) traces to a passing test, the same gate it ran before an agent touched the repo. What the spec describes is the change, never the agent that produced it.
 
 If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to get an agent that writes code working from a well-informed picture of your system, not a guess. The two disciplines borrow the same vocabulary, but they do not solve the same problem.
 
