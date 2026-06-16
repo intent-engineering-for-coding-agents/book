@@ -36,7 +36,7 @@ Compression is the wrong fix. Squeezing the spec into 200 lines of dense prose b
 
 A spec too vague to be useful is a spec too small. "Add error handling to the API" fits in ten lines and tells the agent almost nothing. What carries a spec is specificity per line, not word count. A 200-line spec with twenty precise acceptance criteria beats a 50-line spec with five vague ones.
 
-Write small and write precisely. Vagueness is not a side effect of brevity; it is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify—and if clarifying makes the spec too large, the change itself is too large. Split it.
+Write small and write precisely. Vagueness is not a side effect of brevity; it is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify. If clarifying makes the spec too large, the change itself is too large. Split it.
 
 *Sources: LeanSpec, small-spec discipline and the precision-vs-compression tradeoff.*
 
@@ -56,7 +56,7 @@ The limit is for the humans in the loop, not the agent. The agent re-reads a twe
 
 Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one sitting, the whole change in view.
 
-When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there. If you cannot find the seam, ask the coding agent to propose the split—it usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID. Splitting is not a failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
+When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there. If you cannot find the seam, ask the coding agent to propose the split. It usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID. Splitting is not a failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
 
 ## When the change is genuinely large
 
@@ -70,4 +70,4 @@ The `openspec/changes/<name>/` folder does not count toward the file total. That
 
 *Sources: LeanSpec, small-spec discipline, and formality-to-risk matching.*
 
-A spec that fits in one PR and one sitting is a tactical win. But a small spec that the agent ignores is worthless. The real problem is not size—it is whether the spec stays alive long enough to steer the implementation. That requires discipline: a structure, a process, a decision about who edits when, and a commitment to never let the spec and the code diverge into separate truths. Those mechanics are the subject of the next chapter.
+A spec that fits in one PR and one sitting is a tactical win. But a small spec that the agent ignores is worthless. The real problem is not size. It is whether the spec stays alive long enough to steer the implementation. That requires discipline: a structure, a process, a decision about who edits when, and a commitment to never let the spec and the code diverge into separate truths. Those mechanics are the subject of the next chapter.
