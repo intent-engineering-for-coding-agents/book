@@ -65,6 +65,6 @@ More formality means more audit trail, better traceability, less improvisation s
 
 Teams underestimate the theater risk. A heavy framework adopted by a small team produces specs written to satisfy the framework rather than guide the implementation: correct structure, shallow content, twenty minutes from a developer who wants to get to the code. Shallow specs with correct structure are worse than short specs with precise content. They look complete and are not.
 
-The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it. The question is what that pain looks like, and what it teaches about where on the spectrum a team belongs.
+The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it.
 
-The lifecycle that turns a spec into shipped code is the machinery behind that question.
+Picking the rung is the easy part. The lifecycle that carries a spec from proposal to archive, and back into the codebase as proof, is where most of the work hides.
