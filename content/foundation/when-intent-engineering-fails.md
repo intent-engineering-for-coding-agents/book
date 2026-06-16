@@ -34,7 +34,7 @@ The team writes 500-line specs for a config rename. The spec becomes the bottlen
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
-The chapters in the Spec-Driven topic, "Why Small" and "Why Important Stuff First", go further.
+The "Why Small" chapter in the Spec-Driven topic goes further.
 
 *Sources: LeanSpec (lean-spec.dev), small-spec discipline, and formality-to-risk matching.*
 
@@ -55,7 +55,7 @@ Each topic targets one or more of these modes directly:
 | Agent instructions rot | Agent Instructions |
 | Dead specs | Spec-Driven Development |
 | Agent-accelerated tech debt | Spec-Driven Development |
-| Over-spec | Spec-Driven Development (Why Small, Why Important First) |
+| Over-spec | Spec-Driven Development (Why Small) |
 | Drift with no detection | Quality and Verification |
 
 ThoughtWorks Radar Vol 34 names the cost that accrues when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deploy. Keeping the agent's context coherent enough to hold it down is what the Radar calls harness engineering. The rest of this book is harness engineering, one failure mode at a time.

@@ -38,7 +38,6 @@ the worked examples and the `iec` companion repo.
 - Spec-Driven Development: make the change-specific intent durable before code is generated.
   - Why Specs?: show why the agent needs per-change intent, not only permanent context.
   - Why Small?: keep each spec within the size a session and reviewer can hold.
-  - Why Important Stuff First?: put constraints, non-goals, and acceptance criteria where agents read them.
   - The Spectrum: compare raw prompts, lightweight specs, OpenSpec, and heavier SDD tooling.
   - Spec Lifecycle: follow an OpenSpec change from proposal through critique, implementation, and archive.
   - Spec > Code: argue that the authored spec is the durable source and generated code is downstream.

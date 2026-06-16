@@ -62,7 +62,7 @@ The competence heuristic. Code that is well-formatted, well-named, and well-test
 
 Unchanged context. Review tooling shows what changed. The connection between the change and the rest of the system does not appear in the diff unless the reviewer actively opens neighboring files. An agent-generated change that introduces a dependency on a function three files away leaves no trace in the changed lines. The reviewer does not see what was not red or green.
 
-Constraints past the top. The [Why Important Stuff First?](../spec-driven/why-important-first) chapter addresses this from the authoring side: agents lose focus reading top-down. The same applies in review. A reviewer who reads the acceptance criteria and skips the constraint section approves an implementation that handles the happy path correctly and the constrained edge case incorrectly. The constraint was in the spec, in section three.
+Constraints past the top. A reviewer who reads the acceptance criteria and skips the constraint section approves an implementation that handles the happy path correctly and the constrained edge case incorrectly. The constraint was in the spec, in section three.
 
 Agent reviewers tend to miss two things.
 
