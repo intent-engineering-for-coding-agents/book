@@ -163,7 +163,7 @@ Context windows fail. Memory becomes inconsistent. Orchestration complexity expl
 
 Open with a strong observation, a surprising truth, a claim worth arguing, or operational tension. The first paragraph creates curiosity. By the end of paragraph one, the reader should already be committed to paragraph two. Use one of the honest devices in "Never fake a memory" above, and pick a different device from the chapters around it. Never open by narrating an invented event as though it occurred.
 
-Compliant exemplars already in the book: `appendices/honest-maturity.md` (second-person imperative), `foundation/plain-text-as-code.md` (second-person present situation), `spec-driven/spec-gt-code.md` (imperative thought experiment), `team/trunk-based-development.md` (sourced fact).
+Compliant exemplars already in the book: `appendices/honest-maturity.md` (second-person imperative), `foundation/plain-text-as-code.md` (second-person present situation), `spec-driven/docs-gt-code.md` (imperative thought experiment), `team/trunk-based-development.md` (sourced fact).
 
 ### Section endings
 

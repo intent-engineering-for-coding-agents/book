@@ -6,7 +6,7 @@ Agent Instructions equipped the agent to arrive briefed. The hub is built, the s
 
 The agent is the labor. You write the spec, and the agent generates the code from it. Reviewing a diff without having reviewed the spec first is reviewing output without knowing what the output was supposed to be.
 
-Intent is what you want this specific change to do, in this specific codebase, right now. It is not in agent instructions because it is not permanent. It is not in `docs/` because it is not architectural. It lives in a spec. The spec guides the implementation, then moves to the archive. Six months later, when someone asks why the code looks the way it does, the answer is still there.
+Intent is what you want this specific change to do, in this specific codebase, right now. It is not in agent instructions because it is not permanent. It is not the architecture or the decision behind it: that lives in `docs/`, the durable source of truth. It is the testable behavior for one change, and it lives in a spec. The spec guides the implementation, then moves to the archive. Ask later what the change was required to do and the archived spec answers. Ask why the system is built this way and the answer is in `docs/`.
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
@@ -20,4 +20,4 @@ The portable practice is per-change intent with testable acceptance criteria. If
 2. [Why Small?](./why-small): context window economics, lean scope, and why the agent that finishes one small spec beats the one that drifts through a large one
 3. [The Spectrum](./the-spectrum): from a raw prompt to OpenSpec, matching formality to risk and team size
 4. [Spec Lifecycle](./spec-lifecycle): write, critique, review, implement, archive, and why multi-LLM critique catches what solo review misses
-5. [Spec > Code](./spec-gt-code): the book's load-bearing thesis, that specifications are more important than the code they produce
+5. [Docs > Code](./docs-gt-code): the book's load-bearing thesis, that documentation is the durable source of truth and the code is downstream

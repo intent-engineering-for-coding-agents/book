@@ -78,4 +78,4 @@ Send the chapter back for revision if any of the following is true:
 
 ## Multi-LLM critique (optional)
 
-For chapters that carry significant claims (Spec > Code, When Intent Engineering Fails, Honest Maturity), submit the draft to a second model for an independent critique pass. Ask: "What is the weakest claim in this chapter, and what evidence would strengthen it?"
+For chapters that carry significant claims (Docs > Code, When Intent Engineering Fails, Honest Maturity), submit the draft to a second model for an independent critique pass. Ask: "What is the weakest claim in this chapter, and what evidence would strengthen it?"

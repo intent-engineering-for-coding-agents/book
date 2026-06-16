@@ -40,7 +40,7 @@ the worked examples and the `iec` companion repo.
   - Why Small?: keep each spec within the size a session and reviewer can hold.
   - The Spectrum: compare raw prompts, lightweight specs, OpenSpec, and heavier SDD tooling.
   - Spec Lifecycle: follow an OpenSpec change from proposal through critique, implementation, and archive.
-  - Spec > Code: argue that the authored spec is the durable source and generated code is downstream.
+  - Docs > Code: argue that documentation is the durable source of truth, specs are executable acceptance-criteria guardrails, and generated code is downstream of both.
 - Quality and Verification: connect spec intent to executable proof.
   - Tests as Proof, Not Ritual: treat tests as evidence that the implementation matches intent.
   - Test Strategy and Convention: declare which test type proves which boundary.

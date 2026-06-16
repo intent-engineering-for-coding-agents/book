@@ -48,7 +48,7 @@ Principles about spec-driven development: why specs, how small, when to apply th
 
 | ID | Summary |
 |----|---------|
-| IEC-SPECS-SPEC-IS-DURABLE | Specifications are more important than generated code: the spec is durable; the implementation is disposable. |
+| IEC-SPECS-DOCS-GT-CODE | Documentation is the durable source of truth; specs are executable acceptance-criteria guardrails; generated code is downstream of both. |
 | IEC-SPECS-SMALL-SPECS | Small specs outperform large specs: an agent that finishes beats one that drifts. |
 | IEC-SPECS-FORMALITY-MATCHES-RISK | Match formality to risk: payment processing earns a thorough spec; a config-key rename does not. |
 | IEC-SPECS-REVIEW-SPEC-FIRST | Review the spec first: does the intent match? Then review the diff: does the code match the intent? |
