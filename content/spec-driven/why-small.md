@@ -36,13 +36,17 @@ Compression is the wrong fix. Squeezing the spec into 200 lines of dense prose b
 
 A spec too vague to be useful is a spec too small. "Add error handling to the API" fits in ten lines and tells the agent almost nothing. What carries a spec is specificity per line, not word count. A 200-line spec with twenty precise acceptance criteria beats a 50-line spec with five vague ones.
 
-Write small and write precisely. Small means one PR's scope, one concrete outcome per scenario. Scope comes first.
+Write small and write precisely. Vagueness is not a side effect of brevity; it is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify—and if clarifying makes the spec too large, the change itself is too large. Split it.
+
+*Sources: LeanSpec, small-spec discipline and the precision-vs-compression tradeoff.*
 
 ## When the agent writes the spec
 
 Ask the agent to draft the spec and watch what comes back: nominal case, edge cases, rollback behavior, a constraint inferred from three different files, a note about the migration path nobody asked for. The agent defaults to thoroughness. From its frame, missing a scenario is a defect. Adding an unrequested one is not.
 
 Embed the size discipline in the agent's instructions, not just in the human review process. Require specs to stay within a page, forbid restating requirements already in the referenced ADR, specify what the output must contain. A conciseness directive in the agent's skill file carries forward to every spec it writes.
+
+*Sources: Anthropic, "Building effective agents" (Dec 2024), instruction-following as the primary constraint on agent behavior; OpenSpec, spec-drafting patterns in agentic workflows.*
 
 ## The Rule of Ten
 
@@ -66,4 +70,4 @@ The `openspec/changes/<name>/` folder does not count toward the file total. That
 
 *Sources: LeanSpec, small-spec discipline, and formality-to-risk matching.*
 
-Task count alone does not ensure a complete spec. Where constraints and non-goals sit determines whether the agent weighs them at all.
+A spec that fits in one PR and one sitting is a tactical win. But a small spec that the agent ignores is worthless. The real problem is not size—it is whether the spec stays alive long enough to steer the implementation. That requires discipline: a structure, a process, a decision about who edits when, and a commitment to never let the spec and the code diverge into separate truths. Those mechanics are the subject of the next chapter.
