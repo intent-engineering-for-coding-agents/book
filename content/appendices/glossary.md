@@ -144,7 +144,7 @@ In this book's sense: the canonical specification of system behavior. Acceptance
 
 ## SDD (Spec-Driven Development)
 
-The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and treated as the durable artifact from which code is generated. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
+The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and serve as the canonical acceptance criteria from which code is generated and against which it is proven. The durable source of truth for design is `docs/`, not the spec. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
 
 ## Test-type field
 

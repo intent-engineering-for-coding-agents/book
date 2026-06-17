@@ -49,7 +49,7 @@ Familiar phases, different evidence. What the agent reads when it starts work is
 
 ## Planning: from ticket to spec
 
-The change starts in the usual place: a ticket, a story, a Linear card. In this book's OpenSpec workflow, the sibling artifact is `openspec/changes/<name>/`: `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket tracks the work, and the spec is where intent lives.
+The change starts in the usual place: a ticket, a story, a Linear card. In this book's OpenSpec workflow, the sibling artifact is `openspec/changes/<name>/`: `proposal.md`, delta specs (one per capability under `specs/`), `tasks.md`, and optionally `design.md`. The ticket tracks the work. The spec carries the acceptance criteria for the change, and the design intent those criteria serve lives in `docs/`.
 
 Most changes do not need a spec. Typo fixes and dependency bumps should stay light. Bugs need judgment. If the correct behavior is obvious, skip the spec. If reconstructing the intended behavior is the hard part, put the reasoning in a spec before restoring the code.
 

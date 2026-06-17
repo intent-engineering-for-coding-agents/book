@@ -66,7 +66,7 @@ Some formats need more than that. Gherkin's `Given/When/Then` and OpenAPI's sche
 
 ## Specs
 
-Specs are a manifestation of _intent_. Where an ADR records a decision, a spec records what you want the system to do before you build it. And it comes with acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order.
+Specs are a manifestation of _intent_, the behavioral kind. Where an ADR records a decision and the reasoning behind it, a spec records what the system must do as a result, before you build it. It comes with acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order.
 
 The structure matters. In current practice, an agent that reads a list of discrete unchecked steps tends to work through them in sequence. The same content written as prose gets summarized, and a step the agent finds low-priority quietly collapses into the summary instead of the work. The checklist format is what keeps that step from disappearing. The checkbox itself does something else, and it is worth a separate instruction to get it right.
 

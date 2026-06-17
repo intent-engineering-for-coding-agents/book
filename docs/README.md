@@ -71,7 +71,7 @@ The repo-level [AGENTS.md](../AGENTS.md) is the entry point agents load first. I
 content/
 ├── foundation/         # Why structure, document types, plain-text-as-code
 ├── agent-instructions/    # AGENTS.md, .agents/ hub, skills, context
-├── spec-driven/        # Why specs, lifecycle, Spec > Code
+├── spec-driven/        # Why specs, lifecycle, Docs > Code
 ├── quality/            # Tests as proof, AC IDs, PR taxonomy
 ├── team-workflows/     # OpenSpec in an SDLC, TBD with agents
 ├── cross-team/         # ADRs, inner source, what's still evolving

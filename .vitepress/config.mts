@@ -56,7 +56,7 @@ export default withMermaid(
             { text: 'Why Small?', link: '/spec-driven/why-small' },
             { text: 'The Spectrum', link: '/spec-driven/the-spectrum' },
             { text: 'Spec Lifecycle', link: '/spec-driven/spec-lifecycle' },
-            { text: 'Spec > Code', link: '/spec-driven/spec-gt-code' },
+            { text: 'Docs > Code', link: '/spec-driven/docs-gt-code' },
           ]
         },
         {

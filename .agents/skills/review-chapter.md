@@ -32,4 +32,4 @@ A list of issues by category. For each issue: what it is, where it is (heading o
 
 ## Optional: multi-LLM pass
 
-For high-stakes chapters (Spec > Code, When Intent Engineering Fails, Honest Maturity), submit the draft to a second model with the prompt: "What is the weakest claim in this chapter, and what evidence would strengthen it?"
+For high-stakes chapters (Docs > Code, When Intent Engineering Fails, Honest Maturity), submit the draft to a second model with the prompt: "What is the weakest claim in this chapter, and what evidence would strengthen it?"
