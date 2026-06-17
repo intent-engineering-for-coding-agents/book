@@ -1,4 +1,4 @@
-# IEC-SPECS-DOCS-GT-CODE: Docs > Code
+# IEC-SPECS-DOCS-GT-CODE: Docs > Specs > Code
 
 **Layer**: 1
 **Categories**: specs, sdd, change-management
@@ -27,5 +27,5 @@ Decisions and design go in ADRs and design docs under `docs/`. A spec earns its 
 
 ## Sources
 
-- intent-book, *"Docs > Code" chapter*, specs section.
+- intent-book, *"Docs > Specs > Code" chapter*, specs section.
 - OpenSpec; LeanSpec; Dave Farley, *Modern Software Engineering*.

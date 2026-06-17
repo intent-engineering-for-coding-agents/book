@@ -1,4 +1,4 @@
-# Docs > Code
+# Docs > Specs > Code
 
 Delete the code. Keep the docs. Regenerate.
 
@@ -16,7 +16,7 @@ Generated artifacts have always been treated as downstream of their sources. The
 
 In the agentic era, code occupies the position the compiled binary used to. It is the output of a process, and the authored intent above it lives in two places. The design, the decisions, the reasons one option won over another: that is the docs. The testable behavior, the acceptance criteria, the proof: that is the spec. Agents regenerate the code from both. They do not reliably regenerate either one from the code.
 
-So the chain runs one direction. The docs shape the spec, the spec drives the code, and the code is the artifact you are most willing to throw away. A workflow rule follows, one this book adopts rather than a law of nature: during a change, when the spec and the code disagree, treat the spec as canonical for behavior until the mismatch is resolved. When the design itself is wrong, the fix is upstream of the spec, in the docs. When the code is tangled beyond easy modification, regeneration from the docs and the spec becomes a viable option.
+So the chain runs one direction. Docs outrank specs, specs outrank code: the design shapes the spec, the spec drives the code, and the code is the artifact you are most willing to throw away. The spec sits in the middle on purpose. It is neither the durable record above it nor the disposable output below it, but the one-off that turns a settled design into testable behavior for a single change, then archives. A workflow rule follows, one this book adopts rather than a law of nature: during a change, when the spec and the code disagree, treat the spec as canonical for behavior until the mismatch is resolved. When the design itself is wrong, the fix is upstream of the spec, in the docs. When the code is tangled beyond easy modification, regeneration from the docs and the spec becomes a viable option.
 
 *Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). These are tool-vendor sources, so the regeneration claim is kept bounded above rather than treated as industry baseline. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
 

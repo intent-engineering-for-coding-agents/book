@@ -144,7 +144,7 @@ mindmap
         OpenSpec
         GitHub SpecKit
       Spec lifecycle
-      Docs > Code
+      Docs > Specs > Code
       Multi-LLM critique
     Quality and Verification
       Tests as proof

@@ -174,7 +174,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - *Sources: OpenSpec; GitHub Spec-Kit; Hightower.*
     - Write → critique → review → implement → archive
     - Multi-LLM critique
-- [x] Chapter: Docs > Code
+- [x] Chapter: Docs > Specs > Code
     - *Sources: OpenSpec; LeanSpec; Hightower SDD-tools comparison; Farley *Modern Software Engineering* (intent over artefact).*
     - The book's load-bearing thesis. **Documentation is the durable source of truth; generated code is downstream.** Specs are executable acceptance-criteria guardrails, not design; the design lives in docs. The implementation is disposable; the intent (docs and specs) is what you preserve.
     - Why this inverts the historical default: with agentic regeneration, code is downstream of spec — review intent before diff, specs outlive the codebase, agents regenerate code from spec, not the reverse.

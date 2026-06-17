@@ -41,7 +41,7 @@ The first two give the agent context: the structural knowledge to execute your i
 
 **Agent Instructions:** `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
-**Spec-Driven Development:** specs before code. The spec becomes the durable artifact, with code downstream from intent. Small specs ship. Large specs drift.
+**Spec-Driven Development:** specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
 
 **Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that survives both files being rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
