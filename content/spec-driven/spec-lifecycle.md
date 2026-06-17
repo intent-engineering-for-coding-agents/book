@@ -4,83 +4,85 @@ A spec with no lifecycle does not get retired. It sits there looking exactly lik
 
 A spec without a lifecycle accumulates. The agent cannot distinguish intent from archaeology.
 
-## The five stages
+## The stages
 
-The five stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
+The stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
 
-One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you may finish the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
+One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you risk finishing the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
 
 ```mermaid
 graph TD
     classDef pre fill:#64748b,stroke:#475569,color:#fff
     classDef stage fill:#0d9488,stroke:#0f766e,color:#fff
 
-    ADR[ADR<br/>approved]:::pre --> DD[Design doc<br/>docs/]:::pre
+    ADR[ADR<br/>approved]:::pre --> DD["Design doc<br/>docs/"]:::pre
     DD --> W
 
-    W[Write<br/>spec + tasks]:::stage --> C[Critique<br/>second model]:::stage
+    W["Write<br/>/opsx:propose"]:::stage --> C[Critique<br/>second model]:::stage
     C --> R[Review<br/>spec before code]:::stage
-    R --> I[Implement<br/>agent works from spec]:::stage
-    I --> A[Archive<br/>delta merges to specs/]:::stage
+    R --> I["Implement<br/>/opsx:apply"]:::stage
+    I --> A["Archive<br/>/opsx:sync + archive"]:::stage
 
     I -. spec wrong? update it .-> W
 ```
 
-Write: create the spec when you are about to implement, not weeks in advance. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
+Three of these stages are OpenSpec commands. Critique and review are not, and that gap is the point: it is where this book adds discipline the tool leaves out. Command names below are the mid-2026 `opsx` profile; the stages outlast the names.
 
-Critique: run the draft past a second model before human review. Not code review. Spec review. Ask a different model to identify missing edge cases, ambiguous acceptance criteria, and scope that the implementer has unconsciously narrowed to make the work tractable. The second model approaches the spec without the first model's assumptions and will find gaps that a human reviewer, who has already heard the proposal, will skip over.
+**Write** (`/opsx:propose`): create the spec when you are about to implement, not weeks in advance. One command generates the proposal, specs, design, and tasks together. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
-Review: the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
+**Critique:** run the draft past a second model before human review. Not code review. Spec review. A different model finds the missing edge cases, the ambiguous criteria, and the scope the implementer quietly narrowed to make the work tractable, gaps a human reviewer who already heard the proposal skips over.
 
-Approve the change folder on its own pull request, the spec and its scenarios, and the intent is settled before a line of code is written. Implementation then lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. Code review becomes verification rather than reconstruction: the reviewer judges whether the diff matches an intent already signed off, not what the author was trying to say. An agent helps here too, checking the implementation against the spec scenarios before the human reviewer opens the diff.
+**Review:** the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
-Implement: the agent works from the spec. When it deviates, update the spec rather than the implementation, unless the deviation is wrong. The spec is canonical for behavior during implementation. If the implementation is revealing that the spec needs to change, change the spec and let the implementation follow.
+Approve the change folder on its own pull request, the spec, and its scenarios, and the intent is settled before a line of code is written. Implementation lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. An agent helps here too, checking the implementation against the spec scenarios before the human reviewer opens the diff.
 
-Archive: when the implementation merges and every task is checked off, archive the change folder. Delta specs merge into `openspec/specs/`, and the change folder moves to `openspec/changes/archive/`. CI is the natural place to trigger this, the last task box ticked is the signal. The implementation is in git, the acceptance criteria are in the canonical spec, and the change history is in the archive. The design that shaped all three stays in `docs/`. Four things, four places, none of them confused.
+**Implement** (`/opsx:apply`): the agent works through the tasks one by one, writes the code, runs tests, and ticks each checkbox, with the spec canonical for behavior throughout. `/opsx:verify` then checks the implementation against the artifacts. When the implementation reveals the spec is wrong, fix the spec and let the code follow, never the reverse.
 
-*Sources: Fission AI, OpenSpec, the change-folder stages and the archive-into-canonical-specs mechanism. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multi-model critique as an emerging SDD step. The five-stage framing (write, critique, review, implement, archive) is this book's synthesis.*
+**Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. `/opsx:sync` merges the delta specs into `openspec/specs/`; `/opsx:archive` moves the change folder to `openspec/changes/archive/`. CI is the natural place to trigger both; the last task box ticked is the signal. The implementation is in git, the acceptance criteria are in the canonical spec, and the change history is in the archive. The design that shaped all three stays in `docs/`. Four things, four places, none of them confused.
+
+*Sources: Fission AI, OpenSpec, the change-folder stages, and the archive-into-canonical-specs mechanism. Fission AI, OpenSpec, "commands.md" (github.com/Fission-AI/OpenSpec, accessed 2026), the `opsx:*` commands mapped to the stages: `propose` generates the artifacts, `apply` implements and checks off tasks, `verify` validates against artifacts, `sync` and `archive` merge and retire the change. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multimodel critique as an emerging SDD step. The lifecycle framing (write, critique, review, implement, archive) is this book's synthesis.*
 
 ## Writing the task list
 
-The task list is where the spec becomes executable. A spec without one leaves the agent to decide its own decomposition. The agent will decompose based on its priors, which are not the same as the team's intent.
+OpenSpec already does the mechanical part. `/opsx:propose` generates `tasks.md` alongside the proposal and specs; `/opsx:apply` works through the tasks one by one, writes the code, runs tests as needed, and marks each checkbox. You neither write the list nor tick it off.
 
-The rule: one task per acceptance-criteria cluster. If three scenarios test the same endpoint, they belong to one task. Write it as an imperative: not "Rate limiting?" but "Add rate-limiting to the login endpoint with scenarios ACC-003 and ACC-004". The AC IDs go in the task. The connection between intent and proof survives the archive.
+What the agent will not do is decompose the way your team would. Left to its priors, it groups tasks by functional area, runs tests "as needed" rather than per criterion, and carries no thread from a scenario to the test that proves it. None of that breaks OpenSpec's rules, because OpenSpec has none here: requirements and scenarios are named, not ID'd, and a scenario is only a "potential test case", bound to nothing.
 
-Tasks are checkboxes, and the agent checks each one off as it completes it. An unchecked task is a work signal. A half-checked list is a resumption point. When a session is interrupted, the task list is how the next session picks up without re-reading the entire spec from the beginning. Checkpoint discipline: each task gets its mark when complete, not in a batch at the end of the run.
-
-Each task carries the tests that prove its cluster, not a deferred "write the tests" task at the end. A task is done when its scenarios are green, so the box it checks is the box a reviewer trusts. This is what lets a large implementation split across several PRs without losing safety: each PR closes a handful of tasks, ships the tests that prove them, and merges on a passing suite. Defer the tests to a final task, the shape OpenSpec's default scaffolding tends toward, and the early PRs merge unproven.
-
-None of these patches OpenSpec. Its commands and templates stay untouched. The rules ride in `.agents/instructions/openspec.md`, the file the agent loads next to the OpenSpec workflow:
+So you constrain the generation instead of performing it. The conventions ride in `.agents/instructions/openspec.md`, the file the agent loads next to the workflow, and patch nothing:
 
 ```markdown
-# openspec.md  (.agents/instructions/)
+# openspec.md (.agents/instructions/)
 - Every acceptance criterion gets a unique AC ID (FEATURE-001, FEATURE-002, ...).
 - Every task names the AC IDs it implements and ships a test per AC.
-- State each test's type: unit, integration, or end-to-end.
+- State each test's type: unit, integration, end-to-end, etc.
 - Do not defer tests to a final task. A task is done when its tests pass.
 ```
 
-A unique AC ID per criterion, a test and its type bound to the task that proves it, the AC ID carried from spec to test so the trail survives the archive. Fork the tool and you own the merge conflict on its next release. Layer an instruction file and the conventions are yours while the workflow stays standard.
+Now `/opsx:apply` runs a typed test for every criterion instead of testing at its own discretion, and `/opsx:verify` has a concrete trail to check. The AC ID travels from spec to test, so a large change splits across several PRs safely: each closes a handful of tasks, ships the tests that prove them, and merges on a passing suite. Leave tests to the agent's "as needed" and the early PRs merge unproven.
+
+Fork the tool, and you own the merge conflict on its next release. Layer an instruction file and the conventions are yours while the workflow stays standard. The four lines above are the gist. The companion CLI runs a fuller version on itself, with the AC-ID format, the test-type taxonomy, and marker-to-spec traceability spelled out: [`.agents/instructions/openspec.md`](https://github.com/intent-engineering-for-coding-agents/cli/blob/main/.agents/instructions/openspec.md).
 
 For sizing guidance on how many tasks belong in a list, and when a list that grows past ten signals a scope problem, see the Rule of Ten in [Why Small?](./why-small).
 
 The task list makes the spec executable. It does not make the spec correct. That review happens next.
 
+*Sources: Fission AI, OpenSpec (github.com/Fission-AI/OpenSpec, accessed 2026), the spec template naming requirements and scenarios rather than assigning IDs, and framing a scenario as a potential test case bound to no test; `/opsx:propose` generating `tasks.md` and `/opsx:apply` working through tasks and checking them off.*
+
 ## Multi-LLM critique
 
 The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training and the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.
 
-A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. The difference is not always large, but for specs guiding production-critical implementations, it is consistently useful.
+A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. Rick Hightower lists this multimodel critique as an emerging step in spec-driven workflows. The difference is not always large, but for specs guiding production-critical implementations, it is often worth the pass.
 
-The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, a CLI agent pointed at the file. The mechanism does not matter. Iterate once. The critique adds twenty minutes and catches the kind of scenario the first model never thinks to write: the empty list case, the concurrent update case, the API returning a 200 with an error payload in the body.
+The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, a CLI agent pointed at the file. The mechanism does not matter. Iterate once. The critique adds a few minutes and catches the kind of scenario the first model never thinks to write: the empty list case, the concurrent update case, the API returning a 200 with an error payload in the body.
 
 This is not a rigid practice. For small, low-risk specs, it is overhead. For specs touching security, payment, or anything that would constitute a long day when it goes wrong, the second-model pass is worth it.
 
+*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multimodel critique as an emerging step in spec-driven development.*
+
 ## The dead spec problem
 
-A dead spec is not a deleted spec. It is a change folder still sitting in `openspec/changes/`, still marked as in-flight, for a change that was implemented, abandoned, or pivoted away from weeks ago. The agent sees it, loads it as current intent, and acts on instructions that no longer apply.
-
-The fix is the timing the Write and Archive stages already prescribe: the active folder holds only what is being built right now. Anything else is noise the agent will act on.
+A dead spec is not a deleted spec. It is a change folder left in `openspec/changes/`, marked in-flight, for work that already merged or got abandoned. The fix is the timing the Write and Archive stages prescribe: the active folder holds only what is being built right now, and everything else is noise the agent acts on.
 
 ## Tooling note
 
