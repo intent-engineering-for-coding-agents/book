@@ -6,6 +6,20 @@ The team that writes no specs at all, operating on prompts and conversation hist
 
 Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. The tools below are a mid-2026 snapshot, not a finished landscape.
 
+```mermaid
+graph LR
+    classDef light fill:#64748b,stroke:#475569,color:#fff
+    classDef mid fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef heavy fill:#0d9488,stroke:#0f766e,color:#fff
+
+    P[Raw prompt<br/>no artifact]:::light --> G[GSD<br/>intent doc, no archive]:::light
+    G --> M[spec.md<br/>single file in repo]:::mid
+    M --> O[OpenSpec<br/>change folder + archive]:::heavy
+    O --> K[Spec-Kit<br/>governance, multi-team]:::heavy
+```
+
+Formality and audit trail rise left to right, and so does overhead. The rung that fits a change is the one whose ceremony matches its risk, not the heaviest one available.
+
 ## The light end
 
 At the minimal end is the raw prompt. Describe the feature in the chat window and let the agent implement. No artifact, no audit trail. Acceptable for throwaway code, local experiments, prototypes that will not survive the week.

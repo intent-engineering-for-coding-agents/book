@@ -58,6 +58,20 @@ Each mechanism fails differently when it is missing. Without the instruction, th
 
 Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure shows up in more than two sessions. Add a hook when skipping the procedure causes real damage rather than drift.
 
+```mermaid
+graph TD
+    classDef advisory fill:#64748b,stroke:#475569,color:#fff
+    classDef auto fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef forced fill:#0d9488,stroke:#0f766e,color:#fff
+
+    I["Instruction<br/>agent may skip"]:::advisory
+    S["Skill<br/>runs saved steps"]:::auto
+    H["Hook<br/>runs every time"]:::forced
+
+    I -->|repeats in 2+ sessions| S
+    S -->|skipping causes real damage| H
+```
+
 The cost is real, so weigh it. A simple workflow you run once a month does not need a skill, the instruction covers it. A check that fails once a quarter does not need a hook, because code review catches it. Below that line, the wiring costs more than the drift it prevents.
 
 Frequency is not the only reason to write a skill. A release procedure whose steps must run in a fixed order, where publishing before the signing step ships an unsigned artifact, belongs in a skill even if you rarely cut a release. The skill pins the correct order, so the agent and every developer run it the same way instead of reconstructing it under pressure.

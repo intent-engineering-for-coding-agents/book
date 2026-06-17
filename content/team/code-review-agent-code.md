@@ -16,6 +16,17 @@ A reviewer who has read the implementation first reads the spec to confirm what 
 
 The two-PR shape removes this problem by separating the documents. The first PR carries only the change folder: `proposal.md`, `design.md`, and the delta specs with their acceptance criteria. Nothing executable. The reviewer reads the spec as a spec, without implementation to bias them. Corrections to intent happen before any code exists. The second PR delivers the implementation and archives the folder. The reviewer arrives with an approved spec and reads the diff against it. The review question changes from "what is this supposed to do?" to "does this do what was approved?"
 
+```mermaid
+graph TD
+    classDef docs fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef behavioral fill:#0d9488,stroke:#0f766e,color:#fff
+
+    A["Spec PR: what is this supposed to do?"]:::docs
+    B["Implementation PR: does this do what was approved?"]:::behavioral
+
+    A -->|spec approved and merged| B
+```
+
 When the split applies is the question [Trunk-Based Development with Agents](./trunk-based-development) already settles: if an intent-level correction found in review would force the implementation to be redone, the spec earns its own PR, otherwise spec and code ship together with the spec delta read first inside the single PR. What the review angle adds is why the split helps the reviewer. Once the spec PR has merged, reading the diff before the intent is structurally harder, so intent-first review stops depending on discipline.
 
 The [PR Taxonomy](../quality/pr-taxonomy) chapter establishes that `docs`, `structural`, and `behavioral` PRs use different review styles and should not mix. The spec PR, carrying only the change folder, is a docs change. The implementation PR is behavioral. The two-PR shape is the natural expression of that taxonomy for decision-heavy behavioral changes.

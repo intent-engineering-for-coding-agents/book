@@ -16,6 +16,28 @@ The shared architecture repository pattern: a repository (or sub-directory in a 
 
 This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The only addition is the instruction to agents to read the shared repo as part of their pre-spec context loading.
 
+```mermaid
+graph TD
+    classDef team fill:#64748b,stroke:#475569,color:#fff
+    classDef shared fill:#0d9488,stroke:#0f766e,color:#fff
+
+    SR["Shared architecture repo<br/>cross-team ADRs"]:::shared
+
+    subgraph A[Team A]
+        AA["Agents + AGENTS.md"]:::team
+        AR["Local repo<br/>own specs + ADRs"]:::team
+    end
+    subgraph B[Team B]
+        BA["Agents + AGENTS.md"]:::team
+        BR["Local repo<br/>own specs + ADRs"]:::team
+    end
+
+    AA -->|reads| SR
+    BA -->|reads| SR
+    AA -. internal ADR, Team B never sees it .-> AR
+    BA -. internal ADR, Team A never sees it .-> BR
+```
+
 *Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the durable, human-readable decision record.*
 
 ## Inner source for `.agents/` libraries

@@ -9,11 +9,15 @@ An agent can open and close a feature branch in the time a human developer would
 An OpenSpec change folder maps onto the branches that implement it. The change folder defines the scope. The branch is the vehicle. How many branches depends on one question: does the spec hold a decision worth locking before any code is written?
 
 ```mermaid
-graph LR
-  CF["openspec/changes/<br/>add-filter-endpoint/"] -- "spec reviewed on" --> SB["spec/add-filter-endpoint"]
-  SB -- "merges to" --> TRUNK["main"]
-  TRUNK -- "implemented on" --> BR["add-filter-endpoint"]
-  BR -- "merges + archives to" --> TRUNK
+graph TD
+    classDef intent fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef spec fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef trunk fill:#64748b,stroke:#475569,color:#fff
+
+    CF["openspec/changes/<br/>add-filter-endpoint/"]:::intent -- "spec reviewed on" --> SB["spec/add-filter-endpoint"]:::spec
+    SB -- "merges to" --> TRUNK["main"]:::trunk
+    TRUNK -- "implemented on" --> BR["add-filter-endpoint"]:::intent
+    BR -- "merges + archives to" --> TRUNK
 ```
 
 For a change with real intent to get right (business rules, edge cases, an architectural choice), the spec rides its own PR first. The branch `spec/add-filter-endpoint` carries the change folder (`proposal.md`, `design.md`, delta specs, `tasks.md`) and no code. It is reviewed for intent, the acceptance criteria get corrected while correcting them is still cheap, and it merges. Then the implementation branch, named for the change folder slug, delivers the code against an already-approved spec and archives the folder on merge.

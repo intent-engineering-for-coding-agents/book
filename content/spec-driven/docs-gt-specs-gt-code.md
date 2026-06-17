@@ -18,6 +18,21 @@ In the agentic era, code occupies the position the compiled binary used to. It i
 
 So the chain runs one direction. Docs outrank specs, specs outrank code: the design shapes the spec, the spec drives the code, and the code is the artifact you are most willing to throw away. The spec sits in the middle on purpose. It is neither the durable record above it nor the disposable output below it, but the one-off that turns a settled design into testable behavior for a single change, then archives. A workflow rule follows, one this book adopts rather than a law of nature: during a change, when the spec and the code disagree, treat the spec as canonical for behavior until the mismatch is resolved. When the design itself is wrong, the fix is upstream of the spec, in the docs. When the code is tangled beyond easy modification, regeneration from the docs and the spec becomes a viable option.
 
+```mermaid
+graph TD
+    classDef durable fill: #0d9488, stroke: #0f766e, color: #fff
+    classDef oneoff fill: #0891b2, stroke: #0e7490, color: #fff
+    classDef output fill: #64748b, stroke: #475569, color: #fff
+    D["Docs · durable<br/>the why, the design"]:::durable
+    S["Spec · one-off<br/>the proof, the ACs"]:::oneoff
+    C["Code · disposable<br/>regenerated output"]:::output
+
+    D -->|shapes|S
+    S -->|drives|C
+    C -. wrong? fix upstream, regenerate .-> S
+    S -. design wrong? fix the docs .-> D
+```
+
 *Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). These are tool-vendor sources, so the regeneration claim is kept bounded above rather than treated as industry baseline. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
 
 ## Why this inverts the default

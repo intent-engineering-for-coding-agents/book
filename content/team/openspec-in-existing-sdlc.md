@@ -4,6 +4,31 @@ You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog:
 
 None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It gives each existing slot its own artifact. Coordination already exists. The question is what lives where. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
 
+```mermaid
+graph LR
+    classDef existing fill:#64748b,stroke:#475569,color:#fff
+    classDef openspec fill:#0d9488,stroke:#0f766e,color:#fff
+
+    subgraph Team[Existing slots · for the team]
+        T["Ticket<br/>is this being worked on?"]:::existing
+        US["User story<br/>the why and the what"]:::existing
+        SB["Sprint board"]:::existing
+        ARB["Architecture review"]:::existing
+    end
+
+    subgraph OS[OpenSpec · for the agent]
+        CF["Change folder<br/>what is built + proof"]:::openspec
+        AC["Delta spec + acceptance criteria"]:::openspec
+        TK["tasks.md"]:::openspec
+        ADR["ADR"]:::openspec
+    end
+
+    T <-->|issue key links both ways| CF
+    US -->|converts to| AC
+    SB <-->|sync at the PR| TK
+    ARB -->|input| ADR
+```
+
 ## Change folder and ticket: the same event, different records
 
 A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant. They serve different readers.
