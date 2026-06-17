@@ -14,18 +14,20 @@ Code is increasingly generated. Intent is authored. Code is output. Intent is in
 
 Generated artifacts have always been treated as downstream of their sources. The compiled binary is downstream of the source code, the minified bundle is downstream of the modules, and the Docker image is downstream of the Dockerfile. Nobody edits the binary directly, and nobody treats it as the source of truth.
 
-In the agentic era, code occupies the position the compiled binary used to. It is the output of a process, and the authored intent above it lives in two places. The design, the decisions, the reasons one option won over another: that is the docs. The testable behavior, the acceptance criteria, the proof: that is the spec. Agents regenerate the code from both. They do not reliably regenerate either one from the code.
+In the agentic era, code occupies the position the compiled binary used to. It is the output of a process, and the authored intent above it lives in two places. The design, the decisions, the reasons one option won over another: that is the docs. The testable behavior, the acceptance criteria, the proof: that is the spec. Agents regenerate the code from both, but neither the design nor the criteria reliably comes back from the code.
 
-So the chain runs one direction. Docs outrank specs, specs outrank code: the design shapes the spec, the spec drives the code, and the code is the artifact you are most willing to throw away. The spec sits in the middle on purpose. It is neither the durable record above it nor the disposable output below it, but the one-off that turns a settled design into testable behavior for a single change, then archives. A workflow rule follows, one this book adopts rather than a law of nature: during a change, when the spec and the code disagree, treat the spec as canonical for behavior until the mismatch is resolved. When the design itself is wrong, the fix is upstream of the spec, in the docs. When the code is tangled beyond easy modification, regeneration from the docs and the spec becomes a viable option.
+So the chain runs in one direction. Docs outrank specs, specs outrank code: the design shapes the spec, the spec drives the code, and the code is the artifact you are most willing to throw away. The spec sits in the middle on purpose. It is neither the durable record above it nor the disposable output below it, but the one-off that turns a settled design into testable behavior for a single change, then archives.
+
+A workflow rule follows, one this book adopts rather than a law of nature: during a change, when the spec and the code disagree, treat the spec as canonical for behavior until the mismatch is resolved. When the design itself is wrong, the fix is upstream of the spec, in the docs. When the code is tangled beyond easy modification, regeneration from the docs and the spec becomes a viable option.
 
 ```mermaid
 graph TD
     classDef durable fill: #0d9488, stroke: #0f766e, color: #fff
     classDef oneoff fill: #0891b2, stroke: #0e7490, color: #fff
     classDef output fill: #64748b, stroke: #475569, color: #fff
-    D["Docs · durable<br/>the why, the design"]:::durable
-    S["Spec · one-off<br/>the proof, the ACs"]:::oneoff
-    C["Code · disposable<br/>regenerated output"]:::output
+    D["Docs · durable<br>the why, the design"]:::durable
+    S["Spec · one-off<br>the proof, the ACs"]:::oneoff
+    C["Code · disposable<br>regenerated output"]:::output
 
     D -->|shapes|S
     S -->|drives|C
@@ -33,7 +35,7 @@ graph TD
     S -. design wrong? fix the docs .-> D
 ```
 
-*Sources: Fission AI, OpenSpec; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). These are tool-vendor sources, so the regeneration claim is kept bounded above rather than treated as industry baseline. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
+*Sources: Fission AI, OpenSpec, the delete-and-regenerate-from-spec practice; LeanSpec, the spec-as-canonical-artifact workflow rule (spec wins on conflict, regenerate code from spec). These are tool-vendor sources, so the regeneration claim is kept bounded above rather than treated as industry baseline. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), SDD tools treating the spec as the primary artifact. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), intent as the durable source and code as its downstream expression.*
 
 ## Why this inverts the default
 
@@ -49,9 +51,9 @@ Farley's "Modern Software Engineering" argues for feedback loops and reliable de
 
 ## The rollback loop
 
-The generated code looked wrong in ways that would compound. Rolling back took thirty seconds. Improving the spec took twenty minutes. The second generation was correct.
+Generated code looks wrong in ways that will compound. Rolling back costs seconds. Improving the spec costs minutes. Regenerate, and the second attempt is correct.
 
-This is the practical demonstration of the thesis. When the result is wrong, the code is what you discard first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate. The intent accumulates understanding with each iteration. The code is a snapshot.
+This is the practical demonstration of the thesis. When the result is wrong, the code is what you discard first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate. Each iteration sharpens the docs and the spec. The code is a snapshot.
 
 Frederick P. Brooks called it in 1975: plan to throw one away. The first system will be discarded. The only question is whether you planned to. He was describing waterfall-era projects where the throwaway cost months. The agentic era collapses that cost to minutes.
 
@@ -71,7 +73,7 @@ Sized to be readable: the spec fits in a context window with room for the code. 
 
 Scoped to one change: one spec, one coherent change. Not a domain model. Not a system design. Not a requirements document for the next quarter. One proposed change, one set of criteria, one archive on merge.
 
-Those four bars are about behavior. The design behind the change, the why and the alternatives weighed, clears a different bar in a different place: the ADRs and design docs under `docs/`. The spec proves the change does what was decided. It does not record the deciding.
+Those bars are about behavior. The design behind the change, the why, and the alternatives weighed, clears a different bar in a different place: the ADRs and design docs under `docs/`. The spec proves the change does what was decided. It does not record the deciding.
 
 ## The hardest shift
 
@@ -81,4 +83,4 @@ The code runs. The docs do not. This is true. It is also true that the code refl
 
 Stop treating code review as the only primary quality gate. In a spec-driven workflow, spec review should happen before or alongside code review. If the spec is correct, the code is more likely to be correct. If the spec is wrong, code review will still miss the implementation of the wrong thing. Review the intent first, then the diff.
 
-This claim holds up only if the spec is connected to something harder than intent: not a document that describes expected behavior, but executable proof that the implementation delivers it. Not a human scanning the diff, but tests that run in CI and fail when the implementation diverges from the spec. Intent without proof is still a document.
+This claim holds up only if the spec is connected to something harder than intent: not a document that describes expected behavior, but executable proof that the implementation delivers it. That proof is CI tests failing when the implementation diverges from the spec, not a human scanning the diff. Intent without proof is still a document.
