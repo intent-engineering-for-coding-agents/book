@@ -4,7 +4,7 @@
 
 The spec-driven chapters argued that specifications are more important than code. That claim only holds if the spec is connected to something harder than intent: executable proof that the implementation delivers what the spec promised. Without that proof, the spec is a polite hope and the code is whatever the agent decided to ship.
 
-This topic is about how teams close that loop and keep it closed at agentic speed: tests that catch real regressions, evaluation that catches the agent setup regressing, acceptance-criterion IDs that survive the spec being rewritten, checkpoints that catch the lapses humans skip, security that lives in the artifacts the agent reads, PRs reviewable by one reviewer, and, for teams that want it, a way to encode the shape the code should take alongside the behavior it should exhibit.
+This topic is about how teams close that loop and keep it closed at agentic speed. Tests that catch real regressions, evaluation that detects the agent setup regressing, acceptance-criterion IDs that survive the spec being rewritten, checkpoints that surface the lapses humans skip. Then security that lives in the artifacts the agent reads, PRs reviewable by one reviewer, and, for teams that want it, a way to encode the shape the code should take alongside the behavior it should exhibit.
 
 None of these are new individually. What is new is the speed at which they have to operate and the fact that the agent will skip every one of them by default if the structure does not enforce them. Quality at agentic speed is the structure, not the discipline.
 
