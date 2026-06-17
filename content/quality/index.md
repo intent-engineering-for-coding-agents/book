@@ -6,11 +6,11 @@ The spec-driven chapters argued that specifications are more important than code
 
 This topic is about how teams close that loop and keep it closed at agentic speed: tests that catch real regressions, evaluation that catches the agent setup regressing, acceptance-criterion IDs that survive the spec being rewritten, checkpoints that catch the lapses humans skip, security that lives in the artifacts the agent reads, PRs reviewable by one reviewer, and, for teams that want it, a way to encode the shape the code should take alongside the behavior it should exhibit.
 
-None of these are new individually. What is new is the speed at which they have to operate, and the fact that the agent will skip every one of them by default if the structure does not enforce them. Quality at agentic speed is the structure, not the discipline.
+None of these are new individually. What is new is the speed at which they have to operate and the fact that the agent will skip every one of them by default if the structure does not enforce them. Quality at agentic speed is the structure, not the discipline.
 
 ## Chapters
 
-1. [Tests as Proof, Not Ritual](./tests-as-proof): a test is proof only if it would fail when the implementation diverges from intent
+1. [Tests as Proof, Not Ritual](./tests-as-proof): a test is proof only if it fails when the implementation diverges from intent
 2. [Test Strategy and Convention](./test-strategy): the test taxonomy, the convention document the agent reads, scenario complexity tiers, and the AC registry
 3. [Agent Evaluation and Regression](./agent-evaluation): golden tests for the agent setup itself, A/B comparison of instruction-file changes
 4. [AC IDs and Positive/Negative Coverage](./ac-ids-coverage): bracket-format IDs, `Test-type:` field, dual `@Tag` tagging, the AC registry, positive and negative pairs

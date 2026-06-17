@@ -38,19 +38,13 @@ The rate limiter did not fire because the tests sent traffic below the threshold
 
 This is the hardest failure mode to catch because the agent's conclusion is defensible. The code does look redundant. The tests pass without it. The diff is clean. The defense is architectural: changes that remove existing controls need explicit justification in the PR description, not silent removal. "This was no longer needed" is not justification. "This was superseded by the rate limiter in the API gateway deployed last month, confirmed by the load test at 5000 rps" is.
 
-## The agent as attack surface
-
-The agent is also a new entry in the threat model. A prompt-injected document from an external source becomes an instruction the agent follows. A tool definition that does something other than what its description claims, or compromised model weights, sits outside application security entirely. These are not failures in the code the agent writes. They are failures in the agent itself.
-
-Prompt injection is the most immediate case. The agent reading content from an external source, summarizing it, and acting on it has made the external source an instruction channel. The defense is architectural: constrain what the agent does based on instructions in untrusted content, and treat anything the agent reads from outside the repo as data, not as instructions.
-
-*Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, Sep 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a cataloged LLM risk. ThoughtWorks, Technology Radar Vol 34 (April 2026), prompt injection as a cross-cutting concern in agentic coding workflows.*
-
-The honest answer in 2026 is that these new entries are not well-defended. The practices in this chapter cover the application security of code the agent writes. The security of the agent itself is still being figured out, and the books that cover it well do not exist yet.
-
 ## This does not replace the standard tools
 
 The standard security tools still catch most of what they always caught: secrets scanners, dependency checkers, static analysis. This chapter is not a replacement for them. It describes the failure modes that survive because they match the patterns the agent was shown, not because any tool failed.
+
+The agent is also a new entry in the threat model itself: a prompt-injected document becomes an instruction the agent follows, and a tool definition that does something other than what its description claims sits outside application security entirely. That surface is not well-defended in 2026, and it is outside this book's scope. The failure modes above are the ones Intent Engineering can actually do something about, because the defense is the same artifact discipline the rest of the book is built on.
+
+*Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, Sep 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a cataloged LLM risk.*
 
 Be specific about which failures are addressed and which are not. An agent instruction that says "dependencies must not change package name between versions" is enforceable. An agent instruction that says "be careful with security" is not. The rule has to be specific enough that a check verifies it, or the agent will ignore it as background noise.
 

@@ -43,7 +43,7 @@ Before agentic tools, modifying code was expensive. Writing the design down and 
 
 The mantra: code is self-documenting. It is not. Code tells you what it does, but not what was decided against, what assumptions it carries, or why the validation ended up in the controller rather than the service layer. The acceptance criteria do not tell you either. They pin the behavior, not the reasoning behind it. The docs do: the ADR that recorded the decision, the design doc that weighed the options and named the one that won.
 
-Code modification is often less expensive now. A session that regenerates a service takes an afternoon. A session that regenerates a service without the docs and the spec takes the same afternoon and produces something the next developer cannot extend without reverse-engineering the intent. Code that is cheap to regenerate should not be treated as more valuable than the documents that make it reproducible.
+Code modification is often less expensive now. A session that regenerates a service takes an afternoon. A session that regenerates a service without the docs and the spec takes the same afternoon and produces something the next developer cannot extend without reverse-engineering the intent. Code that is inexpensive to regenerate should not be treated as more valuable than the documents that make it reproducible.
 
 Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. Intent is fixed in the docs and proven by the spec. Without them, every deployment carries implicit assumptions that were never verified. With them, the path from intent to production is auditable.
 
