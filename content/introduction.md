@@ -49,7 +49,7 @@ OpenSpec, Spec-Kit, and the rest hand you that aim, then stop. This book walks d
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
 
 What you will not find here: a vendor comparison matrix. The agent class is named, not ranked, because those matrices age in months, sometimes faster. Cost economics for seat-licensed tooling gets one paragraph in the appendix, not a chapter.
 

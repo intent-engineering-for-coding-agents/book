@@ -34,11 +34,13 @@ Traceability disappears third. A code review asks "does this implementation matc
 
 Spec-before-code sounds like waterfall. It is not.
 
-Waterfall separates requirements from implementation across phases and teams with a handoff boundary. A product manager writes requirements. A developer implements them months later, with formal sign-off at each stage. The developer has no input on requirements. The requirements do not change during implementation. This is the model agile replaced.
+What makes a process waterfall is batch size and the handoff boundary, not the fact that intent comes first. Waterfall settles all requirements for the whole system up front, then hands them across a boundary: a product manager writes the requirements, a developer implements them months later with formal sign-off at each stage, the developer has no input, and the requirements do not change during implementation. This is the model agile replaced.
 
-A spec here is a change proposal scoped to one PR, written by the same person who will implement it. Writing it takes an hour, not a month. It gets critiqued before implementation, but by one or two colleagues rather than a steering committee. A pre-flight check, not a contract.
+A spec here is the opposite end of both axes. It is scoped to one PR and written by the same person who will implement it. Writing it takes an hour, not a month. It gets critiqued before implementation, but by one or two colleagues rather than a steering committee.
 
-A pre-flight check catches the obvious failure before takeoff. It does not stop you diverting mid-flight when conditions change. A contract does. Write the spec to catch problems, not to trap you in them.
+Written that way, spec-before-code is the agile loop run one change at a time. The cycle is short, the implementer owns it, and it ends in working software: the spec is done when its tests pass, not when its prose is written. "Working software over comprehensive documentation" is the spec's own rule, which is why it stays small, ships, and gets archived after merge. A pre-flight check, not a contract: it catches the obvious failure before takeoff and does not stop you diverting mid-flight when conditions change. A contract does. Write the spec to catch problems, not to trap you in them.
+
+The version that does slide back toward waterfall is the oversized spec that tries to settle the whole system before any code exists. That is a batch-size failure, not an intent-first one, and keeping specs small is what prevents it.
 
 ## Not every change earns a spec
 
