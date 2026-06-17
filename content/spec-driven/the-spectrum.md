@@ -77,7 +77,7 @@ The same dial governs how you stage the change, not only which framework you rea
 
 More formality means more audit trail, better traceability, less improvisation surface. It also means more upfront time, more overhead per change, and more places for the process to become theater if nobody tends it.
 
-Teams underestimate the theater risk. A heavy framework adopted by a small team produces specs written to satisfy the framework rather than guide the implementation: correct structure, shallow content, twenty minutes from a developer who wants to get to the code. Shallow specs with correct structure are worse than short specs with precise content. They look complete and are not.
+Teams underestimate the theater risk. A heavy framework adopted by a small team produces specs written to satisfy the framework rather than guide the implementation: correct structure, shallow content, twenty minutes from a developer who wants to get to the code. They look complete and are not.
 
 The right level of formality is the one your team will maintain under deadline pressure. Start lower than you think you need. Add ceremony when you feel the pain of not having it.
 
