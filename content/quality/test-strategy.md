@@ -2,11 +2,11 @@
 
 Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving nothing about the system. The unit is green, but the integration breaks in staging because the real ORM emits slightly different SQL than the mock expected.
 
-Not a wrong call so much as an unguided one. Nobody told the agent which test type proves which kind of behavior, so it defaulted, and the convention the team intended stayed in somebody's head.
+A default, not a mistake. Nobody told the agent which test type proves which kind of behavior, so it defaulted, and the convention the team intended stayed in somebody's head.
 
 ## The test taxonomy
 
-Different test types prove different things at different boundaries. A unit test proves one component in isolation. An integration test proves two or more components interacting. Neither proves what the other proves. Most non-trivial systems need more than one kind of test.
+Different test types prove different things at different boundaries. No row in the table below substitutes for another.
 
 A working taxonomy, representative rather than prescriptive. This is the book's synthesis, built to make test intent legible to humans and agents:
 
@@ -24,7 +24,7 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 | Performance | Latency or throughput stays within a defined bound | Load profile |
 | Manual | Intent is specified in the spec; automated proof not yet written, or cannot be | Any level |
 
-Not every project uses all types. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests; a pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
+Most projects settle on a subset: unit, integration, and E2E as the baseline, with other types added where the project warrants. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests. A pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows above are this book's synthesis.*
 
@@ -46,46 +46,37 @@ The convention document defines the types the project uses, the framework that c
 | Acceptance    | JUnit + Kotest     | src/test/kotlin/**/*AcceptanceTest.kt      | pre-merge   |
 | E2E           | JUnit + Kotest     | src/test/kotlin/**/*E2eTest.kt             | post-deploy |
 
-## Excluded test types
-
-| Type              | Reason                                      |
-|-------------------|---------------------------------------------|
-| Visual regression | Backend service; no rendered UI             |
-| Performance       | No SLA defined; out of current scope        |
-| Smoke             | No separate deployment pipeline             |
 ```
 
-The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams use pre-commit/pre-merge/post-deploy, others use L1/L2/L3. Some test types have no level: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
+The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams might use pre-commit/pre-merge/post-deploy, others might use L1/L2/L3 (for layers). Some test types have no layer: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
 
-The exclusions section is equally important. Without it, the agent has no way to distinguish "not applicable" from "nobody thought of it". The agent will suggest visual regression tests for a backend service, or performance tests for a project with no SLA, because the taxonomy is silent on both. The exclusion is a decision; it deserves a rationale, for the same reason an ADR documents rejected alternatives.
+The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it, the agent improvises at every decision point: framework, location, level. The convention removes that guesswork from the first session.
 
-The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it the agent improvises, and with it, the agent is more likely to generate a test at the right level in the right file with the right framework from the first session.
-
-The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent; the convention document evolves. Together they give the agent both the current state and the reasoning behind it.
+The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent. The convention document evolves. Together they give the agent both the current state and the reasoning behind it.
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (2011), ADRs as durable records of architectural rationale. The convention-document shape above is this book's workflow rule for making test-layer decisions readable by agents.*
 
 ## Scenario complexity and minimum test count
 
-Not every scenario requires the same number of tests. In this book's convention, the minimum follows from the scenario's complexity: the number of conditions, branches, and error paths it contains.
+Not every AC is the same shape. The minimum test count follows from the AC's own complexity: the number of conditions it states, not the paths the implementation introduces.
 
-| Scenario complexity | Minimum tests |
+| AC complexity | Minimum tests |
 |---|---|
 | Simple (single condition) | 1 positive + 1 negative |
-| Medium (2–3 conditions or branching) | 2–3 positive + 2 negative |
-| Complex (multiple paths, error handling) | Several positive + several negative |
+| Medium (2–3 conditions) | 2–3 positive + 2 negative |
+| Complex (multiple conditions) | Several positive + several negative |
 
-A positive test proves the THEN holds when the WHEN is satisfied. A negative test proves the THEN does not fire when the WHEN is not satisfied: no false positives, no silent accepts. Both are required at every complexity tier; only the count scales.
+The underlying principle is equivalence partitioning: one test per valid partition, one per invalid. The tier mapping is this book's application of that to AC complexity. The ISTQB Foundation Level Syllabus documents EP and BVA formally; the complexity-to-count table is not in it. What makes a test genuine proof of its AC — the positive/negative split, boundary values, mutation testing — is the [tests-as-proof chapter](./tests-as-proof)'s subject.
 
-This complexity-to-test-count table is the book's convention. It is not an OpenSpec field and not a common industry standard; it is the minimum shape this book uses so agents do not collapse every scenario to one happy-path test.
+This table belongs in the project's `test/scenario-template.md` alongside the scenario format. The agent reads the template when writing scenarios and the strategy when implementing tests. The two documents together define the surface the test suite has to cover.
 
-This table belongs in the project's `test/scenario-template.md` alongside the scenario format. When the agent writes scenarios, it reads the template, and when it implements tests, it reads the strategy. The two documents together define the surface the test suite has to cover.
-
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. The complexity tiers and minimum counts are this book's convention, not an external standard.*
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. ISTQB Foundation Level Syllabus, equivalence partitioning and boundary value analysis as the basis for minimum partition coverage. The complexity-to-count tier mapping is this book's synthesis, not a published standard.*
 
 ## The AC registry
 
-The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a short mention here. The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are the next chapter's subject: [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
+The convention needs one more file: a registry at `test/ac-registry.md` that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. It is part of the convention surface the agent reads before writing tests, which is why it earns a short mention here.
+
+The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are the next chapter's subject: [AC IDs and Positive/Negative Coverage](./ac-ids-coverage).
 
 *Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), the AC registry convention demonstrated by the companion repo. This section is a preview; the next chapter owns the mechanics.*
 
@@ -95,10 +86,6 @@ The `iec` companion repo is planned to ship the full convention: `docs/architect
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation.
 
+The strategy document governs what the agent tests, not how the agent is configured. The `AGENTS.md` and instruction files are code too. They regress without anyone touching the application. That is the next chapter.
+
 *Sources: `iec` companion repo (github.com/intent-engineering-for-coding-agents/cli), planned test-strategy, scenario-template, AC registry, and double-tagging demo not yet shipped.*
-
-## When the strategy needs to change
-
-A test strategy that never changes is either perfect or, far more often, stale. The convention document is living: it gains a row when the team adopts a framework or needs a new test type, and it gets corrected when the original call was wrong, with the ADR holding the rationale. The drift signal is concrete. If the agent generates tests that miss current practice the strategy is stale, and if the team writes tests the strategy does not cover it is incomplete.
-
-A living strategy keeps the test suite honest as the project changes. The setup that writes the tests is outside its reach. The `AGENTS.md` and instruction files are code too, and they regress without anyone touching the application. That is the next chapter.
