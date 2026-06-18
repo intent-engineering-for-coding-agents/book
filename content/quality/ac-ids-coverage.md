@@ -4,7 +4,7 @@ A spec and its tests are supposed to be the same promise written twice. Consider
 
 A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability, and drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 
-## What an Acceptance Criterion ID (AC ID) is
+## What an Acceptance Criterion ID (AC ID) is?
 
 An AC ID is a stable, scenario-level identifier in a bracketed prefix and zero-padded number format, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
@@ -18,7 +18,7 @@ This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is
 
 ## The recommended field: `Test-type:`
 
-Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in a PR. Every scenario where it is omitted forces the agent to infer the test layer from the scenario content alone, which works most of the time and fails at the edges. Traceability, the link from spec to test, runs the other direction: the AC ID travels with the test, not with the spec.
+Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in a PR. Every scenario where it is omitted forces the agent to infer the test layer from the scenario content alone, which works most of the time and fails at the edges. Traceability, the link from spec to test, runs in the other direction: the AC ID travels with the test, not with the spec.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
@@ -57,7 +57,7 @@ Two tags, two independent uses. The traceability scanner greps for `SC-001` to v
 
 Frameworks without a native tag mechanism fall back to a comment on the test method: `// AC: SC-001 | integration`. The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag; it is better than nothing.
 
-*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), dual tagging by AC ID and test type. Framework-specific syntax above is illustrative implementation guidance.*
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), dual tagging by AC ID and test type. The framework-specific syntax above is illustrative implementation guidance.*
 
 ## The AC registry
 
@@ -123,7 +123,7 @@ Test-type: integration
 
 Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not prove the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test, whether it lives in `test_users.py` or somewhere else entirely.
 
-What is unusual here, by general industry practice, is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
+What is unusual here, by general industry practice is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
 
 *Sources: Cucumber/Gherkin scenario structure, the `Given/When/Then` acceptance-scenario form. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), strict AC ID and `Test-type:` pairing as the companion-repo convention.*
 
