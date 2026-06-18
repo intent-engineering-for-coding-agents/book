@@ -1,71 +1,105 @@
 # Agent Evaluation and Regression
 
-The agent setup is code too, and it regresses without anyone touching a line of the application. Someone adds one bullet to `AGENTS.md`: prefer composition over inheritance. It looks harmless. The next week the agent starts flattening service classes into helper functions, even where the inheritance carried real invariants. Each PR looks plausible on its own, so each passes review, and the shape of the codebase shifts in a direction nobody asked for. The line gets removed eventually, but nobody says when the drift started.
+Your agent instructions, skills, and hooks are code. Nobody tests them. They regress anyway. Someone adds one line to the agent instructions: prefer functions over classes for utility code. It reads as a harmless style note. Over the next week the agent starts rewriting service classes into standalone functions, even where the class carried real invariants, and it drops the validation that used to live in the service layer. Each PR looks plausible on its own, so each passes review. The shape of the codebase shifts in a direction nobody asked for. The line comes out eventually, but no one ever pins down which day the drift began.
 
-Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the missing one in most teams.
+Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the one most teams are missing.
 
 ## Two different feedback loops
 
-The tests in the previous chapter close the loop between spec and implementation. A failing test says "the code does not match the intent". That works because both sides of the comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
+The tests in the previous chapter close the loop between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
-The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect is visible only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to `AGENTS.md` that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
+The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect shows up only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to any of them that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 
-This is the open loop. The next sections describe how to close it.
+This is the open loop. The rest of the chapter is about how to close it.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as the missing piece across SDD tooling. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs. Applying the loop to instruction files specifically is this book's synthesis.*
 
 ## Golden tests for the agent
 
-A golden test for the agent is a fixed task with a known good output. The task is small enough to run in one session: a specific spec, a specific change folder, a specific repo state. The expected output is the code the agent should produce, or a structural property of that code a check verifies. Run the task twice, against two configurations of `AGENTS.md` or the skill library, and compare.
+A golden test for the agent is a fixed task with a known good output. The task is small enough to run in one session: a specific repo state, a specific spec, a specific change to make. The expected output is not the exact code. The agent rarely produces the same file twice, and a test that demands byte-for-byte equality breaks on the first rewording. What the golden test pins down is a set of structural properties a check verifies.
 
-The output rarely matches byte for byte. A useful golden test does not demand byte-for-byte equality. It checks structural properties: did the agent put the validation in the service layer, write tests against the acceptance criterion IDs the spec named, and update the index after creating a new file under `docs/`? Each of those is a yes-or-no question with an unambiguous answer.
+Take one task from the suite the companion repo ships. The instruction is plain:
 
-A small suite of these tasks is the eval set. Five tasks covering the workflows the team relies on is enough to start, and each task has the same shape: starting repo state, spec to implement, properties the output must satisfy. Re-run the suite when the agent configuration changes. The score is the count of properties satisfied. A score moving down on a configuration change is a regression that has nothing to do with the code under test. The suite shape and the five-task starting point are this book's convention, not a settled industry standard.
+```text
+Ask the agent to implement the create_user endpoint for the user
+service, following the instructions in AGENTS.md. Verify that the
+agent used a class-based design and placed validation in the
+service layer.
+```
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as a gap in SDD tooling. The fixed-task shape and five-task starting point are this book's convention.*
+The check that grades it does not read the code for style. It asks yes-or-no questions against the files the agent wrote:
 
-## A/B comparison of two AGENTS.md versions
+```yaml
+task: "Service uses class-based design with validation in the service layer"
+checks:
+  - id: service-file-exists
+    type: file_exists
+    path: src/user_service.py
+  - id: service-uses-class
+    type: file_contains
+    file: src/user_service.py
+    pattern: "^class "
+  - id: validation-in-service
+    type: file_contains
+    file: src/user_service.py
+    pattern: "_validate"
+```
 
-The simplest evaluation is comparative: take the current `AGENTS.md`, run the eval suite, record the score, apply the proposed change, run the suite again. The delta is the evidence.
+Three properties, three unambiguous answers: did the file exist, did the agent define a class, did it put validation behind a `_validate` method. Run the same task against two versions of the agent instructions, and the answers move. That movement is the signal.
 
-What this catches is the change that sounds reasonable and is not. "Add a section explaining our convention for naming" looks like an improvement. If the eval suite shows the agent produces less reliable code on three of five tasks, the change is regressing the agent's attention budget. The context file got longer; the parts that mattered got crowded out. Without the comparison, that tradeoff is invisible. With it, the choice is concrete: which file produced better outcomes?
+A handful of these tasks is the eval set, each covering a workflow the team relies on. Start with a set small enough to re-run by hand. Every task has the same shape: a starting repo state, a spec to implement, the properties the output must satisfy.
 
-This is the same discipline that A/B testing applies to product changes, scaled down to the size that fits a single repo. The point is not statistical rigor. The point is that the change has consequences you cannot otherwise observe, and a five-task suite catches more of them than intuition does.
+The score is the count of properties satisfied. A score that drops on a configuration change is a regression with nothing to do with the code under test. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as the piece every framework is missing, and none of them prescribe a format.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as a feedback loop for agent behavior. The repo-sized A/B workflow is this book's adaptation, not a statistical testing claim.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as a gap in SDD tooling. The fixed-task shape and the structural-check format are this book's convention, shown in the `iec` companion repo.*
+
+## A/B comparison of two instruction-file versions
+
+The simplest evaluation is comparative. Run the suite against the current agent instructions, record the score, apply the proposed change, run it again. The delta is the evidence.
+
+In the companion repo's example, the baseline configuration scores nine of nine. Add the one line about preferring functions to classes, regenerate the same three tasks, and the score drops to five of nine. The service task loses its class and its `_validate` method. The test task loses the `@pytest.mark.ac` markers that tied tests back to acceptance criteria. None of that read as broken in review. The code ran. The tests passed. The structural properties the team cared about quietly went missing.
+
+This is the change that sounds reasonable and is not. A style note about utility functions read as global guidance, and the agent applied it to service classes and test markers it was never meant to touch. Without the comparison, the tradeoff stays invisible. With it the choice is concrete: which version of the agent instructions produced the score the team wants?
+
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as a feedback loop for agent behavior. The repo-sized A/B workflow and the scores cited are this book's `iec` example, not a statistical-testing claim.*
 
 ## Regression when a skill or hook changes
 
-Skills and hooks have the same problem. A skill that used to update the index reliably starts skipping the README files because a step was rewritten. A hook that used to catch missing tests starts passing because the pattern was tightened too far. Neither change shows up in the diff as obviously broken. The skill still runs, the hook still fires, and the outcomes drift.
+Skills and hooks have the same failure mode. A skill that used to update the index starts skipping the README files because one step was rewritten. A hook that used to catch missing tests starts passing because its pattern was tightened too far. Neither change looks broken in the diff. The skill still runs, the hook still fires, the outcomes drift.
 
-The defense is the same: a fixed task that exercises the skill or hook, run before and after the change. The skill that regenerates the index runs against a known directory state and is checked against the expected index output. The hook that catches missing tests runs against a known PR diff that is supposed to fail and against another that is supposed to pass. Same kind of golden test, scoped to a single component.
+The defense is the same: a fixed task that exercises the skill or hook, run before and after the change. The index skill runs against a known directory state and is checked against the index it should produce. The missing-tests hook runs against one PR diff that should fail and another that should pass. Same golden test, scoped to a single component.
 
-Most teams will not maintain this for every skill. The economics work out only for the ones that fail expensively. The skill that touches the documentation index is worth a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file is not, because its failure mode is the agent immediately seeing the wrong output and asking the user.
+Most teams will not maintain this for every skill. The economics only work for the ones that fail expensively. The skill that touches the documentation index earns a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file does not, because its failure mode is the agent showing the wrong output immediately and the user catching it.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as a discipline for agentic development. The skill-and-hook examples are this book's workflow guidance.*
+*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as a discipline for agentic development. The skill-and-hook golden-test examples are this book's workflow guidance.*
 
 ## When to invest
 
-Not every team needs this. A solo developer working with an agent on one project has the option of paying attention. The eval suite for them is in their head: they remember what the agent used to do and they notice the day it stops doing it. The investment in formalizing the eval is wasted on this scale.
+Not every team needs this. A solo developer on one project has the option of paying attention. Their eval suite lives in their head: they remember what the agent used to do, and they notice the day it stops. Formalizing the eval is wasted effort at that scale.
 
-The investment becomes worthwhile when more than one developer shares the same `AGENTS.md`, when more than one agent runs against the same codebase, when the rate of change in the instruction files exceeds the rate at which any one person reviews the resulting code. At that point the eval suite is the only thing that catches a quiet regression before it has shaped a week of PRs.
+The investment starts to pay when more than one developer shares the same agent instructions, when more than one agent runs against the same codebase, when the instruction files change faster than any one person reviews the resulting code. At that point the eval suite is the only thing that catches a quiet regression before it has shaped a week of PRs.
 
-The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that at agentic speeds manual verification is not enough. The evidence base for that claim is the closed loop: tests close it for the code, and the eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
+The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The closed loop answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control in agentic development. Anthropic, "Building effective agents" (Dec 2024), evaluation as an operating discipline for agent systems.*
+## Calibration is the hard part
 
-## Eval suites are still early practice
+Eval suites for agents are early practice. There is no widely shared tooling for this in 2026. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as the missing piece, and neither prescribes a framework. What this chapter describes is the minimum viable shape: a fixed task, a structural check, a comparison.
 
-Eval suites for agents are still early practice. There is no widely-shared tooling for this in 2026. Hightower's tool-comparison work and Anthropic's effective-agents guidance both point at evaluation as the missing piece; neither prescribes a complete framework. What is described above is the minimum viable shape: a fixed task, a structural check, a comparison.
-
-The hardest part is keeping the suite calibrated. A task the agent reliably nails today becomes uninformative tomorrow when the underlying model improves, while a task the agent reliably fails today tests a property the agent cannot satisfy with any configuration. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
+Keeping the suite calibrated is harder than building it. A task the agent nails reliably today goes uninformative tomorrow when the model improves under it. A task the agent fails reliably tests a property no configuration will satisfy, so it reports noise on every run. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
 *Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation gaps across current SDD tools. Anthropic, "Building effective agents" (Dec 2024), evaluation as guidance rather than a complete framework.*
 
-## Tooling note
+## Tooling
 
-The `iec` companion repo is planned to ship an `eval-demo` directory with a runnable A/B scenario: two target states representing what the same agent produced under two versions of `AGENTS.md`, and an eval suite that checks structural properties without knowing which version ran. The pattern is the point; the tool is an example. (Check the [companion repo](https://github.com/intent-engineering-for-coding-agents/cli) for current status.)
+If you want to see this run, the `iec` companion repo ships it under `examples/eval-demo`. The directory holds two snapshots of the same project: `baseline`, generated with the team's original `AGENTS.md`, and `after-drift`, generated after the one-line change. The `eval/` directory holds three tasks with their `checks.yaml` files. The same suite grades both snapshots without knowing which `AGENTS.md` produced them:
 
-*Sources: `iec` companion repo (github.com/intent-engineering-for-coding-agents/cli), planned `eval-demo` not yet shipped.*
+```bash
+iec eval --path baseline --eval-dir eval      # Score: 9/9 (100%)
+iec eval --path after-drift --eval-dir eval   # Score: 5/9 (55%)
+```
 
-The eval suite tells you when the agent setup regresses. What it does not tell you is whether the link between the spec and the proof has held. That is a different kind of rot, and it needs its own check.
+Those two scores are committed snapshots from one run of this example, not a benchmark to reproduce. They show the shape of the result. The pattern is the point. The tool is one way to run it. (See the [companion repo](https://github.com/intent-engineering-for-coding-agents/cli) for the current command surface.)
+
+*Sources: `iec` companion repo (github.com/intent-engineering-for-coding-agents/cli), `examples/eval-demo` and the `iec eval` command.*
+
+The eval suite tells you when the agent setup regresses. It says nothing about whether the link between the spec and the proof has held: whether the test that still passes is still the test that proves the acceptance criterion the spec named. That is a different kind of rot, and it needs its own check.
