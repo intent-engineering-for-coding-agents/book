@@ -10,13 +10,13 @@ The tests in the previous chapter close the loop between spec and implementation
 
 The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect shows up only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to any of them that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 
-This is the open loop. The rest of the chapter is about how to close it.
+This is the open loop. Nothing in the toolchain closes it for you.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs. Applying the loop to instruction files specifically is this book's synthesis.*
 
 ## Golden tests for the agent
 
-A golden test for the agent is a fixed task with a known good output. The task is small enough to run in one session: a specific repo state, a specific spec, a specific change to make. The expected output is not the exact code. The agent rarely produces the same file twice, and a test that demands byte-for-byte equality breaks on the first rewording. What the golden test pins down is a set of structural properties a check verifies.
+A golden test for the agent is a fixed task with a known good output. The task is small enough to run in one session: a specific repo state, a specific spec, a specific change to make. It does not check the exact code the agent writes. The agent rarely produces the same file twice, and a test demanding byte-for-byte equality breaks on the first rewording. A golden test pins down a set of structural properties instead, and a check verifies them.
 
 Take one task from the suite the companion repo ships. The instruction is plain:
 
@@ -47,9 +47,9 @@ checks:
 
 Three properties, three unambiguous answers: did the file exist, did the agent define a class, did it put validation behind a `_validate` method. Run the same task against two versions of the agent instructions, and the answers move. That movement is the signal.
 
-A handful of these tasks is the eval set, each covering a workflow the team relies on. Start with a set small enough to re-run by hand. Every task has the same shape: a starting repo state, a spec to implement, the properties the output must satisfy.
+A handful of these tasks is the eval set, each covering a workflow the team relies on. Start with a set small enough to re-run by hand. Every task follows the pattern above: start from a fixed repo state, implement the spec, then grade the output against the properties it must satisfy.
 
-The score is the count of properties satisfied. A score that drops on a configuration change is a regression with nothing to do with the code under test. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as the piece every framework is missing, and none of them prescribe a format.
+The score is the count of properties satisfied. A score that drops on a configuration change is a regression with nothing to do with the code under test. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and none of them prescribe a format.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as a gap in SDD tooling. The fixed-task shape and the structural-check format are this book's convention, shown in the `iec` companion repo.*
 
@@ -83,7 +83,7 @@ The book's central claim, repeated through Foundation and Agent Instructions and
 
 ## Calibration is the hard part
 
-Eval suites for agents are early practice. There is no widely shared tooling for this in 2026. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as the missing piece, and neither prescribes a framework. What this chapter describes is the minimum viable shape: a fixed task, a structural check, a comparison.
+Eval suites for agents are early practice. There is no widely shared tooling for this in 2026. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as an unfilled gap, and neither prescribes a framework. What this chapter describes is the minimum viable shape: a fixed task, a structural check, a comparison.
 
 Keeping the suite calibrated is harder than building it. A task the agent nails reliably today goes uninformative tomorrow when the model improves under it. A task the agent fails reliably tests a property no configuration will satisfy, so it reports noise on every run. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
