@@ -1,24 +1,34 @@
 # Tests as Proof, Not Ritual
 
-Green tests feel like done. They are not the same thing. A suite runs fully green over code that is quietly broken, because the tests cover the paths the prose happened to mention and nothing else.
+Green tests feel like proof. They are not proof. A suite runs fully green over code that is quietly broken because the tests cover the paths the prose happened to mention and nothing else.
 
-Imagine a spec for a file upload: validate the type, check the size limit, write the file to storage, record the metadata. The agent implements all four and writes a test for each. Every test passes. But none interrupts the storage write partway through, so nothing covers the case where the metadata row is saved and the file never lands. That path is in the code, with no proof. In production, the first failed write sits undetected until a user complains about a file the database insists exists.
+Consider a spec with one acceptance criterion: files must not exceed 10 MB. The agent writes a test that uploads a 5 MB file and asserts the response is 200. The test passes. It would still pass if the size check were deleted entirely. It exercises the path that works; it does not prove the limit holds. The AC is in the spec. The proof is not in the suite.
+
+This is not a *code coverage* problem, which measures whether a test touches a line. AC coverage measures whether a test would fail if an acceptance criterion were violated. A suite can reach 100% line coverage while proving none of its ACs. The two metrics answer different questions, and only one of them tells you whether the implementation matches the spec.
+
+The same AC can be implemented in many different ways: a guard clause, an early return, a validator extracted into its own class. Each variation has different code paths, so tests written to cover one implementation prove nothing about another. If the agent regenerates the code or takes a different approach, coverage-based tests can stay green while the AC goes unverified. Tests anchored to the AC survive that churn. Tests anchored to the implementation do not. Code and tests that do not contribute to proving an acceptance criterion are not wrong, but they are not what this chapter is about.
 
 The tests passed. The intent was not proven. Those are different sentences.
 
+Proof is not perfectionism. The minimum bar is automated evidence that a coding agent's output meets the spec. A spec can be incomplete, a scenario can be missing, a test can assert too little. None of that makes proof impossible. The bar is imperfect, not optional. Below it, you are shipping on faith that the agent got it right. Once AC coverage is in place, quality can be raised further: code review, inspection, and deeper testing disciplines all have room above it. The ACs have to be covered first.
+
 ## The bar a test has to clear
 
-A test is proof when it would fail if the implementation diverged from the spec. Otherwise it is decoration. The distinction is operational, not philosophical. Open the spec, pick a scenario, modify the implementation to violate it, run the tests. If everything stays green, the tests do not prove that scenario. They prove that something runs.
+A test is proof when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. The distinction is operational, not philosophical. Open the spec, pick a scenario, modify the implementation to violate it, run the tests. If everything stays green, the tests do not prove that scenario. They prove that something runs.
 
 Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation survived, and whatever the surviving mutation touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) names mutation testing as the feedback control the agentic era needs: agents will hit a coverage number; they cannot fake a mutation kill rate without writing genuine assertions.
 
 The shift is small in code and large in intent. Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?"
 
-Positive tests are the floor, not the ceiling. A test that exercises the happy path proves the intended behavior when everything cooperates. It proves nothing about what happens when inputs are invalid, when a dependency returns an error, when the resource does not exist, or when the function is called in the wrong state. The upload example above is the canonical case: four tests, all positive-path, while the failed-write path existed in the code with zero proof.
+## Paths, not just lines
 
-Coverage follows code structure, and code structure has more dimensions than a line counter sees. Every conditional branch, distinct return type, and exception a function raises is a path, and each path needs at least one test. A function with no branching needs two: the intended behavior and the condition that falls outside it. A function with three `if` branches and two exception classes needs at least six. Agentic speed does not lower this minimum, but makes it faster to reach the wrong answer.
+The starting point is the AC, not the code. For each acceptance criterion, ask what scenarios are needed to prove it fully: the positive path where it holds, the negative paths where it is violated, and any boundary values the criterion implies. The 10 MB limit needs at least two tests: one proving a valid file passes, one proving an oversized file is rejected. Without the second, the limit is not proven, regardless of how many lines the first test touches. A more precise AC might add a third: a file at exactly 10 MB, to pin the boundary.
 
-The practical progression for a new function: happy path first, then the primary error path, then one test per branch, then one test per exception class, then boundary values at the edges of valid input. That order matches where defects cluster in practice. It is not the order most agents default to, which is happy path followed by whatever scenarios the prose most obviously suggested. The prose suggested the normal case. The defects live in the paths the prose did not think to name.
+The prose of a spec tends to describe the positive path most clearly. The negative paths are often implied rather than stated, and boundaries are easy to overlook. An agent generating its own test list reads the same prose and stops at the same place. The practical progression for each AC: positive path first, then each way the criterion can be violated, then boundary values where the criterion has a threshold. That order follows where the proof is thinnest, not where the code is most complex.
+
+AC coverage does not replace code coverage. Tests that prove acceptance criteria cover the intent, not every path the implementation introduces. A branch added for an edge case the spec did not anticipate, an exception handler, a defensive check: none are tied to an AC, but all of them can break. Code coverage catches what proof does not reach. Both are required. Which kind of test closes which gap is the question the next section takes on.
+
+## Choosing the right test type
 
 This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation; it proves nothing about the HTTP layer above it. An integration test proves a module pipeline; it proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
 
@@ -28,9 +38,13 @@ This applies within a test type. Across test types, a different question applies
 
 The team had a definition of done that read: "implementation complete, tests passing, PR merged". That phrasing survived from the pre-agent era and stopped working the day the agent shipped its first feature in an afternoon. Implementation complete is now a low bar. Tests passing only means the tests that exist pass.
 
-The working definition in this book: a change is done when the approved intent has executable proof that covers the paths the code actually contains, not just the path the spec described first. Approved intent is the spec, reviewed and merged. Executable proof is a test that fails when the intent is not met, on the happy path and on every branch, error, and exception path the implementation introduces. Without the spec, there is nothing to approve. Without proof across the full structure, the approval is partial. Both have to be there, and they have to be connected to each other through an identifier that does not break when the prose moves.
+The working definition in this book:
 
-Farley's Modern Software Engineering makes the same argument from a different angle. Engineering, as a discipline, is the application of feedback loops to produce reliable outcomes. The spec is the input to the loop. The test is what closes it. Without the closing step, you have a process that produces artifacts, not engineering. The term for doing this intentionally is vibe coding. The term for doing it by accident is most agentic workflows.
+> A change is done when the approved intent (specs) has proof and the implementation (code) has coverage.
+
+Approved intent is the spec, reviewed and merged. Proof is tests across every AC scenario: each one fails when its criterion is violated. Coverage is tests across the paths the implementation introduces. Both have to be there, and proof has to be connected to the spec through an identifier that does not break when the prose moves.
+
+Farley's Modern Software Engineering frames this as a feedback loop: the spec opens it, the test closes it. Without the closing step, the process produces artifacts, not engineering. Vibe coding skips the test on purpose. Most agentic workflows skip it by default.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), engineering as feedback loops that prove intent. The done-means-proven definition is this book's synthesis.*
 
@@ -38,9 +52,11 @@ Farley's Modern Software Engineering makes the same argument from a different an
 
 A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully, the change is small, and the reviewer remembers the discussion. Memory carries some of the load.
 
-An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scanning. The reviewer who scanned the diff and approved it cannot, a week later, reconstruct what they were assuring. Without automated proof, the only thing standing between intent and production is whatever attention the human paid in the moment. That attention is exactly what the agent's speed is consuming.
+An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scanning. The reviewer who scanned the diff and approved it cannot, a week later, reconstruct what they were assuring. Without automated proof, the only thing standing between intent and production is whatever attention the human paid at the moment. That attention is exactly what the agent's speed is consuming.
 
 Automated proof is the only verification that survives the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once; the cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
+
+A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.
 
 This is not a call for more tests. It is a call for tests that do the job. A suite that doubled in size last quarter and caught nothing new is a suite that grew without proving more. The number that matters is how many real defects the suite catches before they ship, and whether that number tracks the rate of change. If it does not, the tests are ritual.
 
@@ -48,26 +64,26 @@ This is not a call for more tests. It is a call for tests that do the job. A sui
 
 Tests prove intent only if you can tell which test proves which part of the intent. A test named `test_retry_logic` covering five scenarios proves nothing in particular. A failure in it says "something about retries broke" and leaves the reader to read the test body to find out what.
 
-The fix is the acceptance criterion identifier. Each spec scenario gets a stable ID, and each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test that is not linked to a spec scenario proves general behavior, not specified intent.
+The fix is the acceptance criterion identifier (AC ID). Each spec scenario gets a stable and unique ID, and each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test not linked to a spec scenario proves general behavior, not specified intent.
 
-A test scoped to one scenario and linked to its AC ID is also the most reliable worked example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface drifts silently, while a test that fails in CI when the code diverges does not. It is executable documentation, and it is free. You get it automatically when you write the test right.
+A test scoped to one scenario and linked to its AC ID is also the most reliable working example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface drifts silently, while a test that fails in CI when the code diverges does not. It is executable documentation, and it is free. You get it automatically when you write the test right.
 
 ## Reviewing the spec before the code
 
 Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
 
-If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs; the point here is that no amount of test rigor substitutes for it.
+If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs; the point here is that no amount of test rigor substitutes for a review of the specs.
 
-The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec. The spec stays readable and the reasoning stays findable.
+The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec.
 
 ## Ritual tests earn their place; proof has a ceiling
 
-Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent; they are proof of plumbing. They earn their place by being cheap and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
+Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent; they are proof of plumbing. They earn their place by being inexpensive and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
 
-The harder caveat is that proof has a ceiling. A test proves what it asserts, not what the spec did not think to specify. The mutation that survives the suite reveals that the suite has a hole, while the scenario that was not considered reveals that the spec has a hole. Both holes are real. The first is fixable with more assertions, the second only by improving the spec. Proof closes the loop between spec and implementation. It does not close the loop between intent and reality.
+The harder caveat is that a test proves what it asserts, not what the spec omitted. If the spec defines the 10 MB limit but says nothing about zero-byte files, the suite runs green while a zero-byte upload hits an unhandled path. Mutation testing catches the first kind of gap: an assertion the suite should make but does not. The second kind, a scenario the spec never considered, does not show up in any test run. Someone has to read the spec and ask what was left out.
 
 ## Tooling note
 
 If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check, and a test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
 
-A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised, and the closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior, and writing that down before the agent picks a test type on its own.
+A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised, and the closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior and writing that down before the agent picks a test type on its own.
