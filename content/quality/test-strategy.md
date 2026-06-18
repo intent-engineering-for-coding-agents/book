@@ -24,13 +24,13 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 | Performance | Latency or throughput stays within a defined bound | Load profile |
 | Manual | Intent is specified in the spec; automated proof not yet written, or cannot be | Any level |
 
-Most projects settle on a subset: unit, integration, and E2E as the baseline, with other types added where the project warrants. A CLI tool may have no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests. A pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
+Most projects settle on a subset: unit, integration, and E2E as the baseline, with other types added where the project warrants. A CLI tool needs no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests. A pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows above are this book's synthesis.*
 
 ## The convention document
 
-The test taxonomy is only useful if it is written down where the agent can read it.
+The test taxonomy is only useful if it is written down where the agent reads it.
 
 The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format is as simple as a table:
 
@@ -52,7 +52,7 @@ The Level column is the second axis. Type answers what the test proves, and leve
 
 The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it, the agent improvises at every decision point: framework, location, level. The convention removes that guesswork from the first session.
 
-The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent. The convention document evolves. Together they give the agent both the current state and the reasoning behind it.
+The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent. The convention document evolves. A convention document without the rationale behind it is a table waiting to be overridden by the next session that does not know why the choices were made.
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (2011), ADRs as durable records of architectural rationale. The convention-document shape above is this book's workflow rule for making test-layer decisions readable by agents.*
 
