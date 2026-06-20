@@ -13,7 +13,7 @@ None of these are new individually. What is new is the speed at which they have 
 1. [Tests as Proof, Not Ritual](./tests-as-proof): a test is proof only if it fails when the implementation diverges from intent
 2. [Test Strategy and Convention](./test-strategy): the test taxonomy, the convention document the agent reads, scenario complexity tiers, and the AC registry
 3. [Agent Evaluation and Regression](./agent-evaluation): golden tests for the agent setup itself, A/B comparison of instruction-file changes
-4. [AC IDs and Positive/Negative Coverage](./ac-ids-coverage): bracket-format IDs, `Test-type:` field, dual `@Tag` tagging, the AC registry, positive and negative pairs
+4. [AC IDs and Coverage](./ac-ids-coverage): bracket-format IDs, `Test-type:` field, dual `@Tag` tagging, the AC registry, positive and negative pairs
 5. [Before, During, After: The Three Checkpoints](./checkpoints): the foundation gate, the implementation gate, and the verification gate, and what each catches that the others cannot
 6. [Security in Depth](./security-in-depth): the failure modes standard tools do not see: pattern replication, deference to the user, and cleanup PRs that remove controls
 7. [PR Taxonomy](./pr-taxonomy): docs, structural, behavioral; three review styles, one class per PR

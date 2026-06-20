@@ -66,7 +66,7 @@ export default withMermaid(
             { text: 'Tests as Proof, Not Ritual', link: '/quality/tests-as-proof' },
             { text: 'Test Strategy and Convention', link: '/quality/test-strategy' },
             { text: 'Agent Evaluation and Regression', link: '/quality/agent-evaluation' },
-            { text: 'AC IDs and Positive/Negative Coverage', link: '/quality/ac-ids-coverage' },
+            { text: 'AC IDs and Coverage', link: '/quality/ac-ids-coverage' },
             { text: 'Before, During, After Checkpoints', link: '/quality/checkpoints' },
             { text: 'Security in Depth', link: '/quality/security-in-depth' },
             { text: 'PR Taxonomy', link: '/quality/pr-taxonomy' },

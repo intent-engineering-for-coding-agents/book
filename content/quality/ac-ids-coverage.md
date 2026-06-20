@@ -1,16 +1,16 @@
-# AC IDs and Positive/Negative Coverage
+# AC IDs and Coverage
 
-A spec and its tests are supposed to be the same promise written twice. Consider a spec with five scenarios and a PR with eight tests: two scenarios have no test at all, and three tests cover behavior the spec never mentioned. The reviewer approves it, because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
+A spec and its tests are supposed to be the same promise written twice. Consider a spec with five scenarios and a PR with eight tests: two scenarios have no test at all, and three tests cover behavior the spec never mentioned. The reviewer approves it because the tests pass and the diff looks reasonable. The next change to that feature breaks the two untested scenarios, and the team hears about it from a customer.
 
 A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability, and drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 
-## What an Acceptance Criterion ID (AC ID) is?
+## What an Acceptance Criterion ID is?
 
-An AC ID is a stable, scenario-level identifier in a bracketed prefix and zero-padded number format, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
+An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier in a bracketed prefix and zero-padded number format, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
-The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognizes the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario instantly.
+The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognizes the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario.
 
-The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is exactly the thing that does not match for long. With an identifier, the test moves, the scenario heading changes, the file splits into two, and the linkage holds.
+The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is the thing that stops matching first.
 
 This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behavior. In `iec`, the convention is recorded in ADR-0005.
 
@@ -87,7 +87,7 @@ The rule: every acceptance criterion has at least one positive test and at least
 
 This sounds like doubling the work. It doubles the test count, not the work. The two tests share setup, request structure, and fixtures. What differs is the assertion: a 400 instead of a 201, an error payload instead of a success payload. The cost is small. The defect class it catches is the one that ships when the positive test passes and nobody wrote the negative.
 
-A coverage check makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). The check does not measure quality, only the shape of the suite.
+An acceptance-coverage check makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). This is coverage of acceptance criteria, not the percentage of code lines a test run executes. The check does not measure quality, only the shape of the suite.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as executable feedback against behavior. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), positive and negative coverage as the companion-repo convention.*
 
@@ -121,9 +121,9 @@ Test-type: integration
 **Then** the response is 410 with `{ error: 'gone' }`
 ```
 
-Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not prove the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test, whether it lives in `test_users.py` or somewhere else entirely.
+Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not prove the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The AC-coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test.
 
-What is unusual here, by general industry practice is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than memory can track it.
+What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than anyone tracks by hand.
 
 *Sources: Cucumber/Gherkin scenario structure, the `Given/When/Then` acceptance-scenario form. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), strict AC ID and `Test-type:` pairing as the companion-repo convention.*
 
@@ -137,4 +137,4 @@ Refactoring spec scenarios is the failure mode to watch for. A scenario being re
 
 *Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), stable IDs, non-reuse, and traceability rules. Michael Nygard, "Documenting Architecture Decisions" (2011), new identifiers for changed decisions as the ADR analogy used here.*
 
-IDs and pairs are the mechanics. The next chapter is where those mechanics fit into a project's calendar: when each check is paid attention to, before and during and after the change.
+IDs and pairs are the mechanics. The next chapter is where those mechanics fit into a project's schedule: when each check runs, before and during and after the change.
