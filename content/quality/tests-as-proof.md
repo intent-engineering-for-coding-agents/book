@@ -56,6 +56,8 @@ A human team shipping one feature a week relies partly on social verification. S
 
 An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scanning. The reviewer who scanned the diff and approved it cannot, a week later, reconstruct what they were assuring. Without automated proof, the only thing standing between intent and production is whatever attention the human paid at the moment. That attention is exactly what the agent's speed is consuming.
 
+Push the rate up far enough and the human leaves the moment entirely. An agent running unattended has no reviewer to ask whether a change is done, so it reads the test result instead. Proof stops being evidence a reviewer reads later and becomes the exit condition for the run: until every AC scenario passes, the agent keeps going or flags a blocker.
+
 Automated proof is the only verification that survives the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once; the cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
 
 A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.

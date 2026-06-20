@@ -14,6 +14,10 @@ This book uses three distinct questions to separate the layers: what should the 
 
 *Sources: [.principles](https://dot-principles.github.io/) (ongoing), the principle-as-code framework, its `dot-scout`/`dot-prime`/`dot-audit` commands, and the citable-published-source requirement. The three-question split across specs, tests, and principles is this book's framing.*
 
+The third question carries more weight the moment no reviewer is in the room. An agent running unattended cannot ask a senior developer whether the code is well-shaped, so the judgment has to already live somewhere the agent reads. Tests answer whether the code meets the spec. Principles answer whether it follows the practice the field already treats as good, each one backed by a citable source rather than local taste.
+
+This is why a team encodes quality as principles at all. Proof is the exit signal an unattended run cannot do without. Principles are the second signal a team adds beside it, advisory until the catalog earns enough trust to block. A solo developer or team can extend the catalog with their own principles, but the weight comes from the established ones.
+
 This is a different gap from style. A linter handles indentation, naming conventions, line length. A style guide is the deterministic version of taste. Principles are the cases where deterministic rules do not fit: when nesting is excessive, when a function has grown beyond one purpose, when an abstraction is leaking, when a refactor was started and not finished. The judgment of "this is too nested" is something a senior reviewer makes; the principle file makes the judgment reusable across reviewers, including agent ones.
 
 ## Optional, experimental, and easy to overdo

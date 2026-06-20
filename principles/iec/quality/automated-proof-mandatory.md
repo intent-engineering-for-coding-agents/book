@@ -13,12 +13,15 @@ AI generates code faster than you can verify manually. Automated proof is not op
 
 Without automated proof, the bottleneck shifts from code generation to verification. The agent produces code faster, but the review queue grows longer. The pressure to skip review increases. Quality degrades not because the agent is worse, but because human review cannot scale.
 
+When the agent runs unattended, the problem sharpens. There is no reviewer in the moment at all, so automated proof becomes the exit condition that decides whether the run is done. Without a machine-decidable pass signal, the loop has no defensible place to stop.
+
 ## Violations to detect
 
 - Projects using agentic workflows without CI-enforced test suites
 - Code review as the only verification mechanism
 - Agent-generated PRs merged without automated checks passing
 - Coverage metrics celebrated without inspection of what the tests verify
+- Agent running unattended with no machine-decidable signal for when the change is complete
 
 ## Good practice
 
