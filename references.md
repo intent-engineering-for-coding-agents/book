@@ -39,6 +39,8 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - IntuitionLabs — ["Spec-Driven Development & Spec-Kit"](https://intuitionlabs.ai/articles/spec-driven-development-spec-kit). Revised *Feb 21, 2026*. Spec-Kit walkthrough.
 - ["From Vibe Coding to Spec-Driven Development"](https://towardsdatascience.com/from-vibe-coding-to-spec-driven-development/). Towards Data Science, *2025*. Describes the transition from ephemeral chat-based prompting to version-controlled spec artefacts; confirms vibe coding produces no formal spec file by default.
 - Framelink — [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing, 14.9k★). MCP server bridging Figma design data to AI coding agents; fetches layout metadata, component structure, spacing, and colors from Figma files.
+- Cucumber — [Gherkin reference](https://cucumber.io/docs/gherkin/reference/) and [Tags](https://cucumber.io/docs/cucumber/api/#tags) (ongoing). The `Given/When/Then` scenario form this book's acceptance scenarios build on, and scenario `@tags` used both for selective execution and for linking a scenario to an issue or requirement ID (e.g. `@JIRA-1234`). Cited in the AC IDs chapter as the BDD lineage the AC ID convention formalizes.
+- JUnit 5 — ["Tagging and Filtering"](https://junit.org/junit5/docs/current/user-guide/#writing-tests-tagging-and-filtering) (ongoing). `@Tag` exists primarily for selective test execution and grouping; the AC IDs chapter reuses the same annotation to also carry a traceability ID.
 
 ## Agentic engineering & agent instructions
 

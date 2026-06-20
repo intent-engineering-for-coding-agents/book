@@ -6,9 +6,9 @@ A spec and a test suite that drift apart silently are worse than no spec at all.
 
 ## What an Acceptance Criterion ID is?
 
-An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier in a bracketed prefix and zero-padded number format, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
+An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier: a prefix and a zero-padded number, wrapped in brackets so it is easy to spot in a heading and detect with a grep, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
 
-The prefix is 2–4 letters from the component or feature abbreviation. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. The reader recognizes the component from the prefix without looking it up. Brackets make IDs visually distinct from the rest of the heading and grep-friendly: `grep "GV-" specs/` finds every graph-validator scenario.
+The prefix is a short uppercase abbreviation of the component or feature, usually two to four letters, the same shape as an issue-tracker project key. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. Longer is allowed when a component needs it: the constraint is readability inside a bracketed heading, not a letter count. The reader recognizes the component from the prefix without looking it up, and `grep "GV-" specs/` finds every graph-validator scenario.
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is the thing that stops matching first.
 
@@ -18,7 +18,7 @@ This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is
 
 ## The recommended field: `Test-type:`
 
-Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in a PR. Every scenario where it is omitted forces the agent to infer the test layer from the scenario content alone, which works most of the time and fails at the edges. Traceability, the link from spec to test, runs in the other direction: the AC ID travels with the test, not with the spec.
+Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in the review. Omit it and the agent infers the test layer from the scenario content alone, which works most of the time and fails at the edges.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
@@ -30,7 +30,7 @@ Test-type: integration
 **Then** the directory contains `AGENTS.md`, `docs/`, and `openspec/`
 ```
 
-`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses; with it, the category is locked at spec review.
+`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses.
 
 A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed, test methods get extracted, and a path hardcoded in the spec goes stale without anyone noticing. That is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
 
@@ -53,11 +53,19 @@ void initCreatesExpectedStructure(@TempDir Path dir) { ... }
 def test_init_empty_directory(tmp_path): ...
 ```
 
-Two tags, two independent uses. The traceability scanner greps for `SC-001` to verify the scenario has a corresponding test. The CI runner filters on `integration` to run only the integration tier in a specific pipeline stage, skipping e2e tests that require a deployed environment. One annotation operation feeds two traceability channels that serve different purposes and never interfere with each other.
+Two tags, two independent uses. The traceability scanner greps for `SC-001` to verify the scenario has a corresponding test. The CI runner filters on `integration` to run only the integration tier in a specific pipeline stage, skipping e2e tests that require a deployed environment. One tagging step, two channels that never interfere.
 
-Frameworks without a native tag mechanism fall back to a comment on the test method: `// AC: SC-001 | integration`. The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag; it is better than nothing.
+None of this machinery is new. Test tags in JUnit, pytest, and the rest exist primarily for selective execution: run the smoke set, skip the slow e2e tier. BDD tooling went further years ago, tagging Cucumber scenarios with issue keys like `@JIRA-1234` to link a scenario back to a ticket. The AC ID convention is that same move made strict: the tag carries a registry-allocated ID, and a CI check fails when a scenario has no test wearing it.
 
-*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), dual tagging by AC ID and test type. The framework-specific syntax above is illustrative implementation guidance.*
+Frameworks without a native tag mechanism fall back to a comment on the test method:
+
+```
+// AC: SC-001 | integration
+```
+
+The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag; it is better than nothing.
+
+*Sources: Cucumber Tags documentation (ongoing), scenario `@tags` for selective execution and for linking scenarios to issue or requirement IDs, the BDD lineage this convention borrows. JUnit 5 "Tagging and Filtering" (ongoing), `@Tag` for selective test execution. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), dual tagging by AC ID and test type. The framework-specific syntax above is illustrative implementation guidance.*
 
 ## The AC registry
 
@@ -79,17 +87,13 @@ The prefix itself is permanent. Never reassign it to a different component. `GV`
 
 *Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), monotone IDs, registry allocation, and permanent prefixes as repo convention.*
 
-## Positive proof is not enough
+## Enforcing the pairs
 
-The default test for "user submits a valid form" passes when the form is accepted. That is one half of the proof. The other half is that an invalid form is rejected, with the right error, at the right layer. Both halves are required. A happy-path-only test suite proves that the feature works in the easy case, while saying nothing about the failure case, where features break in production.
+[Tests as Proof, Not Ritual](./tests-as-proof) made the case that proving an acceptance criterion takes more than the happy path: the positive path, each way the criterion is violated, and any boundary it implies. AC IDs turn that principle into something a tool can enforce. Because every scenario carries an ID and every test wears it, a check can count what proves each criterion and fail when a direction is missing.
 
-The rule: every acceptance criterion has at least one positive test and at least one negative test, unless the scenario has only one direction to verify. "When the user submits an empty form, the API returns a 400" is itself a negative-direction scenario; the positive direction is a separate scenario ("when the user submits a valid form, the API returns a 201"). Both scenarios exist. Both have tests.
+The check is deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa), unless the scenario has only one direction to verify. "When the user submits an empty form, the API returns a 400" is itself a negative-direction scenario; its positive counterpart ("a valid form returns a 201") is a separate scenario with its own ID. This is coverage of acceptance criteria, not the percentage of code lines a test run executes. It measures the shape of the suite, not the quality of any one test.
 
-This sounds like doubling the work. It doubles the test count, not the work. The two tests share setup, request structure, and fixtures. What differs is the assertion: a 400 instead of a 201, an error payload instead of a success payload. The cost is small. The defect class it catches is the one that ships when the positive test passes and nobody wrote the negative.
-
-An acceptance-coverage check makes this deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa). This is coverage of acceptance criteria, not the percentage of code lines a test run executes. The check does not measure quality, only the shape of the suite.
-
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as executable feedback against behavior. `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), positive and negative coverage as the companion-repo convention.*
+*Sources: `iec` ADR-0005 "AC ID and Test-Type Convention" (2026-05-22), positive and negative coverage as the companion-repo convention.*
 
 ## A worked example
 
@@ -129,9 +133,9 @@ What is unusual here is not the structure. Acceptance scenarios in this form pre
 
 ## The format is flexible, the link is not
 
-The ID format is conventional. `[PROJECT-NNN]` works. `[FEAT-NNN]` works. `SCAFFOLD-001` works. What matters is that the format is consistent within a repo, the IDs are stable once assigned, and the IDs do not collide. Numbering does not have to be dense; gaps from withdrawn scenarios are fine.
+The bracket format is a convention, not a law. `[PROJECT-NNN]`, `[FEAT-NNN]`, and `SCAFFOLD-001` all work. What matters is that a repo picks one shape, holds to it, and never lets two scenarios share an ID. Stability and the gaps left by withdrawn scenarios are the registry's concern, settled above.
 
-Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists, not whether the test is correct. That is what the human spec review is for, and what the next chapter on lifecycle checkpoints is built around.
+Tests that prove the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists, not whether the test asserts what the scenario describes. That second judgment is not out of reach, though: line up the scenario's `Given/When/Then` against the test's setup, action, and assertions, and a mismatch shows. A human reviewer can make that call, and so can an agent handed both artifacts and asked whether they agree. That comparison is what the next chapter on lifecycle checkpoints is built around.
 
 Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine; the ID stays, the wording changes, the test still proves the new wording because the new wording describes the same behavior. A scenario being rewritten to specify a different behavior, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artifact gets a new identifier.
 
