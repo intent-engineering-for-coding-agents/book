@@ -2,7 +2,7 @@
 
 The branch strategy predates coding agents by two decades. Paul Hammant has been documenting it since the early 2000s, and the core discipline has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.
 
-An agent can open and close a feature branch in the time a human developer would read the ticket. At agentic speed, the question is not whether to use short-lived branches but how to align the branch lifecycle with the change folder lifecycle. They are, it turns out, the same thing.
+An agent opens and closes a feature branch in the time a human developer spends reading the ticket. At agentic speed, the question is not whether to use short-lived branches, but how to align the branch lifecycle with the change folder lifecycle. The two lifecycles should collapse into the same unit of work.
 
 ## The change folder is the branch
 
@@ -34,11 +34,11 @@ The discipline that survives both shapes is not a branch count. Every branch tha
 
 Hammant's trunk-based development (TBD) discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that lives for two weeks accumulates two weeks of divergence from trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
 
-At agentic speed, "one day" is generous. An agent can implement a small-to-medium feature spec in hours. The branch lifecycle is: create branch, write spec (in the change folder on the branch), implement, test, open PR, review, merge.
+At agentic speed, "one day" is generous. A small-to-medium feature spec often lands in hours. The branch lifecycle is: create branch, write spec (in the change folder on the branch), implement, test, open PR, review, merge.
 
 Start to merge in hours, not days. If the implementation is taking days, the spec was too large. Split it.
 
-The discipline of keeping specs small (the ten-task, ten-file rule of thumb from [Why Small?](/spec-driven/why-small)) is also the discipline of keeping branches short-lived. A spec sized to one implementation PR is a branch that fits in one day. When the implementation branch sprawls past the point a reviewer can hold in one sitting, the spec was describing two changes, not one.
+The discipline of keeping specs small (the ten-task, ten-file rule of thumb from [Why Small?](/spec-driven/why-small)) is also the discipline of keeping branches short-lived. A spec sized to one implementation PR is a branch that fits in one day. When the implementation branch sprawls past what a reviewer holds in one sitting, the spec was describing two changes, not one.
 
 ## Merge cadence with parallel changes
 
@@ -46,7 +46,7 @@ Multiple developers, multiple change folders, multiple branches. The question is
 
 Trunk-based development's answer is: as often as possible, with CI as the gate. Each branch merges when CI passes, not when "it is done". Integration happens continuously rather than all at once at sprint end.
 
-Spec deltas reduce merge pain in two ways. First, a clearly scoped spec is less likely to overlap with another clearly scoped spec. If two change folders are well-defined, their implementation boundaries are visible before the branches are created. A team standing up before the sprint can catch spec collisions while they are still cheap to resolve. Second, reviewing a PR that has a spec delta gives the reviewer a clear statement of what the PR is supposed to do, which makes merge-conflict resolution faster. When two branches conflict, the question is not "what was this trying to do?" It is answered in the spec.
+Spec deltas reduce merge pain in two ways. First, a clearly scoped spec is less likely to overlap with another clearly scoped spec. If two change folders are well-defined, their implementation boundaries are visible before the branches are created. A team standing up before the sprint catches spec collisions while they are still cheap to resolve. Second, reviewing a PR that has a spec delta gives the reviewer a clear statement of what the PR is supposed to do, which makes merge-conflict resolution faster. When two branches conflict, the question is not "what was this trying to do?" The spec answers it.
 
 Two specs that make incompatible claims about the same capability are the one collision worth heading off early. Because each change folder names its scope before the branch exists, that overlap is visible in the planning column of the sprint board, where it costs a conversation, not in the Friday morning integration run, where it costs a rollback.
 
@@ -76,7 +76,7 @@ Humans and agents miss different things in this review, and it works only when e
 
 ## Trunk-Based Development is not universal, and neither is the two-PR shape
 
-Trunk-based development is not universally practiced. Many teams use longer-lived feature branches, Gitflow variants, or release branches that stay open for weeks. The practices described here work best with short-lived branches. They do not require it. A team using a release-branch model can still keep each change folder's scope on its own branch and the spec-before-implementation discipline for decision-heavy changes. The branches just live longer.
+Trunk-based development is not universally practiced. Many teams use longer-lived feature branches, Gitflow variants, or release branches that stay open for weeks. The practices described here work best with short-lived branches. They do not require them. A team using a release-branch model still keeps each change folder's scope on its own branch and the spec-before-implementation discipline for decision-heavy changes. The branches live longer.
 
 The argument for TBD over Gitflow is Hammant's to make, and he has made it thoroughly. This chapter does not re-argue it. It describes how OpenSpec change folders fit into TBD for teams that have already adopted it.
 

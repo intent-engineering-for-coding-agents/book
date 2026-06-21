@@ -16,8 +16,8 @@ This section assumes OpenSpec because that is the workflow the book and `iec` us
 
 1. [OpenSpec Across Stacks](./openspec-across-stacks): when the system has multiple tiers, one `openspec/` per stack prevents cross-tier context confusion
 2. [OpenSpec in an Existing SDLC](./openspec-in-existing-sdlc): how OpenSpec artifacts map onto tickets, sprint boards, stories, PR reviews, and changelogs
-3. [Trunk-Based Development with Agents](./trunk-based-development): change folders as short-lived branches; merge cadence; how spec deltas reduce merge pain; intent-first review
-4. [Code Review for Agent-Generated Code](./code-review-agent-code): PR shape that makes intent-first review the default; AI-assisted coverage tracing; multi-LLM critique; what humans and agents each miss
+3. [Trunk-Based Development with Agents](./trunk-based-development): change folders as short-lived branches, merge cadence, how spec deltas reduce merge pain, intent-first review
+4. [Code Review for Agent-Generated Code](./code-review-agent-code): PR shape that makes intent-first review the default, AI-assisted coverage tracing, multi-LLM critique, what humans and agents each miss
 5. [Shared Agent Instruction Conventions](./shared-conventions): team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding, and when to leave things divergent
-6. [Cross-Team Coordination](./cross-team-coordination): ADRs as the cross-team mechanism; inner source for `.agents/` libraries; multi-repo realities
-7. [What Is Still Evolving](./what-is-still-evolving): what the SDD ecosystem has not yet figured out; a maturity-honest account of mid-2026
+6. [Cross-Team Coordination](./cross-team-coordination): ADRs as the cross-team mechanism, inner source for `.agents/` libraries, multi-repo realities
+7. [What Is Still Evolving](./what-is-still-evolving): what the Spec-Driven Development (SDD) ecosystem has not yet figured out, a maturity-honest account of mid-2026

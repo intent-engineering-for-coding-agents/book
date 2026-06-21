@@ -49,11 +49,11 @@ A Jira user story provides the why and the what: "As a user, I want to filter re
 
 One story maps to one or more OpenSpec change folders. The story provides the intent, the spec provides the acceptance criteria, and the spec references the Jira story ID for traceability. Any reviewer reaches the planning decision that initiated it from the spec.
 
-Atlassian MCP connectors, available to several capability-class agents as of mid-2026, allow the agent to fetch story context and Confluence architecture pages during spec drafting. The agent instructions should tell the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria actually address what the story intended. The agent reads the story, and the developer reviews the criteria.
+Where a Jira or Confluence Model Context Protocol (MCP) connector is available, the agent fetches story context and architecture pages during spec drafting. The agent instructions should tell the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria address what the story intended. The agent reads the story, and the developer reviews the criteria.
 
-MCP connector availability for third-party tools is a mid-2026 snapshot. The specific integration paths will change. The pattern of agents fetching ticket context before writing specs will not.
+MCP connector availability for third-party tools is a mid-2026 snapshot. Permissions, supported clients, and exact tool names are product-specific. The durable pattern is the same: agents fetch ticket context before writing specs, and developers review the criteria.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation and Atlassian MCP documentation (mid-2026 snapshot), the general connector pattern; exact availability is perishable.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
 
 ## tasks.md and the sprint board
 
@@ -79,8 +79,8 @@ Cross-cutting decisions (API contracts, authentication models, data retention po
 
 The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams that have none of these in place need to establish the primitives before layering spec-driven practices on top. The spec does not replace the ticket. It assumes the ticket exists and is well-understood.
 
-The MCP integrations described here (Jira, Confluence, Figma) are mid-2026 tools. The underlying patterns are stable even as the specific tooling evolves.
+The MCP integrations described here (Jira and Confluence) are mid-2026 tools. The underlying patterns are stable even as the specific tooling evolves.
 
-*Sources: Model Context Protocol documentation and Atlassian MCP documentation (mid-2026 snapshot), perishable connector availability. The ticket, PR, ADR, and changelog mapping is this book's synthesis for mature team workflows.*
+*Sources: Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), perishable Jira and Confluence connector availability. The ticket, PR, ADR, and changelog mapping is this book's synthesis for mature team workflows.*
 
 The workflow fits because it follows branches. Short-lived branches, specifically. That is where trunk-based development has been pointing for decades.

@@ -44,15 +44,15 @@ This is book synthesis. There is no widely-adopted standard for multi-tier spec 
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
-## Front-end context: design system and Figma
+## Front-end context belongs outside the stack spec
 
-The spec pattern for front-end work is identical to the pattern for back-end work. What changes is the context the agent reads before it implements.
+The spec pattern for front-end work is identical to the pattern for back-end work. What changes is the permanent context the agent reads before implementation.
 
-A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document: component conventions, animation rules, accessibility requirements, state management patterns. What Figma captures visually, the design system doc captures as convention.
+A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document: component conventions, accessibility requirements, and state management patterns. Figma or another design source supplies visual context. The design system document supplies durable convention.
 
-The design system document lives in `docs/design/` alongside the architecture documentation. It is not a one-time design artifact, but a living brief. An agent implementing a new component reads it the way a back-end agent reads the architecture overview: not to understand the full system, but to understand the constraints it is working within.
+The spec should still cover behavior: states, validation, edge cases, loading, error, and empty states. User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The design system doc answers how the component should look when it renders correctly.
 
-User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The spec itself should cover behavior: states, validation, edge cases, loading/error/empty states. What happens when the network call fails? What does the component render when the list is empty? The spec answers those questions. The design system doc answers how the component should look when it renders correctly.
+*Sources: Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), Figma files as extractable design context for coding agents. The split between front-end behavior specs and `docs/design/` convention briefs is this book's workflow mapping.*
 
 ## The integration contract belongs in an ADR
 
@@ -88,6 +88,6 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 ## This is book synthesis, not a field standard
 
-Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end may need a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
+Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
 
 Multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of it. Knowing which existing slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

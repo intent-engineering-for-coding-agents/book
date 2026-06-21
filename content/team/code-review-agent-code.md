@@ -45,9 +45,9 @@ The agent also checks scope. A behavioral implementation should deliver what the
 
 What the review agent does not catch reliably: integration failures, whether the acceptance criteria were right in the first place, or whether the feature will work as intended in production. Those require judgment. The coverage and consistency check does not require judgment. That is the point.
 
-A `check_spec_quality` command for `iec`'s MCP interface is planned: it will compare an implementation against its spec, trace acceptance criteria to tests, and flag deviations and scope additions. This is forthcoming.
+As of mid-2026, `iec` does not ship this as a command. Treat `check_spec_quality` as the planned shape of a future MCP check: compare an implementation against its spec, trace acceptance criteria to tests, and flag deviations and scope additions. The practice does not depend on the tool existing first.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), automated feedback controls at the merge gate as the model for systematic coverage checks that scale past manual review.*
+*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), automated feedback controls at the merge gate and cognitive debt as the failure mode. The `check_spec_quality` command is a time-bounded companion-tool plan, not a shipped feature.*
 
 ## Multi-LLM critique
 
@@ -70,7 +70,7 @@ The gaps are complementary: each reviewer covers what the other does not. These 
 | Reviewer | Reliably misses | Why it slips through |
 |---|---|---|
 | Human | Competence heuristic | Polished, well-tested code reads as careful, so the reviewer notes the test exists without asking whether it asserts the right thing |
-| Human | Unchanged context | The diff shows what changed; a new dependency on a function three files away leaves no red or green line |
+| Human | Unchanged context | The diff shows what changed. A new dependency on a function three files away leaves no red or green line |
 | Human | Constraints past the top | A reviewer who reads the acceptance criteria and skips the constraint section approves an edge case handled wrong, the constraint was in section three |
 | Agent | Integration context | It reviewed the code and the spec, not the runtime: a latency the spec did not model, middleware ordered differently in production than in test |
 | Agent | Silent ambiguity resolution | Ambiguous criteria resolve toward the simplest implementation, and the choice is never surfaced as a choice |
@@ -79,7 +79,7 @@ A human doing intent-and-integration review and an agent doing coverage-and-cons
 
 ## The review is one gate
 
-These practices raise the quality of what ships. They are not a guarantee. ThoughtWorks Technology Radar Vol 34 names cognitive debt as the agentic-era failure mode: the undocumented assumption that propagates through subsequent changes until it surfaces in production. Review catches divergences between spec and implementation, not divergences between the spec and reality or the spec and what the user actually needed.
+These practices raise the quality of what ships. They are not a guarantee. ThoughtWorks Technology Radar Vol 34 names cognitive debt as the agentic-era failure mode: the undocumented assumption that propagates through subsequent changes until it surfaces in production. Review catches divergences between spec and implementation, not divergences between the spec and reality or the user's need.
 
 At agentic speeds, the review gate handles more volume than before. The quality of what reaches it depends on the spec that preceded it. The quality of the spec depends on the discipline applied upstream: intent stated clearly, scope constrained, constraints at the top.
 
