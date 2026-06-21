@@ -18,7 +18,7 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 ## A bigger window, the same discipline
 
-By mid-2026 a million-token context window is common across the frontier model families. The wall most sessions used to hit is mostly gone. The discipline is not.
+Context windows are larger in 2026 than they were a year or two ago. The wall most sessions used to hit is farther away. The discipline is not.
 
 Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step loop that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests.
 
