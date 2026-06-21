@@ -2,7 +2,7 @@
 
 How much process does renaming a config variable deserve? Adopt a full Spec-Driven Development framework and the answer is: far more than it needs. The ceremony is real, proposal, design, specs, tasks, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theater. The structure that protects a risky change suffocates a trivial one.
 
-The team that writes no specs at all, operating on prompts and conversation history alone, ships features that work until the third session extends them. Then someone asks why the validation is in the controller and nobody can answer without reading git blame.
+Consider a team that writes no specs at all, operating on prompts and conversation history alone. Features work until a later session extends them. Then someone asks why the validation is in the controller and the only answer is git blame.
 
 Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. The tools below are a mid-2026 snapshot, not a finished landscape.
 
@@ -41,7 +41,7 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 | Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
 | Tasks | `tasks.md` | What is the execution plan? |
 
-Acceptance criteria are written in Gherkin (GIVEN-WHEN-THEN): abstract enough to write quickly, concrete enough to drive test implementation. The specs are the part that actually changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the rest is discarded.
+Acceptance criteria are written in Gherkin (`Given/When/Then`): abstract enough to write quickly, concrete enough to drive test implementation. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the rest is discarded.
 
 That archive becomes the canonical set of acceptance criteria for each capability, the executable guardrails a later change is measured against, and the mechanism that closes the loop between intent and proof. The design those criteria serve does not live here. It lives in `docs/`. The overhead is real and built for teams shipping production systems with multiple developers.
 
