@@ -62,11 +62,14 @@ The ADR in `docs/decisions/` records the API contract: endpoint path, request sh
 
 ```mermaid
 graph TD
-  ADR["ADR-0042: Filter API Contract<br/>docs/decisions/"]
-  FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md"]
-  BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md"]
-  FE -- "references" --> ADR
-  BFF -- "implements" --> ADR
+    classDef contract fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef change fill:#0891b2,stroke:#0e7490,color:#fff
+
+    ADR["ADR-0042: Filter API Contract<br/>docs/decisions/"]:::contract
+    FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md"]:::change
+    BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md"]:::change
+    FE -- "references" --> ADR
+    BFF -- "implements" --> ADR
 ```
 
 The ADR is permanent, while the change folders are temporary and archived after implementation. The contract outlives both.

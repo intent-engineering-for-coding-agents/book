@@ -61,6 +61,34 @@ flowchart TD
 ```
 ````
 
+### Diagram styling
+
+Every diagram uses the same three-color palette so the book reads as one set and renders on both the light and dark theme. The colors are solid mid-tone fills with white text, which holds contrast on either background. Do not use pale pastel fills or leave category nodes the default color: those wash out on one theme or the other.
+
+Declare the palette with `classDef` at the top of the diagram and tag nodes with `:::class`:
+
+````md
+```mermaid
+graph TD
+    classDef primary fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef secondary fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef neutral fill:#64748b,stroke:#475569,color:#fff
+
+    A[Primary]:::primary --> B[Secondary]:::secondary
+    B --> C[Neutral]:::neutral
+```
+````
+
+These are the only three fills in use across the book:
+
+| Fill | Stroke | Text | Role |
+| --- | --- | --- | --- |
+| `#0d9488` (teal) | `#0f766e` | `#fff` | primary subject: intent, behavioral change, the Intent Engineering path |
+| `#0891b2` (cyan) | `#0e7490` | `#fff` | secondary or one-off element: specs, docs |
+| `#64748b` (slate) | `#475569` | `#fff` | neutral or pre-existing context: existing SDLC, trunk, structural change |
+
+Class names are local to each diagram and name the role there (`behavioral`, `docs`, `existing`, `intent`); the fills stay fixed. Pure process or input nodes (a "Write spec" step, a `main` sink) can stay unstyled.
+
 ## Frontmatter
 
 Regular chapter pages need no frontmatter. The home page (`content/index.md`) uses `layout: home` with a `hero` block.

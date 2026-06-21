@@ -2,7 +2,7 @@
 
 A pull request that does three unrelated things gets reviewed as if it did none of them. The description tells the story: fix the user profile bug, add the export endpoint, reformat the auth module. Three hundred lines. The reviewer scrolls, scrolls again, approves. A week later the auth module regresses, traced to the reformatting, which had quietly changed the order two middleware decorators applied. The fix was in the spec. The export endpoint was in the spec. The reformat was a free rider, and it broke production.
 
-Mixed PRs make every kind of review harder. They mix high-stakes changes with low-stakes ones, intent-bearing changes with cosmetic ones, things that need careful review with things that need none. The reviewer is reduced to scanning, because reading carefully for one class of change while ignoring the rest is not how human attention works.
+Bundling those three together is what hid the regression. A reviewer cannot hold one class of change to a high bar while skimming the rest of the same diff.
 
 ## Three classes that should not mix
 
@@ -10,31 +10,29 @@ The taxonomy is small: three types of change, each with its own review style, ea
 
 Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
-Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large; the cognitive load is medium; the risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
+Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large, the cognitive load medium. The risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
 
-Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small; the cognitive load is high; the risk is the implementation diverging from the spec.
+Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small, the cognitive load high. The risk is the implementation diverging from the spec.
 
-Three classes, three review styles, one PR per class. The taxonomy is conventional in Trunk-Based Development (TBD) circles and has been for decades. What is new is that agents make the temptation to mix them stronger, because the agent does all three in one session and feels efficient bundling them.
+The split is conventional in Trunk-Based Development (TBD) circles and has been for decades. What is new is that the agent does all three in one session, so bundling them feels like efficiency rather than the review hazard it is.
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, Modern Software Engineering (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
 
 ## Why mixing makes review harder
 
-The reviewer's attention is finite per PR. When the PR is one class of change, the attention budget is spent on the questions that class needs. When it is three classes, the budget gets split, and the high-stakes class loses out.
+A reviewer opening a 300-line diff that is 270 lines of formatting and 30 lines of behavioral change reads the formatting first, because it comes up first in the file, and reaches the behavioral change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 that did not.
 
-The specific failure mode: a reviewer opening a 300-line diff that is 270 lines of formatting and 30 lines of behavioral change will read the formatting lines first (they come up first in the file) and arrive at the behavioral change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 lines that did not.
-
-This is not a hypothetical. It is the most consistent finding in the code-review literature: review quality degrades sharply with PR size, and degrades further when the PR mixes classes. The agent's tendency to combine changes ("I noticed this could be cleaner while I was here") is the modern accelerant. The fix is upstream of the review: do not let the agent combine classes in the first place.
+The agent's tendency to combine changes ("I noticed this could be cleaner while I was here") makes the mixed PR its default output. The fix is upstream of the review: do not let the agent combine classes in the first place.
 
 ## How to keep them separate when the agent wants to combine
 
-The mechanism is `AGENTS.md` and the PR-creation workflow.
+The mechanism is the agent instructions and the PR-creation workflow.
 
 In the agent instructions: behavioral changes do not include drive-by formatting. If the agent notices something worth reformatting while implementing a feature, it surfaces the observation in the PR description as a follow-up suggestion. It does not include the formatting in the diff. The same goes for refactors: a refactor worth doing is its own PR, not a free passenger on a feature PR.
 
 In the workflow: the agent's first action on a feature task is to check whether the current branch contains structural or docs changes already. If it does, those land first, on their own PR, before the feature work continues. The branch state should match the PR shape. A branch with one feature spec and one cleanup commit is a branch that needs to split before the PR is opened.
 
-Discipline at the PR level is easier when it is enforced at the branch level. A single change folder per branch. One PR per branch. The change folder is behavioral; the docs and structural cleanup live on their own short-lived branches with their own PRs. None of this is novel in trunk-based work; what is novel is the rate at which it becomes inconvenient when the agent could have done all three at once.
+Enforce it at the branch level and the PR shape takes care of itself: the behavioral change folder on its own branch, the docs and structural cleanup on their own short-lived branches and PRs.
 
 ## A worked example
 
@@ -42,20 +40,24 @@ The team implements a new export endpoint. The spec is in `openspec/changes/add-
 
 ```mermaid
 graph TD
-  A[Spec: add-export-endpoint] --> B[Behavioral PR: implement export]
-  C[Notice: README outdated section] --> D[Docs PR: refresh README export section]
-  E[Notice: auth module needs formatting] --> F[Structural PR: format auth module]
-  G[Notice: helper function duplicated] --> H[Structural PR: extract shared helper]
-  B & D & F & H --> I[main]
+    classDef behavioral fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef docs fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef structural fill:#64748b,stroke:#475569,color:#fff
+
+    A[Spec: add-export-endpoint] --> B[Behavioral PR: implement export]:::behavioral
+    C[Notice: README outdated section] --> D[Docs PR: refresh README export section]:::docs
+    E[Notice: auth module needs formatting] --> F[Structural PR: format auth module]:::structural
+    G[Notice: helper function duplicated] --> H[Structural PR: extract shared helper]:::structural
+    B & D & F & H --> I[main]
 ```
 
-Four PRs, four reviews, four merges. None takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention. The export reviewer reads the spec first, the README reviewer scans for accuracy, the auth-module reviewer checks completeness, and the helper-extraction reviewer checks that the extraction preserved behavior and is referenced everywhere it should be.
+Four PRs, four reviews, four merges. None takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention: the export reviewer starts from the spec, the structural reviewers check that behavior is preserved and every call site updated, the README reviewer scans for accuracy.
 
 If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have received the same level of attention as the export logic, and the duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
 
 ## When the rule has exceptions
 
-A behavioral change that genuinely requires a structural change to land cleanly is a single PR. Adding a new endpoint that requires extending a router interface is one PR, not two. The structural change here is a precondition of the behavioral change, not a free passenger; the test of whether it belongs in the same PR is whether reverting the behavioral change while keeping the structural one would leave the codebase in a worse state. If yes, ship together. If no, ship apart.
+A behavioral change that genuinely requires a structural change to land cleanly is a single PR. Adding a new endpoint that requires extending a router interface is one PR, not two. The structural change here is a precondition of the behavioral change, not a free passenger. The test of whether it belongs in the same PR is whether reverting the behavioral change while keeping the structural one would leave the codebase in a worse state. If yes, ship together. If no, ship apart.
 
 The other exception is the small fix to documentation that lives inside the changed file. Updating a docstring on a function whose signature changed in this PR is part of the behavioral change. Updating an unrelated docstring in the same file is a separate docs PR. The boundary is "does the doc change describe what this PR did?" If yes, it stays. If no, it goes.
 
@@ -63,10 +65,10 @@ These exceptions exist, but they are narrow and the default is separation. A tea
 
 ## Convention, not law
 
-The taxonomy is convention, not law. Different teams use different labels (`refactor`, `chore`, `feat`, `fix`, in conventional-commits style). The exact labels matter less than the discipline of one class per PR. What this book calls `structural`, conventional commits would split between `refactor` and `chore`. The mapping is straightforward; what matters is that the discipline is consistent within the team.
+The taxonomy is convention, not law. Different teams use different labels (`refactor`, `chore`, `feat`, `fix`, in conventional-commits style). The exact labels matter less than the discipline of one class per PR. What this book calls `structural`, conventional commits would split between `refactor` and `chore`. The mapping is straightforward. What matters is that the discipline is consistent within the team.
 
 Some teams bundle short docs changes with the behavioral PR they describe. That works when the documentation is shorter than the diff. When the documentation section runs longer than a screen, it has become its own review burden. Ship it separately.
 
-The agent will resist the discipline at first and offer combined PRs as the natural output of its work. The discipline is an instruction in `AGENTS.md` and a habit in the developer, not a behavior the agent comes with by default. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small, while the cost of letting it lapse is the 300-line mixed PR that broke production.
+The agent will resist the discipline at first and offer combined PRs as the natural output of its work. The discipline lives in the agent instructions and in the developer's habits, not in any default the agent ships with. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small, while the cost of letting it lapse is the 300-line mixed PR that broke production.
 
 The taxonomy is what makes PRs reviewable. The next chapter looks at what runs alongside specs and tests when the team wants something more than reviewability: a way to encode the qualities the code is supposed to have, separately from the behavior it is supposed to exhibit.

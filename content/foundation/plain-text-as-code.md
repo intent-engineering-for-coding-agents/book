@@ -37,10 +37,14 @@ Mermaid diagram embedded in Markdown:
 ````mmd
 ```mermaid
 graph TD
-    A[Planning] -->|spec change| B[Spec]
-    B --> C[Implementation]
-    C -->|CI check| D[CI gate]
-    D --> E[Archive]
+    classDef stage fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef spec fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef bookend fill:#64748b,stroke:#475569,color:#fff
+
+    A[Planning]:::bookend -->|spec change| B[Spec]:::spec
+    B --> C[Implementation]:::stage
+    C -->|CI check| D[CI gate]:::stage
+    D --> E[Archive]:::bookend
 ```
 ````
 
@@ -48,10 +52,14 @@ Diagram rendered by Mermaid:
 
 ```mermaid
 graph TD
-    A[Planning] -->|spec change| B[Spec]
-    B --> C[Implementation]
-    C -->|CI check| D[CI gate]
-    D --> E[Archive]
+    classDef stage fill:#0d9488,stroke:#0f766e,color:#fff
+    classDef spec fill:#0891b2,stroke:#0e7490,color:#fff
+    classDef bookend fill:#64748b,stroke:#475569,color:#fff
+
+    A[Planning]:::bookend -->|spec change| B[Spec]:::spec
+    B --> C[Implementation]:::stage
+    C -->|CI check| D[CI gate]:::stage
+    D --> E[Archive]:::bookend
 ```
 
 The syntax is compact enough to hand code once you know it. For anything more involved, mermaid.live gives a live preview in the browser: paste, edit, copy back. The source travels with the document that describes the system. When the architecture moves, the diagram moves in the same commit, and the PR review covers both.
