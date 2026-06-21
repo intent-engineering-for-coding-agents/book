@@ -22,7 +22,7 @@ A focused hub stays small. Here is what one looks like in practice:
 └── openspec.md           # OpenSpec extensions for specs, AC IDs, test traceability
 ```
 
-`coding-standards.md` is 50 lines. Type hints, string quoting, linting rules, test naming conventions. An agent working on a new checker reads it once and writes code that matches the rest of the codebase. An agent updating a dependency skips it entirely.
+`coding-standards.md` is short. Type hints, string quoting, linting rules, test naming conventions. An agent working on a new checker reads it once and writes code that matches the rest of the codebase. An agent updating a dependency skips it entirely.
 
 `openspec.md` is the same move applied to a tool. It holds the conventions that extend OpenSpec, a unique AC ID per criterion and a test bound to the task that proves it, without editing OpenSpec's own commands. [Spec Lifecycle](../spec-driven/spec-lifecycle) shows the rules it carries and why forking the tool is the worst trade.
 
@@ -36,13 +36,13 @@ Take `update-changelog` as an example: scan commits since the last tag, extract 
 
 The short version: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. Scaffolding a new module is a skill. [Skills, Commands, and Hooks](./skills-commands-hooks) covers when to reach for each and how to write a skill that runs.
 
-Typed from the session, `/update-changelog` invokes the skill directly. Claude Code surfaces slash commands from `.claude/skills/`, not `.agents/skills/` itself. Keeping one source of truth means symlinking `.claude/skills` to `.agents/skills`, and `.claude/hooks` to `.agents/hooks` for the directory below, which only works if your Git setup and your operating system both tolerate symlinks cleanly.
+Typed from the session, `/update-changelog` invokes the skill directly.
 
-None of that touches the autonomous trigger. Agent instructions tell the agent which skill to load when the task description matches, whether or not the slash command resolves. The developer bypasses that layer by invoking the skill explicitly. `/update-changelog` runs it directly without waiting for a matching task description. Same file either way.
+None of that touches the autonomous trigger. Agent instructions tell the agent which skill to load when the task description matches. The developer bypasses that layer by invoking the skill explicitly. Same file either way.
 
-At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output goes to a vendor-specific directory, not `.agents/skills/`. The workaround is to copy the generated files there after initialization (native `.agents/` support is tracked in [OpenSpec issue #1104](https://github.com/Fission-AI/OpenSpec/issues/1104)).
+At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output sometimes lands in a vendor-specific directory rather than `.agents/skills/`. If you want one shared hub, copy the generated files into `.agents/skills/` after initialization.
 
-CLI agents scan `.agents/skills/` natively. Most IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. The workflow logic is shared, but the slash command invoking it is not. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill on any given session, though, depends on its judgment. That is the gap hooks close.
+Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill on any given session depends on its judgment. That is the gap hooks close.
 
 *Sources: OpenAI, "Codex Skills" (developers.openai.com/codex/skills, accessed 2026), `.agents/skills/` as the native Codex scan path; Fission AI, "OpenSpec" (openspec.dev, ongoing), `opsx:*` skill generation via `openspec init`.*
 
@@ -65,7 +65,7 @@ Common hook candidates: run the linter after any source file edit, keep a genera
 
 Each file defines a trigger (a file edit matching that extension) and the command to run. The agent does not get a vote.
 
-The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool actually looks for hook definitions also varies. For most teams right now, hooks are not ready.
+The honest caveat: hook authoring is immature. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool looks for hook definitions also varies. For most teams as of mid-2026, hooks are not ready.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision.*
 
