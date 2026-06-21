@@ -10,7 +10,7 @@ Intent is what you want this specific change to do, in this specific codebase, r
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
-A note on tooling before the chapters. This book is OpenSpec-first. OpenSpec is the framework `iec`, the companion CLI ([cli](https://github.com/intent-engineering-for-coding-agents/cli)), was built with, and the chapters use its change-folder lifecycle because concrete examples need a concrete tool. `iec` is there to show the concepts working in a real repo, not a tool you have to adopt.
+A note on tooling before the chapters. This book is OpenSpec-first. OpenSpec is the framework the companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with, and the chapters use its change-folder lifecycle because concrete examples need a concrete workflow. `iec` is there to show the concepts working in a real repo, not a tool you have to adopt.
 
 The portable practice is per-change intent with testable acceptance criteria. If your team uses a plain `spec.md`, Spec-Kit, LeanSpec, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
 
