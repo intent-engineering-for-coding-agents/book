@@ -65,9 +65,9 @@ graph TD
     classDef contract fill:#0d9488,stroke:#0f766e,color:#fff
     classDef change fill:#0891b2,stroke:#0e7490,color:#fff
 
-    ADR["ADR-0042: Filter API Contract<br/>docs/decisions/"]:::contract
-    FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md"]:::change
-    BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md"]:::change
+    ADR["ADR-0042: Filter API Contract<br/>docs/decisions/<br/>&nbsp;"]:::contract
+    FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md<br/>&nbsp;"]:::change
+    BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md<br/>&nbsp;"]:::change
     FE -- "references" --> ADR
     BFF -- "implements" --> ADR
 ```
