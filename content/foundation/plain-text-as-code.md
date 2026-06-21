@@ -2,7 +2,7 @@
 
 The architecture diagram for your most important service is in a PowerPoint file on a laptop that left the company two months ago. And the decision to use eventual consistency was made in a slide review nobody recorded. The retry policy is documented in a Confluence page whose last edit date is 2023.
 
-Your agent cannot read the PowerPoint file or replay the slide review. The Confluence page is technically reachable through an Atlassian MCP: if the agent knows the page exists, if it knows to look there, if its permissions reach that far, if a 2023 edit is still trustworthy. The developer who joined yesterday meets the same gates.
+Do not rely on the agent reading PowerPoint files or replaying slide reviews. The Confluence page might be reachable through a connector, but only if the agent knows the page exists, knows to look there, and has permissions. The developer who joined yesterday meets the same gates.
 
 If the agent needs it, it lives in the repo. If it lives in the repo, it lives in plain text. That is the rule, and almost every other Intent Engineering Foundation practice is downstream of it.
 
@@ -18,11 +18,11 @@ Docs-as-code is the established version of this idea, narrowed here to one rule 
 
 ## Markdown for prose
 
-Markdown is the unremarkable choice. It renders on every major Git host and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. As of mid-2026, it is effectively universal in public codebases and current models handle it fluently. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
+Markdown is the unremarkable choice. It renders on major Git hosts and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
 
 If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. PR descriptions are too hard for the agent to find, and description quality is too uneven to rely on. Commit messages are no better: some developers write essays, others write `fix`, and the log is not a reliable index of decisions. Code comments are worse, because a coding agent treats code as freely modifiable and rewrites or removes comments without hesitation. Humans expect documentation, not annotations buried in source files. Put the decision in a file, with a name, at a known location.
 
-**The question:** can the agent reach it in a fresh session with no chat history, only the repo? If not, it is not documented. Where it lives and how carefully it was written do not matter.
+**The question:** does the agent reach it in a fresh session with no chat history, only the repo? If not, it is not documented. Where it lives and how carefully it was written do not matter.
 
 *Sources: Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as the established practice behind the Markdown-in-repo discipline. The AsciiDoc comparison is this book's synthesis.*
 
@@ -64,7 +64,7 @@ graph TD
 
 The syntax is compact enough to hand code once you know it. For anything more involved, mermaid.live gives a live preview in the browser: paste, edit, copy back. The source travels with the document that describes the system. When the architecture moves, the diagram moves in the same commit, and the PR review covers both.
 
-Agents default to ASCII art when asked for a diagram in plain text. Push back on that default. ASCII art carries no semantic structure. Topology cannot be extracted, connections cannot be validated, and it renders as a wall of punctuation in every tool that matters. Mermaid takes roughly the same number of characters, renders as a real diagram in GitHub and in every major IDE with a Mermaid plugin, and produces a queryable artifact. Ask for Mermaid explicitly, using agent instructions. Current models produce it well. Sometimes the layout is off. In that case, ask the agent to improve the layout of the Mermaid diagram.
+Agents default to ASCII art when asked for a diagram in plain text. Push back on that default. ASCII art carries no semantic structure. Topology does not extract cleanly, connections do not validate mechanically, and it renders as a wall of punctuation in every tool that matters. Mermaid takes roughly the same number of characters, renders as a real diagram on GitHub and in many IDEs with a Mermaid plugin, and produces a queryable artifact. Ask for Mermaid explicitly, using agent instructions. Sometimes the layout is off. In that case, ask the agent to improve the layout of the Mermaid diagram.
 
 Mermaid covers [28 diagram types](https://mermaid.ai/open-source/intro/index.html) as of mid-2026, including the UML staples (class, sequence, state, and ER) and even Gantt, C4, and mind map. Not every type is rendered by every IDE plugin or Git vendor today, but Mermaid is widely adopted and support keeps expanding. Use the type that fits the thing you are describing rather than forcing everything through `graph TD`.
 
@@ -76,7 +76,7 @@ The C4 model gives a useful set of diagram types (**C**ontext, **C**ontainer, **
 
 ## MADR for decisions
 
-An Architectural Decision Record (ADR) records a decision. MADR makes it a plain Markdown file: front matter for `status` and `date`, fixed headings for context, options, and outcome. Document Types covers why that shape helps a reader. What earns it a place here is narrower: a format check can enforce a fixed shape. A minimal example:
+An Architectural Decision Record (ADR) records a decision. MADR makes it a plain Markdown file: front matter for `status` and `date`, fixed headings for context, options, and outcome. Document Types covers why that shape helps a reader. What earns it a place here is narrower: a format check enforces a fixed shape. A minimal example:
 
 ```markdown
 ---
@@ -89,7 +89,7 @@ date: 2026-06-04
 ## Context and Problem Statement
 
 The team needs a diagramming format that diffs cleanly in PRs,
-renders on GitHub, and can be read by coding agents without conversion.
+renders on GitHub, and is readable by coding agents without conversion.
 
 ## Considered Options
 
@@ -122,4 +122,4 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 
 ## The compound effect
 
-A team that practices this consistently accumulates structured context. ADRs build up the agent's picture of system history. Skill files add workflows it can invoke, and the architecture overview grows richer as the system grows. After six months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
+A team that practices this consistently accumulates structured context. ADRs build up the agent's picture of system history. Skill files add workflows it invokes, and the architecture overview grows richer as the system grows. After months, the repo briefs a new agent (or a new developer) in minutes rather than days, because the briefing is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
