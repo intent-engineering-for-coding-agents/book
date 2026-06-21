@@ -2,11 +2,11 @@
 
 An agent without a spec does not refuse to act. It guesses. A good guess is indistinguishable from the right answer until the day it is not.
 
-You ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable, but the validation lived in the controller only because the first developer ran out of time and meant to move it. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behavior break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
+You ask the agent to extend a feature. It reads the existing code, infers what the code is for, and implements the extension. The inference is reasonable, but the validation lives in the controller for historical reasons nobody recorded. The agent does the architecturally tidy thing and moves it to the service layer. The tests that asserted the old controller behavior break, so the agent rewrites them to match its own implementation. Everything passes. Nobody asked for the refactor, and nobody told it not to.
 
 The agent worked from what it saw, and what it saw did not include the intent.
 
-## What a spec actually is
+## What a spec is
 
 A spec is written intent: what this change is supposed to do, what it should not do, and how you will know when it is done.
 
@@ -36,7 +36,7 @@ Spec-before-code sounds like waterfall. It is not.
 
 What makes a process waterfall is batch size and the handoff boundary, not the fact that intent comes first. Waterfall settles all requirements for the whole system up front, then hands them across a boundary: a product manager writes the requirements, a developer implements them months later with formal sign-off at each stage, the developer has no input, and the requirements do not change during implementation. This is the model agile replaced.
 
-A spec here is the opposite end of both axes. It is scoped to one PR and written by the same person who will implement it. Writing it takes an hour, not a month. It gets critiqued before implementation, but by one or two colleagues rather than a steering committee.
+A spec here is the opposite end of both axes. It is scoped to one PR and written by the same person who will implement it. Writing it takes a short sitting, not a month. It gets critiqued before implementation, but by a small number of colleagues rather than a steering committee.
 
 Written that way, spec-before-code is the agile loop run one change at a time. The cycle is short, the implementer owns it, and it ends in working software: the spec is done when its tests pass, not when its prose is written. "Working software over comprehensive documentation" is the spec's own rule, which is why it stays small, ships, and gets archived after merge. A pre-flight check, not a contract: it catches the obvious failure before takeoff and does not stop you diverting mid-flight when conditions change. A contract does. Write the spec to catch problems, not to trap you in them.
 
