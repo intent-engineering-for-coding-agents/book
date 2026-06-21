@@ -1,12 +1,12 @@
 # PR Taxonomy
 
-A pull request that does three unrelated things gets reviewed as if it did none of them. The description tells the story: fix the user profile bug, add the export endpoint, reformat the auth module. Three hundred lines. The reviewer scrolls, scrolls again, approves. A week later the auth module regresses, traced to the reformatting, which had quietly changed the order two middleware decorators applied. The fix was in the spec. The export endpoint was in the spec. The reformat was a free rider, and it broke production.
+A pull request that does three unrelated things gets reviewed as if it did none of them. The description tells the story: fix the user profile bug, add the export endpoint, reformat the auth module. Three hundred lines. The reviewer scrolls, scrolls again, approves. A week later the auth module regresses, traced to the reformatting, which had quietly changed the order in which two middleware decorators ran. The fix was in the spec. The export endpoint was in the spec. The reformat was a free rider, and it broke production.
 
-Bundling those three together is what hid the regression. A reviewer cannot hold one class of change to a high bar while skimming the rest of the same diff.
+Bundling the three hid the regression. A reviewer cannot hold one class of change to a high bar while skimming the rest of the same diff.
 
 ## Three classes that should not mix
 
-The taxonomy is small: three types of change, each with its own review style, each shipped on its own PR.
+The taxonomy is small: three classes of change, each with its own review style, each shipped on its own PR.
 
 Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
 
@@ -14,13 +14,13 @@ Structural changes are reorganizations: renames, moves, formatting, refactors th
 
 Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small, the cognitive load high. The risk is the implementation diverging from the spec.
 
-The split is conventional in Trunk-Based Development (TBD) circles and has been for decades. What is new is that the agent does all three in one session, so bundling them feels like efficiency rather than the review hazard it is.
+The split is conventional in Trunk-Based Development circles and has been for decades. What is new is that the agent does all three in one session, so bundling them feels like efficiency rather than the review hazard it is.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, Modern Software Engineering (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
 
 ## Why mixing makes review harder
 
-A reviewer opening a 300-line diff that is 270 lines of formatting and 30 lines of behavioral change reads the formatting first, because it comes up first in the file, and reaches the behavioral change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 that did not.
+A reviewer opens a 300-line diff: 270 lines of formatting, 30 lines of behavioral change. The formatting comes first in the file, so the reviewer reads it first and reaches the behavioral change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 that did not.
 
 The agent's tendency to combine changes ("I noticed this could be cleaner while I was here") makes the mixed PR its default output. The fix is upstream of the review: do not let the agent combine classes in the first place.
 
@@ -32,7 +32,7 @@ In the agent instructions: behavioral changes do not include drive-by formatting
 
 In the workflow: the agent's first action on a feature task is to check whether the current branch contains structural or docs changes already. If it does, those land first, on their own PR, before the feature work continues. The branch state should match the PR shape. A branch with one feature spec and one cleanup commit is a branch that needs to split before the PR is opened.
 
-Enforce it at the branch level and the PR shape takes care of itself: the behavioral change folder on its own branch, the docs and structural cleanup on their own short-lived branches and PRs.
+Enforce it at the branch level and the PR shape takes care of itself: the behavioral change on its own branch, the docs and structural cleanup on their own short-lived branches and PRs.
 
 ## A worked example
 
