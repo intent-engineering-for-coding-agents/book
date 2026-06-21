@@ -35,6 +35,6 @@ The test carries `@Tag("GV-007")` and `@Tag("integration")`. Traceable from spec
 
 ## Sources
 
-- intent-book, *"AC IDs + Positive/Negative Coverage" chapter*, quality section.
+- intent-book, *"AC IDs and Coverage" chapter*, quality section.
 - intent-book, *"Test Strategy and Convention" chapter*, quality section.
 - model2diagram `docs/decisions/0005-ac-id-and-test-type-convention.md`.

@@ -197,7 +197,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - A/B comparison of two AGENTS.md versions on a fixed task.
     - Regression detection when a skill or hook is updated.
     - The evidence base for the central claim: at agentic speeds, manual verification is not enough. This is the feedback loop that closes it.
-- [x] Chapter: AC IDs + Positive/Negative Coverage
+- [x] Chapter: AC IDs and Coverage
     - *Sources: Cucumber/Gherkin scenario form and `@tags` (BDD lineage for tagging scenarios with issue/requirement IDs); JUnit 5 `@Tag` (selective execution); OpenSpec; Intent Engineering convention disclaimer (AC-IDs note); model2diagram ADR-0005.*
     - Stable IDs in bracket format `[PREFIX-NNN]`; prefix 2–4 letters from component abbreviation (e.g. `GV`, `AUTH`, `CONF`) so meaning is immediately clear; monotone counter
     - `Test-type:` field on its own line in the scenario, before WHEN/THEN — intent captured at design time

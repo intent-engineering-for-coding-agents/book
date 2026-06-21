@@ -45,7 +45,7 @@ the worked examples and the `iec` companion repo.
   - Tests as Proof, Not Ritual: treat tests as evidence that the implementation matches intent.
   - Test Strategy and Convention: declare which test type proves which boundary.
   - Agent Evaluation and Regression: test the agent setup itself when instructions, skills, or hooks change.
-  - AC IDs and Positive/Negative Coverage: keep scenarios traceable to tests with stable IDs and coverage pairs.
+  - AC IDs and Coverage: keep scenarios traceable to tests with stable IDs and coverage pairs.
   - Before, During, After Checkpoints: place checks across the change lifecycle.
   - What the Scanners Miss: keep security review layered around agent-generated work.
   - PR Taxonomy: make review shape match risk and uncertainty.

@@ -25,6 +25,6 @@ The AC registry (`test/ac-registry.md`) maintains one row per component: prefix,
 
 ## Sources
 
-- intent-book, *"AC IDs + Positive/Negative Coverage" chapter*, quality section.
+- intent-book, *"AC IDs and Coverage" chapter*, quality section.
 - intent-book, *"Test Strategy and Convention" chapter*, quality section.
 - model2diagram `test/ac-registry.md`.

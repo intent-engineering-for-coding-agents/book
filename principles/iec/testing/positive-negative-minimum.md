@@ -25,5 +25,5 @@ For every AC: write the test that proves the positive case. Then write the test 
 
 ## Sources
 
-- intent-book, *"AC IDs + Positive/Negative Coverage" chapter*, quality section.
+- intent-book, *"AC IDs and Coverage" chapter*, quality section.
 - intent-book, *"Tests as Proof, Not Ritual" chapter*, quality section.

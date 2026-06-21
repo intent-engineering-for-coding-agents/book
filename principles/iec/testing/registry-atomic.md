@@ -25,6 +25,6 @@ A single commit contains: the new scenario in the spec, the registry update with
 
 ## Sources
 
-- intent-book, *"AC IDs + Positive/Negative Coverage" chapter*, quality section.
+- intent-book, *"AC IDs and Coverage" chapter*, quality section.
 - intent-book, *"Test Strategy and Convention" chapter*, quality section.
 - model2diagram `test/ac-registry.md`.

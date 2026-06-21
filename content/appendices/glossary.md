@@ -4,11 +4,11 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
-A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file; increment the counter atomically with the new scenario. Prevents prefix overlap and ID reuse. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file; increment the counter atomically with the new scenario. Prevents prefix overlap and ID reuse. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## ADLC (Agentic Development Lifecycle)
 
@@ -148,7 +148,7 @@ The practice of writing intent as structured, acceptance-criterion-tagged specif
 
 ## Test-type field
 
-A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming the category of test that proves the scenario (e.g. `unit`, `integration`, `e2e`). Captures the intended test level at spec-authoring time so the agent generates the right kind of test. Resolved against the project's test strategy document at implementation time. See [AC IDs and Positive/Negative Coverage](/quality/ac-ids-coverage).
+A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming the category of test that proves the scenario (e.g. `unit`, `integration`, `e2e`). Captures the intended test level at spec-authoring time so the agent generates the right kind of test. Resolved against the project's test strategy document at implementation time. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## `tasks.md`
 
