@@ -2,7 +2,7 @@
 
 Delete the code. Keep the docs. Regenerate.
 
-This is no longer only a thought experiment. Tool vendors and practitioners have reported teams doing exactly this: deleting an implementation that was tangled, unmaintainable, accreted over years of hotfixes, and rebuilding it in a session from the design docs and the acceptance criteria that pin its behavior. Treat that as a bounded practice, not a general industry baseline. It is safe only when the docs and tests are strong enough to catch regressions. When it works, the new implementation passes the same tests and preserves the feature set. The code is often cleaner.
+This is no longer only a thought experiment. In 2025-2026, some tool vendors and practitioners describe teams doing this: deleting an implementation that was tangled, unmaintainable, accreted over years of hotfixes, and rebuilding it in a session from the design docs and the acceptance criteria that pin its behavior. Treat that as a bounded practice, not a general industry baseline. It is safe only when the docs and tests are strong enough to catch regressions. When it works, the new implementation passes the same tests and preserves the feature set. The code often reads cleaner.
 
 Now try the reverse: delete the docs, keep the code, regenerate the docs.
 
@@ -43,7 +43,7 @@ Before agentic tools, modifying code was expensive. Writing the design down and 
 
 The mantra: code is self-documenting. It is not. Code tells you what it does, but not what was decided against, what assumptions it carries, or why the validation ended up in the controller rather than the service layer. The acceptance criteria do not tell you either. They pin the behavior, not the reasoning behind it. The docs do: the ADR that recorded the decision, the design doc that weighed the options and named the one that won.
 
-Code modification is often less expensive now. A session that regenerates a service takes an afternoon. A session that regenerates a service without the docs and the spec takes the same afternoon and produces something the next developer cannot extend without reverse-engineering the intent. Code that is inexpensive to regenerate should not be treated as more valuable than the documents that make it reproducible.
+Code modification is often less expensive now. Regenerating a service often fits in a short session. Regenerating a service without the docs and the spec takes the same effort and produces something the next developer cannot extend without reverse-engineering the intent. Code that is inexpensive to regenerate should not be treated as more valuable than the documents that make it reproducible.
 
 Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. Intent is fixed in the docs and proven by the spec. Without them, every deployment carries implicit assumptions that were never verified. With them, the path from intent to production is auditable.
 
@@ -51,11 +51,11 @@ Farley's "Modern Software Engineering" argues for feedback loops and reliable de
 
 ## The rollback loop
 
-Generated code looks wrong in ways that will compound. Rolling back costs seconds. Improving the spec costs minutes. Regenerate, and the second attempt is correct.
+Generated code looks wrong in ways that will compound. Rolling back is quick. Improving the spec takes longer than a revert, but it is still cheaper than debugging a misunderstanding across several PRs. Regenerate, and the second attempt is correct.
 
 This is the practical demonstration of the thesis. When the result is wrong, the code is what you discard first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate. Each iteration sharpens the docs and the spec. The code is a snapshot.
 
-Frederick P. Brooks called it in 1975: plan to throw one away. The first system will be discarded. The only question is whether you planned to. He was describing waterfall-era projects where the throwaway cost months. The agentic era collapses that cost to minutes.
+Frederick P. Brooks called it in 1975: plan to throw one away. The first system will be discarded. The only question is whether you planned to. He was describing waterfall-era projects where the throwaway cost months. In the agentic era, the throwaway cost often drops dramatically, sometimes to minutes.
 
 Vibe coding is a special case. A vibe session usually produces no durable record: the specification is chat history, ephemeral and uncommitted. That makes it useful for exploration and mockups. The transition to production is the same loop in reverse: write the decisions into the docs and the behavior into a spec, discard the prototype code, and regenerate from them.
 
