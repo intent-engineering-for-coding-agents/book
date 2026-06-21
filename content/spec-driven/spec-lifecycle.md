@@ -8,7 +8,7 @@ A spec without a lifecycle accumulates. The agent cannot distinguish intent from
 
 ## The stages
 
-The stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
+This chapter is the canonical reference for the OpenSpec change-folder lifecycle. The stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
 
 One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you risk finishing the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
 

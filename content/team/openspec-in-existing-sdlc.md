@@ -41,6 +41,8 @@ The reverse link is automatic if you use the issue key in commit messages. Jira'
 
 When should you skip the ticket entirely? For small behavioral changes (a one-line fix, a config key rename) where the spec is the only record that matters. The threshold is whether anyone other than the implementing developer needs to track the work. If yes, ticket. If the spec and the commit message are the entire record, skip the overhead.
 
+For the detailed OpenSpec lifecycle and `opsx:*` command mapping that this chapter assumes, see [Spec Lifecycle](/spec-driven/spec-lifecycle).
+
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder as the spec-of-record. The ticket/change-folder split above is this book's workflow mapping, not an OpenSpec requirement.*
 
 ## User story to acceptance criteria: the conversion

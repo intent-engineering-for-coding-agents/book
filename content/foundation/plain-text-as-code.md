@@ -74,9 +74,9 @@ The C4 model gives a useful set of diagram types (**C**ontext, **C**ontainer, **
 
 *Sources: Mermaid (mermaid.ai), the diagram format used throughout. Mermaid live editor (mermaid.live), the editing escape hatch. Mermaid diagram types (mermaid.ai/open-source/intro/index.html), 28 diagram types as of mid-2026. D2 (d2lang.com), the alternative format not yet rendered inline by Git hosts as of mid-2026. C4 model, Simon Brown (c4model.com), the diagram types mapping to architecture docs. Structurizr, Simon Brown (docs.structurizr.com), C4 models authored as a text DSL.*
 
-## MADR for decisions
+## ADRs as plain text
 
-An Architectural Decision Record (ADR) records a decision. MADR makes it a plain Markdown file: front matter for `status` and `date`, fixed headings for context, options, and outcome. Document Types covers why that shape helps a reader. What earns it a place here is narrower: a format check enforces a fixed shape. A minimal example:
+Architectural Decision Records (ADRs) and the MADR template they use are introduced in [Document Types](/foundation/document-types). What matters here is the plain-text shape: a Markdown file with fixed front matter and headings that a check validates mechanically. A minimal example:
 
 ```markdown
 ---
@@ -108,7 +108,7 @@ Chosen option: Mermaid. It satisfies all three constraints.
 
 A linter reads this ADR the way it reads code: front matter present, required headings in place, `status` drawn from a known set. The alternative is freeform decision records with no template, where every record tells a different kind of story and no rule fits all of them. Templated ADRs follow a known shape, so CI validates them. A freeform record gives the check nothing to grab.
 
-Tight enough to validate mechanically. Loose enough that nobody avoids it. The AC ID convention later in the book makes the same bet.
+Tight enough to validate mechanically. Loose enough that nobody avoids it. The AC ID convention later in the book makes the same bet. For ADR lifespans and the full MADR rationale, see [Document Types](/foundation/document-types).
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (cognitect.com/blog, Nov 2011), the ADR practice origin. Oliver Kopp, Anita Armbruster, Olaf Zimmermann, MADR template (adr.github.io/madr, ongoing) and "Markdown Architectural Decision Records" CEUR-WS Vol-2072 (2018), the template used throughout.*
 
