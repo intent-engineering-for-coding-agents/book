@@ -1,4 +1,4 @@
-> For my colleagues at Elsevier in Aalborg, and for my closest friends, who are always ready to talk about artificial intelligence (AI).
+> *For my colleagues at Elsevier in Aalborg, and for my closest friends, who are always ready to talk about artificial intelligence (AI).*
 
 # Foreword
 
@@ -53,4 +53,4 @@ The rest of this book is about the deliberate part: how to hand a coding agent e
 
 I wrote this near Aalborg, in northern Denmark. I associate Aalborg with quiet, serious software work, and I try to keep this book in that spirit.
 
-Flemming Nørnberg Larsen, 2026
+*Flemming Nørnberg Larsen, 2026*

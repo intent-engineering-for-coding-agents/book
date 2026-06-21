@@ -1,16 +1,18 @@
 # Introduction
 
-A coding agent works fast. It has been trained and has read more code than you ever will, and it generates a payment service in five minutes that might have taken you a week or two.
+A coding agent works fast. It has been trained on a lot of code, and it often generates a payment service in minutes that might have taken you days.
 
-The agent has no idea what you decided. No model sees the team's Redis decision from last quarter, the incident living only in someone's head, or the reason the redundant-looking auth flow is load-bearing. The database column about to be added was deprecated by a decision never recorded in an ADR. The architect who made the call left a couple of years ago. From the available context, the agent reasons brilliantly.
+The agent has no idea what you decided.
+
+Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". A coding agent in the hands of a clueless developer ships "clueless" code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral, but not what it amplifies.
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
-This is the territory of "Intent Engineering", the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
+This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
-"Agentic software engineering" now appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
+The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
 Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. These are practices you adopt as you need them, not a methodology you install.
 
@@ -18,7 +20,7 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 *Sources: OpenSpec (openspec.dev), the change-folder, and delta-spec framework this book uses end-to-end.*
 
-"Intent engineering" as a phrase is not this book's coinage. It appears in requirements engineering, in vendor agent glossaries, and in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
+"Intent engineering" as a phrase is not this book's coinage. You will see it in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
 *Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.*
 
@@ -27,9 +29,9 @@ An agent in Intent Engineering plays two roles:
 - Labor is the obvious one. The agent writes the code, drafts the spec, runs the tests, opens the PR.
 - The less-discussed role is sparring partner.
 
-Switch a well-briefed agent into **plan mode** (or architect mode), and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled and asks what you did not think to ask, and names the opportunity you walked past without even knowing.
+Ask a well-briefed agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you did not think to ask, and names the opportunity you walked past without even knowing.
 
-That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session, is a large part of what this book teaches: a _deliberate_ result of how much the agent knows about your system before you ask it to think, not a roll of the dice. The same agent that generates a payment service in five minutes will, half a minute earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
+That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session, is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think, not random chance. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
 
 ## What to expect
 
@@ -45,19 +47,22 @@ The first two give the agent context: the structural knowledge to execute your i
 
 **Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that survives both files being rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
-Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec points the agent at a target the way a crossbow aims a bolt at something barely visible downrange: deliberate, much better than guessing, and silent on whether the bolt found the mark.
+Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
 
-OpenSpec, Spec-Kit, and the rest hand you that aim, then stop. This book walks downrange: the spec _aims_ the agent at a target, and the test package _proves_ the agent hit it. Spec-driven development without verification is only aiming and then hoping for the best.
+OpenSpec, Spec-Kit, and the rest hand you the aim, then stop. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
 After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
 
-What you will not find here: a vendor comparison matrix. The agent class is named, not ranked, because those matrices age in months, sometimes faster. Cost economics for seat-licensed tooling gets one paragraph in the appendix, not a chapter.
+What you will not find here:
+
+- A vendor comparison matrix. The agent class is named, not ranked, because those matrices age in months, sometimes faster.
+- A chapter on seat-license economics. Cost economics for seat-licensed tooling gets one paragraph in the appendix, not a chapter.
 
 ## Who this is for
 
-You are a senior developer or architect. You already use a capability-class coding agent: one with a reasoning-capable model, real tool use, and enough autonomy to carry out a plan without checking in for every decision. At the time of writing, that class includes tools such as Claude Code, GitHub Copilot, Cursor, Codex, and OpenCode. The exact model roster will keep moving. The practices in this book target the class, not a frozen vendor list.
+You are a senior developer or architect. You already use a capability-class coding agent: one with a reasoning-capable model, real tool use, and enough autonomy to carry out a plan without checking in for every decision. The exact model roster will keep moving. The practices in this book target the class, not a frozen vendor list.
 
 You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
@@ -65,11 +70,17 @@ Run one agent or run several. This book treats vendor-agnostic as a deliberate c
 
 The payoff arrives once switching is inexpensive: running several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
-*Sources: Anthropic Docs, "Claude Code overview" (ongoing); OpenAI Docs, "Codex CLI" (ongoing); GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025); Cursor documentation (ongoing); OpenCode Docs (ongoing), the capability-class coding agents named as the target class.*
+*Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
 
 ## When a project earns this
 
-Most of what you build does not need any of this. A script you run once, a glue function, a prototype that exists to answer a question and then gets deleted: reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
+Most of what you build does not need any of this:
+
+- A script you run once.
+- A glue function.
+- A prototype that exists to answer a question and then gets deleted.
+
+Reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
 
 The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
 
