@@ -25,4 +25,4 @@ For each cross-cutting concern — auth, error handling, logging, database acces
 
 ## Sources
 
-- intent-book, *"Security in Depth" chapter*, quality section.
+- intent-book, *"What the Scanners Miss" chapter*, quality section.

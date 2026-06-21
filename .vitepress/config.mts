@@ -68,7 +68,7 @@ export default withMermaid(
             { text: 'Agent Evaluation and Regression', link: '/quality/agent-evaluation' },
             { text: 'AC IDs and Coverage', link: '/quality/ac-ids-coverage' },
             { text: 'Before, During, After Checkpoints', link: '/quality/checkpoints' },
-            { text: 'Security in Depth', link: '/quality/security-in-depth' },
+            { text: 'What the Scanners Miss', link: '/quality/what-the-scanners-miss' },
             { text: 'PR Taxonomy', link: '/quality/pr-taxonomy' },
             { text: '.principles: Raising the Bar', link: '/quality/dot-principles' },
           ]

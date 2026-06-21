@@ -66,6 +66,6 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 
 ## Security
 
-- [OWASP](https://owasp.org/) (ongoing) and [OWASP Top 10](https://owasp.org/www-project-top-ten/) (ongoing). Review checklist anchor for the Security in Depth chapter.
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (ongoing). LLM01: Prompt Injection; the catalogued-risk anchor for the agent-as-attack-surface section of Security in Depth.
-- Simon Willison — ["Prompt injection attacks against GPT-3"](https://simonwillison.net/2022/Sep/12/prompt-injection/). simonwillison.net, *Sep 12, 2022*. Coined the term "prompt injection"; cited in Security in Depth.
+- [OWASP](https://owasp.org/) (ongoing) and [OWASP Top 10](https://owasp.org/www-project-top-ten/) (ongoing). Review checklist anchor for the What the Scanners Miss chapter.
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (ongoing). LLM01: Prompt Injection; the catalogued-risk anchor for the agent-as-attack-surface section of What the Scanners Miss.
+- Simon Willison — ["Prompt injection attacks against GPT-3"](https://simonwillison.net/2022/Sep/12/prompt-injection/). simonwillison.net, *Sep 12, 2022*. Coined the term "prompt injection"; cited in What the Scanners Miss.

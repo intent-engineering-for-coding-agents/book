@@ -52,11 +52,11 @@ The unit of work in OpenSpec: a directory under `openspec/changes/` named with a
 
 ## CSRF (Cross-Site Request Forgery)
 
-A web attack class in which an authenticated user's browser is induced to submit an unintended request to a site they are logged into. Defended against with CSRF tokens, same-site cookies, or origin checks. Listed in [Security in Depth](/quality/security-in-depth).
+A web attack class in which an authenticated user's browser is induced to submit an unintended request to a site they are logged into. Defended against with CSRF tokens, same-site cookies, or origin checks. Listed in [What the Scanners Miss](/quality/what-the-scanners-miss).
 
 ## CVE (Common Vulnerabilities and Exposures)
 
-A public catalog of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [Security in Depth](/quality/security-in-depth).
+A public catalog of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [What the Scanners Miss](/quality/what-the-scanners-miss).
 
 ## Cognitive debt
 
@@ -124,7 +124,7 @@ A technique that introduces small, semantics-changing edits (mutations) into the
 
 ## OWASP (Open Worldwide Application Security Project)
 
-A non-profit foundation publishing community-driven security resources for web applications. Best known for the OWASP Top 10, the ten most prevalent web application vulnerability classes. Used in this book as the after-gate review checklist. See [Security in Depth](/quality/security-in-depth).
+A non-profit foundation publishing community-driven security resources for web applications. Best known for the OWASP Top 10, the ten most prevalent web application vulnerability classes. Used in this book as the after-gate review checklist. See [What the Scanners Miss](/quality/what-the-scanners-miss).
 
 ## OpenSpec
 

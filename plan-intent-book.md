@@ -218,7 +218,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Before: architecture, AGENTS.md, design system, **test strategy document**
     - During: spec writing, hooks, context management
     - After: verification, refactoring, review
-- [x] Chapter: Security in Depth
+- [x] Chapter: What the Scanners Miss
     - *Sources: OWASP Top 10; ThoughtWorks Radar Vol 34 (zero trust, sandboxed execution, prompt injection).*
     - Pattern replication — the agent copies broken auth patterns because it does not distinguish trusted from untested
     - Deference to the user on unsafe security decisions — the agent accepts any answer to "should I disable this check?"

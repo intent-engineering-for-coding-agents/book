@@ -47,7 +47,7 @@ the worked examples and the `iec` companion repo.
   - Agent Evaluation and Regression: test the agent setup itself when instructions, skills, or hooks change.
   - AC IDs and Positive/Negative Coverage: keep scenarios traceable to tests with stable IDs and coverage pairs.
   - Before, During, After Checkpoints: place checks across the change lifecycle.
-  - Security in Depth: keep security review layered around agent-generated work.
+  - What the Scanners Miss: keep security review layered around agent-generated work.
   - PR Taxonomy: make review shape match risk and uncertainty.
   - .principles: Raising the Bar: connect local rules to a living principle catalog.
 - Team Workflows: show how the OpenSpec-first workflow fits normal team delivery.
