@@ -18,7 +18,7 @@ This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is
 
 ## The recommended field: `Test-type:`
 
-Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in the review. The book recommends the field. `iec` goes further and makes it mandatory, checked on every scenario. Omit it and the agent infers the test layer from the scenario content alone, which works most of the time and fails at the edges.
+Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in the review. The book recommends the field. `iec` goes further and makes it mandatory, checked on every scenario. Omit it, and the agent infers the test layer from the scenario content alone, which works most of the time and fails at the edges.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
