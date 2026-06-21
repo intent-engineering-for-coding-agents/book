@@ -2,7 +2,7 @@
 
 Green tests feel like proof. They are not proof. A suite runs fully green over code that is quietly broken because the tests cover the paths the prose happened to mention and nothing else.
 
-Consider a spec with one acceptance criterion: files must not exceed 10 MB. The agent writes a test that uploads a 5 MB file and asserts the response is 200. The test passes. It would still pass if the size check were deleted entirely. It exercises the path that works; it does not prove the limit holds. The AC is in the spec. The proof is not in the suite.
+Consider a spec with one acceptance criterion: files must not exceed 10 MB. The agent writes a test that uploads a 5 MB file and asserts the response is 200. The test passes. It would still pass if the size check were deleted entirely. It exercises the path that works. It does not prove the limit holds. The AC is in the spec. The proof is not in the suite.
 
 This is not a *code coverage* problem, which measures whether a test touches a line. AC coverage measures whether a test would fail if an acceptance criterion were violated. A suite reaching 100% line coverage still proves none of its ACs.
 
@@ -18,13 +18,13 @@ Proof is not perfectionism. The minimum bar is automated evidence that a coding 
 
 A test is proof when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. Open the spec, pick a scenario, modify the implementation to violate it, run the tests. If everything stays green, the tests do not prove that scenario. They prove that something runs.
 
-Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation survived, and whatever the surviving mutation touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number; they cannot fake a mutation kill rate without writing genuine assertions.
+Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation survived, and whatever the surviving mutation touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number. They cannot fake a mutation kill rate without writing genuine assertions.
 
 Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?" Which paths you need to cover to answer that for every AC is the harder question.
 
 *Sources: Jia and Harman, "An Analysis and Survey of the Development of Mutation Testing" (IEEE TSE, 2011), mutation testing as an established technique for detecting tests that assert too little. ThoughtWorks, Technology Radar Vol 34 (April 2026), mutation testing recommended as a feedback control suited to agentic delivery.*
 
-## Paths, not just lines
+## Paths, not lines
 
 The starting point is the AC, not the code. For each acceptance criterion, ask what scenarios are needed to prove it fully: the positive path where it holds, the negative paths where it is violated, and any boundary values the criterion implies. The 10 MB limit needs at least two tests: one proving a valid file passes, one proving an oversized file is rejected. Without the second, the limit is not proven, regardless of how many lines the first test touches. A more precise AC might add a third: a file at exactly 10 MB, to pin the boundary.
 
@@ -34,7 +34,7 @@ AC coverage does not replace code coverage. Tests that prove acceptance criteria
 
 ## Choosing the right test type
 
-This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation; it proves nothing about the HTTP layer above it. An integration test proves a module pipeline; it proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
+This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation. It proves nothing about the HTTP layer above it. An integration test proves a module pipeline. It proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
 
 ## Done means proven
 
@@ -58,7 +58,7 @@ An agentic team shipping several features a day cannot. Memory does not scale to
 
 Push the rate up far enough and the human leaves the moment entirely. An agent running unattended has no reviewer to ask whether a change is done, so it reads the test result instead. Proof stops being evidence a reviewer reads later and becomes the exit condition for the run: until every AC scenario passes, the agent keeps going or flags a blocker.
 
-Automated proof is the only verification that survives the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once; the cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
+Automated proof is the only verification that survives the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once. The cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
 
 A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.
 
@@ -76,13 +76,13 @@ A test scoped to one scenario and linked to its AC ID is also the most reliable 
 
 Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
 
-If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs; the point here is that no amount of test rigor substitutes for a review of the specs.
+If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. The feedback loop closes in the wrong place. No automated check catches a well-implemented wrong requirement. That is a human job, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs. No amount of test rigor substitutes for a review of the specs.
 
 The spec does not have to contain everything it references. An ADR documenting why the retry limit is three, or why the session expires after twenty minutes, does not belong in the scenario text. It belongs in the decision record, linked from the spec.
 
-## Ritual tests earn their place; proof has a ceiling
+## Ritual Tests Earn Their Place, Proof Has a Ceiling
 
-Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent; they are proof of plumbing. They earn their place by being inexpensive and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
+Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent. They are proof of plumbing. They earn their place by being inexpensive and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
 
 The harder issue is that a test proves what it asserts, not what the spec omitted. If the spec defines the 10 MB limit but says nothing about zero-byte files, the suite runs green while a zero-byte upload hits an unhandled path. Mutation testing, covered above, catches the first kind of gap: an assertion the suite should make but does not. The second kind, a scenario the spec never considered, does not show up in any test run. Someone has to read the spec and ask what was left out.
 
