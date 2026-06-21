@@ -61,13 +61,12 @@ When a failure happens, the agent has the full context: it produced the wrong ou
 Give it the failure and ask for the instruction:
 
 ```text
-The agent just produced [X] when it should have produced [Y].
+The agent produced [X] when it should have produced [Y].
 Write one instruction for the agent instructions file that prevents this.
 
 Requirements:
 - State the constraint, not the outcome ("do not use X" not "write clean X")
-- Be specific enough that any coding agent or human can tell whether it
-  was followed without additional context
+- Be specific enough that a coding agent or a human reviewer tells whether the rule was followed without additional context
 - Keep it to one or two sentences
 ```
 
