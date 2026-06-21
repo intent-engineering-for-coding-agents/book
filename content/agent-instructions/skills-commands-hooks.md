@@ -64,7 +64,7 @@ graph TD
     classDef auto fill:#0891b2,stroke:#0e7490,color:#fff
     classDef forced fill:#0d9488,stroke:#0f766e,color:#fff
 
-    I["Instruction<br/>agent may skip"]:::advisory
+    I["Instruction<br/>agent might skip"]:::advisory
     S["Skill<br/>runs saved steps"]:::auto
     H["Hook<br/>runs every time"]:::forced
 
