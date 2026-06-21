@@ -20,7 +20,7 @@ Content documents are the baseline: wiki pages, guides, articles, reference docu
 
 The other five types each carry constraints. Content documents do not. That asymmetry is the point.
 
-The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. `iec check` scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
+The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. A convention check scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
@@ -48,13 +48,13 @@ Architectural Decision Records (ADRs) are documents that manifest specific decis
 
 While an ADR is still proposed, change it as much as the discussion requires. That is what the proposal stage exists for. Once its status moves to `accepted`, the decision freezes. Reversing it means writing a new ADR that references the old one and supersedes it, not rewriting the original to say something different. Supporting context is not frozen: pros and cons, discovered consequences, implementation notes, the kind of adjustment that sharpens the record without changing what was decided. When you make that kind of adjustment, record an amendment at the bottom of the file: the date, what changed, and the before and after.
 
-The proposed and accepted statuses come from MADR itself, recorded in a YAML front matter block at the top of the file: `status: accepted`, `date: 2024-03-01`. That structure is what turns the gate into something `iec check` or an agent verifies directly, rather than a rule a reader has to infer from prose. The amendment record does not come from MADR. It is this book's own convention. Without it, there is no way to tell whether the supporting context in an ADR was part of the original decision or a correction added afterward. That ambiguity is exactly what the immutability rule exists to prevent.
+The proposed and accepted statuses come from MADR itself, recorded in a YAML front matter block at the top of the file: `status: accepted`, `date: 2024-03-01`. That structure is what turns the gate into something a convention check or an agent verifies directly, rather than a rule a reader has to infer from prose. The amendment record does not come from MADR. It is this book's own convention. Without it, there is no way to tell whether the supporting context in an ADR was part of the original decision or a correction added afterward. That ambiguity is exactly what the immutability rule exists to prevent.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR form, and the why-over-what value. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr, 2018), the proposed/accepted status field in front matter. The amendment-record convention is this book's own.*
 
 ## MADR
 
-This book uses MADR (Markdown Architectural Decision Records), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and `iec check` validates the format before a decision lands in the wrong state.
+This book uses MADR (Markdown Architectural Decision Records), a structured template developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). MADR gives every ADR the same shape: context, considered options, decision outcome, consequences. Consistent shape means the agent scans several ADRs quickly without parsing the prose shape of each one, and a convention check validates the format before a decision lands in the wrong state.
 
 The "considered options" section is not boilerplate. Rejected options tell the agent which paths were already evaluated and ruled out. An agent that sees only the chosen option will re-propose the alternatives on its own. One that sees the rejected options with their reasoning will not. The why-not carries the same weight as the why.
 
