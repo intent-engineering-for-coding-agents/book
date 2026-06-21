@@ -1,6 +1,8 @@
 # Spec Lifecycle
 
-A spec with no lifecycle does not get retired. It sits there looking exactly like a live one. The agent opens a change folder for a payment integration the team abandoned eight months ago: never merged, never archived, still sitting in `openspec/changes/` with a `proposal.md` and `tasks.md` pointing at a third-party API the company has since replaced. The agent, being helpful, starts implementing it.
+Consider a spec with no lifecycle. It does not get retired. It sits there looking exactly like a live one.
+
+Months later, an agent opens a change folder for a payment integration the team abandoned: never merged, never archived, still sitting in `openspec/changes/` with a `proposal.md` and `tasks.md` pointing at an upstream API the company already replaced. The agent, being helpful, starts implementing it.
 
 A spec without a lifecycle accumulates. The agent cannot distinguish intent from archaeology.
 
@@ -26,7 +28,7 @@ graph TD
     I -. spec wrong? update it .-> W
 ```
 
-Three of these stages are OpenSpec commands. Critique and review are not, and that gap is the point: it is where this book adds discipline the tool leaves out. Command names below are the mid-2026 `opsx` profile; the stages outlast the names.
+Three of these stages are OpenSpec commands. Critique and review are not, and that gap is the point: it is where this book adds discipline the tool leaves out. Command names below are the mid-2026 `opsx` profile. The stages outlast the names.
 
 **Write** (`/opsx:propose`): create the spec when you are about to implement, not weeks in advance. One command generates the proposal, specs, design, and tasks together. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
@@ -36,19 +38,21 @@ Three of these stages are OpenSpec commands. Critique and review are not, and th
 
 Approve the change folder on its own pull request, the spec, and its scenarios, and the intent is settled before a line of code is written. Implementation lands in one or more follow-up PRs, each checked against scenarios the team already agreed on. An agent helps here too, checking the implementation against the spec scenarios before the human reviewer opens the diff.
 
-**Implement** (`/opsx:apply`): the agent works through the tasks one by one, writes the code, runs tests, and ticks each checkbox, with the spec canonical for behavior throughout. `/opsx:verify` then checks the implementation against the artifacts. When the implementation reveals the spec is wrong, fix the spec and let the code follow, never the reverse.
+**Implement** (`/opsx:apply`): in the OpenSpec `opsx` workflow, the agent works through the tasks one by one, writes the code, runs tests, and ticks each checkbox, with the spec canonical for behavior throughout. `/opsx:verify` then checks the implementation against the artifacts. When the implementation reveals the spec is wrong, fix the spec and let the code follow, never the reverse.
 
-**Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. `/opsx:sync` merges the delta specs into `openspec/specs/`; `/opsx:archive` moves the change folder to `openspec/changes/archive/`. CI is the natural place to trigger both; the last task box ticked is the signal. The implementation is in git, the acceptance criteria are in the canonical spec, and the change history is in the archive. The design that shaped all three stays in `docs/`. Four things, four places, none of them confused.
+**Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. `/opsx:sync` merges the delta specs into `openspec/specs/`. `/opsx:archive` moves the change folder to `openspec/changes/archive/`.
+
+In this book's workflow, CI is the natural place to trigger both. The last task box ticked is the signal. The implementation is in git, the acceptance criteria are in the canonical spec, and the change history is in the archive. The design that shaped all three stays in `docs/`. Four things, four places, none of them confused.
 
 *Sources: Fission AI, OpenSpec, the change-folder stages, and the archive-into-canonical-specs mechanism. Fission AI, OpenSpec, "commands.md" (github.com/Fission-AI/OpenSpec, accessed 2026), the `opsx:*` commands mapped to the stages: `propose` generates the artifacts, `apply` implements and checks off tasks, `verify` validates against artifacts, `sync` and `archive` merge and retire the change. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), multimodel critique as an emerging SDD step. The lifecycle framing (write, critique, review, implement, archive) is this book's synthesis.*
 
 ## Writing the task list
 
-OpenSpec already does the mechanical part. `/opsx:propose` generates `tasks.md` alongside the proposal and specs; `/opsx:apply` works through the tasks one by one, writes the code, runs tests as needed, and marks each checkbox. You neither write the list nor tick it off.
+OpenSpec already does the mechanical part. `/opsx:propose` generates `tasks.md` alongside the proposal and specs. `/opsx:apply` works through the tasks one by one, writes the code, runs tests as needed, and marks each checkbox. You neither write the list nor tick it off.
 
 What the agent will not do is decompose the way your team would. Left to its priors, it groups tasks by functional area, runs tests "as needed" rather than per criterion, and carries no thread from a scenario to the test that proves it. None of that breaks OpenSpec's rules, because OpenSpec has none here: requirements and scenarios are named, not ID'd, and a scenario is only a "potential test case", bound to nothing.
 
-So you constrain the generation instead of performing it. The conventions ride in `.agents/instructions/openspec.md`, the file the agent loads next to the workflow, and patch nothing:
+So you constrain the generation instead of performing it. Put the conventions in an instruction file next to the workflow, for example `.agents/instructions/openspec.md`, and patch nothing:
 
 ```markdown
 # openspec.md (.agents/instructions/)
@@ -60,7 +64,7 @@ So you constrain the generation instead of performing it. The conventions ride i
 
 Now `/opsx:apply` runs a typed test for every criterion instead of testing at its own discretion, and `/opsx:verify` has a concrete trail to check. The AC ID travels from spec to test, so a large change splits across several PRs safely: each closes a handful of tasks, ships the tests that prove them, and merges on a passing suite. Leave tests to the agent's "as needed" and the early PRs merge unproven.
 
-Fork the tool, and you own the merge conflict on its next release. Layer an instruction file and the conventions are yours while the workflow stays standard. The four lines above are the gist. The companion CLI runs a fuller version on itself, with the AC-ID format, the test-type taxonomy, and marker-to-spec traceability spelled out: [`.agents/instructions/openspec.md`](https://github.com/intent-engineering-for-coding-agents/cli/blob/main/.agents/instructions/openspec.md).
+Fork the tool, and you own the merge conflict on its next release. Layer an instruction file and the conventions are yours while the workflow stays standard. The four lines above are the gist.
 
 For sizing guidance on how many tasks belong in a list, and when a list that grows past ten signals a scope problem, see the Rule of Ten in [Why Small?](./why-small).
 
