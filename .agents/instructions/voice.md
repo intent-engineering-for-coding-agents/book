@@ -229,7 +229,11 @@ When a coding or AI agent drafts a section, hold a higher bar: default to senten
 
 Keep backtick inline code formatting. Keep fenced code blocks. Keep Mermaid diagram blocks. Keep tables. Book titles in Sources lines use quotes, not italics.
 
-One sanctioned italic exception remains: the `Sources:` citation line is wrapped whole in italics (`*Sources: ...*`) so it reads as a citation strip, not body prose. This applies to the entire line only, never to emphasizing words inside it.
+Italics and bold are encouraged when they do real work, but use them sparingly. Overuse reads like agent formatting.
+
+By convention, the `Sources:` citation line is wrapped whole in italics (`*Sources: ...*`) so it reads as a citation strip, not body prose.
+
+Bullets are encouraged when you need scanability (constraints, checklists, comparisons). Keep them short. Avoid nested bullets and avoid list-only chapters.
 
 ## Preferred techniques
 
