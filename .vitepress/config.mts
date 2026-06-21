@@ -20,7 +20,7 @@ export default withMermaid(
         { text: 'Home', link: '/' },
         { text: 'Introduction', link: '/introduction' },
         { text: 'Foundation', link: '/foundation/' },
-        { text: 'Appendices', link: '/appendices/glossary' },
+        { text: 'Appendices', link: '/appendices/honest-maturity' },
       ],
       sidebar: [
         { text: 'Foreword', link: '/foreword' },
@@ -89,12 +89,12 @@ export default withMermaid(
         {
           text: 'Appendices',
           items: [
+            { text: 'Honest Maturity', link: '/appendices/honest-maturity' },
+            { text: 'Adoption Checklist', link: '/appendices/adoption-checklist' },
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Living Principles', link: '/appendices/living-principles' },
             { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
             { text: 'Companion Repo', link: '/appendices/companion-repo' },
-            { text: 'Honest Maturity', link: '/appendices/honest-maturity' },
-            { text: 'Instantiation Checklist', link: '/appendices/instantiation-checklist' },
             { text: 'Credits', link: '/appendices/credits' },
           ]
         }

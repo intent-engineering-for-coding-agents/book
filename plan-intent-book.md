@@ -293,7 +293,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
 - [x] Appendix: Tooling Landscape (links to living page)
     - CLI agents, spec tools, MCP essentials
     - Model selection and cost: capability-class criterion (thinking + agent + plan mode); per-token pricing matters for direct-API readers; per-seat pricing (Copilot Enterprise, Cursor Business) makes per-run accounting irrelevant. One paragraph, not a chapter — DevOps and SRE are out of scope.
-- [x] Appendix: Instantiation Checklist
+- [x] Appendix: Adoption Checklist
     - How to adopt Intent Engineering practices in your repo
     - What to copy, what to adapt
     - `iec init` as starting point
