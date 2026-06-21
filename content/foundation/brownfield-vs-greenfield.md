@@ -1,6 +1,6 @@
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-The retry policy lives in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries or why the count is three. The system has survived three rewrites and two tech leads. The original architect was certain about several things, none of which are written down anywhere.
+Consider a retry policy buried in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries or why it retries at all. The system survived several rewrites and handoffs. The original architect was certain about several things, none of which are written down anywhere.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift.
 
@@ -18,7 +18,7 @@ One warning: incorrect or outdated documentation does not sit inertly in the rep
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
-This map goes into `docs/`, typically as `docs/skeleton.md` to mark it as bootstrap rather than current architecture, and becomes the starting context for every subsequent agent session. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
+This map goes into `docs/`. This book uses `docs/skeleton.md` to mark it as bootstrap rather than current architecture. The skeleton becomes the starting context for subsequent agent sessions. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
 
 ## Generating one
 
@@ -52,7 +52,7 @@ The skeleton does not eliminate the brownfield condition. The system is still wh
 
 ## How the skeleton dies
 
-A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. When the map drifts from the territory, a skeleton written eighteen months ago for a system refactored three times since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
+A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. When the map drifts from the territory, a skeleton written over a year ago for a system refactored repeatedly since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
 
 Treat `skeleton.md` like a living document. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will keep.
 
