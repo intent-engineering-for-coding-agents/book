@@ -4,11 +4,11 @@ Sorted alphabetically. Each entry expands the term and gives the definition this
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. An Intent Engineering convention layered on top of OpenSpec; OpenSpec itself prescribes no ID format. See [AC IDs and Coverage](/quality/ac-ids-coverage).
+A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to proof. This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec itself prescribes no ID format. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
-A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file; increment the counter atomically with the new scenario. Prevents prefix overlap and ID reuse. See [AC IDs and Coverage](/quality/ac-ids-coverage).
+A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file. Increment the counter atomically with the new scenario. Prevents prefix overlap and ID reuse. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## ADLC (Agentic Development Lifecycle)
 
@@ -16,15 +16,15 @@ The discipline of building agents as products: reasoning loops, evals, hallucina
 
 ## ADR (Architectural Decision Record)
 
-A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted (reversing a decision creates a new ADR that supersedes the old one), though status updates and cross-references can still be edited. Originated in Michael Nygard's 2011 post; the structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
+A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted. Reversing a decision creates a new ADR that supersedes the old one, though status updates and cross-references remain editable. The practice originated in Michael Nygard's 2011 post. The structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
 
 ## Agent instructions
 
-This book's term for the full instruction set the agent loads: `AGENTS.md` (the entry-point file) and the `.agents/` hub it points into (instruction files, skills, and hooks). The entry point is a table of contents; the content lives in `.agents/`. "Agent instructions" refers to both together. See [Agent Instructions](/agent-instructions/).
+This book's term for the full instruction set the agent loads: `AGENTS.md` (the entry-point file) and the `.agents/` hub it points into (instruction files, skills, and hooks). The entry point is a table of contents. The content lives in `.agents/`. "Agent instructions" refers to both together. See [Agent Instructions](/agent-instructions/).
 
 ## AGENTS.md
 
-The canonical entry point for a coding agent at the root of a repository. Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview. Documented at agents.md.
+The de-facto entry point for a coding agent at the root of a repository as of the May 2026 snapshot of [agents.md](https://agents.md/). Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview.
 
 ## Agentic Software Engineering (ASE)
 
@@ -32,7 +32,7 @@ The broader discipline of building software with coding agents as active partici
 
 ## Brownfield
 
-A codebase that predates Intent Engineering practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt Intent Engineering from intent the way greenfield ones can; they bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+A codebase that predates Intent Engineering practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt Intent Engineering from intent the way greenfield ones do. They bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## BFF (Backend for Frontend)
 
@@ -40,11 +40,11 @@ An intermediate service layer that sits between front-end clients and back-end s
 
 ## BYOK (Bring Your Own Key)
 
-A design principle where the tool uses the caller's model provider credentials rather than supplying its own. `iec`'s agent-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs the checks using its own model access. The tool never touches API keys directly.
+A design principle where the tool uses the caller's model provider credentials rather than supplying its own. In the `iec` design, agent-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs checks using its own model access. The tool never touches API keys directly.
 
 ## Capability-class agent
 
-A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. At the time of writing, examples include Claude Code, Codex CLI, OpenCode, and Junie. Completion-only tools are out of scope.
+A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. As of mid-2026, examples in this book include Claude Code, Codex CLI, OpenCode, and Junie. Completion-only tools are out of scope.
 
 ## Change folder
 
@@ -80,7 +80,7 @@ A fixed, repeatable task with a known good output, used to detect regressions wh
 
 ## GSD (Get Shit Done)
 
-The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not justify OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
+The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not warrant OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
 
 ## Hook
 
@@ -88,15 +88,15 @@ A deterministic script wired to a file-system or session event (post-edit, pre-c
 
 ## `iec`
 
-The companion CLI for this book (Intent Engineering Checker). Validates the structural conventions the book describes: `docs/` layout, ADR format (MADR), `AGENTS.md` presence, AC ID traceability, and spec lifecycle. Runs as a CI check and as an MCP server for agent-assisted review. Source at github.com/intent-engineering-for-coding-agents/intent-cli. See [Companion Repository](/appendices/companion-repo).
+The companion CLI for this book (Intent Engineering Checker). Validates the structural conventions the book describes: `docs/` layout, ADR format (MADR), `AGENTS.md` presence, AC ID traceability, and spec lifecycle. The companion repo also records the MCP/BYOK design for agent-assisted checks. Source at github.com/intent-engineering-for-coding-agents/cli. See [Companion Repository](/appendices/companion-repo).
 
 ## Inner source
 
-The practice of sharing `.agents/` skill and instruction files across team boundaries within an organization, using the same contribution and review patterns as shared libraries. Teams publish useful skills to a shared repository; other teams pull from it. As of mid-2026, no widely-adopted standard exists for this pattern. See [Cross-Team Coordination](/team/cross-team-coordination).
+The practice of sharing `.agents/` skill and instruction files across team boundaries within an organization, using the same contribution and review patterns as shared libraries. Teams publish useful skills to a shared repository. Other teams pull from it. As of mid-2026, no widely-adopted standard exists for this pattern. See [Cross-Team Coordination](/team/cross-team-coordination).
 
 ## Intent
 
-What a developer encodes for a coding agent to act on. In this book, intent takes two forms: per-change specs that state what to build right now (the immediate intention), and the permanent architectural decisions and coded conventions that constrain how anything may be built. See [Spec-Driven Development](/spec-driven/) for the per-change form; see [Foundation](/foundation/) and [Agent Instructions](/agent-instructions/) for the permanent substrate. See [Intent Engineering](#intent-engineering).
+What a developer encodes for a coding agent to act on. In this book, intent takes two forms: per-change specs that state what to build right now (the immediate intention), and the permanent architectural decisions and coded conventions that constrain how anything gets built. See [Spec-Driven Development](/spec-driven/) for the per-change form. See [Foundation](/foundation/) and [Agent Instructions](/agent-instructions/) for the permanent substrate. See [Intent Engineering](#intent-engineering).
 
 ## Intent Engineering
 
@@ -108,7 +108,7 @@ A lightweight spec-driven development framework focused on small, focused specs 
 
 ## Load clause
 
-A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading; without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
+A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading. Without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
 ## MADR (Markdown Architectural Decision Record)
 
@@ -116,7 +116,7 @@ A specific Markdown template for ADRs developed by Oliver Kopp, Anita Armbruster
 
 ## MCP (Model Context Protocol)
 
-The standard agent-tool bridge protocol (modelcontextprotocol.io). Used in this book by `iec` to expose agent-assisted checks via the user's own coding agent (BYOK: bring your own key).
+The agent-tool bridge protocol documented at modelcontextprotocol.io. In this book, the `iec` design uses MCP to expose agent-assisted checks through the user's own coding agent (BYOK: bring your own key).
 
 ## Mutation testing
 
@@ -128,7 +128,7 @@ A non-profit foundation publishing community-driven security resources for web a
 
 ## OpenSpec
 
-A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, delta specs per capability under `specs/`, `tasks.md`, and optional `design.md`. On archive, delta specs are applied to the canonical `openspec/specs/` and the full change folder moves to `openspec/changes/archive/`. The book uses OpenSpec end-to-end; `iec` is built with it.
+A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, delta specs per capability under `specs/`, `tasks.md`, and optional `design.md`. On archive, delta specs are applied to the canonical `openspec/specs/` and the full change folder moves to `openspec/changes/archive/`. The book uses OpenSpec end-to-end. `iec` is built with it.
 
 ## skeleton.md
 
