@@ -1,12 +1,12 @@
 # Why Structure Matters
 
-The agent adds a new `POST /orders` REST endpoint.
+Your agent adds a new `POST /orders` REST endpoint.
 
-The team moved to gRPC months ago due to typed contracts, streaming, performance reasons that live in one architect's head, and zero files in the repo. Every other service in the codebase is gRPC.
+Consider a repo that moved to gRPC months ago for typed contracts, streaming, and performance reasons that live in one architect's head and zero files in the repo. Every other service in the codebase is gRPC.
 
-REST is what the agent's model absorbed during its base training. The decision to leave it behind and replace it for gRPC happened in a team meeting but never became a readable file, for the agent or anyone else. This crucial information now only lives in the heads of the team members who happen to remember the decision.
+REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else.
 
-The handler compiles, passes its tests, and quietly reintroduces a stack the team paid migration cost to leave behind. Review approves the PR, then three more PRs build clients that have to special-case this one service before someone notices the codebase now speaks two protocols. By then the choice is load-bearing, and removing it costs more than the original Architectural Decision Record (ADR) would have.
+The handler compiles and passes its tests. The repo now speaks two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
 
 This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be quietly overwritten. And the count keeps climbing. Every agent session is one more chance to widen the gap between what the team decided and what the code now says.
 
@@ -61,7 +61,7 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 - REST handlers are deprecated; do not add new ones.
 ```
 
-The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught three PRs later by a reviewer who, by coincidence, happened to remember the migration meeting from a few months back.
+The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught later by a reviewer who, by coincidence, happened to remember the migration meeting from a few months back.
 
 None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
 
