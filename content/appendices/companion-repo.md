@@ -2,7 +2,7 @@
 
 `iec` (Intent Engineering Checker) is the companion repository for this book. Its job is evidence, not product adoption: ADRs in MADR format, OpenSpec changes, stable AC IDs, tests that trace back to those IDs, and `AGENTS.md` wired to `.agents/` instructions and skills.
 
-`iec` is not a validator for arbitrary repos. It does not scan your codebase against a checklist and report findings. The name reflects the tool it ships: a CLI for checking alignment in its own development workflow. Your conventions will differ from the ones here, as they should.
+`iec` is not a general-purpose validator for arbitrary repo layouts. The name reflects the tool it ships: a CLI for checking alignment with the conventions used in its own development workflow. Your conventions will differ from the ones here, as they should.
 
 It is also not production-grade. The repo is a teaching artifact, and this page records what to inspect.
 
@@ -33,14 +33,14 @@ git clone https://github.com/intent-engineering-for-coding-agents/cli
 
 ## The git history, for the curious
 
-The repo accumulated its structure in phases, each represented by a git tag. If you want to see how the setup evolved rather than just where it landed, the tags let you check out the repo at any point in that history:
+The repo accumulated its structure in phases, each represented by a git tag. If you want to see how the setup evolved rather than where it landed, check out the repo at any point in that history:
 
 | Tag | What it introduced |
 |-----|--------------------|
 | `v0.0.1` | Bare scaffold: `pyproject.toml`, `.gitignore`, CI, source stubs |
 | `v0.1.0` | Foundation: `docs/`, ADRs 0001-0006, `openspec/` structure, `.agents/` scaffold |
 | `v0.2.0` | Agent instructions: `AGENTS.md`, `.agents/instructions/`, `update-index` skill |
-| `v0.3.0` | Version-tagging conventions; no new structure |
+| `v0.3.0` | Version-tagging conventions, no new structure |
 | `v0.4.0` | File and structure checkers |
 | `v0.5.0` | Agent hub structure and secrets checkers |
 | `v0.6.0` | Test traceability and test coverage checkers |
@@ -51,8 +51,8 @@ git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 
 ## What it does not do
 
-`iec` is not a validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions; uninitialized repos will fail most checks by design. The companion repo is the canonical example of a repo where all checks pass.
+`iec` is not a general-purpose validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions. Uninitialized repos fail most checks by design. The companion repo is the reference example for this convention set.
 
 The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
 
-*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli), phase descriptions from `git tag -n1`.*
+*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli), repository structure and phase descriptions from `git tag -n1`.*
