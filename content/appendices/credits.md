@@ -1,6 +1,6 @@
 # Credits
 
-The full bibliography appears in the `Sources:` lines at the end of each chapter section. This page is attribution-only: intellectual debts, tool precedents, and prior art named in one place.
+The full bibliography appears in [References](/appendices/references). This page is attribution-only: intellectual debts, tool precedents, and prior art named in one place.
 
 ## Foundational engineering practice
 

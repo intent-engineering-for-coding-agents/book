@@ -38,7 +38,7 @@ The Model Context Protocol (modelcontextprotocol.io) lets agents reach external 
 | Server | Purpose | Notes |
 |---|---|---|
 | Atlassian Rovo MCP / `mcp-atlassian` | Jira and Confluence access | Fetches story context during spec drafting |
-| Framelink MCP (GLips/Figma-Context-MCP) | Figma design data | For front-end specs, 14.9k★ as of mid-2026 |
+| Framelink MCP (GLips/Figma-Context-MCP) | Figma design data | For front-end specs, 14.9k stars as of mid-2026 |
 
 MCP server availability, permission scope, and reliability vary by environment. Verify connectivity before relying on any external MCP server in a CI or automated context. What an agent reaches through MCP is determined by configuration and permissions, not by the tool existing.
 

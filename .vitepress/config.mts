@@ -96,6 +96,7 @@ export default withMermaid(
             { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
             { text: 'Companion Repo', link: '/appendices/companion-repo' },
             { text: 'Credits', link: '/appendices/credits' },
+            { text: 'References', link: '/appendices/references' },
           ]
         }
       ],

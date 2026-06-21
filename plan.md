@@ -148,7 +148,7 @@ Files carrying "ASE" as the practice (execution applies the rule line by line):
 `content/foundation/plain-text-as-code.md`, `content/foundation/why-structure.md`,
 `content/foundation/document-types.md`, `content/foundation/honest-maturity.md`,
 `content/quality/ac-ids-coverage.md`, `content/quality/dot-principles.md`,
-`content/team/what-is-still-evolving.md`, `references.md`.
+`content/team/what-is-still-evolving.md`, `content/appendices/references.md`.
 
 Key prose rewrite, `content/introduction.md`: replace the "This is the territory of Agentic
 Software Engineering (ASE)..." paragraph with one that introduces Intent Engineering as the
@@ -180,7 +180,7 @@ Use `git mv` to preserve history. Each rename requires updating every inbound li
 - `content/foundation/index.md` chapter list links (items 4 and 7).
 - `content/foundation/why-structure.md` cross-link to "When ASE Fails".
 - `content/appendices/glossary.md` "See ..." links.
-- `references.md` ("cited in 'The Map: ASE and the SDLC'").
+- `content/appendices/references.md` ("cited in 'The Map: ASE and the SDLC'").
 - Grep the old slugs across `content/` before finalizing to catch any other cross-references.
 
 ### 5. Glossary (`content/appendices/glossary.md`)

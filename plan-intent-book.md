@@ -2,7 +2,7 @@
 
 Part of [plan.md](plan.md). See also [plan-intent-cli.md](plan-intent-cli.md).
 
-Chapter `*Sources:*` lines reference [references.md](references.md).
+Chapter `*Sources:*` lines reference [content/appendices/references.md](content/appendices/references.md).
 
 ---
 
