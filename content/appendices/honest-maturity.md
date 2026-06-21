@@ -1,10 +1,10 @@
 # Honest Maturity
 
-Ask the team if they practice spec-driven development. Most will say yes. Then look at the last twenty PRs: eight have specs, six of those specs were written after the code, and two reference acceptance criteria no test exists for.
+Ask the team if they practice spec-driven development. Most will say yes. Then sample recent PRs. If specs appear after the code, or acceptance criteria have no matching tests, the practice is already drifting.
 
-The team is not lying. They believe the practice is alive, and for the first month after adoption, the belief likely matched the workflow. The gap between what we believe we do and what the repo shows we do is the most reliable failure mode in any engineering organization, and Intent Engineering practices are no different.
+The team is not lying. They believe the practice is alive, and soon after adoption, the belief likely matched the workflow. The gap between what we believe we do and what the repo shows we do is a common failure mode in engineering organizations. Intent Engineering practices drift the same way.
 
-The fix is not more process, but honest labeling. This chapter gives you three labels to attach to any practice you adopt: practiced, documented, CI-enforced. Each label names what the team is relying on.
+The fix is not more process, but honest labeling. This book uses three labels for any practice you adopt: practiced, documented, CI-enforced. Each label names what the team relies on now.
 
 ## Three levels, used honestly
 
@@ -18,11 +18,13 @@ Documented means the practice is written down well enough for someone new to fol
 
 ### CI-enforced
 
-CI-enforced is the only level a team relies on without trust. The pipeline fails when the practice is violated: a CI step catches a missing `docs/README.md` before the PR merges (tools like `iec check` can do this), and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
+CI-enforced is the only level a team relies on without trust. In a repo with those checks wired in, the pipeline fails when the practice is violated: a missing `docs/README.md` stops the PR before merge, and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
 
-A level can carry a target annotation, `practiced, target: CI-enforced by Q3`, separating current state from intent. Writing target: CI-enforced when you are not there yet is honest roadmapping. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy was built to name.
+A target annotation keeps current state separate from intent: `practiced, target: CI-enforced by Q3`. Writing target: CI-enforced when you are not there yet is honest roadmapping. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy names.
 
 These are not CMM audit levels. No certification, no maturity score, no report for management. The discipline is calling things by the right name, not upgrading the label to look good in a retrospective.
+
+*Sources: This three-level taxonomy is book synthesis. ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as practice-readiness framing this taxonomy narrows to one repo.*
 
 ## Why the labels matter
 
@@ -30,10 +32,10 @@ A team claiming CI-enforced maturity for something caught in code review is not 
 
 Honest labeling tells everyone what they rely on: CI-enforced means trust the pipeline, while practiced means ask someone who knows. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
 
-Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and four dead specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
+Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 
 The three levels rhyme with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you rely on.
 
-Your current level tells you what you rely on, and your starting point tells you adoption order. A greenfield codebase and a six-year-old production system are not just different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
+Your current level tells you what you rely on, and your starting point tells you adoption order. A greenfield codebase and a six-year-old production system are not the same problem with different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as framing for practice-readiness.*
+*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as practice-readiness framing. The practiced/documented/CI-enforced split is book synthesis for repo-local adoption state.*
