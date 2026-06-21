@@ -1,6 +1,6 @@
 # Before, During, After: The Three Checkpoints
 
-How does a change clear every gate at merge time and still run wrong three weeks later? The spec is solid, the tests are real proof, and the PR lands clean. Then an on-call developer finds a comment pointing at a design document that no longer exists. The decision it depended on was reversed in a different PR, and nothing caught the mismatch, because the thing that changed sat outside the diff anyone reviewed.
+A change clears every gate at merge time and still runs wrong three weeks later. The spec is solid, the tests are real proof, and the PR lands clean. Then you find a comment pointing at a design document that no longer matches the code. The decision it depended on was reversed in a different PR, and nothing caught the mismatch because the change sat outside the diff anyone reviewed.
 
 Quality is not a single gate. It is three, in sequence, and each catches a failure the other two miss.
 
@@ -12,11 +12,11 @@ Quality is not a single gate. It is three, in sequence, and each catches a failu
 
 The before-gate does not build the foundation. Earlier chapters did that: legible architecture (Foundation), agent instructions reachable from the `AGENTS.md` hub (Agent Instructions), a documented design system, and a test convention the agent reads before its first test ([Test Strategy and Convention](./test-strategy)). The gate asks one question about all of it: is each still current and reachable, or has it rotted since the last change?
 
-That question is cheaper than it sounds because most of it is deterministic. A hub that points at `.agents/instructions/testing.md` after the file was renamed to `test-strategy.md` loads nothing, and the agent codes against a convention it never saw. A link checker catches that. A file-size guard and an index-staleness scan catch the rest, all in CI where humans forget to look. What stays manual is the judgment no scan makes: whether the architecture the docs describe is the architecture the agent will meet in the code.
+That question is cheaper than it sounds because most of it is deterministic. A hub that points at a file that no longer exists loads nothing, and the agent codes against a convention it never saw. A link checker catches that. A file-size guard and an index-staleness scan catch the rest, all in CI where humans forget to look. What stays manual is the judgment no scan makes: whether the architecture the docs describe is the architecture the agent will meet in the code.
 
 One input sits upstream of the spec itself: the architectural decision the spec executes. The chain runs ADR, then design doc, then spec ([Spec Lifecycle](../spec-driven/spec-lifecycle)). Freeze a spec against a decision still open, or against one reversed in a later PR, and the spec executes a decision the architecture no longer follows. The gate confirms the governing ADR is approved, and the design doc the spec leans on still says what the spec assumes. A link checker proves the reference resolves. Whether the decision still holds is the same manual judgment the architecture check already demands.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (ongoing), AGENTS.md pointing at the instructions and skills the work depends on.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AGENTS.md (agents.md, ongoing), AGENTS.md as a project-level entry point for agent instructions.*
 
 ## During: the implementation gate
 
