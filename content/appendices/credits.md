@@ -20,9 +20,9 @@ Fission AI built OpenSpec (openspec.dev), the change-folder framework this book 
 
 LeanSpec (lean-spec.dev) articulated the small-spec discipline: match formality to risk. The Why Small? chapter inherits that framing directly.
 
-GitHub's Spec-Kit showed what spec-driven development looks like at enterprise scale.
+GitHub's Spec-Kit is the enterprise-scale spec-driven development example this book cites.
 
-Rick Hightower's comparative survey of SDD tools (Medium, Feb 2026) is the most useful map of the current landscape and the source for several comparative claims in the Spec-Driven topic.
+Rick Hightower's comparative survey of SDD tools (Medium, Feb 2026) is the main map this book uses for current SDD tool comparisons.
 
 ## Agent conventions
 
@@ -30,7 +30,7 @@ AgentPatterns.ai named and documented the TOC pattern for AGENTS.md. That framin
 
 Andrej Karpathy coined "vibe coding" on February 2, 2025. The Foreword's opening argument starts there.
 
-ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and assessed the SDD landscape as fragmented. Several chapters cite it as the primary evidence anchor for those claims.
+ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and assessed the SDD tool field as fragmented. Several chapters cite it as the primary evidence anchor for those claims.
 
 Birgitta Böckeler has written and spoken clearly about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic are downstream of that work.
 
