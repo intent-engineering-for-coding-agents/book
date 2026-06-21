@@ -2,7 +2,7 @@
 
 An agent briefed on nothing reaches for what it knows.
 
-Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses three checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they happened to work on that library two years earlier. Nobody else on the team would have known.
+Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they recognize the library and notice what got bypassed. Nobody else on the team would have known.
 
 The agent did not invent the vulnerability. It improvised in the absence of a briefing it was never given.
 
@@ -12,7 +12,7 @@ The agent did not invent the vulnerability. It improvised in the absence of a br
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-Six weeks later, the file is 300 lines. The agent reads every line before starting any task because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed, only more constrained.
+Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed, only more constrained.
 
 AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
@@ -38,7 +38,7 @@ The test: does the clause tell the agent *when* to load the file, or only *where
 
 ## Tool-agnostic by design
 
-Several major coding agents now read `AGENTS.md` natively. Codex read it early. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file is a single line:
+Several major coding agents now read `AGENTS.md` natively. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file is a single line:
 
 ```markdown
 # CLAUDE.md
@@ -51,21 +51,21 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short Python script that writes the pointer from `AGENTS.md`. Python ships on macOS and most Linux distributions and handles file tasks without third-party dependencies. TypeScript is the natural choice for JavaScript-first repos. One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short script that writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
 
 Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
-The direction of travel is convergence. Codex read `AGENTS.md` natively from the start. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
+The direction of travel is convergence. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 
 *Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
 
 ## How it goes wrong
 
-The TOC pattern has a failure mode: gradual accumulation. Branch naming conventions, deployment reminders, and clauses that grew from one sentence to four because the original was too vague. Six months later, the file is 200 lines, and it started as 20.
+The TOC pattern has a failure mode: gradual accumulation. Branch naming conventions, deployment reminders, and clauses that grew from one sentence to four because the original was too vague. Months later, the file is hundreds of lines, and it started short.
 
-The test is not the line count. Can anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
+The test is not the line count. Does anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-leverage file in the repo. Every session loads it, which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this was true in March" from "this is still true today". A link to an instruction file that was renamed six months ago silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong brief.
+Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact file in the repo. Every session loads it, which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong brief.
 
 Treat `AGENTS.md` changes as load-bearing. A stale ADR misleads one change. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
 
