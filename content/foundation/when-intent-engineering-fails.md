@@ -6,13 +6,13 @@ The five failure modes below survive good initial setup. They are not beginner m
 
 ## Agent instructions rot
 
-The entry point goes stale. The agent instructions say to follow the old module layout, while an ADR at `docs/decisions/0023-reverse-the-thing.md` reversed that layout nine months ago. Nobody updated the agent instructions, so the agent reads them, not the ADR, and produces code shaped for the old system.
+The entry point goes stale. The agent instructions say to follow the old module layout, while an ADR reversed that layout months ago. Nobody updated the agent instructions, so the agent reads them, not the ADR, and produces code shaped for the old system.
 
 The fix is structural and slightly painful. Treat agent instructions as part of the architecture, not part of the initial setup. Any PR changing something the agent instructions describe must update them in the same commit. No CI check catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md` and `.agents/instructions/...`. Keeping these current stays your job.
 
 ## Dead specs
 
-Open `openspec/changes/` and find eleven directories: three implemented, two canceled, one implemented but never archived, one partially done before the original author left, three competing proposals for the same change, and one from when the team tried OpenSpec for a week and stopped.
+Open `openspec/changes/` and find a pile of directories: implemented changes, canceled changes, an implemented change never archived, a partially done change from before the original author left, and competing proposals for the same change.
 
 Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple lands here: the clutter compounds with every change the team leaves un-archived.
 
@@ -30,7 +30,7 @@ The Spec-Driven topic exists because of this mode. Writing the spec before the a
 
 ## Over-spec
 
-The team writes 500-line specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from page-three requirements, drifts during the long reading pass and misses the requirement that mattered.
+The team writes multi-page specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from requirements buried late in the spec, drifts during the long reading pass and misses the requirement that mattered.
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
@@ -42,7 +42,7 @@ The "Why Small" chapter in the Spec-Driven topic goes further.
 
 The team has agent instructions, ADRs, specs, and good initial intentions. Six months later, the repo has six ADRs from the first month and nothing since, a design doc last touched in March, and a `docs/INDEX.md` last updated when someone new joined. Nobody violated a rule because there is no rule about update frequency. There is only drift, and nothing detecting it.
 
-A convention check in CI closes part of this loop. It catches structural violations before they reach the main. The check cannot catch ADRs that should have been written and were not. It cannot detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
+A convention check in CI closes part of this loop. It catches structural violations before they reach the main. The check does not catch ADRs that should have been written and were not. It does not detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 
 The [agent-evaluation chapter](../quality/agent-evaluation) covers what detection is available and where the limits are.
 
@@ -58,7 +58,7 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small) |
 | Drift with no detection | Quality and Verification |
 
-ThoughtWorks Radar Vol 34 names the cost that accrues when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deploy. Keeping the agent's context coherent enough to hold it down is what the Radar calls harness engineering. The rest of this book is harness engineering, one failure mode at a time.
+ThoughtWorks Radar Vol 34 names the cost that accrues when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deploy. Keeping the agent's context coherent enough to hold it down is what the Radar calls "harness engineering". The rest of this book is about building those controls, one failure mode at a time.
 
 Zero drift is not the goal. Catching it before it compounds is.
 
