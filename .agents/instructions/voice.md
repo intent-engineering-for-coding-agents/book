@@ -1,10 +1,10 @@
 # Voice and Craft
 
-This file defines how the prose should sound. `writing.md` covers mechanics: audience, length, sources, structure. This file covers the part that makes a chapter feel alive instead of dutiful.
+This file defines how the prose should sound. `writing.md` covers mechanics: audience, length, sources, structure. This file covers the part that makes a chapter feel lived-in instead of generic.
 
 ## Core philosophy
 
-The book is not documentation. It is technical storytelling: the register of someone who has lived inside a problem and is finally explaining what mattered. Every chapter should read that way.
+The book is not documentation. It is also not performance writing. The story lives in the technical tension: failure mode, constraint, control, tradeoff. A chapter should read like a developer explaining what broke, what fixed it, and what the fix cost.
 
 The prose must never feel:
 
@@ -15,7 +15,7 @@ The prose must never feel:
 - agent-generated
 - excessively polished
 
-A reader who skims any paragraph at random should think: this came from experience, not from summarizing documentation.
+A reader who skims any paragraph at random should think: this came from experience, not from summarizing documentation. The same reader should never wonder why the paragraph exists.
 
 ## Register anchor
 
@@ -45,6 +45,16 @@ Good: "Delete the code. Keep the spec. Regenerate."
 
 The opening sentence should make the reader want the next one.
 
+### Stay on the book's thesis
+
+This is a book about Intent Engineering for Coding Agents. It is not a general software-engineering book with agent nouns pasted on top.
+
+Each chapter needs an agent-specific delta. Name what changes because code is generated, context is partial, intent is externalized, or review has to work from artifacts instead of memory. Generic advice about refactoring, CI, code review, naming, or testing is off-topic until the paragraph states why coding agents change the stakes or the workflow.
+
+The focus test: if a paragraph would survive unchanged in a normal software-engineering book, the paragraph is missing the agent delta or does not belong. Add the missing delta or cut the paragraph.
+
+The section test: if the heading promises PR taxonomy, every subsection should help the reader classify, split, brief, or review PRs in agent-driven work. Background material stays short. The chapter's promise is the filter.
+
 ### Never fake a memory
 
 Do not narrate a fabricated specific event in the past tense as if it happened. "The spec had five scenarios. The PR had eight tests. The reviewer approved it" reads as a recalled war story, but nobody lived it. An intelligent reader clocks the invented precision, and it quietly contradicts the book's provenance discipline: rigorous `Sources:` lines under prose that opens with an unsourced invented event. The book draws on the published evidence base; it does not invent personal experience or anonymous anecdotes dressed as observed fact.
@@ -66,6 +76,12 @@ State what the chapter is about early, then reach for one of these. Vary the dev
 Forbidden words and phrases (full list below). Preferred language: retries, deadlocks, queues, corrupted state, token limits, runaway execution, latency spikes, broken deployments, stale cache, incoherent merge.
 
 Concrete operational nouns. Verbs that describe what the code does, not what the code aspires to. The reader is an engineer; speak like one.
+
+### No throat-clearing or scenic setup
+
+Do not spend sentences announcing that the topic matters, setting mood, or warming up. Cut lines like "Software teams have always wrestled with complexity", "This matters more than ever", or "Modern systems are intricate". These lines carry no technical load.
+
+The usual hiding place is the first two paragraphs of a section. If a paragraph does not introduce a concrete problem, control, tradeoff, or question, cut it.
 
 #### Technical term over literary paraphrase
 
@@ -126,6 +142,20 @@ The test: read a section aloud. If you predict the shape of the next sentence be
 Do not define obvious engineering concepts. Do not repeat the same idea three times in different words. Do not summarize excessively. Do not explain what a PR is, what CI does, what a feature flag is.
 
 Cut every sentence that re-explains. Cut every transition that announces what the next paragraph will say. The reader is paying attention.
+
+### Compression over coverage
+
+One sharp example beats three loose restatements. Do not stack equivalent paragraphs to make a section feel substantial. If two paragraphs do the same job, keep the better one.
+
+Do not widen a chapter into a survey. A chapter is allowed to leave adjacent topics alone. Depth on the promised point is better than a tour of nearby ideas.
+
+### Every paragraph earns its place
+
+Relevance is not enough. The paragraph has to earn the page.
+
+Keep a paragraph only if it advances the chapter's argument, names a concrete failure mode, explains a control, sharpens a tradeoff, or sets up the next question. Background with no chapter-specific payoff is filler, even when the background is true.
+
+The deletion test: remove the paragraph and read the section again. If no argument weakens, no mechanism disappears, no tension drops, and no example is lost, the paragraph did not earn its place. Delete it.
 
 ## Technical explanation style
 

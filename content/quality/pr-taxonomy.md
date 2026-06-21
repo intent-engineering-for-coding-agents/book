@@ -1,80 +1,93 @@
 # PR Taxonomy
 
-A pull request that does three unrelated things gets reviewed as if it did none of them. The description tells the story: fix the user profile bug, add the export endpoint, reformat the auth module. Three hundred lines. The reviewer scrolls, scrolls again, approves. A week later the auth module regresses, traced to the reformatting, which had quietly changed the order in which two middleware decorators ran. The fix was in the spec. The export endpoint was in the spec. The reformat was a free rider, and it broke production.
+A pull request is a review contract. If the contract says `behavioral` and the diff also moves files, reformats modules, and edits docs, the reviewer no longer knows which proof applies.
 
-Bundling the three hid the regression. A reviewer cannot hold one class of change to a high bar while skimming the rest of the same diff.
+Intent Engineering treats PR shape as part of the intent. The spec states what should change. The PR class states how to review the change. This chapter uses both to control one failure mode: feature work bundled with nearby cleanup and treated as one finished unit.
 
-## Three classes that should not mix
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small changes and feedback loops. Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), short-lived integrated changes. The bundled-work failure mode and `docs`/`structural`/`behavioral` taxonomy are this book's synthesis.*
 
-The taxonomy is small: three classes of change, each with its own review style, each shipped on its own PR.
+## The three classes
 
-| Class | Review style | Typical diff | Cognitive load | Risk |
-|---|---|---|---|---|
-| Docs | Reads accurately? Right file? | Small | Low | Inaccuracy slips through |
-| Structural | New shape better? Call sites updated? | Large | Medium | Silent behavioral change |
-| Behavioral | Spec, then diff, then the test | Small | High | Diverges from the spec |
+Use three PR classes. Put the class in the PR title, label, or template field before review starts.
 
-Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. A docs PR that contains a single character of code change is no longer a docs PR.
+| Class | Allowed diff | Reviewer question | Agent instruction |
+|---|---|---|---|
+| `docs` | Specs, ADRs, READMEs, agent instructions, generated indexes | Does the written intent match the system and the decision? | Do not edit executable files. |
+| `structural` | Renames, moves, formatting, dependency-free refactors | Did behavior stay the same, and did every reference move cleanly? | Do not add runtime behavior. |
+| `behavioral` | Product code, tests, migrations, config changes tied to behavior | Does the implementation satisfy the accepted spec, with tests proving the acceptance criteria? | Do not include drive-by formatting, renames, or refactors. |
 
-Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. Review focuses on completeness rather than intent, because the intent is "no behavioral change". The danger is the refactor assumed safe that was not.
+The class determines the review path. A `docs` PR gets read for accuracy and scope. A `structural` PR gets checked for completeness and behavior preservation. A `behavioral` PR gets checked against the spec, then the tests, then the diff.
 
-Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review is the one the previous chapters built: read the spec first, then the diff, then the test that proves the diff.
+Mix classes and the reviewer switches lenses mid-scroll. Free riders hide there.
 
-The split is conventional in Trunk-Based Development circles and has been for decades. What is new is that the agent does all three in one session, so bundling them feels like efficiency rather than the review hazard it is.
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback as the basis for small reviewable changes. The three review questions are this book's synthesis.*
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), the docs/structural/behavioral PR separation long-standing in trunk-based work. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small, single-purpose changes as the reviewable unit.*
+## Tell the agent before code exists
 
-## Why mixing makes review harder
+Applied after the diff exists, PR taxonomy turns into cleanup triage. The mixed diff already exists. The fix belongs in the task brief and agent instructions.
 
-A reviewer opens a 300-line diff: 270 lines of formatting, 30 lines of behavioral change. The formatting comes first in the file, so the reviewer reads it first and reaches the behavioral change with a tired eye. The 30 lines that needed careful spec-aligned review get the same quick scan as the 270 that did not.
+Use direct rules:
 
-The agent's tendency to combine changes ("I noticed this could be cleaner while I was here") makes the mixed PR its default output. The fix is upstream of the review: do not let the agent combine classes in the first place.
+```text
+This PR class is behavioral.
 
-## How to keep them separate when the agent wants to combine
+Allowed:
+- Changes required by the accepted spec
+- Tests proving the acceptance criteria
+- Documentation updates explicitly named in the spec
 
-The mechanism is the agent instructions and the PR-creation workflow.
+Not allowed:
+- Formatting unrelated files
+- Renames unrelated to the behavior
+- Refactors noticed while implementing
+- Dependency updates unless the spec names them
 
-In the agent instructions: behavioral changes do not include drive-by formatting. If the agent notices something worth reformatting while implementing a feature, it surfaces the observation in the PR description as a follow-up suggestion. It does not include the formatting in the diff. The same goes for refactors: a refactor worth doing is its own PR, not a free passenger on a feature PR.
-
-In the workflow: the agent's first action on a feature task is to check whether the current branch contains structural or docs changes already. If it does, those land first, on their own PR, before the feature work continues. The branch state should match the PR shape. A branch with one feature spec and one cleanup commit is a branch that needs to split before the PR is opened.
-
-Enforce it at the branch level and the PR shape takes care of itself: the behavioral change on its own branch, the docs and structural cleanup on their own short-lived branches and PRs.
-
-## A worked example
-
-The team implements a new export endpoint. The spec is in `openspec/changes/add-export-endpoint/`. The agent starts work and notices three things along the way.
-
-```mermaid
-graph TD
-    classDef behavioral fill:#0d9488,stroke:#0f766e,color:#fff
-    classDef docs fill:#0891b2,stroke:#0e7490,color:#fff
-    classDef structural fill:#64748b,stroke:#475569,color:#fff
-
-    A[Spec: add-export-endpoint] --> B[Behavioral PR: implement export]:::behavioral
-    C[Notice: README outdated section] --> D[Docs PR: refresh README export section]:::docs
-    E[Notice: auth module needs formatting] --> F[Structural PR: format auth module]:::structural
-    G[Notice: helper function duplicated] --> H[Structural PR: extract shared helper]:::structural
-    B & D & F & H --> I[main]
+Put every useful non-goal under Follow-ups in the PR description.
 ```
 
-Four PRs, four reviews, four merges. None takes longer than the equivalent slice of the bundled PR would have, and each is reviewable with a single style of attention: the export reviewer starts from the spec, the structural reviewers check that behavior is preserved and every call site updated, the README reviewer scans for accuracy.
+Then make the first branch action a scope check:
 
-If the agent had bundled all four into one PR, the export endpoint would have been buried in the middle. The auth-module formatting would have received the same level of attention as the export logic, and the duplicate helper extraction would have gone unreviewed because it looked like part of the export work. Each of the four cleanups is small. The combined PR would have been review-by-scrolling.
+```bash
+git diff --stat main...HEAD
+git diff --name-only main...HEAD
+```
 
-## When the rule has exceptions
+The file list is the shape of the PR. If the list includes files the spec does not name or imply, stop. Move the extra work into a follow-up PR or remove the change before implementation continues.
 
-A behavioral change that genuinely requires a structural change to land cleanly is a single PR. Adding a new endpoint that requires extending a router interface is one PR, not two. The structural change here is a precondition of the behavioral change, not a free passenger. The test of whether it belongs in the same PR is whether reverting the behavioral change while keeping the structural one would leave the codebase in a worse state. If yes, ship together. If no, ship apart.
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), short-lived branch discipline. The branch file-list check is this book's Intent Engineering practice.*
 
-The other exception is the small fix to documentation that lives inside the changed file. Updating a docstring on a function whose signature changed in this PR is part of the behavioral change. Updating an unrelated docstring in the same file is a separate docs PR. The boundary is "does the doc change describe what this PR did?" If yes, it stays. If no, it goes.
+## Split by default, bundle only under dependency
 
-These exceptions exist, but they are narrow and the default is separation. A team that finds itself making exceptions on most PRs has stopped applying the taxonomy and is now using it as decoration.
+The default split is simple:
 
-## Convention, not law
+| If the agent changes... | PR class |
+|---|---|
+| `docs/architecture/auth.md` to document the auth rule | `docs` |
+| `AuthMiddleware` to rename `checkUser` to `requireUser` | `structural` |
+| `/export` to enforce the auth rule | `behavioral` |
 
-The taxonomy is convention, not law. Different teams use different labels (`refactor`, `chore`, `feat`, `fix`, in conventional-commits style). The exact labels matter less than the discipline of one class per PR. What this book calls `structural`, conventional commits would split between `refactor` and `chore`. The mapping is straightforward. What matters is that the discipline is consistent within the team.
+Do not bundle all three because they happened in one session. The session is not the unit of review. The unit of review is the risk the reviewer must evaluate.
 
-Some teams bundle short docs changes with the behavioral PR they describe. That works when the documentation is shorter than the diff. When the documentation section runs longer than a screen, it has become its own review burden. Ship it separately.
+One exception stays useful: bundle a structural change when the behavioral change cannot land without the structural piece. If `/export` requires one new method on `Router`, ship the interface method with `/export`. Revert the behavioral half on paper. If the remaining structural change is dead code or an incomplete migration, keep the changes together. If the remaining structural change stands alone, split the PR.
 
-The agent will resist the discipline at first and offer combined PRs as the natural output of its work. The discipline lives in the agent instructions and in the developer's habits, not in any default the agent ships with. Expect to repeat the instruction several times before it sticks. The cost of the repetition is small, while the cost of letting it lapse is the 300-line mixed PR that broke production.
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small changes as feedback units. The dependency test for bundling is this book's synthesis.*
 
-The taxonomy is what makes PRs reviewable. The next chapter looks at what runs alongside specs and tests when the team wants something more than reviewability: a way to encode the qualities the code is supposed to have, separately from the behavior it is supposed to exhibit.
+## What the reviewer checks
+
+For a `docs` PR, verify the document against the codebase and the decision record. No executable file belongs in the diff.
+
+For a `structural` PR, verify completeness. Grep the old name. Run the relevant tests. Check generated files. The expected behavior is no behavior change.
+
+For a `behavioral` PR, read the accepted spec first. Trace each acceptance criterion to a test. Then read the diff for scope creep: changed files with no link to the spec, refactors with no behavioral dependency, config edits nobody asked for.
+
+This is not bureaucracy. This is how a reviewer keeps one mental model loaded long enough to catch the bug.
+
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback-loop framing for review checks. The class-specific checklist is this book's synthesis.*
+
+## The point
+
+This chapter treats the coherent-looking bundle as the failure to prevent: feature, cleanup, and opportunistic refactor in one diff. Mixed intent weakens review because the reviewer must switch proof models mid-stream. PR taxonomy makes the intended review path explicit before the agent writes code.
+
+The next control raises a different question. A clean PR proves the change stayed in its lane, but lane discipline does not prove the code is well-shaped.
+
+*Sources: The mixed-intent failure mode and PR taxonomy defense are this book's synthesis.*

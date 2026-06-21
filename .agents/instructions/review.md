@@ -12,6 +12,13 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 - Does it introduce anything not in the outline? If so, is it load-bearing or padding?
 - Is the key constraint or problem stated in the first paragraph, not buried at the end?
 
+### Relevance and earned place
+
+- Is every section relevant to this book's subject, not generic software-engineering advice with agent terms pasted on top?
+- Does each paragraph add a chapter-specific argument, mechanism, failure mode, tradeoff, or forward tension?
+- Run the deletion test: if removing a paragraph weakens nothing, explains no mechanism, drops no example, and reduces no tension, cut it
+- Use `Does not earn its place` for true but non-load-bearing background
+
 ### Tone and audience fit
 
 - Would a skeptical senior developer find this credible, or does it read as hype?
@@ -74,6 +81,7 @@ Send the chapter back for revision if any of the following is true:
 - A time-sensitive claim is written as if it were durable fact.
 - The provenance is too weak for the wording and the chapter does not acknowledge that weakness.
 - A section makes a claim with no concrete referent, or asserts a failure without showing the symptom.
+- A paragraph is broadly relevant but adds no load-bearing value to the chapter (`Does not earn its place`).
 - The credibility pass was not run, or it still reports blocking findings.
 
 ## Multi-LLM critique (optional)
