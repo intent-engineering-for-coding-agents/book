@@ -3,7 +3,7 @@
 **Layer**: 1
 **Categories**: quality, testing, agent
 **Applies-to**: code
-**Summary**: AI generates code faster than you can verify manually — automated proof is mathematically required.
+**Summary**: Coding agents generate code faster than manual verification scales. Automated proof is mandatory.
 
 ## Principle
 

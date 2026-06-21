@@ -3,7 +3,7 @@
 **Layer**: 1
 **Categories**: quality, dot-principles, automation
 **Applies-to**: all
-**Summary**: If a deterministic rule can be written, write the rule; if not, write the principle.
+**Summary**: Write deterministic rules when detection is possible. Write principles for judgment.
 
 ## Principle
 
