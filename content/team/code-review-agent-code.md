@@ -65,21 +65,15 @@ A fresh session of the same model removes the implementation bias. A genuinely d
 
 ## What human reviewers miss, what agent reviewers miss
 
-The gaps are complementary: each reviewer covers what the other does not.
+The gaps are complementary: each reviewer covers what the other does not. These are analytical observations from the structure of spec-driven review, not sourced findings.
 
-Human reviewers tend to miss three things in agent-generated code. These are analytical observations from the structure of spec-driven review, not sourced findings.
-
-The competence heuristic. Code that is well-formatted, well-named, and well-tested reads as careful. Careful-looking code triggers reduced scrutiny. The reviewer notes the test exists and moves on without asking whether the test asserts the right thing. Agent output is consistently well-formatted, and this consistency suppresses the adversarial reading a behavioral change is owed.
-
-Unchanged context. Review tooling shows what changed. The connection between the change and the rest of the system does not appear in the diff unless the reviewer actively opens neighboring files. An agent-generated change that introduces a dependency on a function three files away leaves no trace in the changed lines. The reviewer does not see what was not red or green.
-
-Constraints past the top. A reviewer who reads the acceptance criteria and skips the constraint section approves an implementation that handles the happy path correctly and the constrained edge case incorrectly. The constraint was in the spec, in section three.
-
-Agent reviewers tend to miss two things.
-
-Integration context. The implementation is correct against the spec, but the service it calls has a latency the spec did not model, or the middleware runs in a different order in production than in test. The agent reviewed the code and the spec. It did not review the runtime behavior of the system the code will integrate with.
-
-Silent ambiguity resolution. Ambiguous acceptance criteria get resolved in the direction that makes the implementation simplest, without surfacing the choice as a choice. The implementation is internally consistent. Whether the resolution was correct is a question nobody asked.
+| Reviewer | Reliably misses | Why it slips through |
+|---|---|---|
+| Human | Competence heuristic | Polished, well-tested code reads as careful, so the reviewer notes the test exists without asking whether it asserts the right thing |
+| Human | Unchanged context | The diff shows what changed; a new dependency on a function three files away leaves no red or green line |
+| Human | Constraints past the top | A reviewer who reads the acceptance criteria and skips the constraint section approves an edge case handled wrong, the constraint was in section three |
+| Agent | Integration context | It reviewed the code and the spec, not the runtime: a latency the spec did not model, middleware ordered differently in production than in test |
+| Agent | Silent ambiguity resolution | Ambiguous criteria resolve toward the simplest implementation, and the choice is never surfaced as a choice |
 
 A human doing intent-and-integration review and an agent doing coverage-and-consistency review together cover more of the failure surface than either alone. Neither covers it completely.
 

@@ -8,11 +8,17 @@ Bundling the three hid the regression. A reviewer cannot hold one class of chang
 
 The taxonomy is small: three classes of change, each with its own review style, each shipped on its own PR.
 
-Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. The review style is "does this read accurately and is it in the right file?" Review goes fast. Approval rarely blocks. A docs PR that contains a single character of code change is no longer a docs PR.
+| Class | Review style | Typical diff | Cognitive load | Risk |
+|---|---|---|---|---|
+| Docs | Reads accurately? Right file? | Small | Low | Inaccuracy slips through |
+| Structural | New shape better? Call sites updated? | Large | Medium | Silent behavioral change |
+| Behavioral | Spec, then diff, then the test | Small | High | Diverges from the spec |
 
-Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. The review style is "is the new shape better, and are all the call sites updated correctly?" Review focuses on completeness rather than intent, because the intent is "no behavioral change". The diff is often large, the cognitive load medium. The risk is the silent behavioral change that sneaks in because a refactor was assumed safe and was not.
+Docs changes modify Markdown, comments, or other non-executable text. They do not affect runtime behavior. A docs PR that contains a single character of code change is no longer a docs PR.
 
-Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review style is what the previous chapters described: read the spec first, then the diff, then the test that proves the diff. The diff is often small, the cognitive load high. The risk is the implementation diverging from the spec.
+Structural changes are reorganizations: renames, moves, formatting, refactors that preserve behavior. Review focuses on completeness rather than intent, because the intent is "no behavioral change". The danger is the refactor assumed safe that was not.
+
+Behavioral changes modify what the code does. New endpoints, new logic, fixes that change observable output. The review is the one the previous chapters built: read the spec first, then the diff, then the test that proves the diff.
 
 The split is conventional in Trunk-Based Development circles and has been for decades. What is new is that the agent does all three in one session, so bundling them feels like efficiency rather than the review hazard it is.
 

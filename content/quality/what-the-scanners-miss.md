@@ -6,6 +6,12 @@ The new version pulls in a transitive dependency that exfiltrates environment va
 
 Most security advice for agentic teams is standard practice rebranded. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see: the failure modes specific to an agent that writes code by matching patterns, defers risk decisions to the user, and arrives at a codebase with no memory of why a given control exists.
 
+| Failure mode | What the agent does | Why the scanners miss it | The defense |
+|---|---|---|---|
+| Pattern replication | Copies the nearest endpoint, inherited auth hole and all | Tools see valid-looking code, not which pattern is broken | Make the canonical pattern easiest to find; mark the broken one "do not copy" |
+| Deference to the user | Accepts "yes, disable cert verification" from a tired developer | No scanner overrides a decision the user signed off on | Encode the non-negotiable as an instruction so the question is never asked |
+| Cleanup that removes a control | Deletes a rate limiter, CSRF check, or audit log that looks redundant | Diff is clean and tests pass; the reason for the control lives outside the code | Require explicit justification to remove a control, never silent deletion |
+
 *Sources: OWASP, OWASP Top 10 (ongoing), the standard application-security baseline this chapter builds on. ThoughtWorks, Technology Radar Vol 34 (April 2026), that agent-specific security failure modes exist beyond what the standard tools see. The three-mode breakdown that follows is this book's synthesis.*
 
 ## Pattern replication
