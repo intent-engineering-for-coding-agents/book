@@ -4,5 +4,5 @@ description: "Intent Engineering for Coding Agents: Structure, specs, and proof 
 head:
   - - meta
     - http-equiv: refresh
-      content: "0; url=/foreword"
+      content: "0; url=foreword"
 ---
