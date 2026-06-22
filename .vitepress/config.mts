@@ -6,6 +6,7 @@ export default withMermaid(
   defineConfig({
     title: 'Intent Engineering',
     description: 'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering',
+    base: '/book/',
     srcDir: 'content',
     markdown: {
       languages: [bundledLanguages.mermaid],
