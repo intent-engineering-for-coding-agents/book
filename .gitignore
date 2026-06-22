@@ -2,3 +2,9 @@ node_modules/
 .vitepress/cache/
 .vitepress/dist/
 .junie/
+
+# Local planning artifacts, kept out of the public repo
+idea.md
+plan.md
+plan-intent-book.md
+plan-intent-cli.md
