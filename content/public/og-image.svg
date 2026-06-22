@@ -1,30 +1,101 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" role="img" xmlns="http://www.w3.org/2000/svg">
 <title>Intent Engineering for Coding Agents</title>
-<desc>Title card: Intent Engineering for Coding Agents, on a dark slate background.</desc>
+<desc>Title card: Intent Engineering for Coding Agents, with the circuit-brain logo, on a dark slate background.</desc>
 
 <rect x="0" y="0" width="1200" height="630" fill="#223344"/>
 <rect x="0" y="0" width="1200" height="10" fill="#ffffff"/>
 
-<!-- circuit-node accent, lower-right, clear of the text -->
-<g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.45">
-  <path d="M905 490 L 985 490 L 1025 455"/>
-  <path d="M905 540 L 1055 540"/>
-  <line x1="1025" y1="455" x2="1025" y2="540"/>
-  <line x1="905" y1="490" x2="905" y2="540"/>
-  <line x1="985" y1="490" x2="1055" y2="540"/>
-</g>
-<g fill="#223344" stroke="#ffffff" stroke-width="4" opacity="0.55">
-  <circle cx="905" cy="490" r="10"/>
-  <circle cx="905" cy="540" r="10"/>
-  <circle cx="985" cy="490" r="9"/>
-  <circle cx="1025" cy="455" r="9"/>
-  <circle cx="1025" cy="540" r="8"/>
-  <circle cx="1055" cy="540" r="9"/>
+<!-- real circuit-brain logo (from logo-dark.svg), text omitted -->
+<g transform="translate(672,94) scale(0.5)">
+  <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+    <path d="M290 245 L 150 245 L 110 205"/>
+    <path d="M710 245 L 850 245 L 890 205"/>
+    <path d="M200 395 L 70 395"/>
+    <path d="M800 395 L 930 395"/>
+    <path d="M210 560 L 95 560 L 60 595"/>
+    <path d="M790 560 L 905 560 L 940 595"/>
+    <path d="M340 720 L 285 775 L 285 830"/>
+    <path d="M660 720 L 715 775 L 715 830"/>
+    <path d="M500 110 L 500 55"/>
+    <path d="M415 285 L 360 230"/>
+    <path d="M585 285 L 640 230"/>
+    <path d="M370 490 L 300 525"/>
+    <path d="M630 490 L 700 525"/>
+  </g>
+  <g fill="#223344" stroke="#ffffff" stroke-width="5" opacity="0.55">
+    <circle cx="110" cy="205" r="13"/>
+    <circle cx="890" cy="205" r="13"/>
+    <circle cx="70" cy="395" r="13"/>
+    <circle cx="930" cy="395" r="13"/>
+    <circle cx="60" cy="595" r="13"/>
+    <circle cx="940" cy="595" r="13"/>
+    <circle cx="285" cy="830" r="13"/>
+    <circle cx="715" cy="830" r="13"/>
+    <circle cx="500" cy="55" r="13"/>
+    <circle cx="360" cy="230" r="11"/>
+    <circle cx="640" cy="230" r="11"/>
+    <circle cx="300" cy="525" r="11"/>
+    <circle cx="700" cy="525" r="11"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M500 110 C 400 95, 300 145, 290 245 C 220 255, 180 325, 200 395 C 150 435, 150 525, 210 560 C 195 645, 250 715, 340 720 C 365 775, 440 800, 500 785"/>
+    <path d="M500 110 C 600 95, 700 145, 710 245 C 780 255, 820 325, 800 395 C 850 435, 850 525, 790 560 C 805 645, 750 715, 660 720 C 635 775, 560 800, 500 785"/>
+    <line x1="500" y1="110" x2="500" y2="785"/>
+    <path d="M500 195 C 440 195, 410 235, 415 285"/>
+    <path d="M415 285 C 360 295, 340 345, 370 385"/>
+    <path d="M370 385 C 320 405, 320 465, 370 490"/>
+    <path d="M370 490 C 340 545, 380 605, 450 595"/>
+    <path d="M450 595 C 470 650, 500 670, 500 710"/>
+    <path d="M500 195 C 560 195, 590 235, 585 285"/>
+    <path d="M585 285 C 640 295, 660 345, 630 385"/>
+    <path d="M630 385 C 680 405, 680 465, 630 490"/>
+    <path d="M630 490 C 660 545, 620 605, 550 595"/>
+    <path d="M550 595 C 530 650, 500 670, 500 710"/>
+    <line x1="415" y1="285" x2="500" y2="325"/>
+    <line x1="585" y1="285" x2="500" y2="325"/>
+    <line x1="370" y1="385" x2="500" y2="435"/>
+    <line x1="630" y1="385" x2="500" y2="435"/>
+    <line x1="370" y1="490" x2="450" y2="525"/>
+    <line x1="630" y1="490" x2="550" y2="525"/>
+    <line x1="290" y1="245" x2="415" y2="285"/>
+    <line x1="710" y1="245" x2="585" y2="285"/>
+    <line x1="200" y1="395" x2="370" y2="385"/>
+    <line x1="800" y1="395" x2="630" y2="385"/>
+    <line x1="210" y1="560" x2="370" y2="490"/>
+    <line x1="790" y1="560" x2="630" y2="490"/>
+    <line x1="340" y1="720" x2="450" y2="595"/>
+    <line x1="660" y1="720" x2="550" y2="595"/>
+  </g>
+  <g fill="#223344" stroke="#ffffff" stroke-width="9">
+    <circle cx="500" cy="110" r="16"/>
+    <circle cx="500" cy="325" r="14"/>
+    <circle cx="500" cy="435" r="14"/>
+    <circle cx="500" cy="710" r="16"/>
+    <circle cx="500" cy="785" r="16"/>
+    <circle cx="290" cy="245" r="15"/>
+    <circle cx="710" cy="245" r="15"/>
+    <circle cx="200" cy="395" r="15"/>
+    <circle cx="800" cy="395" r="15"/>
+    <circle cx="210" cy="560" r="15"/>
+    <circle cx="790" cy="560" r="15"/>
+    <circle cx="340" cy="720" r="15"/>
+    <circle cx="660" cy="720" r="15"/>
+    <circle cx="415" cy="285" r="13"/>
+    <circle cx="585" cy="285" r="13"/>
+    <circle cx="370" cy="385" r="13"/>
+    <circle cx="630" cy="385" r="13"/>
+    <circle cx="370" cy="490" r="13"/>
+    <circle cx="630" cy="490" r="13"/>
+    <circle cx="450" cy="595" r="13"/>
+    <circle cx="550" cy="595" r="13"/>
+  </g>
 </g>
 
-<text x="90" y="250" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="1">Intent Engineering</text>
-<text x="92" y="340" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="60" font-weight="400" opacity="0.92">for Coding Agents</text>
-<text x="92" y="430" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="32" font-weight="400" opacity="0.72">Structure, specs, and proof for agentic software engineering.</text>
+<text x="80" y="248" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="0">Intent</text>
+<text x="80" y="338" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="78" font-weight="700" letter-spacing="0">Engineering</text>
+<text x="82" y="410" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="400" opacity="0.92">for Coding Agents</text>
+<text x="82" y="486" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="27" font-weight="400" opacity="0.72">Structure, specs, and proof for</text>
+<text x="82" y="524" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="27" font-weight="400" opacity="0.72">agentic software engineering.</text>
 
-<text x="90" y="560" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="400" letter-spacing="1" opacity="0.6">intent-engineering-for-coding-agents.github.io/book</text>
+<text x="80" y="588" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="400" letter-spacing="1" opacity="0.55">intent-engineering-for-coding-agents.github.io/book</text>
 </svg>
