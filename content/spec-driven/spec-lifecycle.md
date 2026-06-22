@@ -92,4 +92,4 @@ A dead spec is not a deleted spec. It is a change folder left in `openspec/chang
 
 If you want to see this workflow in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
-The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. The artifact most trusted when the code needs to change is likely not the one most developers would guess.
+The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. It is committed and kept, not pruned: the archived change folders are the record of why each capability reads the way it does, and deleting them throws that history away. The artifact most trusted when the code needs to change is likely not the one most developers would guess.

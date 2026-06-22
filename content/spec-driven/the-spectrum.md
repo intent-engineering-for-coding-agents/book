@@ -41,7 +41,7 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 | Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
 | Tasks | `tasks.md` | What is the execution plan? |
 
-Acceptance criteria are written in Gherkin (`Given/When/Then`): abstract enough to write quickly, concrete enough to drive test implementation. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the rest is discarded.
+Acceptance criteria are written in Gherkin (`Given/When/Then`): abstract enough to write quickly, concrete enough to drive test implementation. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
 
 That archive becomes the canonical set of acceptance criteria for each capability, the executable guardrails a later change is measured against, and the mechanism that closes the loop between intent and proof. The design those criteria serve does not live here. It lives in `docs/`. The overhead is real and built for teams shipping production systems with multiple developers.
 
