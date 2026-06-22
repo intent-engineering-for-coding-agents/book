@@ -20,8 +20,18 @@ export default withMermaid(
       nav: [
         { text: 'Home', link: '/' },
         { text: 'Introduction', link: '/introduction' },
-        { text: 'Foundation', link: '/foundation/' },
+        {
+          text: 'Contents',
+          items: [
+            { text: 'Foundation', link: '/foundation/' },
+            { text: 'Agent Instructions', link: '/agent-instructions/' },
+            { text: 'Spec-Driven Development', link: '/spec-driven/' },
+            { text: 'Quality and Verification', link: '/quality/' },
+            { text: 'Team Workflows', link: '/team/' },
+          ]
+        },
         { text: 'Appendices', link: '/appendices/honest-maturity' },
+        { text: 'Feedback', link: '/appendices/feedback' },
       ],
       sidebar: [
         { text: 'Foreword', link: '/foreword' },
@@ -96,11 +106,16 @@ export default withMermaid(
             { text: 'Living Principles', link: '/appendices/living-principles' },
             { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
             { text: 'Companion Repo', link: '/appendices/companion-repo' },
+            { text: 'Feedback & Contributing', link: '/appendices/feedback' },
             { text: 'Credits', link: '/appendices/credits' },
             { text: 'References', link: '/appendices/references' },
           ]
         }
       ],
+      editLink: {
+        pattern: 'https://github.com/intent-engineering-for-coding-agents/book/edit/main/content/:path',
+        text: 'Suggest a change to this page'
+      },
       socialLinks: [
         { icon: 'github', link: 'https://github.com/intent-engineering-for-coding-agents/book' }
       ]
