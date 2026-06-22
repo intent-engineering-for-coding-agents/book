@@ -9,6 +9,13 @@ Part of [plan.md](plan.md). See also [plan-intent-book.md](plan-intent-book.md).
 `intent-cli` is the companion CLI tool (renamed from `iec-cli`). Public package distribution is out of scope.
 This plan covers local developer use and companion-repo evidence for the book.
 
+> **Status: complete.** All phases A-K shipped through tag `v1.0.0` (Production/Stable). No
+> in-flight OpenSpec changes remain (all archived). The entry point is `iec`. Nothing book-side
+> depends on further CLI work. The principles migration (`principles/iec/`,
+> `groups/intent-book.yaml`, and the mirrored table in `content/appendices/living-principles.md`)
+> stays explicitly deferred and moves as one unit later. The book teaches tags `v0.0.1`-`v0.6.0`;
+> later tags add checkers beyond that scope (see `content/appendices/companion-repo.md`).
+
 ### What it is
 
 A Python CLI that validates Intent Engineering practices in any repo. Deterministic checks only, using pure Python. No AI required.
@@ -154,7 +161,7 @@ OpenSpec workflow per change (4 steps): **new** (`/opsx:new <name>` creates the 
 - [x] **Change 008 — Agent hub & secrets checks**
     - `agents-hub-structure`, `secrets`
     - [x] New → Plan → Apply → Archive
-- [ ] Tag: `v0.5.0`
+- [x] Tag: `v0.5.0`
 
 #### Phase G — Spec-Driven: Test Traceability Checks (`v0.6.0`)
 

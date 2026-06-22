@@ -302,13 +302,40 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - Dave Farley, Michael Nygard, LeanSpec, OpenSpec, SpecKit, dot-principles
 - [ ] Final review: full read-through, verify all git tags, cross-reference `iec`
     - [x] Verify every present-tense `iec` claim against the shipped CLI (tags v0.0.1–v0.6.0). Four unshipped features softened to forthcoming: `iec generate` (`agents-md.md`), `eval-demo` (`agent-evaluation.md`), convention artifacts at `main` (`test-strategy.md`), `iec` MCP row in tooling landscape. `tasks-complete`/`change-archived` in `trunk-based-development.md` are framed as recommendation, not shipped claim — left as-is. `check_spec_quality` concern is moot: `code-review-agent-code.md` was never written.
-    - [ ] Confirm command name: CLI `pyproject.toml` still registers entry point as `ase`, not `iec`. All book references correctly use `iec`. Fix is on the CLI side (rename entry point in `pyproject.toml` and package to `iec`/`iec_cli`).
+    - [x] Confirm command name: CLI `pyproject.toml` now registers the entry point as `iec` (`iec = "iec_cli.main:app"`). All book references use `iec`. Resolved on the CLI side; the old `ase` worry is closed.
     - [x] Write missing chapter: "Code Review for Agent-Generated Code" (`content/team/code-review-agent-code.md`). Added to sidebar and team index at position 4 (between trunk-based-development and shared-conventions). `check_spec_quality` referenced as forthcoming only.
     - [ ] Full prose read-through (tone, voice, coherence end-to-end)
 - [ ] Tag: `v0.8.0`
 
+#### Phase U.5 — Launch Readiness
+
+Site and repo polish for public launch. Reader-facing entry points, discoverability, and
+the contribution path. Shipped ahead of the read-through; see `plan.md` for the summary.
+
+- [x] Feedback and contributing: per-page "Suggest a change" edit links (`editLink`), issue
+      forms (`correction`, `suggestion`) with blank issues disabled, `config.yml` routing to
+      Discussions, Discussions enabled on the repo, `.github/CONTRIBUTING.md`, PR template,
+      and `content/appendices/feedback.md` (wired into sidebar).
+- [x] Top nav: group the five content parts under a `Contents` dropdown; add `Feedback`.
+- [x] Site search: `themeConfig.search` local provider (MiniSearch).
+- [x] Real landing page: `content/index.md` `layout: home` hero + feature cards, replacing
+      the meta-refresh redirect.
+- [x] SEO and social: `og:`/`twitter:` `head` meta and `sitemap` config (emits `sitemap.xml`).
+- [x] Social card source at `content/public/og-image.svg`.
+- [x] Root `README.md`: overview, live URL, build commands, license scope, links.
+- [x] Dual license: `LICENSE-CONTENT` (CC-BY-4.0) for prose, `LICENSE` (Apache-2.0) for code.
+- [x] `CODE_OF_CONDUCT.md` (Contributor Covenant by reference).
+- [x] Fill live Pages URL in `.github/profile/README.md`; add `repository` + `homepage` to
+      `package.json`.
+- [x] CLI reconciliation note in `content/appendices/companion-repo.md`: teaching scope stays
+      `v0.0.1`-`v0.6.0`, with a note that the CLI has since reached `v1.0.0`.
+- [ ] Export `og-image.svg` to a 1200x630 `og-image.png`; repoint the `og:`/`twitter:` meta
+      (SVG previews are unreliable on X / Facebook / LinkedIn).
+
 #### Phase V — Release (`v1.0.0`)
 
-- [ ] Choose launch domain, make `intent-engineering-for-coding-agents` repo public
-- [ ] Final VitePress build, deploy
+- [x] Repo public; GitHub Actions deploys to
+      https://intent-engineering-for-coding-agents.github.io/book/ on every push to `main`.
+- [ ] Choose launch domain (was `intent-book.dev`; revisit under the new name).
+- [ ] Final read-through complete and `v0.8.0` tagged, then final build/deploy.
 - [ ] Tag: `v1.0.0`

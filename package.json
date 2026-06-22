@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intent-engineering-for-coding-agents/book.git"
+  },
+  "homepage": "https://intent-engineering-for-coding-agents.github.io/book/",
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",

@@ -1,19 +1,22 @@
-# Intent Engineering for Coding Agents (Plan v3)
+# Intent Engineering for Coding Agents (Plan v4: Launch Readiness)
 
 > Structure, specs, and proof for agentic software engineering.
 
 > Your coding agent is productive, but clueless about your system and intention.
 
-This plan supersedes Plan v2. It records the rename and rebrand of the book from
-"The ASE Book / Agentic Software Engineering" to "Intent Engineering for Coding
-Agents," and the work needed to carry that name through the repo. Earlier plan files
-(`plan-intent-book.md`, `plan-iec-cli.md`) were renamed to `plan-intent-book.md` and
-`plan-intent-cli.md` when the CLI companion repo was renamed from `iec-cli` to
-`intent-cli`. The v2 master lives in git history.
+Plan v3 tracked the rename and rebrand from "The ASE Book / Agentic Software
+Engineering" to "Intent Engineering for Coding Agents." That work is complete. This
+plan supersedes it and refocuses on the path to public launch. The v3 rename detail and
+the v2 master live in git history. The detailed phase trackers are in
+`plan-intent-book.md` (book) and `plan-intent-cli.md` (companion CLI).
+
+The book content is written end to end. The companion CLI shipped at `v1.0.0`. What
+remains is polish and release: a full prose read-through, launch-readiness on the site,
+and the launch itself.
 
 ## Current book outline for review alignment
 
-Use this section, not the rename checklist below, when running `review-chapter` or
+Use this section, not any checklist below, when running `review-chapter` or
 checking a draft against the intended book arc. The book is OpenSpec-first: Intent
 Engineering is the portable practice, and OpenSpec is the concrete workflow used for
 the worked examples and the `iec` companion repo.
@@ -58,187 +61,73 @@ the worked examples and the `iec` companion repo.
   - Shared Agent Instruction Conventions: keep team instructions shared without erasing role-specific briefs.
   - Cross-Team Coordination: use ADRs and inner-source instruction libraries where one repo is not enough.
   - What Is Still Evolving: be explicit about immature practices and mid-2026 limits.
-- Appendices: provide reference material only: glossary, principles, tool snapshot, companion repo, checklist, credits, and Honest Maturity (what is ready now, what is experimental, what should not be oversold).
-
-## Why rename
-
-"The ASE Book" leaned on an acronym that is opaque to newcomers and collides with
-unrelated meanings (Automotive Service Excellence, Sybase ASE). A title built on an
-acronym nobody says out loud is a discoverability tax.
-
-"Agentic Software Engineering" is a broad, emerging field term whose center of gravity
-(autonomy, orchestration, multi-agent delivery) is not what this book is about. The
-book's thesis is narrower and sharper: the engineer's deliverable is no longer code, it
-is well-engineered intent that an agent turns into code.
-
-The field has a clean stack above prompt engineering. Context engineering covers what
-the agent sees. Intent engineering covers what should be built and how to verify it. The
-book's four topics map onto it: Foundation and Agent Instructions supply context; Spec-Driven
-Development and Quality/Verification are intent proper. The book is renamed to name what it
-teaches.
+- Appendices: provide reference material only: glossary, principles, tool snapshot, companion repo, checklist, feedback, credits, and Honest Maturity (what is ready now, what is experimental, what should not be oversold).
 
 ## Decisions (locked)
 
+Carried from v3, still in force. Full rationale is in git history (Plan v3).
+
 - Practice name: Intent Engineering. The discipline, within agentic software engineering,
-  of directing AI agents by engineering intent rather than writing code. Context
-  (Foundation, Agent Instructions) is the substrate that makes intent executable. Specs state
-  the target. Verification proves the hit.
-- Book title: Intent Engineering for Coding Agents. The domain qualifier differentiates
-  the book from the generic, already-used term "intent engineering" (intentengineering.dev,
-  vendor glossaries, the arXiv "Intent Formalization" paper) and removes the "intent =
-  UX/product intent" ambiguity. The public title intentionally omits "AI" because the book
-  focuses on coding agents as the working role, not artificial intelligence as a broad category.
-- Subtitle: Structure, specs, and proof for agentic software engineering. "Proof" means
-  executable evidence through tests, traceability, and reviewable artifacts, not formal
-  mathematical proof.
-- Book repo: intent-engineering-for-coding-agents. The full slug carries the same domain
-  qualifier as the title and avoids relying on the generic phrase "intent engineering" alone.
-- ASE stays as the umbrella. "Agentic software engineering" remains the broader discipline
-  the practice sits within. It is not deleted; the practice is named beneath it.
-- CLI renamed to `intent-cli`, command name `iec`. The companion CLI repo was renamed from
-  `iec-cli` to `intent-cli`; the command is `iec` (Intent Engineering Checker). Short,
-  distinctive, same shape as `ase`, no collision risk. Nothing is published so no backwards
-  compatibility constraint applies. Public package distribution remains out of scope.
-  Contributor-facing notes explain how to run the CLI locally when readers inspect the tool as
-  supporting evidence.
-- The principles catalog (`principles/iec/`, `groups/intent-book.yaml`, and the mirrored table
-  in `content/appendices/living-principles.md`) moves with the CLI later, as one unit. The
-  `IEC-*` principle IDs are not renamed in this pass. (The CLI repo rename to `intent-cli`
-  does not constitute the full principles migration; that remains deferred.)
+  of directing AI agents by engineering intent rather than writing code.
+- Book title: Intent Engineering for Coding Agents. Subtitle: Structure, specs, and proof
+  for agentic software engineering. "Proof" means executable evidence, not formal proof.
+- Book repo: `intent-engineering-for-coding-agents/book`. Companion CLI:
+  `intent-engineering-for-coding-agents/cli`, command `iec`.
+- "Agentic software engineering" stays the umbrella field; Intent Engineering is the
+  practice named beneath it.
+- Licensing: book prose under CC-BY-4.0 (`LICENSE-CONTENT`), code and config under
+  Apache-2.0 (`LICENSE`).
+- Principles migration (`principles/iec/`, `groups/intent-book.yaml`, the mirrored table
+  in `living-principles.md`) moves with the CLI later, as one unit. `IEC-*` IDs unchanged.
 
-## The classification rule (the heart of this rename)
+## Rename (v3): complete
 
-Every existing "ASE" token is one of two things. Classify, do not blind-replace.
+The rename is done and verified. For the record:
 
-- Practice reference becomes "Intent Engineering". Anything meaning the framework, the four
-  topics, or the thing this book teaches. Examples: "the first topic of ASE", "adopt ASE",
-  "ASE practices", "When ASE Fails", "ASE and the SDLC", "the Foundation chapter applies it
-  to ASE". This is the large majority of occurrences.
-- Umbrella reference keeps "agentic software engineering". The places that situate the
-  practice within the broader field, or contrast it with adjacent fields (the ADLC contrast
-  in the introduction and glossary). Rewrite these so the relationship is explicit: "Intent
-  Engineering sits within agentic software engineering."
+- Brand and config carry the new name (`.vitepress/config.mts`, `package.json`,
+  `content/index.md`, `idea.md`).
+- The two ase-slugged chapters were renamed with history preserved:
+  `when-intent-engineering-fails.md`, `intent-engineering-and-the-sdlc.md`.
+- Prose migration applied the practice-vs-umbrella classification rule. `\bASE\b` survives
+  only as intentional umbrella references and the deferred `living-principles.md` table.
+- Glossary defines both Intent Engineering (the practice) and Agentic Software Engineering
+  (the umbrella).
+- The CLI command name resolved to `iec` (the old `ase` entry-point worry is closed).
 
-Default for this book: an unqualified "ASE" almost always means the practice, so it becomes
-Intent Engineering. The umbrella term appears only where it is doing positioning work.
+## Status: where things stand
 
-## Changes: rename now
+- Book content: complete (Foundation, Agent Instructions, Spec-Driven, Quality, Team,
+  Appendices). Phases M-T shipped through tag `v0.7.0`.
+- Companion CLI: complete at `v1.0.0`. See `plan-intent-cli.md`.
+- Repo: public, deployed via GitHub Actions to
+  https://intent-engineering-for-coding-agents.github.io/book/ (base `/book/`).
+- Feedback and contributing: shipped. Per-page "Suggest a change" edit links, issue forms
+  (`correction`, `suggestion`) with blank issues disabled, Discussions enabled and routed,
+  `CONTRIBUTING.md`, PR template, a `Feedback & Contributing` appendix page, and a
+  `Contents` nav dropdown grouping the five parts.
+- Open before `v1.0.0`: full prose read-through (Phase U), launch domain decision.
 
-### 1. Brand and config
+## Launch readiness
 
-- `.vitepress/config.mts`: `title: 'ASE Book'` becomes `'Intent Engineering'`. `description`
-  becomes `'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic
-  software engineering'`. The GitHub social link uses the org repo at
-  `https://github.com/intent-engineering-for-coding-agents/intent-book`. The companion CLI lives at `https://github.com/intent-engineering-for-coding-agents/cli`.
-- `content/index.md` (home hero): `name` becomes `"Intent Engineering"`. `text` becomes
-  `"for Coding Agents"`. `tagline` becomes "Structure, specs, and proof for agentic software
-  engineering."
-- `package.json`: `name` becomes `"intent-engineering-for-coding-agents"`. `description`
-  becomes "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic
-  software engineering." (Cosmetic. This is the book's npm package, not the CLI.)
-- `package-lock.json`: root package `name` becomes `"intent-engineering-for-coding-agents"`
-  to match `package.json`.
-- `idea.md`: title line and the mindmap root and "When ASE Fails" node updated.
+Tracked in detail under `plan-intent-book.md` Phase U.5. Summary of state:
 
-### 2. Prose migration (apply the classification rule)
-
-Files carrying "ASE" as the practice (execution applies the rule line by line):
-`content/introduction.md`, `content/foundation/index.md`,
-`content/foundation/when-ase-fails.md`, `content/foundation/ase-and-the-sdlc.md`,
-`content/foundation/plain-text-as-code.md`, `content/foundation/why-structure.md`,
-`content/foundation/document-types.md`, `content/foundation/honest-maturity.md`,
-`content/quality/ac-ids-coverage.md`, `content/quality/dot-principles.md`,
-`content/team/what-is-still-evolving.md`, `content/appendices/references.md`.
-
-Key prose rewrite, `content/introduction.md`: replace the "This is the territory of Agentic
-Software Engineering (ASE)..." paragraph with one that introduces Intent Engineering as the
-practice and positions it within agentic software engineering. Keep the Developer AI framing
-and the ADLC contrast intact.
-
-### 3. Reframe the four-topics narrative (content, not find/replace)
-
-The title promises intent, but two topics (Foundation, Agent Instructions) are context. To keep
-the title honest, frame context as in service of intent wherever the four topics are
-introduced as a set.
-
-- `content/introduction.md` ("What to expect"): the first two topics give the agent context;
-  the last two are intent. Context is the substrate, intent is the point.
-- `content/foundation/index.md`: Foundation grounds the agent so your intent becomes
-  executable, not a co-equal subject.
-- `idea.md` topic descriptions and mindmap match.
-
-### 4. File and link renames (the two ase-slugged chapters)
-
-- `content/foundation/when-ase-fails.md` becomes `when-intent-engineering-fails.md`
-- `content/foundation/ase-and-the-sdlc.md` becomes `intent-engineering-and-the-sdlc.md`
-
-Use `git mv` to preserve history. Each rename requires updating every inbound link:
-
-- `.vitepress/config.mts` sidebar entries (text and link): "The Map: ASE and the SDLC"
-  becomes "The Map: Intent Engineering and the SDLC". "When ASE Fails" becomes "When Intent
-  Engineering Fails".
-- `content/foundation/index.md` chapter list links (items 4 and 7).
-- `content/foundation/why-structure.md` cross-link to "When ASE Fails".
-- `content/appendices/glossary.md` "See ..." links.
-- `content/appendices/references.md` ("cited in 'The Map: ASE and the SDLC'").
-- Grep the old slugs across `content/` before finalizing to catch any other cross-references.
-
-### 5. Glossary (`content/appendices/glossary.md`)
-
-- Repoint "## Agentic Software Engineering (ASE)" to define the umbrella field, not "the
-  framework this book describes."
-- Add "## Intent Engineering": the practice this book teaches, within agentic software
-  engineering. Context serves intent. Specs and verification are intent proper.
-- Update entries that reference the practice: ADLC entry ("Distinct from ASE"), Brownfield
-  ("predates ASE practices", "adopt ASE from intent"), Greenfield ("Greenfield ASE
-  adoption"), SDD ("one of the four topics in ASE").
-- Follow `.agents/instructions/glossary-maintenance.md` for first-use expansion.
-
-## Deferred: explicitly NOT in this pass
-
-- `iec-cli` CLI tool name (kept for now — subsequently renamed to `intent-cli` with command `iec`).
-- `principles/iec/` tree, `groups/intent-book.yaml`, and the mirrored `living-principles.md`
-  table. They move with the CLI later, as one unit.
-- GitHub owner for the selected repo slug `intent-engineering-for-coding-agents` and domain
-  `intent-book.dev`. Launch-time brand decisions, tracked in the launch checklist below.
-- `groups/intent-book.yaml`, `.idea/intent-book.iml`. Internal and editor config, low value.
-
-## Order of operations
-
-1. Brand and config edits (section 1) and glossary (section 5). Establishes the canonical new
-   vocabulary.
-2. File renames and all inbound link updates (section 4).
-3. Prose migration pass applying the classification rule (section 2).
-4. Four-topics reframe (section 3).
-5. Build and verify.
-
-## Verification
-
-- `npm run docs:build` completes with no dead-link errors (catches missed inbound links from
-  the two renamed files).
-- Grep `"ASE Book"` and `"The ASE Book"` across `content/`, configs, `package.json`, and
-  `idea.md`. Zero results.
-- Grep `\bASE\b` across `content/`. Only intentional umbrella references remain (and the
-  deferred `living-principles.md` table). Spot-read each to confirm it positions the practice
-  within the field rather than naming the practice. Tooling token `principles/iec/` is expected
-  and allowed; `iec-cli` should no longer appear — it is now `intent-cli` / `iec`.
-- `npm run docs:dev`. Visually confirm the hero, nav title, and the two renamed chapter pages
-  render and link correctly.
-- Read `content/introduction.md` and the glossary end to end for umbrella-versus-practice
-  coherence and the context-serves-intent framing.
-
-## Open decisions (not blocking this pass)
-
-- CLI command name locked as `iec` (Intent Engineering Checker). Propagate to all book
-  references (`iec init`, `iec check`, `iec generate`) before v1.0.0.
-- Principles migration (`principles/iec/`, `groups/intent-book.yaml`): moves with the CLI as one
-  unit when the CLI is ready for it.
-- External brand at launch: GitHub org is `intent-engineering-for-coding-agents` (confirmed);
-  domain remains a launch-time decision.
+- [x] Site search (VitePress local provider).
+- [x] Real home landing page (`content/index.md` hero + feature cards, replacing the
+  old meta-refresh redirect).
+- [x] SEO and social: `og:`/`twitter:` meta and a generated `sitemap.xml`.
+- [x] Social card at `content/public/og-image.svg`. (PNG export still wanted for X /
+  Facebook / LinkedIn, which do not render SVG previews reliably.)
+- [x] Root `README.md` with overview, live URL, build commands, license scope.
+- [x] Dual license: `LICENSE-CONTENT` (CC-BY-4.0) alongside `LICENSE` (Apache-2.0).
+- [x] `CODE_OF_CONDUCT.md` (Contributor Covenant by reference).
+- [x] Live Pages URL filled into `.github/profile/README.md`; `package.json` `repository`
+  and `homepage` fields added.
+- [ ] Export `og-image.svg` to a 1200x630 `og-image.png` and repoint the meta.
+- [ ] Full prose read-through (Phase U), then tag `v0.8.0`.
 
 ## Author launch checklist
 
-Carried forward from v2. Work through these near public launch.
+Carried forward. Work through these near public launch.
 
 - [ ] Decide and buy the domain (was `intent-book.dev`; revisit under the new name).
 - [ ] Submit a PR to awesome-agentic-engineering on launch day.

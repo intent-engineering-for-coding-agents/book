@@ -49,6 +49,8 @@ The repo accumulated its structure in phases, each represented by a git tag. If 
 git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
 ```
 
+The tags above cover the progression this book teaches. The CLI did not stop there. It reached `v1.0.0`, and the tags from `v0.7.0` onward add checkers and conventions beyond this book's teaching scope: OpenSpec lifecycle gates (`tasks-complete`, `change-archived`), maturity labels on each check, and a PR taxonomy applied to the tool's own development. This page stays with `v0.0.1` through `v0.6.0` because those tags map onto the practices each chapter introduces. Read the later tags in the repo if you want to see where the tool went after the book's snapshot.
+
 ## What it does not do
 
 `iec` is not a general-purpose validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions. Uninitialized repos fail most checks by design. The companion repo is the reference example for this convention set.
