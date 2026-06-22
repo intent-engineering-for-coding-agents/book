@@ -21,11 +21,11 @@ export default withMermaid(
       ['meta', { property: 'og:title', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { property: 'og:description', content: 'Structure, specs, and proof for agentic software engineering.' }],
       ['meta', { property: 'og:url', content: 'https://intent-engineering-for-coding-agents.github.io/book/' }],
-      ['meta', { property: 'og:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png' }],
+      ['meta', { property: 'og:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png?v=2' }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { name: 'twitter:description', content: 'Structure, specs, and proof for agentic software engineering.' }],
-      ['meta', { name: 'twitter:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png' }],
+      ['meta', { name: 'twitter:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png?v=2' }],
     ],
     themeConfig: {
       logo: {

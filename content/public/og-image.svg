@@ -5,22 +5,21 @@
 <rect x="0" y="0" width="1200" height="630" fill="#223344"/>
 <rect x="0" y="0" width="1200" height="10" fill="#ffffff"/>
 
-<!-- circuit-node accent, echoing the brain logo -->
+<!-- circuit-node accent, lower-right, clear of the text -->
 <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.45">
-  <path d="M905 470 L 985 470 L 1025 430"/>
-  <path d="M905 520 L 1055 520"/>
-  <path d="M940 420 L 940 360 L 1000 320"/>
-  <line x1="940" y1="420" x2="905" y2="470"/>
-  <line x1="905" y1="470" x2="905" y2="520"/>
+  <path d="M905 490 L 985 490 L 1025 455"/>
+  <path d="M905 540 L 1055 540"/>
+  <line x1="1025" y1="455" x2="1025" y2="540"/>
+  <line x1="905" y1="490" x2="905" y2="540"/>
+  <line x1="985" y1="490" x2="1055" y2="540"/>
 </g>
 <g fill="#223344" stroke="#ffffff" stroke-width="4" opacity="0.55">
-  <circle cx="905" cy="470" r="10"/>
-  <circle cx="905" cy="520" r="10"/>
-  <circle cx="940" cy="420" r="9"/>
-  <circle cx="1025" cy="430" r="9"/>
-  <circle cx="1055" cy="520" r="9"/>
-  <circle cx="1000" cy="320" r="9"/>
-  <circle cx="985" cy="470" r="7"/>
+  <circle cx="905" cy="490" r="10"/>
+  <circle cx="905" cy="540" r="10"/>
+  <circle cx="985" cy="490" r="9"/>
+  <circle cx="1025" cy="455" r="9"/>
+  <circle cx="1025" cy="540" r="8"/>
+  <circle cx="1055" cy="540" r="9"/>
 </g>
 
 <text x="90" y="250" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="1">Intent Engineering</text>
