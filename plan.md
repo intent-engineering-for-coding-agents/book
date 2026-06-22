@@ -122,7 +122,8 @@ Tracked in detail under `plan-intent-book.md` Phase U.5. Summary of state:
 - [x] `CODE_OF_CONDUCT.md` (Contributor Covenant by reference).
 - [x] Live Pages URL filled into `.github/profile/README.md`; `package.json` `repository`
   and `homepage` fields added.
-- [ ] Full prose read-through (Phase U), then tag `v0.8.0`.
+- [x] Full prose read-through (Phase U) — done, many fixes applied.
+- [ ] Tag `v0.8.0`.
 
 ## Author launch checklist
 

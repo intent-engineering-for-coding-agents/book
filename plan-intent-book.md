@@ -304,7 +304,7 @@ Each chapter is an OpenSpec change proposal on the book repo.
     - [x] Verify every present-tense `iec` claim against the shipped CLI (tags v0.0.1–v0.6.0). Four unshipped features softened to forthcoming: `iec generate` (`agents-md.md`), `eval-demo` (`agent-evaluation.md`), convention artifacts at `main` (`test-strategy.md`), `iec` MCP row in tooling landscape. `tasks-complete`/`change-archived` in `trunk-based-development.md` are framed as recommendation, not shipped claim — left as-is. `check_spec_quality` concern is moot: `code-review-agent-code.md` was never written.
     - [x] Confirm command name: CLI `pyproject.toml` now registers the entry point as `iec` (`iec = "iec_cli.main:app"`). All book references use `iec`. Resolved on the CLI side; the old `ase` worry is closed.
     - [x] Write missing chapter: "Code Review for Agent-Generated Code" (`content/team/code-review-agent-code.md`). Added to sidebar and team index at position 4 (between trunk-based-development and shared-conventions). `check_spec_quality` referenced as forthcoming only.
-    - [ ] Full prose read-through (tone, voice, coherence end-to-end)
+    - [x] Full prose read-through (tone, voice, coherence end-to-end) — done, many fixes applied
 - [ ] Tag: `v0.8.0`
 
 #### Phase U.5 — Launch Readiness
