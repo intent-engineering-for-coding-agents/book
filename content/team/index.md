@@ -1,16 +1,16 @@
 # Team Workflows and Adoption
 
-> One OpenSpec change per developer. Most of the team coordination problem dissolves right there.
+> One OpenSpec change per developer. Most of the team coordination problems dissolve right there.
 
-The individual practices in the previous topics work at solo scale. This section is about what changes when there is more than one developer, and more than one agent, in the same codebase.
+The individual practices in the previous topics work at a solo scale. This section is about what changes when there is more than one developer, and more than one agent, in the same codebase.
 
-Less than the swarm pitch wants you to believe. Most of the agentic team problem is manufactured by skipping the one rule that prevents it: one developer owns one OpenSpec change at a time. Each change is an isolated proposal, on its own short-lived branch, reviewed in its own PR. Nobody points two agents at the same component from two unreconciled specs. Keep that rule and there is no special "coordination wall" left to scale. What remains is the SDLC every team already runs: branches, pull requests, tickets, ADRs.
+Less than the swarm pitch wants you to believe. Most of the agentic team problems are manufactured by skipping the one rule that prevents it: one developer owns one OpenSpec change at a time. Each change is an isolated proposal, on its own short-lived branch, reviewed in its own PR. Nobody points two agents at the same component from two unreconciled specs. Keep that rule and there is no special "coordination wall" left to scale. What remains is the SDLC every team already runs: branches, pull requests, tickets, ADRs.
 
 So this is not a theory of agent swarms. It is how the one-change-per-developer rule slots into the ceremonies you already have. Where the architecture has clean boundaries, services behind API contracts, modules with explicit exports, parallel work across developers is safe almost by default, because the contracts coordinate for you. Where it does not, the fix is an ADR that draws the boundary, not a new process.
 
 The genuinely unsolved part comes last, in [What Is Still Evolving](./what-is-still-evolving): autonomous agent-to-agent handoff, where agents coordinate with no human in the loop, is not solved by anyone in mid-2026. This book does not pretend otherwise. It describes what works now, which is smaller and more boring than the swarm pitch, and which ships.
 
-This section assumes OpenSpec because that is the workflow the book and `iec` use end-to-end. If your team uses another spec tool, translate "OpenSpec change" to the per-change spec artifact your team reviews, implements, and archives. The coordination rule is the durable part: one owned change at a time, scoped tightly enough that the branch, PR, and review all describe the same intent.
+This section assumes OpenSpec because the book needs a concrete workflow to show the practices against, and OpenSpec is the one it uses throughout. If your team uses another spec tool, translate "OpenSpec change" to the per-change spec artifact your team reviews, implements, and archives. The coordination rule is the durable part: one owned change at a time, scoped tightly enough that the branch, PR, and review all describe the same intent.
 
 ## Chapters
 

@@ -31,7 +31,7 @@ Optional, maturity-dependent:
 
 ## Spec-Driven Development
 
-This checklist is OpenSpec-first because the book and `iec` are OpenSpec-first. The portable practice is per-change intent with testable acceptance criteria. For the detailed change-folder lifecycle and archive discipline, see [Spec Lifecycle](/spec-driven/spec-lifecycle). If your team uses a plain `spec.md` or another framework, translate the `openspec/` paths below to your per-change spec location. See [The Spectrum](/spec-driven/the-spectrum).
+This checklist is OpenSpec-first because the book is OpenSpec-first. The portable practice is per-change intent with testable acceptance criteria. For the detailed change-folder lifecycle and archive discipline, see [Spec Lifecycle](/spec-driven/spec-lifecycle). If your team uses a plain `spec.md` or another framework, translate the `openspec/` paths below to your per-change spec location. See [The Spectrum](/spec-driven/the-spectrum).
 
 - [ ] First change proposal in `openspec/changes/<slug>/` with `proposal.md`, a delta spec under `specs/`, and `tasks.md` (add `design.md` if the change requires technical design decisions)
 - [ ] Spec scenarios have AC IDs in bracket format (`[PREFIX-NNN]`) and `Test-type:` fields
@@ -43,7 +43,7 @@ This checklist is OpenSpec-first because the book and `iec` are OpenSpec-first. 
 - [ ] `docs/architecture/test-strategy.md`: test types your project uses, frameworks, file locations, coverage thresholds
 - [ ] `test/ac-registry.md`: one row per component prefix with the next available number
 - [ ] Tests carry `@Tag` annotations for AC ID and test type
-- [ ] `iec check` wired in CI: validates structure, AGENTS.md presence, AC traceability
+- [ ] CI validation of structure, AGENTS.md presence, and AC traceability (`iec check` is one implementation; wire your own checks if you prefer)
 
 ## Team scale
 
@@ -56,6 +56,6 @@ Apply these when solo practices are stable and a second developer joins.
 
 ## What not to do on day one
 
-Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, `iec check` in CI, and a shared `.agents/` library in the same week is creating a process migration, not a better agent workflow. Pick one practice per topic, get it to documented maturity, and add the next one when the first is stable.
+Do not adopt everything at once. A team that starts with MADR ADRs, OpenSpec change folders, AC IDs, automated checks in CI, and a shared `.agents/` library in the same week is creating a process migration, not a better agent workflow. Pick one practice per topic, get it to documented maturity, and add the next one when the first is stable.
 
 *Sources: This checklist is a practical synthesis of the four topics. The sources for each practice appear in the corresponding chapter.*
