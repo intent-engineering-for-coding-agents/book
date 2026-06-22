@@ -29,6 +29,12 @@ export default withMermaid(
       ['meta', { name: 'twitter:title', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { name: 'twitter:description', content: 'Structure, specs, and proof for agentic software engineering.' }],
       ['meta', { name: 'twitter:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png?v=3' }],
+      // Privacy-friendly, cookieless analytics (GoatCounter) — no GDPR consent banner needed.
+      ['script', {
+        'data-goatcounter': 'https://intent-engineering.goatcounter.com/count',
+        async: '',
+        src: 'https://gc.zgo.at/count.js',
+      }],
     ],
     themeConfig: {
       logo: {
