@@ -321,7 +321,8 @@ the contribution path. Shipped ahead of the read-through; see `plan.md` for the 
 - [x] Real landing page: `content/index.md` `layout: home` hero + feature cards, replacing
       the meta-refresh redirect.
 - [x] SEO and social: `og:`/`twitter:` `head` meta and `sitemap` config (emits `sitemap.xml`).
-- [x] Social card source at `content/public/og-image.svg`.
+- [x] Social card: `content/public/og-image.svg` source rasterized to a 1200x630
+      `content/public/og-image.png`; `og:`/`twitter:` meta repointed to the PNG.
 - [x] Root `README.md`: overview, live URL, build commands, license scope, links.
 - [x] Dual license: `LICENSE-CONTENT` (CC-BY-4.0) for prose, `LICENSE` (Apache-2.0) for code.
 - [x] `CODE_OF_CONDUCT.md` (Contributor Covenant by reference).
@@ -329,8 +330,6 @@ the contribution path. Shipped ahead of the read-through; see `plan.md` for the 
       `package.json`.
 - [x] CLI reconciliation note in `content/appendices/companion-repo.md`: teaching scope stays
       `v0.0.1`-`v0.6.0`, with a note that the CLI has since reached `v1.0.0`.
-- [ ] Export `og-image.svg` to a 1200x630 `og-image.png`; repoint the `og:`/`twitter:` meta
-      (SVG previews are unreliable on X / Facebook / LinkedIn).
 
 #### Phase V — Release (`v1.0.0`)
 

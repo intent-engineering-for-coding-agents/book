@@ -115,14 +115,13 @@ Tracked in detail under `plan-intent-book.md` Phase U.5. Summary of state:
 - [x] Real home landing page (`content/index.md` hero + feature cards, replacing the
   old meta-refresh redirect).
 - [x] SEO and social: `og:`/`twitter:` meta and a generated `sitemap.xml`.
-- [x] Social card at `content/public/og-image.svg`. (PNG export still wanted for X /
-  Facebook / LinkedIn, which do not render SVG previews reliably.)
+- [x] Social card: `content/public/og-image.svg` (source) rasterized to
+  `content/public/og-image.png` (1200x630); `og:`/`twitter:` meta point at the PNG.
 - [x] Root `README.md` with overview, live URL, build commands, license scope.
 - [x] Dual license: `LICENSE-CONTENT` (CC-BY-4.0) alongside `LICENSE` (Apache-2.0).
 - [x] `CODE_OF_CONDUCT.md` (Contributor Covenant by reference).
 - [x] Live Pages URL filled into `.github/profile/README.md`; `package.json` `repository`
   and `homepage` fields added.
-- [ ] Export `og-image.svg` to a 1200x630 `og-image.png` and repoint the meta.
 - [ ] Full prose read-through (Phase U), then tag `v0.8.0`.
 
 ## Author launch checklist
