@@ -46,6 +46,7 @@ export default withMermaid(
       },
       nav: [
         { text: 'Home', link: '/' },
+        { text: 'Overview', link: '/overview' },
         { text: 'Introduction', link: '/introduction' },
         {
           text: 'Contents',
@@ -61,6 +62,7 @@ export default withMermaid(
         { text: 'Feedback', link: '/appendices/feedback' },
       ],
       sidebar: [
+        { text: 'Overview', link: '/overview' },
         { text: 'Foreword', link: '/foreword' },
         { text: 'Introduction', link: '/introduction' },
         {

@@ -12,11 +12,14 @@ hero:
     alt: Intent Engineering for Coding Agents
   actions:
     - theme: brand
-      text: Start reading
+      text: Overview
+      link: /overview
+    - theme: alt
+      text: Foreword
       link: /foreword
     - theme: alt
-      text: Introduction
-      link: /introduction
+      text: Foundation
+      link: /foundation/
     - theme: alt
       text: GitHub
       link: https://github.com/intent-engineering-for-coding-agents/book
