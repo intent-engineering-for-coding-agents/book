@@ -86,17 +86,23 @@ The discipline earns its keep when the work outlives the session that started it
 
 For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions brief the agent on the system it is changing. Specs and verification point it at the target and prove it arrived. None of this is all-or-nothing. You take on more of the discipline as the cost of getting it wrong climbs, the same dial you reach for when deciding how much process a single change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project: whether to bring the discipline to bear at all.
 
-## Intent Engineering is not ADLC
+## Intent Engineering fits your SDLC
 
-Some readers will arrive having recently finished an ADLC explainer and wonder why they need a second framework. They do not. ADLC and Intent Engineering solve different problems.
+In 2025-2026, a common ADLC argument said the traditional Software Development Lifecycle (SDLC) no longer fits agentic systems. The proposed fix was a new lifecycle for agents. Intent Engineering does not replace your SDLC. The practice runs inside the lifecycle your team already has.
 
-Agentic Development Lifecycle (ADLC) usually refers to building agents as products. The development side is reasoning loops, evals, hallucination budgets, the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, escalation paths that wrap a probabilistic agent in a deterministic cage. The deliverable _is_ the agent.
+One common proposal is the Agentic Development Lifecycle (ADLC), aimed at building agents as products. The development side covers reasoning loops, evals, hallucination budgets, and the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, and escalation paths around a probabilistic agent. The deliverable _is_ the agent.
 
-Intent Engineering is the other side of the table. In this book's framing, the agent is the worker, _not_ the product. Labor is only half of the agent's job here. The agent also sharpens your design and reminds you of what you have not yet considered. The deliverable is the same software your team has always shipped, with an agent that knows your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) keeps checking that every Acceptance Criterion (AC) traces to a passing test, the same gate it ran before an agent touched the repo. What the spec describes is the change, never the agent that produced it.
+For autonomous-agent products, ADLC earns its place.
 
-If you arrived expecting eval suites, agent-architecture patterns, or governance gates for autonomous systems, the ADLC literature covers those. This book stays in the coding-agent layer: how to get an agent that writes code working from a well-informed picture of your system, not a guess. The two disciplines borrow the same vocabulary, but they do not solve the same problem.
+This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
-*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026); EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026); Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025); Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), ADLC as building agents as products with runtime governance, the discipline this book contrasts Intent Engineering against.*
+The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) keeps checking whether every Acceptance Criterion (AC) traces to a passing test, the same gate CI ran before an agent touched the repo. The spec describes the change, never the agent behind the patch.
+
+So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
+
+This book treats Intent Engineering and ADLC as disciplines with overlapping vocabulary and different jobs. One governs how you build agents as products. The other governs how a coding agent works inside the software lifecycle you already run.
+
+*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), Agentic SDLC as a current lifecycle proposal for agent-driven software delivery; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC for building and operating agents in production; Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025), ADLC as a lifecycle for reliable AI agents; Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), the stronger breaks-the-SDLC framing this section time-bounds and narrows.*
 
 ## The companion: Intent Engineering Checker
 
