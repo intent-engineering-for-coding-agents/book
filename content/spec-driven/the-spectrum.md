@@ -4,7 +4,9 @@ How much process does renaming a config variable deserve? Adopt a full Spec-Driv
 
 Consider a team that writes no specs at all, operating on prompts and conversation history alone. Features work until a later session extends them. Then someone asks why the validation is in the controller and the only answer is git blame.
 
-Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. The tools below are a mid-2026 snapshot, not a finished landscape.
+Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. SDD is the practice: per-change intent with testable acceptance criteria. GSD, spec.md, OpenSpec, and Spec-Kit are implementations of it at rising formality. The tools below are a mid-2026 snapshot, not a finished landscape.
+
+BMAD Method, Taskmaster, and other frameworks occupy the same category. The diagram below marks formality levels, not a ranking of the field.
 
 ```mermaid
 graph LR
