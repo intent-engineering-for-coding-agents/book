@@ -24,6 +24,8 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 "Intent engineering" as a phrase is not this book's coinage. You will see it in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
+This book adopts the term because the surrounding vocabulary is already moving in this direction. `intentengineering.dev` uses it in a broader sense. "Intent Driven Development" points at the same layer above implementation. This book narrows the scope of software delivery with coding agents.
+
 *Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.*
 
 An agent in Intent Engineering plays two roles:
@@ -33,7 +35,9 @@ An agent in Intent Engineering plays two roles:
 
 Ask a well-briefed agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you did not think to ask, and names the opportunity you walked past without even knowing.
 
-That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session, is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think, not random chance. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
+That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think, not random chance. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
+
+None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economy. They make the discipline more valuable because more of the mechanical implementation work moves to the machine, while more of the software-design burden stays with you.
 
 ## What to expect
 
