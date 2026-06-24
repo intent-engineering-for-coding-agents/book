@@ -46,6 +46,9 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 ## Agentic engineering & agent instructions
 
 - [intentengineering.dev](https://intentengineering.dev/) (ongoing). Community site using "intent engineering" in the broader sense of formalizing intent for AI-powered products, covering product, UX, and system design contexts. Cited in the Introduction as prior use of the phrase this book's title distinguishes from.
+- Don Johnson: ["Intent-Driven Development: Define the System Before You Write the Code"](https://dev.to/copyleftdev/intent-driven-development-define-the-system-before-you-write-the-code-22pe). DEV Community, *Dec 4, 2025*. Intent-Driven Development as specification-first software design with machine-readable artifacts, RFCs, acceptance criteria, and implementation traceability.
+- Vishal Mysore: ["What is Intent Driven Development?"](https://medium.com/@visrow/what-is-intent-driven-development-ffacc3bcfe65). Medium, *Mar 9, 2026*. Intent-Driven Development defined as humans stating outcomes and constraints while autonomous agents handle execution.
+- [intent-driven-development.com](https://www.intent-driven-development.com/) (ongoing). Concept site presenting Intent-Driven Development (IDD) as a layer above spec-driven development, with intent as the source of truth for AI coding workflows.
 - [AGENTS.md](https://agents.md/) (ongoing). De-facto AI-agent entry-point file (May 2026 snapshot).
 - GitHub Changelog: ["Copilot coding agent now supports AGENTS.md custom instructions"](https://github.blog/changelog/2025-08-28-copilot-coding-agent-now-supports-agents-md-custom-instructions/). *Aug 28, 2025*. Confirms native AGENTS.md support in the Copilot coding agent.
 - Anthropic: ["Building effective agents"](https://www.anthropic.com/research/building-effective-agents). *Dec 2024*. Design philosophy behind the MCP-driven check architecture.

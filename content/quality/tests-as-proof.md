@@ -12,7 +12,9 @@ The same AC admits many implementations: a guard clause, an early return, a vali
 
 The tests passed. Passing is not the same as proving.
 
-Proof is not perfectionism. The minimum bar is automated evidence that a coding agent's output meets the spec. Specs are often incomplete, scenarios go missing, tests assert too little. None of that makes proof impossible. The bar is imperfect, not optional. Below it, you are shipping on faith that the agent got it right. Once AC coverage is in place, quality goes further: code review, inspection, and deeper testing disciplines all have room above it. The ACs have to be covered first.
+Proof is not perfectionism. The minimum bar is automated evidence that the implementation meets the spec. The same bar applies whether the code came from an agent or a human. Acceptance criteria answer one narrow question: did the change do what the change was supposed to do? That narrow question matters because no amount of implementation detail answers it from the code alone.
+
+Specs are often incomplete, scenarios go missing, tests assert too little. None of that makes proof impossible. The bar is imperfect, not optional. Below it, you are shipping on faith that the implementation matched the goal. Once AC coverage is in place, quality goes further: code review, inspection, and deeper testing disciplines all have room above it. The ACs have to be covered first.
 
 ## The bar a test has to clear
 
@@ -30,7 +32,7 @@ The starting point is the AC, not the code. For each acceptance criterion, ask w
 
 The prose of a spec tends to describe the positive path most clearly. The negative paths are often implied rather than stated, and boundaries are easy to overlook. An agent generating its own test list reads the same prose and stops at the same place. The practical progression for each AC: positive path first, then each way the criterion is violated, then boundary values where the criterion has a threshold. That order follows where the proof is thinnest, not where the code is most complex.
 
-AC coverage does not replace code coverage. Tests that prove acceptance criteria cover the intent, not every path the implementation introduces. A branch added for an edge case the spec did not anticipate, an exception handler, a defensive check: none are tied to an AC, but all of them break. Code coverage catches what proof does not reach. Both are required. Which kind of test closes which gap is the question the next section takes on.
+AC coverage does not replace the rest of testing. Tests that prove acceptance criteria cover the goal of the change, not every path the implementation introduces and not every risk the system carries. A branch added for an edge case the spec did not anticipate, an exception handler, a defensive check: none are tied to an AC, but all of them break. Code coverage, integration checks, architectural tests, performance tests, and security review catch failures proof does not reach. AC coverage answers "did we build the right change?" The rest of the test strategy answers "what else breaks while doing it?" Both are required. Which kind of test closes which gap is the question the next section takes on.
 
 ## Choosing the right test type
 

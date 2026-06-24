@@ -29,7 +29,7 @@ This is not new advice. Fred Brooks wrote it down in 1975: plan to throw one awa
 
 *Sources: Frederick P. Brooks Jr. "The Mythical Man-Month: Essays on Software Engineering" (1975), plan to throw one away.*
 
-Today in 2026, when a coding agent does most of the construction, the rebuild cost often drops sharply. Throwing away the prototype often stops being a multi-week decision.
+Today in 2026, when a coding agent does most of the construction, the rebuild cost often feels lower. Throwing away the prototype is more often a practical option than it was when rebuilding from scratch cost weeks.
 
 The second build is better for every lesson the prototype taught. The requirements are sharper, the dead ends are already gone, and the framework is already chosen. The prototype was the conversation, but not the product.
 

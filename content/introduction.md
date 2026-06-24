@@ -22,11 +22,11 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 *Sources: OpenSpec (openspec.dev), the change-folder, and delta-spec framework this book uses end-to-end.*
 
-"Intent engineering" as a phrase is not this book's coinage. You will see it in communities focused on formalizing intent for agent-powered products, where it covers product intent, UX intent, and agent system design. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
+"Intent engineering" as a phrase is not this book's coinage. `intentengineering.dev` uses it in a broader sense, covering product intent, UX intent, and agent system design. Related vocabulary is circulating too. "Intent-Driven Development" appears in 2025-2026 essays and concept sites, usually for workflows where intent sits above implementation and guides specs, tasks, or agent execution. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
-This book adopts the term because the surrounding vocabulary is already moving in this direction. `intentengineering.dev` uses it in a broader sense. "Intent Driven Development" points at the same layer above implementation. This book narrows the scope of software delivery with coding agents.
+This book adopts the term because the surrounding vocabulary is already moving in this direction. This book's usage narrows the scope to software delivery with coding agents.
 
-*Sources: intentengineering.dev (ongoing), prior broader use of the phrase this book's title distinguishes from.*
+*Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
 
 An agent in Intent Engineering plays two roles:
 
@@ -55,7 +55,7 @@ The first two give the agent context: the structural knowledge to execute your i
 
 Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
 
-OpenSpec, Spec-Kit, and the rest hand you the aim, then stop. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
+In the SDD material reviewed for this book, the emphasis is heavier on aiming the change than on proving the result. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
@@ -102,7 +102,7 @@ For autonomous-agent products, ADLC earns its place.
 
 This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
-The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) keeps checking whether every Acceptance Criterion (AC) traces to a passing test, the same gate CI ran before an agent touched the repo. The spec describes the change, never the agent behind the patch.
+The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 
 The practical consequence is blunt: your value shifts upward. Less of your day goes to typing implementation details. More of your day goes to deciding what problem is being solved, which design should survive, where the boundaries lie, and what evidence earns trust.
 
