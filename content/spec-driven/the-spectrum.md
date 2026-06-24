@@ -38,16 +38,20 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 
 | Part | File | Question |
 |---|---|---|
-| Propose | `proposal.md` | What is this change about and why? |
-| Design | `design.md` *(optional)* | How do we intend to execute it? |
-| Specs | `specs/<capability>/spec.md` | What are the acceptance criteria per capability? |
-| Tasks | `tasks.md` | What is the execution plan? |
+| Propose | `proposal.md` | What is changing, why does it matter, and what follows from it? |
+| Design | `design.md` *(optional)* | Which implementation approach should survive? |
+| Specs | `specs/<capability>/spec.md` | How should the capability behave after the change? |
+| Tasks | `tasks.md` | What should be implemented, and in what order? |
 
-Acceptance criteria are written in Gherkin (`Given/When/Then`): abstract enough to write quickly, concrete enough to drive test implementation. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
+Acceptance criteria are written in Gherkin (`Given/When/Then`). That means the scenario layer is inherited from Behavior-Driven Development (BDD), while the change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
+
+OpenSpec is not mandatory to get those benefits. The durable part is the bundle of concerns: a statement of intent, an implementation approach when the change needs one, behavioral specs, an execution plan, and an archive rule. Any framework that already gives your team those properties buys most of the same control.
+
+The selection rule is simpler than the tool names make it sound: pick the lightest framework already closest to the artifact set and lifecycle you want. A plain `spec.md` plus four house rules for a proposal, tasks, archive, and review is already a framework. Pretending otherwise only hides the maintenance cost.
 
 That archive becomes the canonical set of acceptance criteria for each capability, the executable guardrails a later change is measured against, and the mechanism that closes the loop between intent and proof. The design those criteria serve does not live here. It lives in `docs/`. The overhead is real and built for teams shipping production systems with multiple developers.
 
-*Sources: Fission AI, OpenSpec, the four-part change-folder workflow and the archive as canonical capability model.*
+*Sources: Fission AI, OpenSpec, the four-part change-folder workflow, and the archive as a canonical capability model. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` scenario form as BDD lineage. The framework-selection rule above is this book's synthesis.*
 
 ## Spec-Kit and LeanSpec
 
