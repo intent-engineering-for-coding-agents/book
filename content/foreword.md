@@ -29,7 +29,7 @@ This is not new advice. Fred Brooks wrote it down in 1975: plan to throw one awa
 
 *Sources: Frederick P. Brooks Jr. "The Mythical Man-Month: Essays on Software Engineering" (1975), plan to throw one away.*
 
-Today, in 2026, when a coding agent does most of the construction, the rebuild cost often drops sharply. Throwing away the prototype often stops being a multi-week decision.
+Today in 2026, when a coding agent does most of the construction, the rebuild cost often drops sharply. Throwing away the prototype often stops being a multi-week decision.
 
 The second build is better for every lesson the prototype taught. The requirements are sharper, the dead ends are already gone, and the framework is already chosen. The prototype was the conversation, but not the product.
 
@@ -37,13 +37,15 @@ In this book, I write "coding agent" where many people say "AI". A coding agent 
 
 A coding agent is not a magic box and cannot read your mind. As of 2026, it does not reliably produce the code you intended from a vague prompt. If you have something in mind, you need to tell the agent. Spell out the requirements. State the rules, the intention, the tech stack. Use the agent as a sparring partner to sharpen your architecture and tighten your design, but the thinking stays with you.
 
+That shift is the point of the book. The machine writes more of the code. You spend more of your time deciding what should be built, where the boundaries sit, which tradeoffs are acceptable, and what proof the change must clear before merge. Your job is less typing and more authorship.
+
 One more thing: this book does not review agents or rank them. The agent is the labor and the sparring partner. Which labor you choose to hire is not the point, but what you tell it is.
 
 Context drives most of the outcome. Rather than cramming everything into one-shot prompts, the kind you retype the next day, persist your context in documents: plain text and diagrams with real semantics, the shared memory both you and the agent re-read a month from now. Without that, the agent re-derives the same conventions every session, re-litigates decisions you already made, and ships code that compiles while violating the constraints you never wrote down.
 
 ## From Vibe to Pro
 
-Here is the part the carousels leave out. Give the agent enough up-to-date information about the system you intend to build and maintain, and you move past prototypes into production-grade software. You still do the work: analysis, design, coding, testing, and deployment. The carousels skip that because it does not sell.
+Here is the part the carousels leave out. Give the agent enough up-to-date information about the system you intend to build and maintain, and you move past prototypes into production-grade software. The human job does not disappear. The human job moves upward: analysis, design, constraints, review, and deployment judgment. The code itself is increasingly delegated. The carousels skip that because it does not sell.
 
 Software development still demands skill and judgment. Humans must stay in the loop. I expect models to improve and automation to expand, and I will revise this foreword as the boundary moves. In 2026 the responsibility is ours: to be deliberate, to be professional, and to do the part of the job humans still do best.
 

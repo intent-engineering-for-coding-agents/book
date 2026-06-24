@@ -14,6 +14,8 @@ This is the territory of Intent Engineering, the practice this book teaches: pro
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
+This book is not mainly about AI. This book is about a shift in software authorship. The machine writes more of the implementation. The developer spends more time defining the solution, setting the constraints, reviewing tradeoffs, and proving the result.
+
 Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. These are practices you adopt as you need them, not a methodology you install.
 
 The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
@@ -97,6 +99,8 @@ For autonomous-agent products, ADLC earns its place.
 This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
 The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. Continuous Integration (CI) keeps checking whether every Acceptance Criterion (AC) traces to a passing test, the same gate CI ran before an agent touched the repo. The spec describes the change, never the agent behind the patch.
+
+The practical consequence is blunt: your value shifts upward. Less of your day goes to typing implementation details. More of your day goes to deciding what problem is being solved, which design should survive, where the boundaries lie, and what evidence earns trust.
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
