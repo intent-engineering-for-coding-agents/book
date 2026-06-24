@@ -24,7 +24,7 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 "Intent engineering" as a phrase is not this book's coinage. `intentengineering.dev` uses it in a broader sense, covering product intent, UX intent, and agent system design. Related vocabulary is circulating too. "Intent-Driven Development" appears in 2025-2026 essays and concept sites, usually for workflows where intent sits above implementation and guides specs, tasks, or agent execution. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
-This book adopts the term because the surrounding vocabulary is already moving in this direction. This book's usage narrows the scope to software delivery with coding agents.
+This book adopts the term because the surrounding vocabulary is already moving in this direction. The approach in this book sits in the Intent-Driven Development family, but uses the narrower term Intent Engineering for Coding Agents: durable intent, spec-first change control, and executable proof for agent-generated code.
 
 *Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
 
