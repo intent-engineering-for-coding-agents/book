@@ -39,9 +39,9 @@ npm run docs:preview # preview the built site locally
 
 **When a task matches a skill below, load and follow that skill file before doing any work. Skills are not optional.**
 
-- [**draft-section**](.agents/skills/draft-section.md): draft a content section from a chapter outline entry
+- [**draft-section**](.agents/skills/draft-section.md): draft a content section from its place in the book, using the relevant section index or sidebar role plus the task brief
 - [**credibility-pass**](.agents/skills/credibility-pass.md): run the mandatory provenance and certainty pass on any drafted or reviewed content before sign-off
-- [**review-chapter**](.agents/skills/review-chapter.md): consistency, tone, and DRY review of a draft chapter; load `plan.md` for outline alignment
+- [**review-chapter**](.agents/skills/review-chapter.md): consistency, tone, and DRY review of a draft chapter; check it against its scope source for alignment
 - [**review-book**](.agents/skills/review-book.md): cross-cutting whole-book review — narrative arc, global duplication, terminology drift, filler; defers per-chapter findings to `review-chapter`
 - [**update-sidebar**](.agents/skills/update-sidebar.md): regenerate VitePress sidebar from `content/` file tree
 - [**update-index**](.agents/skills/update-index.md): scan `docs/`, regenerate `docs/INDEX.md` and all listing files

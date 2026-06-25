@@ -6,10 +6,11 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 
 ## What to check
 
-### Alignment with the outline
+### Alignment with the section and arc
 
-- Does the chapter cover every bullet point in its `plan.md` outline?
-- Does it introduce anything not in the outline? If so, is it load-bearing or padding?
+- Does the chapter deliver what its scope source promises?
+- For topic chapters, the scope source is the parent section `index.md` entry. For appendices and front matter, use the sidebar entry and the chapter's role in the book.
+- Does it fit the book's established arc, or does it pull in adjacent topics that belong in another chapter? If it introduces something new, is it load-bearing or padding?
 - Is the key constraint or problem stated in the first paragraph, not buried at the end?
 
 ### Relevance and earned place
@@ -37,8 +38,8 @@ Apply the tests in `voice.md` ("Concrete over abstract"); do not restate them, r
 
 ### Sources and attribution
 
-- Does every factual claim or named practice have a `*Sources:*` line pointing to a reference in `plan.md`?
-- Are attributions accurate? (Author, title, year — verify against the References section in `plan.md`)
+- Does every factual claim or named practice have a `*Sources:*` line pointing to a reference in `content/appendices/references.md`?
+- Are attributions accurate? (Author, title, year — verify against `content/appendices/references.md`)
 - Does the chapter credit the right origin for practices it describes? (e.g. ADRs → Nygard 2011, not "common practice")
 - For each substantive claim, is the source class clear in the reviewer's head: primary/original, primary documentation, secondary commentary, or vendor-authored?
 - If the chapter relies on a secondary or vendor source, has the prose been downgraded accordingly instead of sounding like settled fact?

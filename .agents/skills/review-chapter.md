@@ -9,13 +9,15 @@ After drafting a chapter and before committing. Run this before any PR.
 ## Input
 
 - The draft chapter file path
-- The matching chapter outline from `plan.md`
+- The chapter's scope source and its place in the book arc:
+  - for topic chapters, the section `index.md` entry
+  - for appendices/front matter, the sidebar entry and the chapter's role in the book
 
 ## Process
 
 Load [writing.md](.agents/instructions/writing.md), [voice.md](.agents/instructions/voice.md), [review.md](.agents/instructions/review.md), and [credibility-pass.md](.agents/skills/credibility-pass.md). Work through the review checklist first, then run the credibility pass before deciding the draft passes:
 
-1. **Outline alignment** — every bullet covered, nothing invented beyond the outline
+1. **Section alignment** — the chapter delivers what its scope source promises, fits the book arc, and pulls in nothing that belongs in an adjacent chapter
 2. **Focus** — every section advances the chapter's promised subject, and the agent-specific delta is explicit. Generic software-engineering advice with no coding-agent consequence is `Focus drift`
 3. **Relevance** — all content must be relevant to this book and deserve its place. A paragraph that is true but adds no chapter-specific argument, mechanism, failure mode, tradeoff, or forward tension is `Does not earn its place`
 4. **Padding** — cut throat-clearing, scene-setting, ornamental lines, repeated claims, and paragraphs that do not introduce a problem, control, tradeoff, or question. If two paragraphs do the same job, keep the better one and flag the other as `Padding`

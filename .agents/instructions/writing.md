@@ -76,13 +76,18 @@ No unnecessary adjectives or adverbs. If the word does not change what the sente
 
 Chapters are long-form but not padded. Length follows the story. If a section is filler, cut it. If the argument is not finished, do not stop because of a word count.
 
-## Chapter outlines
+## Chapter scope
 
-Each chapter has an outline in `plan.md`. Expand the bullet points into prose. Do not invent structure not in the outline, and do not omit bullet points that are. The outline is the spec.
+The book is complete and the plan files are history. There is no plan-file outline to expand. Take a chapter's scope from the nearest source that defines its place in the book:
+
+- For chapter pages inside a topic, use that topic's `index.md` entry that lists and describes the chapter
+- For appendices and front matter without a parent section `index.md` entry, use the sidebar label and surrounding reading order in `.vitepress/config.mts`, plus the chapter's own role in the book
+
+Then check that scope against the book's established arc (the foreword, introduction, and sidebar order). Cover what the chapter's place in the book promises. Do not widen a chapter into adjacent topics that belong elsewhere.
 
 ## References
 
-Every reference used must appear in the `plan.md` References section. Do not cite sources not in that list without adding them there first. Verify attributions before writing them.
+Every reference used must appear in `content/appendices/references.md`. Do not cite sources not in that list without adding them there first. Verify attributions before writing them.
 
 ## Mandatory credibility pass
 

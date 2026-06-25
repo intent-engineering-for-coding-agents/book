@@ -78,7 +78,7 @@ content/
 └── appendices/         # Tooling, checklist, principles
 ```
 
-See [plan.md](../plan.md) for the full phase roadmap and chapter outlines.
+The book is complete. The section `index.md` files under `content/` describe each part and its chapters; the sidebar in `.vitepress/config.mts` defines reading order. The `plan*.md` files are kept as project history and are no longer authoritative.
 
 ## ADRs
 

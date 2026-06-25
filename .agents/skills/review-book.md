@@ -8,7 +8,7 @@ When the unit of concern is the book, not a chapter: before a release tag, after
 
 ## Relationship to other skills
 
-- [review-chapter](.agents/skills/review-chapter.md) owns single-chapter depth: outline alignment, local sources, voice, structure. Whenever a finding lives inside one chapter, defer to it — do not re-derive its checklist here.
+- [review-chapter](.agents/skills/review-chapter.md) owns single-chapter depth: section alignment, local sources, voice, structure. Whenever a finding lives inside one chapter, defer to it — do not re-derive its checklist here.
 - [credibility-pass](.agents/skills/credibility-pass.md) owns provenance and certainty. This pass spots *book-wide* provenance patterns (the same weak claim repeated across chapters); the per-claim verdict still belongs there.
 
 This skill only covers what no single-chapter pass can see.
@@ -16,7 +16,7 @@ This skill only covers what no single-chapter pass can see.
 ## Input
 
 - The full `content/` tree
-- `plan.md` for the intended arc, part ordering, and outline
+- The section `index.md` files and the sidebar (`.vitepress/config.mts`) for the intended arc and reading order
 - `content/appendices/glossary.md` for canonical terms
 
 ## Process
@@ -25,7 +25,7 @@ First confirm the chapters are individually clean: this pass assumes each chapte
 
 Then read the book in reading order, not file order, and check the seams between chapters, which is where book-level faults hide.
 
-1. **Narrative arc** — does each part build on the last, in the order `plan.md` intends? Is there a chapter that would be load-bearing earlier, or one that arrives before its prerequisites? Does the introduction promise things the body never pays off, or does the body rely on ideas the introduction never set up?
+1. **Narrative arc** — does each part build on the last, in the reading order the sidebar defines? Is there a chapter that would be load-bearing earlier, or one that arrives before its prerequisites? Does the introduction promise things the body never pays off, or does the body rely on ideas the introduction never set up?
 2. **Seed-and-payoff** — chapters are meant to end on a planted seed for the next. Walk the chain end to end: every seed should land somewhere, and no chapter should open on a concept the book never planted.
 3. **Global duplication** — the per-chapter DRY check only sees one chapter at a time. Find explanations that recur across chapters. Pick the single canonical home for each concept; everywhere else should reference, not re-explain.
 4. **Contradiction sweep** — does any chapter assert something another chapter denies (a definition, a recommendation, a maturity claim)? List both locations.

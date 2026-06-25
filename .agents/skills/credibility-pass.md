@@ -11,7 +11,7 @@ Run a dedicated credibility and provenance pass on drafted or reviewed book cont
 ## Input
 
 - The chapter or section file path under `content/`
-- The matching outline entry from `plan.md`
+- The chapter's scope source: its section `index.md` entry, or for appendices/front matter the sidebar entry and local chapter role
 - The local `*Sources:*` lines used in the draft
 
 ## Process
@@ -63,4 +63,4 @@ If the draft passes, say explicitly that the credibility pass found no blocking 
 ## Non-goals
 
 - Do not use this pass for generic copy-editing.
-- Do not replace outline alignment, voice, or DRY review; this pass is about honesty, provenance, and certainty.
+- Do not replace section alignment, voice, or DRY review; this pass is about honesty, provenance, and certainty.
