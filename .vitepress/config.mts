@@ -107,6 +107,7 @@ export default withMermaid(
             { text: 'Test Strategy and Convention', link: '/quality/test-strategy' },
             { text: 'Agent Evaluation and Regression', link: '/quality/agent-evaluation' },
             { text: 'AC IDs and Coverage', link: '/quality/ac-ids-coverage' },
+            { text: 'Keeping Documentation Up to Date', link: '/quality/keeping-docs-up-to-date' },
             { text: 'Before, During, After Checkpoints', link: '/quality/checkpoints' },
             { text: 'What the Scanners Miss', link: '/quality/what-the-scanners-miss' },
             { text: 'PR Taxonomy', link: '/quality/pr-taxonomy' },

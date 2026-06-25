@@ -44,7 +44,7 @@ A design principle where the tool uses the caller's model provider credentials r
 
 ## Capability-class agent
 
-A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. As of mid-2026, examples in this book include Claude Code, Codex CLI, OpenCode, and Junie. Completion-only tools are out of scope.
+A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. As of mid-2026, examples in this book include Claude Code with Claude Sonnet 4.5, Codex CLI with GPT-5.2, GitHub Copilot's coding agent with a comparable frontier model, OpenCode, and Junie. Newer models of similar or higher capability stay in scope. Completion-only tools are out of scope.
 
 ## Change folder
 

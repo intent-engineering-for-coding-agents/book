@@ -14,6 +14,8 @@ The before-gate does not build the foundation. Earlier chapters did that: legibl
 
 That question is cheaper than it sounds because most of it is deterministic. A hub that points at a file that no longer exists loads nothing, and the agent codes against a convention it never saw. A link checker catches that. A file-size guard and an index-staleness scan catch the rest, all in CI where humans forget to look. What stays manual is the judgment no scan makes: whether the architecture the docs describe is the architecture the agent will meet in the code.
 
+[Keeping Documentation Up to Date](./keeping-docs-up-to-date) adds one more deterministic layer to this gate: a document declares which code it describes, and a validator flags the document when the code changed after the last review date. The check does not prove the prose is right. The check proves nobody has re-verified it since the source moved.
+
 One input sits upstream of the spec itself: the architectural decision the spec executes. The chain runs ADR, then design doc, then spec ([Spec Lifecycle](../spec-driven/spec-lifecycle)). Freeze a spec against a decision still open, or against one reversed in a later PR, and the spec executes a decision the architecture no longer follows. The gate confirms the governing ADR is approved, and the design doc the spec leans on still says what the spec assumes. A link checker proves the reference resolves. Whether the decision still holds is the same manual judgment the architecture check already demands.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AGENTS.md (agents.md, ongoing), AGENTS.md as a project-level entry point for agent instructions.*

@@ -43,6 +43,7 @@ This checklist is OpenSpec-first because the book is OpenSpec-first. The portabl
 - [ ] `docs/architecture/test-strategy.md`: test types your project uses, frameworks, file locations, coverage thresholds
 - [ ] `test/ac-registry.md`: one row per component prefix with the next available number
 - [ ] Tests carry `@Tag` annotations for AC ID and test type
+- [ ] Important agent-facing docs declare the code they describe and surface drift when that code changes
 - [ ] CI validation of structure, AGENTS.md presence, and AC traceability (`iec check` is one implementation; wire your own checks if you prefer)
 
 ## Team scale

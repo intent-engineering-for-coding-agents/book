@@ -70,7 +70,7 @@ Requirements:
 - Keep it to one or two sentences
 ```
 
-The "any coding agent or human" requirement is the key addition. Without it the agent writes for itself: phrasing that a strong model interprets correctly but a weaker one glosses over. Test the draft immediately while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
+The "any coding agent or human" requirement is the key addition. Without it the agent writes for itself: phrasing a stronger model interprets correctly but a weaker one glosses over. Test the draft immediately while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
 
 ## Testing whether your instructions work
 
@@ -80,7 +80,7 @@ Give the agent a task that should trigger the instruction and observe the output
 
 Once it works, raise a PR. The review catches instructions that are too broad or too narrow, and instructions that quietly contradict a rule already in the file. The PR thread also informs your teammates of the new rule: an instruction merged silently is a constraint your colleagues do not know exists and cannot challenge.
 
-If you wrote the instruction on a strong model, test it on a weaker one before merging. A strong model fills in gaps the instruction leaves open. A weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
+If you wrote the instruction on a stronger model, test it on a weaker one before merging. A stronger model fills in gaps the instruction leaves open. A weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
 
 A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions. Break them into named variables", states the constraint behind it, and only the second changes what the agent produces.
 
