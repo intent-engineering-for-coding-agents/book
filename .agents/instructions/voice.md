@@ -137,6 +137,16 @@ Those thresholds are per section. There is a chapter-level version that hides fr
 
 The test: read a section aloud. If you predict the shape of the next sentence before you reach it, the construction is too regular. Break the pattern that repeats. These are thresholds that trigger a rewrite, not absolute bans. The point is variety, not a quota.
 
+### Vary the certainty, not only the rhythm
+
+A page where every sentence lands like a statute reads as generated. A model states each claim at the same flat, absolute pitch. A developer who has watched the tooling move writes with grain: some claims are settled, some hold for now, some are what you do most of the time. "Coding agents do not" is a verdict with no texture. "Coding agents cannot do that, at least not yet" carries the same claim and sounds like a person.
+
+The fix is not the banned hedges (`probably`, `maybe`, `could`, `may`). It is the grounded, time-bounded qualifiers the book already endorses, used where the claim genuinely is provisional: `at least not yet`, `in current practice`, `most of the time`, `as it always does`. The same move that keeps the book honest about perishable tool claims also keeps the prose from reading like machine-stamped law.
+
+The occasional collective `we` belongs here too, used sparingly, where you and the reader share the situation rather than the reader being instructed: "we cannot blame the agent: the rule was not in its input." Default stays `you` and `your`. A `we` on every page is its own tell.
+
+Use all of this with restraint. Three `at least not yet`s in one section is the same monotony from the other direction. The point is that not every sentence should close like a closed case.
+
 ### Respect reader intelligence
 
 Do not define obvious engineering concepts. Do not repeat the same idea three times in different words. Do not summarize excessively. Do not explain what a PR is, what CI does, what a feature flag is.
@@ -178,6 +188,14 @@ The referent test. Read each paragraph and find the concrete noun: a named file,
 Show the break. When you claim something fails, show the symptom. Not "the types drift" but "the client reads a field the server no longer sends." Not "context degrades" but "the agent re-derives in hour two the same import path it knew in hour one."
 
 The honest boundary. Concrete comes from real referents, never invented ones. Naming a real file is concrete. Inventing "forty-seven acceptance criteria" is fabrication. Reach for a named artifact, a real command, a sourced fact, or an explicitly marked hypothetical, and never a precise number you made up. See "Never fake a memory."
+
+### Name the role, not the species
+
+"Humans" is the word a model reaches for when it means the people doing the work. An engineer names the role: developers, reviewers, the on-call, the platform team. "Humans compensate; coding agents do not" is the abstraction. "Developers compensate; coding agents cannot, at least not yet" is how a practitioner says the same thing.
+
+The book is about developers and coding agents working on the same artifacts. So the human-versus-machine distinction does come up. Reserve "human" for the rare place that distinction is the literal subject, a chapter title built on the contrast, or a sentence precisely about the species boundary. In ordinary body prose, the people have job titles.
+
+The same applies to other generic placeholders. Prefer "the team" or a named role over "people" and "someone." The role test: if a sentence says "humans" (or "people," or "someone") and you could swap in "developers," "reviewers," or "the platform team" without losing meaning, you were hiding behind the abstraction. Swap it.
 
 ### Every design has a cost
 

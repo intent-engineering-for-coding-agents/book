@@ -30,13 +30,14 @@ Then read the book in reading order, not file order, and check the seams between
 3. **Global duplication** — the per-chapter DRY check only sees one chapter at a time. Find explanations that recur across chapters. Pick the single canonical home for each concept; everywhere else should reference, not re-explain.
 4. **Contradiction sweep** — does any chapter assert something another chapter denies (a definition, a recommendation, a maturity claim)? List both locations.
 5. **Terminology drift** — is each defined term used consistently, and does it match `glossary.md`? Flag synonyms used for the same concept, and one term used for two concepts. Flag first-use expansions that happen in more than one place, or not at all.
-6. **Substance vs. filler** — sweep for passages that are generic, hollow, or padding: sentences that would survive being deleted, restated truisms, throat-clearing openings, conclusions that only summarize. Quote the exact sentence and say what is missing — a concrete claim, an example, a consequence. Judge whether the passage earns its place; do not speculate about how it was written.
-7. **Cross-cutting provenance** — note claims that appear in several chapters leaning on the same weak or vendor source, or a book synthesis that reads as field consensus in one chapter and is correctly labeled in another. Hand specifics to `credibility-pass`; record the pattern here.
-8. **Structural consistency** — are conventions uniform book-wide: heading depth, `*Sources:*` placement, code-block language tags, table-versus-prose choices, tooling kept to its proper section?
+6. **Substance vs. filler** — sweep for passages that are generic, hollow, or padding: sentences that would survive being deleted, restated truisms, throat-clearing openings, conclusions that only summarize. Quote the exact sentence and say what is missing: a concrete claim, an example, a consequence. Judge whether the passage earns its place; do not speculate about how it was written.
+7. **Machine-voice sweep** — the tells that make a reader stop trusting the book are easiest to see book-wide, where they recur. Grep every chapter for generic "humans"/"people"/"someone" where a named role fits (the role test in `voice.md`), and read for the flat absolute-verdict cadence where every sentence lands at the same pitch with no provisional texture (the certainty test). Both are per-sentence faults `review-chapter` owns; record the book-wide *pattern* here and route specific lines to `review-chapter`.
+8. **Cross-cutting provenance** — note claims that appear in several chapters leaning on the same weak or vendor source, or a book synthesis that reads as field consensus in one chapter and is correctly labeled in another. Hand specifics to `credibility-pass`; record the pattern here.
+9. **Structural consistency** — are conventions uniform book-wide: heading depth, `*Sources:*` placement, code-block language tags, table-versus-prose choices, tooling kept to its proper section?
 
 ## Output
 
-A prioritized issue list, most severe first. Group by the eight checks above. For each issue:
+A prioritized issue list, most severe first. Group by the nine checks above. For each issue:
 
 1. what it is, in one line
 2. every location it touches — file plus heading, both ends of a contradiction or duplication
