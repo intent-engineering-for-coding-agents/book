@@ -5,7 +5,7 @@ import { bundledLanguages } from 'shiki'
 export default withMermaid(
   defineConfig({
     title: 'Intent Engineering',
-    description: 'Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering',
+    description: 'Intent Engineering for Coding Agents: How humans and coding agents design software together',
     base: '/book/',
     srcDir: 'content',
     markdown: {
@@ -19,7 +19,7 @@ export default withMermaid(
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:site_name', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { property: 'og:title', content: 'Intent Engineering for Coding Agents' }],
-      ['meta', { property: 'og:description', content: 'Structure, specs, and proof for agentic software engineering.' }],
+      ['meta', { property: 'og:description', content: 'How humans and coding agents design software together.' }],
       ['meta', { property: 'og:url', content: 'https://intent-engineering-for-coding-agents.github.io/book/' }],
       ['meta', { property: 'og:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png?v=3' }],
       ['meta', { property: 'og:image:width', content: '1200' }],
@@ -27,7 +27,7 @@ export default withMermaid(
       ['meta', { property: 'og:image:alt', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: 'Intent Engineering for Coding Agents' }],
-      ['meta', { name: 'twitter:description', content: 'Structure, specs, and proof for agentic software engineering.' }],
+      ['meta', { name: 'twitter:description', content: 'How humans and coding agents design software together.' }],
       ['meta', { name: 'twitter:image', content: 'https://intent-engineering-for-coding-agents.github.io/book/og-image.png?v=3' }],
       // Privacy-friendly, cookieless analytics (GoatCounter) — no GDPR consent banner needed.
       ['script', {
@@ -64,6 +64,7 @@ export default withMermaid(
       sidebar: [
         { text: 'Overview', link: '/overview' },
         { text: 'Foreword', link: '/foreword' },
+        { text: 'The Human-Agent Engineering Mindset', link: '/human-agent-engineering-mindset' },
         { text: 'Introduction', link: '/introduction' },
         {
           text: 'Foundation',

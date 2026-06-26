@@ -81,7 +81,7 @@ Not every document labeled "spec" earns the treatment described above. This book
 
 Testable: each acceptance criterion maps to an observable, verifiable outcome. Not "the API should handle errors gracefully", but "When the upstream service returns a 503, the API should retry once after 1 second, then return a 503 with `{ error: 'upstream unavailable' }`". The criterion is correct or it is not.
 
-AC-tagged: each scenario has a stable identifier, such as `[FEAT-001]`. Not a description, but an ID. The ID survives rewording, file moves, and section reordering. Tests reference the ID, not the prose. That is what keeps traceability from breaking when someone edits a heading.
+AC-tagged: each scenario has a stable identifier, such as `[FEAT-001]`. Not a description, but an ID. The ID remains stable through rewording, file moves, and section reordering. Tests reference the ID, not the prose. That is what keeps traceability from breaking when someone edits a heading.
 
 Sized to be readable: the spec fits in a context window with room for the code. If it does not, it describes a change too large to implement in one PR without risk of incoherence.
 

@@ -2,7 +2,7 @@
 
 A long spec does not fail loudly. It fails by quietly dropping things, and the more thorough the spec, the more it drops.
 
-Consider a thorough one: a multi-page spec, dozens of acceptance criteria, every edge case and rollback rule and audit requirement written down, days of work, and a careful review behind it. Hand it to the agent and the early criteria get implemented reliably. Later, the implementation starts to contradict what landed earlier. The non-goals section, somewhere in the middle, stops being weighed at all. The spec was not too short. It was too long for the agent to hold at once.
+Consider a thorough one: a multipage spec, dozens of acceptance criteria, every edge case and rollback rule and audit requirement written down, days of work, and a careful review behind it. Hand it to the agent and the early criteria get implemented reliably. Later, the implementation starts to contradict what landed earlier. The non-goals section, somewhere in the middle, stops being weighed at all. The spec was not too short. It was too long for the agent to hold at once.
 
 ## Context window economics
 
@@ -22,7 +22,7 @@ The spec size is naturally bounded by the PR size, and small PRs are already a p
 
 More importantly: the spec does not freeze the scope. You planned to fetch upstream records in one call, then find the endpoint is paginated. Scenario four no longer matches what the code has to do. Edit scenario four. A spec that contradicts the code it shipped with is worse than no spec, because the next agent reads the spec as ground truth. The spec stays live until the PR merges, then it archives.
 
-*Sources: LeanSpec, one-PR-scoped specs and live-spec discipline.*
+*Sources: LeanSpec, one-PR-scoped specs, and live-spec discipline.*
 
 ## The size argument
 
@@ -38,7 +38,7 @@ A spec too vague to be useful is a spec too small. "Add error handling to the AP
 
 Write small and write precisely. Vagueness is not a side effect of brevity. It is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify. If clarifying makes the spec too large, the change itself is too large. Split it.
 
-*Sources: LeanSpec, small-spec discipline and the precision-vs-compression tradeoff.*
+*Sources: LeanSpec, small-spec discipline, and the precision-vs-compression tradeoff.*
 
 ## When the agent writes the spec
 
@@ -60,7 +60,7 @@ When the task list goes beyond 10, stop. The spec is describing two changes. Fin
 
 ## When the change is genuinely large
 
-Some features survive the split test: one coherent thing, a bit over ten tasks, no clean seam. Sequenced PRs handle this. Use branch names to carry the sequence: `feature/<name>-part-1`, `feature/<name>-part-2`. Share the acceptance-criterion ID namespace across the parts: `FEATURE-001` through `FEATURE-010` for part one, `FEATURE-011` onward for part two. The traceability trail stays continuous across the merge boundary, so months later the archive still shows which test proved which scenario regardless of which PR shipped it.
+Some features pass the split test: one coherent thing, a bit over ten tasks, no clean seam. Sequenced PRs handle this. Use branch names to carry the sequence: `feature/<name>-part-1`, `feature/<name>-part-2`. Share the acceptance-criterion ID namespace across the parts: `FEATURE-001` through `FEATURE-010` for part one, `FEATURE-011` onward for part two. The traceability trail stays continuous across the merge boundary, so months later the archive still shows which test proved which scenario regardless of which PR shipped it.
 
 Part two depends on part one merging. Note that dependency in the part-two proposal so the reviewer knows before opening the diff. Each part merges on its own test pass instead of waiting for a suite that only lands with the final PR.
 

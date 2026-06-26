@@ -1,22 +1,22 @@
 ---
 layout: home
 title: Intent Engineering for Coding Agents
-description: "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering"
+description: "Intent Engineering for Coding Agents: How humans and coding agents design software together"
 hero:
   name: Intent Engineering
   text: for Coding Agents
-  tagline: Structure, specs, and proof for agentic software engineering.
+  tagline: How humans and coding agents design software together.
   image:
     light: /logo-light.svg
     dark: /logo-dark.svg
     alt: Intent Engineering for Coding Agents
   actions:
     - theme: brand
+      text: Start with the mindset
+      link: /human-agent-engineering-mindset
+    - theme: alt
       text: Overview
       link: /overview
-    - theme: alt
-      text: Foreword
-      link: /foreword
     - theme: alt
       text: Foundation
       link: /foundation/
@@ -25,16 +25,16 @@ hero:
       link: https://github.com/intent-engineering-for-coding-agents/book
 features:
   - title: Foundation
-    details: Repo structure as the agent's briefing. Decisions, design docs, specs, and an agent-facing index, before any per-change intent exists.
+    details: The source-controlled workspace as shared ground. Decisions, design docs, specs, and an agent-facing index, before any per-change intent exists.
     link: /foundation/
   - title: Agent Instructions
-    details: AGENTS.md and the .agents/ hub that teach every agent how to work in your repo, consistently and on load.
+    details: AGENTS.md and the .agents/ hub that brief every coding agent on how humans work in this repo.
     link: /agent-instructions/
   - title: Spec-Driven Development
-    details: Change-sized specs before code, with OpenSpec as the working example. Durable per-change intent the agent builds from.
+    details: Change-sized specs before code, with OpenSpec as the working example. Humans state intent before agents implement.
     link: /spec-driven/
   - title: Quality and Verification
-    details: Tests as proof of intent. Stable AC IDs, coverage pairs, PR taxonomy, and evaluation of the agent setup itself.
+    details: Tests as proof of intent. Stable AC IDs, coverage pairs, PR taxonomy, and checks that keep human intent and generated code aligned.
     link: /quality/
   - title: Team Workflows
     details: Adoption, trunk-based development with agents, cross-team coordination, and an honest account of what is still unsettled.

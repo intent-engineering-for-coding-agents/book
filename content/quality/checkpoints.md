@@ -70,4 +70,4 @@ The three gates do not draw on it equally. The before-gate is mostly maintenance
 
 The gates are not project phases. A spec is not finished before implementation starts in a calendar sense. The during-gate happens immediately after the before-gate, in the same afternoon. The sequence is logical, not temporal. Forcing it to map to days or weeks recreates waterfall, which is exactly the failure mode `Why Specs?` argued against.
 
-The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid, including the broken one. The next chapter covers security failure modes that survive because they match the examples the agent was shown, not because any check missed them.
+The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid, including the broken one. The next chapter covers security failure modes that pass through because they match the examples the agent was shown, not because any check missed them.

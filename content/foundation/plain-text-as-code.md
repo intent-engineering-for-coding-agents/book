@@ -18,7 +18,7 @@ Docs-as-code is the established version of this idea, narrowed here to one rule 
 
 ## Markdown for prose
 
-Markdown is the unremarkable choice. It renders on major Git hosts and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that survive transformation. But Markdown wins the ecosystem fight. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
+Markdown is the unremarkable choice. It renders on major Git hosts and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that persist through transformation. But Markdown wins the ecosystem fight. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
 
 If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. PR descriptions are too hard for the agent to find, and description quality is too uneven to rely on. Commit messages are no better: some developers write essays, others write `fix`, and the log is not a reliable index of decisions. Code comments are worse, because a coding agent treats code as freely modifiable and rewrites or removes comments without hesitation. Humans expect documentation, not annotations buried in source files. Put the decision in a file, with a name, at a known location.
 

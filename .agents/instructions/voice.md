@@ -51,7 +51,7 @@ This is a book about Intent Engineering for Coding Agents. It is not a general s
 
 Each chapter needs an agent-specific delta. Name what changes because code is generated, context is partial, intent is externalized, or review has to work from artifacts instead of memory. Generic advice about refactoring, CI, code review, naming, or testing is off-topic until the paragraph states why coding agents change the stakes or the workflow.
 
-The focus test: if a paragraph would survive unchanged in a normal software-engineering book, the paragraph is missing the agent delta or does not belong. Add the missing delta or cut the paragraph.
+The focus test: if a paragraph would remain unchanged in a normal software-engineering book, the paragraph is missing the agent delta or does not belong. Add the missing delta or cut the paragraph.
 
 The section test: if the heading promises PR taxonomy, every subsection should help the reader classify, split, brief, or review PRs in agent-driven work. Background material stays short. The chapter's promise is the filter.
 
@@ -181,7 +181,7 @@ Good: "The planner generated valid subtasks. The executor completed them. Then t
 
 Abstraction with no referent is the book's most common failure mode, and the easiest for an agent to produce. Every claim has to point at something a reader could observe: a named file, a command, a flag, an error message, a number, a runtime behavior. This subsection turns "Explain through situations" into a test you can fail.
 
-The substitution test. If a sentence stays true after you swap its subject for an unrelated system, it is abstract. "This practice reduces friction in the development workflow" survives the swap, so it says nothing. "Rename a field in `api-spec.yaml`, skip the regeneration, and the stale types still compile while the client breaks at runtime" does not survive it. Rewrite until the sentence only makes sense for the specific thing you are describing.
+The substitution test. If a sentence stays true after you swap its subject for an unrelated system, it is abstract. "This practice reduces friction in the development workflow" stays true after the swap, so it says nothing. "Rename a field in `api-spec.yaml`, skip the regeneration, and the stale types still compile while the client breaks at runtime" does not stay true. Rewrite until the sentence only makes sense for the specific thing you are describing.
 
 The referent test. Read each paragraph and find the concrete noun: a named file, command, flag, error, metric, or observable behavior. A paragraph built only from abstract nouns (workflow, process, mechanism, approach, solution, capability) is a rewrite, not a polish.
 

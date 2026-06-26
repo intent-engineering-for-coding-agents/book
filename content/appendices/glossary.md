@@ -62,6 +62,10 @@ A public catalog of disclosed security flaws in software, each with a unique ide
 
 The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
 
+## Context engineering
+
+The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering loop of specs, proof, review, and durable decisions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
+
 ## Context poisoning
 
 A failure mode in which stale, incorrect, or irrelevant documents loaded into the agent's context cause it to act on false premises. The agent treats provided context as authoritative, so an outdated architecture doc, a superseded spec, or wrong instruction files produce wrong output with apparent confidence. See [When Intent Engineering Fails](/foundation/when-intent-engineering-fails).
@@ -120,7 +124,7 @@ The agent-tool bridge protocol documented at modelcontextprotocol.io. In this bo
 
 ## Mutation testing
 
-A technique that introduces small, semantics-changing edits (mutations) into the code under test and re-runs the test suite. A surviving mutation indicates a gap: the suite did not detect a wrong implementation. The kill rate is a feedback control on whether tests are proof or decoration. See [Tests as Proof, Not Ritual](/quality/tests-as-proof).
+A technique that introduces small, semantics-changing edits (mutations) into the code under test and re-runs the test suite. A mutation that stays green indicates a gap: the suite did not detect a wrong implementation. The kill rate is a feedback control on whether tests are proof or decoration. See [Tests as Proof, Not Ritual](/quality/tests-as-proof).
 
 ## OWASP (Open Worldwide Application Security Project)
 
@@ -129,6 +133,10 @@ A non-profit foundation publishing community-driven security resources for web a
 ## OpenSpec
 
 A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, delta specs per capability under `specs/`, `tasks.md`, and optional `design.md`. On archive, delta specs are applied to the canonical `openspec/specs/` and the full change folder moves to `openspec/changes/archive/`. The book uses OpenSpec end-to-end. `iec` is built with it.
+
+## Prompt engineering
+
+The practice of shaping one prompt or instruction exchange so a model responds usefully. This book treats prompt engineering as a useful but too-small frame for production coding-agent work, where the harder problem is keeping repo context, specs, tests, and decisions aligned across sessions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
 
 ## skeleton.md
 

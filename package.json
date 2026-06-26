@@ -1,7 +1,7 @@
 {
   "name": "intent-engineering-for-coding-agents",
   "version": "0.0.1",
-  "description": "Intent Engineering for Coding Agents: Structure, specs, and proof for agentic software engineering",
+  "description": "Intent Engineering for Coding Agents: How humans and coding agents design software together",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",

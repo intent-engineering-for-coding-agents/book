@@ -2,7 +2,7 @@
 
 Intent Engineering does not prevent specs and agent instructions from falling out of sync with the codebase. It makes that gap visible and recoverable, which is a meaningfully weaker claim, and the honest one.
 
-The five failure modes below survive good initial setup. They are not beginner mistakes. They emerge once the initial discipline wears off, gradually enough that nothing alerts you before the damage compounds. The chapter exists here, before the practices, so the rest of the book does not read as sales material for itself.
+The five failure modes below remain after good initial setup. They are not beginner mistakes. They emerge once the initial discipline wears off, gradually enough that nothing alerts you before the damage compounds. The chapter exists here, before the practices, so the rest of the book does not read as sales material for itself.
 
 ## Agent instructions rot
 

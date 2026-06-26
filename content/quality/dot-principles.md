@@ -34,4 +34,4 @@ Principles also become bureaucracy. A catalog of 50 principles that nobody appli
 
 ## Tooling note
 
-If you want to inspect the workflow, `.principles` provides three commands: `dot-scout` (setup), `dot-prime` (load principles before coding), and `dot-audit` (audit after). The hard part is not running an audit. The hard part is making the judgment survive a team calendar.
+If you want to inspect the workflow, `.principles` provides three commands: `dot-scout` (setup), `dot-prime` (load principles before coding), and `dot-audit` (audit after). The hard part is not running an audit. The hard part is making the judgment persist through a team calendar.

@@ -77,7 +77,7 @@ PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavi
 
 In this book's workflow, a convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` and `docs/INDEX.md`, Markdown Architectural Decision Record (MADR) format for ADRs, and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
 
-AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` proves the named scenario, and the traceability survives spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
+AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` proves the named scenario, and the traceability remains after spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
 
 *Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026, vendor-authored); IBM, "AI in SDLC" (ongoing, vendor-authored), vendor framing of folding AI-era checks into the existing pipeline rather than standing up a new one.*
 
@@ -99,7 +99,7 @@ Checks catch the mechanical part: an index-staleness rule compares the index wit
 
 ## Why not add ceremonies
 
-New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. The design is to sidestep the churn by plugging into existing ceremonies rather than replacing them. A smaller ask survives longer.
+New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. The design is to sidestep the churn by plugging into existing ceremonies rather than replacing them. A smaller ask lasts longer.
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), sustainable process over heavyweight ceremony.*
 

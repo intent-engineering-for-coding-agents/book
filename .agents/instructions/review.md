@@ -31,7 +31,7 @@ Run a review pass after drafting a chapter and before committing. Use the `revie
 
 Apply the tests in `voice.md` ("Concrete over abstract"); do not restate them, run them:
 
-- Substitution test: per section, would the claim survive swapping its subject for an unrelated system? If yes, it is abstract. Send it back.
+- Substitution test: per section, would the claim stay true after swapping its subject for an unrelated system? If yes, it is abstract. Send it back.
 - Referent test: does every paragraph name a concrete referent (file, command, flag, error, number, behavior), or does it float on abstract nouns?
 - Show the break: when a section claims a failure, does it show the symptom, or only assert that something breaks?
 - Boundary: are the concrete details real (named files, real commands, sourced facts, marked hypotheticals), not invented specifics? Cross-ref "Never fake a memory" and credibility-pass `Fabricated anecdote`.

@@ -1,6 +1,6 @@
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-Consider a retry policy buried in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries or why it retries at all. The system survived several rewrites and handoffs. The original architect was certain about several things, none of which are written down anywhere.
+Consider a retry policy buried in a function called `do_it_again_lol`. The author left years ago, and nobody knows what it retries or why it retries at all. The system went through several rewrites and handoffs. The original architect was certain about several things, none of which are written down anywhere.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift.
 

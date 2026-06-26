@@ -28,7 +28,7 @@ ThoughtWorks calls this cognitive debt: stale reasoning compounding in agentic d
 
 The verification move is familiar by now. Do not match text. Match identity.
 
-[AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten and the test moves files, but the ID survives both changes, so the link between intent and proof survives too.
+[AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten and the test moves files, but the ID remains stable, so the link between intent and proof remains intact.
 
 Documentation needs a lighter version of the same move. Each important document carries a small frontmatter block naming the code paths the check watches, the date somebody last checked the document against those paths, and any outside systems still pointing at the document:
 

@@ -15,4 +15,4 @@ These chapters take one problem, agents that are productive but contextless, and
 3. [Plain-Text-as-Code](./plain-text-as-code): why everything the agent needs must live in the repo as plain text
 4. [Intent Engineering and the SDLC](./intent-engineering-and-the-sdlc): where Intent Engineering practices slot into an existing SDLC
 5. [Brownfield vs Greenfield](./brownfield-vs-greenfield): how to bootstrap Intent Engineering on an existing codebase using `skeleton.md`
-6. [When Intent Engineering Fails](./when-intent-engineering-fails): the failure modes that survive even good initial setup
+6. [When Intent Engineering Fails](./when-intent-engineering-fails): the failure modes that remain after good initial setup

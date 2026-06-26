@@ -49,7 +49,7 @@ Here is the part the carousels leave out. Give the agent enough up-to-date infor
 
 Software development still demands skill and judgment. Humans must stay in the loop. I expect models to improve and automation to expand, and I will revise this foreword as the boundary moves. In 2026 the responsibility is ours: to be deliberate, to be professional, and to do the part of the job humans still do best.
 
-The rest of this book is about the deliberate part: how to hand a coding agent enough durable intent that what it builds survives past Friday.
+The rest of this book starts with a mindset shift: the source-controlled workspace is no longer only for humans. It is where humans and coding agents meet and where the durable intent has to live if the generated code is expected to last past Friday.
 
 ---
 

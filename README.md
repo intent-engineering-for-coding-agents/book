@@ -1,8 +1,8 @@
 # Intent Engineering for Coding Agents
 
-Structure, specs, and proof for agentic software engineering.
+How humans and coding agents design software together.
 
-This repository holds the VitePress source for the book *Intent Engineering for Coding Agents*, a practical guide for senior developers who already use coding agents in real codebases. The focus is capturing intent explicitly so an agent works from your decisions, not from guesswork.
+This repository holds the VitePress source for the book *Intent Engineering for Coding Agents*, a practical guide for senior developers who already use coding agents in real codebases. The focus is designing source-controlled collaboration so coding agents work from human decisions, not from guesswork.
 
 **Read it online:** https://intent-engineering-for-coding-agents.github.io/book/
 

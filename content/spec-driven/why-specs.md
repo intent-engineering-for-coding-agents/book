@@ -46,4 +46,4 @@ The version that does slide back toward waterfall is the oversized spec that tri
 
 Specs add ceremony, and some changes do not earn it. A one-line fix or a configuration tweak does not need one. Neither does a feature with zero ambiguity and a trivially recoverable failure mode. The heuristic: if the expected output is obvious and the failure mode is recoverable, skip the spec. If either is false, write it.
 
-A spec that covers everything sounds thorough. At some size, it stops being a useful guide and starts being a document the agent has to survive rather than follow. What that size is, and why it matters, is the question the next chapter takes seriously.
+A spec that covers everything sounds thorough. At some size, it stops being a useful guide and starts being a document the agent has to fight rather than follow. What that size is, and why it matters, is the question the next chapter takes seriously.

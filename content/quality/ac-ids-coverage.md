@@ -6,7 +6,7 @@ A spec and a test suite that drift apart silently are worse than no spec at all.
 
 ## What is an Acceptance Criterion ID?
 
-An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier: a prefix and a zero-padded number, wrapped in brackets so it is easy to spot in a heading and detect with a grep, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link survives the prose being rewritten, the file being moved, the heading being reordered.
+An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier: a prefix and a zero-padded number, wrapped in brackets so it is easy to spot in a heading and detect with a grep, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link remains valid when the prose is rewritten, the file moves, or the heading order changes.
 
 The prefix is a short uppercase abbreviation of the component or feature, usually two to four letters, the same shape as an issue-tracker project key. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. Longer is allowed when a component needs it: the constraint is readability inside a bracketed heading, not a letter count. The reader recognizes the component from the prefix without looking it up, and `grep "GV-" specs/` finds every graph-validator scenario.
 
@@ -14,7 +14,7 @@ The ID is the contract between two files that change at different rates. The spe
 
 This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules. So yes, the scenario form sits in the BDD family. The stricter traceability and coverage rules do not. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behavior. In the companion repo, the convention is recorded in `docs/decisions/0007-ac-id-and-test-type-convention.md`.
 
-The syntax is the easy part. A scenario written in correct Gherkin is still weak when the intent behind it is vague. Missing preconditions, ambiguous outcomes, unstated boundaries, and silent failure paths survive perfect `Given/When/Then` formatting. Better source material produces better scenarios. Practice produces better source material. The format helps the writer think. The format does not do the thinking for them.
+The syntax is the easy part. A scenario written in correct Gherkin is still weak when the intent behind it is vague. Missing preconditions, ambiguous outcomes, unstated boundaries, and silent failure paths remain with perfect `Given/When/Then` formatting. Better source material produces better scenarios. Practice produces better source material. The format helps the writer think. The format does not do the thinking for them.
 
 *Sources: OpenSpec (openspec.dev) FAQ (ongoing), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` form this builds on. intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), AC ID format and `Test-type:` as a project convention enforced by checks.*
 
@@ -129,7 +129,7 @@ Test-type: Integration
 
 Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `Integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not prove the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The AC-coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test.
 
-What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness is what makes the link survive an agentic codebase, where everything changes faster than anyone tracks by hand.
+What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness keeps the link intact in an agentic codebase, where everything changes faster than anyone tracks by hand.
 
 A generated scenario should therefore be treated as a draft, not a verdict. When the scenario is too weak to write a good test from, the problem is upstream in the acceptance criteria, the missing context, or the review discipline around them. The syntax did its job. The intent did not.
 

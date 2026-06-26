@@ -8,7 +8,7 @@ This is not a *code coverage* problem, which measures whether a test touches a l
 
 The two metrics answer different questions, and only one tells you whether the implementation matches the spec.
 
-The same AC admits many implementations: a guard clause, an early return, a validator extracted into its own class. Each variation has different code paths, so tests written to cover one implementation prove nothing about another. If the agent regenerates the code or takes a different approach, coverage-based tests stay green while the AC goes unverified. Tests anchored to the AC survive that churn. Tests anchored to the implementation do not. Code and tests that do not contribute to proving an acceptance criterion are not wrong, but they are not what this chapter is about.
+The same AC admits many implementations: a guard clause, an early return, a validator extracted into its own class. Each variation has different code paths, so tests written to cover one implementation prove nothing about another. If the agent regenerates the code or takes a different approach, coverage-based tests stay green while the AC goes unverified. Tests anchored to the AC remain valid through that churn. Tests anchored to the implementation do not. Code and tests that do not contribute to proving an acceptance criterion are not wrong, but they are not what this chapter is about.
 
 The tests passed. Passing is not the same as proving.
 
@@ -20,7 +20,7 @@ Specs are often incomplete, scenarios go missing, tests assert too little. None 
 
 A test is proof when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. Open the spec, pick a scenario, modify the implementation to violate it, run the tests. If everything stays green, the tests do not prove that scenario. They prove that something runs.
 
-Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation survived, and whatever the surviving mutation touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number. They cannot fake a mutation kill rate without writing genuine assertions.
+Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation stayed green, and whatever it touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number. They cannot fake a mutation kill rate without writing genuine assertions.
 
 Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?" Which paths you need to cover to answer that for every AC is the harder question.
 
@@ -40,7 +40,7 @@ This applies within a test type. Across test types, a different question applies
 
 ## Done means proven
 
-The team had a definition of done that read: "implementation complete, tests passing, PR merged". That phrasing survived from the pre-agent era and stopped working the day the agent shipped its first feature in an afternoon. Implementation complete is now a low bar. Tests passing only means the tests that exist pass.
+The team had a definition of done that read: "implementation complete, tests passing, PR merged". That phrasing came from the pre-agent era and stopped working the day the agent shipped its first feature in an afternoon. Implementation complete is now a low bar. Tests passing only means the tests that exist pass.
 
 The working definition in this book:
 
@@ -60,7 +60,7 @@ An agentic team shipping several features a day cannot. Memory does not scale to
 
 Push the rate up far enough and the human leaves the moment entirely. An agent running unattended has no reviewer to ask whether a change is done, so it reads the test result instead. Proof stops being evidence a reviewer reads later and becomes the exit condition for the run: until every AC scenario passes, the agent keeps going or flags a blocker.
 
-Automated proof is the only verification that survives the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once. The cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
+Automated proof is the only verification that scales to the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable. The cost of writing it is paid once. The cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
 
 A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.
 

@@ -18,7 +18,7 @@ Documented means the practice is written down well enough for someone new to fol
 
 ### CI-enforced
 
-CI-enforced is the only level a team relies on without trust. In a repo with those checks wired in, the pipeline fails when the practice is violated: a missing `docs/README.md` stops the PR before merge, and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices survive team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
+CI-enforced is the only level a team relies on without trust. In a repo with those checks wired in, the pipeline fails when the practice is violated: a missing `docs/README.md` stops the PR before merge, and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices persist through team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
 
 A target annotation keeps current state separate from intent: `practiced, target: CI-enforced by Q3`. Writing target: CI-enforced when you are not there yet is honest roadmapping. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy names.
 

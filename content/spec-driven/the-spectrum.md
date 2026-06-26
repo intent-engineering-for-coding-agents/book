@@ -24,7 +24,7 @@ Formality and audit trail rise left to right, and so does overhead. The rung tha
 
 ## The light end
 
-At the minimal end is the raw prompt. Describe the feature in the chat window and let the agent implement. No artifact, no audit trail. Acceptable for throwaway code, local experiments, prototypes that will not survive the week.
+At the minimal end is the raw prompt. Describe the feature in the chat window and let the agent implement. No artifact, no audit trail. Acceptable for throwaway code, local experiments, prototypes that will not last the week.
 
 One step up, GSD (Get Shit Done): structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail. Hightower calls it "spec-driven development without the ceremony," and where OpenSpec's overhead exceeds a team's risk profile, it is the practical alternative.
 
@@ -39,7 +39,7 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 | Part | File | Question |
 |---|---|---|
 | Propose | `proposal.md` | What is changing, why does it matter, and what follows from it? |
-| Design | `design.md` *(optional)* | Which implementation approach should survive? |
+| Design | `design.md` *(optional)* | Which implementation approach should stand? |
 | Specs | `specs/<capability>/spec.md` | How should the capability behave after the change? |
 | Tasks | `tasks.md` | What should be implemented, and in what order? |
 

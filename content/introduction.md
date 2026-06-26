@@ -1,5 +1,7 @@
 # Introduction
 
+The human-agent mindset is not enough by itself. A source-controlled workspace built for collaboration still needs a discipline for deciding what the agent should know, what the agent should build, and what proof the result must clear.
+
 A coding agent works fast. It has been trained on a lot of code, and it often generates a payment service in minutes that might have taken you days.
 
 The agent has no idea what you decided.
@@ -18,7 +20,7 @@ This book is not mainly about AI. This book is about a shift in software authors
 
 Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. These are practices you adopt as you need them, not a methodology you install.
 
-The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
+The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. This is not a private spec method in disguise. OpenSpec is the motor this book uses to show the practice running. If your team uses Spec-Kit, LeanSpec, a plain `spec.md`, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
 
 *Sources: OpenSpec (openspec.dev), the change-folder, and delta-spec framework this book uses end-to-end.*
 
@@ -51,7 +53,7 @@ The first two give the agent context: the structural knowledge to execute your i
 
 **Spec-Driven Development:** specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
 
-**Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that survives both files being rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
+**Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
 Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
 
@@ -104,7 +106,7 @@ This book works the other side of the table. Here the agent is the worker, not t
 
 The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 
-The practical consequence is blunt: your value shifts upward. Less of your day goes to typing implementation details. More of your day goes to deciding what problem is being solved, which design should survive, where the boundaries lie, and what evidence earns trust.
+The practical consequence is blunt: your value shifts upward. Less of your day goes to typing implementation details. More of your day goes to deciding what problem is being solved, which design should stand, where the boundaries lie, and what evidence earns trust.
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
@@ -120,7 +122,7 @@ The companion repo, Intent Engineering Checker (`iec`), demonstrates the core pr
 
 ## What Intent Engineering does not do
 
-Intent Engineering does not stop your agent from drifting. It gives you the surface area to detect drift and recover from it. That is a weaker claim than what most agentic-engineering material promises, and it is the one this book defends. The chapter [When Intent Engineering Fails](./foundation/when-intent-engineering-fails) lists the failure modes that survive even good initial setup. It sits inside Foundation, before any of the practices.
+Intent Engineering does not stop your agent from drifting. It gives you the surface area to detect drift and recover from it. That is a weaker claim than what most agentic-engineering material promises, and it is the one this book defends. The chapter [When Intent Engineering Fails](./foundation/when-intent-engineering-fails) lists the failure modes that remain after good initial setup. It sits inside Foundation, before any of the practices.
 
 Nor does it try to make the agent deterministic. The agent's non-determinism is not a bug to be engineered away. It is the same reasoning that finds the gap in your design, the same reasoning that occasionally makes a call you would not have made yourself. What you engineer is the ground it reasons from: a well-informed picture of your system instead of a guess, so the calls the agent makes on its own are calls worth trusting.
 

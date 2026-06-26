@@ -7,7 +7,7 @@
 
 ## Principle
 
-Anchor team process to existing SDLC primitives. Branches, PRs, tickets, ADRs, CI pipelines — these already have tooling, muscle memory, and review culture. New ceremonies age fast; existing ones have survived because they serve a persistent need. Intent Engineering practices bolt onto these, not replace them.
+Anchor team process to existing SDLC primitives. Branches, PRs, tickets, ADRs, CI pipelines — these already have tooling, muscle memory, and review culture. New ceremonies age fast; existing ones persist because they serve a persistent need. Intent Engineering practices bolt onto these, not replace them.
 
 ## Why it matters
 

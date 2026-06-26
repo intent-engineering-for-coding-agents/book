@@ -60,9 +60,9 @@ Two mechanisms reclaim context without ending the session, and both carry a limi
 
 Context management is not a one-time configuration. It is an ongoing judgment, renewed at each step: when to reset the session, and what to load into it. The question is always the same: does the agent currently have the right information in an active context for the next step?
 
-An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what survived from an hour ago.
+An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what remains from an hour ago.
 
-Context management is the discipline of keeping the agent oriented. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures survive a perfectly managed window.
+Context management is the discipline of keeping the agent oriented. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures remain even with a perfectly managed window.
 
 ## What context management cannot fix
 
