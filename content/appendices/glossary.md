@@ -30,6 +30,10 @@ The de-facto entry point for a coding agent at the root of a repository as of th
 
 The broader discipline of building software with coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
 
+## Behavior-Driven Development (BDD)
+
+The collaboration practice Gherkin's `Given/When/Then` notation came from: scenarios written with business stakeholders, then bound to step definitions that a tool such as Cucumber executes. This book borrows the notation, not the practice. Its scenarios carry no step-definition layer and no Cucumber runtime, and they are authored before the code exists and compiled to tests by the agent rather than written against code that already runs. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
+
 ## Brownfield
 
 A codebase that predates Intent Engineering practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt Intent Engineering from intent the way greenfield ones do. They bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
@@ -77,6 +81,10 @@ An un-archived OpenSpec change folder still sitting in `openspec/changes/`, mark
 ## Engineering memory
 
 The durable repo context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+
+## Gherkin
+
+The `Given/When/Then` (here `WHEN/THEN`) scenario notation from Cucumber, used in this book as a specification language for acceptance criteria, one scenario per behavior. OpenSpec prescribes the `#### Scenario:` heading and the `WHEN/THEN` body. The notation is borrowed; the [BDD](#behavior-driven-development-bdd) practice it originates from is not. See [The Spectrum](/spec-driven/the-spectrum) and [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## Greenfield
 
