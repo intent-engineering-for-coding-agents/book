@@ -66,6 +66,6 @@ This is where agent work turns into archaeology. The agent searches, finds somet
 
 The developer still decides. The agent helps reason, writes implementation, runs checks, and exposes gaps. Responsibility stays with the developer. The developer spends less time typing code and more time deciding what the change is allowed to do.
 
-Intent Engineering is the name this book gives to that discipline. It is not the whole philosophy. It is the practice of turning decisions, documentation, specs, checks, and review into input the agent can use.
+Intent Engineering is the name this book gives to that discipline, though not the whole philosophy behind it. The practice itself is narrow: turning decisions, documentation, specs, checks, and review into input the agent can use.
 
 Spec-driven development is one motor for the work. OpenSpec is the motor used in this book. But the deeper point comes first: stop asking a magic box to guess. Give the agent something concrete to work from.

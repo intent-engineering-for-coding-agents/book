@@ -106,8 +106,6 @@ This book works the other side of the table. Here the agent is the worker, not t
 
 The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 
-The practical consequence is blunt: your value shifts upward. Less of your day goes to typing implementation details. More of your day goes to deciding what problem is being solved, which design should stand, where the boundaries lie, and what evidence earns trust.
-
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
 This book treats Intent Engineering and ADLC as disciplines with overlapping vocabulary and different jobs. One governs how you build agents as products. The other governs how a coding agent works inside the software lifecycle you already run.

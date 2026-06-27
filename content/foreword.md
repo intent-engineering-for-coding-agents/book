@@ -45,7 +45,7 @@ Context drives most of the outcome. Rather than cramming everything into one-sho
 
 ## From Vibe to Pro
 
-Here is the part the carousels leave out. Give the agent enough up-to-date information about the system you intend to build and maintain, and you move past prototypes into production-grade software. The human job does not disappear. The human job moves upward: analysis, design, constraints, review, and deployment judgment. More of the mechanical implementation work is delegated. The carousels skip that because it does not sell.
+Here is the part the carousels leave out. Give the agent enough up-to-date information about the system you intend to build and maintain, and you move past prototypes into production-grade software. The work behind that information does not disappear when the agent writes the code. It is the harder half: the decisions, the constraints, and the proof the result matches them. The carousels skip that because it does not sell.
 
 Software development still demands skill and judgment. Humans must stay in the loop. I expect models to improve and automation to expand, and I will revise this foreword as the boundary moves. In 2026 the responsibility is ours: to be deliberate, to be professional, and to do the part of the job humans still do best.
 
