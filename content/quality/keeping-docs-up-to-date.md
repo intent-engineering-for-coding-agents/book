@@ -4,11 +4,13 @@ Code often changes first, and the documentation describing the old behavior lags
 
 The failure is easy to miss because the document still looks authoritative. Nothing in a normal build says the README, design note, or agent instruction file went stale. Tests fail when they stop matching the code. Prose usually does not.
 
-For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads the prose as working context.
+For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads the prose as a working context.
 
 This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire for turning silent drift into a visible signal.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as stale reasoning in agentic delivery.*
+A release should leave the repo ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
+
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as stale reasoning in agentic delivery. The release-to-next-session boundary is this book's synthesis.*
 
 ## The asymmetry
 
@@ -116,7 +118,7 @@ Layer two is the on-demand check. A skill or script the agent runs mid-task give
 
 Layer three is the build gate. The CI job checks tracked documents on every Pull Request and blocks on hard failures such as broken references. The same gate blocks a delete or rename when a `docs/` file still has live `referred-by` entries. The gate matters because stale documentation is easy to postpone and easy to forget.
 
-Nothing here depends on one tool. The practice is broader: one rule the agent reads, one fast self-check, one hard backstop independent of memory.
+Nothing here depends on one tool. The practice is broader: one rule the agent reads, one fast self-check, one hard backstop independent of memory. A deterministic checker reaches this much. The rest still needs review.
 
 *Sources: The three-layer placement is this book's synthesis from the instruction, command, and hook pattern applied to documentation drift.*
 

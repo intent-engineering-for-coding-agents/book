@@ -40,12 +40,12 @@ graph TD
         G --> H[Deploy]:::existing
     end
     subgraph Maintenance
-        H --> I[Archive spec<br/>Refresh INDEX.md]:::ie
+        H --> I[Sync engineering memory<br/>archive spec + update docs]:::ie
         I --> A
     end
 ```
 
-Familiar phases, different evidence. What the agent reads when it starts work is what the previous phase filed.
+Rename the payment adapter and merge the release. Leave `docs/architecture/README.md` pointing at `payments/adapters/legacy`. The next agent follows the page, imports a dead path, and opens a patch for the system you no longer have.
 
 ## Planning: from ticket to spec
 
@@ -81,17 +81,25 @@ AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac
 
 *Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026, vendor-authored); IBM, "AI in SDLC" (ongoing, vendor-authored), vendor framing of folding AI-era checks into the existing pipeline rather than standing up a new one.*
 
-## Maintenance: the step everyone skips
+## Maintenance: synchronize engineering memory
 
-After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark ADRs accepted or rejected and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
+After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark Architectural Decision Records (ADRs) accepted or rejected and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
 
 Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request. That is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
 
-Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. By then archive work has become triage.
+Archive work is the small part. The larger question is whether the repo now describes the system that shipped. This book calls the step synchronize engineering memory. An ADR records one decision. The rest of the memory lives in the architecture overview, design docs, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions.
 
-Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. Judgment stays human.
+ISO/IEC/IEEE 42010 distinguishes the architecture from an architecture description expressing it. This book narrows the idea to the repo-local artifacts a coding agent reads and writes against: engineering memory.
 
-*Sources: Michael Nygard, "Documenting Architecture Decisions" (Cognitect, 2011), a reversed decision becomes a new superseding ADR rather than an edit to the original. The archive-on-ship discipline and the agent instructions-as-code rule are this book's workflow guidance.*
+After implementation, the agent has the diff and the spec near at hand. Use that moment. Ask for the memory artifacts the change invalidated: an ADR needing a status change, a design doc with the old flow, a diagram still showing the removed component, an instruction file naming the old command. Small fixes stay in the pull request. Larger architecture cleanup gets a follow-up with an owner.
+
+Do not let the agent silently rewrite the system record. The synchronization is part of the release work, but review still owns the truth. A coding agent with write access to the architecture docs is useful. A coding agent with unchecked authority over the architecture docs is how stale memory becomes fabricated memory, which is a worse incident with nicer Markdown.
+
+Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. Skipped engineering-memory work has the same shape, with a longer fuse: the code changed, the durable context did not, and the next intent starts from the wrong system.
+
+Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. The judgment still stays with the developer and reviewer.
+
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (Cognitect, 2011), a reversed decision becomes a new superseding ADR rather than an edit to the original. ISO/IEC/IEEE 42010:2022, architecture description as the artifact expression of architecture. The archive-on-ship discipline, engineering-memory synchronization step, and agent-assisted review boundary are this book's workflow synthesis.*
 
 ## Tooling
 

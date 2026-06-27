@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter. Together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make Intent Engineering work.
 
-This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`. The selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 66 principles are active by default.
+This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`. The selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 67 principles are active by default.
 
 ## Foundation
 
@@ -91,6 +91,7 @@ Principles about the quality loop: checkpoints, agent evaluation, deterministic 
 | IEC-QUALITY-DOCS-PR-ZERO-CODE | A docs PR that contains a single character of code change is no longer a docs PR. |
 | IEC-QUALITY-REFACTOR-AT-MERGE | The agent's first generation is rarely the right shape: refactor at merge, not three weeks later. |
 | IEC-QUALITY-HOLD-SPEC-STABLE | A spec still being negotiated during implementation causes drift to wherever the agent guesses it is heading. |
+| IEC-QUALITY-SYNC-ENGINEERING-MEMORY | A release updates the code and the engineering memory the next agent will read. |
 
 ## Team
 

@@ -6,7 +6,7 @@ Quality is not a single gate. It is three, in sequence, and each catches a failu
 
 - **Before:** did the work start from legible architecture, current agent instructions, and a reviewed spec?
 - **During:** is the implementation running against that spec and the commit hooks, or has the session drifted?
-- **After:** do the tests prove the acceptance criteria or assert behavior the agent invented?
+- **After:** do the tests prove the acceptance criteria, and does the merged work update the engineering memory the next agent reads?
 
 ## Before: the foundation gate
 
@@ -38,6 +38,12 @@ The verification checks the things automation cannot catch on its own. Did the i
 
 One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it, along with any design doc citing it, now describes a system no longer in the code. The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on, a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
 
+Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? ADRs, architecture overview, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions all count when the release changed what they describe. The agent inspects the diff and proposes the affected artifacts. The reviewer decides whether the memory is current.
+
+Small updates belong in the same PR. Larger architecture cleanup needs a follow-up with an owner named from the implementation PR. A release with no memory update and no explicit follow-up leaves stale context behind on purpose.
+
+*Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance loop and documentation drift check.*
+
 Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right shape for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
 
 Review is the third part of the after-checkpoint, and the order is the one [Trunk-Based Development with Agents](../team/trunk-based-development) sets out: the spec first, then the diff against the spec, then the diff on its own merits. The after-gate is where that order is most often reversed under time pressure. Reverse it and the review checks whether the code looks reasonable, not whether it implements what was specified.
@@ -54,7 +60,7 @@ graph TD
 
     B["<b>Before: foundation</b><br/>instructions current<br/>arch legible<br/>governing ADR closed<br/>design system in place<br/>&nbsp;"]:::before --> W(["Write spec"])
     W --> D["<b>During: implementation</b><br/>hooks firing<br/>context fresh<br/>spec stable<br/>&nbsp;"]:::during
-    D --> A["<b>After: verification</b><br/>scope check<br/>AC tests trace<br/>spec review first<br/>decision record current<br/>&nbsp;"]:::after
+    D --> A["<b>After: verification</b><br/>scope check<br/>AC tests trace<br/>spec review first<br/>engineering memory current<br/>&nbsp;"]:::after
     A --> M(["Merge + archive"])
 ```
 

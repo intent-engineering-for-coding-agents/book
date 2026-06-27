@@ -74,6 +74,10 @@ A failure mode in which stale, incorrect, or irrelevant documents loaded into th
 
 An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is a live instruction, not a historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
+## Engineering memory
+
+The durable repo context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+
 ## Greenfield
 
 A new codebase, or one being built from explicit intent. Greenfield Intent Engineering adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
