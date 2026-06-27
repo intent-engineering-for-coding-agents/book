@@ -1,90 +1,69 @@
 # The Human-Agent Engineering Mindset
 
-Many teams do not have a shared engineering workspace. They have code in repos, decisions in wiki pages, requirements in tickets, diagrams in slide decks, and rules in review habits.
+The problem is not whether developers should use artificial intelligence (AI). The problem starts after the prototype works, when the team keeps treating the coding agent like a magic chat box.
 
-Developers compensate with memory. Coding agents do not, at least not yet.
+I do not want a coding agent to guess what I meant from one prompt. I want the agent working inside the same engineering system I use: the code, the decisions, the documentation, the tests, the review, and the constraints around the change.
 
-A developer hears "new internal services use gRPC" in a meeting and remembers it during implementation. A coding agent opens a fresh session, reads the repo, finds old REST handlers, and adds another one. The agent did what the input allowed. We cannot blame it: the rule never reached the files it read.
+Coding agents are good at coding. That is the trap. They are not magic boxes with instant knowledge of your rules, your constraints, or your taste.
 
-Call it cognitive debt: undocumented decisions and assumptions that coding agents cannot read. At agent speed, every missing rule becomes another plausible implementation.
+Give the agent the information you would give a teammate before asking them to change the code. Then improve how you give that information the next time. Better software comes from that loop, not from pretending the agent guessed correctly on its own.
 
-## The failure mode
+## Not magic AI
 
-Architecture passed by speech in one meeting does not persist across agent sessions. It barely reaches developers who missed the meeting, never read the memo, or had other priorities that day.
+I say "coding agent" because I deliberately do not want to say "AI", which is a misused term. Whether the tool uses AI under the hood is not the point here. "Coding agent" says what matters here: the tool changes a project and hands you a patch you still have to review.
 
-A principal developer explains the service pattern in a meeting, and a lead turns it into two slides. Reviewers keep rejecting PRs that break it until the team learns by correction. For developers who were in the room, this half-works: the rule lives in memory and review pressure. A coding agent starts each session without the meeting, the slides, or the memory of the last rejection. For the agent, a rule that lives only there does not exist.
+I avoid product names because I do not want vendor lock-in. Not for me. Not for the team. The book inherits that stance, but the book did not create it. I had this opinion before I knew I would write a book.
 
-Review has the same defect.
+I do not care much about the individual strengths, weaknesses, or special features of each coding agent. Those details change. The agent only has to be strong enough to inspect the project, make a change, run checks, and produce a patch. If one agent stops being the best fit, I replace it the same way I would replace a framework. If two agents are useful for the same change, I run both and compare the patches.
 
-A reviewer carries a checklist:
+Treat the agent as magic and the developer gets sloppy. Treat the agent like a teammate doing implementation work, and the developer becomes responsible for the input.
 
-- no new REST endpoints
-- validation stays out of controllers
-- every external call has a timeout
-- retries follow the platform policy
+Give the agent a vague instruction, and the agent will try to fill the gap. Expect that to fail miserably. Show the agent an old pattern in the codebase and the agent copies the pattern. Leave last month's architecture rule in a meeting, and the agent does not know the rule exists.
 
-For humans, this is annoying but workable. A developer learns through rejected PRs. The reviewer remembers the rule next time.
+## The mindset shift
 
-The agent does not. A review comment fixes the current diff. The next session starts cold.
+The old habit is to think in tasks: "build this endpoint", "fix this bug", "refactor this module".
 
-Commit the rule where the agent reads it, and the rule persists. The next session reads it. The one after that reads it too.
+With coding agents, the better habit is to think in intent: which decision constrains the work, which behavior should change, which behavior should stay untouched, and what would convince you the result is ready to merge.
 
-## Not prompt engineering
+This is where most AI coding advice loses me. The advice talks about better prompts, better models, better autocomplete, better demos, and the next killer feature you are told you cannot live without. It compares agent products instead of asking what the team must write down before an agent changes the code. Then it skips the part where professional software work lives: decisions, boundaries, tradeoffs, security constraints, existing patterns, tests, and review.
 
-The same gRPC rule shows the difference.
+For security work, the agent should start with established security practice, then follow the governance rules, frameworks, and patterns the company and team have chosen. This is not a place for improvisation.
 
-Prompt engineering puts the rule in chat:
+The decisions, checks, and constraints are part of the product. Code still matters, but with coding agents, code starts to look more like generated output. A compiler turns source code into machine code. A coding agent turns intent into application code.
 
-```text
-When you add this service, use gRPC. Do not add REST endpoints.
-```
+Software engineering has been moving in this direction for as long as developers have tried to stop writing the lowest-level artifact by hand. Assembly gave way to higher-level languages. SQL let developers describe the data they wanted instead of hand-walking records. Frameworks turned repeated request handling into routes, handlers, and middleware. OpenAPI, Protocol Buffers, and migration tools already generate code from a stronger source artifact. Coding agents push the same idea further. The maintained artifact is no longer only the code the compiler accepts. It is also the intent the developer is willing to defend in review.
 
-That helps one session.
+## The shared workspace
 
-Context engineering loads the rule for the current task. Better, but still dependent on retrieval, file selection, or a developer loading the right file.
+A team already has a place where production work becomes real: the source-controlled workspace.
 
-Intent Engineering makes the rule source:
+For a solo prototype, a chat window is enough. Ask for a script, paste the result, throw the experiment away. No ceremony is required, and no guilt.
 
-```text
-docs/decisions/0014-use-grpc-for-internal-services.md
-AGENTS.md -> read docs/decisions/ before adding service endpoints
-.agents/hooks/ts.md -> on .ts edits, run the endpoint policy check
-```
+For software someone has to maintain, the workspace becomes a shared memory. Developers read the files. Reviewers inspect the diff. Coding agents load the available project context at the start of the next session. The work stops being one conversation and becomes input for the next change.
 
-Now the rule is no longer a prompt. It is part of the engineering system.
+If a decision changes how code should be written, the decision belongs where future work will read it. If a rule keeps coming back in review comments, the rule belongs somewhere more durable than the review thread. If a diagram explains a boundary, the diagram should live in a form the team and the agent can easily read.
 
-Context engineering is the better-known frame: control what reaches the model's context window. This book uses that distinction, then moves the load-bearing rules into source-controlled artifacts.
+## Documentation before code
 
-## The scope is often missing
+The strongest version of this mindset is uncomfortable: write the documentation the current product stage needs before the implementation.
 
-Do not assume there is one clean repo.
+Not a giant design document. Not waterfall cosplay. A prototype needs less documentation than a product with customers, compliance, uptime, and a team on call. But do not hide behind "the code is self-explaining". The code will not tell the next agent which decision mattered, which constraint was non-negotiable, or why the obvious shortcut was rejected.
 
-Real systems are messier:
+The inversion still feels strange. Developers learned to protect code because code was expensive to write. With coding agents, the expensive parts move up: the decisions, the checks, and the shared understanding of where the change fits.
 
-- one monolith with stale docs
-- five services with copied conventions
-- a UI repo, a Backend for Frontend (BFF) repo, and a back-end repo
-- Jira tickets used as decision records
-- Confluence pages nobody trusts
-- diagrams exported as images
+Delete generated code and a well-informed agent writes another version. Delete the intent, and the next agent copies whatever shape the current code happens to have.
 
-The mess is not in the layout. It is in the missing scope.
+## One stack at a time
 
-If nobody wrote down where the knowledge for a change starts and stops, the agent guesses, and the developer and reviewer are guessing right along with it.
+If the system has a front end, a Backend for Frontend (BFF), and a back end, those are different working contexts. A front-end change should not ask the agent to reason over every back-end implementation detail. A back-end change should not drag the component library into the session. Mix every stack into one task, and the agent starts choosing boundaries the developer should have chosen.
 
-That is not a workflow. It is archaeology with a pull request at the end.
+This is where agent work turns into archaeology. The agent searches, finds something plausible, and follows the path. The reviewer then has to explain which part of the system the agent was supposed to ignore.
 
-## Why this book exists
+## What this book is about
 
-The same decision should not be made twice because nobody recorded it the first time.
+The developer still decides. The agent helps reason, writes implementation, runs checks, and exposes gaps. Responsibility stays with the developer. The developer spends less time typing code and more time deciding what the change is allowed to do.
 
-The same review comment should not be written ten times because the checklist only lives in one reviewer's head.
+Intent Engineering is the name this book gives to that discipline. It is not the whole philosophy. It is the practice of turning decisions, documentation, specs, checks, and review into input the agent can use.
 
-The same architecture rule should not depend on who attended the meeting.
-
-Coding agents expose this faster than humans because they have no oral culture. They read files. If the rule is not there, the rule is absent.
-
-**Write it down, or it didn't happen!**
-
-This book is about moving engineering intent into a source: decisions, instructions, specs, checks, and proof. The chapters after this one cover the mechanics.
-
+Spec-driven development is one motor for the work. OpenSpec is the motor used in this book. But the deeper point comes first: stop asking a magic box to guess. Give the agent something concrete to work from.
