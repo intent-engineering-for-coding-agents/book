@@ -44,6 +44,8 @@ For software someone has to maintain, the workspace becomes a shared memory. Dev
 
 If a decision changes how code should be written, the decision belongs where future work will read it. If a rule keeps coming back in review comments, the rule belongs somewhere more durable than the review thread. If a diagram explains a boundary, the diagram should live in a form the team and the agent can easily read.
 
+Push past readable where the artifact allows. The strongest rule is the one the tooling enforces on its own: a linted ADR, a spec the agent has to satisfy before the change counts. Intent a machine runs outlasts intent a developer has to remember.
+
 ## Documentation before code
 
 The strongest version of this mindset is uncomfortable: write the documentation the current product stage needs before the implementation.
