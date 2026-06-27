@@ -23,6 +23,16 @@ The author is an experienced developer who teaches with their sleeves rolled up.
 
 This is analogous to "science teacher with a smile" but calibrated for a senior engineering audience. The pedagogical instinct: intuition comes before mechanics. Show what breaks first, so the reader understands why the solution looks the way it does. Build understanding; don't dump.
 
+## Plain-spoken engineering voice
+
+The author writes as an experienced developer with a clear opinion, not as a neutral explainer. When the point is personal, keep the first-person stance. Do not melt the author's opinion into generic synthesis.
+
+Prefer concrete work nouns: files, patches, tests, commands, review, constraints, source, docs, specs. Prefer short sentences that say the thing directly. Let irritation stay on the page when the irritation clarifies the technical problem.
+
+Avoid smoothing a personal stance into abstract framing. Avoid turning opinion into field-wide consensus. Avoid replacing concrete frustration with polite summary. Avoid naming vendors unless the specific product matters to the argument.
+
+A good paragraph should sound like a developer saying: "This is what I mean, this is why I care, and this is what breaks if you ignore it."
+
 ## Voice and tone
 
 Pragmatic. Technically ambitious. Occasionally skeptical. Calm but opinionated. Curious. Precise. Slightly conversational.
