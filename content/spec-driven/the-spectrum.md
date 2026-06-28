@@ -49,7 +49,7 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 
 Acceptance criteria are written in Gherkin's `WHEN/THEN` notation. The book borrows that notation as a specification language, not the practice it came from. The payoff is that the scenario reads the same whether the agent targets Java, Kotlin, Python, or Go: a reviewer checks the acceptance criteria without knowing the implementation language or its test framework, the same way nobody reviews behavior by reading the assembler a compiler emits.
 
-This is not Behavior-Driven Development (BDD): there are no step definitions, no Cucumber runtime, and the scenario is authored and approved before the code exists, then compiled to tests by the agent, rather than written against code that already runs. Why the spec outranks the code it produces is the argument in [Docs > Specs > Code](./docs-gt-specs-gt-code).
+This is not BDD: there are no step definitions, no Cucumber runtime, and the scenario is authored and approved before the code exists, then compiled to tests by the agent, rather than written against code that already runs. Why the spec outranks the code it produces is the argument in [Docs > Specs > Code](./docs-gt-specs-gt-code).
 
 The change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
 
