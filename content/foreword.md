@@ -35,7 +35,7 @@ The second build is better for every lesson the prototype taught. The requiremen
 
 In this book, I write "coding agent" where many people say "AI". A coding agent is a large language model (LLM) used as a development tool. Calling it "intelligence" is a marketing choice, not a technical one, and this book is not in the marketing business.
 
-A coding agent is not a magic box and cannot read your mind. As of 2026, it does not reliably produce the code you intended from a vague prompt. If you have something in mind, you need to tell the agent. Spell out the requirements. State the rules, the intention, the tech stack. Use the agent as a sparring partner to sharpen your architecture and tighten your design, but the thinking stays with you.
+A coding agent is not a magic box and cannot read your mind. As of 2026, it does not reliably produce the code you intended from a vague prompt in production work. If you have something in mind, you need to tell the agent. Spell out the requirements. State the rules, the intention, the tech stack. Use the agent as a sparring partner to sharpen your architecture and tighten your design, but the thinking stays with you.
 
 That shift is the point of the book. The machine writes more of the code. You spend more of your time deciding what should be built, where the boundaries sit, which tradeoffs are acceptable, and what proof the change must clear before merge. Your job is less typing and more authorship.
 

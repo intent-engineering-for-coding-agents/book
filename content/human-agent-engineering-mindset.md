@@ -4,7 +4,7 @@ The problem is not whether developers should use artificial intelligence (AI). T
 
 I do not want a coding agent to guess what I meant from one prompt. I want the agent working inside the same engineering system I use: the code, the decisions, the documentation, the tests, the review, and the constraints around the change.
 
-Coding agents are good at coding. That is the trap. They are not magic boxes with instant knowledge of your rules, your constraints, or your taste.
+Coding agents are good at coding. That is the trap. They do not come with knowledge of your rules, your constraints, or your taste.
 
 Give the agent the information you would give a teammate before asking them to change the code. Then improve how you give that information the next time. Better software comes from that loop, not from pretending the agent guessed correctly on its own.
 
@@ -18,7 +18,7 @@ I do not care much about the individual strengths, weaknesses, or special featur
 
 Treat the agent as magic and the developer gets sloppy. Treat the agent like a teammate doing implementation work, and the developer becomes responsible for the input.
 
-Give the agent a vague instruction, and the agent will try to fill the gap. Expect that to fail miserably. Show the agent an old pattern in the codebase and the agent copies the pattern. Leave last month's architecture rule in a meeting, and the agent does not know the rule exists.
+Give the agent a vague instruction, and the agent will try to fill the gap. I expect that to fail. Show the agent an old pattern in the codebase and the agent copies the pattern. Leave last month's architecture rule in a meeting, and the agent does not know the rule exists.
 
 ## The mindset shift
 
@@ -30,9 +30,9 @@ This is where most AI coding advice loses me. The advice talks about better prom
 
 For security work, the agent should start with established security practice, then follow the governance rules, frameworks, and patterns the company and team have chosen. This is not a place for improvisation.
 
-The decisions, checks, and constraints are part of the product. Code still matters, but with coding agents, code starts to look more like generated output. A compiler turns source code into machine code. A coding agent turns intent into application code.
+The decisions, checks, and constraints are part of the product. Code still matters, but with coding agents, code starts to look more like generated output. I read the shift as a compiler move: a compiler turns source code into machine code, while a coding agent turns intent into application code.
 
-Software engineering has been moving in this direction for as long as developers have tried to stop writing the lowest-level artifact by hand. Assembly gave way to higher-level languages. SQL let developers describe the data they wanted instead of hand-walking records. Frameworks turned repeated request handling into routes, handlers, and middleware. OpenAPI, Protocol Buffers, and migration tools already generate code from a stronger source artifact. Coding agents push the same idea further. The maintained artifact is no longer only the code the compiler accepts. It is also the intent the developer is willing to defend in review.
+Software engineering has been moving in this direction for a long time. Developers keep pushing authored intent upward and letting tools produce lower-level artifacts from it. Coding agents push the same move further. The maintained artifact is no longer only the code the compiler accepts. It is also the intent the developer is willing to defend in review.
 
 ## The shared workspace
 
@@ -58,7 +58,7 @@ Delete generated code and a well-informed agent writes another version. Delete t
 
 ## One stack at a time
 
-If the system has a front end, a Backend for Frontend (BFF), and a back end, those are different working contexts. A front-end change should not ask the agent to reason over every back-end implementation detail. A back-end change should not drag the component library into the session. Mix every stack into one task, and the agent starts choosing boundaries the developer should have chosen.
+If the system has a front end, a Backend for Frontend (BFF), and a back end, those are different working contexts. A front-end change should not ask the agent to reason over every back-end implementation detail. A back-end change should not drag the component library into the session. This is my practical scoping rule, not a field standard. Mix every stack into one task, and the agent starts choosing boundaries the developer should have chosen.
 
 This is where agent work turns into archaeology. The agent searches, finds something plausible, and follows the path. The reviewer then has to explain which part of the system the agent was supposed to ignore.
 
