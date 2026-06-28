@@ -20,7 +20,7 @@ The syntax is the easy part. A scenario written in correct Gherkin is still weak
 
 ## The recommended field: `Test-type:`
 
-Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in the review. The book recommends the field. The companion repo goes further and makes it mandatory, checked on every scenario. Omit it, and the agent infers the test layer from the scenario content alone, which works most of the time and fails at the edges.
+Each scenario in a spec carries one recommended field: `Test-type:`. It records the per-scenario test-layer decision so a reviewer knows what to expect in the review. This is the book's chosen field name. OpenSpec does not require it. The companion repo goes further and makes it mandatory, checked on every scenario. Omit it, and the agent infers the test layer from the scenario content alone, which works most of the time and fails at the edges.
 
 ```markdown
 #### Scenario: Empty project directory [SC-001]
@@ -36,7 +36,7 @@ Test-type: Integration
 
 A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed, test methods get extracted, and a path hardcoded in the spec goes stale without anyone noticing. That is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
 
-*Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), the `Test-type:` field and test-back-to-spec tagging convention. This field is a book and companion-repo convention layered onto OpenSpec, not an OpenSpec requirement.*
+*Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), the `Test-type:` field and test-back-to-spec tagging convention. This field name is a book and companion-repo convention layered onto OpenSpec, not an OpenSpec requirement.*
 
 ## Framework tagging: two annotations, two uses
 
@@ -88,6 +88,32 @@ When adding a new scenario: look up the prefix, increment its `Max used` value, 
 The prefix itself is permanent. Never reassign it to a different component. `GV` means graph-validator for the lifetime of the project. If the component is renamed, the prefix stays.
 
 *Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), monotone IDs, registry allocation, and permanent prefixes as repo convention.*
+
+## The registry is a work queue
+
+A registry that only reports percentages is a dashboard. A reviewer cannot act on a dashboard. The useful form is a work queue: one row per acceptance criterion, one status, one next move.
+
+This book uses three states:
+
+- `covered`: tagged proof exists at the declared boundary
+- `partial`: some proof exists, but one observable part is still missing
+- `gap`: no proof linked to the acceptance criterion
+
+One small table is enough:
+
+| AC ID | Status | Why |
+|---|---|---|
+| `AUTH-014` | `covered` | tagged proof exists |
+| `AUTH-015` | `partial` | positive path covered, boundary case missing |
+| `AUTH-016` | `gap` | no tagged proof |
+
+The `partial` state matters because real suites often land there. A team wrote the 403-path test. The session-expired redirect is still untested. Marking that row `covered` lies. Marking it `gap` throws away the proof already written. `partial` keeps the missing edge visible without pretending the whole scenario is open.
+
+The row itself should carry the next task. For `AUTH-015`, the note might read: `403 path covered; expired-session redirect still untested`. No detective work. The next test is clear from the registry entry alone.
+
+This registry-as-work-queue pattern is this book's convention. OpenSpec does not require it. The point is not the exact file shape. The point is that missing proof should sit in the same place as the IDs it is missing from.
+
+*Sources: intent-engineering-for-coding-agents/cli (ongoing), AC registry examples and checker workflow. The `covered` / `partial` / `gap` work-queue pattern in this section is this book's synthesis built on top of AC traceability.*
 
 ## Enforcing the pairs
 

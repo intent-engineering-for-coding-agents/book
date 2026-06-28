@@ -39,7 +39,9 @@ A common failure mode in reviewing agent-generated code: the implementation agre
 
 An agent brought into the review with the spec and the implementation checks one thing efficiently: does every acceptance criterion have a corresponding test, and does the test assert what the criterion requires? This is coverage tracing, tedious enough that human reviewers skip it in practice. The agent does not find it tedious.
 
-Ask it to enumerate each acceptance criterion, locate the corresponding test, and state what the test asserts. Flag any criterion with no test, any test whose assertion does not match the criterion's requirement, and any test with no corresponding criterion.
+Ask it to list each acceptance criterion, locate the corresponding test, and state what the test asserts. Flag any criterion with no test, any test whose assertion does not match the criterion's requirement, and any test with no corresponding criterion.
+
+The output should read like a checklist, not a verdict. `SC-018 tag exists, but THEN says "reject duplicate email" and the test only checks malformed email` is a useful review comment. `coverage looks incomplete` is not. The second agent should name the broken link, not hand the reviewer another riddle.
 
 The agent also checks scope. A behavioral implementation should deliver what the spec describes and nothing more. An agent working inside a long session accumulates context and adds small improvements: a helper function it needed, a config flag that seemed useful, a refactor it noticed while passing through. These additions are not in the spec. A reviewing agent, comparing the diff against the acceptance criteria, flags each changed line with no criterion to trace to.
 

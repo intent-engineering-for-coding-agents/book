@@ -108,6 +108,30 @@ The retention rule follows from the inventory. A file in `docs/` with live `refe
 
 *Sources: The `referred-by` inventory and retention rule are this book's synthesis for repository documents with declared external backlinks.*
 
+## Runbooks under test
+
+Some documents are operational dependencies, not background reading. A deployment runbook, an incident checklist, a rollback guide, or a release README tells the operator what to type. If the rollback command is missing, the document is wrong.
+
+This book recommends one narrow extension: test the required facts directly. Not the writing. Not completeness. Only the details an operator needs in front of them.
+
+```java
+@Test
+void runbookListsRollbackCommand() {
+    assertTrue(readme.contains("kubectl rollout undo"));
+}
+
+@Test
+void runbookExplainsWhereToFindFailureLogs() {
+    assertTrue(readme.contains("kubectl logs"));
+}
+```
+
+The same pattern works for a release runbook that must name the rollback command, the artifact location, and the first log command. Test those three facts directly. If one disappears in an edit, the suite fails before the next release leaves someone guessing in a live incident.
+
+This is weaker than a behavior test. The test does not prove the command still works. The test proves the document still names the command. For operational prose, that is already a large step up from silence.
+
+Testing runbook content like this is a practical extension this book recommends. It is not presented here as common industry policy.
+
 ## Three layers again
 
 This book reuses the pattern from [Skills, Commands, and Hooks](../agent-instructions/skills-commands-hooks) here.

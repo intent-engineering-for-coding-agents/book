@@ -36,7 +36,18 @@ The after-checkpoint runs on what was produced. The spec is done, the implementa
 
 The verification checks the things automation cannot catch on its own. Did the implementation introduce code unrelated to the spec? Scope creep in agentic PRs is common. The agent passes through a file, fixes things it noticed along the way, and those fixes ship without review. Do the new tests prove the acceptance criteria or behavior the agent invented? An AC ID linking a scenario to a test that asserts something different is the silent-drift failure mode.
 
-One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it, along with any design doc citing it, now describes a system no longer in the code. The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on, a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
+State the split plainly:
+
+| Check | Hard gate or advisory | What it checks |
+|---|---|---|
+| AC ID exists | hard gate | spec and tests are linked |
+| positive/negative pair exists | hard gate | proof shape is present |
+| test actually matches `GIVEN` / `WHEN` / `THEN` | advisory review | semantic alignment |
+| scope creep beyond spec | advisory review | intent drift |
+
+CI proving that `PAY-022` exists in both the spec and the test tags is useful. That same CI job does not prove the tagged test asserts timeout behavior. The test might only assert that one request returns `500`. The link exists. The meaning is still wrong. That second check stays with review.
+
+One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it along with any design doc citing it now describes a system no longer in the code. The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
 
 Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? ADRs, architecture overview, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions all count when the release changed what they describe. The agent inspects the diff and proposes the affected artifacts. The reviewer decides whether the memory is current.
 
@@ -69,6 +80,8 @@ Each gate has its own failure mode. Skip the before-gate and the agent improvise
 ## Where the attention goes
 
 Every gate has a deterministic part and a human part. Automation enforces link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what no check reaches: whether the spec describes the right thing, whether the implementation is in the right shape, whether the test proves the scenario rather than something adjacent. Maximize the deterministic part, because hooks scale to agentic speeds and human review does not. That review time is scarce, and most quality programs spend it on things a hook would have caught.
+
+This book recommends deterministic checks as merge gates and semantic AI review as advisory unless a team has proved a stronger gate in its own workflow. The scanner proves the linkage and shape. The review still has to prove meaning.
 
 The three gates do not draw on it equally. The before-gate is mostly maintenance, and the during-gate is mostly automation, both cheap once set up. The after-gate is where the review time goes and where it pays off most. Plan for the asymmetry.
 

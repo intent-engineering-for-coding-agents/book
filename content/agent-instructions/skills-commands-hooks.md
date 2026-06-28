@@ -38,6 +38,63 @@ The trigger is not always a human too. When an external program drives the agent
 
 Give the command a name you will remember under pressure. `/generate-types` is one you reach for. `/synchronize-openapi-typescript-types` is one you look up. Each tool exposes its own command surface, and the key differs, but every one of them fires the same skill file, not a separate command definition you maintain alongside it.
 
+## Agent-facing commands need an explicit contract
+
+A command written for a person stalls an agent at the first prompt. The command prints a progress bar, asks `Continue? [y/N]`, mixes logs into the output, and waits. The agent has no stable place to read the result from and no stable way to tell failure from chatter.
+
+This book uses a simple contract for agent-facing commands. It is a practical pattern, not a field standard.
+
+- Logs, progress bars, and JSON land in one stream. The agent has to guess which line is the answer.
+- The command asks `Continue? [y/N]` and waits. The agent hangs.
+- The command deletes data as soon as it runs. The agent has no safe way to check its inputs first.
+- The command fails with `bad request` or exit code `1`. The agent still does not know what to fix.
+
+The agent-facing version should do four plain things instead:
+
+- Print the result to `stdout`, and nothing else.
+- Print warnings and diagnostics to `stderr`.
+- Fail instead of prompting.
+- Offer a safe check before the real command runs.
+
+Then add three controls:
+
+- A manifest command listing available commands and required flags
+- Stable error codes separating `missing file` from `missing auth`
+- One explicit next step in the result when the follow-up is obvious
+
+A short command surface is enough:
+
+```text
+tool submit --agent --dry-run
+tool agent manifest
+```
+
+The output should read like data, not terminal noise:
+
+```json
+{
+  "command": "submit",
+  "inputs": { "dataset": "dataset-42" },
+  "result": "blocked",
+  "errors": [
+    {
+      "code": "OBJECT_MISSING",
+      "message": "3 files are missing from dataset-42",
+      "remediation": "Run `tool dataset inspect dataset-42`"
+    }
+  ],
+  "nextActions": [
+    "tool dataset inspect dataset-42"
+  ]
+}
+```
+
+The failure mode is concrete. A human-oriented CLI prints `Continue? [y/N]` and waits forever. An agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. A human-oriented CLI writes warnings into the same stream as the JSON. An agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
+
+This is not polish, but control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
+
+*Sources: Anthropic, "Building effective agents" (Dec 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
+
 ## Hooks: determinism, like a database trigger
 
 A skill runs only when it is triggered, and the trigger gets missed two ways. You forget the command. Or the agent edits the spec, never registers the edit as the event that should run the skill, and the drift it would have caught ships.
