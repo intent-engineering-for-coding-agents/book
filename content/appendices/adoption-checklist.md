@@ -6,7 +6,7 @@ This is not a required sequence. Apply what fits your context. Stop when the cos
 
 If you are using `iec` locally, `iec init` creates the directory scaffold and stub files. Edit each stub for your system before committing. Unedited stubs are worse than no docs.
 
-If brownfield: generate `skeleton.md` before any of the below. Point a capability-class agent at the existing codebase and ask for a structural map: modules, dependencies, key decisions, business rules. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+If brownfield: harvest structure, dependencies, key decisions, design constraints, and business rules into `skeleton.md` and the permanent `docs/` set before any of the below. Review that recovery pass with a domain expert before the first change proposal. Move stable findings into `docs/architecture/`, `docs/design/`, and `docs/decisions/` rather than leaving the next agent session to reverse-engineer them again from `docs/skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## Foundation
 

@@ -42,6 +42,16 @@ Some teams write them and move on, and the code becomes the authoritative record
 
 *Sources: `iec` repo conventions in this project family, the docs/design/ placement and write-and-forget vs. keep-current treatment.*
 
+## skeleton.md
+
+`skeleton.md` is the odd document in the set because it exists to get a brownfield repo into the rest of the taxonomy. This book uses it as the first pass: reverse-engineered structure, visible business rules, recovered constraints, and the first draft of decisions nobody had written down.
+
+That also gives it a lifecycle. While the brownfield recovery is in progress, `docs/skeleton.md` is live and maintained. Once the stable findings have been distilled into `docs/architecture/`, `docs/design/`, and `docs/decisions/`, the skeleton stops being the file the agent should read first. At that point it should be removed, archived, or marked as historical bootstrap material the agent should skip when deciding how the system works today. Leave it in the active docs set forever and a later session will read last year's reverse-engineered notes beside this week's architecture docs as though both were current.
+
+The taxonomy here is this book's synthesis. `skeleton.md` is not a field standard. The lifecycle rule exists because brownfield bootstrap artifacts and permanent docs do different jobs. If both stay live forever, the agent loads two competing explanations of the same module and has to guess which one still applies.
+
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), agents extracting structure and business rules from legacy code. The `skeleton.md` lifecycle framing is this book's synthesis.*
+
 ## Architectural Decision Records
 
 Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is why. Six months later, when a developer proposes reintroducing the stack the team moved away from, the ADR answers the question before a meeting is called.
@@ -97,6 +107,7 @@ Specs are temporary: they move to `openspec/changes/archive/` after implementati
 | INDEX files | Permanent, updated | Maintained on every file change in the directory |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
 | ADRs | Permanent, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
+| `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into permanent `docs/`, then archive, remove, or mark as historical. |
 | Specs | Temporary, archived | Moved to archive after implementation |
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.

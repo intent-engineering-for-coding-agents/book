@@ -152,7 +152,7 @@ The practice of shaping one prompt or instruction exchange so a model responds u
 
 ## skeleton.md
 
-An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. The brownfield bootstrap artifact. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. In this book, `skeleton.md` is the brownfield bootstrap map, not the file an agent should keep treating as current architecture forever. Its stable findings move into `docs/architecture/`, `docs/design/`, and `docs/decisions/`. After that, the skeleton becomes history or gets retired. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## Skill
 
