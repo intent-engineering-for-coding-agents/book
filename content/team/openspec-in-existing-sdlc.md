@@ -55,7 +55,7 @@ Where a Jira or Confluence Model Context Protocol (MCP) connector is available, 
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. Permissions, supported clients, and exact tool names are product-specific. The durable pattern is the same: agents fetch ticket context before writing specs, and developers review the criteria.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://medium.com/@richardhightower/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Medium, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
 
 ## tasks.md and the sprint board
 

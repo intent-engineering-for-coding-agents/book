@@ -22,7 +22,7 @@ LeanSpec (lean-spec.dev) articulated the small-spec discipline: match formality 
 
 GitHub's Spec-Kit is the enterprise-scale spec-driven development example this book cites.
 
-Rick Hightower's comparative survey of SDD tools (Medium, Feb 2026) is the main map this book uses for current SDD tool comparisons.
+Rick Hightower's comparative survey of SDD tools (Spillwave, Feb 2026) is the main map this book uses for current SDD tool comparisons.
 
 ## Agent conventions
 

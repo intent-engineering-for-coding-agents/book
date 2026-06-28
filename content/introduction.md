@@ -96,11 +96,11 @@ For a system meant to run in production and be maintained by someone after you, 
 
 ## Intent Engineering fits your SDLC
 
-In 2025-2026, a common ADLC argument said the traditional Software Development Lifecycle (SDLC) no longer fits agentic systems. The proposed fix was a new lifecycle for agents. Intent Engineering does not replace your SDLC. The practice runs inside the lifecycle your team already has.
+The acronym collision is real. In 2025-2026, ADLC and agentic SDLC labels showed up around two different jobs: building agents as products, and using coding agents inside ordinary software delivery. This book uses the narrower boundary.
 
-One common proposal is the Agentic Development Lifecycle (ADLC), aimed at building agents as products. The development side covers reasoning loops, evals, hallucination budgets, and the post-deployment flywheel where evals act as a control system. The operational side is runtime governance: boundaries, policies, and escalation paths around a probabilistic agent. The deliverable _is_ the agent.
+When the deliverable is an agent, the control surface belongs to agent engineering. OpenAI's Agents SDK documentation names agents, tools, handoffs, guardrails, human review, state, and observability as the machinery around a growing agent workflow. Anthropic's agent guidance puts the same pressure in plainer terms: keep the design simple, compose focused tools, and evaluate the system.
 
-For autonomous-agent products, ADLC earns its place.
+That is real work. It is also a different product.
 
 This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
@@ -108,9 +108,9 @@ The deliverable is the same software your team has always shipped, with an agent
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
-This book treats Intent Engineering and ADLC as disciplines with overlapping vocabulary and different jobs. One governs how you build agents as products. The other governs how a coding agent works inside the software lifecycle you already run.
+This book treats Intent Engineering and agent-product lifecycle work as disciplines with overlapping vocabulary and different jobs. One governs an agent you ship and operate. The other governs a coding agent working inside the software lifecycle you already run.
 
-*Sources: Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), Agentic SDLC as a current lifecycle proposal for agent-driven software delivery; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC for building and operating agents in production; Arthur AI, "The Agent Development Lifecycle (ADLC): A Blueprint to Ship Reliable AI" (YouTube, 2025), ADLC as a lifecycle for reliable AI agents; Jesper Lowgren, "Agentic AI Breaks the SDLC. Now What?" (YouTube, 2026), the stronger breaks-the-SDLC framing this section time-bounds and narrows.*
+*Sources: Sommerville, "Software Engineering" (2015), SDLC as structured software delivery phases; OpenAI Agents SDK documentation (ongoing, reviewed Jun 28, 2026), agents, tools, handoffs, guardrails, human review, state, and observability as agent-product control surfaces; Anthropic, "Building effective agents" (Dec 2024), simple composable agent systems and evaluation guidance; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC vocabulary for building and operating agents in production; Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), agentic SDLC vocabulary for coding-agent delivery. The worker-versus-product split is this book's synthesis.*
 
 ## The companion: Intent Engineering Checker
 

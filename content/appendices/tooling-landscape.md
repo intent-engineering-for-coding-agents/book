@@ -1,24 +1,24 @@
 # Tooling Landscape
 
-This page is a mid-2026 snapshot, not a buyer's guide. The roster of agents, spec tools, and MCP servers changes faster than any book tracks well. Use the categories here to orient yourself, then verify current support against each tool's documentation.
+This page is a snapshot reviewed on Jun 28, 2026, not a buyer's guide. The roster of agents, spec tools, and MCP servers changes faster than any book tracks well. Use the categories here to orient yourself, then verify current support against each tool's documentation.
 
 ## Capability-class agents
 
 This book targets coding agents that combine a thinking-capable model, real tool use, and a plan or architect mode. The vendor roster matters less than those capabilities, but examples make the boundary concrete. As of mid-2026, examples in scope include:
 
-| Agent | Type | AGENTS.md support |
+| Agent | Type | Project instruction source |
 |---|---|---|
-| Claude Code (Anthropic) | CLI | Native |
-| Codex CLI (OpenAI) | CLI | Via AGENTS.md standard |
-| OpenCode | CLI, open-source | Via AGENTS.md standard |
-| Junie (JetBrains) | IDE-embedded | Via AGENTS.md standard |
+| Claude Code (Anthropic) | CLI / IDE | Project memory through `CLAUDE.md` |
+| Codex CLI (OpenAI) | CLI | Native |
+| OpenCode | CLI, open-source | Native |
+| Junie (JetBrains) | CLI / IDE | Native |
 | GitHub Copilot coding agent | IDE / PR | As of Aug 2025 |
 
-Concrete model examples from this snapshot include Claude Sonnet 4.5 and GPT-5.2-class setups. Treat those as dated examples, not permanent cut lines. A newer or stronger model in the same capability class is still in scope.
+Concrete model examples from this review date include Claude Opus 4.8 and GPT-5.5-class setups. Treat those as dated examples, not permanent cut lines. A newer or stronger model in the same capability class is still in scope.
 
 IDE-only completion tools and chat-only assistants are out of scope. The practices in this book target the capability class, not a frozen vendor list. When a new tool combines planning, tool use, file edits, and reviewable output, evaluate it against the same patterns.
 
-*Sources: Anthropic Docs, "Claude Code overview" (ongoing), Claude Code capability class. Anthropic, "Introducing Claude Sonnet 4.5" (Sep 29, 2025), Claude Sonnet 4.5 as a dated capability example. OpenAI Docs, "Codex CLI" (ongoing), Codex CLI capability class. OpenAI, "Introducing GPT-5.2" (Dec 11, 2025), GPT-5.2 as a dated capability example. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot AGENTS.md support. OpenCode Docs (ongoing), OpenCode capability class. Junie documentation (ongoing), Junie capability class. AGENTS.md support statuses are a mid-2026 snapshot.*
+*Sources: Anthropic Claude Code overview and memory documentation (ongoing, reviewed Jun 28, 2026), Claude Code capability class and `CLAUDE.md` project memory; Anthropic, "Introducing Claude Opus 4.8" (May 28, 2026), dated Claude model example for coding and agentic tasks; OpenAI Codex CLI documentation (ongoing, reviewed Jun 28, 2026), Codex CLI capability class; OpenAI Codex AGENTS.md documentation (ongoing, reviewed Jun 28, 2026), Codex reading `AGENTS.md` before work; OpenAI, "Introducing GPT-5.5" (Apr 23, 2026), dated GPT model example for coding, tool use, and long-context work; OpenCode Rules documentation (ongoing, reviewed Jun 28, 2026), OpenCode `AGENTS.md` support; JetBrains Junie documentation (Jun 18, 2026), Junie `AGENTS.md` guidelines; GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot AGENTS.md support. Instruction-file statuses are this page's Jun 28, 2026 snapshot.*
 
 ## Spec-driven tools
 
@@ -31,7 +31,7 @@ IDE-only completion tools and chat-only assistants are out of scope. The practic
 
 No dominant framework has emerged as of mid-2026. ThoughtWorks Radar Vol 34 describes the SDD tool field as fragmented. Treat the table as a vocabulary map, not a recommendation list. Pick the lifecycle discipline your team will keep current under deadline pressure.
 
-*Sources: Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Medium, Feb 2026), the tool-tradeoff map. ThoughtWorks, Technology Radar Vol 34 (April 2026), the fragmented SDD tool assessment.*
+*Sources: Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Spillwave, Feb 2026), the tool-tradeoff map. ThoughtWorks, Technology Radar Vol 34 (April 2026), the fragmented SDD tool assessment.*
 
 ## MCP servers
 
@@ -52,6 +52,6 @@ MCP server availability, permission scope, and reliability vary by environment. 
 
 ## Model selection and cost
 
-This book targets capability class, not a specific model. Any agent combining a thinking-capable model, real tool use, and plan or architect mode falls in scope. These models are well suited to spec-driven development and architecture-heavy work because they hold longer contexts, plan across several steps, and handle codebase-spanning tasks better than earlier coding assistants. None of that means the agent follows ADRs by magic. ADR compliance still depends on whether the repo surfaces the decision, whether the agent loads it, and whether review and verification catch drift. For direct-API users, per-token cost matters: longer instruction files and specs have a real per-call cost, and the practices in this book add tokens deliberately to improve output quality. Some commercial tools hide direct per-run accounting behind seat licenses, but the engineering tradeoff stays the same: context has cost, and stale context has a different cost. DevOps, SRE, and cloud infrastructure costs are out of scope for this book.
+This book targets capability class, not a specific model. Any agent combining a thinking-capable model, real tool use, and plan or architect mode falls in scope. Current frontier examples on this review date advertise stronger coding, long-context, and tool-use behavior than earlier assistants, which is why they fit spec-driven and architecture-heavy work. Treat the vendor benchmark claims as capability signals, not guarantees in your repo. None of this means the agent follows ADRs by magic. ADR compliance still depends on whether the repo surfaces the decision, whether the agent loads it, and whether review and verification catch drift. For direct-API users, per-token cost matters: longer instruction files and specs have a real per-call cost, and the practices in this book add tokens deliberately to improve output quality. Some commercial tools hide direct per-run accounting behind seat licenses, but the engineering tradeoff stays the same: context has cost, and stale context has a different cost. DevOps, SRE, and cloud infrastructure costs are out of scope for this book.
 
-*Sources: OpenAI, "Introducing GPT-5.2" (Dec 11, 2025), stronger long-context and coding performance as a reason these models fit spec-driven and architecture-heavy work. Anthropic, "Introducing Claude Sonnet 4.5" (Sep 29, 2025), longer-horizon coding and agent work as a reason these models fit spec-driven and architecture-heavy work. Paula Hingel, "AI Agent Loop Token Costs: How to Constrain Context" (Augment Code, Apr 6, 2026), input-token cost growth in long agent loops. The model-selection boundary and ADR-compliance caveat are this book's capability-class synthesis.*
+*Sources: OpenAI, "Introducing GPT-5.5" (Apr 23, 2026), dated OpenAI claims for coding, tool use, and long-context behavior; Anthropic, "Introducing Claude Opus 4.8" (May 28, 2026), dated Anthropic claims for coding and long-running agentic tasks; Paula Hingel, "AI Agent Loop Token Costs: How to Constrain Context" (Augment Code, Apr 6, 2026), input-token cost growth in long agent loops. The model-selection boundary and ADR-compliance caveat are this book's capability-class synthesis.*
