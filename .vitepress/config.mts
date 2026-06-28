@@ -16,6 +16,7 @@ export default withMermaid(
       hostname: 'https://intent-engineering-for-coding-agents.github.io/book/',
     },
     head: [
+      ['meta', { name: 'author', content: 'Flemming Nørnberg Larsen' }],
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:site_name', content: 'Intent Engineering for Coding Agents' }],
       ['meta', { property: 'og:title', content: 'Intent Engineering for Coding Agents' }],
@@ -59,6 +60,7 @@ export default withMermaid(
           ]
         },
         { text: 'Appendices', link: '/appendices/honest-maturity' },
+        { text: 'About', link: '/appendices/about' },
         { text: 'Feedback', link: '/appendices/feedback' },
       ],
       sidebar: [
@@ -140,6 +142,7 @@ export default withMermaid(
             { text: 'Feedback & Contributing', link: '/appendices/feedback' },
             { text: 'Credits', link: '/appendices/credits' },
             { text: 'References', link: '/appendices/references' },
+            { text: 'About the Author', link: '/appendices/about' },
           ]
         }
       ],
