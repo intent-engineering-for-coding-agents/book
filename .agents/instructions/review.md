@@ -58,7 +58,7 @@ Source policy exception: purely navigational pages, front matter, and glossary e
 ### Structure and length
 
 - Is the chapter complete? If it feels short, something is missing. If it feels long, find the padding and cut it. Do not count words — read it.
-- No heading depth beyond H3
+- No heading depth beyond H3 in the chapter's actual Markdown structure. Ignore deeper heading markers when they appear as literal examples inside fenced code blocks.
 - Code blocks have language tags
 - Tables used for comparisons, not for lists that belong in prose
 - Transition check: does each section end with tension, implication, or a forward-pointing question — or does it trail off into summary? Summary endings are a cut.

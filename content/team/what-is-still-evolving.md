@@ -18,7 +18,7 @@ The failure modes behind all this (incompatible specs, stale agent instructions,
 
 Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. It is not yet standardized for agent workflows: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear, but the form is not.
 
-Inner source for `.agents/` libraries follows well-understood shared-library mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? This book found no widely adopted package-management convention for agent instruction files as of mid-2026.
+Inner source for `.agents/` libraries follows well-understood shared-library mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? In the sources reviewed for this book, no shared package-management convention for agent instruction files appears as of mid-2026.
 
 Multi-LLM critique (using a second model to review a spec before implementation) is not yet codified as a standard step in the SDD sources reviewed for this book as of mid-2026. Which models to use, how to structure the critique prompt, and how to weight the critique output against the developer's judgment remain matters of individual preference.
 

@@ -34,7 +34,7 @@ Cross-chapter transitions: the last paragraph of a chapter plants a seed for the
 - Markdown tables for comparisons
 - Diagrams: Mermaid by default. Author every diagram as Mermaid in a fenced ` ```mermaid ` block. Mermaid renders in the VitePress build and on GitHub, and stays diffable as plain text. Use `<br>` for line breaks inside node labels, not `\n`. Use ASCII / box-art only as a fallback when Mermaid genuinely cannot express the shape (rare; one common case is a directory tree, which reads better as indented text)
 - Fenced code blocks with language tag: ` ```bash `, ` ```yaml `, ` ```python `, ` ```ts `
-- No heading levels deeper than H3 inside a chapter
+- No heading levels deeper than H3 inside a chapter. This applies to the chapter's actual Markdown structure, not to literal examples shown inside fenced code blocks.
 - Bullets are encouraged for constraints, short checklists, and comparisons. Keep lists short. If a list runs long or becomes the whole section, rewrite as prose or use a table. Avoid nested bullets.
 - `Sources:` line at the end of any section that draws on a specific reference. Format: `Sources: Author "Title" (Year), claim it backs.` Every source listed must carry a short tag naming the specific claim in that section it supports; a source with no claim to back does not belong on the line. See "Source-to-claim mapping" below.
 - Use American English spelling and punctuation throughout prose: `behavior` not `behavior`, `artifact` not `artifact`, `organize` not `organize`, `catalog` not `catalog`. Periods and commas go outside closing quotation marks (`"like this".` not `"like this."`). The one exception is verbatim quoted source titles, which keep their original spelling.
