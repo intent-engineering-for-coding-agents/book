@@ -68,4 +68,4 @@ The developer still decides. The agent helps reason, writes implementation, runs
 
 Intent Engineering is the name this book gives to that discipline, though not the whole philosophy behind it. The practice itself is narrow: turning decisions, documentation, specs, checks, and review into input the agent can use.
 
-Spec-driven development is one motor for the work. OpenSpec is the motor used in this book. But the deeper point comes first: stop asking a magic box to guess. Give the agent something concrete to work from.
+Spec-driven development is one motor for the work, but not the whole discipline. The work also demands documentation, structure, and proof that the coding agent did what you intended. OpenSpec is the motor used in this book. Give the agent something concrete to work from.
