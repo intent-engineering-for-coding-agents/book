@@ -18,6 +18,16 @@ This change-scoped definition is the working synthesis this book uses. It distil
 
 *Sources: Fission AI, OpenSpec; LeanSpec, the change-scoped spec and acceptance-criteria structure this book's working definition distills.*
 
+## Not test-first, not behavior-first
+
+Test-Driven Development put the test first: write a failing unit test, then write the code making it pass. Behavior-Driven Development (BDD) put the behavior first, phrased in business-readable `Given/When/Then` so a non-developer reviewer sees the intended outcome. In both cases, a developer writes the implementation by hand after the artifact exists.
+
+Spec-Driven Development moves the handoff point. You write the spec: behavior, constraints, and acceptance criteria. The agent generates the code and the tests from the spec. The test stops being the thing you hand-write first. It becomes one of the outputs compiled from the spec, tagged back to the criterion it proves.
+
+So when a tester reaches for the BDD label and braces for step definitions, the reflex is reasonable and the target is wrong. The notation stayed. The practice underneath changed.
+
+*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Dan North, "Introducing BDD" (Better Software, 2006), behavior written in business-readable scenarios. The artifact-level contrast with SDD is this book's synthesis.*
+
 ## The practical motivation
 
 Three things break without a spec, and they break in order.

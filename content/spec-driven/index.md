@@ -10,9 +10,11 @@ Intent is what you want this specific change to do, in this specific codebase, r
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
-A note on tooling before the chapters. This book is OpenSpec-first. OpenSpec is the framework the companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with, and the chapters use its change-folder lifecycle because concrete examples need a concrete workflow. `iec` is there to show the concepts working in a real repo, not a tool you have to adopt.
+A note on tooling before the chapters. This book is OpenSpec-first. OpenSpec is the engine this book uses to make Spec-Driven Development visible: one change folder, one lifecycle, one archive rule. The companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with it, so the chapters have a real repo to inspect instead of a workflow diagram floating above the code.
 
-The portable practice is per-change intent with testable acceptance criteria. If your team uses a plain `spec.md`, Spec-Kit, LeanSpec, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
+The portable practice is per-change intent with testable acceptance criteria. The closest alternative is a plain `spec.md` in the repo. Teams with domain, review, or compliance pressure often grow a local format from there because their specs need to match the SDLC already in place. If your team uses `spec.md`, LeanSpec, Spec-Kit, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
+
+*Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The local-format portability framing is this book's synthesis.*
 
 ## Chapters
 

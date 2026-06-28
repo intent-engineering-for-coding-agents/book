@@ -10,6 +10,8 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Simon Willison: ["Not all AI-assisted programming is vibe coding"](https://simonwillison.net/2025/Mar/19/vibe-coding/). *Mar 19, 2025*. Practical counterweight to Karpathy.
 - Ian Sommerville: *Software Engineering* (10th ed., Pearson, 2015). SDLC definition and phases. Cited in "The Map: Intent Engineering and the SDLC".
 - Dave Farley: *Modern Software Engineering* (Addison-Wesley, 2021). With Jez Humble: *Continuous Delivery* (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing). Feedback loops, sampling, CI/CD vocabulary.
+- Kent Beck: *Test-Driven Development: By Example* (Addison-Wesley, 2002). Test-first cycle and red-green-refactor framing.
+- Dan North: ["Introducing BDD"](https://dannorth.net/blog/introducing-bdd/). *Mar 2006*. Origin essay for Behavior-Driven Development and business-readable behavior scenarios.
 - Paul Hammant: [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and *Trunk-Based Development and Branch by Abstraction* (Leanpub, 2020). Canonical TBD reference.
 - Yue Jia and Mark Harman: ["An Analysis and Survey of the Development of Mutation Testing"](https://doi.org/10.1109/TSE.2010.62). IEEE Transactions on Software Engineering, vol. 37 no. 5, *2011*, pp. 649-678. Standard survey of mutation testing. Primary anchor for the technique behind the mutation-kill argument in "Tests as Proof, Not Ritual".
 - ISTQB: ["ISTQB Certified Tester Foundation Level (CTFL) Syllabus v4.0.1"](https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf). ISTQB primary documentation, *2024, ongoing*. Equivalence partitioning and boundary value analysis.
