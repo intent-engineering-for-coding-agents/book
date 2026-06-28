@@ -60,7 +60,7 @@ The skeleton does not eliminate the brownfield condition. The system is still wh
 
 A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. When the map drifts from the territory, a skeleton written over a year ago for a system refactored repeatedly since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
 
-This book's rule is simple. `skeleton.md` starts the bootstrap. Then the stable findings move into permanent `docs/`. After that, the skeleton either stays as marked history or leaves the active docs set. Once `docs/architecture/`, `docs/design/`, and `docs/decisions/` cover the same ground, new proposals and new agent sessions should stop loading `docs/skeleton.md` as the place to learn the system.
+This book's rule is straightforward. `skeleton.md` starts the bootstrap. Then the stable findings move into permanent `docs/`. After that, the skeleton either stays as marked history or leaves the active docs set. Once `docs/architecture/`, `docs/design/`, and `docs/decisions/` cover the same ground, new proposals and new agent sessions should stop loading `docs/skeleton.md` as the place to learn the system.
 
 Treat `skeleton.md` like a living bootstrap document while the recovery is in progress. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will keep.
 
