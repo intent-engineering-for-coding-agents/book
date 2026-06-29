@@ -22,7 +22,7 @@ The other five types each carry constraints. Content documents do not. That asym
 
 The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. A convention check scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
 ## README and INDEX files
 
@@ -50,7 +50,7 @@ That also gives it a lifecycle. While the brownfield recovery is in progress, `d
 
 The taxonomy here is this book's synthesis. `skeleton.md` is not a field standard. The lifecycle rule exists because brownfield bootstrap artifacts and permanent docs do different jobs. If both stay live forever, the agent loads two competing explanations of the same module and has to guess which one still applies.
 
-*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), agents extracting structure and business rules from legacy code. The `skeleton.md` lifecycle framing is this book's synthesis.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code. The `skeleton.md` lifecycle framing is this book's synthesis.*
 
 ## Architectural Decision Records
 
@@ -60,7 +60,7 @@ While an ADR is still proposed, change it as much as the discussion requires. Th
 
 The proposed and accepted statuses come from MADR itself, recorded in a YAML front matter block at the top of the file: `status: accepted`, `date: 2024-03-01`. That structure is what turns the gate into something a convention check or an agent verifies directly, rather than a rule a reader has to infer from prose. The amendment record does not come from MADR. It is this book's own convention. Without it, there is no way to tell whether the supporting context in an ADR was part of the original decision or a correction added afterward. That ambiguity is exactly what the immutability rule exists to prevent.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), the ADR form, and the why-over-what value. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr, 2018), the proposed/accepted status field in front matter. The amendment-record convention is this book's own.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR form, and the why-over-what value. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr, 2018), the proposed/accepted status field in front matter. The amendment-record convention is this book's own.*
 
 ## MADR
 
@@ -114,7 +114,7 @@ A team that grasps the lifespan column has the practice. A team that only learns
 
 Structure is the cheapest discipline available. Convention over configuration is an old argument, one Maven and Rails built ecosystems on. Intent Engineering extends it to a new reader: the agent.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (Nov 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
 
 ## Tooling
 

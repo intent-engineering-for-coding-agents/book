@@ -12,7 +12,7 @@ A multipage spec splits the context window with existing code, conversation hist
 
 Fixing these contradictions requires a second pass. That costs more than writing a smaller spec upfront.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), context window competition between spec and working code.*
+*Sources: Anthropic, "Building effective agents" (December 2024), context window competition between spec and working code.*
 
 ## One PR, one spec
 
@@ -46,7 +46,7 @@ Ask the agent to draft the spec and watch what comes back: nominal case, edge ca
 
 Embed the size discipline in the agent's instructions. The human review process is not enough. Require specs to stay within a page, forbid restating requirements already in the referenced ADR, specify what the output must contain. A conciseness directive in the agent's skill file carries forward to every spec it writes.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), clear instructions shape agent output. The thoroughness default is this book's observation.*
+*Sources: Anthropic, "Building effective agents" (December 2024), clear instructions shape agent output. The thoroughness default is this book's observation.*
 
 ## The Rule of Ten
 

@@ -16,7 +16,7 @@ The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, 
 
 This is the open loop. Nothing in the toolchain closes it for you.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Applying the loop to instruction files specifically is this book's synthesis.*
+*Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of an effective agent setup. Applying the loop to instruction files specifically is this book's synthesis.*
 
 ## Golden tests for the agent
 
@@ -55,7 +55,7 @@ A handful of these tasks is the eval set, each covering a workflow the team reli
 
 The score is the count of properties satisfied. A score that drops on a configuration change is a regression with nothing to do with the code under test. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and it does not prescribe a format.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation as a gap in SDD tooling. intent-engineering-for-coding-agents/cli `examples/eval-demo/` (ongoing), one concrete eval set and structural-check format.*
+*Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), evaluation as a gap in SDD tooling. intent-engineering-for-coding-agents/cli `examples/eval-demo/` (ongoing), one concrete eval set and structural-check format.*
 
 ## A/B comparison of two instruction-file versions
 
@@ -65,7 +65,7 @@ In the companion repo's example, the baseline configuration scores nine of nine.
 
 This is the change that sounds reasonable and is not. A style note about utility functions read as global guidance, and the agent applied it to service classes and test markers it was never meant to touch. Without the comparison, the tradeoff stays invisible. With it the choice is concrete: which version of the agent instructions produced the score the team wants?
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as a feedback loop for agent behavior. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the example A/B scores cited.*
+*Sources: Anthropic, "Building effective agents" (December 2024), evaluation as a feedback loop for agent behavior. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the example A/B scores cited.*
 
 ## Regression when a skill or hook changes
 
@@ -91,7 +91,7 @@ Eval suites for agents are still early practice. As of 2026, there is no widely 
 
 Keeping the suite calibrated is harder than building it. A task the agent nails reliably today goes uninformative tomorrow when the model improves under it. A task the agent fails reliably tests a property no configuration will satisfy, so it reports noise on every run. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
-*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), evaluation gaps across current SDD tools. Anthropic, "Building effective agents" (Dec 2024), evaluation as guidance rather than a complete framework.*
+*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), evaluation gaps across current SDD tools. Anthropic, "Building effective agents" (December 2024), evaluation as guidance rather than a complete framework.*
 
 ## Tooling
 
@@ -107,4 +107,3 @@ Those two scores are committed snapshots from one run of this example, not a ben
 *Sources: intent-engineering-for-coding-agents/cli (ongoing), `examples/eval-demo` and its `iec eval` invocation.*
 
 The eval suite tells you when the agent setup regresses. It says nothing about whether the link between the spec and the proof has held: whether the test that still passes is still the test that proves the acceptance criterion the spec named. That is a different kind of rot, and it needs its own check.
-

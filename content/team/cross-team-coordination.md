@@ -38,7 +38,7 @@ graph TD
     BA -. internal ADR, Team A never sees it .-> BR
 ```
 
-*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the durable, human-readable decision record.*
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, ADRs as the durable, human-readable decision record.*
 
 ## Inner source for `.agents/` libraries
 
@@ -50,7 +50,7 @@ The pragmatic shortcut for smaller organizations: a single `shared-agents` repos
 
 The inner source for agent instructions is book synthesis. As of mid-2026, there is no widely adopted standard for packaging, versioning, or distributing `.agents/` libraries. Treat this as a borrowing from shared-library practice.
 
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), AGENTS.md as a shared project instruction set. The inner-source distribution pattern for `.agents/` libraries is this book's synthesis.*
+*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed June 9, 2026), AGENTS.md as a shared project instruction set. The inner-source distribution pattern for `.agents/` libraries is this book's synthesis.*
 
 ## Multi-repo realities
 

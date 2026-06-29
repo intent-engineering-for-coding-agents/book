@@ -74,7 +74,7 @@ graph TD
 
 The ADR is permanent, while the change folders are temporary and archived after implementation. The contract outlives both.
 
-*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, Nov 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
 
 ## When a change spans tiers
 

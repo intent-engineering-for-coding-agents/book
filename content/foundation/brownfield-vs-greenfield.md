@@ -38,7 +38,7 @@ The same prompt accepts an output layout. Append the target `docs/` structure an
 
 Do not leave the harvest trapped in `skeleton.md`. Move stable findings into the permanent docs set before the first proposal: architecture in `docs/architecture/`, durable design constraints in `docs/design/`, and reconstructed decisions in `docs/decisions/`. `skeleton.md` gets the repo through bootstrap. Later work should read the permanent docs, not keep circling back to the excavation notes.
 
-*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), agents extracting structure and business rules from legacy code.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code.*
 
 ## The walking skeleton reversed
 
@@ -66,4 +66,4 @@ Treat `skeleton.md` like a living bootstrap document while the recovery is in pr
 
 Once ADRs, architecture docs, and design docs cover what the skeleton approximated, change its status. Remove it, archive it, or mark it plainly as historical bootstrap context that agents should ignore when reading the current design. The filename matters less than the distinction. An agent should not open `docs/skeleton.md` and `docs/architecture/overview.md` and read both as live instructions for the same system.
 
-*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (Feb 7, 2026), the skeleton-as-archaeology framing.*
+*Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), the skeleton-as-archaeology framing.*

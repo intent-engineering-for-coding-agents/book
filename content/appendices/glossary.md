@@ -18,7 +18,7 @@ The discipline of building agents as products: reasoning loops, evals, hallucina
 
 A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted. Reversing a decision creates a new ADR that supersedes the old one, though status updates and cross-references remain editable. The practice originated in Michael Nygard's 2011 post. The structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
 
-*Sources: Michael Nygard, "Documenting Architecture Decisions" (Nov 15, 2011), origin of the ADR practice. Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS paper (2018), MADR as the structured Markdown variant used in this book.*
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (November 15, 2011), origin of the ADR practice. Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS paper (2018), MADR as the structured Markdown variant used in this book.*
 
 ## Agent instructions
 
@@ -28,7 +28,7 @@ This book's term for the full instruction set the agent loads: `AGENTS.md` (the 
 
 The de-facto entry point for a coding agent at the root of a repository as of the May 2026 snapshot of [agents.md](https://agents.md/). Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview.
 
-*Sources: [AGENTS.md](https://agents.md/) (ongoing, May 2026 snapshot), the de-facto entry-point convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), the TOC pattern described in this book. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), current vendor support for the convention.*
+*Sources: [AGENTS.md](https://agents.md/) (ongoing, May 2026 snapshot), the de-facto entry-point convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed June 9, 2026), the TOC pattern described in this book. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), current vendor support for the convention.*
 
 ## Agentic Software Engineering (ASE)
 
@@ -38,7 +38,7 @@ The broader discipline of building software with coding agents as active partici
 
 The collaboration practice Gherkin's `Given/When/Then` notation came from: scenarios written with business stakeholders, then bound to step definitions that a tool such as Cucumber executes. This book borrows the notation, not the practice. Its scenarios carry no step-definition layer and no Cucumber runtime, and they are authored before the code exists and compiled to tests by the agent rather than written against code that already runs. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
 
-*Sources: Dan North, "Introducing BDD" (Mar 2006), origin of Behavior-Driven Development. Cucumber Gherkin reference (ongoing), the scenario notation this book borrows while discarding the step-definition runtime.*
+*Sources: Dan North, "Introducing BDD" (March 2006), origin of Behavior-Driven Development. Cucumber Gherkin reference (ongoing), the scenario notation this book borrows while discarding the step-definition runtime.*
 
 ## Brownfield
 
@@ -208,11 +208,10 @@ A source-control discipline in which all developers commit to a single trunk bra
 
 The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), the TOC pattern naming and structure. Paula Hingel, "AI Agent Loop Token Costs: How to Constrain Context" (Apr 6, 2026), context growth as the cost argument behind keeping the entry file short.*
+*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed June 9, 2026), the TOC pattern naming and structure. Paula Hingel, "AI Agent Loop Token Costs: How to Constrain Context" (April 6, 2026), context growth as the cost argument behind keeping the entry file short.*
 
 ## Walking skeleton
 
 A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the agentic-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
 
 *Sources: Alistair Cockburn, "Crystal Clear" (2004), origin of the walking-skeleton pattern. The `skeleton.md` reversal described here is this book's synthesis.*
-

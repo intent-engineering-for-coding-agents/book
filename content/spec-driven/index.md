@@ -14,7 +14,7 @@ OpenSpec is the workflow this book uses to make Spec-Driven Development visible:
 
 The portable practice is per-change intent with testable acceptance criteria. The closest alternative is a plain `spec.md` in the repo. Teams with domain, review, or compliance pressure often grow a local format from there because their specs need to match the SDLC already in place. If your team uses `spec.md`, LeanSpec, Spec-Kit, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to whatever record becomes historical after merge.
 
-*Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The local-format portability framing is this book's synthesis.*
+*Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The local-format portability framing is this book's synthesis.*
 
 ## Chapters
 
@@ -23,5 +23,3 @@ The portable practice is per-change intent with testable acceptance criteria. Th
 3. [The Spectrum](./the-spectrum): from a raw prompt to OpenSpec, matching formality to risk and team size
 4. [Spec Lifecycle](./spec-lifecycle): write, critique, review, implement, archive, and why multi-LLM critique catches what solo review misses
 5. [Docs > Specs > Code](./docs-gt-specs-gt-code): the book's load-bearing thesis, that documentation is the durable source of truth, the spec proves the behavior of one change, and the code is downstream of both
-
-

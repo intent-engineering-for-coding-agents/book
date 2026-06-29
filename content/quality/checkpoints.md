@@ -18,7 +18,7 @@ That question is cheaper than it sounds because most of it is deterministic. A h
 
 One input sits upstream of the spec itself: the architectural decision the spec executes. The chain runs ADR, then design doc, then spec ([Spec Lifecycle](../spec-driven/spec-lifecycle)). Freeze a spec against a decision still open, or against one reversed in a later PR, and the spec executes a decision the architecture no longer follows. The gate confirms the governing ADR is approved, and the design doc the spec leans on still says what the spec assumes. A link checker proves the reference resolves. Whether the decision still holds is the same manual judgment the architecture check already demands.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), preparing the agent's context before it starts work. AGENTS.md (agents.md, ongoing), AGENTS.md as a project-level entry point for agent instructions. The repo-level checker and companion-workflow examples in this section are this book's synthesis built on the documentation-drift and AGENTS.md-check patterns described elsewhere in the book.*
+*Sources: Anthropic, "Building effective agents" (December 2024), preparing the agent's context before it starts work. AGENTS.md (agents.md, ongoing), AGENTS.md as a project-level entry point for agent instructions. The repo-level checker and companion-workflow examples in this section are this book's synthesis built on the documentation-drift and AGENTS.md-check patterns described elsewhere in the book.*
 
 ## During: the implementation gate
 

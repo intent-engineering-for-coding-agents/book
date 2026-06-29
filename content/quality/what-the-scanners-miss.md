@@ -52,7 +52,7 @@ Security is not the subject of this book, and one chapter does not make it one. 
 
 The agent is itself a new entry in the threat model: a prompt-injected document becomes an instruction it follows, and a tool definition does something other than what its description claims. Both are poorly defended in 2026 and outside this book's scope. The failure modes above are the ones Intent Engineering is equipped to address.
 
-*Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, Sep 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a cataloged LLM risk.*
+*Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, September 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a cataloged LLM risk.*
 
 How far the artifact discipline reaches depends on how specific the rule is. "Dependencies must not change the package name between versions" is enforceable by a check. "Be careful with security" is a background noise the agent ignores. The rule has to be precise enough for a check to verify.
 

@@ -34,7 +34,7 @@ For teams with stable review rules, `spec.md` becomes a local framework. The fil
 
 The cost is ownership. A custom `spec.md` gives maximum fit and almost no tooling burden, but the team owns the lifecycle around it. Without those rules, `spec.md` is a better prompt. With them, it becomes a spec-driven workflow.
 
-*Sources: Rick Hightower, "What Is GSD? Spec-Driven Development Without the Ceremony" (Feb 23, 2026), GSD as structured prompting that produces an artifact but no archive or traceability trail. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The custom `spec.md` lifecycle framing is this book's synthesis.*
+*Sources: Rick Hightower, "What Is GSD? Spec-Driven Development Without the Ceremony" (February 23, 2026), GSD as structured prompting that produces an artifact but no archive or traceability trail. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The custom `spec.md` lifecycle framing is this book's synthesis.*
 
 ## OpenSpec
 
@@ -69,7 +69,7 @@ LeanSpec is the lightweight productized neighbor. It articulates the small-spec 
 
 At the enterprise end, GitHub positions Spec-Kit for large-scale, multi-team environments with compliance requirements: tooling, integrations, governance hooks. The formality is designed for the scale.
 
-*Sources: LeanSpec, the small-spec discipline this book absorbs while using OpenSpec for lifecycle and structure. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (Sep 2, 2025), Spec-Kit's targeting of large-scale, multi-team environments with compliance requirements.*
+*Sources: LeanSpec, the small-spec discipline this book absorbs while using OpenSpec for lifecycle and structure. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), Spec-Kit's targeting of large-scale, multi-team environments with compliance requirements.*
 
 ## Match formality to risk
 
@@ -89,7 +89,7 @@ Read the table per project, not only per change. A solo developer shipping one a
 
 The same dial governs how you stage the change, not only which framework you reach for. A change carrying a real decision earns a spec PR before any implementation, so the intent is corrected while correcting it is cheap. A change whose intent is visible in the diff ships as one PR. The [trunk-based development chapter](/team/trunk-based-development) works the mechanics.
 
-*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the formality-to-risk tradeoffs that distinguish the SDD tools across the spectrum.*
+*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), the formality-to-risk tradeoffs that distinguish the SDD tools across the spectrum.*
 
 ## The trade-off
 

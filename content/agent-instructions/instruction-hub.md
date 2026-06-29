@@ -67,7 +67,7 @@ Each file defines a trigger (a file edit matching that extension) and the comman
 
 The honest caveat: hook authoring is still early practice. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool looks for hook definitions also varies. For many teams as of mid-2026, hooks are still experimental rather than routine.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision. The maturity caveat here is this book's current-practice observation across agent tooling as of mid-2026.*
+*Sources: Anthropic, "Building effective agents" (December 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision. The maturity caveat here is this book's current-practice observation across agent tooling as of mid-2026.*
 
 The hub gives the agent context about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub gives the agent the rules. The spec gives it the intent.
 

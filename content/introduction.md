@@ -10,7 +10,7 @@ Consider a repo where the Redis decision from the last quarter lives only in som
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". An under-informed developer gets incorrect code faster. An experienced developer gets correct code faster. The amplifier is neutral. What it amplifies is not.
 
-*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
+*Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, January 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
 This is the territory of Intent Engineering, the practice this book teaches: making the agent less under-informed about your system and intent. Intent Engineering sits inside agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
@@ -28,7 +28,7 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 This book adopts the term because the surrounding vocabulary is moving that way. The framing here is a practical synthesis, not a field standard. It sits near current Intent-Driven Development writing, but uses the narrower term Intent Engineering for Coding Agents for one combination: durable intent, spec-first change control, and executable proof for agent-generated code.
 
-*Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining an outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
+*Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, December 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, March 9, 2026), intent-driven development as humans defining an outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
 
 An agent in Intent Engineering plays two roles:
 
@@ -59,7 +59,7 @@ Topics three and four are a pair. Spec-driven development showed up more often i
 
 In the SDD material reviewed for this book, the emphasis is heavier on aiming the change than on proving the result. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
 
-*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
+*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, January 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
 After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" is already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
 
@@ -78,7 +78,7 @@ Run one agent or run several. This book treats vendor-agnostic as a deliberate c
 
 The payoff arrives once switching to another tool costs only a pointer file and a few instructions: then you can run several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
-*Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
+*Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
 
 ## When a project earns this
 
@@ -106,7 +106,7 @@ So there is no new lifecycle to adopt. Planning, implementation, review, CI, mai
 
 This book treats Intent Engineering and agent-product lifecycle work as disciplines with overlapping vocabulary and different jobs. One governs an agent you ship and operate. The other governs a coding agent inside the software lifecycle you already run.
 
-*Sources: Sommerville, "Software Engineering" (2015), SDLC as structured software delivery phases; OpenAI Agents SDK documentation (ongoing, reviewed Jun 28, 2026), agents, tools, handoffs, guardrails, human review, state, and observability as agent-product control surfaces; Anthropic, "Building effective agents" (Dec 2024), simple composable agent systems and evaluation guidance; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC vocabulary for building and operating agents in production; Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), agentic SDLC vocabulary for coding-agent delivery. The worker-versus-product split is this book's synthesis.*
+*Sources: Sommerville, "Software Engineering" (2015), SDLC as structured software delivery phases; OpenAI Agents SDK documentation (ongoing, reviewed June 28, 2026), agents, tools, handoffs, guardrails, human review, state, and observability as agent-product control surfaces; Anthropic, "Building effective agents" (December 2024), simple composable agent systems and evaluation guidance; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC vocabulary for building and operating agents in production; Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), agentic SDLC vocabulary for coding-agent delivery. The worker-versus-product split is this book's synthesis.*
 
 ## The companion: Intent Engineering Checker
 

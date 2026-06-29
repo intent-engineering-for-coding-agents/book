@@ -26,7 +26,7 @@ Without spec-first discipline, the agent produces code that satisfies the immedi
 
 The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the intention it needs. Decisions written down as ADRs are constraints the agent will follow. Intent and constraints living only in human memory will be violated.
 
-*Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (Mar 22, 2025), agent velocity as amplifier.*
+*Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (March 22, 2025), agent velocity as amplifier.*
 
 ## Over-spec
 

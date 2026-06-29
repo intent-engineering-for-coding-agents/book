@@ -38,7 +38,7 @@ Drift is second. Every session that extends or modifies the feature works from t
 
 Traceability disappears third. A code review asks "does this implementation match the spec?" only if there is a spec. A PR that arrives without one requires the reviewer to reconstruct intent from the diff, which is backward. Review the intent first, then the diff. Without the spec, the only thing to review is the diff.
 
-*Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for. Steve Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier: agents move faster, so drift accumulates faster.*
+*Sources: Fission AI, OpenSpec; GitHub, Spec-Kit; LeanSpec; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), the SDD frameworks that codify written intent before code as the practice this chapter argues for. Steve Yegge, "Revenge of the junior developer," Sourcegraph (March 22, 2025), velocity as amplifier: agents move faster, so drift accumulates faster.*
 
 ## The waterfall objection
 

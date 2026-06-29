@@ -14,7 +14,7 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 `docs/INDEX.md` exists for the same reason. One 40-line file, full map. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), context-window pressure as a practical constraint across agentic coding tools.*
+*Sources: Anthropic, "Building effective agents" (December 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), context-window pressure as a practical constraint across agentic coding tools.*
 
 ## A bigger window, the same discipline
 
@@ -26,7 +26,7 @@ The second is attention. Filling a roomy window with files the task never reads 
 
 So the larger window changes the failure, not the fix. You overflow less often, and you dilute the signal exactly as before. Load what the task needs, and the extra capacity buys headroom instead of a slower, more expensive, less reliable session.
 
-*Sources: Paula Hingel, Augment Code, "AI Agent Loop Token Costs" (Apr 2026), a naive agent loop re-bills the full history each turn, so cumulative input tokens follow the triangular series N(N+1)/2: a 20-step run bills ~210,000 tokens against a 20,000-token per-step estimate.*
+*Sources: Paula Hingel, Augment Code, "AI Agent Loop Token Costs" (April 2026), a naive agent loop re-bills the full history each turn, so cumulative input tokens follow the triangular series N(N+1)/2: a 20-step run bills ~210,000 tokens against a 20,000-token per-step estimate.*
 
 ## Short sessions beat long conversations
 
@@ -40,7 +40,7 @@ Cost runs in the same direction. A long session re-bills its growing transcript 
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than the instruction set the agent no longer has in active context.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
+*Sources: Anthropic, "Building effective agents" (December 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
 
 ## Loading selectively
 

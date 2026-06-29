@@ -26,7 +26,7 @@ What separates a skill that runs the same way every time from one the agent reco
 
 You do not have to write any of this yourself. Set the agent in plan mode. Describe the workflow to the agent, tell it you want a reusable skill file to invoke as a slash command, and let it draft the Markdown. Review the output, fix the steps that are wrong, and commit. The agent that wrote the skill is the agent that will run it, and it tends to know its own edge cases.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), workflows as predefined code paths versus agents that direct their own process.*
+*Sources: Anthropic, "Building effective agents" (December 2024), workflows as predefined code paths versus agents that direct their own process.*
 
 ## Commands: a skill you trigger by hand
 
@@ -93,7 +93,7 @@ The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and wa
 
 This is not polish, but control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
+*Sources: Anthropic, "Building effective agents" (December 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
 
 ## Hooks: determinism, like a database trigger
 
@@ -107,7 +107,7 @@ Keep each hook narrow. A hook that runs `ruff` on every modified Python file doe
 
 Hook syntax is tool-specific. As of mid-2026, a hook written for Claude Code does not drop into Cursor or Copilot unchanged, and one that blocks unexpectedly is awkward to debug. Expect those details to shift as the tooling matures. Start with the one check you cannot afford to skip. Add a second only after the first has caught real drift without blocking the agent into disabling it.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), predefined deterministic paths versus leaving the choice to the agent.*
+*Sources: Anthropic, "Building effective agents" (December 2024), predefined deterministic paths versus leaving the choice to the agent.*
 
 ## Which one, and when
 
