@@ -1,6 +1,6 @@
 # OpenSpec Across Stacks
 
-Give an agent the whole monorepo as context and it will confidently call the wrong half of it. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches what the agent did not: it called the back-end service API, not the Backend for Frontend (BFF) API the front-end was supposed to use. The back-end API skipped the authorization checks the BFF enforced.
+Give an agent the whole monorepo as context, and it will confidently call the wrong half of it. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches what the agent did not: it called the back-end service API, not the Backend for Frontend (BFF) API the front-end was supposed to use. The back-end API skipped the authorization checks the BFF enforced.
 
 The spec never said which API to call. With every tier's specs in reach and no signal about which tier it was working in, the agent resolved the ambiguity the wrong way, and felt certain doing it.
 
@@ -8,7 +8,7 @@ The problem is upstream. A single `openspec/` directory shared across three tier
 
 ## One `openspec/` per stack
 
-The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or sub-directory. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, its pending changes. The back-end specs are not its context.
+The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or subdirectory. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, and its pending changes. The back-end specs are not its context.
 
 ```text
 front-end/
@@ -40,7 +40,7 @@ back-end/
 
 A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's context legible and bounded.
 
-This is book synthesis. There is no widely-adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
+This is a book synthesis. There is no widely adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
@@ -52,7 +52,7 @@ A back-end agent reads `docs/architecture/`, the API contract, and the test stra
 
 The spec should still cover behavior: states, validation, edge cases, loading, error, and empty states. User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The design system doc answers how the component should look when it renders correctly.
 
-*Sources: Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), Figma files as extractable design context for coding agents. The split between front-end behavior specs and `docs/design/` convention briefs is this book's workflow mapping.*
+*Sources: Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), Figma files as extractable design context for coding agents. The split between front-end behavior specs and `docs/design/` convention instructions is this book's workflow mapping.*
 
 ## The integration contract belongs in an ADR
 
@@ -88,6 +88,6 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 ## This is book synthesis, not a field standard
 
-Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
+Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt to it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
 
-Multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of it. Knowing which existing slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.
+A multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of them. Knowing which existing slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

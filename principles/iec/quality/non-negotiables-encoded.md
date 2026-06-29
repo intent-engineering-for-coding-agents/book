@@ -26,3 +26,4 @@ Encode non-negotiables as pre-commit hooks or CI checks: "no commit if any file 
 ## Sources
 
 - intent-book, *"What the Scanners Miss" chapter*, quality section.
+

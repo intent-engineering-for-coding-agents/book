@@ -22,7 +22,7 @@ flowchart LR
 
 | Practice | What it does | What breaks without it |
 |---|---|---|
-| [Foundation](/foundation/) | Repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index | Agent improvises from training data instead of your decisions |
+| [Foundation](/foundation/) | Repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index | Agent improvises from training data instead of your decisions |
 | [Agent Instructions](/agent-instructions/) | A single entry point and instruction hub that every session reads on load | Agent re-derives your conventions each session, inconsistently |
 | [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code, archived after the PR merges | Agent ships to its own design, not yours |
 | [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | Spec aims; nobody checks if the agent hit the target |
@@ -65,3 +65,5 @@ This book assumes you:
 | Get into the practice immediately | [Foundation](/foundation/) |
 | See what the practices look like in code | [Companion Repo](/appendices/companion-repo) |
 | Evaluate whether to adopt at all | [Honest Maturity](/appendices/honest-maturity) |
+
+

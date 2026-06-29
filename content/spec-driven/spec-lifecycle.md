@@ -28,7 +28,7 @@ graph TD
     I -. spec wrong? update it .-> W
 ```
 
-Three of these stages are OpenSpec commands. Critique and review are not, and that gap is the point: it is where this book adds discipline the tool leaves out. Command names below are the mid-2026 `opsx` profile. The stages outlast the names.
+Three of these stages are OpenSpec commands. Critique and review are not, and that gap is the point: it is where this book adds discipline the tool leaves out. The command names below are the mid-2026 `opsx` profile. The stages outlast the names.
 
 **Write** (`/opsx:propose`): create the spec when you are about to implement, not weeks in advance. One command generates the proposal, specs, design, and tasks together. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
@@ -93,3 +93,4 @@ A dead spec is not a deleted spec. It is a change folder left in `openspec/chang
 If you want to see this workflow in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
 The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. It is committed and kept, not pruned: the archived change folders are the record of why each capability reads the way it does, and deleting them throws that history away. The artifact most trusted when the code needs to change is likely not the one most developers would guess.
+

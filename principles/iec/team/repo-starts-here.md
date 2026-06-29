@@ -1,13 +1,13 @@
-# IEC-TEAM-REPO-IS-BRIEFING: The Repo is the Briefing
+# IEC-TEAM-REPO-STARTS-HERE: The repo starts here
 
 **Layer**: 1
 **Categories**: team, onboarding, context
 **Applies-to**: all
-**Summary**: The repo is the briefing — every new developer and every new agent session starts here.
+**Summary**: The repo is the starting point. Every new developer and every new agent session starts here.
 
 ## Principle
 
-The repo is the briefing. Every new developer and every new agent session starts here. If it takes a meeting, a Slack thread, or a tribal knowledge transfer session to get someone started, the repo's briefing is incomplete. The onboarding a human needs and the context an agent needs share more in common than most teams assume.
+The repo is the starting point. Every new developer and every new agent session starts here. If it takes a meeting, a Slack thread, or a tribal knowledge transfer session to get someone started, the repo's starting point is incomplete. The onboarding a human needs and the context an agent needs share more in common than most teams assume.
 
 ## Why it matters
 
@@ -21,7 +21,7 @@ The onboarding cost that a human pays once per developer, an agent pays once per
 
 ## Good practice
 
-A complete briefing answers: what is this project? What does it depend on? Where does each kind of code live? What conventions does it follow? What decisions shaped it? `README.md` answers the first for humans; `AGENTS.md` answers them all for agents.
+A complete starting point answers: what is this project? What does it depend on? Where does each kind of code live? What conventions does it follow? What decisions shaped it? `README.md` answers the first for humans; `AGENTS.md` answers them all for agents.
 
 ## Sources
 

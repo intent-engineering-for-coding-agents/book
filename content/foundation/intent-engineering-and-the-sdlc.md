@@ -57,11 +57,11 @@ Architecture changes and agent-led implementation need the target before code ex
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.*
 
-## Implementation: use the repo briefing
+## Implementation: use the repo context
 
-During implementation, the agent enters the coding step through the repo briefing: `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change.
+During implementation, the agent enters the coding step through the repo context: `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change.
 
-[Why Structure Matters](./why-structure) explains the deeper rule: the repo is the briefing. The SDLC map only needs the placement because implementation is where durable context meets code generation.
+[Why Structure Matters](./why-structure) explains the deeper rule: the repo is the context. The SDLC map only needs the placement because implementation is where durable context meets code generation.
 
 ## Review: intent first, code second
 
@@ -87,7 +87,7 @@ After a change ships, archive the spec, update `docs/INDEX.md` when docs move, m
 
 Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request. That is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
 
-Archive work is the small part. The larger question is whether the repo now describes the system that shipped. This book calls the step synchronize engineering memory. An ADR records one decision. The rest of the memory lives in the architecture overview, design docs, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions.
+Archive work is the small part. The larger question is whether the repo now describes the system that shipped. This book calls the step to synchronize engineering memory. An ADR records one decision. The rest of the memory lives in the architecture overview, design docs, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions.
 
 ISO/IEC/IEEE 42010 distinguishes the architecture from an architecture description expressing it. This book narrows the idea to the repo-local artifacts a coding agent reads and writes against: engineering memory.
 

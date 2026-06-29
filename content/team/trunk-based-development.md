@@ -6,7 +6,7 @@ An agent opens and closes a feature branch in the time a human developer spends 
 
 ## The change folder is the branch
 
-An OpenSpec change folder maps onto the branches that implement it. The change folder defines the scope. The branch is the vehicle. How many branches depends on one question: does the spec hold a decision worth locking before any code is written?
+An OpenSpec change folder maps onto the branches that implement it. The change folder defines the scope. The branch is the vehicle. How many branches depend on one question: does the spec hold a decision worth locking before any code is written?
 
 ```mermaid
 graph TD
@@ -32,9 +32,9 @@ The discipline that covers both shapes is not a branch count. Every branch that 
 
 ## Short-lived means days, not weeks
 
-Hammant's trunk-based development (TBD) discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that lives for two weeks accumulates two weeks of divergence from trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
+Hammant's trunk-based development (TBD) discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that has lived for two weeks accumulates two weeks of divergence from the trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
 
-At agentic speed, "one day" is generous. A small-to-medium feature spec often lands in hours. The branch lifecycle is: create branch, write spec (in the change folder on the branch), implement, test, open PR, review, merge.
+At agentic speed, even one day is long. A small feature spec can land in hours. The branch flow is simple: create the branch, write the spec in its change folder, implement, test, open the PR, review, merge.
 
 Start to merge in hours, not days. If the implementation is taking days, the spec was too large. Split it.
 
@@ -44,7 +44,7 @@ The discipline of keeping specs small (the ten-task, ten-file rule of thumb from
 
 Multiple developers, multiple change folders, multiple branches. The question is how often they integrate.
 
-Trunk-based development's answer is: as often as possible, with CI as the gate. Each branch merges when CI passes, not when "it is done". Integration happens continuously rather than all at once at sprint end.
+Trunk-based development's answer is: as often as possible, with CI as the gate. Each branch merges when CI passes, not when "it is done". Integration happens continuously rather than all at once at the sprint end.
 
 Spec deltas reduce merge pain in two ways. First, a clearly scoped spec is less likely to overlap with another clearly scoped spec. If two change folders are well-defined, their implementation boundaries are visible before the branches are created. A team standing up before the sprint catches spec collisions while they are still cheap to resolve. Second, reviewing a PR that has a spec delta gives the reviewer a clear statement of what the PR is supposed to do, which makes merge-conflict resolution faster. When two branches conflict, the question is not "what was this trying to do?" The spec answers it.
 
@@ -58,15 +58,15 @@ The `AGENTS.md` (or a skill file it references) should state: the branch name ma
 
 Instructions drift. Checks do not. The two steps most worth promoting from instruction to CI gate are archiving and task completion. A check that fails the implementation PR when its change folder is not archived, or when `tasks.md` still has unchecked boxes, turns a discipline the agent forgets under load into one it cannot skip. This is the verifier pattern: the check gates the merge but does not do the work. `iec check` already plays that role for file-size limits and AC traceability. Gating it on an archived folder and a fully-checked `tasks.md` is the same move. The archive stays a one-line step the agent runs as its final task, visible in the diff where a reviewer watches the spec promoted to baseline.
 
-Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and un-implemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle, and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
+Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and unimplemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration discipline. Dave Farley with Jez Humble, "Continuous Delivery" (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a discipline the agent forgets into one it cannot skip.*
 
 ## Review at merge
 
-A clean diff is the easiest thing for an agent to produce, and the easiest thing for a reviewer to wave through. Consider tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the diff. Nobody read the diff against the spec.
+A clean diff is the easiest thing for an agent to produce and the easiest thing for a reviewer to wave through. Consider tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the diff. Nobody read the diff against the spec.
 
-The failure is not in the code, but in the review sequence: the diff was read before the spec. The diff looked correct. The spec would have caught the divergence.
+The failure is not in the code but in the review sequence: the diff was read before the spec. The diff looked correct. The spec would have caught the divergence.
 
 Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff get opened. The diff-review question is different: does this implementation match the spec?
 
@@ -80,6 +80,6 @@ Trunk-based development is not universally practiced. Many teams use longer-live
 
 The argument for TBD over Gitflow is Hammant's to make, and he has made it thoroughly. This chapter does not re-argue it. It describes how OpenSpec change folders fit into TBD for teams that have already adopted it.
 
-The two-PR shape for decision-heavy changes is this book's recommended default, not an industry standard. Plenty of teams ship spec and code in one PR and review the spec delta first inside it. That works, and it is lighter. The split earns its second PR when locking the intent before implementation would have saved a rework, and costs ceremony when it would not. Treat it as a dial, not a mandate.
+The two-PR shape for decision-heavy changes is this book's recommended default, not an industry standard. Plenty of teams ship spec and code in one PR and review the spec delta first inside it. That works, and it is lighter. The split earns its second PR when locking the intent before implementation would have saved a rework and costs ceremony when it would not. Treat it as a dial, not a mandate.
 
 The one-change-per-developer rule contains the work in a reviewable unit. What happens when that unit reaches the review queue is a different discipline entirely.

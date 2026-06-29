@@ -6,7 +6,7 @@ Consider a one-line dependency bump to clear a Common Vulnerabilities and Exposu
 
 The agent had no model of the supply chain. It was asked to clear a warning, and it cleared it.
 
-Most security advice for agentic teams is standard practice rebranded. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see: the failure modes specific to an agent that writes code by matching patterns, defers risk decisions to the user, and arrives at a codebase with no memory of why a given control exists.
+Most security advice for agentic teams is standard practice with a new label. Secrets scanners, dependency checkers, static analysis: the tools were good before agents and they stay good. This chapter covers what they do not see: the failure modes specific to an agent that writes code by matching patterns, defers risk decisions to the user, and arrives at a codebase with no memory of why a given control exists.
 
 | Failure mode | What the agent does | Why the scanners miss it | The defense |
 |---|---|---|---|
@@ -30,9 +30,9 @@ The defense is to make the pattern the agent should follow the easiest pattern t
 
 "Should I disable certificate verification to make this work?"
 
-There is one safe answer to this question, and the agent will accept any answer the user gives. It will accept "yes" from a tired developer on a Friday. "Temporarily" leaves the disabled verification in the code for six months. "Just for testing" surfaces the disabled check in a production code path.
+There is only one safe answer to this question, and the agent will accept any answer the user gives. It will accept "yes" from a tired developer on a Friday. "Temporarily" leaves the disabled verification in the code for six months. "Just for testing" surfaces the disabled check in a production code path.
 
-The same pattern repeats across security decisions. The agent hardcodes a token from a test fixture into production config, because the fixture was the nearest example of how to set that parameter. A debug endpoint generated during development stays in, because nothing in the spec marked it temporary. Verbose error messages leak stack traces and internal paths: the existing error handler already did that, and the agent copied it.
+The same thing happens across security decisions. The agent hardcodes a token from a test fixture into production config, because the fixture was the nearest example of how to set that parameter. A debug endpoint generated during development stays in, because nothing in the spec marked it temporary. Verbose error messages leak stack traces and internal paths: the existing error handler already did that, and the agent copied it.
 
 Encode the non-negotiable decisions and the question never gets asked. Certificate verification stays on, written into an agent instruction the agent reads before it touches transport code.
 
@@ -42,7 +42,7 @@ If the test environment needs an exception, the exception is scoped to test code
 
 A rate limiter that did not fire during testing. A Cross-Site Request Forgery (CSRF) token check that was duplicated by middleware. An audit log that did not appear in the spec. Each looks redundant on inspection, and each was there for a reason the agent cannot see.
 
-The rate limiter did not fire because the tests sent traffic below the threshold, and that threshold was tuned for production load. The CSRF check was duplicated mid-migration: one layer recently added, the old one not yet retired. The audit log came from compliance, and the spec was never updated to reflect it. The agent sees unused code. It does not see the reason each piece was put there.
+The rate limiter did not fire because the tests sent traffic below the threshold, and that threshold was tuned for a production load. The CSRF check was duplicated mid-migration: one layer recently added, the old one not yet retired. The audit log came from compliance, and the spec was never updated to reflect it. The agent sees unused code. It does not see the reason each piece was put there.
 
 This is the hardest failure mode to catch because the agent's conclusion is defensible. The code does look redundant. The tests pass without it. The diff is clean. The defense is architectural: changes that remove existing controls need explicit justification in the PR description, not silent removal. "This was no longer needed" is not justification. "This was superseded by the rate limiter in the API gateway deployed last month, confirmed by the load test at 5000 rps" is.
 
@@ -54,7 +54,7 @@ The agent is itself a new entry in the threat model: a prompt-injected document 
 
 *Sources: Simon Willison, "Prompt injection attacks against GPT-3" (simonwillison.net, Sep 12, 2022), the origin of the term prompt injection. OWASP, "OWASP Top 10 for LLM Applications" (LLM01: Prompt Injection, ongoing), prompt injection as a cataloged LLM risk.*
 
-What the artifact discipline reaches depends on how specific the rule is. "Dependencies must not change package name between versions" is enforceable by a check. "Be careful with security" is background noise the agent ignores. The rule has to be precise enough for a check to verify.
+How far the artifact discipline reaches depends on how specific the rule is. "Dependencies must not change the package name between versions" is enforceable by a check. "Be careful with security" is a background noise the agent ignores. The rule has to be precise enough for a check to verify.
 
 None of this replaces the human who reads every PR through a security lens. The artifact defenses in this chapter make that reviewer's job possible at agentic speed. They do not retire it.
 

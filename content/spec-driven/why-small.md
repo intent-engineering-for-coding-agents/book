@@ -2,13 +2,13 @@
 
 A long spec does not fail loudly. It fails by quietly dropping things, and the more thorough the spec, the more it drops.
 
-Consider a thorough one: a multipage spec, dozens of acceptance criteria, every edge case and rollback rule and audit requirement written down, days of work, and a careful review behind it. Hand it to the agent and the early criteria get implemented reliably. Later, the implementation starts to contradict what landed earlier. The non-goals section, somewhere in the middle, stops being weighed at all. The spec was not too short. It was too long for the agent to hold at once.
+Picture a thorough one: a multipage spec, dozens of acceptance criteria, every edge case and rollback rule and audit requirement written down, days of work, and a careful review behind it. Hand it to the agent, and the early criteria get implemented reliably. Later, the implementation starts to contradict what landed earlier. The non-goals section, somewhere in the middle, stops being weighed at all. The spec was not too short. It was too long for the agent to hold at once.
 
 ## Context window economics
 
 Every token the agent spends reading a long spec is a token it is not spending on the codebase.
 
-A multi-page spec splits the context window with existing code, conversation history, and generated output. Later in the session, the agent re-derives earlier scenarios to make room, and the re-derived version contradicts the implementation it already shipped. The constraint never gets checked. A small spec stays in view. A long spec does not.
+A multipage spec splits the context window with existing code, conversation history, and generated output. Later in the session, the agent re-derives earlier scenarios to make room, and the re-derived version contradicts the implementation it already shipped. The constraint never gets checked. A small spec stays in view. A long spec does not.
 
 Fixing these contradictions requires a second pass. That costs more than writing a smaller spec upfront.
 
@@ -18,7 +18,7 @@ Fixing these contradictions requires a second pass. That costs more than writing
 
 A spec is one PR's worth of intent. Not a requirements document covering all known future enhancements, not an architecture overview for the subsystem.
 
-The spec size is naturally bounded by the PR size, and small PRs are already a practice most teams want. If the spec requires dozens of acceptance criteria, the spec is too large. Split the change.
+Spec size should follow PR size, and small PRs are already a practice most teams want. If the spec requires dozens of acceptance criteria, the spec is too large. Split the change.
 
 More importantly: the spec does not freeze the scope. You planned to fetch upstream records in one call, then find the endpoint is paginated. Scenario four no longer matches what the code has to do. Edit scenario four. A spec that contradicts the code it shipped with is worse than no spec, because the next agent reads the spec as ground truth. The spec stays live until the PR merges, then it archives.
 
@@ -26,7 +26,7 @@ More importantly: the spec does not freeze the scope. You planned to fetch upstr
 
 ## The size argument
 
-A multi-page spec describes a change too large to implement in one PR without hiding contradictory edge cases. The size limit is not primarily a context window problem. It is a scope problem.
+A multipage spec describes a change too large to implement in one PR without hiding contradictory edge cases. The size limit is not primarily a context window problem. It is a scope problem.
 
 Compression is the wrong fix. Squeezing the spec into dense prose buries the same scenarios. Split the change instead. The spec that fits in one PR does not describe everything. It describes one coherent thing, completely.
 
@@ -34,7 +34,7 @@ Compression is the wrong fix. Squeezing the spec into dense prose buries the sam
 
 ## Small is not the same as vague
 
-A spec too vague to be useful is a spec too small. "Add error handling to the API" fits in a few lines and tells the agent almost nothing. What carries a spec is specificity per line, not word count. A spec with precise acceptance criteria beats a short spec with vague ones.
+A spec that is too vague to be useful is not small in the useful sense. "Add error handling to the API" fits in a few lines and tells the agent almost nothing. What carries a spec is specificity per line, not word count. A spec with precise acceptance criteria beats a short spec with vague ones.
 
 Write small and write precisely. Vagueness is not a side effect of brevity. It is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify. If clarifying makes the spec too large, the change itself is too large. Split it.
 
@@ -50,9 +50,9 @@ Embed the size discipline in the agent's instructions. The human review process 
 
 ## The Rule of Ten
 
-Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. Ten wins because it is round, easy to count toward, and easy to recall when you are busy. Eight would work, twelve would work. The point is this: a number you cannot hold in your head under deadline pressure is not useful. It is a footnote.
+Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. Ten works because it is round, easy to count toward, and easy to recall when you are busy. Eight would work, twelve would work. The point is this: a number you cannot hold in your head under deadline pressure is not useful. It is a footnote.
 
-The limit is for the humans in the loop, not the agent. The agent re-reads a long task list on every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, you have stopped reviewing. You have scrolled.
+The limit is for the humans in the loop, not the agent. The agent re-reads a long task list at every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, you have stopped reviewing. You have scrolled.
 
 Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one sitting, the whole change in view.
 

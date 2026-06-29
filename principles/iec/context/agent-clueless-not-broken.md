@@ -26,3 +26,4 @@ When the agent fails: check what files it loaded, check what it was told, check 
 ## Sources
 
 - intent-book, *"Context Window Management" chapter*, agent-instructions section.
+

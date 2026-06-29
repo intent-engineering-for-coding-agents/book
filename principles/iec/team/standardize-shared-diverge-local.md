@@ -14,11 +14,11 @@ metadata:
 
 ## Principle
 
-If two developers following a convention independently produce inconsistent outputs in the same codebase, the convention belongs in the team brief. If the convention affects only each developer's local workflow and does not appear in committed code, leave it to individual preference.
+If two developers following a convention independently produce inconsistent outputs in the same codebase, the convention belongs in the team instruction set. If the convention affects only each developer's local workflow and does not appear in committed code, leave it to individual preference.
 
 ## Why it matters
 
-Over-standardizing produces rigid team briefs that agents cannot navigate without hitting context limits, and developers who cannot exercise local judgment. Under-standardizing produces inconsistent codebases and agents with incompatible briefings. The line is: does this affect what gets committed?
+Over-standardizing produces rigid team instruction sets that agents cannot navigate without hitting context limits, and developers who cannot exercise local judgment. Under-standardizing produces inconsistent codebases and agents with incompatible instruction sets. The line is: does this affect what gets committed?
 
 ## Violations to detect
 
@@ -28,9 +28,11 @@ Over-standardizing produces rigid team briefs that agents cannot navigate withou
 
 ## Good practice
 
-Team `AGENTS.md` covers: code style, test naming, security rules, dependency hygiene, data access patterns, and links to architecture docs. Individual preference covers: model selection, local branch naming, note format, skill loading sequence. The team brief is the brief for the codebase; personal setup is not the codebase's concern.
+Team `AGENTS.md` covers: code style, test naming, security rules, dependency hygiene, data access patterns, and links to architecture docs. Individual preference covers: model selection, local branch naming, note format, skill loading sequence. The team instruction set is the instructions for the codebase; personal setup is not the codebase's concern.
 
 ## Sources
 
 - intent-book, ["Shared Agent Instruction Conventions"](/team/shared-conventions) chapter.
 - [AGENTS.md](https://agents.md/) (ongoing).
+
+

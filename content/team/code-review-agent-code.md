@@ -2,7 +2,7 @@
 
 The PR has a spec delta, acceptance criteria, a constraint section, and three hundred lines of implementation. The reviewer opens the diff.
 
-Not from laziness. The diff is what changed. Review tooling presents it first. Every code review instinct from before coding agents was trained on diffs. The spec is new, and opening it first is a deliberate choice the tooling does not prompt and most reviewers have not built into habit.
+Not from laziness. The diff is what changed. Review tooling presents it first. Every code review instinct from before coding agents was trained on diffs. The spec is new, and opening it first is a deliberate choice the tooling does not prompt, and most reviewers have not built into habit.
 
 [Trunk-Based Development with Agents](./trunk-based-development) names this as intent-first review: read the spec delta before the code diff, verify intent before implementation. The problem is not knowing the correct sequence. The problem is that review tooling, PR shape, and years of reviewer habit all point toward the diff. Making intent-first review the default requires shaping the PR so the spec is the obvious starting point, not the disciplined one.
 
@@ -27,7 +27,7 @@ graph TD
     A -->|spec approved and merged| B
 ```
 
-When the split applies is the question [Trunk-Based Development with Agents](./trunk-based-development) already settles: if an intent-level correction found in review would force the implementation to be redone, the spec earns its own PR, otherwise spec and code ship together with the spec delta read first inside the single PR. What the review angle adds is why the split helps the reviewer. Once the spec PR has merged, reading the diff before the intent is structurally harder, so intent-first review stops depending on discipline.
+When the split applies is the question [Trunk-Based Development with Agents](./trunk-based-development) already settles: if an intent-level correction found in review forces the implementation to be redone, the spec earns its own PR, otherwise spec and code ship together with the spec delta read first inside the single PR. What the review angle adds is why the split helps the reviewer. Once the spec PR has merged, reading the diff before the intent is structurally harder, so intent-first review stops depending on discipline.
 
 The [PR Taxonomy](../quality/pr-taxonomy) chapter establishes that `docs`, `structural`, and `behavioral` PRs use different review styles and should not mix. The spec PR, carrying only the change folder, is a docs change. The implementation PR is behavioral. The two-PR shape is the natural expression of that taxonomy for decision-heavy behavioral changes.
 
@@ -61,13 +61,13 @@ Open a fresh session with the approved spec and the implementation diff, and no 
 
 This step is not free. For high-stakes behavioral changes with many acceptance criteria, the tracing is worth it. For a change with three acceptance criteria and three tests, skip it.
 
-A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: different training data, different defaults, different blind spots. Keeping `AGENTS.md` and `.agents/` vendor-neutral keeps the switching cost lower because the briefing was never tool-specific. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and diff often costs little beyond the extra run itself. Run that across enough changes, and a second thing falls out: a rough read on which tool earns its keep on this codebase, not the one with the loudest release notes.
+A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: different training data, different defaults, different blind spots. Keeping `AGENTS.md` and `.agents/` vendor-neutral keeps the switching cost lower because the context was never tool-specific. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and diff often costs little beyond the extra run itself. Run that across enough changes, and a second thing falls out: a rough read on which tool earns its keep on this codebase, not the one with the loudest release notes.
 
 *Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec without implementation-context bias.*
 
 ## What human reviewers miss, what agent reviewers miss
 
-The gaps are complementary: each reviewer covers what the other does not. These are analytical observations from the structure of spec-driven review, not sourced findings.
+The gaps are complementary: each reviewer covers what the other does not. These are analytical observations from the structure of a spec-driven review, not sourced findings.
 
 | Reviewer | Reliably misses | Why it slips through |
 |---|---|---|
@@ -83,8 +83,8 @@ A human doing intent-and-integration review and an agent doing coverage-and-cons
 
 These practices raise the quality of what ships. They are not a guarantee. ThoughtWorks Technology Radar Vol 34 names cognitive debt as the agentic-era failure mode: the undocumented assumption that propagates through subsequent changes until it surfaces in production. Review catches divergences between spec and implementation, not divergences between the spec and reality or the user's need.
 
-At agentic speeds, the review gate handles more volume than before. The quality of what reaches it depends on the spec that preceded it. The quality of the spec depends on the discipline applied upstream: intent stated clearly, scope constrained, constraints at the top.
+At agentic speeds, the review gate handles higher volume than before. The quality of what reaches it depends on the spec that preceded it. The quality of the spec depends on the discipline applied upstream: intent stated clearly, scope constrained, constraints at the top.
 
-A disciplined review process is only as consistent as the conventions that back it. One reviewer who reads spec-first and another who reads diff-first, reviewing code generated by the same agent against the same spec, produce different results. The conventions that make intent-first review consistent across the team are the same conventions that make everything else consistent: a shared brief that every agent and every developer reads before the first session.
+A disciplined review process is only as consistent as the conventions that back it. One reviewer who reads spec-first and another who reads diff-first, reviewing code generated by the same agent against the same spec, produce different results. The conventions that make intent-first review consistent across the team are the same conventions that make everything else consistent: a shared instruction set that every agent and every developer reads before the first session.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt as the agentic-era failure mode that the merge gate alone is not sufficient to prevent.*

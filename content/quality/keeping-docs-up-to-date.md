@@ -8,7 +8,7 @@ For teams using coding agents, the gap matters more. Stale prose is not passive 
 
 This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire for turning silent drift into a visible signal.
 
-A release should leave the repo ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
+A release should leave the repo ready for the next agent session. This chapter covers the inexpensive part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
 *Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as stale reasoning in agentic delivery. The release-to-next-session boundary is this book's synthesis.*
 

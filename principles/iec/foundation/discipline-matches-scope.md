@@ -7,7 +7,7 @@
 
 ## Principle
 
-Project scope decides how much of the discipline to adopt, a separate question from how much formality a single change earns. A script, a glue function, or a prototype that gets deleted needs none of it. Once a build runs into weeks and the agent is extending its own earlier work across sessions, write specs. For a system meant to run in production and be maintained, adopt the whole of Intent Engineering: the Foundation and Agent Instructions that brief the agent, plus the specs and verification that prove it hit the target. Adoption is graduated, not all-or-nothing.
+Project scope decides how much of the discipline to adopt, a separate question from how much formality a single change earns. A script, a glue function, or a prototype that gets deleted needs none of it. Once a build runs into weeks and the agent is extending its own earlier work across sessions, write specs. For a system meant to run in production and be maintained, adopt the whole of Intent Engineering: the Foundation and Agent Instructions that load the agent with context, plus the specs and verification that prove it hit the target. Adoption is graduated, not all-or-nothing.
 
 ## Why it matters
 
@@ -27,3 +27,5 @@ Treat "weeks of work" as the line to start writing specs and "meant for producti
 
 - intent-book, *Introduction*, "When a project earns this" section.
 - intent-book, *Foreword*, "From Vibe to Pro" section.
+
+

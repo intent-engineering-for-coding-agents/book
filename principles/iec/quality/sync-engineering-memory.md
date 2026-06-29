@@ -29,3 +29,4 @@ During the after-gate, ask the agent to inspect the diff and list affected engin
 - intent-book, *"Intent Engineering and the SDLC" chapter*, foundation section.
 - intent-book, *"Keeping Documentation Up to Date" chapter*, quality section.
 - ISO/IEC/IEEE 42010:2022, architecture description as the artifact expression of architecture.
+

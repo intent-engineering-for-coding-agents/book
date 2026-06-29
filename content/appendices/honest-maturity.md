@@ -30,12 +30,12 @@ These are not CMM audit levels. No certification, no maturity score, no report f
 
 A team claiming CI-enforced maturity for something caught in code review is not lying. They often believe the claim. The next developer trusts the pipeline, though, and the pipeline is not catching what the team thinks it catches. Misplaced trust fails exactly when nobody expects it.
 
-Honest labeling tells everyone what they rely on: CI-enforced means trust the pipeline, while practiced means ask someone who knows. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
+Honest labeling tells everyone what they rely on: CI-enforced means trusting the pipeline, while practiced means asking someone who knows. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 
 The three levels rhyme with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you rely on.
 
-Your current level tells you what you rely on, and your starting point tells you adoption order. A greenfield codebase and a six-year-old production system are not the same problem with different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
+Your current level tells you what you rely on, and your starting point tells your adoption order. A greenfield codebase and a six-year-old production system is a different problem with different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as practice-readiness framing. The practiced/documented/CI-enforced split is book synthesis for repo-local adoption state.*

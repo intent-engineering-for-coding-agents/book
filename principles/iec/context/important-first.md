@@ -27,3 +27,4 @@ Structure every document: what must the reader know first? Put it first. What ca
 
 - intent-book, *"Context Window" chapter*, agent-instructions section.
 - AgentPatterns.ai, *"TOC pattern" and top-down attention*, ongoing.
+

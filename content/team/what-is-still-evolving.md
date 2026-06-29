@@ -1,8 +1,8 @@
 # What Is Still Evolving
 
-The individual practices in this book have enough evidence and repetition to teach directly. The team practices need more caveats, and this chapter does not pretend otherwise.
+The individual practices in this book have enough evidence and repetition to teach directly. The team practices need more issues, and this chapter does not pretend otherwise.
 
-The team and cross-team practices are plausible extensions of the individual workflow, not settled field standards. Some of the problems named here are real, documented, and unsolved. That is the honest maturity model the book has applied since the Foundation section.
+The team and cross-team practices are plausible extensions of the individual workflow, not settled field standards. Some of the problems named here are real, documented, and unsolved. That is the bar this book uses.
 
 ## What is known and working
 
@@ -10,13 +10,13 @@ The individual-scale practices are documented in a growing body of evidence. Spe
 
 Short-lived branches and trunk-based development have decades of documented practice behind them. The Intent Engineering application is narrower: change folder scope matches branch scope, and PR class matches review style.
 
-The failure modes behind all this (incompatible specs, stale agent instructions, context poisoning, agent-accelerated drift) are not speculative. They are team-scale versions of failure modes documented in the published sources this book uses from 2025 onward. The controls above them are still being assembled.
+The failure modes behind all this (incompatible specs, stale agent instructions, context poisoning, agent-accelerated drift) are not speculative. They are team-scale versions of failure modes the published sources already document. The controls above them are still being assembled.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, cognitive debt and fragmented SDD tooling as documented failure context. Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, Feb 27, 2026, OpenSpec, Spec-Kit, LeanSpec, and GSD as active SDD variants. The change-folder-as-isolation primitive and intent-first PR review mapping are this book's synthesis.*
 
 ## What has patterns but not consensus
 
-Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. It is not yet standardized for agent workflows: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs varies by organization. The pattern is clear, but the form is not.
+Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. It is not yet standardized for agent workflows: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs vary by organization. The pattern is clear, but the form is not.
 
 Inner source for `.agents/` libraries follows well-understood shared-library mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? In the sources reviewed for this book, no shared package-management convention for agent instruction files appears as of mid-2026.
 
@@ -30,7 +30,7 @@ Multi-repo planning remains a gap in the SDD sources reviewed for this book. Whe
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 
-Governance without bureaucracy is the aspiration this book has not seen any framework deliver at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a governance committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? In the sources reviewed for this book, the answer is social pressure and champions. That answer gets thin in an organization of two hundred developers.
+No framework in the sources reviewed for this book has delivered governance without bureaucracy at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a government committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? In the sources reviewed for this book, the answer is social pressure and champions. That answer gets thin in an organization of two hundred developers.
 
 *Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, Mar 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), Workspaces roadmap naming multi-repo planning as an in-development team problem. Governance without bureaucracy is this book's open-problem framing.*
 

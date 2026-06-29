@@ -20,13 +20,13 @@ Principles about how to structure a repository so agents and humans find what th
 | IEC-FOUNDATION-DIAGRAMS-ARE-PLAIN-TEXT | Diagrams live as Mermaid in fenced code blocks: diffable, renderable, and agent-readable. |
 | IEC-FOUNDATION-DECISIONS-LIVE-IN-DOCS | Architectural decisions and conventions live in `docs/`, not in PR descriptions or code comments. |
 | IEC-FOUNDATION-MATURITY-LADDER | Distinguish practiced from documented from CI-enforced from target state. Honesty prevents process theater. |
-| IEC-FOUNDATION-BRIEFING-NOT-POLICING | Structure gives the agent enough briefing to make plausible guesses. It is not about policing. |
+| IEC-FOUNDATION-STRUCTURE-NOT-POLICING | Structure gives the agent enough input to make plausible guesses. It is not about policing. |
 | IEC-FOUNDATION-DISCIPLINE-MATCHES-SCOPE | Match the discipline to project scope: skip it for throwaway work, write specs at weeks, adopt full Intent Engineering for production. |
 | IEC-FOUNDATION-HIGHEST-USEFUL-ABSTRACTION | Move knowledge to the highest useful level of abstraction. |
 
 ## Context
 
-Principles about briefing the agent: what goes in `AGENTS.md`, how to write instructions that work, and how to manage the context window.
+Principles about context the agent: what goes in `AGENTS.md`, how to write instructions that work, and how to manage the context window.
 
 | ID | Summary |
 |----|---------|
@@ -102,7 +102,7 @@ Principles about team process, adoption, and culture.
 | IEC-TEAM-ANCHOR-SDLC | Anchor process to existing SDLC primitives (branches, PRs, tickets, ADRs), not new ceremonies. |
 | IEC-TEAM-ADOPTION-IS-PULL | Document what teams have made work; let the reader decide what to lift. |
 | IEC-TEAM-GIVE-CREDIT | A book that hides its sources is weaker, not stronger. Credit sources explicitly. |
-| IEC-TEAM-REPO-IS-BRIEFING | The repo is the briefing: every new developer and every new agent session starts here. |
+| IEC-TEAM-REPO-STARTS-HERE | The repo is the starting point: every new developer and every new agent session starts here. |
 | IEC-TEAM-ONE-OPENSPEC-PER-STACK | Each stack in a multi-tier system gets its own `openspec/` directory: prevents cross-tier context confusion. |
 | IEC-TEAM-INTEGRATION-CONTRACT-IN-ADR | Cross-tier API contracts belong in ADRs, not in individual stack specs. |
 | IEC-TEAM-CHANGE-FOLDER-AS-ISOLATION | One change folder per developer-agent pair is the isolation primitive for parallel work. |

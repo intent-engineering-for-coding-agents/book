@@ -37,3 +37,4 @@ Before any commit, run: git diff --cached | rg 'sk-|api_key|SECRET'
 ## Sources
 
 - intent-book, *"Skills, Commands, and Hooks" chapter*, agent-instructions section.
+

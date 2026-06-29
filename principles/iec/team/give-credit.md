@@ -28,3 +28,4 @@ Every section that makes a factual, historical, operational, or comparative clai
 
 - intent-book, plan.md, Living Principles appendix.
 - intent-book, *".agents/instructions/writing.md"* and *"credibility-pass.md"*.
+

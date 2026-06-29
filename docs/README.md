@@ -86,3 +86,4 @@ The book is complete. The section `index.md` files under `content/` describe eac
 |---|---|---|
 | [0001](decisions/0001-vitepress.md) | VitePress over alternatives | accepted |
 | [0002](decisions/0002-content-dir.md) | `content/` for VitePress prose | accepted |
+

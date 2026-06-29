@@ -1,6 +1,6 @@
 # Cross-Team Coordination
 
-Consider two teams sharing an authentication boundary. Team A changes the token format and records the decision in an ADR marked Internal, inside Team A's repo. Team B's agents keep parsing the old format out of Team B's architecture docs, because Team A's decision log never enters their context. The breaking change reaches Team B the way these things usually do: as a production incident.
+Consider two teams sharing an authentication boundary. Team A changes the token format and records the decision in an ADR marked Internal, inside Team A's repo. Team B's agents keep parsing the old format out of Team B's architecture docs because Team A's decision log never enters their context. Team B learns about the break the usual way, in production.
 
 The ADR did its job for Team A. The mechanism that would have carried it to Team B did not exist.
 
@@ -12,9 +12,9 @@ Architectural Decision Records are the strongest cross-team primitive this book 
 
 For cross-team decisions, the ADR location matters. An ADR checked into Team A's repository is private to Team A's agents and Team A's developers who read the repo. An ADR checked into a shared architecture repository, one all teams' agents are instructed to read, becomes cross-team context.
 
-The shared architecture repository pattern is simple: a repository, or sub-directory in a monorepo, contains ADRs for decisions affecting more than one team. Team A's `AGENTS.md` tells agents to check the shared architecture repo before writing specs across service boundaries. Team B's brief says the same. The authentication token format change goes into the shared repo, where both teams' agents load it.
+The shared architecture repository pattern is simple: a repository, or subdirectory in a monorepo, contains ADRs for decisions affecting more than one team. Team A's `AGENTS.md` tells agents to check the shared architecture repo before writing specs across service boundaries. Team B's instructions say the same. The authentication token format change goes into the shared repo, where both teams' agents load it.
 
-This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is explicit pre-spec context loading from the shared repo.
+This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is a pre-spec context load from the shared repo.
 
 ```mermaid
 graph TD
@@ -48,9 +48,9 @@ The mechanics resemble any shared library contribution. The team publishes the s
 
 The pragmatic shortcut for smaller organizations: a single `shared-agents` repository with skills and instruction files that teams include in their `AGENTS.md` by reference. The team's local `AGENTS.md` loads the shared file first, then layers project-specific conventions on top. The shared file changes less often, while the project-specific layer changes frequently.
 
-Inner source for agent instructions is book synthesis. As of mid-2026, there is no widely-adopted standard for packaging, versioning, or distributing `.agents/` libraries. Treat this as a borrowing from shared-library practice, not a solved agent workflow.
+The inner source for agent instructions is book synthesis. As of mid-2026, there is no widely adopted standard for packaging, versioning, or distributing `.agents/` libraries. Treat this as a borrowing from shared-library practice, not a solved agent workflow.
 
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), AGENTS.md as shared project brief. The inner-source distribution pattern for `.agents/` libraries is this book's synthesis.*
+*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), AGENTS.md as a shared project instruction set. The inner-source distribution pattern for `.agents/` libraries is this book's synthesis.*
 
 ## Multi-repo realities
 
@@ -58,7 +58,7 @@ Most teams work in multi-repo environments: the payment service in one repositor
 
 Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
 
-MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The stability of this pattern depends on the MCP tooling available, so treat it as a promising integration path rather than a settled workflow.
+MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is an emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The stability of this pattern depends on the MCP tooling available, so treat it as a promising integration path rather than a settled workflow.
 
 Multi-repo coordination is harder at the agent level than at the code level. Shared libraries and package managers handle cross-repo dependencies for code. Shared context is still largely manual for agents: developers read the other team's architecture docs, then instruct their agent with what they found. This is the gap, not the fix.
 

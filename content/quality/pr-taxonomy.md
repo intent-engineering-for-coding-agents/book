@@ -8,7 +8,7 @@ Intent Engineering treats PR shape as part of the intent. The spec states what s
 
 ## The three classes
 
-Use three PR classes. Put the class in the PR title, label, or template field before review starts.
+Use three PR classes. Put the class in the PR title, label, or template field before the review starts.
 
 | Class | Allowed diff | Reviewer question | Agent instruction |
 |---|---|---|---|
@@ -24,7 +24,7 @@ Mix classes and the reviewer switches lenses mid-scroll. Free riders hide there.
 
 ## Tell the agent before code exists
 
-Applied after the diff exists, PR taxonomy turns into cleanup triage. The mixed diff already exists. The fix belongs in the task brief and agent instructions.
+Applied after the diff exists, PR taxonomy turns into cleanup triage. The mixed diff already exists. The fix belongs in the task scope and agent instruction set.
 
 Use direct rules:
 

@@ -27,3 +27,4 @@ Describe what the agent needs to do, not which vendor command to run. "Resolve t
 
 - intent-book, *"Capability-Class Targeting" concept*, agent-instructions section.
 - intent-book, plan.md, Living Principles appendix.
+

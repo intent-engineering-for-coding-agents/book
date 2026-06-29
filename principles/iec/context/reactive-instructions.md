@@ -11,7 +11,7 @@ Start minimal and add instructions reactively. The agent violates a convention. 
 
 ## Why it matters
 
-Speculative instructions bloat the context budget with rules the agent may never need. They also create a false confidence that the agent has been briefed on something it never actually violated. The reactive approach keeps the instruction set lean and each instruction tethered to a real failure.
+Speculative instructions bloat the context budget with rules the agent may never need. They also create a false confidence that the agent has been loaded on something it never actually violated. The reactive approach keeps the instruction set lean and each instruction tethered to a real failure.
 
 ## Violations to detect
 
@@ -26,3 +26,5 @@ The cycle: observe a failure → write the smallest instruction that prevents it
 ## Sources
 
 - intent-book, *"Writing Instructions" chapter*, agent-instructions section.
+
+

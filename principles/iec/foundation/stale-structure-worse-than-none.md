@@ -29,3 +29,4 @@ Treat `AGENTS.md` as part of the architecture. Any PR that changes something `AG
 - intent-book, *"When Intent Engineering Fails" chapter*, foundation section.
 - intent-book, *"Honest Maturity" chapter*, quality section.
 - intent-book, *"AGENTS.md" chapter*, agent-instructions section.
+

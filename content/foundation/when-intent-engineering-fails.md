@@ -22,7 +22,7 @@ A dead spec is worse than no spec. It tells the agent authoritatively about beha
 
 ## Agent-accelerated tech debt
 
-Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this kind of drift accumulated across quarters. At agent speed, a day of merged PRs adds the architectural contradictions that once took weeks of hand-written changes to produce. Yegge's framing of the agentic shift fits: velocity amplifies whatever discipline is already there, and whatever is missing.
+Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this kind of drift accumulated across quarters. At agent speed, a day of merged PRs adds the architectural contradictions that once took weeks of handwritten changes to produce. Yegge's framing of the agentic shift fits: velocity amplifies whatever discipline is already there, and whatever is missing.
 
 The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the intention it needs. Decisions written down as ADRs are constraints the agent will follow. Intent and constraints living only in human memory will be violated.
 
@@ -30,7 +30,7 @@ The Spec-Driven topic exists because of this mode. Writing the spec before the a
 
 ## Over-spec
 
-The team writes multi-page specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from requirements buried late in the spec, drifts during the long reading pass and misses the requirement that mattered.
+The team writes multipage specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from requirements buried late in the spec, drifts during the long reading pass and misses the requirement that mattered.
 
 Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
 
@@ -58,9 +58,9 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small) |
 | Drift with no detection | Quality and Verification |
 
-ThoughtWorks Radar Vol 34 names the cost that accrues when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deploy. Keeping the agent's context coherent enough to hold it down is what the Radar calls "harness engineering". The rest of this book is about building those controls, one failure mode at a time.
+ThoughtWorks Radar Vol 34 names the cost that grows when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deployment. Keeping the agent's context coherent enough to hold it down is what the Radar calls "harness engineering". The rest of this book is about building those controls, one failure mode at a time.
 
-Zero drift is not the goal. Catching it before it compounds is.
+The goal is not zero drift. The goal is to catch mismatches before they stack up.
 
 Six months of accumulated mismatch trace back to what the agent was reading. What the agent should have been reading is the question the Agent Instructions topic exists to answer.
 

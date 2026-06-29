@@ -1,8 +1,8 @@
-# The Spectrum
+yes# The Spectrum
 
-How much process does renaming a config variable deserve? Adopt a full Spec-Driven Development framework and the answer is: far more than it needs. The ceremony is real, proposal, design, specs, tasks, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theater. The structure that protects a risky change suffocates a trivial one.
+How much process does rename a config variable deserve? Adopt a full Spec-Driven Development framework, and the answer is: far more than it needs. The ceremony is real, proposal, design, specs, tasks, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theater. The structure that protects a risky change suffocates a trivial one.
 
-Consider a team that writes no specs at all, operating on prompts and conversation history alone. Features work until a later session extends them. Then someone asks why the validation is in the controller and the only answer is git blame.
+Consider a team that writes no specs at all, operating on prompts and conversation history alone. Features work until a later session extends them. Then someone asks why the validation is in the controller, and the only answer is git blame.
 
 Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. SDD is the practice: per-change intent with testable acceptance criteria. GSD, `spec.md`, OpenSpec, LeanSpec, and Spec-Kit are implementations of it at different levels of formality. The tools below are a mid-2026 snapshot, not a settled field.
 
@@ -53,9 +53,9 @@ This is not BDD: there are no step definitions, no Cucumber runtime, and the sce
 
 The change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
 
-OpenSpec is the engine this book uses, not the only engine that works. The closest alternative is not another product. It is the plain `spec.md` your team has already shaped into a local workflow. The durable part is the bundle of concerns: a statement of intent, an implementation approach when the change needs one, behavioral specs, an execution plan, and an archive rule. A framework with those properties buys most of the same control.
+OpenSpec is the workflow this book uses. It is not the only one that works. The closest alternative is the plain `spec.md` your team has already shaped into a local workflow. The durable part is the bundle of concerns: a statement of intent, an implementation approach when the change needs one, behavioral specs, an execution plan, and an archive rule. A framework with those pieces buys most of the same control.
 
-The selection rule is simpler than the tool names make it sound: pick the lightest framework already closest to the artifact set and lifecycle you want. A plain `spec.md` plus four house rules for a proposal, tasks, archive, and review is already a framework. Pretending otherwise only hides the maintenance cost.
+The selection rule is simpler than the tool names make it sound: pick the lightest framework that is already closest to the artifact set and lifecycle you want. A plain `spec.md` plus four house rules for a proposal, tasks, archive, and review is already a framework. Pretending otherwise only hides the maintenance cost.
 
 OpenSpec is the choice here because it supplies the lifecycle without hiding the files. One change folder holds a single unit of intent, carrying delta specs for the behavior changes, Gherkin-style scenarios to make the acceptance criteria concrete, and `tasks.md` for the agent's execution path. Archiving then keeps active intent apart from the historical record.
 
@@ -85,7 +85,7 @@ Match formality to risk is LeanSpec's framing. The table below is this book's wo
 
 This is a heuristic, not a decision tree. The real question is the cost of discovering the wrong intent after implementation. Low cost, low formality. High cost, high formality.
 
-Read the table per project, not only per change. A solo developer shipping one agent-assisted feature might stay with `spec.md`. A solo developer shipping twenty changes into the same codebase has a different problem: old intent, current intent, test evidence, and archive history start piling up. At that point, OpenSpec's lifecycle stops looking like ceremony and starts looking like bookkeeping you were going to need anyway.
+Read the table per project, not only per change. A solo developer shipping one agent-assisted feature might stay with `spec.md`. A solo developer shipping twenty changes into the same codebase has a different problem: old intent, current intent, test evidence, and archive history start piling up. At that point, OpenSpec's lifecycle stops looking like a ceremony and starts looking like bookkeeping you were going to need anyway.
 
 The same dial governs how you stage the change, not only which framework you reach for. A change carrying a real decision earns a spec PR before any implementation, so the intent is corrected while correcting it is cheap. A change whose intent is visible in the diff ships as one PR. The [trunk-based development chapter](/team/trunk-based-development) works the mechanics.
 

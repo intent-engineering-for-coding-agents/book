@@ -28,3 +28,4 @@ The canonical instructions live in `.agents/`. Vendor files are generated or con
 - intent-book, *"Vendor Files" chapter*, agent-instructions section.
 - intent-book, *"Instruction Hub" chapter*, agent-instructions section.
 - intent-book, plan.md, Living Principles appendix.
+

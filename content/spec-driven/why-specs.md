@@ -12,9 +12,9 @@ A spec is written intent: what this change is supposed to do, what it should not
 
 It is not a requirements document in the enterprise sense. No stakeholder sign-off, no phase boundary, no month-long handoff. The same developer who will implement the change writes the spec and gets its intent approved before any code exists. The lifecycle is lightweight: a pull request for the proposal, then one or more for the implementation.
 
-Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created and the 201 is returned with the ID. These scenarios double as test definitions: each one maps to a test. The spec is not done when the prose is written. It is done when the tests pass.
+Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created, and the 201 is returned with the ID. These scenarios double as test definitions: each one maps to a test. The spec is not done when the prose is written. It is done when the tests pass.
 
-This change-scoped definition is the working synthesis this book uses. It distills the lightweight spec frameworks rather than enterprise requirements practice: the spec stays small, lives beside the code, and earns its keep through acceptance criteria a test verifies.
+This book uses a change-scoped definition. It takes the lightweight spec frameworks, not enterprise requirements practice. The spec stays small, lives beside the code, and earns its keep through acceptance criteria a test verifies.
 
 *Sources: Fission AI, OpenSpec; LeanSpec, the change-scoped spec and acceptance-criteria structure this book's working definition distills.*
 
@@ -48,7 +48,7 @@ What makes a process waterfall is batch size and the handoff boundary, not the f
 
 A spec here is the opposite end of both axes. It is scoped to one PR and written by the same person who will implement it. Writing it takes a short sitting, not a month. It gets critiqued before implementation, but by a small number of colleagues rather than a steering committee.
 
-Written that way, spec-before-code is the agile loop run one change at a time. The cycle is short, the implementer owns it, and it ends in working software: the spec is done when its tests pass, not when its prose is written. "Working software over comprehensive documentation" is the spec's own rule, which is why it stays small, ships, and gets archived after merge. A pre-flight check, not a contract: it catches the obvious failure before takeoff and does not stop you diverting mid-flight when conditions change. A contract does. Write the spec to catch problems, not to trap you in them.
+Written that way, spec-before-code is the agile loop run one change at a time. The cycle is short. The implementer owns it. It ends in working software: the spec is done when its tests pass, not when its prose is written. "Working software over comprehensive documentation" fits the rule. The spec stays small, ships, and gets archived after merge. A pre-flight check catches the obvious failure before takeoff. A contract does not. Write the spec to catch problems, not to trap you in them.
 
 The version that does slide back toward waterfall is the oversized spec that tries to settle the whole system before any code exists. That is a batch-size failure, not an intent-first one, and keeping specs small is what prevents it.
 

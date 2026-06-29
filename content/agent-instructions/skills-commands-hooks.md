@@ -89,7 +89,7 @@ The output should read like data, not terminal noise:
 }
 ```
 
-The failure mode is concrete. A human-oriented CLI prints `Continue? [y/N]` and waits forever. An agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. A human-oriented CLI writes warnings into the same stream as the JSON. An agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
+The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and waits forever. An agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. A human-facing CLI writes warnings into the same stream as the JSON. An agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
 
 This is not polish, but control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
 

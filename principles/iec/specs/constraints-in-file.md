@@ -11,7 +11,7 @@ Constraints that live only in human memory — "we don't use that pattern," "thi
 
 ## Why it matters
 
-Every team carries unwritten constraints. The senior developer who joined three years ago knows them. The agent that joined three minutes ago does not. The gap between the team's implicit knowledge and the agent's explicit briefing is where violations happen.
+Every team carries unwritten constraints. The senior developer who joined three years ago knows them. The agent that joined three minutes ago does not. The gap between the team's implicit knowledge and the agent's explicit context is where violations happen.
 
 ## Violations to detect
 
@@ -27,3 +27,5 @@ For every constraint the team enforces in review, ask: does this exist in a file
 
 - intent-book, *"When Intent Engineering Fails" chapter*, foundation section.
 - intent-book, *"Writing Instructions" chapter*, agent-instructions section.
+
+

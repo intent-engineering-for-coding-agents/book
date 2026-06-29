@@ -1,18 +1,18 @@
 # Context Window Management
 
-A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honored, or a decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context that mattered either dropped off the back to make room, or it is still in the window and the agent has quietly stopped attending to it.
+A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honored, or a decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context that mattered either dropped off the back to make room, or it is still in the window, and the agent has quietly stopped attending to it.
 
-This is not a bug. Every token in the context window costs something, and it costs in two directions. Reliability is the first. On a session that overflows, old tokens fall out as new ones arrive and the agent loses earlier context.
+This is not a bug. Every token in the context window costs something, and it costs in two directions. Reliability is the first. In a session that overflows, old tokens fall out as new ones arrive and the agent loses earlier context.
 
-Long before any overflow, a window packed with files the task never needed buries the few tokens that mattered, and the model attends to them less reliably even though they remain in the window. Money is the second cost, for teams billed per token. The window does not need to fill for either cost to bite. The question is what you put in it.
+Long before any overflow, a window packed with files the task never needed buries the few tokens that mattered, and the model attends to them less reliably even though they remain in the window. Money is the second cost for teams billed per token. The window does not need to fill for either cost to bite. The question is what you put in it.
 
 ## What eats the context
 
-Loading files is the most common way to exhaust context before the task starts. An `AGENTS.md` that imports four instruction files, a spec, two design docs, and an architecture overview has consumed thousands of tokens before the agent has written a line. If those files are loaded every session regardless of task, most sessions spend their early context on briefing they do not need.
+Loading files is the most common way to exhaust context before the task starts. An `AGENTS.md` that imports four instruction files, a spec, two design docs, and an architecture overview has consumed thousands of tokens before the agent has written a line. If those files are loaded every session regardless of task, most sessions spend their early context on files they do not need.
 
 The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the entry point, a short file that says what to load next, and loads only the instruction files relevant to the current task. Everything else stays unread.
 
-`docs/INDEX.md` exists for the same reason. One 40-line file, full orientation. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens to find its bearings. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
+`docs/INDEX.md` exists for the same reason. One 40-line file, full map. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), context-window pressure as a practical constraint across agentic coding tools.*
 
@@ -36,9 +36,9 @@ This is counterintuitive. The instinct is to keep context rich by not resetting.
 
 Review is the third case, and the sharpest. An agent that reviews its own work in the same session does not read the diff cold: every justification for every choice it made is still in context, so it defends the code instead of auditing it. The prior reasoning does more than fill the window, it primes the conclusion, and the review confirms what a fresh reader would have questioned. Hand the review to a new session or a subagent, and the reviewer reads what is on the page, with no stake in the decisions.
 
-Cost runs the same direction. A long session re-bills its growing transcript on every turn, so the reset that protects attention is also where the bill stops compounding.
+Cost runs in the same direction. A long session re-bills its growing transcript at every turn, so the reset that protects attention is also where the bill stops compounding.
 
-Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than instructions the agent no longer has in active context.
+Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than the instruction set the agent no longer has in active context.
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (Feb 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
 
@@ -62,14 +62,14 @@ Context management is not a one-time configuration. It is an ongoing judgment, r
 
 An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what remains from an hour ago.
 
-Context management is the discipline of keeping the agent oriented. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures remain even with a perfectly managed window.
+Context management is the discipline of keeping the agent loaded with the right context. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures remain even with a perfectly managed window.
 
 ## What context management cannot fix
 
-Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the agent's reasoning is fundamentally flawed, the task is genuinely ambiguous, or the codebase has contradictions the agent cannot resolve. Context management fixes the problems caused by context loss. A vague brief or a contradictory codebase is not one of them.
+Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the agent's reasoning is fundamentally flawed, the task is genuinely ambiguous, or the codebase has contradictions the agent cannot resolve. Context management fixes the problems caused by context loss. A vague instruction set or a contradictory codebase is not one of them.
 
-The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the brief or the codebase itself. Resetting the session will not fix those. Fixing the context will not fix a broken brief.
+The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the instruction set or the codebase itself. Resetting the session will not fix those. Fixing the context will not fix a broken instruction set.
 
 Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
 
-Context management keeps the agent oriented, and orientation is the whole of what the Agent Instructions topic delivers: a session that arrives briefed on the system. Briefing is what the system is. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry, and supplying it is where the next topic begins.
+Context management keeps the agent loaded with the right context. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry, and supplying it is where the next topic begins.

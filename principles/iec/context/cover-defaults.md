@@ -27,3 +27,4 @@ Identify the three patterns the agent gets wrong most often. Write the three ins
 
 - intent-book, *"Writing Instructions" chapter*, agent-instructions section.
 - intent-book, *"Test Strategy and Convention" chapter*, quality section.
+

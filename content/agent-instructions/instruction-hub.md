@@ -8,7 +8,7 @@ The fix is not better synchronization between two files. It is one file that bot
 
 ## `.agents/instructions/`
 
-An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain, letting the agent read the relevant one and skip the rest.
+An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist, so each session loads only what matters for the current task. Each file covers one domain, letting the agent read the relevant one and skip the rest.
 
 `instructions/` is this book's name for this layer. At the time of writing, no cross-tool standard specifies this subdirectory path yet.
 
@@ -69,7 +69,7 @@ The honest caveat: hook authoring is immature. The tooling varies by agent, the 
 
 *Sources: Anthropic, "Building effective agents" (Dec 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision.*
 
-The hub gives the agent its orientation about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub briefs the agent on the rules. The spec briefs it on the intent.
+The hub gives the agent context about the codebase. What it still needs for any particular task is a spec: not how the system works in general, but what this specific change is supposed to do. A well-built hub gives the agent the rules. The spec gives it the intent.
 
 ## When the hub becomes overhead
 
@@ -81,7 +81,7 @@ Two things change the calculation. First, tool independence: a developer who wan
 
 The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs consistent agent behavior across all of them. Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes. At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
 
-The practical test: if you are maintaining one instruction file, and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same brief, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is a premature structure.
+The practical test: if you are maintaining one instruction file, and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same instruction set, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is a premature structure.
 
 ## Tooling
 

@@ -54,7 +54,7 @@ A design principle where the tool uses the caller's model provider credentials r
 
 ## Capability-class agent
 
-A coding agent that combines a thinking model, real tool use, and a plan or architect mode. The book targets this class specifically. The exact roster is time-bounded and lives in [Tooling Landscape](/appendices/tooling-landscape). Completion-only tools are out of scope.
+A coding agent with a thinking model, real tool use, and a plan or architect mode. The book targets this class. The current roster is time-bounded and lives in [Tooling Landscape](/appendices/tooling-landscape). Completion-only tools are out of scope.
 
 ## Change folder
 
@@ -215,3 +215,4 @@ The table-of-contents approach to writing `AGENTS.md`: a short file at the repo 
 A thin end-to-end implementation built forward to prove an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the agentic-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
 
 *Sources: Alistair Cockburn, "Crystal Clear" (2004), origin of the walking-skeleton pattern. The `skeleton.md` reversal described here is this book's synthesis.*
+

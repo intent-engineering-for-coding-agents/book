@@ -1,12 +1,12 @@
 # Introduction
 
-The human-agent mindset is not enough by itself. A source-controlled workspace built for collaboration still needs a discipline for deciding what the agent should know, what the agent should build, and what proof the result must clear.
+The human-agent mindset is not enough by itself. A source-controlled workspace built for collaboration still needs a discipline for deciding what the agent should know what the agent should build, and what proof the result must clear.
 
 A coding agent works fast. It has been trained on a lot of code, and it often generates a payment service in minutes that might have taken you days.
 
 The agent has no idea what you decided.
 
-Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
+Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it, and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". A coding agent in the hands of a clueless developer ships "clueless" code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral, but not what it amplifies.
 
@@ -28,14 +28,14 @@ The book is OpenSpec-first on purpose. Intent Engineering is the portable practi
 
 This book adopts the term because the surrounding vocabulary is moving in this direction. The framing here is a practical synthesis, not a field standard. It sits near current Intent-Driven Development writing, but uses the narrower term Intent Engineering for Coding Agents for one specific combination: durable intent, spec-first change control, and executable proof for agent-generated code.
 
-*Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
+*Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining an outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
 
 An agent in Intent Engineering plays two roles:
 
 - Labor is the obvious one. The agent writes the code, drafts the spec, runs the tests, opens the PR.
 - The less-discussed role is sparring partner.
 
-Ask a well-briefed agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you did not think to ask, and names the opportunity you walked past without even knowing.
+Ask a well-loaded agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you did not think to ask, and names the opportunity you walked past without even knowing.
 
 That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think, not random chance. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
 
@@ -47,7 +47,7 @@ The book is organized around four topics. Each works at a solo scale and couples
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it.
 
-Foundation: repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: briefing keeps the agent from choosing wrong out of ignorance.
+Foundation: repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: context keeps the agent from choosing wrong out of ignorance.
 
 Agent Instructions: `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
@@ -61,7 +61,7 @@ In the SDD material reviewed for this book, the emphasis is heavier on aiming th
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, Jan 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" is already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
 
 What you will not find here:
 
@@ -74,7 +74,7 @@ You are a senior developer or architect. You already use a capability-class codi
 
 You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
-Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one in costs something today, a cost later chapters name honestly rather than wave away.
+Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one costs something today, a cost later chapters name honestly rather than wave away.
 
 The payoff arrives once switching is inexpensive: running several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
@@ -88,11 +88,11 @@ Reach for the chat window, describe what you want, take the code. Adding specs a
 
 The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
 
-For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions brief the agent on the system it is changing. Specs and verification point it at the target and prove it arrived. None of this is all-or-nothing. You take on more of the discipline as the cost of getting it wrong climbs, the same dial you reach for when deciding how much process a single change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project: whether to bring the discipline to bear at all.
+For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions load the agent with context about the system it is changing. Specs and verification point it at the target and prove it arrived. None of this is all-or-nothing. You take on more of the discipline as the cost of getting it wrong climbs, the same dial you reach for when deciding how much process a single change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project: whether to bring the discipline to bear at all.
 
 ## Intent Engineering fits your SDLC
 
-The acronym collision is real. In 2025-2026, ADLC and agentic SDLC labels showed up around two different jobs: building agents as products, and using coding agents inside ordinary software delivery. This book uses the narrower boundary.
+The acronym collision is real. In 2025-2026, ADLC and agentic SDLC labels showed up around two different jobs: building agents as products and using coding agents inside ordinary software delivery. This book uses the narrower boundary.
 
 When the deliverable is an agent, the control surface belongs to agent engineering. OpenAI's Agents SDK documentation names agents, tools, handoffs, guardrails, human review, state, and observability as the machinery around a growing agent workflow. Anthropic's agent guidance puts the same pressure in plainer terms: keep the design simple, compose focused tools, and evaluate the system.
 

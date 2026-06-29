@@ -28,7 +28,7 @@ features:
     details: The source-controlled workspace as shared ground. Decisions, design docs, specs, and an agent-facing index, before any per-change intent exists.
     link: /foundation/
   - title: Agent Instructions
-    details: AGENTS.md and the .agents/ hub that brief every coding agent on how humans work in this repo.
+    details: AGENTS.md and the .agents/ hub that loads every coding agent with context about how humans work in this repo.
     link: /agent-instructions/
   - title: Spec-Driven Development
     details: Change-sized specs before code, with OpenSpec as the working example. Humans state intent before agents implement.

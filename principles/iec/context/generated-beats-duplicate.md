@@ -26,3 +26,4 @@ The canonical instructions live in `.agents/`. A CI script or `dot-scout` genera
 ## Sources
 
 - intent-book, *"Vendor Files" chapter*, agent-instructions section.
+

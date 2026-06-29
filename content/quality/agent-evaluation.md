@@ -1,10 +1,10 @@
 # Agent Evaluation and Regression
 
-Your agent instructions, skills, and hooks are code. Nobody tests them. They regress anyway.
+Your agent instructions, skills, and hooks are code. Nobody tests them. They drift anyway.
 
-In the companion repo's `examples/eval-demo`, one line added to `AGENTS.md` ("Prefer functions over classes for utility code") pushed the agent away from the project's conventions. The baseline output scores 9/9 and the drifted output scores 5/9.
+In the companion repo's `examples/eval-demo`, one line added to `AGENTS.md` ("Prefer functions over classes for utility code") pushed the agent away from the project's conventions. The baseline output scores 9/9. The drifted output scores 5/9.
 
-Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the one most teams are missing.
+Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the one most teams miss.
 
 *Sources: intent-engineering-for-coding-agents/cli `examples/eval-demo/README.md` (ongoing), the one-line `AGENTS.md` change and the drift symptoms described. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the 9/9 and 5/9 demo scores.*
 
@@ -12,7 +12,7 @@ Tests prove the code is right. They say nothing about whether the agent setup is
 
 The tests in the previous chapter close the loop between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
-The agent setup has no equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect shows up only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change to any of them that makes the agent measurably worse sits in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
+The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect shows up only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change that makes the agent worse can sit in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
 
 This is the open loop. Nothing in the toolchain closes it for you.
 
@@ -20,7 +20,7 @@ This is the open loop. Nothing in the toolchain closes it for you.
 
 ## Golden tests for the agent
 
-A golden test for the agent is a fixed task with a known good output. The task is small enough to run in one session: a specific repo state, a specific spec, a specific change to make. It does not check the exact code the agent writes. The agent rarely produces the same file twice, and a test demanding byte-for-byte equality breaks on the first rewording. A golden test pins down a set of structural properties instead, and a check verifies them.
+A golden test for the agent is a fixed task with a known good output. The task is small enough for one session: a specific repo state, a specific spec, a specific change to make. It does not check the exact code the agent writes. The agent rarely produces the same file twice, and a test demanding byte-for-byte equality breaks on the first rewording. A golden test pins down a set of structural properties instead, and a check verifies them.
 
 The companion repo's eval demo includes a task file with a plain instruction:
 
@@ -87,7 +87,7 @@ The book's central claim, repeated through Foundation and Agent Instructions and
 
 ## Calibration is the hard part
 
-Eval suites for agents are early practice. There is no widely shared tooling for this in 2026. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as an unfilled gap, and neither prescribes a framework. What this chapter describes is the minimum viable shape: a fixed task, a structural check, a comparison.
+Eval suites for agents are still early practice. As of 2026, there is no widely shared tooling for this. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as an unfilled gap, and neither prescribes a framework. This chapter gives the minimum viable shape: a fixed task, a structural check, a comparison.
 
 Keeping the suite calibrated is harder than building it. A task the agent nails reliably today goes uninformative tomorrow when the model improves under it. A task the agent fails reliably tests a property no configuration will satisfy, so it reports noise on every run. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 
@@ -107,3 +107,4 @@ Those two scores are committed snapshots from one run of this example, not a ben
 *Sources: intent-engineering-for-coding-agents/cli (ongoing), `examples/eval-demo` and its `iec eval` invocation.*
 
 The eval suite tells you when the agent setup regresses. It says nothing about whether the link between the spec and the proof has held: whether the test that still passes is still the test that proves the acceptance criterion the spec named. That is a different kind of rot, and it needs its own check.
+

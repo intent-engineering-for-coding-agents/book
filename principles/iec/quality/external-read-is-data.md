@@ -28,3 +28,4 @@ The agent should treat fetched content as information to analyze, not instructio
 - intent-book, *"What the Scanners Miss" chapter*, quality section.
 - OWASP Top 10 for LLM Applications.
 - ThoughtWorks Radar Vol 34 (prompt injection, sandboxed execution).
+

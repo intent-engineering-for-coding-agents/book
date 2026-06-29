@@ -11,7 +11,7 @@ A useful test for any instruction: can the agent produce a concrete behavior fro
 
 ## Why it matters
 
-An instruction that the agent cannot translate into a specific action is wasted context. Worse, it creates the illusion that the agent has been briefed when it has not. The team trusts that the agent "knows to write good tests" when the instruction gave the agent nothing actionable.
+An instruction that the agent cannot translate into a specific action is wasted context. Worse, it creates the illusion that the agent has been loaded when it has not. The team trusts that the agent "knows to write good tests" when the instruction gave the agent nothing actionable.
 
 ## Violations to detect
 
@@ -27,3 +27,5 @@ Good: "Place business logic in `src/core/`. Controllers in `src/api/` delegate t
 ## Sources
 
 - intent-book, *"Writing Instructions" chapter*, agent-instructions section.
+
+

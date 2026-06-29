@@ -6,7 +6,7 @@ Consider a repo that moved to gRPC months ago for typed contracts, streaming, an
 
 REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else.
 
-The handler compiles and passes its tests. The repo now speaks two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
+The handler compiles and passes its tests. The repo now speaks of two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
 
 This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be quietly overwritten. And the count keeps climbing. Every agent session is one more chance to widen the gap between what the team decided and what the code now says.
 
@@ -22,11 +22,11 @@ At human speed, drift like this used to take quarters to compound. At agentic sp
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier.*
 
-## Structure as briefing
+## Structure as context
 
-Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's brief), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
+Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
 
-Chat briefings decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same briefing, every time. The repo becomes the briefing.
+Chat sessions decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same context, every time. The repo becomes the context.
 
 Run the gRPC case forward with the structure in place:
 
@@ -65,7 +65,7 @@ The agent does not have to read the reasoning to find the constraint. `## Decisi
 
 None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
 
-*Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its briefing. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
+*Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its context. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 
 ## The prerequisite
 

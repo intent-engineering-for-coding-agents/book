@@ -35,7 +35,7 @@ A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is 
 
 The ticket is for the team: priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent: delta spec, acceptance criteria, task list, and archive record. The ticket answers "is this being worked on?" The change folder answers "what is being built and how do we know it is done?"
 
-Practically: create the change folder when you start the spec, and link the Jira issue ID in the proposal. The spec references the ticket for context, while the ticket links to the PR that implements it. The agent reads the spec. The sprint board reads the ticket. Neither replaces the other.
+Practically: create the change folder when you start the spec and link the Jira issue ID in the proposal. The spec references the ticket for context, while the ticket links to the PR that implements it. The agent reads the spec. The sprint board reads the ticket. Neither replaces the other.
 
 The reverse link is automatic if you use the issue key in commit messages. Jira's development panel surfaces every commit and PR that contains `XXX-123` in the message, without any manual linking. Include that convention in `AGENTS.md` and the agent will prefix its commits correctly. The result is a full audit trail navigable from either end: the change folder links forward to the ticket, and the commits link back.
 
@@ -47,7 +47,7 @@ For the detailed OpenSpec lifecycle and `opsx:*` command mapping that this chapt
 
 ## User story to acceptance criteria: the conversion
 
-A Jira user story provides the why and the what: "As a user, I want to filter results by date, so that I find recent items". The story does not provide the testable how: what happens when the date range is invalid? What does the empty state look like? What is the minimum acceptable date?
+A Jira user story provides the why and what: "As a user, I want to filter results by date so that I find recent items". The story does not provide the testable how: what happens when the date range is invalid? What does the empty state look like? What is the minimum acceptable date?
 
 One story maps to one or more OpenSpec change folders. The story provides the intent, the spec provides the acceptance criteria, and the spec references the Jira story ID for traceability. Any reviewer reaches the planning decision that initiated it from the spec.
 
@@ -55,7 +55,7 @@ Where a Jira or Confluence Model Context Protocol (MCP) connector is available, 
 
 MCP connector availability for third-party tools is a mid-2026 snapshot. Permissions, supported clients, and exact tool names are product-specific. The durable pattern is the same: agents fetch ticket context before writing specs, and developers review the criteria.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, Feb 27, 2026, the spec layer as where a planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, Feb 27, 2026, the spec layer as where planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
 
 ## tasks.md and the sprint board
 
@@ -69,9 +69,9 @@ The synchronization point is the PR. A change folder with incomplete tasks (`- [
 
 ## ADRs and the architecture review
 
-An Architecture Decision Record (ADR) is the artifact that replaces an architecture review meeting when the team is disciplined about ADRs, and supplements it when they are not.
+An Architecture Decision Record (ADR) is the artifact that replaces an architecture review meeting when the team is disciplined about ADRs and supplements it when they are not.
 
-Large organizations have architecture review boards (ARBs). The ADR is the input: the context, the options considered, the decision, the consequences. The ARB reads ADRs, but does not generate them. Where there is no ARB, the ADR is its own review: posted to the team channel, merged after comment period.
+Large organizations have architecture review boards (ARBs). The ADR is the input: the context, the options considered, the decision, the consequences. The ARB reads ADRs but does not generate them. Where there is no ARB, the ADR is its own review: posted to the team channel, merged after the comment period.
 
 Cross-cutting decisions (API contracts, authentication models, data retention policies) always go into ADRs. These are the decisions that the agent in one stack needs to know about even though they were made in another context. The ADR is permanent, the spec is temporary, and the ADR outlives the change that necessitated it.
 
@@ -86,3 +86,4 @@ The MCP integrations described here (Jira and Confluence) are mid-2026 tools. Th
 *Sources: Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), perishable Jira and Confluence connector availability. The ticket, PR, ADR, and changelog mapping is this book's synthesis for mature team workflows.*
 
 The workflow fits because it follows branches. Short-lived branches, specifically. That is where trunk-based development has been pointing for decades.
+

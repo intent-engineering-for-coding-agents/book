@@ -12,11 +12,11 @@ The problem: you do not know what the agent will get wrong until it gets it wron
 
 An instruction written before a failure is a guess. The agent might never need it. Or the agent reads it in a situation you did not foresee, and the guess produces a failure of its own.
 
-The practical approach in this book is: start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is grounded in a real failure. It states the constraint that bit and prevents a repeat, instead of guarding against a problem you only guessed at. Write it immediately: the failure is in front of you, so you point to the exact wrong output and say what to do instead. Wait a day and you are writing from memory, not from evidence.
+The practical move in this book is to start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is grounded in a real failure. It states the constraint that bit and prevents a repeat, instead of guarding against a problem you only guessed at. Write it immediately: the failure is in front of you, so you point to the exact wrong output and say what to do instead. Wait a day, and you are writing from memory, not from evidence.
 
 Only writing when something fails keeps the file short: nothing enters unless a real failure earned it. A short file loads fast, stays readable, and carries nothing that is not load-bearing. A file full of preemptive rules fills with guesses that never once get exercised.
 
-The goal is not to eliminate improvisation. For most of what the agent does, from choosing an algorithm to shaping an API response, you want it drawing on everything it knows. Constrain every decision and the instruction file stops being a briefing. It becomes a straitjacket.
+The goal is not to remove improvisation. For most of what the agent does, from choosing an algorithm to shaping an API response, you want it drawing on everything it knows. Constrain every decision, and the instruction file stops being a context. It becomes a straitjacket.
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (Dec 2024), keeping the instruction surface minimal and load-bearing.*
 
@@ -28,7 +28,7 @@ A useful test for any instruction: does the agent produce a concrete behavior fr
 
 "Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables. Use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
 
-The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one the agent follows the same way every session.
+The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one of the agent follows the same way every session.
 
 *Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
 
@@ -48,9 +48,9 @@ Some instructions protect architecture. The agent should not touch certain direc
 
 Write them explicitly. "Do not modify files under `src/generated/`. They are produced by the code generator, and any hand-edit will be overwritten on the next build" is an architecture boundary the agent follows. It cannot infer this from the directory name alone.
 
-Most languages have an architectural constraint testing framework that encodes exactly these rules: ArchUnit for Java, NetArchTest for .NET, `dependency-cruiser` for JavaScript and TypeScript, `import-linter` for Python. If yours does, consult it when writing instructions and run it after agent changes to catch what the instructions missed.
+Most languages have an architectural constraint testing framework that encodes exactly these rules: ArchUnit for Java, NetArchTest for .NET, `dependency-cruiser` for JavaScript and TypeScript, `import-linter` for Python. If yours does, consult it when writing instructions and run it after the agent changes to catch what the instructions missed.
 
-Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
+Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raising it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (Dec 2024), explicit constraints and guardrails over implicit ones.*
 
@@ -70,7 +70,7 @@ Requirements:
 - Keep it to one or two sentences
 ```
 
-The "any coding agent or human" requirement is the key addition. Without it the agent writes for itself: phrasing a stronger model interprets correctly but a weaker one glosses over. Test the draft immediately while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
+The "any coding agent or human" requirement is the key addition. Without it the agent writes for itself: phrasing a stronger model interprets correctly, but a weaker one glosses over. Test the draft immediately while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
 
 ## Testing whether your instructions work
 
@@ -82,7 +82,7 @@ Once it works, raise a PR. The review catches instructions that are too broad or
 
 If you wrote the instruction on a stronger model, test it on a weaker one before merging. A stronger model fills in gaps the instruction leaves open. A weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
 
-A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions. Break them into named variables", states the constraint behind it, and only the second changes what the agent produces.
+A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions. Break them into named variables" states the constraint behind it, and only the second changes what the agent produces.
 
 ## When instructions backfire
 

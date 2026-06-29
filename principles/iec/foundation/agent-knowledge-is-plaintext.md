@@ -22,9 +22,10 @@ The agent's only window into the codebase is the files it can read. A convention
 
 ## Good practice
 
-Keep everything the agent needs — ADRs, design docs, test strategy, conventions — in `docs/` as Markdown with Mermaid diagrams. Let the repo be the briefing.
+Keep everything the agent needs — ADRs, design docs, test strategy, conventions — in `docs/` as Markdown with Mermaid diagrams. Let the repo be the context.
 
 ## Sources
 
 - intent-book, *"Plain Text as Code" chapter*, foundation section.
 - Plain Text as Code Manifest, https://github.com/Plain-Text-as-Code.
+

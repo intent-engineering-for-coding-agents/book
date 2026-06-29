@@ -1,20 +1,20 @@
 # AGENTS.md: The Entry Point
 
-An agent briefed on nothing reaches for what it knows.
+An agent with no context reaches for what it knows.
 
 Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they recognize the library and notice what got bypassed. Nobody else on the team would have known.
 
-The agent did not invent the vulnerability. It improvised in the absence of a briefing it was never given.
+The agent did not invent the vulnerability. It improvised in the absence of a context it was never given.
 
-`AGENTS.md` is that briefing: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right and every agent arrives oriented. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right and every agent arrives with the right context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not more briefed, only more constrained.
+Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not better informed, only more constrained.
 
-AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
+AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to tell the agent what to load, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
 
@@ -24,7 +24,7 @@ The TOC pattern implies three things, in this order:
 
 - **Project identity:** what the repo is and what it produces, in one paragraph or a short facts block, not the README
 - **Load-on-demand instructions:** links to `.agents/instructions/...` files, each with a clause saying when to load it
-- **Commands and skills:** key commands and invocable skills, listed last as reference rather than orientation
+- **Commands and skills:** key commands and invocable skills, listed last as reference
 
 The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file only to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
 
@@ -45,7 +45,7 @@ Several major coding agents now read `AGENTS.md` natively. GitHub Copilot's codi
 @AGENTS.md
 ```
 
-Claude Code follows the import and loads the real briefing. Any edit to `AGENTS.md` propagates automatically.
+Claude Code follows the import and loads the real context. Any edit to `AGENTS.md` propagates automatically.
 
 The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of adopting it with Claude Code is one pointer file with one line. That is a small cost for a convention that belongs to no tool.
 
@@ -65,11 +65,11 @@ The TOC pattern has a failure mode: gradual accumulation. Branch naming conventi
 
 The test is not the line count. Does anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact file in the repo. Every session loads it, which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong brief.
+Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact file in the repo. Every session loads it, which means every stale line compounds. The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions. Neither registers as an error. Both produce an agent confidently working from the wrong instructions.
 
 Treat `AGENTS.md` changes as load-bearing. A stale ADR misleads one change. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
 
-`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires. Staleness in `.agents/instructions/` is invisible until a session loads a file that no longer describes the repo. Keeping it accurate is necessary. It is not sufficient.
+`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires. Staleness in `.agents/instructions/` is invisible until a session loads a file that no longer describes the repo. Keeping it accurate is necessary. It is not enough.
 
 ## Tooling
 

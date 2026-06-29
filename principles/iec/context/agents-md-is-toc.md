@@ -7,7 +7,7 @@
 
 ## Principle
 
-`AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to orient the agent, precise enough to link to the specific instruction file relevant to the current task. The agent reads `AGENTS.md` on every session start. If it is too long, the agent skims or fails to load it. If it is outdated, the agent is misled every session.
+`AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to tell the agent what to load next, precise enough to link to the specific instruction file relevant to the current task. The agent reads `AGENTS.md` on every session start. If it is too long, the agent skims or fails to load it. If it is outdated, the agent is misled every session.
 
 ## Why it matters
 
@@ -44,3 +44,4 @@ Short. Directive. Links to the right file for each task.
 
 - intent-book, *"AGENTS.md" chapter*, agent-instructions section.
 - AgentPatterns.ai, *"AGENTS.md: Project-Level README for AI Coding Agents"*, ongoing.
+
