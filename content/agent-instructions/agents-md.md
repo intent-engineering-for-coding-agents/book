@@ -10,9 +10,9 @@ The agent did not invent the vulnerability. It improvised in the absence of a co
 
 ## The TOC pattern
 
-The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
+The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses a rule.
 
-Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not better informed, only more constrained.
+Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a large slice of its context window is gone. The agent is not better informed, only more constrained.
 
 AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to tell the agent what to load, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 

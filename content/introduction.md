@@ -1,6 +1,6 @@
 # Introduction
 
-The human-agent mindset is not enough by itself. A source-controlled workspace still needs a way to tell the agent what to load, what to build, and what proof the result must pass.
+The mindset is not enough by itself. A source-controlled workspace still needs a way to tell the agent what to load, what to build, and what proof the result must pass.
 
 A coding agent works fast. It has been trained on a lot of code. It can generate a payment service in minutes, and it can generate the wrong one just as fast.
 
@@ -8,25 +8,25 @@ The agent has no idea what you decided.
 
 Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it, and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
 
-Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". A coding agent in the hands of an under-informed developer produces incorrect code faster. An experienced developer with a coding agent produces correct code faster. The amplifier is neutral. What it amplifies is not.
+Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". An under-informed developer gets incorrect code faster. An experienced developer gets correct code faster. The amplifier is neutral. What it amplifies is not.
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
-This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less under-informed about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
+This is the territory of Intent Engineering, the practice this book teaches: making the agent less under-informed about your system and intent. Intent Engineering sits inside agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
-This book is not mainly about AI. This book is about a shift in software authorship. The machine writes more of the implementation. The developer spends more time defining the solution, setting the constraints, reviewing tradeoffs, and proving the result.
+This book is not mainly about AI. It is about a shift in software authorship. The machine writes more of the implementation. The developer spends more time defining the solution, setting constraints, reviewing tradeoffs, and proving the result.
 
-Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose rather than its own inference. It takes two forms: per-change specs that say what to do right now, and the permanent decisions and conventions that constrain how anything is done. These are practices you adopt as you need them, not a methodology you install.
+Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose instead of its own inference. It takes two forms: per-change specs for the next change, and permanent decisions and conventions that constrain how anything is done. You adopt them as you need them. They are not a methodology you install.
 
-The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one real lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. This is not a private spec method in disguise. OpenSpec is the engine this book uses to show the practice running. If your team uses a plain `spec.md`, a local spec format, LeanSpec, Spec-Kit, or an internal workflow, translate the OpenSpec terms to your per-change spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
+The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one lifecycle, one directory shape, one archive rule, and one companion repo readers can inspect. This is not a private spec method in disguise. If your team uses a plain `spec.md`, a local spec format, LeanSpec, Spec-Kit, or an internal workflow, translate the OpenSpec terms to your own spec artifact. The book will flag those translation points, but it will not pretend to be a neutral survey of every SDD tool.
 
 *Sources: OpenSpec (openspec.dev), the change-folder, and delta-spec framework this book uses end-to-end.*
 
 "Intent engineering" as a phrase is not this book's coinage. `intentengineering.dev` uses it in a broader sense, covering product intent, UX intent, and agent system design. Related vocabulary is circulating too. "Intent-Driven Development" appears in 2025-2026 essays and concept sites, usually for workflows where intent sits above implementation and guides specs, tasks, or agent execution. The qualifier "for Coding Agents" in this book's title marks a narrower application: the intent you give to an agent that writes code.
 
-This book adopts the term because the surrounding vocabulary is moving in this direction. The framing here is a practical synthesis, not a field standard. It sits near current Intent-Driven Development writing, but uses the narrower term Intent Engineering for Coding Agents for one specific combination: durable intent, spec-first change control, and executable proof for agent-generated code.
+This book adopts the term because the surrounding vocabulary is moving that way. The framing here is a practical synthesis, not a field standard. It sits near current Intent-Driven Development writing, but uses the narrower term Intent Engineering for Coding Agents for one combination: durable intent, spec-first change control, and executable proof for agent-generated code.
 
 *Sources: intentengineering.dev (ongoing), prior broader use of "intent engineering" this book's title distinguishes from. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, Dec 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, Mar 9, 2026), intent-driven development as humans defining an outcome and constraints while agents handle execution. intent-driven-development.com (ongoing), IDD presented as an intent-above-spec framing for AI coding workflows.*
 
@@ -35,11 +35,11 @@ An agent in Intent Engineering plays two roles:
 - Labor is the obvious one. The agent writes the code, drafts the spec, runs the tests, opens the PR.
 - The less-discussed role is sparring partner.
 
-Ask a well-loaded agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you did not think to ask, and names the opportunity you walked past without even knowing.
+Ask a well-loaded agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you missed, and names the opportunity you skipped.
 
-That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand, every session is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think, not random chance. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
+That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
 
-None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economy. They make the discipline more valuable because more of the mechanical implementation work moves to the machine, while more of the software-design burden stays with you.
+None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economics. More implementation work moves to the machine. More design burden stays with you.
 
 ## What to expect
 
@@ -104,7 +104,7 @@ The deliverable is the same software your team has always shipped, with an agent
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
-This book treats Intent Engineering and agent-product lifecycle work as disciplines with overlapping vocabulary and different jobs. One governs an agent you ship and operate. The other governs a coding agent working inside the software lifecycle you already run.
+This book treats Intent Engineering and agent-product lifecycle work as disciplines with overlapping vocabulary and different jobs. One governs an agent you ship and operate. The other governs a coding agent inside the software lifecycle you already run.
 
 *Sources: Sommerville, "Software Engineering" (2015), SDLC as structured software delivery phases; OpenAI Agents SDK documentation (ongoing, reviewed Jun 28, 2026), agents, tools, handoffs, guardrails, human review, state, and observability as agent-product control surfaces; Anthropic, "Building effective agents" (Dec 2024), simple composable agent systems and evaluation guidance; EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (2026), ADLC vocabulary for building and operating agents in production; Outshift (Cisco), "Agentic SDLC: A New Evolution in Software Engineering" (2026), agentic SDLC vocabulary for coding-agent delivery. The worker-versus-product split is this book's synthesis.*
 

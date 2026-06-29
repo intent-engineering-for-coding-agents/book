@@ -2,7 +2,7 @@
 
 Intent Engineering does not prevent specs and agent instructions from falling out of sync with the codebase. It makes that gap visible and recoverable, which is a meaningfully weaker claim, and the honest one.
 
-The five failure modes below remain after good initial setup. They are not beginner mistakes. They emerge once the initial discipline wears off, gradually enough that nothing alerts you before the damage compounds. The chapter exists here, before the practices, so the rest of the book does not read as sales material for itself.
+The five failure modes below remain after good initial setup. They are not beginner mistakes. They show up after the first discipline wears off, and they do it quietly enough that the damage compounds before anyone notices. The chapter sits here, before the practices, so the rest of the book does not read like sales material for itself.
 
 ## Agent instructions rot
 
@@ -16,7 +16,7 @@ Open `openspec/changes/` and find a pile of directories: implemented changes, ca
 
 Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple lands here: the clutter compounds with every change the team leaves un-archived.
 
-A dead spec is worse than no spec. It tells the agent authoritatively about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. Worse, it does so as the agent's first read of the change folder. Archive immediately after implementation. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
+A dead spec is worse than no spec. It tells the agent, with confidence, about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. Worse, it does so as the agent's first read of the change folder. Archive immediately after implementation. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 
 *Sources: De Schryver, "Keep Agentic AI Simple" (2026), clutter as a compounding factor in agent context.*
 

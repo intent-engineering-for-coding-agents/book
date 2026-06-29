@@ -6,9 +6,9 @@ Consider a repo that moved to gRPC months ago for typed contracts, streaming, an
 
 REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else.
 
-The handler compiles and passes its tests. The repo now speaks of two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
+The handler compiles and passes its tests. The repo now speaks two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
 
-This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be quietly overwritten. And the count keeps climbing. Every agent session is one more chance to widen the gap between what the team decided and what the code now says.
+This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be overwritten. The count keeps climbing. Every agent session widens the gap between what the team decided and what the code now says.
 
 ## Compounding drift
 
@@ -16,15 +16,15 @@ The model did not fail. Given the available context, the agent reasoned correctl
 
 ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
 
-There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It migrates from the code to the gap between what the team decided and what the repo expresses.
+There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It moves from the code to the gap between what the team decided and what the repo expresses.
 
-At human speed, drift like this used to take quarters to compound. At agentic speed, weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
+At human speed, drift like this used to take quarters to compound. At agentic speed, it takes weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (Mar 22, 2025), velocity as amplifier.*
 
 ## Structure as context
 
-Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent will improvise wherever the repo stays silent. The choice is how much it has to.
+Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent improvises wherever the repo stays silent. The only question is how much silence you leave.
 
 Chat sessions decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same context, every time. The repo becomes the context.
 
@@ -61,9 +61,9 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 - REST handlers are deprecated; do not add new ones.
 ```
 
-The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is now enforced inside the system that created the temptation, instead of caught later by a reviewer who, by coincidence, happened to remember the migration meeting from a few months back.
+The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is enforced inside the system that created the temptation, instead of caught later by a reviewer who happened to remember the migration meeting from months back.
 
-None of this is about policing the agent. The point is handing the agent enough context to reason instead of guess.
+None of this is about policing the agent. The point is handing it enough context to reason instead of guess.
 
 *Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its context. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 

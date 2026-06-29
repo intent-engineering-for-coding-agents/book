@@ -1,14 +1,14 @@
 # Keeping Documentation Up to Date
 
-Code often changes first, and the documentation describing the old behavior lags behind. The next coding agent reads the document anyway and works from a description of behavior the code no longer has.
+Code often changes first, and the documentation lags behind. The next coding agent reads the document anyway and works from a description the code no longer matches.
 
 The failure is easy to miss because the document still looks authoritative. Nothing in a normal build says the README, design note, or agent instruction file went stale. Tests fail when they stop matching the code. Prose usually does not.
 
-For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads the prose as a working context.
+For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads it as working context.
 
-This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire for turning silent drift into a visible signal.
+This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire that turns silent drift into a visible signal.
 
-A release should leave the repo ready for the next agent session. This chapter covers the inexpensive part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
+A release should leave the repo ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
 *Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as stale reasoning in agentic delivery. The release-to-next-session boundary is this book's synthesis.*
 
@@ -32,7 +32,7 @@ The verification move is familiar by now. Do not match text. Match identity.
 
 [AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten and the test moves files, but the ID remains stable, so the link between intent and proof remains intact.
 
-Documentation needs a lighter version of the same move. Each important document carries a small frontmatter block naming the code paths the check watches, the date somebody last checked the document against those paths, and any outside systems still pointing at the document:
+Documentation needs a lighter version of the same move. Each important document carries a small frontmatter block naming the code paths the check watches, the date somebody last checked it against those paths, and any outside systems still pointing at it:
 
 ```yaml
 ---
@@ -158,7 +158,7 @@ Verification closes the code gap with tests. A documentation drift check closes 
 - run a deterministic check against the link
 - surface failure where the team already pays attention, in CI
 
-The check does less than a test. A test proves behavior. A documentation drift check only proves nobody reviewed the prose after the source moved, or an outside record still depends on the file staying put. The weaker claim is still valuable because silent drift is the normal state otherwise.
+The check does less than a test. A test proves behavior. A documentation drift check only proves nobody reviewed the prose after the source moved, or that an outside record still depends on the file staying put. The weaker claim is still valuable because silent drift is the default otherwise.
 
 ## Limits worth naming
 

@@ -12,13 +12,13 @@ Plain text means a format a human reads in a terminal, a Git diff shows line-by-
 
 It is not a migration. The document lives in the repo from creation, evolves there, and is reviewed in the same PR as the code it describes. If someone needs it in Confluence, in a PowerPoint deck, or on a wiki, that is an export, a one-way snapshot made when needed. The repo is the source of truth. Everything else is a derivative.
 
-Docs-as-code is the established version of this idea, narrowed here to one rule and extended past prose to diagrams and decisions. The book author's Plain Text as Code Manifest (github.com/Plain-Text-as-Code) is the fuller statement. This chapter applies it to the Intent Engineering Foundation. The boundary is easier to state than to enforce: which formats belong, and where in the repo they live.
+Docs-as-code is the established version of this idea, narrowed here to one rule and extended past prose to diagrams and decisions. The book author's Plain Text as Code Manifest (github.com/Plain-Text-as-Code) is the fuller statement. This chapter applies it to the Intent Engineering Foundation. The boundary is easy to write down and hard to enforce: which formats belong, and where in the repo they live.
 
 *Sources: Write the Docs, "Docs as Code" guide (writethedocs.org/guide/docs-as-code, ongoing), docs-as-code as the established practice this extends. Plain Text as Code Manifest (github.com/Plain-Text-as-Code, ongoing), the book author's statement of the philosophy.*
 
 ## Markdown for prose
 
-Markdown is an unremarkable choice. It renders on major Git hosts and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that persist through transformation. But Markdown wins the ecosystem fight. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The interesting part is the discipline.
+Markdown is an unremarkable choice. It renders on major Git hosts and stays readable without a renderer at all. AsciiDoc is the better format on its merits, with richer semantics, real includes, proper tables, and attributes that persist through transformation. But Markdown wins the ecosystem fight. Pick what your tools and your agent already speak, not the format that would have won a fair design review. The discipline is the part that matters.
 
 If a decision or convention needs to exist, it lives in a Markdown file in `docs/` or `AGENTS.md`. PR descriptions are too hard for the agent to find, and description quality is too uneven to rely on. Commit messages are not better: some developers write essays, others write `fix`, and the log is not a reliable index of decisions. Code comments are worse because a coding agent treats code as freely modifiable and rewrites or removes comments without hesitation. Humans expect documentation, not annotations buried in source files. Put the decision in a file, with a name, at a known location.
 
@@ -123,5 +123,4 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 ## The compound effect
 
 A team that practices this consistently accumulates structured context. ADRs build up the agent's picture of system history. Skill files add workflows it invokes, and the architecture overview grows richer as the system grows. After months, the repo instructions a new agent (or a new developer) in minutes rather than days, because the context is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
-
 

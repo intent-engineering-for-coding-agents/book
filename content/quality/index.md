@@ -2,11 +2,11 @@
 
 > A spec without proof is a document. A test without intent is decoration. Quality is what closes the loop between them.
 
-The spec-driven chapters argued that specifications are more important than code. That claim only holds if the spec is connected to something harder than intent: executable proof that the implementation delivers what the spec promised. Without that proof, the spec is a polite hope and the code is whatever the agent decided to ship.
+The spec-driven chapters argued that specifications are more important than code. That claim only holds if the spec is tied to executable proof that the implementation delivers what it promised. Without that proof, the spec is a polite hope and the code is whatever the agent decided to ship.
 
-This topic is about how teams close that loop and keep it closed at agentic speed. Tests that catch real regressions, evaluation that detects the agent setup regressing, acceptance-criterion IDs that remain valid when the spec is rewritten, checkpoints that surface the lapses humans skip. Then security that lives in the artifacts the agent reads, PRs reviewable by one reviewer, and, for teams that want it, a way to encode the shape the code should take alongside the behavior it should exhibit.
+This topic is about how teams close that loop and keep it closed at agentic speed. Tests catch real regressions. Evaluation catches the agent setup regressing. Acceptance-criterion IDs stay valid when the spec is rewritten. Checkpoints surface the lapses humans skip. Security lives in the artifacts the agent reads. PRs stay reviewable by one person. For teams that want it, there is a way to encode the shape the code should take alongside the behavior it should exhibit.
 
-None of these are new individually. What is new is the speed at which they have to operate and the fact that the agent will skip every one of them by default if the structure does not enforce them. Quality at agentic speed is the structure, not the discipline.
+None of these are new by themselves. What is new is the speed they have to survive and the fact that the agent skips them by default unless the structure enforces them. Quality at agentic speed is structure, not discipline.
 
 ## Chapters
 

@@ -2,7 +2,7 @@
 
 # Preface
 
-I wrote this book simply out of irritation. Not at the coding agents, but at the advice concerning them.
+I wrote this book out of irritation. Not at the coding agents, but at the advice around them.
 
 2026: If you were to click open my developer feeds any peaceful afternoon, you would be greeted with another carousel of angry titles:
 
@@ -15,38 +15,38 @@ Fine. Good for them. But I just keep scrolling and waiting for the part that wil
 
 That is most often absent. Though one-pagers are too obvious to be taken seriously, the real answer is missed intentionally. I think because honesty is too much to fit on a one-pager.
 
-This book is my answer to this question: how can one use coding agents in a professional way to develop actual software. Not the kind of demonstrations that we show successfully on a Tuesday… and that break down on Friday. Allow me to preface this by saying just a couple of words.
+This book answers one question: how do you use coding agents in professional software work. Not the demo that looks clean on Tuesday and falls apart by Friday.
 
-Vibe coding is fine. It is great for quick prototyping and mocks.
+Vibe coding is fine for quick prototypes and mocks.
 
-Useful when you need to get something on a screen for the customer, get a sense of a feature, extract requirements from someone who cannot quite say them out loud, or try out three competing frameworks in parallel to see which one fights you least. Which is its use for me.
+Use it when you need a screen mock, a rough feature sketch, or a quick way to tease requirements out of somebody who cannot state them cleanly yet.
 
-Yet a vibe-coded prototype is doomed to become a production system. Usually, the best thing to do is to discard the prototype and begin anew, this time with the true requirements.
+The prototype is not the product. Throw it away and start again with the real requirements.
 
 This should not be new advice. Fred Brooks wrote it down in 1975: plan to throw one away. You will anyway. In 1975, throwing work away hurt, since rebuilding from scratch took weeks.
 
 *Sources: Frederick P. Brooks Jr. "The Mythical Man-Month: Essays on Software Engineering" (1975), plan to throw one away.*
 
-For the build today in 2026, where the major part of the construction is done by a coding agent, the rebuild price is, however, often lower. Ditching the prototype is more often an option than it was when a zero from scratch build might have taken weeks.
+In 2026, when most of the build is done by a coding agent, that second pass is cheaper. Rebuilding is less painful than it was when a fresh start took weeks.
 
-The second build makes each iteration better than the one before. For every "chunk" the prototype used to teach, the second build makes it more focused; every dead end is already gone; every framework is already selected. The prototype was the conversation, but not the artifact.
+The second build is sharper. The dead ends are gone. The framework is chosen. The prototype was the conversation, not the artifact.
 
-For the purposes of this book, I write "coding agent" in places where many would write "AI". A coding agent is an LLM that one deploys as a developer tool. To call this "intelligence" is a marketing decision, not a technical one, and I am not trying to write marketing!
+For this book, I write "coding agent" where many would write "AI". A coding agent is an LLM used as a developer tool. "Intelligence" is a marketing choice, not the technical point here.
 
-A coding agent is not some magic box that is reading your mind. As of 2026 it will not reliably spit out the code you intended in production work from some vague prompt. If you have something in mind, you need to spell out what you need to the agent. Spell the reqs out; state the rules, the intention, the tech stack. Use the agent as a sparring partner to keep your architecture sharp and your design tight, but all the thinking is still on your side.
+A coding agent is not reading your mind. In 2026, a vague prompt still produces the wrong code in production work. State the rules, the intent, and the stack. Use the agent as a sparring partner for architecture and design, but keep the thinking on your side.
 
-That is the purpose of the book. The machine takes care of writing more of the code. Meanwhile, you do more of the high-level thinking: what should be built, what is the appropriate scope, which costs are justified, what testing is necessary to get it merged? You become a writer, not a typist.
+That is the purpose of the book. The machine writes more of the code. You do more of the hard thinking: what gets built, what scope is justified, what cost is worth paying, what tests are required before merge. You become a writer, not a typist.
 
-Finally: this book does not review the agents nor rank any agents. The agent is the worker and the enemy. How you select and employ it is irrelevant, but what you say to it is.
+This book does not review or rank agents. The agent is the worker. What matters is what you say to it.
 
-Context is most of the game. Instead of every session trying to cram everything into another one-shot prompt, carry your context in plain-text documents and diagrams with real semantics, the shared memory that you and the agent re-retrieve a month from now. Without that, it re-creates the very same conventions at every session, re-litigates decisions you have already made, and ships code that compiles and breaks the constraints you never documented.
+Context is most of the game. Do not cram a project into one prompt. Keep the decisions in plain-text documents and diagrams the agent can load again next month. Without that, every session re-creates the same conventions, reopens settled decisions, and ships code that breaks the constraints nobody wrote down.
 
 ## From Vibe to Pro
-This is the portion carousels omit. Provide your agent with enough current details about the system you want built and sustained, and you go from rough prototypes toward production standards. That contextual information does not vanish when the agent codes. It is the more challenging half: the choices, the limitations, the verification that the outcome reflects them. The carousels leap over this because it does not market.
+This is the part the carousels leave out. Give the agent the current details it needs, and the work moves from rough prototype to a production system. The hard part is not the code. It is the choices, the limits, and the proof that the result matches them.
 
-Finally, software development remains a human activity requiring skill and judgment. Humans must remain in the loop. I expect better models and increased automation. I will update this preface as that boundary shifts. In 2026 the job is ours: to be deliberate, to be professional, and to do the part of the job humans continue to do best.
+Software development still needs judgment. I expect better models and more automation, and I will update this preface as that line moves. In 2026 the job is ours: be deliberate, be professional, and do the part only people can do well.
 
-The rest of the book begins with a change of thought: the source-controlled workspace is not just for humans anymore. It is the touchpoint of humans and coding agents, the only place the durably held intent can reside if the code is to last in the long term.
+The rest of the book starts with one shift in thought: the source-controlled workspace is no longer just for humans. It is where durable intent lives if the code is going to survive contact with the next session.
 
 ---
 

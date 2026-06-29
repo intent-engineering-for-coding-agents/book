@@ -48,7 +48,7 @@ Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach ski
 
 ## `.agents/hooks/`
 
-Few teams use agent hooks yet. The case for them comes down to one word: guarantee. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full. Here the point is only where the files live.
+Few teams use agent hooks yet. The case for them comes down to one word: enforcement. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full. Here the point is only where the files live.
 
 Hooks scope to file types too. A hook configured to fire on `.java` file edits runs checkstyle every time the agent touches a Java file, not because the agent remembered to, but because the trigger matched. The Javadoc use case is a clean example: an agent adding a new public method often skips the Javadoc comment. A hook configured on `.java` edits checks every public and protected method and forces the agent to fill in what is missing.
 
