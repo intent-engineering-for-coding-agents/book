@@ -134,6 +134,10 @@ A lightweight spec-driven development framework focused on small, focused specs 
 
 *Sources: LeanSpec (lean-spec.dev, ongoing), the small-spec framework this book cites as one point on the SDD spectrum.*
 
+## LLM (Large Language Model)
+
+This book uses LLM for the language model behind a coding agent. The term matters here only when the model is wrapped in tool use and project context.
+
 ## Load clause
 
 A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading. Without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
