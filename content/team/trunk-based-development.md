@@ -22,7 +22,7 @@ graph TD
 
 For a change with real intent to get right, such as business rules, edge cases, or an architectural choice, the spec rides its own PR first. The branch `spec/add-filter-endpoint` carries the change folder (`proposal.md`, `design.md`, delta specs, `tasks.md`) and no code. It is reviewed for intent, the acceptance criteria get corrected while correcting them is still cheap, and it merges. Then the implementation branch, named for the change folder slug, delivers the code against an already-approved spec and archives the folder on merge.
 
-For a change whose intent is fully visible in the diff, that split is pure ceremony. A bug fix, a mechanical refactor, a library bump like `Refactor observer to Jackson 3`: there is no acceptance criterion a reviewer would veto independently of the code, so locking the spec first buys nothing. One branch, one PR, spec delta and implementation together. Intent-first review still applies inside the single PR.
+For a change whose intent is fully visible in the code diff, that split is pure ceremony. A bug fix, a mechanical refactor, a library bump like `Refactor observer to Jackson 3`: there is no acceptance criterion a reviewer would veto independently of the code, so locking the spec first buys nothing. One branch, one PR, spec delta and implementation together. Intent-first review still applies inside the single PR.
 
 The test is not size, but whether an intent-level correction found during code review would force the implementation to be redone. If yes, the spec earns its own PR. If the only fix would be to the code, one PR is enough.
 
@@ -62,7 +62,7 @@ Instructions drift. Checks do not. The two steps most worth promoting from instr
 
 A check that fails the implementation PR when its change folder is not archived, or when `tasks.md` still has unchecked boxes, turns a discipline the agent forgets under load into one it cannot skip. This is the verifier pattern: the check gates the merge but does not do the work.
 
-`iec check` already plays that role for file-size limits and AC traceability. Gating it on an archived folder and a fully-checked `tasks.md` is the same move. The archive stays a one-line step the agent runs as its final task, visible in the diff where a reviewer watches the spec promoted to baseline.
+`iec check` already plays that role for file-size limits and AC traceability. Gating it on an archived folder and a fully-checked `tasks.md` is the same move. The archive stays a one-line step the agent runs as its final task, visible in the code diff where a reviewer watches the spec promoted to baseline.
 
 Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and unimplemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
 
@@ -70,11 +70,11 @@ Two smaller mechanics close the loop. Turn on the platform's auto-delete-branch-
 
 ## Review at merge
 
-A clean diff is the easiest thing for an agent to produce and the easiest thing for a reviewer to wave through. Consider tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the diff. Nobody read the diff against the spec.
+A clean code diff is the easiest thing for an agent to produce and the easiest thing for a reviewer to wave through. Consider tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the code diff. Nobody read the code diff against the spec.
 
-The failure is not in the code but in the review sequence: the diff was read before the spec. The diff looked correct. The spec would have caught the divergence.
+The failure is not in the code but in the review sequence: the code diff was read before the spec. The code diff looked correct. The spec would have caught the divergence.
 
-Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff get opened. The diff-review question is different: does this implementation match the spec?
+Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff view get opened. The code diff review question is different: does this implementation match the spec?
 
 Humans and agents miss different things in this review, and it works only when each covers the other's gaps: humans verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own discipline.
 

@@ -65,13 +65,13 @@ During implementation, the agent enters the coding step through the repo context
 
 ## Review: intent first, code second
 
-Once a PR exists, a normal review path collapses intent and code into one diff conversation. Intent Engineering separates them.
+Once a PR exists, a normal review path collapses intent and code into one review conversation centered on the code diff. Intent Engineering separates them.
 
 The spec delta describes the intended behavior, while the code diff shows what got built. Read the spec first: does intent match agreement? Then read the code: does the implementation match intent?
 
-The sequence moves one question earlier: are we building the right change at all? Once the diff dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
+The sequence moves one question earlier: are we building the right change at all? Once the diff view dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
-PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
+PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same code diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
 
 ## CI: the pipeline checks the conventions
 
@@ -91,7 +91,7 @@ Archive work is the small part. The larger question is whether the repo now desc
 
 ISO/IEC/IEEE 42010 distinguishes the architecture from an architecture description expressing it. This book narrows the idea to the repo-local artifacts a coding agent reads and writes against: engineering memory.
 
-After implementation, the agent has the diff and the spec near at hand. Use that moment. Ask for the memory artifacts the change invalidated: an ADR needing a status change, a design doc with the old flow, a diagram still showing the removed component, an instruction file naming the old command. Small fixes stay in the pull request. Larger architecture cleanup gets a follow-up with an owner.
+After implementation, the agent has the code diff and the spec near at hand. Use that moment. Ask for the memory artifacts the change invalidated: an ADR needing a status change, a design doc with the old flow, a diagram still showing the removed component, an instruction file naming the old command. Small fixes stay in the pull request. Larger architecture cleanup gets a follow-up with an owner.
 
 Do not let the agent silently rewrite the system record. The synchronization is part of the release work, but review still owns the truth. A coding agent with write access to the architecture docs is useful. A coding agent with unchecked authority over the architecture docs is how stale memory becomes fabricated memory, which is a worse incident with nicer Markdown.
 

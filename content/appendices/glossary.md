@@ -86,6 +86,10 @@ A failure mode in which stale, incorrect, or irrelevant documents loaded into th
 
 An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is a live instruction, not a historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
+## Diff
+
+This book uses `diff` for the line-by-line source-control change set shown in a pull request. Where the distinction matters, `code diff` names the changed code itself, while `diff view` names the review surface that presents those changes. See [Code Review for Agent-Generated Code](/team/code-review-agent-code).
+
 ## Engineering memory
 
 The durable repo context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
@@ -200,7 +204,7 @@ A checklist file inside an OpenSpec change folder that lists the implementation 
 
 ## TBD (Trunk-Based Development)
 
-A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the Intent Engineering context, an OpenSpec change folder maps onto one or two short-lived branches that carry its name: a spec branch followed by an implementation branch for decision-heavy changes, or a single branch when the intent is visible in the diff. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
+A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the Intent Engineering context, an OpenSpec change folder maps onto one or two short-lived branches that carry its name: a spec branch followed by an implementation branch for decision-heavy changes, or a single branch when the intent is visible in the code diff. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
 
 *Sources: Paul Hammant, trunkbaseddevelopment.com and "Trunk-Based Development and Branch by Abstraction" (2020), trunk-based development as the source-control discipline. The change-folder-to-branch mapping is this book's synthesis.*
 
