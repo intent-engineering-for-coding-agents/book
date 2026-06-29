@@ -49,6 +49,5 @@ Finally, software development remains a human activity requiring skill and judgm
 The rest of the book begins with a change of thought: the source-controlled workspace is not just for humans anymore. It is the touchpoint of humans and coding agents, the only place the durably held intent can reside if the code is to last in the long term.
 
 ---
-All of the writing in this book was done in and around the city of Aalborg on the north coast of Denmark. To me, Aalborg symbolizes serious software development.
 
 *Flemming Nørnberg Larsen, 2026*

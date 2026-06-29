@@ -78,7 +78,7 @@ The ADR is permanent, while the change folders are temporary and archived after 
 
 ## When a change spans tiers
 
-Most features touch multiple tiers. A new filter endpoint requires front-end work, BFF work, and possibly back-end work. The temptation is to create one change folder that covers all three.
+Most features touch multiple tiers. A new filter endpoint requires front-end work, BFF work, and sometimes back-end work. The temptation is to create one change folder that covers all three.
 
 That temptation compounds every problem described above. The front-end agent does not need the back-end implementation details, and the BFF reviewer does not need to read the front-end acceptance criteria. The archive of the change becomes three times as large and three times as hard to search.
 
@@ -90,4 +90,4 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt to it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
 
-A multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of them. Knowing which existing slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.
+A multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of them. Knowing which slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

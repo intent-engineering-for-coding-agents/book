@@ -1,18 +1,18 @@
 # Introduction
 
-The human-agent mindset is not enough by itself. A source-controlled workspace built for collaboration still needs a discipline for deciding what the agent should know what the agent should build, and what proof the result must clear.
+The human-agent mindset is not enough by itself. A source-controlled workspace still needs a way to tell the agent what to load, what to build, and what proof the result must pass.
 
-A coding agent works fast. It has been trained on a lot of code, and it often generates a payment service in minutes that might have taken you days.
+A coding agent works fast. It has been trained on a lot of code. It can generate a payment service in minutes, and it can generate the wrong one just as fast.
 
 The agent has no idea what you decided.
 
 Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it, and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
 
-Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". A coding agent in the hands of a clueless developer ships "clueless" code faster. An experienced developer with a coding agent ships experienced code faster. The amplifier is neutral, but not what it amplifies.
+Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". A coding agent in the hands of an under-informed developer produces incorrect code faster. An experienced developer with a coding agent produces correct code faster. The amplifier is neutral. What it amplifies is not.
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, Jan 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
-This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less clueless about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
+This is the territory of Intent Engineering, the practice this book teaches: progressively making your coding agent less under-informed about your system and intention. Intent Engineering sits within agentic software engineering, the broader discipline of building software with coding agents as active participants.
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
@@ -55,7 +55,7 @@ Spec-Driven Development: specs before code. Documentation is the durable source 
 
 Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
-Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
+Topics three and four are a pair. Spec-driven development showed up more often in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and most examples stop at the spec. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
 
 In the SDD material reviewed for this book, the emphasis is heavier on aiming the change than on proving the result. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
 
@@ -76,7 +76,7 @@ You have shipped production code under pressure, stayed skeptical of hype, and w
 
 Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one costs something today, a cost later chapters name honestly rather than wave away.
 
-The payoff arrives once switching is inexpensive: running several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
+The payoff arrives once switching to another tool costs only a pointer file and a few instructions: then you can run several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
 *Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
 

@@ -1,10 +1,10 @@
-yes# The Spectrum
+# The Spectrum
 
-How much process does rename a config variable deserve? Adopt a full Spec-Driven Development framework, and the answer is: far more than it needs. The ceremony is real, proposal, design, specs, tasks, archive, and for a large API redesign it is exactly right. Spend the same machinery on a one-line rename and it is theater. The structure that protects a risky change suffocates a trivial one.
+How much process does rename a config variable deserve? A full Spec-Driven Development framework gives it too much. The ceremony is right for a large API redesign, and absurd for a one-line rename. The structure that protects a risky change suffocates a trivial one.
 
 Consider a team that writes no specs at all, operating on prompts and conversation history alone. Features work until a later session extends them. Then someone asks why the validation is in the controller, and the only answer is git blame.
 
-Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a recognizable spectrum, from no artifact to full governance. SDD is the practice: per-change intent with testable acceptance criteria. GSD, `spec.md`, OpenSpec, LeanSpec, and Spec-Kit are implementations of it at different levels of formality. The tools below are a mid-2026 snapshot, not a settled field.
+Through 2025 and into 2026, the Spec-Driven Development (SDD) tooling spread into a spectrum, from no artifact to full governance. SDD is the practice: per-change intent with testable acceptance criteria. GSD, `spec.md`, OpenSpec, LeanSpec, and Spec-Kit are implementations of it at different levels of formality. The tools below are a mid-2026 snapshot, not a settled field.
 
 BMAD Method, Taskmaster, and other frameworks occupy the same category. The diagram below marks formality levels, not a ranking of the field.
 

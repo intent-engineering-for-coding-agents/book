@@ -1,8 +1,8 @@
 # What Is Still Evolving
 
-The individual practices in this book have enough evidence and repetition to teach directly. The team practices need more issues, and this chapter does not pretend otherwise.
+The individual practices in this book have enough evidence and repetition to teach directly. The team practices need more evidence, and this chapter does not pretend otherwise.
 
-The team and cross-team practices are plausible extensions of the individual workflow, not settled field standards. Some of the problems named here are real, documented, and unsolved. That is the bar this book uses.
+The team and cross-team practices are extensions of the individual workflow, not settled field standards. Some of the problems named here are real, documented, and unsolved. That is the bar this book uses.
 
 ## What is known and working
 

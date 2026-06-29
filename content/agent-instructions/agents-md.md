@@ -1,18 +1,18 @@
 # AGENTS.md: The Entry Point
 
-An agent with no context reaches for what it knows.
+An agent with no context reaches for the nearest thing it knows.
 
 Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they recognize the library and notice what got bypassed. Nobody else on the team would have known.
 
 The agent did not invent the vulnerability. It improvised in the absence of a context it was never given.
 
-`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right and every agent arrives with the right context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the right context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses something important.
 
-Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies today from which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not better informed, only more constrained.
+Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a significant fraction of its context window is gone. The agent is not better informed, only more constrained.
 
 AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to tell the agent what to load, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
 
@@ -55,7 +55,7 @@ A pointer file maintained by hand drifts from `AGENTS.md` the moment one update 
 
 Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 
-The direction of travel is convergence. GitHub Copilot's coding agent followed in August 2025. As native support spreads, the pointer pattern shrinks. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
+As vendors add native support, the pointer pattern shrinks. GitHub Copilot's coding agent followed in August 2025. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
 
 *Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
 

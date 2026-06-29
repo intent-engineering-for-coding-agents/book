@@ -6,7 +6,7 @@ A vendor guide in June 2026 calls this the rebuild test: delete `src/`, point a 
 
 Now try the reverse: delete the docs, keep the code, regenerate the docs.
 
-The agent will infer. It reads the code and produces a document describing what the code appears to do. The document misses the intent behind every non-obvious decision, describes hotfix paths as if someone designed them, and cannot tell you which of three similar validation methods the team settled on, or why. The result is an archaeology report, not a design record.
+The agent will infer. It reads the code and produces a document describing what the code appears to do. The document misses the intent behind non-obvious decisions, describes hotfix paths as if someone designed them, and cannot tell you which validation method the team chose, or why. The result is an archaeology report, not a design record.
 
 *Sources: Augment Code, "The Spec as Source of Truth: Why Codebases Should Be Rebuildable from Documentation" (Apr 9, 2026, updated Jun 18, 2026), vendor-authored rebuild-test framing; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, Jan 30, 2026, modified Apr 2, 2026), spec-as-source as the strongest SDD form, and code as derivative.*
 

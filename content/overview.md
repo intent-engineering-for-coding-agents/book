@@ -1,6 +1,6 @@
 # Overview
 
-The agent does not know what you decided. Intent Engineering is the practice of making your coding agent progressively less clueless about your system and your intention: the permanent decisions that constrain how anything is done, and the per-change specs that say what to do right now. Both live in the repo as plain text.
+The agent does not know your decisions. Intent Engineering gives it the decisions and the change-sized specs it needs to avoid guessing at your system.
 
 ```mermaid
 flowchart LR
@@ -22,10 +22,10 @@ flowchart LR
 
 | Practice | What it does | What breaks without it |
 |---|---|---|
-| [Foundation](/foundation/) | Repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index | Agent improvises from training data instead of your decisions |
-| [Agent Instructions](/agent-instructions/) | A single entry point and instruction hub that every session reads on load | Agent re-derives your conventions each session, inconsistently |
-| [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code, archived after the PR merges | Agent ships to its own design, not yours |
-| [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | Spec aims; nobody checks if the agent hit the target |
+| [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from training data instead of the repo |
+| [Agent Instructions](/agent-instructions/) | One entry point and one instruction hub for every session | Each session re-derives the conventions from scratch |
+| [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code and archived after merge | The agent ships code without a settled change spec |
+| [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | The spec states the target, but nobody checks whether the agent hit it |
 
 [Team Workflows](/team/) covers how these practices scale across a team.
 
@@ -46,7 +46,7 @@ flowchart LR
     W --> R --> C --> V --> P
 ```
 
-*You write the spec. The agent reads context and spec, then generates code and tests. The tests verify the spec was met. The PR merges.*
+*You write the spec. The agent reads context and spec, then generates code and tests. The tests show whether the spec was met. The PR merges.*
 
 ## Is this for you?
 

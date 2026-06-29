@@ -8,7 +8,7 @@ Coordination across team boundaries is harder than coordination within a team, a
 
 ## ADRs as the cross-team mechanism
 
-Architectural Decision Records are the strongest cross-team primitive this book uses because they already exist in the SDLC. They are durable, human-readable, usually checked into a repository, and designed to record decisions with consequences that persist after the authors have moved on.
+Architectural Decision Records are the cross-team primitive this book uses because they already exist in the SDLC. They are durable, human-readable, usually checked into a repository, and record decisions with consequences that persist after the authors have moved on.
 
 For cross-team decisions, the ADR location matters. An ADR checked into Team A's repository is private to Team A's agents and Team A's developers who read the repo. An ADR checked into a shared architecture repository, one all teams' agents are instructed to read, becomes cross-team context.
 
@@ -48,7 +48,7 @@ The mechanics resemble any shared library contribution. The team publishes the s
 
 The pragmatic shortcut for smaller organizations: a single `shared-agents` repository with skills and instruction files that teams include in their `AGENTS.md` by reference. The team's local `AGENTS.md` loads the shared file first, then layers project-specific conventions on top. The shared file changes less often, while the project-specific layer changes frequently.
 
-The inner source for agent instructions is book synthesis. As of mid-2026, there is no widely adopted standard for packaging, versioning, or distributing `.agents/` libraries. Treat this as a borrowing from shared-library practice, not a solved agent workflow.
+The inner source for agent instructions is book synthesis. As of mid-2026, there is no widely adopted standard for packaging, versioning, or distributing `.agents/` libraries. Treat this as a borrowing from shared-library practice.
 
 *Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed Jun 9, 2026), AGENTS.md as a shared project instruction set. The inner-source distribution pattern for `.agents/` libraries is this book's synthesis.*
 
@@ -58,7 +58,7 @@ Most teams work in multi-repo environments: the payment service in one repositor
 
 Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
 
-MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is an emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The stability of this pattern depends on the MCP tooling available, so treat it as a promising integration path rather than a settled workflow.
+MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is an emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The pattern depends on the MCP tooling available.
 
 Multi-repo coordination is harder at the agent level than at the code level. Shared libraries and package managers handle cross-repo dependencies for code. Shared context is still largely manual for agents: developers read the other team's architecture docs, then instruct their agent with what they found. This is the gap, not the fix.
 
@@ -80,6 +80,6 @@ The shared architecture repository pattern works only when organizations maintai
 
 The alternative, where cross-team decisions are not written down, is the pattern behind the hypothetical production incident at the start of this chapter. The overhead of the shared repo is real. So is the cost of not having it.
 
-The tooling for cross-team coordination is nascent. The community has patterns for individuals and small teams, while the multi-repo, cross-team, governance-without-bureaucracy story is still being assembled.
+The tooling for cross-team coordination is nascent. The community has patterns for individuals and small teams, while the multi-repo, cross-team story is still being assembled.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), fragmented SDD tooling and experimentation. Governance-without-bureaucracy is this book's open-problem framing.*
