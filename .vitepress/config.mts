@@ -65,7 +65,7 @@ export default withMermaid(
       ],
       sidebar: [
         { text: 'Overview', link: '/overview' },
-        { text: 'Foreword', link: '/foreword' },
+        { text: 'Preface', link: '/preface' },
         { text: 'The Human-Agent Engineering Mindset', link: '/human-agent-engineering-mindset' },
         { text: 'Introduction', link: '/introduction' },
         {

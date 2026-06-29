@@ -28,7 +28,7 @@ Rick Hightower's comparative survey of SDD tools (Spillwave, Feb 2026) is the ma
 
 AgentPatterns.ai named and documented the TOC pattern for AGENTS.md. That framing runs through the Agent Instructions topic.
 
-Andrej Karpathy coined "vibe coding" on February 2, 2025. The Foreword's opening argument starts there.
+Andrej Karpathy coined "vibe coding" on February 2, 2025. The Preface's opening argument starts there.
 
 ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and assessed the SDD tool field as fragmented. Several chapters cite it as the primary evidence anchor for those claims.
 
