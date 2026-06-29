@@ -53,4 +53,4 @@ A directory under `docs/` that holds no substantive content — only a `.gitkeep
 
 ## Why
 
-Agents load `docs/INDEX.md` first for context economy. A stale index — broken links, missing entries, orphans — causes wasted context and missed files. The `update-index` skill can regenerate these automatically.
+Agents load `docs/INDEX.md` first to find the next file to read. A stale index sends the agent to the wrong file, or to no file at all. The `update-index` skill can regenerate these automatically.

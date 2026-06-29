@@ -70,7 +70,7 @@ Source policy exception: purely navigational pages, front matter, and glossary e
 
 - Where the chapter claims a practice is demonstrated in `iec`, verify the claim is accurate
 - Reference the correct git tag or file path; do not invent them
-- Tool positioning: are all tool mentions either in the Tooling section (last) or as a single brief illustration in the body? If a tool appears more than once in the body, it is overselling — move the extras to Tooling or cut them.
+- Tool positioning: are all tool mentions either in the Tooling section (last) or as one example in the body? If a tool appears more than once in the body, it is overselling. Move the extras to Tooling or cut them.
 
 ## Review failure conditions
 

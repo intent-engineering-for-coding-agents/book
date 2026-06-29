@@ -63,7 +63,7 @@ Each chapter needs an agent-specific delta. Name what changes because code is ge
 
 The focus test: if a paragraph would remain unchanged in a normal software-engineering book, the paragraph is missing the agent delta or does not belong. Add the missing delta or cut the paragraph.
 
-The section test: if the heading promises PR taxonomy, every subsection should help the reader classify, split, brief, or review PRs in agent-driven work. Background material stays short. The chapter's promise is the filter.
+The section test: if the heading promises PR taxonomy, every subsection should help the reader classify, split, scope, or review PRs in agent-driven work. Background material stays short. The chapter's promise is the filter.
 
 ### Never fake a memory
 
@@ -213,7 +213,7 @@ When presenting an architecture or practice, name the tradeoff in the same parag
 
 ### Emphasize reality
 
-Context windows fail. Memory becomes inconsistent. Orchestration complexity explodes. Tool reliability matters. Evaluation is hard. Autonomous behavior becomes unpredictable at scale. Ground abstract claims in operational consequences.
+Context windows drop earlier tokens. Memory keeps old decisions after the file changed. Tool calls fail. Test runs still pass while the output is wrong. Agent behavior becomes unpredictable at scale. Ground claims in those consequences.
 
 ## Structural style
 

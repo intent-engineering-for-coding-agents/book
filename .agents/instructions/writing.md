@@ -22,7 +22,7 @@ Each chapter follows this pattern:
 4. Honest caveats: where the practice has limits or is still evolving
 5. Tooling (optional, always last): if `iec` demonstrates this practice, mention it here in one paragraph: what command, what it does, how to try it. Frame as "If you want to see this in practice..". Never as a recommendation. The practice is the point; the tool is an example.
 
-Outside the Tooling section, tool names appear at most once per chapter, as a brief illustration only. If a tool is mentioned more than once in the body, move the extra mentions to Tooling or cut them.
+Outside the Tooling section, tool names appear at most once per chapter, as a single example only. If a tool is mentioned more than once in the body, move the extra mentions to Tooling or cut them.
 
 Constraints first: put the key constraint, non-goal, or risk at the top of the chapter. Agents and skimmers read top-down and lose focus. Do not bury the point in the conclusion.
 

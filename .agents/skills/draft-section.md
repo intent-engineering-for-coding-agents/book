@@ -1,22 +1,22 @@
 # Skill: draft-section
 
-Draft a new content section from its place in the book: the relevant section `index.md` entry, the book arc, and the task brief.
+Draft a new content section from its place in the book: the relevant section `index.md` entry, the book arc, and the task request.
 
 ## When to use
 
-When you are ready to write a section of a chapter and know its scope from the relevant section `index.md` entry, the book arc, and the task brief.
+When you are ready to write a section of a chapter and know its scope from the relevant section `index.md` entry, the book arc, and the task request.
 
 ## Input
 
 - The chapter's scope source:
   - for topic chapters, the relevant section `index.md` entry
   - for appendices or front matter, the sidebar entry and the chapter's role in the book
-- The task brief: the user's request or author-provided brief for what this draft must do
+- The task request: the user's request or author-provided request for what this draft must do
 - The target file path under `content/`
 
 ## Process
 
-1. Fix the chapter's scope from the relevant section `index.md` entry, the sidebar reading order, and the task brief, and treat that combined scope as the spec
+1. Fix the chapter's scope from the relevant section `index.md` entry, the sidebar reading order, and the task request, and treat that combined scope as the spec
 2. Load [writing.md](.agents/instructions/writing.md), [voice.md](.agents/instructions/voice.md), and [credibility-pass.md](.agents/skills/credibility-pass.md) — `writing.md` covers mechanics, `voice.md` covers how the prose should sound, and `credibility-pass.md` defines the mandatory provenance check before handoff
 3. Draft in this order:
    - Opening paragraph: state the problem this chapter addresses (concrete, not abstract)
