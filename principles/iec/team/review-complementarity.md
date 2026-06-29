@@ -34,4 +34,3 @@ In PR review: the human reads the spec delta for intent, checks integration assu
 ## Sources
 
 - intent-book, ["Code Review for Agent-Generated Code"](/team/code-review-agent-code) chapter, "What human reviewers miss, what agent reviewers miss" section.
-- ThoughtWorks Technology Radar Vol 34 (April 2026), automated feedback controls at the merge gate as the model for systematic coverage checks that scale past manual review.

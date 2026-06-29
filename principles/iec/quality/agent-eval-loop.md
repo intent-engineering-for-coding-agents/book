@@ -27,4 +27,3 @@ Define a fixed task — a spec the agent will implement, a PR the agent will rev
 
 - intent-book, *"Agent Evaluation & Regression" chapter*, quality section.
 - Anthropic, *"Building effective agents"* (Dec 2024).
-- ThoughtWorks Radar Vol 34 (mutation testing as feedback control).

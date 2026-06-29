@@ -58,7 +58,7 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small) |
 | Drift with no detection | Quality and Verification |
 
-ThoughtWorks Radar Vol 34 names the cost that grows when these modes go unaddressed: cognitive debt, the agentic-era version of the undocumented decision that quietly breaks a deployment. Keeping the agent's context coherent enough to hold it down is what the Radar calls "harness engineering". The rest of this book is about building those controls, one failure mode at a time.
+Cognitive debt is the cost that grows when these modes go unaddressed: the undocumented decision that quietly breaks a deployment months later. ThoughtWorks uses "harness engineering" for the controls that keep the agent's context coherent enough to hold that debt down. The rest of this book is about building those controls, one failure mode at a time.
 
 The goal is not zero drift. The goal is to catch mismatches before they stack up.
 

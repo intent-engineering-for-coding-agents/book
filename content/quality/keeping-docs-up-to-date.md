@@ -10,7 +10,7 @@ This chapter is about one narrow extension of the verification story: give impor
 
 A release should leave the repo ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as stale reasoning in agentic delivery. The release-to-next-session boundary is this book's synthesis.*
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as practical agent failure modes. The release-to-next-session boundary is this book's synthesis.*
 
 ## The asymmetry
 
@@ -22,7 +22,7 @@ The asymmetry is the problem. Generated code changes fast. The surrounding prose
 
 The result goes past reader confusion. The next agent session starts from bad premises. A stale architecture note becomes the reason the agent adds a layer the system no longer uses, or follows a rule the team dropped because the instruction file still lists the old rule.
 
-ThoughtWorks calls this cognitive debt: stale reasoning compounding in agentic delivery. Here the compounding is fast, because drift moves from documentation debt to implementation debt in one session.
+This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. Here the compounding is fast, because drift moves from documentation debt to implementation debt in one session.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as undocumented or stale reasoning in agentic delivery. AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed Jun 13, 2026), stale instruction files and context drift as a practical agent failure mode.*
 

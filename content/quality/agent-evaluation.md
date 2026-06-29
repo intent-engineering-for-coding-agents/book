@@ -16,7 +16,7 @@ The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, 
 
 This is the open loop. Nothing in the toolchain closes it for you.
 
-*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as the discipline the agentic era needs. Applying the loop to instruction files specifically is this book's synthesis.*
+*Sources: Anthropic, "Building effective agents" (Dec 2024), evaluation as part of an effective agent setup. Applying the loop to instruction files specifically is this book's synthesis.*
 
 ## Golden tests for the agent
 
@@ -75,7 +75,7 @@ The defense is the same: a fixed task that exercises the skill or hook, run befo
 
 Most teams will not maintain this for every skill. The economics only work for the ones that fail expensively. The skill that touches the documentation index earns a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file does not, because its failure mode is the agent showing the wrong output immediately and the user catching it.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), feedback control as a discipline for agentic development. The skill-and-hook golden-test examples are this book's workflow guidance.*
+*Sources: The skill-and-hook golden-test examples are this book's workflow guidance.*
 
 ## When to invest
 

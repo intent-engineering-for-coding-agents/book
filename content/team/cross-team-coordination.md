@@ -82,4 +82,4 @@ The alternative, where cross-team decisions are not written down, is the pattern
 
 The tooling for cross-team coordination is nascent. The community has patterns for individuals and small teams, while the multi-repo, cross-team story is still being assembled.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), fragmented SDD tooling and experimentation. Governance-without-bureaucracy is this book's open-problem framing.*
+*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), multi-repo planning still treated as an in-development problem. Governance-without-bureaucracy is this book's open-problem framing.*

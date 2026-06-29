@@ -24,7 +24,7 @@ A target annotation keeps current state separate from intent: `practiced, target
 
 These are not CMM audit levels. No certification, no maturity score, no report for management. The discipline is calling things by the right name, not upgrading the label to look good in a retrospective.
 
-*Sources: This three-level taxonomy is book synthesis. ThoughtWorks Technology Radar Vol 34 (April 2026), adoption rings as practice-readiness framing this taxonomy narrows to one repo.*
+*Sources: This three-level taxonomy is book synthesis.*
 
 ## Why the labels matter
 
@@ -34,7 +34,7 @@ Honest labeling tells everyone what they rely on: CI-enforced means trusting the
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 
-The three levels rhyme with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you rely on.
+The three levels rhyme loosely with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you rely on.
 
 Your current level tells you what you rely on, and your starting point tells your adoption order. A greenfield codebase and a six-year-old production system is a different problem with different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
 

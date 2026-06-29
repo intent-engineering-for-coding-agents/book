@@ -30,7 +30,7 @@ AgentPatterns.ai named and documented the TOC pattern for AGENTS.md. That framin
 
 Andrej Karpathy coined "vibe coding" on February 2, 2025. The Preface's opening argument starts there.
 
-ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and assessed the SDD tool field as fragmented. Several chapters cite it as the primary evidence anchor for those claims.
+ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and assessed the SDD tool field as fragmented. A handful of chapters cite it where those two claims matter.
 
 Birgitta Böckeler has written and spoken clearly about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic are downstream of that work.
 
