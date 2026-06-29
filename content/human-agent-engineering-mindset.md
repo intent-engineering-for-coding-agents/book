@@ -10,9 +10,9 @@ Provide the agent with the information you would give a teammate before asking t
 
 ## Not magic AI
 
-Show me not MagIcal Ai in action.
+Show me coding agents, not magical AI.
 
-I say "coding agent" because I selectively prefer not saying "AI", which is corrupted. If the tool really uses AI under the covers does not matter here. "Coding agent" says what matters here: the tool modifies a project and gives you back a patch to review.
+I say "coding agent" because I selectively prefer not saying "AI", which is corrupted. Whether the tool really uses AI under the covers does not matter here. "Coding agent" says what matters here: the tool modifies a project and gives you back a patch to review.
 
 I do not mention product names. I want to maintain vendor independence. Not for me. Not for us. This book takes the same stand, but I did not come up with this idea for lack of vendors.
 
@@ -26,11 +26,11 @@ Give the agent a vague instruction, and the agent will try to fill the gap. I ex
 
 The old habit is to think in tasks: build this endpoint, fix this bug, refactor this module.
 
-In coding agents, the safest habit is to think in terms of intent: what one decision limits the work, what behavior should change, which should be left alone and what would turn the agreement ready to merge.
+In coding agents, the safest habit is to think in terms of intent: what one decision limits the work, what behavior should change, which should be left alone and what would make the change ready to merge.
 
-Most AI coding advice loses me here. The advice references better prompts, better models, better autocomplete, better demos, and the next killer feature you are told you cannot do without. It compares agent products instead of saying, "What does the team need to document before an agent even has the potential to alter code?" Then it brushes past the part of professional software which makes it decisions, boundaries, trade-offs, security restrictions, existing structures, tests, and review.
+Most AI coding advice loses me here. The advice references better prompts, better models, better autocomplete, better demos, and the next killer feature you are told you cannot do without. It compares agent products instead of saying, "What does the team need to document before an agent even has the potential to alter code?" Then it brushes past the part that makes professional software: decisions, boundaries, trade-offs, security restrictions, existing structures, tests, and review.
 
-A work on security, the agent will have to begin with a current security practice and then apply the governance rules, models and security pattern selected by the company and team. There is no room for improvisation here.
+When working on security, the agent will have to begin with a current security practice and then apply the governance rules, models and security pattern selected by the company and team. There is no room for improvisation here.
 
 The decisions, checks, and constraints are inherent in the product. Certainly code still matters, but with coding agents, code becomes more like generated output. I read the shift as a compiler shift: a compiler translates a source into machine code, a coding agent translates intent into application.
 
@@ -40,23 +40,23 @@ Software engineering has been heading there for quite some time now. Developers 
 
 The team also has its own place where the production work turns into a concrete source-controlled workspace.
 
-Solo prototyping, indeed, is only a handful: it always comes to a chat window. Script-generation, pasting-in, trash and carry on. No ceremony, no shame, no embarrassment.
+Solo prototyping, indeed, comes down to a handful: it always comes to a chat window. Script-generation, pasting-in, trash and carry on. No ceremony, no shame, no embarrassment.
 
 For the software to be maintained, the workspace is turned into shared-memory. The developers read the files. The reviewers examine the diff. The coding-agents load the current project's context at the beginning of the following session. The work is no more than a continuous discussion. It is the input for the following change.
 
 If a decision causes a code-writing convention to be established, then it is a decision that belongs where the future work will read it. If one rule consistently emerges in review comments, then that rule belongs where it is permanently accessible rather than in the review thread. If a diagram describes a boundary, then the diagram is best stored in a format digestible to the team and agent.
 
-Proceed beyond readable when the artifact will not. The best rule of all is what the tooling can impose on itself: a linted ADR, a spec you are expected to meet before the change matters. An intent a machine executes is longer-lived than an intent a developer has to memorize.
+Proceed beyond readable when the artifact will not enforce itself. The best rule of all is what the tooling can impose on itself: a linted ADR, a spec you are expected to meet before the change matters. An intent a machine executes is longer-lived than an intent a developer has to memorize.
 
 ## Documentation before code
 
-The most uncomfortable of this mindset is to write the documentation the current state of the product needed, prior to the implementation.
+The most uncomfortable part of this mindset is to write the documentation that the current state of the product needs, prior to the implementation.
 
 Certainly not a huge design document. Certainly not due to waterfall cosplay. Prototypes require less documentation than a fully populated module for a customer to meet standards, be online, or be supported by a team. But do not hide by saying "the code speaks for itself". It will still not tell the next developer which choice was crucial, which restrictions could not be compromised, or why the clear-by-default shortcut was not taken.
 
-The inversion still seems odd: developers protected their code because coding was costly now the costly aspects have moved up the decision, the checks, the shared understanding of where the change fits…
+The inversion still seems odd: developers protected their code because coding was costly. Now the costly aspects have moved up the decision, the checks, the shared understanding of where the change fits…
 
-Delete code appears to be generated, and a knowledgeable agent would produce a different version. Remove the intent, and the next agent simply copies whatever form the current code occurs to be in.
+Code without documented intent appears to be generated, and a knowledgeable agent would produce a different version. Remove the intent, and the next agent simply copies whatever form the current code happens to be in.
 
 ## One stack at a time
 
@@ -66,7 +66,7 @@ This is where agent work becomes archaeology. The agent searches, discovers a re
 
 ## What this book is about
 
-There are still the developer's decisions. It is the way the agent helps the reasoning, and implements, the tests, tell the reach gaps. The responsibility remains within the new developer. The new developer is typing less.
+There are still the developer's decisions. It is the way the agent helps with reasoning, implements, tests, and fills the gaps. The responsibility remains within the new developer. The new developer is typing less.
 
 The term for this discipline the book refers to as Intent Engineering, however, encompasses a more complete philosophy. The actual practice is very limited, involving making decisions, docs, specs, checks, and reviews available to the agent as input.
 

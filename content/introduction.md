@@ -45,15 +45,15 @@ None of this requires AI in principle. A disciplined team could write the docs, 
 
 The book is organized around four topics. Each works at a solo scale and couples with the others at a team scale. The book flags those coupling points.
 
-The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it. Context is the substrate and the intent is the point.
+The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it.
 
-**Foundation:** repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: briefing keeps the agent from choosing wrong out of ignorance.
+Foundation: repo structure as the agent's briefing: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: briefing keeps the agent from choosing wrong out of ignorance.
 
-**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
+Agent Instructions: `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
-**Spec-Driven Development:** specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
+Spec-Driven Development: specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
 
-**Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
+Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
 Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 with tooling and discussion, though the practice is still young and unevenly defined, and most of what is visible stops at the aim. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
 
@@ -82,11 +82,7 @@ The payoff arrives once switching is inexpensive: running several agents side by
 
 ## When a project earns this
 
-Most of what you build does not need any of this:
-
-- A script you run once.
-- A glue function.
-- A prototype that exists to answer a question and then gets deleted.
+Most of what you build does not need any of this: a script you run once, a glue function, a prototype you delete once it answers the question.
 
 Reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
 
@@ -104,7 +100,7 @@ That is real work. It is also a different product.
 
 This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
-The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests stay tests, not evals. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
+The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests remain tests, not a separate eval harness. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 
