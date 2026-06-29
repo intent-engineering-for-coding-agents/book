@@ -56,7 +56,11 @@ The limit is for the humans in the loop, not the agent. The agent re-reads a lon
 
 Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one sitting, the whole change in view.
 
-When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there. If you cannot find the seam, ask the coding agent to propose the split. It usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID. Splitting is not a failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
+When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there.
+
+If you cannot find the seam, ask the coding agent to propose the split. It usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID.
+
+Splitting is not a failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
 
 ## When the change is genuinely large
 
@@ -64,7 +68,9 @@ Some features pass the split test: one coherent thing, a bit over ten tasks, no 
 
 Part two depends on part one merging. Note that dependency in the part-two proposal so the reviewer knows before opening the diff. Each part merges on its own test pass instead of waiting for a suite that only lands with the final PR.
 
-File count is a rougher signal than task count. A rename propagated across many files is trivially reviewable: the description states the pattern, every diff is identical. A behavior change touching a few deeply coupled files is genuinely hard. The real question is not the count. It is whether the reviewer understands the change from the description and a quick scan. Where file count signals trouble: many files with different changes in each, no unifying pattern, no clear description. That is a scope problem wearing a file-count disguise. Find the seam and split.
+File count is a rougher signal than task count. A rename propagated across many files is trivially reviewable: the description states the pattern, every diff is identical. A behavior change touching a few deeply coupled files is genuinely hard.
+
+The real question is not the count. It is whether the reviewer understands the change from the description and a quick scan. Where file count signals trouble: many files with different changes in each, no unifying pattern, no clear description. That is a scope problem wearing a file-count disguise. Find the seam and split.
 
 The `openspec/changes/<name>/` folder does not count toward the file total. That is intent, not implementation.
 

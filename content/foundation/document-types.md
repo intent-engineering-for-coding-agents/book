@@ -28,7 +28,11 @@ The enforcement mechanism is directory placement. Structured documents live unde
 
 README files live at the root of every documentation directory. GitHub, GitLab, and most hosted Git platforms render them automatically when a user navigates to that directory, and that rendering is what a README is for: a human reading on a Git host where prose, headings, and diagrams read the way they were written. The architecture overview lives in `docs/architecture/README.md`. The top-level `docs/README.md` does different work: it tells a reader what lives under `docs/` and where to start, not about the architecture the tree documents. Both live forever, each updated as the thing it describes changes.
 
-INDEX files serve a different reader: the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map. The agent loads `docs/INDEX.md` at the start of a session to find the next file to read before reading anything else, which means a stale entry costs more than a missing one: it sends the agent toward a file that moved, or hides one that recently landed. The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
+INDEX files serve a different reader: the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map.
+
+The agent loads `docs/INDEX.md` at the start of a session to find the next file to read before reading anything else. That makes a stale entry worse than a missing one: it sends the agent toward a file that moved, or hides one that recently landed.
+
+The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
 
 README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser. An agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
 
@@ -56,7 +60,9 @@ The taxonomy here is this book's synthesis. `skeleton.md` is not a field standar
 
 Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is why. Six months later, when a developer proposes reintroducing the stack the team moved away from, the ADR answers the question before a meeting is called.
 
-While an ADR is still proposed, change it as much as the discussion requires. That is what the proposal stage exists for. Once its status moves to `accepted`, the decision freezes. Reversing it means writing a new ADR that references the old one and supersedes it, not rewriting the original to say something different. Supporting context is not frozen: pros and cons, discovered consequences, implementation notes, the kind of adjustment that sharpens the record without changing what was decided. When you make that kind of adjustment, record an amendment at the bottom of the file: the date, what changed, and the before and after.
+While an ADR is still proposed, change it as much as the discussion requires. That is what the proposal stage exists for. Once its status moves to `accepted`, the decision freezes. Reversing it means writing a new ADR that references the old one and supersedes it, not rewriting the original to say something different.
+
+Supporting context is not frozen: pros and cons, discovered consequences, implementation notes, the kind of adjustment that sharpens the record without changing what was decided. When you make that kind of adjustment, record an amendment at the bottom of the file: the date, what changed, and the before and after.
 
 The proposed and accepted statuses come from MADR itself, recorded in a YAML front matter block at the top of the file: `status: accepted`, `date: 2024-03-01`. That structure is what turns the gate into something a convention check or an agent verifies directly, rather than a rule a reader has to infer from prose. The amendment record does not come from MADR. It is this book's own convention. Without it, there is no way to tell whether the supporting context in an ADR was part of the original decision or a correction added afterward. That ambiguity is exactly what the immutability rule exists to prevent.
 
@@ -70,7 +76,11 @@ The "considered options" section is not boilerplate. Rejected options tell the a
 
 A secondary reason MADR works: its headings already say what belongs under them. Write `## Considered Options` and the agent usually fills it correctly without a footnote, the same way it would under `## Risks` or `## Open Questions`. You get the benefit whether or not the agent has seen MADR by name.
 
-Some formats need more than that. Gherkin's `Given/When/Then` and OpenAPI's schema structure are not self-explanatory from the words alone. An agent either has encountered that exact convention at scale, in which case it produces the real thing, or it has not, in which case it produces something that merely looks like it. That is where naming a field standard genuinely substitutes for writing your own specification of it: the agent's training carries the convention, and your documentation does not have to. Inventing a custom format forces you to explain it from nothing. Naming a standard the agent already knows means you do not have to. That only pays off where the convention itself is the hard part, not the words around it.
+Some formats need more than that. Gherkin's `Given/When/Then` and OpenAPI's schema structure are not self-explanatory from the words alone. An agent either has encountered that exact convention at scale, in which case it produces the real thing, or it has not, in which case it produces something that merely looks like it.
+
+That is where naming a field standard genuinely substitutes for writing your own specification of it: the agent's training carries the convention, and your documentation does not have to. Inventing a custom format forces you to explain it from nothing. Naming a standard the agent already knows means you do not have to.
+
+That only pays off where the convention itself is the hard part, not the words around it.
 
 *Sources: Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), the template's plain-English section headings. The named-standard-versus-custom-format argument is book synthesis.*
 
@@ -86,7 +96,11 @@ One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the
 
 ## Specs and OpenSpec
 
-A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing `proposal.md`, `tasks.md`, delta specs (one per capability under `specs/`), and optionally `design.md` for changes that require technical design decisions. The spec itself is one artifact inside that structure. Some teams keep a simpler `/specs` folder with files named by feature. That works too and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them. This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
+A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing `proposal.md`, `tasks.md`, delta specs (one per capability under `specs/`), and optionally `design.md` for changes that require technical design decisions. The spec itself is one artifact inside that structure.
+
+Some teams keep a simpler `/specs` folder with files named by feature. That works too and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them.
+
+This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
 
 *Sources: OpenSpec (openspec.dev, Fission-AI/OpenSpec), the change-folder structure: `proposal.md`, `tasks.md`, delta specs under `specs/`, and optional `design.md`.*
 

@@ -26,7 +26,11 @@ The during-gate watches three inputs while the agent codes: the spec it loaded, 
 
 Freeze the spec first. A spec still under negotiation while the code is written is two moving targets, and the implementation drifts toward wherever the agent guesses it is heading. If it has to change, change it explicitly and restart the affected scenario rather than let the code chase a spec in motion.
 
-The other two inputs split along the line this chapter keeps drawing. Hooks are deterministic: the pre-commit checks [Skills, Commands, and Hooks](../agent-instructions/skills-commands-hooks) installs are lint, secret detection, and AC-ID-to-tag verification, all firing unprompted. Context erodes silently, the way [Context Window Management](../agent-instructions/context-window) described. A session three hours deep, window full, the spec buried under two unrelated tasks, writes worse code than the same session at its start. The during-gate re-teaches neither. It enforces them. The tell that context has lapsed is the agent re-deriving in hour three an import path it had right in hour one.
+The other two inputs split along the line this chapter keeps drawing. Hooks are deterministic: the pre-commit checks [Skills, Commands, and Hooks](../agent-instructions/skills-commands-hooks) installs are lint, secret detection, and AC-ID-to-tag verification, all firing unprompted.
+
+Context erodes silently, the way [Context Window Management](../agent-instructions/context-window) described. A session three hours deep, window full, the spec buried under two unrelated tasks, writes worse code than the same session at its start.
+
+The during-gate re-teaches neither. It enforces them. The tell that context has lapsed is the agent re-deriving in hour three an import path it had right in hour one.
 
 The minimum during-checkpoint is three questions. Is the spec the same one the agent loaded? Are the deterministic checks still passing? Has the context window been refreshed in the last hour? Two no answers and the work should pause.
 
@@ -47,7 +51,9 @@ State the split plainly:
 
 CI proving that `PAY-022` exists in both the spec and the test tags is useful. That same CI job does not prove the tagged test asserts timeout behavior. The test might only assert that one request returns `500`. The link exists. The meaning is still wrong. That second check stays with review.
 
-One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it along with any design doc citing it now describes a system no longer in the code. The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
+One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it along with any design doc citing it now describes a system no longer in the code.
+
+The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
 
 Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? ADRs, architecture overview, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions all count when the release changed what they describe. The agent inspects the diff and proposes the affected artifacts. The reviewer decides whether the memory is current.
 

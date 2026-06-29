@@ -75,11 +75,19 @@ The hub gives the agent context about the codebase. What it still needs for any 
 
 The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub prevents instruction drift. When neither of those is true, the hub is overhead without the payoff.
 
-A solo developer working with a single tool and no plans to change does not have a coordination problem. A single instruction file, whether it is called `CLAUDE.md`, `AGENTS.md`, or anything else, is the source of truth because there is only one source. Note that using `CLAUDE.md` does not prevent the hub: a `CLAUDE.md` that points into a shared instruction directory is using the hub with a different entry point. The overhead question is whether you maintain `.agents/` as a shared directory at all. The hub adds that directory structure, a pointer file, and a maintenance ritual for a problem that does not exist yet. The coordination cost is real: every instruction file needs a load clause, every skill needs a trigger, every hook needs a definition. For that project, that cost buys nothing.
+A solo developer working with a single tool and no plans to change does not have a coordination problem. A single instruction file, whether it is called `CLAUDE.md`, `AGENTS.md`, or anything else, is the source of truth because there is only one source.
+
+Note that using `CLAUDE.md` does not prevent the hub: a `CLAUDE.md` that points into a shared instruction directory is using the hub with a different entry point. The overhead question is whether you maintain `.agents/` as a shared directory at all.
+
+The hub adds that directory structure, a pointer file, and a maintenance ritual for a problem that does not exist yet. The coordination cost is real: every instruction file needs a load clause, every skill needs a trigger, every hook needs a definition. For that project, that cost buys nothing.
 
 Two things change the calculation. First, tool independence: a developer who wants to stay portable, not locked into any single agent, benefits from a vendor-neutral hub even alone. Second, multi-agent workflows: running one agent to write code and another to review it is a coordination problem even for one person. Both agents need the same instructions, the same skill definitions, the same conventions. A vendor-specific file serves only the tool it was written for.
 
-The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs consistent agent behavior across all of them. Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes. At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
+The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs consistent agent behavior across all of them.
+
+Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes.
+
+At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
 
 The practical test: if you are maintaining one instruction file, and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same instruction set, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is a premature structure.
 
