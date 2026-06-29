@@ -81,18 +81,18 @@ graph TD
     A --> M(["Merge + archive"])
 ```
 
-Each gate has its own failure mode. Skip the before-gate and the agent improvises against unknowns. Skip the during-gate and the work drifts inside the session. Skip the after-gate, and the merged artifact does not match the merged intent. The three gates are not redundant because they catch different problems at different points in the lifecycle.
+Each gate catches a different break. Skip the before-gate and the agent works from stale docs, dead links, or a design decision the repo already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. Skip the after-gate and the PR lands code the spec never asked for, backed by tests that prove something adjacent. The gates overlap less than they look.
 
 ## Where the attention goes
 
-Every gate has a deterministic part and a human part. Automation enforces link validity, file-size limits, AC-ID traceability, test-coverage pairing. The human part is what no check reaches: whether the spec describes the right thing, whether the implementation is in the right shape, whether the test proves the scenario rather than something adjacent. Maximize the deterministic part, because hooks scale to agentic speeds and human review does not. That review time is scarce, and most quality programs spend it on things a hook would have caught.
+Every gate splits in two. Hooks and CI catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right shape, whether the test proves the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
 
-This book recommends deterministic checks as merge gates and semantic AI review as advisory unless a team has proved a stronger gate in its own workflow. The scanner proves the linkage and shape. The review still has to prove meaning.
+This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and shape. Review still proves meaning.
 
-The three gates do not draw on it equally. The before-gate is mostly maintenance, and the during-gate is mostly automation, both cheap once set up. The after-gate is where the review time goes and where it pays off most. Plan for the asymmetry.
+The work is uneven. The before-gate is mostly maintenance. The during-gate is mostly automation. The after-gate burns the review budget, and earns it.
 
 ## The sequence is logical, not temporal
 
-The gates are not project phases. A spec is not finished before implementation starts in a calendar sense. The during-gate happens immediately after the before-gate, in the same afternoon. The sequence is logical, not temporal. Forcing it to map to days or weeks recreates waterfall, which is exactly the failure mode `Why Specs?` argued against.
+Read the order as a dependency, not a schedule. First, check the ground under the change. Then write the spec. Then code against that same spec. Then verify the result. A small change moves through all four steps in one sitting. Turn those steps into separate calendar phases, and you are back in waterfall: docs first, code later, correction last.
 
-The three gates catch divergence from spec and drift from the architecture. They do not catch the case where the spec is silent and every pattern the agent finds in the codebase is valid, including the broken one. The next chapter covers security failure modes that pass through because they match the examples the agent was shown, not because any check missed them.
+These gates catch drift from the spec and drift from recorded architecture. They do not catch a missing constraint. If the spec never names the security boundary, and the repo shows the agent an insecure pattern, every checkpoint here still passes. The next chapter deals with failures of that kind: code faithful to the examples, wrong in the way that matters.
