@@ -2,7 +2,7 @@
 
 You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog: all of it, working. Then you adopt OpenSpec because the Spec-Driven Development framing makes sense, and a question lands on the table. Where does the change folder sit relative to everything you already run? Does it replace the ticket? Does the spec replace the Confluence page? Is PR review now two reviews, one for the spec and one for the code?
 
-None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It gives each existing slot its own artifact. Coordination already exists. The question is what lives where. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
+None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It gives each existing slot a clearer artifact. The coordination problem already exists. The practical question is what lives where. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
 
 ```mermaid
 graph LR
@@ -37,7 +37,7 @@ The ticket is for the team: priority, assignee, sprint assignment, status, and c
 
 Practically: create the change folder when you start the spec and link the Jira issue ID in the proposal. The spec references the ticket for context, while the ticket links to the PR that implements it. The agent reads the spec. The sprint board reads the ticket. Neither replaces the other.
 
-The reverse link is automatic if you use the issue key in commit messages. Jira's development panel surfaces every commit and PR that contains `XXX-123` in the message, without any manual linking. Include that convention in `AGENTS.md` and the agent will prefix its commits correctly. The result is a full audit trail navigable from either end: the change folder links forward to the ticket, and the commits link back.
+The reverse link is automatic if you use the issue key in commit messages. Jira's development panel surfaces every commit and PR that contains `XXX-123` in the message, without any manual linking. Include that convention in `AGENTS.md` and the agent will prefix its commits correctly. Then the change folder links forward to the ticket, and the commits link back.
 
 When should you skip the ticket entirely? For small behavioral changes (a one-line fix, a config key rename) where the spec is the only record that matters. The threshold is whether anyone other than the implementing developer needs to track the work. If yes, ticket. If the spec and the commit message are the entire record, skip the overhead.
 
@@ -79,7 +79,7 @@ Cross-cutting decisions (API contracts, authentication models, data retention po
 
 ## This assumes you already have the basics
 
-The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams that have none of these in place need to establish the primitives before layering spec-driven practices on top. The spec does not replace the ticket. It assumes the ticket exists and is well-understood.
+The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams without those basics need to establish them first. The spec does not replace the ticket. It assumes the ticket already exists and people know how to use it.
 
 The MCP integrations described here (Jira and Confluence) are mid-2026 tools. The underlying patterns are stable even as the specific tooling evolves.
 

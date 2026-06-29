@@ -6,7 +6,7 @@ The individual practices in the previous topics work at a solo scale. This secti
 
 Smaller than the swarm pitch wants you to believe. Most of the agentic team problems are manufactured by skipping the one rule that prevents it: one developer owns one OpenSpec change at a time. Each change is an isolated proposal, on its own short-lived branch, reviewed in its own PR. Nobody points two agents at the same component from two unreconciled specs. Keep that rule and there is no special "coordination wall" left to scale. What remains is the SDLC every team already runs: branches, pull requests, tickets, ADRs.
 
-So this is not a theory of agent swarms. It is how the one-change-per-developer rule slots into the ceremonies you already have. Where the architecture has clean boundaries, services behind API contracts, modules with explicit exports, parallel work across developers is safe almost by default, because the contracts coordinate for you. Where it does not, the fix is an ADR that draws the boundary, not a new process.
+So this is not a theory of agent swarms. It is how the one-change-per-developer rule fits into tickets, branches, PRs, and ADRs. Where the architecture has clean boundaries, services behind API contracts and modules with explicit exports, parallel work across developers is mostly routine because the contracts do the coordination. Where it does not, the fix is an ADR that draws the boundary, not a new ceremony.
 
 The genuinely unsolved part comes last, in [What Is Still Evolving](./what-is-still-evolving): autonomous agent-to-agent handoff, where agents coordinate with no human in the loop, is not solved by anyone in mid-2026. This book does not pretend otherwise. It describes the rules that work now.
 

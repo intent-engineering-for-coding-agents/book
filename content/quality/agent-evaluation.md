@@ -12,7 +12,7 @@ Tests prove the code is right. They say nothing about whether the agent setup is
 
 The tests in the previous chapter close the loop between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
-The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, the hook configuration: these are inputs to the agent, not outputs of it. Their effect shows up only in the code the agent produces, one PR at a time, and only when someone is paying attention. A change that makes the agent worse can sit in the repo for weeks before anyone notices. A change that makes it slightly better is invisible by definition.
+The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, and the hook configuration are inputs to the agent, not outputs. Their effect shows up only in the code the agent produces, one PR at a time. A change that makes the agent worse can sit in the repo for weeks before anyone notices. A change that makes it slightly better is hard to prove without a fixed task.
 
 This is the open loop. Nothing in the toolchain closes it for you.
 
@@ -53,7 +53,7 @@ Three properties, three unambiguous answers: did the file exist, did the agent d
 
 A handful of these tasks is the eval set, each covering a workflow the team relies on. Start with a set small enough to re-run by hand. Every task follows the pattern above: start from a fixed repo state, implement the spec, then grade the output against the properties it must satisfy.
 
-The score is the count of properties satisfied. A score that drops on a configuration change is a regression with nothing to do with the code under test. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and it does not prescribe a format.
+The score is the count of properties satisfied. If that score drops after a configuration change, you have a regression even if the generated code still runs. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and it does not prescribe a format.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), evaluation as a gap in SDD tooling. intent-engineering-for-coding-agents/cli `examples/eval-demo/` (ongoing), one concrete eval set and structural-check format.*
 
@@ -81,7 +81,7 @@ Most teams will not maintain this for every skill. The economics only work for t
 
 Not every team needs this. A solo developer on one project has the option of paying attention. Their eval suite lives in their head: they remember what the agent used to do, and they notice the day it stops. Formalizing the eval is wasted effort at that scale.
 
-The investment starts to pay when more than one developer shares the same agent instructions, when more than one agent runs against the same codebase, when the instruction files change faster than any one person reviews the resulting code. At that point the eval suite is the only thing that catches a quiet regression before it has shaped a week of PRs.
+The investment starts to pay when more than one developer shares the same agent instructions, more than one agent runs against the same codebase, and instruction files change faster than one person can review the resulting PRs. At that point the eval suite is the only thing catching a quiet regression before it shapes a week of patches.
 
 The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The closed loop answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 

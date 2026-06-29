@@ -10,7 +10,7 @@ A design doc gets cited six months after the feature shipped. The cite is wrong.
 
 A spec gets parked in `docs/` because someone thought the team should keep it for reference. The agent now reads work from the last quarter as live instruction, burning half its context window on stale guidance. The agent is not confused. It is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
 
-Each case is reversible, but in a real repo, each takes weeks of careful pruning to undo. Recognizing the type is where this starts. What you do with it next is what the rest of this chapter is about.
+Each case is reversible, but never cheap. You clean it up by moving files, fixing references, and teaching the agent to ignore stale material you should have retired already. Recognizing the document type is where the cleanup starts.
 
 ## The types
 
@@ -20,7 +20,7 @@ Content documents are the baseline: wiki pages, guides, articles, reference docu
 
 The other five types each carry constraints. Content documents do not. That asymmetry is the point.
 
-The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. A convention check scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at the same places. Content documents are never in that path. No filename suffix is needed. The directory does that job.
+The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. A convention check scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at those same places. No filename suffix is needed. The directory already carries the rule.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
@@ -38,7 +38,7 @@ README and INDEX live in the same directory, serve the same lifespan, and are th
 
 Design docs live in `docs/design/` and hold per-feature thinking: options weighed, approach chosen, risks named. They are not decision records, too narrow and too feature-specific to carry that weight, and they are not specs either. A design doc describes the approach. A spec defines the behavior. What you do with them afterward is a matter of preference.
 
-Some teams write them and move on, and the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place (git tracks the history), and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. The discipline that matters is not which approach you pick, but picking one and applying it consistently so the agent does not confuse a superseded design for the current one.
+Some teams write them and move on, and the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place, and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. Pick one rule and apply it consistently, so the agent does not read last year's design as current intent.
 
 *Sources: `iec` repo conventions in this project family, the docs/design/ placement and write-and-forget vs. keep-current treatment.*
 
@@ -68,7 +68,7 @@ This book uses MADR (Markdown Architectural Decision Records), a structured temp
 
 The "considered options" section is not boilerplate. Rejected options tell the agent which paths were already evaluated and ruled out. An agent that sees only the chosen option will re-propose the alternatives on its own. One that sees the rejected options with their reasoning will not. The why-not carries the same weight as the why.
 
-A secondary reason MADR works: its headings are plain English doing real labor. Write `## Considered Options` and the agent fills it correctly without a footnote, the same way it would under `## Risks` or `## Open Questions`. That is not the agent recognizing MADR. It is the agent reading words that already say what they mean, and MADR's template is built from exactly those kinds of headings. You get the benefit whether or not the agent has ever seen the standard by name.
+A secondary reason MADR works: its headings already say what belongs under them. Write `## Considered Options` and the agent usually fills it correctly without a footnote, the same way it would under `## Risks` or `## Open Questions`. You get the benefit whether or not the agent has seen MADR by name.
 
 Some formats need more than that. Gherkin's `Given/When/Then` and OpenAPI's schema structure are not self-explanatory from the words alone. An agent either has encountered that exact convention at scale, in which case it produces the real thing, or it has not, in which case it produces something that merely looks like it. That is where naming a field standard genuinely substitutes for writing your own specification of it: the agent's training carries the convention, and your documentation does not have to. Inventing a custom format forces you to explain it from nothing. Naming a standard the agent already knows means you do not have to. That only pays off where the convention itself is the hard part, not the words around it.
 
@@ -112,7 +112,7 @@ Specs are temporary: they move to `openspec/changes/archive/` after implementati
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
 
-Structure is the cheapest discipline available. Convention over configuration is an old argument, one Maven and Rails built ecosystems on. Intent Engineering extends it to a new reader: the agent.
+Structure is the cheapest discipline available. Convention over configuration is an old argument, one Maven and Rails built ecosystems on. Here the extra reader is the agent.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
 
@@ -130,4 +130,4 @@ Run `iec check` and the structural validators pass. It is not a showcase. It is 
 
 ## The taxonomy assumes a readable format
 
-All of it assumes the documents are in a format the agent processes. A type taxonomy tells you where to put things and how long to keep them. It does not guarantee the agent reads them. An architecture diagram embedded in a Keynote file is still a Keynote file, regardless of which directory it sits in.
+All of this assumes the documents are in a format the agent can read. A type taxonomy tells you where to put things and how long to keep them. It does not extract text from a Keynote file or a screenshot. Put the architecture diagram in the right directory and the agent still misses it if the file format is opaque.

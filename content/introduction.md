@@ -12,11 +12,11 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, January 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
-This is the territory of Intent Engineering, the practice this book teaches: making the agent less under-informed about your system and intent. Intent Engineering sits inside agentic software engineering, the broader discipline of building software with coding agents as active participants.
+This book calls that work Intent Engineering: giving the agent enough of your system and intent that it stops guessing at both. It is one part of building software with coding agents in the loop.
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
-This book is not mainly about AI. It is about a shift in software authorship. The machine writes more of the implementation. The developer spends more time defining the solution, setting constraints, reviewing tradeoffs, and proving the result.
+This book is not mainly about AI. It is about who authors what. The machine writes more of the implementation. You spend more time defining the change, setting constraints, reviewing tradeoffs, and proving the result.
 
 Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose instead of its own inference. It takes two forms: per-change specs for the next change, and permanent decisions and conventions that constrain how anything is done. You adopt them as you need them. They are not a methodology you install.
 
@@ -55,13 +55,13 @@ Spec-Driven Development: specs before code. Documentation is the durable source 
 
 Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
 
-Topics three and four are a pair. Spec-driven development showed up more often in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and most examples stop at the spec. A spec narrows the solution space and pins the behavior of a change. The spec does not verify that the implementation hit the target.
+Topics three and four are a pair. Spec-driven development showed up more often in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and most examples stop at the spec. A spec narrows the solution space and pins the behavior of a change. It does not tell you whether the generated code landed there.
 
 In the SDD material reviewed for this book, the emphasis is heavier on aiming the change than on proving the result. This book adds the second half: the spec aims the agent at a target, and the test package proves the agent hit it. Spec-driven development without verification is aiming and then hoping for the best.
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, January 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. None of the topics introduces ceremonies your team does not already have. The artifacts inside existing ceremonies change, but the ceremonies stay. If "specs before code" is already read as waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, the agile loop runs one PR at a time, not a big design up front.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. The point is not to add new ceremonies. The existing ones, tickets, PRs, ADRs, CI, get different artifacts. If "specs before code" already sounds like waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, and the loop still runs one PR at a time.
 
 What you will not find here:
 
@@ -88,7 +88,7 @@ Reach for the chat window, describe what you want, take the code. Adding specs a
 
 The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
 
-For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions load the agent with context about the system it is changing. Specs and verification point it at the target and prove it arrived. None of this is all-or-nothing. You take on more of the discipline as the cost of getting it wrong climbs, the same dial you reach for when deciding how much process a single change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project: whether to bring the discipline to bear at all.
+For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions load the agent with the repo context it lacks. Specs and verification point it at one target and prove the patch hit it. None of this is all-or-nothing. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
 
 ## Intent Engineering fits your SDLC
 

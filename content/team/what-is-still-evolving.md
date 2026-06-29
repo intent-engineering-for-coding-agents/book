@@ -36,7 +36,7 @@ No framework in the sources reviewed for this book has delivered governance with
 
 ## The honest bar for this book
 
-The bar this book applies to itself is the same bar it applies to any claim: strong where the evidence is strong, labeled where it is synthesis, time-bounded where the practice is evolving.
+The bar this book applies to itself is simple: strong claims need strong evidence, synthesis gets labeled, and moving practices get time bounds.
 
 The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) meet a higher bar than the team practices. They are described with more specificity because the evidence base is stronger. The team practices meet a lower bar by honest acknowledgment: they are directionally useful, they follow from the individual practices, and they are consistent with what the SDD community is building toward. Some of them will look different in two years.
 

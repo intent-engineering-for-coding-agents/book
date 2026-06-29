@@ -32,7 +32,7 @@ Most AI coding advice loses me here. It talks about prompts, models, autocomplet
 
 When working on security, the agent starts from the current security practice and the governance rules the company and team selected. There is no room for improvisation here.
 
-The decisions, checks, and constraints are inherent in the product. Code still matters, but with coding agents it starts to look like generated output. I read the shift as a compiler shift: a compiler translates source into machine code, a coding agent translates intent into application.
+The decisions, checks, and constraints belong to the product whether the code was typed or generated. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
 
 Software engineering has been moving there for years. Developers raise authored intent and have tools produce lower-level artifacts from it. Coding agents push the step further. The maintained artifact is no longer just code the compiler accepts. It is also the intent the developer is prepared to defend in review.
 
@@ -66,7 +66,7 @@ This is where agent work becomes archaeology. The agent searches, finds a plausi
 
 ## What this book is about
 
-The developer's decisions still matter. The agent helps with reasoning, implementation, tests, and the gaps. Responsibility stays with the developer. The developer types less.
+The developer still owns the decisions. The agent pushes on the design, implements the change, and writes tests. Responsibility does not move. The keyboard load does.
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 

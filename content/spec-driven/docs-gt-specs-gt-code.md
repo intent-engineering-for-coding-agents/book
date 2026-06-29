@@ -20,7 +20,7 @@ In agent-driven work, code starts to occupy the position the compiled binary use
 
 This has happened one level down already. Assembler was once the source a person reasoned in, until the compiler turned the instruction stream into emitted output and the developer's working line moved up to C and later languages. Nobody fixes a bug by hand-editing the instruction stream a compiler emits. The agent runs the same move one step higher: code becomes a generated artifact, and the working line climbs again, to the spec and the docs above it.
 
-The boundary between authored and generated artifacts does not hold still. This book reads the current shift as a compiler move, not as a sourced law: the spec becomes the source, the agent compiles, and the agent becomes the compiler. That framing explains why spec-driven development matters now. If code is inexpensive to generate but intent is expensive to reconstruct, the authored layer moves upward.
+The boundary between authored and generated artifacts does not hold still. This book reads the current shift as a compiler move, not as a sourced law: the spec becomes the source, and the agent does the compilation step. That framing explains why spec-driven development matters now. If code is cheap to regenerate and intent is expensive to reconstruct, the authored layer moves upward.
 
 So the chain runs in one direction. Docs outrank specs, specs outrank code: the design shapes the spec, the spec drives the code, and code is the artifact you are most willing to throw away. The spec sits in the middle on purpose. It is neither the durable record above nor the disposable output below, but the one-off artifact that turns a settled design into testable behavior for one change, then archives.
 
@@ -51,7 +51,7 @@ The mantra: code is self-documenting. It is not. Code tells you what it does, bu
 
 For bounded 2025-2026 agent-assisted changes, code modification is cheaper than it used to be. A small service, handler, or UI flow might fit in one agent session. Regenerating without docs and a spec spends the same session budget and leaves the next developer reverse-engineering intent from output. Code that is inexpensive to replace should not outrank the documents that make replacement repeatable.
 
-Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record intent and the spec turns intent into proof obligations. Without those artifacts, every deployment carries implicit assumptions the review never verified. With them, the path from intent to production is auditable.
+Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record the design decisions and the spec turns them into proof obligations. Without those artifacts, a deploy carries assumptions nobody checked. With them, a reviewer can follow the path from decision to spec to test.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and reliable delivery of intent into production; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing for bounded regeneration claims.*
 
@@ -59,7 +59,7 @@ Farley's "Modern Software Engineering" argues for feedback loops and reliable de
 
 The `>` is a decision someone records, not a property of the system. Whether an agent writes the code or drafts part of the spec, the agent does not decide which layer wins when they disagree. Ranking the layers is an intent question, and the intent is yours.
 
-The diagram's solid arrows run downward: docs shape the spec, the spec drives the code. Its dotted arrows pointing back up are a different kind of move because they do not fire on their own. The machine only surfaces the mismatch, a race the design never accounted for, a rate limit the upstream API enforces. A person decides whether that correction climbs into the spec or further into the docs when the design itself was wrong.
+The diagram's solid arrows run downward: docs shape the spec, and the spec drives the code. The dotted arrows point back up only when someone acts on a mismatch the agent or the tests surfaced: a race the design never accounted for, a rate limit the upstream API enforces, a scenario the spec omitted. A person decides whether the fix belongs in the spec or further upstream in the docs.
 
 This book's rule has a direction. The machine moves down the layers, and only a person moves intent back up. That upward arrow never moves on its own. A team that forgets to move it keeps docs reading as authoritative over code they no longer match. [Keeping docs up to date](../quality/keeping-docs-up-to-date) gives durable documents a feedback loop to catch that gap.
 

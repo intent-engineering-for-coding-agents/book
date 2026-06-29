@@ -4,7 +4,7 @@ Consider two teams sharing an authentication boundary. Team A changes the token 
 
 The ADR did its job for Team A. The mechanism that would have carried it to Team B did not exist.
 
-Coordination across team boundaries is harder than coordination within a team, and the agentic layer adds another failure mode. Multiple teams' agents read their own architecture docs, their own agent instructions, their own ADR logs. They share the runtime but not the context.
+Coordination across team boundaries is harder than coordination within a team, and coding agents add another failure mode. Each team's agents read their own architecture docs, their own instructions, and their own ADR log. The services share runtime behavior. The agents do not share context unless you wire it in.
 
 ## ADRs as the cross-team mechanism
 
@@ -44,7 +44,7 @@ graph TD
 
 A team that has written useful skill files (a spec-quality checker, a test-strategy validator, a security-review skill) should not be the only team using them. The emerging pattern borrows from inner source: selected files from `.agents/` move into a shared library other teams pull from.
 
-The mechanics resemble any shared library contribution. The team publishes the skill, documents its interface (what the skill expects, what it produces), and maintains it. Other teams reference it from their `.agents/` directory by pulling or copying.
+The mechanics resemble any shared library contribution. One team publishes the skill, documents what input it expects and what output it produces, and maintains it. Other teams pull or copy it into their `.agents/` directory.
 
 The pragmatic shortcut for smaller organizations: a single `shared-agents` repository with skills and instruction files that teams include in their `AGENTS.md` by reference. The team's local `AGENTS.md` loads the shared file first, then layers project-specific conventions on top. The shared file changes less often, while the project-specific layer changes frequently.
 
@@ -60,7 +60,7 @@ Navigation happens through ADRs and through explicit cross-repo references in sp
 
 MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is an emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The pattern depends on the MCP tooling available.
 
-Multi-repo coordination is harder at the agent level than at the code level. Shared libraries and package managers handle cross-repo dependencies for code. Shared context is still largely manual for agents: developers read the other team's architecture docs, then instruct their agent with what they found. This is the gap, not the fix.
+Multi-repo coordination is harder at the agent level than at the code level. Package managers already move code across repo boundaries. Context still moves mostly by hand: a developer reads another team's docs, then restates the relevant parts to the agent. That manual relay is the gap.
 
 *Sources: Model Context Protocol documentation (ongoing), MCP as the agent-tool bridge used for external context fetches. The shared-context gap for multi-repo agent work is this book's synthesis from current tool limits.*
 
@@ -80,6 +80,6 @@ The shared architecture repository pattern works only when organizations maintai
 
 The alternative, where cross-team decisions are not written down, is the pattern behind the hypothetical production incident at the start of this chapter. The overhead of the shared repo is real. So is the cost of not having it.
 
-The tooling for cross-team coordination is nascent. The community has patterns for individuals and small teams, while the multi-repo, cross-team story is still being assembled.
+The tooling for cross-team coordination is still early. The community has repeatable patterns for one developer and one repo. The multi-repo story still has loose edges.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), multi-repo planning still treated as an in-development problem. Governance-without-bureaucracy is this book's open-problem framing.*

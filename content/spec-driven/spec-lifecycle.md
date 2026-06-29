@@ -8,7 +8,7 @@ A spec without a lifecycle accumulates. The agent cannot distinguish intent from
 
 ## The stages
 
-This chapter is the canonical reference for the OpenSpec change-folder lifecycle. The stages below are this book's synthesis. OpenSpec supplies the change folder and the archive step. The critique stage and intent-first review are the discipline this book adds around them.
+This chapter is the canonical reference for the OpenSpec change-folder lifecycle in this book. The stages below are book synthesis. OpenSpec supplies the change folder and the archive step. This book adds the critique stage and spec-first review.
 
 One prerequisite before the first stage: the relevant architectural decision should be closed. An ADR establishes which path is taken. The spec describes how to execute it. Writing a spec against an open architectural question inverts the dependency: you risk finishing the implementation before discovering the intent was wrong at the decision level. The full chain runs ADR, then design doc, then spec, then implementation, then archive.
 
@@ -42,7 +42,7 @@ Approve the change folder on its own pull request, the spec, and its scenarios, 
 
 **Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. `/opsx:sync` merges the delta specs into `openspec/specs/`. `/opsx:archive` moves the change folder to `openspec/changes/archive/`.
 
-In this book's workflow, CI is the natural place to trigger both. The last task box ticked is the signal. The implementation is in git, the acceptance criteria are in the canonical spec, and the change history is in the archive. The design that shaped all three stays in `docs/`. Four things, four places, none of them confused.
+In this book's workflow, CI is the natural place to trigger both. The last checked task is the signal. The implementation stays in git, the acceptance criteria move into the canonical spec, the change history moves into the archive, and the design doc stays in `docs/`. Four artifacts, four locations.
 
 *Sources: Fission AI, OpenSpec, the change-folder stages, and the archive-into-canonical-specs mechanism. Fission AI, OpenSpec, "commands.md" (github.com/Fission-AI/OpenSpec, accessed 2026), the `opsx:*` commands mapped to the stages: `propose` generates the artifacts, `apply` implements and checks off tasks, `verify` validates against artifacts, `sync` and `archive` merge and retire the change. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), multimodel critique as an emerging SDD step. The lifecycle framing (write, critique, review, implement, archive) is this book's synthesis.*
 
@@ -78,7 +78,7 @@ The single-model spec review has a blind spot: the model that wrote the spec and
 
 A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. Rick Hightower lists this multimodel critique as an emerging step in spec-driven workflows. The difference is not always large, but for specs guiding production-critical implementations, it is often worth the pass.
 
-The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, a CLI agent pointed at the file. The mechanism does not matter. Iterate once. The critique adds a few minutes and catches the kind of scenario the first model never thinks to write: the empty list case, the concurrent update case, the API returning a 200 with an error payload in the body.
+The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, or a CLI agent pointed at the file. Iterate once. The critique adds a few minutes and often catches cases the first model skipped: the empty list, the concurrent update, the API returning a 200 with an error payload in the body.
 
 This is not a rigid practice. For small, low-risk specs, it is overhead. For specs touching security, payment, or anything that would constitute a long day when it goes wrong, the second-model pass is worth it.
 
@@ -92,4 +92,4 @@ A dead spec is not a deleted spec. It is a change folder left in `openspec/chang
 
 If you want to see this workflow in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
-The archive is not an afterthought. It separates working intent from historical record. An agent that cannot distinguish the two treats the past as instruction. The archive is the mechanism that stops it. It is committed and kept, not pruned: the archived change folders are the record of why each capability reads the way it does, and deleting them throws that history away. The artifact most trusted when the code needs to change is likely not the one most developers would guess.
+The archive is not an afterthought. It separates live work from historical record. Without that split, the agent reads last quarter's abandoned change beside today's active one and treats both as instructions. Keep the archive committed. Those folders explain why each capability ended up with its current behavior.
