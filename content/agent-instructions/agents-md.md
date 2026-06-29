@@ -2,11 +2,11 @@
 
 An agent with no context reaches for the nearest thing it knows.
 
-Suppose the agent is working on the auth module. The codebase has a custom token-validation library the team wrote to handle their Single Sign-On (SSO) provider's quirks, and the agent has no idea it exists. So it reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library handled. The PR even has passing tests. A reviewer catches it before merge, but only because they recognize the library and notice what got bypassed. Nobody else on the team would have known.
+Suppose the agent is working on the auth module. The codebase has a custom token-validation library for the team's Single Sign-On (SSO) quirks, and the agent has no idea it exists. It reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library already handled. The PR passes tests. A reviewer catches it only because they recognize the library and notice what got bypassed.
 
 The agent did not invent the vulnerability. It improvised in the absence of a context it was never given.
 
-`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the right context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the same context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -14,7 +14,7 @@ The instinct when writing `AGENTS.md` is to fill it. Project history, coding sty
 
 Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a large slice of its context window is gone. The agent is not better informed, only more constrained.
 
-AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. Short enough to fit in a single context load, directive enough to tell the agent what to load, precise enough to link to the specific instruction file relevant to the current task. The agent loads what it needs, not everything that might ever be needed.
+AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. It should fit in one context load. It should tell the agent what to load next. It should point to the file the current task needs. The agent loads what it needs, not everything that might ever be needed.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (Aug 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
 
@@ -26,7 +26,7 @@ The TOC pattern implies three things, in this order:
 - **Load-on-demand instructions:** links to `.agents/instructions/...` files, each with a clause saying when to load it
 - **Commands and skills:** key commands and invocable skills, listed last as reference
 
-The clause on each instruction link is where most teams cut corners. Without one, the agent loads the file only to find out whether it matters. With one, it reads the clause, decides the file is not relevant to the current task, and moves on without touching it:
+The clause on each instruction link is where most teams cut corners. Without one, the agent opens the file only to find out whether it matters. With one, it reads the clause, sees the file is not relevant, and moves on without touching it:
 
 ```markdown
 - [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
@@ -34,7 +34,7 @@ The clause on each instruction link is where most teams cut corners. Without one
 - [OpenSpec workflow](.agents/instructions/openspec.md): Specs, AC IDs, test traceability
 ```
 
-The test: does the clause tell the agent *when* to load the file, or only *where* to find it? "Load when working on authentication" is an instruction. "See auth docs" is not. The first lets the agent decide without opening the file. The second forces it to open the file to find out whether it matters.
+The test is simple: does the clause tell the agent *when* to load the file, or only *where* to find it? "Load when working on authentication" is an instruction. "See auth docs" is not. The first lets the agent decide without opening the file. The second sends it into the file to find out whether it matters.
 
 ## Tool-agnostic by design
 
@@ -47,11 +47,11 @@ Several major coding agents now read `AGENTS.md` natively. GitHub Copilot's codi
 
 Claude Code follows the import and loads the real context. Any edit to `AGENTS.md` propagates automatically.
 
-The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. The cost of adopting it with Claude Code is one pointer file with one line. That is a small cost for a convention that belongs to no tool.
+The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. Adopting it with Claude Code costs one pointer file with one line. That is a small cost for a convention that belongs to no tool.
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short script that writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, commits the result. The convention lives in the generator, not in anyone's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short script that writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, and commits the result. The convention lives in the generator, not in anyone's memory.
 
 Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 

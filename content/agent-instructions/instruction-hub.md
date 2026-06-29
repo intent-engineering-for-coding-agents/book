@@ -1,14 +1,14 @@
 # Agent Instruction Hub
 
-Two developers, same repo, same language, same CI pipeline. Why do their pull requests look like they came from different codebases? Different naming, different ideas about which directories are off-limits, different test structures. Nobody changed the rules. The rules diverged: one developer drives Claude Code with `CLAUDE.md`, the other drives Cursor with `.cursorrules`, both files started as copies of the same thing, and a month later they no longer agree.
+Two developers, same repo, same language, same CI pipeline. Why do their pull requests look like they came from different codebases? Different naming, different directories off-limits, different test structures. Nobody changed the rules. The rules diverged: one developer drives Claude Code with `CLAUDE.md`, the other drives Cursor with `.cursorrules`, both files started as copies of the same thing, and a month later they no longer agree.
 
 The fix is not better synchronization between two files. It is one file that both tools point to.
 
-`AGENTS.md` is the entry point, and `.agents/instructions/` is what it points into. One directory, no vendor in the name, readable by every tool. Instructions, skills, and hooks live there. Whichever agent is doing the work, it loads from the same place.
+`AGENTS.md` is the entry point, and `.agents/instructions/` is what it points into. One directory, no vendor in the name, readable by every tool. Instructions, skills, and hooks live there. Whatever agent is doing the work, it loads from the same place.
 
 ## `.agents/instructions/`
 
-An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist, so each session loads only what matters for the current task. Each file covers one domain, letting the agent read the relevant one and skip the rest.
+An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain, so the agent can read the relevant one and skip the rest.
 
 `instructions/` is this book's name for this layer. At the time of writing, no cross-tool standard specifies this subdirectory path yet.
 
@@ -24,13 +24,13 @@ A focused hub stays small. Here is what one looks like in practice:
 
 `coding-standards.md` is short. Type hints, string quoting, linting rules, test naming conventions. An agent working on a new checker reads it once and writes code that matches the rest of the codebase. An agent updating a dependency skips it entirely.
 
-`openspec.md` is the same move applied to a tool. It holds the conventions that extend OpenSpec, a unique AC ID per criterion and a test bound to the task that proves it, without editing OpenSpec's own commands. [Spec Lifecycle](../spec-driven/spec-lifecycle) shows the rules it carries and why forking the tool is the worst trade.
+`openspec.md` applies the same move to a tool. It holds the conventions that extend OpenSpec, a unique AC ID per criterion and a test bound to the task that proves it, without editing OpenSpec's own commands. [Spec Lifecycle](../spec-driven/spec-lifecycle) shows the rules it carries and why forking the tool is the worst trade.
 
 One file per domain, not one file per task. `coding-standards.md` covers all style conventions instead of splitting into `naming-conventions.md` and `formatting.md`. Splitting by domain keeps each file coherent. Splitting too fine creates a directory the agent has to enumerate before deciding what to load.
 
 ## `.agents/skills/`
 
-Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a specific repeatable task. `.agents/skills/` is the emerging standard path: OpenAI Codex scans it natively from the current directory up to the repo root.
+Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a repeatable task. `.agents/skills/` is the emerging standard path: OpenAI Codex scans it natively from the current directory up to the repo root.
 
 Take `update-changelog` as an example: scan commits since the last tag, extract the relevant entries, regenerate `CHANGELOG.md`. Five steps, one outcome, invocable any time a feature merges. Without the skill, each agent session has to remember to update the changelog or be told to. With the skill, the agent instructions state the rule once: after merging a feature, run `update-changelog`.
 

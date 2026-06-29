@@ -32,7 +32,7 @@ Most projects settle on a subset: unit, integration, and E2E as the baseline, wi
 
 The test taxonomy is only useful if it is written down where the agent reads it.
 
-The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format is as simple as a table:
+The convention document defines the types the project uses, the framework that covers each type, where the test files live, and what coverage thresholds apply. The format is a table:
 
 ```markdown
 ## Test types in use

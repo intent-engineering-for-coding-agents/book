@@ -1,6 +1,6 @@
 # Plain-Text-as-Code
 
-The architecture diagram for your most important service is in a PowerPoint file on a laptop that left the company two months ago. And the decision to use eventual consistency was made in a slide review nobody recorded. The retry policy is documented in a Confluence page whose last edit date is 2023.
+The architecture diagram for your most important service is in a PowerPoint file on a laptop that left the company two months ago. The decision to use eventual consistency was made in a slide review nobody recorded. The retry policy is documented in a Confluence page whose last edit date is 2023.
 
 Do not rely on the agent reading PowerPoint files or replaying slide reviews. The Confluence page might be reachable through a connector, but only if the agent knows the page exists, knows to look there, and has permissions. The developer who joined yesterday meets the same gates.
 
@@ -8,7 +8,7 @@ If the agent needs it, it lives in the repo. If it lives in the repo, it lives i
 
 ## The constraint
 
-Plain text means a format a human reads in a terminal, a Git diff shows line-by-line, and a language model processes without conversion: Markdown for prose, Mermaid for diagrams, Markdown Architectural Decision Records (MADR) for the decisions. Nothing exotic.
+Plain text means a format a human reads in a terminal, a Git diff shows line by line, and a language model processes without conversion: Markdown for prose, Mermaid for diagrams, and Markdown Architectural Decision Records (MADR) for decisions. Nothing exotic.
 
 It is not a migration. The document lives in the repo from creation, evolves there, and is reviewed in the same PR as the code it describes. If someone needs it in Confluence, in a PowerPoint deck, or on a wiki, that is an export, a one-way snapshot made when needed. The repo is the source of truth. Everything else is a derivative.
 
@@ -30,7 +30,7 @@ If a decision or convention needs to exist, it lives in a Markdown file in `docs
 
 A C4 diagram in draw.io is opaque to agents and unreviewed by humans. The file format describes shape positions and styles, not graph semantics, and nobody opens the source to verify a PR description's claim that the architecture changed.
 
-Mermaid is different. The syntax encodes the graph itself: not a picture of boxes and arrows, but the relationships. The same diagram, as a source and as a render:
+Mermaid is different. The syntax encodes the graph itself, not a picture of boxes and arrows, but the relationships. The same diagram, as a source and as a render:
 
 Mermaid diagram embedded in Markdown:
 
@@ -123,4 +123,3 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 ## The compound effect
 
 A team that practices this consistently accumulates structured context. ADRs build up the agent's picture of system history. Skill files add workflows it invokes, and the architecture overview grows richer as the system grows. After months, the repo instructions a new agent (or a new developer) in minutes rather than days, because the context is the repo. The formats are settled. What remains is the harder question: where in the commit, review, and deploy loop do these documents get written, and who ensures they stay current when the code moves on without them.
-
