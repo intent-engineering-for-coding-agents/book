@@ -8,7 +8,7 @@ The fix is not better synchronization between two files. It is one file that bot
 
 ## `.agents/instructions/`
 
-An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist so each session loads only what matters for the current task. Each file covers one domain, so the agent can read the relevant one and skip the rest.
+An agent modifying the authentication module does not need the CI pipeline rules, and an agent writing a new checker does not need the deployment runbook. Instruction files exist so a session loading `auth.md` does not also spend context window on Kubernetes rollback steps. Each file covers one domain, so the agent reads the relevant one and skips the rest.
 
 `instructions/` is this book's name for this layer. At the time of writing, no cross-tool standard specifies this subdirectory path yet.
 
@@ -63,7 +63,7 @@ Common hook candidates: run the linter after any source file edit, keep a genera
 └── py.md     # docformatter on modified .py files
 ```
 
-Each file defines a trigger (a file edit matching that extension) and the command to run. The agent does not get a vote.
+Each file defines a trigger (a file edit matching that extension) and the command to run. The trigger fires whether the agent remembered the rule or not.
 
 The honest caveat: hook authoring is still early practice. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool looks for hook definitions also varies. For many teams as of mid-2026, hooks are still experimental rather than routine.
 

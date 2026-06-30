@@ -76,7 +76,7 @@ The failure is not in the code but in the review sequence: the code diff was rea
 
 Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff view get opened. The code diff review question is different: does this implementation match the spec?
 
-Humans and agents miss different things in this review, and it works only when each covers the other's gaps: humans verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own discipline.
+Reviewers and agents miss different things in this review, and it works only when each covers the other's gaps: reviewers verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own discipline.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.*
 

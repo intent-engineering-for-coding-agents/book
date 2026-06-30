@@ -6,7 +6,7 @@ A coding agent works fast. It has been trained on a lot of code. It can generate
 
 The agent has no idea what you decided.
 
-Consider a repo where the Redis decision from the last quarter lives only in someone's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but a decision already deprecated it, and nobody recorded the decision in an ADR. From the available context, the agent often reasons well.
+Consider a repo where the Redis decision from the last quarter lives only in one developer's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but an old ADR would have said "do not use this field" if anyone had written one. The agent sees the schema, the imports, and the passing tests. It does not see the missing decision, so it extends an interface the team had already decided to retire.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". An under-informed developer gets incorrect code faster. An experienced developer gets correct code faster. The amplifier is neutral. What it amplifies is not.
 
@@ -76,7 +76,7 @@ You have shipped production code under pressure, stayed skeptical of hype, and w
 
 Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one costs something today, a cost later chapters name honestly rather than wave away.
 
-The payoff arrives once switching to another tool costs only a pointer file and a few instructions: then you can run several agents side by side for second opinions, reviews, and benchmarking, instead of betting the whole repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
+The payoff arrives when adding another tool means one pointer file and a few load clauses. Then you run one agent for the patch, another for review, and a third against the same golden task, instead of betting the repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
 *Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
 
@@ -88,7 +88,7 @@ Reach for the chat window, describe what you want, take the code. Adding specs a
 
 The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
 
-For a system meant to run in production and be maintained by someone after you, adopt the rest. Foundation and Agent Instructions load the agent with the repo context it lacks. Specs and verification point it at one target and prove the patch hit it. None of this is all-or-nothing. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
+For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the repo facts the agent does not know. Specs and verification pin one change to one target and show whether the patch hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
 
 ## Intent Engineering fits your SDLC
 

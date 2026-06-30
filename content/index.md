@@ -1,11 +1,11 @@
 ---
 layout: home
 title: Intent Engineering for Coding Agents
-description: "Intent Engineering for Coding Agents: How humans and coding agents design software together"
+description: "Intent Engineering for Coding Agents: How developers keep design, specs, and generated code aligned"
 hero:
   name: Intent Engineering
   text: for Coding Agents
-  tagline: How humans and coding agents design software together.
+  tagline: How developers keep design, specs, and generated code aligned.
   image:
     light: /logo-light.svg
     dark: /logo-dark.svg
@@ -28,10 +28,10 @@ features:
     details: The source-controlled workspace as shared ground. Decisions, design docs, specs, and an agent-facing index, before any per-change intent exists.
     link: /foundation/
   - title: Agent Instructions
-    details: AGENTS.md and the .agents/ hub that loads every coding agent with context about how humans work in this repo.
+    details: AGENTS.md and the .agents/ hub that tells each coding agent how this repo is structured, reviewed, and constrained.
     link: /agent-instructions/
   - title: Spec-Driven Development
-    details: Change-sized specs before code, with OpenSpec as the working example. Humans state intent before agents implement.
+    details: Change-sized specs before code, with OpenSpec as the working example. Developers state intent before agents implement.
     link: /spec-driven/
   - title: Quality and Verification
     details: Tests as proof of intent. Stable AC IDs, coverage pairs, PR taxonomy, and checks that keep human intent and generated code aligned.

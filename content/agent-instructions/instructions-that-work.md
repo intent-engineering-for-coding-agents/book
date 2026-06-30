@@ -50,7 +50,7 @@ Write them explicitly. "Do not modify files under `src/generated/`. They are pro
 
 Most languages have an architectural constraint testing framework that encodes exactly these rules: ArchUnit for Java, NetArchTest for .NET, `dependency-cruiser` for JavaScript and TypeScript, `import-linter` for Python. If yours does, consult it when writing instructions and run it after the agent changes to catch what the instructions missed.
 
-Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raising it in the PR before implementing" prevents the agent from wiring a dependency that would violate a decision nobody told it about. Without the instruction, the agent sees a useful function in `users`, uses it, and ships a PR that looks fine until someone checks the dependency graph.
+Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" prevents the agent from adding an import edge that breaks the dependency graph. Without the instruction, the agent sees a useful function in `users`, imports it, and opens a PR that passes local tests but fails the architecture check.
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, negative and boundary instructions in an agent workflow. Anthropic, "Building effective agents" (December 2024), explicit constraints and guardrails over implicit ones.*
 
@@ -74,7 +74,7 @@ The "any coding agent or human" requirement is the key addition. Without it the 
 
 ## Testing whether your instructions work
 
-Instructions go stale. Others were too vague to follow from the day someone wrote them. The only way to know is to test them with the agent, not with a linter.
+Instructions go stale. Others were too vague from the day they landed. The only reliable check is to give the agent a task that should trigger the rule and see whether the output changes.
 
 Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is unclear, or the agent never loaded it.
 

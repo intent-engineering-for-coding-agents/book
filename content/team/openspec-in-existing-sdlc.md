@@ -79,7 +79,7 @@ Cross-cutting decisions (API contracts, authentication models, data retention po
 
 ## This assumes you already have the basics
 
-The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams without those basics need to establish them first. The spec does not replace the ticket. It assumes the ticket already exists and people know how to use it.
+The mapping described here assumes a reasonably mature team workflow: tickets exist, PRs have reviewers, ADRs are written when significant decisions are made. Teams without those basics need to establish them first. The spec does not replace the ticket. It assumes the ticket already exists and the team already uses it to track scope, priority, and ownership.
 
 The MCP integrations described here (Jira and Confluence) are mid-2026 tools. The underlying patterns are stable even as the specific tooling evolves.
 

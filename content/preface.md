@@ -44,9 +44,9 @@ Context is most of the game. Do not cram a project into one prompt. Keep the dec
 ## From Vibe to Pro
 This is the part the carousels leave out. Give the agent the current details it needs, and the work moves from rough prototype to a production system. The hard part is not the code. It is the choices, the limits, and the proof that the result matches them.
 
-Software development still needs judgment. I expect better models and more automation, and I will update this preface as that line moves. In 2026 the job is ours: be deliberate, be professional, and do the part only people can do well.
+Software development still needs judgment. I expect better models and more automation, and I will update this preface as that line moves. In 2026 the job still belongs to developers and reviewers: choose the scope, set the constraints, and reject code that misses both.
 
-The rest of the book starts with one shift in thought: the source-controlled workspace is no longer just for humans. It is where durable intent lives if the code is going to survive contact with the next session.
+The rest of the book starts with one shift in thought: the source-controlled workspace is no longer only for developers reading code. It is where the next agent session finds the ADR, the spec, and the rule you do not want re-litigated.
 
 ---
 

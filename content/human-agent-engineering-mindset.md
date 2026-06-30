@@ -34,19 +34,19 @@ When working on security, the agent starts from the current security practice an
 
 The decisions, checks, and constraints belong to the product whether the code was typed or generated. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
 
-Software engineering has been moving there for years. Developers raise authored intent and have tools produce lower-level artifacts from it. Coding agents push the step further. The maintained artifact is no longer just code the compiler accepts. It is also the intent the developer is prepared to defend in review.
+Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only code the compiler accepts. It is also the written intent the developer uses in review to justify the patch.
 
 ## The shared workspace
 
 The team also needs a source-controlled workspace where production work lives.
 
-Solo prototyping is usually just a chat window, some pasted code, and a quick throwaway result. No ceremony, no shame.
+Solo prototyping is often a chat window, a pasted stack trace, and a throwaway patch. No ceremony, no shame.
 
 For maintained software, the workspace becomes shared memory. Developers read the files. Reviewers inspect the diff. The next agent session loads the project context from the repo. The work becomes the input for the next change.
 
-If a decision creates a code-writing convention, it belongs where future work will read it. If one rule keeps showing up in review comments, it belongs where it is permanently accessible, not buried in the thread. If a diagram describes a boundary, store it in a format the team and agent can read.
+If a decision creates a coding convention, put it in a file the next session loads. If one rule keeps showing up in review comments, move it out of the thread and into instructions. If a diagram defines a boundary, store it in Mermaid or another text format the team can diff and the agent can read.
 
-Readable is not enough when the artifact does not enforce itself. The stronger rule is the one tooling can enforce for you: a linted ADR, a spec the change must satisfy. Intent a machine executes lasts longer than intent someone has to remember.
+Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs, a hook that runs after file edits. Intent a machine checks survives longer than intent a teammate has to remember.
 
 ## Documentation before code
 
@@ -56,7 +56,7 @@ Not a huge design document. Not waterfall cosplay. Prototypes need less document
 
 The inversion still feels odd: developers used to protect the code because writing it was expensive. Now the expensive part is the decision, the checks, and the shared understanding of where the change fits.
 
-Code without documented intent looks generated, and a knowledgeable agent would produce a different version. Remove the intent, and the next agent just copies the current shape.
+Code without documented intent preserves old decisions without their rationale. The next agent sees the current shape, copies it, and turns an old compromise into the default for the next patch.
 
 ## One stack at a time
 
@@ -70,4 +70,4 @@ The developer still owns the decisions. The agent pushes on the design, implemen
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 
-Spec-driven development is one of the motors for this work, but not the whole discipline. OpenSpec is the engine this book uses. It gives the agent documentation, structure, and proof it can work from. Give the agent something concrete.
+Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent named files, a lifecycle, and proof hooks it can work from. Give the agent explicit inputs or it will infer from whatever happens to be in the repo.

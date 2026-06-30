@@ -6,7 +6,7 @@ A vendor guide in June 2026 calls this the rebuild test: delete `src/`, point a 
 
 Now try the reverse: delete the docs, keep the code, regenerate the docs.
 
-The agent will infer. It reads the code and produces a document describing what the code appears to do. The document misses the intent behind non-obvious decisions, describes hotfix paths as if someone designed them, and cannot tell you which validation method the team chose, or why. The result is an archaeology report, not a design record.
+The agent will infer. It reads the code and produces a document listing routes, classes, and fields. The document does not tell you why validation stayed in the controller, why the retry count is three, or which branch of a hotfix should never have become the baseline. The result is a structural description of the current code, not a design record.
 
 *Sources: Augment Code, "The Spec as Source of Truth: Why Codebases Should Be Rebuildable from Documentation" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), spec-as-source as the strongest SDD form, and code as derivative.*
 
@@ -51,15 +51,15 @@ The mantra: code is self-documenting. It is not. Code tells you what it does, bu
 
 For bounded 2025-2026 agent-assisted changes, code modification is cheaper than it used to be. A small service, handler, or UI flow might fit in one agent session. Regenerating without docs and a spec spends the same session budget and leaves the next developer reverse-engineering intent from output. Code that is inexpensive to replace should not outrank the documents that make replacement repeatable.
 
-Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record the design decisions and the spec turns them into proof obligations. Without those artifacts, a deploy carries assumptions nobody checked. With them, a reviewer can follow the path from decision to spec to test.
+Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record the design decisions and the spec turns them into proof obligations. Without those artifacts, a deploy carries assumptions nobody checked. With them, a reviewer can open the ADR, match it to the spec scenario, and find the test proving the behavior.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and reliable delivery of intent into production; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing for bounded regeneration claims.*
 
 ## Who owns the ordering
 
-The `>` is a decision someone records, not a property of the system. Whether an agent writes the code or drafts part of the spec, the agent does not decide which layer wins when they disagree. Ranking the layers is an intent question, and the intent is yours.
+The `>` is a rule the team writes down, not a property of the system. Whether an agent writes the code or drafts part of the spec, the agent does not decide which layer wins when they disagree. Ranking the layers is an intent question, and the answer belongs to you.
 
-The diagram's solid arrows run downward: docs shape the spec, and the spec drives the code. The dotted arrows point back up only when someone acts on a mismatch the agent or the tests surfaced: a race the design never accounted for, a rate limit the upstream API enforces, a scenario the spec omitted. A person decides whether the fix belongs in the spec or further upstream in the docs.
+The diagram's solid arrows run downward: docs shape the spec, and the spec drives the code. The dotted arrows point back up only when a developer acts on a mismatch the agent or the tests surfaced: a race the design never accounted for, a rate limit the upstream API enforces, a scenario the spec omitted. The reviewer decides whether the fix belongs in the spec or further upstream in the docs.
 
 This book's rule has a direction. The machine moves down the layers, and only a person moves intent back up. That upward arrow never moves on its own. A team that forgets to move it keeps docs reading as authoritative over code they no longer match. [Keeping docs up to date](../quality/keeping-docs-up-to-date) gives durable documents a feedback loop to catch that gap.
 
@@ -95,7 +95,7 @@ Those bars are about behavior. The design behind the change, the why, and the al
 
 Most developers reading this chapter are not yet convinced. The intuition is that the code is what matters: the docs are overhead, the code runs in production, and the documents sit in a folder nobody opens.
 
-The code runs. The docs do not. This is true. It is also true that the code reflects what the agent decided to implement, and the docs and the spec reflect what a person decided to ask for. When the code and the intent disagree, one of them is wrong. Only one of them was authored by someone who understood why.
+The code runs. The docs do not. Both statements are true. The code reflects what the agent implemented. The docs and the spec reflect what the team asked for. When the code and the intent disagree, one side is wrong. Only the docs and the spec record the decision rationale.
 
 Stop treating code review as the only primary quality gate. In this book's spec-driven workflow, spec review happens before or alongside code review. A correct spec improves the odds of the correct code. A wrong spec lets code review approve a clean implementation of the wrong behavior. Review the intent first, then the diff.
 

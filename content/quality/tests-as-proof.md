@@ -64,7 +64,7 @@ Push the rate up far enough and the human leaves the moment entirely. An agent r
 
 Automated proof is the only verification that scales to the speed. A test that fails when the implementation diverges from intent does not get tired, does not forget the spec, does not approve a change because the diff looked reasonable.
 
-The cost of writing it is paid once. The cost of skipping it is paid every time someone has to re-derive what the code is supposed to do.
+Write the test once, and every later edit runs against the same check. Skip the test, and every later edit forces a developer to re-derive what the code was supposed to do.
 
 A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.
 

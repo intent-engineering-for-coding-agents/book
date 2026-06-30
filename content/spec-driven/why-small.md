@@ -52,9 +52,9 @@ Embed the size discipline in the agent's instructions. The human review process 
 
 Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. Ten works because it is round, easy to count toward, and easy to recall when you are busy. Eight would work, twelve would work. The point is this: a number you cannot hold in your head under deadline pressure is not useful. It is a footnote.
 
-The limit is for the humans in the loop, not the agent. The agent re-reads a long task list at every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, you have stopped reviewing. You have scrolled.
+The limit is for the reviewer in the loop, not the agent. The agent re-reads a long task list at every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, the reviewer is sampling the diff instead of checking the whole change.
 
-Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one sitting, the whole change in view.
+Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one pass, the whole change visible at once.
 
 When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there.
 
@@ -76,4 +76,4 @@ The `openspec/changes/<name>/` folder does not count toward the file total. That
 
 *Sources: LeanSpec, small-spec discipline, and formality-to-risk matching.*
 
-A spec that fits in one PR and one sitting is a tactical win. But not every change earns a spec at all, and some earn far more than a paragraph. A dependency bump and a payment-flow redesign do not deserve the same ceremony. How much structure a given change warrants, from a throwaway prompt to a full OpenSpec proposal, is the question that decides whether the spec earns its keep.
+A spec that fits in one PR and one review pass is a tactical win. But not every change earns a spec at all, and some earn far more than a paragraph. A dependency bump and a payment-flow redesign do not deserve the same ceremony. How much structure a given change warrants, from a throwaway prompt to a full OpenSpec proposal, is the question that decides whether the spec earns its keep.

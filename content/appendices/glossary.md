@@ -70,7 +70,7 @@ A public catalog of disclosed security flaws in software, each with a unique ide
 
 ## Cognitive debt
 
-The agentic-era analogue to technical debt: undocumented decisions and assumptions that humans hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
+The agentic-era analogue to technical debt: undocumented decisions and assumptions developers hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), "cognitive debt" as the named agentic-era failure mode.*
 
@@ -96,7 +96,7 @@ The durable repo context developers and coding agents read before the next chang
 
 ## Gherkin
 
-The `Given/When/Then` (here `WHEN/THEN`) scenario notation from Cucumber, used in this book as a specification language for acceptance criteria, one scenario per behavior. OpenSpec prescribes the `#### Scenario:` heading and the `WHEN/THEN` body. The notation is borrowed; the [BDD](#behavior-driven-development-bdd) practice it originates from is not. See [The Spectrum](/spec-driven/the-spectrum) and [AC IDs and Coverage](/quality/ac-ids-coverage).
+The `Given/When/Then` (here `WHEN/THEN`) scenario notation from Cucumber, used in this book as a specification language for acceptance criteria, one scenario per behavior. OpenSpec prescribes the `#### Scenario:` heading and the `WHEN/THEN` body. The notation is borrowed. The [BDD](#behavior-driven-development-bdd) practice it originates from is not. See [The Spectrum](/spec-driven/the-spectrum) and [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 *Sources: Cucumber Gherkin reference (ongoing), the `Given/When/Then` scenario form. OpenSpec FAQ and docs (ongoing), the lightweight `#### Scenario:` / `WHEN/THEN` structure used in this book.*
 

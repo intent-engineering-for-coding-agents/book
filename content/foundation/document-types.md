@@ -4,11 +4,11 @@ A spec is meant to die when its feature ships. Leave one sitting in `openspec/ch
 
 This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
 
-The design changes, and someone edits the original ADR instead of writing a new one. Decision history becomes a lie: readers see the current state and assume the current state was always the chosen option. The what has overwritten the why, the part that made the ADR valuable. The ADR still passes review, but it is wrong.
+The design changes, and a developer edits the original ADR instead of writing a new one. Now the file says PostgreSQL was always the answer, though the team spent a month on DynamoDB first and rejected it for reasons that still matter. The what overwrote the why. The ADR still passes review, but the record is false.
 
-A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended when it was created, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like two people disagreeing about the system, and neither of them is wrong about what they read.
+A design doc gets cited six months after the feature shipped. The cite is wrong. The design described what the team intended when it was created, not what they ended up with. Anyone reasoning from it is reasoning from a draft. In a PR review, that looks like the author reading the current code while the reviewer is reading last year's plan, and both are faithful to the artifact in front of them.
 
-A spec gets parked in `docs/` because someone thought the team should keep it for reference. The agent now reads work from the last quarter as live instruction, burning half its context window on stale guidance. The agent is not confused. It is following instructions that happen to be wrong, and those are harder to catch than no instructions at all.
+A spec gets parked in `docs/` because a developer thought the team should keep it for reference. The agent now reads last quarter's retry policy as live instruction, spends context budget on stale guidance, and reintroduces behavior the team already replaced. This is not a retrieval error. The agent is following a document that no longer describes the system.
 
 Each case is reversible, but never cheap. You clean it up by moving files, fixing references, and teaching the agent to ignore stale material you should have retired already. Recognizing the document type is where the cleanup starts.
 
@@ -144,4 +144,4 @@ Run `iec check` and the structural validators pass. It is not a showcase. It is 
 
 ## The taxonomy assumes a readable format
 
-All of this assumes the documents are in a format the agent can read. A type taxonomy tells you where to put things and how long to keep them. It does not extract text from a Keynote file or a screenshot. Put the architecture diagram in the right directory and the agent still misses it if the file format is opaque.
+All of this assumes the documents are in a format the agent can read. A type taxonomy tells you where to put things and how long to keep them. It does not extract text from a Keynote file or a screenshot. Put the architecture diagram in the right directory and the agent still misses the service boundary if the only source is a PNG on slide 14.

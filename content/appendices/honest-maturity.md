@@ -14,7 +14,7 @@ Practiced means the team does the work in its actual workflow, even informally. 
 
 ### Documented
 
-Documented means the practice is written down well enough for someone new to follow without asking the person who already knows. Agent instructions that accurately describe how the team works are documented maturity. Note the word accurately. An instruction file that describes how the team worked six months ago is not documented maturity. It is a historical record with delusions of authority.
+Documented means the practice is written down well enough for a new teammate to follow without asking the person who already knows. Agent instructions that accurately describe how the team works are documented maturity. Note the word accurately. An instruction file that still says "use `requests`" after the repo moved to `httpx` is not documented maturity. It is incorrect project guidance in a file the team treats as authoritative.
 
 ### CI-enforced
 
@@ -30,7 +30,7 @@ These are not CMM audit levels. No certification, no maturity score, no report f
 
 A team claiming CI-enforced maturity for something caught in code review is not lying. They often believe the claim. The next developer trusts the pipeline, though, and the pipeline is not catching what the team thinks it catches. Misplaced trust fails exactly when nobody expects it.
 
-Honest labeling tells everyone what they rely on: CI-enforced means trusting the pipeline, while practiced means asking someone who knows. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
+Honest labeling tells everyone what they rely on: CI-enforced means trusting the pipeline, while practiced means asking the teammate who knows the rule. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 
