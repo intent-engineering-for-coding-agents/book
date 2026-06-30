@@ -32,7 +32,7 @@ INDEX files serve a different reader: the agent. Each table row lists a file and
 
 The agent loads `docs/INDEX.md` at the start of a session to find the next file to read before reading anything else. That makes a stale entry worse than a missing one: it sends the agent toward a file that moved, or hides one that recently landed.
 
-The fix is not a cleanup pass after the fact. It is a standing rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same change that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
+The fix is not a cleanup pass after the fact. It is a standing repo rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same commit that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
 
 README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser. An agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
 
@@ -42,7 +42,7 @@ README and INDEX live in the same directory, serve the same lifespan, and are th
 
 Design docs live in `docs/design/` and hold per-feature thinking: options weighed, approach chosen, risks named. They are not decision records, too narrow and too feature-specific to carry that weight, and they are not specs either. A design doc describes the approach. A spec defines the behavior. What you do with them afterward is a matter of preference.
 
-Some teams write them and move on, and the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place, and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. Pick one rule and apply it consistently, so the agent does not read last year's design as current intent.
+Some teams write them and move on, and the code becomes the authoritative record. Others keep them current: minor detail changes get edited in place, and a major redesign gets a new doc while the old one stays for historical context. Both are reasonable. Pick one policy and apply it consistently, so the agent does not load a 2025 design doc as if it still described the 2026 implementation.
 
 *Sources: `iec` repo conventions in this project family, the docs/design/ placement and write-and-forget vs. keep-current treatment.*
 

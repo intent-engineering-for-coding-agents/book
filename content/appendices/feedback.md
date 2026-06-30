@@ -25,4 +25,4 @@ Not every idea is a specific edit yet. For open questions, disagreements, and "w
 
 Prose changes follow the writing conventions in the repo, the same ones the book was drafted under. Two rules catch most contributions: no em dashes, and concrete over abstract. The full guide lives in [`CONTRIBUTING.md`](https://github.com/intent-engineering-for-coding-agents/book/blob/main/.github/CONTRIBUTING.md). Run `npm run docs:build` before pushing to confirm the site still builds with no broken links.
 
-The practices in this book treat tests and specs as the record of intent. Feedback on the book works the same way. Edit the file, state the reason, and the next reader inherits both.
+The practices in this book treat tests and specs as the record of intent. Feedback on the book follows the same mechanism. Change the file, state the reason in the PR or issue, and the next reader can inspect both the edit and the rationale in the version control.

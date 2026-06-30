@@ -86,7 +86,7 @@ This is not a rigid practice. For small, low-risk specs, it is overhead. For spe
 
 ## The dead spec problem
 
-A dead spec is not a deleted spec. It is a change folder left in `openspec/changes/`, marked in-flight, for work that already merged or got abandoned. The fix is the timing the Write and Archive stages prescribe: the active folder holds only what is being built right now, and everything else is noise the agent acts on.
+A dead spec is not a deleted spec. It is a change folder left in `openspec/changes/`, marked in-flight, for work that already merged or got abandoned. The fix is the Write/Archive timing rule: `openspec/changes/` contains only active work, and anything no longer active moves to `openspec/changes/archive/` or is removed.
 
 ## Tooling note
 

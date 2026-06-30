@@ -24,9 +24,9 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 | Performance | Latency or throughput stays within a defined bound | Load profile |
 | Manual | Intent is specified in the spec (automated proof not yet written, or not practical) | Any level |
 
-Most projects settle on a subset: unit, integration, and E2E as the baseline, with other types added where the project warrants. A CLI tool needs no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests. A pure-Kotlin project does not. What matters is that the types the project uses are declared explicitly, not discovered by convention archaeology after the agent has been running for six months.
+Most projects settle on a subset: unit, integration, and E2E as the baseline, with other types added where the project warrants. A CLI tool needs no slice tests and no performance tests. A project without a rendered UI has no use for visual regression tests. A library with a Java interop API needs contract tests. A pure-Kotlin project does not. The important step is to write the allowed test types into a project document before the agent starts inventing its own defaults.
 
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching test type to what it proves. The taxonomy rows above are this book's synthesis.*
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as boundary-specific feedback loops, the basis for matching the test type to what it proves. The taxonomy rows above are this book's synthesis.*
 
 ## The convention document
 
@@ -48,7 +48,7 @@ The convention document defines the types the project uses, the framework that c
 
 ```
 
-The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams might use pre-commit/pre-merge/post-deploy, others might use L1/L2/L3 (for layers). Some test types have no layer: Manual sits outside the automated pipeline entirely. What matters is that both axes are declared, not inferred.
+The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams might use pre-commit/pre-merge/post-deploy, others might use L1/L2/L3 (for layers). Some test types have no layer: Manual sits outside the automated pipeline entirely. The important part is to define both axes in a file the agent can read instead of leaving them implicit in team habit.
 
 The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it, the agent improvises at every decision point: framework, location, level. The convention removes that guesswork from the first session.
 

@@ -20,7 +20,7 @@ Documentation has no equivalent loop by default. A design note describing an old
 
 The asymmetry is the problem. Generated code changes fast. The surrounding prose drifts at human speed.
 
-The result goes past reader confusion. The next agent session starts from bad premises. A stale architecture note becomes the reason the agent adds a layer the system no longer uses, or follows a rule the team dropped because the instruction file still lists the old rule.
+The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a repo rule the team already removed because the instruction file still lists it.
 
 This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. Here the compounding is fast, because drift moves from documentation debt to implementation debt in one session.
 
@@ -60,7 +60,7 @@ referrers-verified-at: 2026-06-20
 
 Once the fields exist, the check stops guessing. The questions are mechanical: did one of the tracked paths change after `content-verified-at`, and does an outside system still depend on this file staying where the referrer expects after `referrers-verified-at`?
 
-This is not a field standard. This book uses it as a practical synthesis of the AC-ID idea for prose. The point is the shape, not the exact key names.
+This is not a field standard. This book uses it as a practical synthesis of the AC-ID idea for prose. The mechanism is the shape: one stable identifier in the prose, one reference target in code or docs, and one check that verifies the link.
 
 *Sources: The frontmatter marker and field names are this book's synthesis from AC-ID verification logic applied to prose.*
 
@@ -140,7 +140,7 @@ Layer one is the instruction. Tell the agent which documents need markers, what 
 
 Layer two is the on-demand check. A skill or script the agent runs mid-task gives fast feedback before the change reaches Continuous Integration (CI).
 
-Layer three is the build gate. The CI job checks tracked documents on every Pull Request and blocks on hard failures such as broken references. The same gate blocks a delete or rename when a `docs/` file still has live `referred-by` entries. The gate matters because stale documentation is easy to postpone and easy to forget.
+Layer three is the build gate. The CI job checks tracked documents on every Pull Request and blocks on hard failures such as broken references. The same gate blocks a delete or rename when a `docs/` file still has live `referred-by` entries. Put this in CI because delete-and-fix-later nearly always turns into delete-and-never-fix.
 
 Nothing here depends on one tool. The practice is broader: one rule the agent reads, one fast self-check, one hard backstop independent of memory. A deterministic checker reaches this much. The rest still needs review.
 
@@ -148,7 +148,7 @@ Nothing here depends on one tool. The practice is broader: one rule the agent re
 
 ## Why this belongs in verification
 
-This is not a general documentation chapter in disguise. The point is narrower.
+This is not a general documentation chapter in disguise. The scope here is narrower: keep the files agents load aligned with the code agents are changing.
 
 [Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept the order, stale documents become a quality problem rather than a writing problem. The disposable artifact changed. The durable artifact did not.
 

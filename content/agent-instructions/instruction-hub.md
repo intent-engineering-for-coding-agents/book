@@ -73,7 +73,7 @@ The hub gives the agent context about the codebase. What it still needs for any 
 
 ## When the hub becomes overhead
 
-The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub prevents instruction drift. When neither of those is true, the hub is overhead without the payoff.
+The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub gives those tools the same instruction files, skill definitions, and hook docs. When neither case exists, the extra directory and pointer structure may buy nothing.
 
 A solo developer working with a single tool and no plans to change does not have a coordination problem. A single instruction file, whether it is called `CLAUDE.md`, `AGENTS.md`, or anything else, is the source of truth because there is only one source.
 
@@ -83,7 +83,7 @@ The hub adds that directory structure, a pointer file, and a maintenance ritual 
 
 Two things change the calculation. First, tool independence: a developer who wants to stay portable, not locked into any single agent, benefits from a vendor-neutral hub even alone. Second, multi-agent workflows: running one agent to write code and another to review it is a coordination problem even for one person. Both agents need the same instructions, the same skill definitions, the same conventions. A vendor-specific file serves only the tool it was written for.
 
-The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs consistent agent behavior across all of them.
+The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs every tool reading the same repo rules.
 
 Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes.
 

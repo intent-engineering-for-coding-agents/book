@@ -14,7 +14,7 @@ The instinct when writing `AGENTS.md` is to fill it. Project history, coding sty
 
 Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a large slice of its context window is gone. The agent is not better informed, only more constrained.
 
-AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. It should fit in one context load. It should tell the agent what to load next. It should point to the file the current task needs. The agent loads what it needs, not everything that might ever be needed.
+AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. It should fit in one context load. It should tell the agent which file to load next and under which condition. The agent loads the file matching the task, not every instruction file in the repo.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
 
@@ -65,7 +65,7 @@ The TOC pattern has a failure mode: gradual accumulation. Branch naming conventi
 
 The test is not the line count. Does anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact file in the repo. Every session loads it, which means every stale line compounds.
+Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact instruction file in the repo. Every session loads it, so one stale load clause or stale repo rule affects every later task until someone fixes the file.
 
 The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions.
 

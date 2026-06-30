@@ -42,7 +42,7 @@ The team also needs a source-controlled workspace where production work lives.
 
 Solo prototyping is often a chat window, a pasted stack trace, and a throwaway patch. No ceremony, no shame.
 
-For maintained software, the workspace becomes shared memory. Developers read the files. Reviewers inspect the diff. The next agent session loads the project context from the repo. The work becomes the input for the next change.
+For maintained software, the workspace becomes the shared input surface. Developers read the files. Reviewers inspect the diff. The next agent session loads the repo state, not the previous chat history. The work in the repo becomes the input to the next patch.
 
 If a decision creates a coding convention, put it in a file the next session loads. If one rule keeps showing up in review comments, move it out of the thread and into instructions. If a diagram defines a boundary, store it in Mermaid or another text format the team can diff and the agent can read.
 
@@ -62,7 +62,7 @@ Code without documented intent preserves old decisions without their rationale. 
 
 If your system has a front end, a BFF, and a back end, those are different working contexts. A front-end change should not drag in every back-end detail. A back-end change should not pull a component library into the session. These are pragmatic scope rules, not a field standard. Combine every stack into one task, and the agent starts defining limits you should have scoped out.
 
-This is where agent work becomes archaeology. The agent searches, finds a plausible candidate, and proceeds down that path. The reviewer then has to say which half of the system the agent should have ignored.
+This is where stack sprawl turns into a retrieval failure. The agent searches across front end, BFF, and back end, picks a plausible file in the wrong tier, and extends it. The reviewer then has to explain which repository boundary or API contract should have constrained the search space before implementation started.
 
 ## What this book is about
 

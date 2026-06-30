@@ -55,6 +55,6 @@ The tags above cover the progression this book teaches. The CLI did not stop the
 
 `iec` is not a general-purpose validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions. Uninitialized repos fail most checks by design. The companion repo is the reference example for this convention set.
 
-The practices in this book do not require `iec`. The repo exists to show one set of choices made visible and traceable. What matters is applying the practices to your own work, not matching this repo's structure exactly.
+The practices in this book do not require `iec`. The repo exists to show one implementation of the book's rules with files, tags, and checks you can inspect. The requirement is to apply the underlying mechanics in your own repo, not to copy `iec` directory-for-directory.
 
 *Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli), repository structure and phase descriptions from `git tag -n1`.*

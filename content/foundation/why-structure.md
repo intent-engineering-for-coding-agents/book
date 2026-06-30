@@ -26,7 +26,7 @@ At human speed, drift like this used to take quarters to compound. At agentic sp
 
 Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent improvises wherever the repo stays silent. The only question is how much silence you leave.
 
-Chat sessions decay at the session boundary. Committed instructions, docs, and specs give every session the same starting point: developer, agent, CI run, laptop, and fresh clone. Same context, every time. The repo becomes the context.
+Chat sessions end with the session. Committed instructions, docs, and specs survive into the next run: local session, CI job, new laptop, and fresh clone all start from the same files. The repo becomes the shared context source.
 
 Run the gRPC case forward with the structure in place:
 
@@ -63,7 +63,7 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 
 The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is enforced inside the system that created the temptation, instead of caught later by a reviewer who happened to remember the migration meeting from months back.
 
-None of this is about policing the agent. The point is handing it enough context to reason instead of guess.
+None of this is about policing the agent. The mechanism is simpler: put the decision, constraint, and file map in the repo before asking the agent to extend the system.
 
 *Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its context. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 
@@ -71,7 +71,7 @@ None of this is about policing the agent. The point is handing it enough context
 
 The remaining Intent Engineering topics each assume Foundation is in place. Agent Instructions need a `docs/` to point into. Spec-driven development needs somewhere for specs to live, and quality checks have no conventions to validate against until Foundation supplies them. Skip Foundation and the rest stops working.
 
-Foundation is also the topic with the lowest immediate payoff. A team adopting OpenSpec on Tuesday feels the difference Wednesday. A team adopting Foundation gets value over months: fewer PRs that quietly resurrect choices the team already made, less rediscovery of past decisions, agents that no longer reintroduce stacks the team paid migration cost to leave behind. The compounding works in both directions.
+Foundation is also the topic with the lowest immediate payoff. A team adopting OpenSpec on Tuesday feels the difference Wednesday. A team adopting Foundation sees the effect over months: fewer PRs that reintroduce retired stacks, fewer review comments spent rediscovering old decisions, and fewer agent sessions wasted reconstructing repo structure from code.
 
 ## The discipline trap
 

@@ -61,7 +61,7 @@ In the SDD material reviewed for this book, the emphasis is heavier on aiming th
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, January 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. The point is not to add new ceremonies. The existing ones, tickets, PRs, ADRs, CI, get different artifacts. If "specs before code" already sounds like waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, and the loop still runs one PR at a time.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. This book does not add a second project-management layer. It changes what moves through the existing one: tickets link to change folders, PRs carry spec deltas, ADRs settle cross-team decisions, and CI checks proof instead of only code style. If "specs before code" already sounds like waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, and the loop still runs one PR at a time.
 
 What you will not find here:
 
@@ -86,7 +86,7 @@ Most of what you build does not need any of this: a script you run once, a glue 
 
 Reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
 
-The discipline earns its keep when the work outlives the session that started it. The rule of thumb here: once a build runs into weeks, the agent is extending its own earlier work across many sessions, and a spec stops being ceremony. The spec is what the agent loads before it writes the next increment, so it builds on the last decision instead of guessing at it. That is the line to start writing specs.
+The discipline starts paying for itself when the work outlives the session that started it. A simple rule of thumb: once a build runs into weeks, the agent is extending its own earlier patches across many sessions, and a spec stops being ceremony. The spec is the file the next session loads before it edits the code again, so the agent extends an approved target instead of re-deriving one from the current implementation. That is the point where the repo needs specs.
 
 For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the repo facts the agent does not know. Specs and verification pin one change to one target and show whether the patch hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
 

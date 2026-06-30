@@ -30,7 +30,7 @@ One step up, GSD (Get Shit Done): structured prompting without a framework. Writ
 
 Next is a `spec.md` file in the repo: a single Markdown file, no external framework, with purpose, scope, acceptance criteria, scenarios, task notes, and verification rules. Written before implementation, committed with the code. The GitHub post launching Spec-Kit describes this as where most teams start with spec-driven development.
 
-For teams with stable review rules, `spec.md` becomes a local framework. The file starts small, then picks up house rules: where it lives, which headings are mandatory, who reviews it, how scenarios map to tests, when it becomes historical, and how stale specs stop acting as live instructions. The point is fit. Local formats keep their place when the generic template gets in the way.
+For teams with stable review rules, `spec.md` becomes a local framework. The file starts small, then picks up house rules: where it lives, which headings are mandatory, who reviews it, how scenarios map to tests, when it becomes historical, and how stale specs stop acting as live instructions. Local formats stay viable when those rules match the team's existing review and release mechanics better than the generic template does.
 
 The cost is ownership. A custom `spec.md` gives maximum fit and almost no tooling burden, but the team owns the lifecycle around it. Without those rules, `spec.md` is a better prompt. With them, it becomes a spec-driven workflow.
 
@@ -59,7 +59,7 @@ The selection rule is simpler than the tool names make it sound: pick the lighte
 
 OpenSpec is the choice here because it supplies the lifecycle without hiding the files. One change folder holds a single unit of intent, carrying delta specs for the behavior changes, Gherkin-style scenarios to make the acceptance criteria concrete, and `tasks.md` for the agent's execution path. Archiving then keeps active intent apart from the historical record.
 
-That archive becomes the canonical set of acceptance criteria for each capability, the executable guardrails a later change is measured against, and the mechanism that closes the loop between intent and proof. The design those criteria serve does not live here. It lives in `docs/`. The overhead is real and built for teams shipping production systems with multiple developers.
+That archive becomes the canonical set of acceptance criteria for each capability. Later changes diff against those criteria, and CI tests trace back to them. The design those criteria serve does not live here. It lives in `docs/`. This split adds real file and process overhead, and it fits best where several developers are shipping changes into the same production codebase.
 
 *Sources: Fission AI, OpenSpec, the four-part change-folder workflow, delta specs, `tasks.md`, and the archive as a canonical capability model. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` notation borrowed here as a spec language, not the BDD practice it originates from. The framework-selection rule and closest-alternative framing above are this book's synthesis.*
 

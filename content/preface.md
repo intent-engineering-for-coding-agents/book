@@ -37,7 +37,7 @@ A coding agent is not reading your mind. In 2026, a vague prompt still produces 
 
 That is the purpose of the book. The machine writes more of the code. You do more of the hard thinking: what gets built, what scope is justified, what cost is worth paying, what tests are required before merge. You become a writer, not a typist.
 
-This book does not review or rank agents. The agent is the worker. What matters is what you say to it.
+This book does not review or rank agents. The agent is the worker. The load-bearing variable is the input: the instructions, docs, specs, and checks you give it.
 
 Context is most of the game. Do not cram a project into one prompt. Keep the decisions in plain-text documents and diagrams the agent can load again next month. Without that, every session re-creates the same conventions, reopens settled decisions, and ships code that breaks the constraints nobody wrote down.
 

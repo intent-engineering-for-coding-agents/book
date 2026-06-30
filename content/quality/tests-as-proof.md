@@ -12,7 +12,7 @@ The same AC admits many implementations: a guard clause, an early return, a vali
 
 The tests passed. Passing is not the same as proving.
 
-Proof is not perfectionism. The minimum bar is automated evidence that the implementation meets the spec. The same bar applies whether the code came from an agent or a human. Acceptance criteria answer one narrow question: did the change do what the change was supposed to do? That narrow question matters because no amount of implementation detail answers it from the code alone.
+Proof is not perfectionism. The minimum bar is automated evidence that the implementation meets the spec. The same bar applies whether the code came from an agent or a human. Acceptance criteria answer one narrow question: did the change do what the approved scenario said it must do? Reading the implementation alone does not answer that question because the code does not record which alternative behaviors were rejected.
 
 Specs are often incomplete, scenarios go missing, tests assert too little. None of that makes proof impossible. The bar is imperfect, not optional. Below it, you are shipping on faith that the implementation matched the goal. Once AC coverage is in place, quality goes further: code review, inspection, and deeper testing disciplines all have room above it. The ACs have to be covered first.
 
@@ -58,7 +58,7 @@ Farley's Modern Software Engineering frames this as a feedback loop: the spec op
 
 A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully, the change is small, and the reviewer remembers the discussion. Memory carries some of the load.
 
-An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scanning. The reviewer who scanned the diff and approved it cannot, a week later, reconstruct what they were assuring. Without automated proof, the only thing standing between intent and production is whatever attention the human paid at the moment. That attention is exactly what the agent's speed is consuming.
+An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scan-based: changed files, green tests, merge. A reviewer who approved on that basis often cannot reconstruct a week later which acceptance criteria the diff was supposed to satisfy. Without automated proof, production depends on how much of the spec the reviewer remembered during that pass.
 
 Push the rate up far enough and the human leaves the moment entirely. An agent running unattended has no reviewer to ask whether a change is done, so it reads the test result instead. Proof stops being evidence a reviewer reads later and becomes the exit condition for the run: until every AC scenario passes, the agent keeps going or flags a blocker.
 
@@ -74,7 +74,7 @@ This is not a call for more tests. It is a call for tests that do the job. A sui
 
 Tests prove intent only when each test names the part of the intent it proves. A test named `test_retry_logic` covering five scenarios proves nothing in particular. A failure in it says "something about retries broke" and leaves the reader to read the test body to find out what.
 
-The fix is the acceptance criterion identifier (AC ID). Each spec scenario gets a stable and unique ID, and each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The point here is the principle: a test not linked to a spec scenario proves general behavior, not specified intent.
+The fix is the acceptance criterion identifier (AC ID). Each spec scenario gets a stable and unique ID, and each test that proves a scenario references the ID. When a scenario fails, the failure points back to the specific intent that was not met. When the spec changes, a quick search shows which tests cover what. The next chapter on acceptance-criterion identifiers does the mechanics. The principle here is simple: a test without a scenario ID may prove behavior, but it does not prove a specific requirement in the spec.
 
 A test scoped to one scenario and linked to its AC ID is also the most reliable working example of the feature's intended interface. It shows the exact calling convention, the inputs that matter, and the outputs to expect. The proof requirement is what makes it accurate. A comment describing the interface drifts silently, while a test that fails in CI when the code diverges does not. It is executable documentation, accurate for as long as the spec it traces is accurate. Whether that spec is right is a question no test answers.
 
@@ -88,7 +88,7 @@ The spec does not have to contain everything it references. An ADR documenting w
 
 ## Ritual Tests Earn Their Place, Proof Has a Ceiling
 
-Some tests will always be ritual. Smoke tests that confirm the application boots. Linting that confirms the syntax is current. End-to-end tests that confirm the integration is wired. These are not proof of intent. They are proof of plumbing. They earn their place by being inexpensive and by catching the failures that have nothing to do with what the code is supposed to do. Do not confuse them with the tests that prove the spec.
+Some tests will always be ritual. Smoke tests confirm the application boots. Linting confirms the syntax is current. End-to-end tests confirm the integration is wired. These are not proof of intent. They are environment and wiring checks. Keep them because they catch a different class of failure, not because they prove the spec.
 
 The harder issue is that a test proves what it asserts, not what the spec omitted. If the spec defines the 10 MB limit but says nothing about zero-byte files, the suite runs green while a zero-byte upload hits an unhandled path. Mutation testing, covered above, catches the first kind of gap: an assertion the suite should make but does not. The second kind, a scenario the spec never considered, does not show up in any test run. Someone has to read the spec and ask what was left out.
 
@@ -96,4 +96,4 @@ The harder issue is that a test proves what it asserts, not what the spec omitte
 
 If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check, and a test marker referencing a scenario that no longer exists fails the check. The check does not measure how good the test is. It measures whether the link is there at all, which is the precondition for everything else in this section.
 
-A test that proves the spec is the closing half of the loop the previous chapter opened. The open half is what the spec promised, and the closing half is what runs in CI. Between them sits the thing the agent built. Knowing a test has to fail when intent breaks is only half the craft. The other half is knowing which kind of test proves which kind of behavior and writing that down before the agent picks a test type on its own.
+A test that proves the spec is the closing half of the loop the previous chapter opened. The spec states the required behavior. CI executes the check tied to that requirement. Between them sits the code the agent wrote. Knowing a test must fail when intent breaks is only half the craft. The other half is selecting the correct test type and recording that choice before the agent generates the test.

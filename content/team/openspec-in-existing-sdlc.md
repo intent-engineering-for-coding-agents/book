@@ -2,7 +2,7 @@
 
 You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog: all of it, working. Then you adopt OpenSpec because the Spec-Driven Development framing makes sense, and a question lands on the table. Where does the change folder sit relative to everything you already run? Does it replace the ticket? Does the spec replace the Confluence page? Is PR review now two reviews, one for the spec and one for the code?
 
-None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It gives each existing slot a clearer artifact. The coordination problem already exists. The practical question is what lives where. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
+None of those is the right frame. In this book's OpenSpec-first workflow, OpenSpec does not replace the existing workflow. It changes the artifact assigned to each existing slot. The coordination problem already exists. The concrete question is which system owns which record: ticket, change folder, ADR, sprint state, and changelog. If your team uses another spec tool, keep the mapping and substitute that tool's per-change artifact for the OpenSpec change folder.
 
 ```mermaid
 graph LR
@@ -53,7 +53,7 @@ One story maps to one or more OpenSpec change folders. The story provides the in
 
 Where a Jira or Confluence Model Context Protocol (MCP) connector is available, the agent fetches story context and architecture pages during spec drafting. The agent instructions should tell the agent to check the linked Jira story before writing the spec, not to copy the story into the spec, but to ensure the acceptance criteria address what the story intended. The agent reads the story, and the developer reviews the criteria.
 
-MCP connector availability for third-party tools is a mid-2026 snapshot. Permissions, supported clients, and exact tool names are product-specific. The durable pattern is the same: agents fetch ticket context before writing specs, and developers review the criteria.
+MCP connector availability for third-party tools is a mid-2026 snapshot. Permissions, supported clients, and exact tool names are product-specific. The stable workflow step is the same: fetch ticket context before drafting the spec, then review the generated criteria before implementation.
 
 *Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, February 27, 2026, the spec layer as where planning intent becomes testable acceptance criteria. Model Context Protocol documentation, the connector pattern. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence MCP access as perishable tooling examples.*
 

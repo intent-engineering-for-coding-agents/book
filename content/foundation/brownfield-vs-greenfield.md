@@ -54,11 +54,11 @@ Once `skeleton.md` exists, has been reviewed, and has been distilled into the pe
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated honestly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not reproduce the actual meeting. A domain expert corrects it, and the documented best guess beats the silence that put the team here.
 
-The skeleton does not eliminate the brownfield condition. The system is still what it is, but now the agent knows it too, and the durable parts of that knowledge live in the repo's permanent docs. That is the prerequisite for any of the practices in this book working at all.
+The skeleton does not eliminate the brownfield condition. The system still carries the same old dependencies, missing decisions, and undocumented constraints. The difference is that the repo now has files for those findings under `docs/`, so later specs and instructions can reference them instead of forcing every session to rediscover them from code.
 
 ## skeleton.md has a lifecycle
 
-A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. When the map drifts from the territory, a skeleton written over a year ago for a system refactored repeatedly since gives the agent confident-sounding wrong information. That is more dangerous than no information, because confident-sounding wrong information gets acted on.
+A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. A `docs/skeleton.md` written before a module split or database migration still names the old boundaries, so the agent follows relationships that no longer exist. That failure mode is worse than missing documentation because the repo now contains a file that looks authoritative and is false.
 
 This book's rule is straightforward. `skeleton.md` starts the bootstrap. Then the stable findings move into permanent `docs/`. After that, the skeleton either stays as marked history or leaves the active docs set. Once `docs/architecture/`, `docs/design/`, and `docs/decisions/` cover the same ground, new proposals and new agent sessions should stop loading `docs/skeleton.md` as the place to learn the system.
 
