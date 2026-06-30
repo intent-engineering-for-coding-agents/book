@@ -62,7 +62,7 @@ Code without documented intent preserves old decisions without their rationale. 
 
 If your system has a front end, a BFF, and a back end, those are different working contexts. A front-end change should not drag in every back-end detail. A back-end change should not pull a component library into the session. These are pragmatic scope rules, not a field standard. Combine every stack into one task, and the agent starts defining limits you should have scoped out.
 
-This is where stack sprawl turns into a retrieval failure. The agent searches across front end, BFF, and back end, picks a plausible file in the wrong tier, and extends it. The reviewer then has to explain which repository boundary or API contract should have constrained the search space before implementation started.
+This is where stack sprawl turns into a retrieval failure. The agent searches across the front end, BFF, and back end, picks a plausible file in the wrong tier, and extends it. The reviewer then has to explain which repo boundary or API contract should have constrained the search space before implementation started.
 
 ## What this book is about
 
@@ -70,4 +70,4 @@ The developer still owns the decisions. The agent pushes on the design, implemen
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 
-Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent named files, a lifecycle, and proof hooks it can work from. Give the agent explicit inputs or it will infer from whatever happens to be in the repo.
+Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent named files, a lifecycle, and proof hooks it can work from. Give the agent explicit inputs or it will infer from whatever happens to be in the codebase.

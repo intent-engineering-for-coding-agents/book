@@ -20,7 +20,7 @@ The goal is not to remove improvisation. For most of what the agent does, from c
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (December 2024), keeping the instruction surface minimal and load-bearing.*
 
-Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. General engineering knowledge does not help here. Only your repo's history does, and the agent cannot read that history unless you tell it to.
+Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. General engineering knowledge does not help here. Only your codebase history does, and the agent cannot read that history unless you tell it to.
 
 ## Be specific enough to be testable
 
@@ -40,7 +40,7 @@ Negative instructions are the more important category. The agent already has def
 
 "Do not use the `requests` library. This repo uses `httpx` for all HTTP calls" is a negative instruction. Without it, the agent reaches for `requests` every session, because it has read more code using `requests` than `httpx`. That one negative line is the only thing keeping `httpx` consistent.
 
-The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your repo diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone. The code looks like an exception, and the agent will treat it as one.
+The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your codebase diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone. The code looks like an exception, and the agent will treat it as one.
 
 ## Architecture boundaries in plain language
 
@@ -88,7 +88,7 @@ A second-model critique pass often surfaces the same gap: instructions that stat
 
 Instructions constrain the agent's decisions. That is the point. Some decisions should not be constrained. An instruction that specifies the sorting algorithm prevents the agent from choosing a better one when the data shifts. Pin the exact structure of an API response, and the agent cannot adapt it when a new client needs something different. Over-constraining the agent turns it from a collaborator into a template filler.
 
-Where is the line? Write instructions for a senior colleague who has read the entire internet but has never seen your repo. They know the language idioms and the common library APIs. Do not explain those. They do not know your team's decisions or what you tried and rejected. Document those.
+Where is the line? Write instructions for a senior colleague who has read the entire internet but has never seen your codebase. They know the language idioms and the common library APIs. Do not explain those. They do not know your team's decisions or what you tried and rejected. Document those.
 
 Instructions also backfire by going stale: a constraint written for last quarter's architecture gets followed confidently into today's, the same false-confidence failure stale instructions produce at the entry point.
 

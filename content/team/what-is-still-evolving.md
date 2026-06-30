@@ -26,7 +26,7 @@ Multi-LLM critique (using a second model to review a spec before implementation)
 
 ## What is genuinely open
 
-Multi-repo planning remains a gap in the SDD sources reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the single-repo workflow does not. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. The problem is named. The solution is not.
+Multi-repo planning remains a gap in the SDD sources reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the one-codebase workflow does not. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. The problem is named. The solution is not.
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 

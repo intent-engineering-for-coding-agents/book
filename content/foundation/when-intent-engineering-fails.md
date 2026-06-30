@@ -40,7 +40,7 @@ The "Why Small" chapter in the Spec-Driven topic goes further.
 
 ## Drift with no detection
 
-The team has agent instructions, ADRs, specs, and good initial intentions. Six months later, the repo has six ADRs from the first month and nothing since, a design doc last touched in March, and a `docs/INDEX.md` last updated when someone new joined. Nobody violated a rule because there is no rule about update frequency. There is only drift, and nothing detecting it.
+The team has agent instructions, ADRs, specs, and good initial intentions. Six months later, the codebase has six ADRs from the first month and nothing since, a design doc last touched in March, and a `docs/INDEX.md` last updated when someone new joined. Nobody violated a rule because there is no rule about update frequency. There is only drift, and nothing detecting it.
 
 A convention check in CI closes part of this loop. It catches structural violations before they reach the main. The check does not catch ADRs that should have been written and were not. It does not detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 

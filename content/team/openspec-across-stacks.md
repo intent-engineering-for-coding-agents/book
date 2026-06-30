@@ -8,7 +8,7 @@ The problem is upstream. A single `openspec/` directory shared across three tier
 
 ## One `openspec/` per stack
 
-The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository or subdirectory. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, and its pending changes. The back-end specs are not its context.
+The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository, or of its subdirectory in a monorepo. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, and its pending changes. The back-end specs are not its context.
 
 ```text
 front-end/

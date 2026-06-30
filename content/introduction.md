@@ -6,7 +6,7 @@ A coding agent works fast. It has been trained on a lot of code. It can generate
 
 The agent has no idea what you decided.
 
-Consider a repo where the Redis decision from the last quarter lives only in one developer's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but an old ADR would have said "do not use this field" if anyone had written one. The agent sees the schema, the imports, and the passing tests. It does not see the missing decision, so it extends an interface the team had already decided to retire.
+Consider a codebase where the Redis decision from the last quarter lives only in one developer's head, and the redundant-looking auth flow is load-bearing for a reason nobody wrote down. A database column looks safe to add, but an old ADR would have said "do not use this field" if anyone had written one. The agent sees the schema, the imports, and the passing tests. It does not see the missing decision, so it extends an interface the team had already decided to retire.
 
 Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly in early 2026: "AI doesn't create great developers, it amplifies them". An under-informed developer gets incorrect code faster. An experienced developer gets correct code faster. The amplifier is neutral. What it amplifies is not.
 
@@ -76,7 +76,7 @@ You have shipped production code under pressure, stayed skeptical of hype, and w
 
 Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one costs something today, a cost later chapters name honestly rather than wave away.
 
-The payoff arrives when adding another tool means one pointer file and a few load clauses. Then you run one agent for the patch, another for review, and a third against the same golden task, instead of betting the repo on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
+The payoff arrives when adding another tool means one pointer file and a few load clauses. Then you run one agent for the patch, another for review, and a third against the same golden task, instead of betting the codebase on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 
 *Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), native support for the AGENTS.md convention as a current vendor example.*
 
@@ -86,9 +86,9 @@ Most of what you build does not need any of this: a script you run once, a glue 
 
 Reach for the chat window, describe what you want, take the code. Adding specs and an instruction hub to a weekend experiment is the theater this book warns against.
 
-The discipline starts paying for itself when the work outlives the session that started it. A simple rule of thumb: once a build runs into weeks, the agent is extending its own earlier patches across many sessions, and a spec stops being ceremony. The spec is the file the next session loads before it edits the code again, so the agent extends an approved target instead of re-deriving one from the current implementation. That is the point where the repo needs specs.
+The discipline starts paying for itself when the work outlives the session that started it. A simple rule of thumb: once a build runs into weeks, the agent is extending its own earlier patches across many sessions, and a spec stops being ceremony. The spec is the file the next session loads before it edits the code again, so the agent extends an approved target instead of re-deriving one from the current implementation. That is the point where the codebase needs specs.
 
-For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the repo facts the agent does not know. Specs and verification pin one change to one target and show whether the patch hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
+For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the codebase facts the agent does not know. Specs and verification pin one change to one target and show whether the patch hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum). That question is per change. This one is per project.
 
 ## Intent Engineering fits your SDLC
 
@@ -100,7 +100,7 @@ That is real work. It is also a different product.
 
 This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
 
-The deliverable is the same software your team has always shipped, with an agent informed by your repo conventions doing a growing share of the writing. Your tests remain tests, not a separate eval harness. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
+The deliverable is the same software your team has always shipped, with an agent informed by your codebase conventions doing a growing share of the writing. Your tests remain tests, not a separate eval harness. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 
 So there is no new lifecycle to adopt. Planning, implementation, review, CI, maintenance: the phases stay, and the artifacts moving through them change. Write down where the spec lands, where the agent picks up, and where human review gates the merge. [Intent Engineering and the SDLC](./foundation/intent-engineering-and-the-sdlc) maps that placement phase by phase.
 

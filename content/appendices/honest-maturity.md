@@ -2,7 +2,7 @@
 
 Ask the team if they practice spec-driven development. Most will say yes. Then sample recent PRs. If specs appear after the code, or acceptance criteria have no matching tests, the practice is already drifting.
 
-The team is not lying. They believe the practice is alive, and soon after adoption, the belief likely matched the workflow. The gap between what we believe we do and what the repo shows we do is a common failure mode in engineering organizations. Intent Engineering practices drift the same way.
+The team is not lying. They believe the practice is alive, and soon after adoption, the belief likely matched the workflow. The gap between what we believe we do and what the codebase shows we do is a common failure mode in engineering organizations. Intent Engineering practices drift the same way.
 
 The fix is not more process, but honest labeling. This book uses three labels for any practice you adopt: practiced, documented, CI-enforced. Each label names what the team relies on now.
 
@@ -14,7 +14,7 @@ Practiced means the team does the work in its actual workflow, even informally. 
 
 ### Documented
 
-Documented means the practice is written down well enough for a new teammate to follow without asking the person who already knows. Agent instructions that accurately describe how the team works are documented maturity. Note the word accurately. An instruction file that still says "use `requests`" after the repo moved to `httpx` is not documented maturity. It is incorrect project guidance in a file the team treats as authoritative.
+Documented means the practice is written down well enough for a new teammate to follow without asking the person who already knows. Agent instructions that accurately describe how the team works are documented maturity. Note the word accurately. An instruction file that still says "use `requests`" after the codebase moved to `httpx` is not documented maturity. It is incorrect project guidance in a file the team treats as authoritative.
 
 ### CI-enforced
 

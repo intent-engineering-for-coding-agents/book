@@ -8,13 +8,13 @@ Coordination across team boundaries is harder than coordination within a team, a
 
 ## ADRs as the cross-team mechanism
 
-Architectural Decision Records are the cross-team primitive this book uses because they already exist in the SDLC. They are durable, human-readable, usually checked into a repository, and record decisions with consequences that persist after the authors have moved on.
+Architectural Decision Records are the cross-team primitive this book uses because they already exist in the SDLC. They are durable, human-readable, usually checked into a repo, and record decisions with consequences that persist after the authors have moved on.
 
 For cross-team decisions, the ADR location matters. An ADR checked into Team A's repository is private to Team A's agents and Team A's developers who read the repo. An ADR checked into a shared architecture repository, one all teams' agents are instructed to read, becomes cross-team context.
 
-The shared architecture repository pattern is simple: a repository, or subdirectory in a monorepo, contains ADRs for decisions affecting more than one team. Team A's `AGENTS.md` tells agents to check the shared architecture repo before writing specs across service boundaries. Team B's instructions say the same. The authentication token format change goes into the shared repo, where both teams' agents load it.
+The shared architecture repository pattern is simple: a repository, or subdirectory in a monorepo, contains ADRs for decisions affecting more than one team. Team A's `AGENTS.md` tells agents to check the shared architecture repository before writing specs across service boundaries. Team B's instructions say the same. The authentication token format change goes into the shared repository, where both teams' agents load it.
 
-This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is a pre-spec context load from the shared repo.
+This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is a pre-spec context load from the shared repository.
 
 ```mermaid
 graph TD
@@ -54,7 +54,7 @@ The inner source for agent instructions is book synthesis. As of mid-2026, there
 
 ## Multi-repo realities
 
-Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/`, its own `.agents/`, its own agent instructions. Coordination between them requires agents to cross a context boundary the code already crossed years ago.
+Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/`, its own `.agents/`, its own agent instructions. Coordination between them requires agents to cross a repository boundary the code already crossed years ago.
 
 Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
 
@@ -68,7 +68,7 @@ Multi-repo coordination is harder at the agent level than at the code level. Pac
 
 OpenSpec is strongest in single-repository work. The change folder model assumes one codebase, one spec directory, one PR. Multi-repo coordination, where a single feature requires coordinated change folders in two or three repositories, does not yet have a clean OpenSpec solution.
 
-The current book pattern is one change folder per repository, each referencing the same cross-cutting ADR. Coordination between the change folders remains human: the developers from both teams agree on the ADR, then each creates their repository's change folder referencing it. The agent in each repository implements against its own spec. The integration is verified in an environment shared by both teams.
+The current book pattern is one change folder per repository, each referencing the same cross-cutting ADR. Coordination between the change folders remains human: the developers from both teams agree on the ADR, then each creates that repository's change folder referencing it. The agent in each repository implements against its own spec. The integration is verified in an environment shared by both teams.
 
 This reduces confusion, but it does not remove coordination. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. As of mid-2026, teams building cross-repo features should plan for manual coordination overhead.
 
@@ -76,10 +76,10 @@ This reduces confusion, but it does not remove coordination. OpenSpec's Workspac
 
 ## Governance without bureaucracy is still unsolved
 
-The shared architecture repository pattern works only when organizations maintain it. A shared repo with twenty teams committing ADRs requires clear ownership, contribution guidelines, and a review process for incoming decisions. The same organizational discipline that makes internal ADRs useful (consistent format, active maintenance, genuine use by teams and agents) applies doubly to a shared architecture repository.
+The shared architecture repository pattern works only when organizations maintain it. A shared repository with twenty teams committing ADRs requires clear ownership, contribution guidelines, and a review process for incoming decisions. The same organizational discipline that makes internal ADRs useful (consistent format, active maintenance, genuine use by teams and agents) applies doubly to a shared architecture repository.
 
-The alternative, where cross-team decisions are not written down, is the pattern behind the hypothetical production incident at the start of this chapter. The overhead of the shared repo is real. So is the cost of not having it.
+The alternative, where cross-team decisions are not written down, is the pattern behind the hypothetical production incident at the start of this chapter. The overhead of the shared repository is real. So is the cost of not having it.
 
-The tooling for cross-team coordination is still early. The community has repeatable patterns for one developer and one repo. The multi-repo story still has loose edges.
+The tooling for cross-team coordination is still early. The community has repeatable patterns for one developer and one repository. The multi-repo story still has loose edges.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), multi-repo planning still treated as an in-development problem. Governance-without-bureaucracy is this book's open-problem framing.*

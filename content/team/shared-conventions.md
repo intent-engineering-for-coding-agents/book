@@ -50,8 +50,6 @@ Role-based personal instruction set are not divergence. A QA engineer's instruct
 
 Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement. It does not produce the agreement. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
 
-Shared conventions work within a team. Cross-team coordination needs a different mechanism, one already part of the SDLC and visible outside a single repo.
+Shared conventions work within a team. Cross-team coordination needs a different mechanism, one already part of the SDLC and visible outside a single codebase.
 
 *Sources: [AGENTS.md](https://agents.md/) (ongoing), project-level instruction set as a repo convention. The standardize-versus-diverge test and agreement-before-instructions rule are this book's synthesis for team use.*
-
-

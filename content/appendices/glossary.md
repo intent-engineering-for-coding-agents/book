@@ -92,7 +92,7 @@ This book uses `diff` for the line-by-line source-control change set shown in a 
 
 ## Engineering memory
 
-The durable repo context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
 ## Gherkin
 
@@ -176,7 +176,7 @@ A spec-driven-development framework (openspec.dev) built around a change-folder 
 
 ## Prompt engineering
 
-The practice of shaping one prompt or instruction exchange so a model responds usefully. This book treats prompt engineering as a useful but too-small frame for production coding-agent work, where the harder problem is keeping repo context, specs, tests, and decisions aligned across sessions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
+The practice of shaping one prompt or instruction exchange so a model responds usefully. This book treats prompt engineering as a useful but too-small frame for production coding-agent work, where the harder problem is keeping codebase context, specs, tests, and decisions aligned across sessions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
 
 ## skeleton.md
 

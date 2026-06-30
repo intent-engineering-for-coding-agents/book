@@ -22,7 +22,7 @@ flowchart LR
 
 | Practice | What it does | What breaks without it |
 |---|---|---|
-| [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from training data instead of the repo |
+| [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from training data instead of the codebase |
 | [Agent Instructions](/agent-instructions/) | One entry point and one instruction hub for every session | Each session re-derives the conventions from scratch |
 | [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code and archived after merge | The agent ships code without a settled change spec |
 | [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | The spec states the target, but nobody checks whether the agent hit it |
@@ -65,5 +65,4 @@ This book assumes you:
 | Get into the practice immediately | [Foundation](/foundation/) |
 | See what the practices look like in code | [Companion Repo](/appendices/companion-repo) |
 | Evaluate whether to adopt at all | [Honest Maturity](/appendices/honest-maturity) |
-
 

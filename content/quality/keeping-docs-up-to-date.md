@@ -8,7 +8,7 @@ For teams using coding agents, the gap matters more. Stale prose is not passive 
 
 This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire that turns silent drift into a visible signal.
 
-A release should leave the repo ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
+A release should leave the codebase ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
 *Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as practical agent failure modes. The release-to-next-session boundary is this book's synthesis.*
 
@@ -20,7 +20,7 @@ Documentation has no equivalent loop by default. A design note describing an old
 
 The asymmetry is the problem. Generated code changes fast. The surrounding prose drifts at human speed.
 
-The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a repo rule the team already removed because the instruction file still lists it.
+The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a codebase rule the team already removed because the instruction file still lists it.
 
 This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. Here the compounding is fast, because drift moves from documentation debt to implementation debt in one session.
 
@@ -86,7 +86,7 @@ The useful twist is diff scoping. Checking only documents changed in the Pull Re
 
 ## External referrers change the retention rule
 
-Documents under `docs/` have a second failure mode. The file is still linked from Jira, Confluence, an internal wiki, or some other system outside the repo. Delete the document, rename it, or move it without updating those links, and the repo stays green while the next developer lands on a dead reference.
+Documents under `docs/` have a second failure mode. The file is still linked from Jira, Confluence, an internal wiki, or some other system outside the repo. Delete the document, rename it, or move it without updating those links, and the codebase stays green while the next developer lands on a dead reference.
 
 This is a different check from local drift. `tracked-paths` asks whether the document still matches the code. `referred-by` asks whether some outside system still depends on the document existing at this path.
 

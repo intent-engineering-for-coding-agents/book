@@ -81,7 +81,7 @@ graph TD
     A --> M(["Merge + archive"])
 ```
 
-Each gate catches a different break. Skip the before-gate and the agent works from stale docs, dead links, or a design decision the repo already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. Skip the after-gate and the PR lands code the spec never asked for, backed by tests that prove something adjacent. The gates overlap less than they look.
+Each gate catches a different break. Skip the before-gate, and the agent works from stale docs, dead links, or a design decision the codebase already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. Skip the after-gate and the PR lands code the spec never asked for, backed by tests that prove something adjacent. The gates overlap less than they look.
 
 ## Where the attention goes
 
@@ -95,4 +95,4 @@ The work is uneven. The before-gate is mostly maintenance. The during-gate is mo
 
 Read the order as a dependency, not a schedule. First, check the ground under the change. Then write the spec. Then code against that same spec. Then verify the result. A small change moves through all four steps in one sitting. The failure starts when teams treat those steps as phase gates with handoffs between them: docs first, code later, correction last.
 
-These gates catch drift from the spec and drift from recorded architecture. They do not catch a missing constraint. If the spec never names the security boundary, and the repo shows the agent an insecure pattern, every checkpoint here still passes. The next chapter deals with failures of that kind: code faithful to the examples, wrong in the way that matters.
+These gates catch drift from the spec and drift from recorded architecture. They do not catch a missing constraint. If the spec never names the security boundary, and the codebase shows the agent an insecure pattern, every checkpoint here still passes. The next chapter deals with failures of that kind: code faithful to the examples, wrong in the way that matters.
