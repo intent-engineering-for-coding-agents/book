@@ -1,6 +1,6 @@
 # Spec-Driven Development
 
-> A spec that nobody reads is documentation. A spec the agent loads before it writes code is something else entirely.
+> A spec that nobody reads is documentation. A spec the agent loads before it writes code is the source the implementation is generated from.
 
 Agent Instructions equipped the agent to arrive loaded. The hub is built, the skills are ready, and the hooks fire automatically. What changes every session is intent.
 
