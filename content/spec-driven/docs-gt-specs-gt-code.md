@@ -97,7 +97,7 @@ Most developers reading this chapter are not yet convinced. The intuition is tha
 
 The code runs. The docs do not. Both statements are true. The code reflects what the agent implemented. The docs and the spec reflect what the team asked for. When the code and the intent disagree, one side is wrong. Only the docs and the spec record the decision rationale.
 
-Stop treating code review as the only primary quality gate. In this book's spec-driven workflow, spec review happens before or alongside code review. A correct spec improves the odds of the correct code. A wrong spec lets code review approve a clean implementation of the wrong behavior. Review the intent first, then the diff.
+Stop treating code review as the only primary quality gate. In this book's spec-driven workflow, spec review happens before or alongside code review. A correct spec improves the odds of the correct code. A wrong spec lets code review approve a clean implementation of the wrong behavior. Read the spec for correctness before the diff for conformance.
 
 This claim holds up only if the spec is connected to something harder than intent: not a document that describes expected behavior, but executable proof that the implementation delivers it. That proof is CI tests failing when the implementation diverges from the spec, not a human scanning the diff. Intent without proof is still a document.
 
