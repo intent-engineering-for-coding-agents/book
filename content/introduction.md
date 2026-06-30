@@ -39,7 +39,7 @@ Ask a well-loaded agent to plan first, and it pushes back on your architecture a
 
 This is not a lucky prompt or a generous model run. It matches what a skilled colleague does in design review. A large part of this book is making that critique available on demand. The result depends on how much system context the agent has before you ask it to reason. The same agent that drafts a payment service in minutes will also flag the missing timeout policy for the payment provider if the repo contains enough design context for the model to infer the gap.
 
-None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economics. More implementation work moves to the machine. More design burden stays with you.
+None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economics. More implementation work moves to the machine. Authoring the ADRs, specs, and constraints that drive it stays with you.
 
 ## What to expect
 
@@ -98,7 +98,7 @@ When the deliverable is an agent, the control surface belongs to agent engineeri
 
 That is real work. It is also a different product.
 
-This book works the other side of the table. Here the agent is the worker, not the product. Labor is only half the job. The agent also sharpens your design and names what you have not considered.
+This book works the other side of the table. Here the agent is the worker, not the product. Code generation is only half of what it does. A well-loaded agent also flags the architectural gap and names the assumption you treated as settled before the first line is written.
 
 The deliverable is the same software your team has always shipped, with an agent informed by your codebase conventions doing a growing share of the writing. Your tests remain tests, not a separate eval harness. In this book's workflow, Continuous Integration (CI) checks whether every Acceptance Criterion (AC) traces to a passing test. The spec describes the change, never the agent behind the patch.
 

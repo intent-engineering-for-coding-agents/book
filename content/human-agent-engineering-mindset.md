@@ -18,7 +18,7 @@ I do not mention product names. I want vendor independence. This book takes the 
 
 I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent only needs to inspect the project, propose a change, run checks, and create the patch. If one agent stops fitting, I replace it. If two are useful on the same change, I run both and compare the patches.
 
-Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer stays responsible for the input.
+Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer owns the spec, the constraints, and the decisions the agent reasons from.
 
 Give the agent a vague instruction, and it fills the gap. That usually fails. Show it an old pattern in the codebase and it copies the pattern. Leave last month's architecture rule in a meeting, and the agent never sees it.
 
@@ -66,8 +66,8 @@ This is where stack sprawl turns into a retrieval failure. The agent searches ac
 
 ## What this book is about
 
-The developer still owns the decisions. The agent pushes on the design, implements the change, and writes tests. Responsibility does not move. The keyboard load does.
+The agent writes the code. The developer owns the architecture, the design, and every line the agent produces. Directing the agent to generate correct output is the engineering work.
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 
-Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent-named files, an explicit lifecycle, and proof hooks bound to those files. Give the agent explicit inputs or it will infer from whatever happens to be in the codebase.
+Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent-named files, an explicit lifecycle, and proof hooks bound to those files. Give the agent explicit inputs, or it will infer from whatever happens to be in the codebase.
