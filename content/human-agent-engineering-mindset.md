@@ -18,7 +18,7 @@ I do not mention product names. I want vendor independence. This book takes the 
 
 I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent only needs to inspect the project, propose a change, run checks, and create the patch. If one agent stops fitting, I replace it. If two are useful on the same change, I run both and compare the patches.
 
-Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer owns the spec, the constraints, and the decisions the agent reasons from.
+Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer reviews every patch it produces.
 
 Give the agent a vague instruction, and it fills the gap. That usually fails. Show it an old pattern in the codebase and it copies the pattern. Leave last month's architecture rule in a meeting, and the agent never sees it.
 

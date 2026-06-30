@@ -16,7 +16,7 @@ This book calls that work Intent Engineering: giving the agent enough of your sy
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
-This book is not mainly about AI. It is about who authors what. The machine writes more of the implementation. You spend more time defining the change, setting constraints, reviewing tradeoffs, and proving the result.
+This book is not mainly about AI. It is about who authors what. You define the change, set the constraints, review the tradeoffs, and prove the result.
 
 Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose instead of its own inference. It takes two forms: per-change specs for the next change, and permanent decisions and conventions that constrain how anything is done. You adopt them as you need them. They are not a methodology you install.
 
