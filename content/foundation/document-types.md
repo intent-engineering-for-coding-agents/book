@@ -2,7 +2,7 @@
 
 A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` with its acceptance criteria intact and its status unmarked, and the next agent reads it as live instruction, reimplements behavior the system already has, and opens a PR nobody knows what to do with. Nobody archived it. Nobody did anything wrong. The document outlived the job it was written for, and permanent documents do not get cleaned up.
 
-This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to understand why the types exist is to watch what happens when you get them wrong.
+This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to see why the types matter is to watch what breaks when a team stores the right content in the wrong artifact.
 
 The design changes, and a developer edits the original ADR instead of writing a new one. Now the file says PostgreSQL was always the answer, though the team spent a month on DynamoDB first and rejected it for reasons that still matter. The what overwrote the why. The ADR still passes review, but the record is false.
 
@@ -88,7 +88,7 @@ That only pays off where the convention itself is the hard part, not the words a
 
 Specs are a manifestation of _intent_, the behavioral kind. Where an ADR records a decision and the reasoning behind it, a spec records what the system must do as a result, before you build it. It comes with acceptance criteria, scenarios, test definitions. A spec also typically contains a task plan: a checklist of implementation steps the agent works through in order.
 
-The structure matters. In current practice, an agent that reads a list of discrete unchecked steps tends to work through them in sequence. The same content written as prose gets summarized, and a step the agent finds low-priority quietly collapses into the summary instead of the work. The checklist format is what keeps that step from disappearing. The checkbox itself does something else, and it is worth a separate instruction to get it right.
+The structure matters. In current practice, an agent that reads a list of discrete unchecked steps tends to work through them in sequence. The same content written as prose gets summarized, and a step the agent finds low-priority quietly collapses into the summary instead of the work. The checklist format keeps the skipped step visible in the artifact. The checkbox itself does something else, and it is worth a separate instruction to get it right.
 
 One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the agent to check off each task immediately upon completion, not at the end of the run. This gives you live progress visibility. It also means you interrupt safely. When you resume, the checked boxes tell you and the agent exactly where things stand. Without it, an interrupted run leaves you guessing which tasks finished and which were still in progress.
 
@@ -138,7 +138,7 @@ If you want to see this in practice, the `iec` CLI repository has the structure 
 - design docs in `docs/design/`,
 - specs in `openspec/specs/` with completed changes archived.
 
-Run `iec check` and the structural validators pass. It is not a showcase. It is what the structure looks like when this taxonomy has been applied consistently over the life of a real project.
+Run `iec check` and the structural validators pass. This is not a showcase repo. It is the shape a codebase takes when the taxonomy has been applied consistently over the life of a real project.
 
 *Sources: `iec` CLI (github.com/intent-engineering-for-coding-agents/cli), the document taxonomy applied to a live project.*
 

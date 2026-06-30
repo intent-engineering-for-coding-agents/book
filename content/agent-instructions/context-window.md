@@ -2,7 +2,7 @@
 
 A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. A constraint the agent read early stops being honored, or a decision it made an hour ago gets contradicted by one it makes now. Nothing failed and nobody reset anything. The context that mattered either dropped off the back to make room, or it is still in the window, and the agent has quietly stopped attending to it.
 
-This is not a bug. Every token in the context window costs something, and it costs in two directions. Reliability is the first. In a session that overflows, old tokens fall out as new ones arrive and the agent loses earlier context.
+This failure is not a bug. Every token in the context window carries two costs. The first cost is reliability. In a session that overflows, old tokens fall out as new ones arrive and the agent loses earlier context.
 
 Long before any overflow, a window packed with files the task never needed buries the few tokens that mattered, and the model attends to them less reliably even though they remain in the window. Money is the second cost for teams billed per token. The window does not need to fill for either cost to bite. The question is what you put in it.
 
@@ -32,7 +32,7 @@ So the larger window changes the failure, not the fix. You overflow less often, 
 
 The practical implication: do not try to achieve a large change in a single session. Write the spec in one session and commit it, then implement in a second session with the spec loaded fresh. The second session reads the spec from the repo, not from session memory. It arrives with the full specification intact, not with a summary of a summary. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter works out the authoring side of this split.
 
-This is counterintuitive. The instinct is to keep context rich by not resetting. A fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The agent in the fresh session reads what you decided. The agent in the hour-three session is reconstructing it.
+The pattern feels backwards at first. The instinct is to keep context rich by not resetting. A fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The fresh session reads the recorded decision. The hour-three session reconstructs the decision from partial traces.
 
 Review is the third case, and the sharpest. An agent that reviews its own work in the same session does not read the diff cold: every justification for every choice it made is still in context, so it defends the code instead of auditing it. The prior reasoning does more than fill the window, it primes the conclusion, and the review confirms what a fresh reader would have questioned. Hand the review to a new session or a subagent, and the reviewer reads what is on the page, with no stake in the decisions.
 
@@ -58,11 +58,11 @@ Two mechanisms reclaim context without ending the session, and both carry a limi
 
 ## The discipline
 
-Context management is not a one-time configuration. It is an ongoing judgment, renewed at each step: when to reset the session, and what to load into it. The question is always the same: does the agent currently have the right information in an active context for the next step?
+Context management is not a one-time configuration. It is repeated task control: when to reset the session, and which files to load next. The question stays the same at every step: does the active context contain the information required for the next operation?
 
 An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what remains from an hour ago.
 
-Context management is the discipline of keeping the agent loaded with the right context. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Done well, it still does not guarantee good output. Some failures remain even with a perfectly managed window.
+Context management keeps the agent loaded with the right files and the right transcript history. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Even then, bad output remains possible. Some failures still occur with a perfectly managed window.
 
 ## What context management cannot fix
 

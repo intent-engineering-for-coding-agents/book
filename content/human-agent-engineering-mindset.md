@@ -34,7 +34,7 @@ When working on security, the agent starts from the current security practice an
 
 The decisions, checks, and constraints belong to the product whether the code was typed or generated. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
 
-Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only code the compiler accepts. It is also the written intent the developer uses in review to justify the patch.
+Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only the source code the compiler accepts. It also includes the written intent the developer cites in the review to justify the patch.
 
 ## The shared workspace
 
@@ -46,7 +46,7 @@ For maintained software, the workspace becomes the shared input surface. Develop
 
 If a decision creates a coding convention, put it in a file the next session loads. If one rule keeps showing up in review comments, move it out of the thread and into instructions. If a diagram defines a boundary, store it in Mermaid or another text format the team can diff and the agent can read.
 
-Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs, a hook that runs after file edits. Intent a machine checks survives longer than intent a teammate has to remember.
+Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs, a hook that runs after file edits. Intent a machine checks lasts longer than intent a teammate has to remember.
 
 ## Documentation before code
 
@@ -70,4 +70,4 @@ The developer still owns the decisions. The agent pushes on the design, implemen
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 
-Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent named files, a lifecycle, and proof hooks it can work from. Give the agent explicit inputs or it will infer from whatever happens to be in the codebase.
+Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent-named files, an explicit lifecycle, and proof hooks bound to those files. Give the agent explicit inputs or it will infer from whatever happens to be in the codebase.

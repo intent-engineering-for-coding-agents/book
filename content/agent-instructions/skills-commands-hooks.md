@@ -91,7 +91,7 @@ The output should read like data, not terminal noise:
 
 The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and waits forever. An agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. A human-facing CLI writes warnings into the same stream as the JSON. An agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
 
-This is not polish, but control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
+This is not polish. It is control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
 
@@ -101,7 +101,7 @@ A skill runs only when it is triggered, and the trigger gets missed two ways. Yo
 
 A hook does not wait and does not choose. It fires on the event, every time, the way a database trigger fires on every INSERT whether the application remembered to call it or not. Edit a `.py` file, the formatter runs. Stage a commit, the secret scan runs. The agent does not get to decide.
 
-That is the whole reason hooks exist next to skills. A skill automates the work. A hook removes the decision to run it. When skipping a step once costs more than running it every time, you want the trigger, not the reminder.
+Hooks exist next to skills for exactly this reason. A skill automates the work. A hook removes the decision to run it. When skipping a step once costs more than running it every time, you want the trigger, not the reminder.
 
 Keep each hook narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every edit blocks the agent at every step, and a blocked agent gets the hook disabled. A hook prevents one specific drift. It does not rerun CI.
 
@@ -133,7 +133,7 @@ The cost is real, so weigh it. A simple workflow you run once a month does not n
 
 Frequency is not the only reason to write a skill. A release procedure whose steps must run in a fixed order, where publishing before the signing step ships an unsigned artifact, belongs in a skill even if you rarely cut a release. The skill pins the correct order, so the agent and every developer run it the same way instead of reconstructing it under pressure.
 
-The practical test: if the agent gets the procedure wrong twice, write the skill. Write it sooner when one wrong run is too expensive to risk even once, like that release. If the agent skips it and something breaks, write the hook. Until then, an instruction and a code review are enough.
+Use a simple threshold. If the agent gets the procedure wrong twice, write the skill. Write it sooner when one wrong run is too expensive to risk even once, like a release-signing workflow. If the agent skips the procedure and something breaks, write the hook. Until then, an instruction and a code review are enough.
 
 A skill is only as reliable as the context that triggers it. The agent renames a field in `api-spec.yaml` in hour one. An hour later the window has filled with test output and diffs, that edit has scrolled out of context, and the agent moves to the next task without ever connecting it to the regenerate-types skill. The skill was written correctly and never fired, because the change that should have triggered it is no longer in front of the agent.
 

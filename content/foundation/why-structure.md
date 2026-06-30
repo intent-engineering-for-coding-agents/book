@@ -26,7 +26,7 @@ At human speed, drift like this used to take quarters to compound. At agentic sp
 
 Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. Whatever else the team knows, the agent invents from plausible-looking patterns. The agent improvises wherever the codebase stays silent. The only question is how much silence you leave.
 
-Chat sessions end with the session. Committed instructions, docs, and specs survive into the next run: local session, CI job, new laptop, and fresh clone all start from the same files. The codebase becomes the shared context source.
+Chat sessions end with the session. Committed instructions, docs, and specs carry forward into the next run: local session, CI job, new laptop, and fresh clone all start from the same files. The codebase becomes the shared context source.
 
 Run the gRPC case forward with the structure in place:
 

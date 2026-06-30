@@ -42,7 +42,7 @@ None of that touches the autonomous trigger. Agent instructions tell the agent w
 
 At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output sometimes lands in a vendor-specific directory rather than `.agents/skills/`. If you want one shared hub, copy the generated files into `.agents/skills/` after initialization.
 
-Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill on any given session depends on its judgment. That is the gap hooks close.
+Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill in a given session still depends on its judgment. Hooks close that gap.
 
 *Sources: OpenAI, "Codex Skills" (developers.openai.com/codex/skills, accessed 2026), `.agents/skills/` as the native Codex scan path; Fission AI, "OpenSpec" (openspec.dev, ongoing), `opsx:*` skill generation via `openspec init`.*
 
@@ -73,7 +73,7 @@ The hub gives the agent context about the codebase. What it still needs for any 
 
 ## When the hub becomes overhead
 
-The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub gives those tools the same instruction files, skill definitions, and hook docs. When neither case exists, the extra directory and pointer structure may buy nothing.
+The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub gives those tools the same instruction files, skill definitions, and hook docs. When neither case exists, the extra directory and pointer structure may add no value.
 
 A solo developer working with a single tool and no plans to change does not have a coordination problem. A single instruction file, whether it is called `CLAUDE.md`, `AGENTS.md`, or anything else, is the source of truth because there is only one source.
 
@@ -89,7 +89,7 @@ Open source projects are a special case: the moment you accept contributions, yo
 
 At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
 
-The practical test: if you are maintaining one instruction file, and it works, keep it. If you find yourself copying instructions between files, or if two tools produce different output from what should be the same instruction set, build the hub. The hub is the solution to a specific problem. Building it before the problem appears is a premature structure.
+Use a simple threshold here too. If you maintain one instruction file, and it works, keep it. If you start copying instructions between files, or if two tools produce different output from what should be the same instruction set, build the hub. The hub solves a specific coordination problem. Building it before that problem appears is a premature structure.
 
 ## Tooling
 

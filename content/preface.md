@@ -13,7 +13,7 @@ I wrote this book out of irritation. Not at the coding agents, but at the advice
 
 Fine. Good for them. But I just keep scrolling and waiting for the part that will never come: How? How did you do it? What did the codebase look like at week 2 when it all failed? What did you tell the agent? What did you burn? What broke in production?
 
-That is most often absent. Though one-pagers are too obvious to be taken seriously, the real answer is missed intentionally. I think because honesty is too much to fit on a one-pager.
+That detail is usually absent. Though one-pagers are too thin to explain why the second week failed, which assumption broke, or which test exposed the flaw. The omission looks less like brevity than avoidance.
 
 This book answers one question: how do you use coding agents in professional software work. Not the demo that looks clean on Tuesday and falls apart by Friday.
 
@@ -35,14 +35,14 @@ For this book, I write "coding agent" where many would write "AI". A coding agen
 
 A coding agent is not reading your mind. In 2026, a vague prompt still produces the wrong code in production work. State the rules, the intent, and the stack. Use the agent as a sparring partner for architecture and design, but keep the thinking on your side.
 
-That is the purpose of the book. The machine writes more of the code. You do more of the hard thinking: what gets built, what scope is justified, what cost is worth paying, what tests are required before merge. You become a writer, not a typist.
+That is the purpose of the book. The machine writes more of the code. You do more of the hard thinking: what gets built, which scope is justified, which tradeoff is worth paying, and which tests must pass before merge. You become a writer, not a typist.
 
 This book does not review or rank agents. The agent is the worker. The load-bearing variable is the input: the instructions, docs, specs, and checks you give it.
 
 Context is most of the game. Do not cram a project into one prompt. Keep the decisions in plain-text documents and diagrams the agent can load again next month. Without that, every session re-creates the same conventions, reopens settled decisions, and ships code that breaks the constraints nobody wrote down.
 
 ## From Vibe to Pro
-This is the part the carousels leave out. Give the agent the current details it needs, and the work moves from rough prototype to a production system. The hard part is not the code. It is the choices, the limits, and the proof that the result matches them.
+This is the part the carousels leave out. Give the agent the current repo facts, the active constraints, and the acceptance criteria, and the work moves from rough prototype to production software. The hard part is not the code. The hard part is choosing the limits and proving the result stayed inside them.
 
 Software development still needs judgment. I expect better models and more automation, and I will update this preface as that line moves. In 2026 the job still belongs to developers and reviewers: choose the scope, set the constraints, and reject code that misses both.
 

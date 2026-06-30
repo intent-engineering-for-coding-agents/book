@@ -4,9 +4,9 @@ Code often changes first, and the documentation lags behind. The next coding age
 
 The failure is easy to miss because the document still looks authoritative. Nothing in a normal build says the README, design note, or agent instruction file went stale. Tests fail when they stop matching the code. Prose usually does not.
 
-For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads it as working context.
+For teams using coding agents, the gap matters more. Stale prose is not passive reference material. The agent reads it as a working context.
 
-This chapter is about one narrow extension of the verification story: give important documentation a feedback loop. Not semantic understanding. Not a model grading your prose. A tripwire that turns silent drift into a visible signal.
+This chapter covers one narrow extension of verification: give important documentation a feedback loop. Not semantic understanding. Not model grading prose. A tripwire that turns silent drift into a visible signal.
 
 A release should leave the codebase ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
@@ -22,7 +22,7 @@ The asymmetry is the problem. Generated code changes fast. The surrounding prose
 
 The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a codebase rule the team already removed because the instruction file still lists it.
 
-This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. Here the compounding is fast, because drift moves from documentation debt to implementation debt in one session.
+This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. The compounding is fast here because one stale document feeds the very next implementation session.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as undocumented or stale reasoning in agentic delivery. AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as a practical agent failure mode.*
 
@@ -60,7 +60,7 @@ referrers-verified-at: 2026-06-20
 
 Once the fields exist, the check stops guessing. The questions are mechanical: did one of the tracked paths change after `content-verified-at`, and does an outside system still depend on this file staying where the referrer expects after `referrers-verified-at`?
 
-This is not a field standard. This book uses it as a practical synthesis of the AC-ID idea for prose. The mechanism is the shape: one stable identifier in the prose, one reference target in code or docs, and one check that verifies the link.
+This is not a field standard. This book uses it as a practical synthesis of the AC-ID idea for prose. The mechanism is structural: one stable marker in the prose, one reference target in code or docs, and one check that verifies the link.
 
 *Sources: The frontmatter marker and field names are this book's synthesis from AC-ID verification logic applied to prose.*
 
@@ -88,7 +88,7 @@ The useful twist is diff scoping. Checking only documents changed in the Pull Re
 
 Documents under `docs/` have a second failure mode. The file is still linked from Jira, Confluence, an internal wiki, or some other system outside the repo. Delete the document, rename it, or move it without updating those links, and the codebase stays green while the next developer lands on a dead reference.
 
-This is a different check from local drift. `tracked-paths` asks whether the document still matches the code. `referred-by` asks whether some outside system still depends on the document existing at this path.
+This check differs from local drift. `tracked-paths` asks whether the document still matches the code. `referred-by` asks whether some outside system still depends on the document existing at this path.
 
 The base pattern here is an inventory. The checker does not crawl for backlinks or discover them on its own. It validates a declared list of known referrers:
 
@@ -128,7 +128,7 @@ void runbookExplainsWhereToFindFailureLogs() {
 
 The same pattern works for a release runbook that must name the rollback command, the artifact location, and the first log command. Test those three facts directly. If one disappears in an edit, the suite fails before the next release leaves someone guessing in a live incident.
 
-This is weaker than a behavior test. The test does not prove the command still works. The test proves the document still names the command. For operational prose, that is already a large step up from silence.
+This is weaker than a behavior test. The test does not prove the command still works. It proves the document still names the command. For operational prose, that already moves far beyond silence.
 
 Testing runbook content like this is a practical extension this book recommends. It is not presented here as common industry policy.
 
@@ -148,7 +148,7 @@ Nothing here depends on one tool. The practice is broader: one rule the agent re
 
 ## Why this belongs in verification
 
-This is not a general documentation chapter in disguise. The scope here is narrower: keep the files agents load aligned with the code agents are changing.
+This is not a general documentation chapter in disguise. The scope is narrower: keep the files agents load aligned with the code agents are changing.
 
 [Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept the order, stale documents become a quality problem rather than a writing problem. The disposable artifact changed. The durable artifact did not.
 
@@ -170,7 +170,7 @@ Cross-cutting documents are awkward. A design note covering four subsystems and 
 
 The external inventory is only as good as the discipline behind it. A missing `referred-by` entry means the checker never knows the outside link exists. As of mid-2026, teams with Model Context Protocol (MCP) connectors into Jira or Confluence might confirm some records through APIs, but API confirmation is a higher-maturity extension and a perishable one.
 
-None of those limits sink the practice. They define it. This is a tripwire, not semantic verification. For documentation, tripwires carry most of the value because the baseline is silence.
+None of those limits sink the practice. They define it. This control is a tripwire, not semantic verification. For documentation, tripwires carry most of the value because the baseline is silence.
 
 The before-gate in [Before, During, After Checkpoints](./checkpoints) asks whether architecture and instructions are still current. This chapter turns the question into something a checker asks too.
 

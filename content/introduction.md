@@ -2,7 +2,7 @@
 
 The mindset is not enough by itself. A source-controlled workspace still needs a way to tell the agent what to load, what to build, and what proof the result must pass.
 
-A coding agent works fast. It has been trained on a lot of code. It can generate a payment service in minutes, and it can generate the wrong one just as fast.
+A coding agent works fast. Its training set contains a vast amount of public code. It will draft a payment service in minutes, and it will draft the wrong one on the same clock.
 
 The agent has no idea what you decided.
 
@@ -37,7 +37,7 @@ An agent in Intent Engineering plays two roles:
 
 Ask a well-loaded agent to plan first, and it pushes back on your architecture and design before the first line of code is written. It surfaces the assumption you treated as settled, asks what you missed, and names the opportunity you skipped.
 
-That is not a lucky prompt or a generous model run. It is what a skilled colleague does in design review. Getting that kind of pushback on demand is a large part of what this book teaches. The result depends on how much the agent knows about your system before you ask it to think. The same agent that generates a payment service in minutes will, a moment earlier, point out you have not decided what happens when the payment provider times out, if you gave it enough information to reason with.
+This is not a lucky prompt or a generous model run. It matches what a skilled colleague does in design review. A large part of this book is making that critique available on demand. The result depends on how much system context the agent has before you ask it to reason. The same agent that drafts a payment service in minutes will also flag the missing timeout policy for the payment provider if the repo contains enough design context for the model to infer the gap.
 
 None of this requires AI in principle. A disciplined team could write the docs, specs, constraints, and proof package by hand. Coding agents change the economics. More implementation work moves to the machine. More design burden stays with you.
 
@@ -53,7 +53,7 @@ Agent Instructions: `AGENTS.md` and the `.agents/` hub. The book uses "agent ins
 
 Spec-Driven Development: specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
 
-Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links it to the test that proves it, a link that remains valid when both files are rewritten. PR taxonomy gives reviewers something to lean on, and the feedback loop closes everything else.
+Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links the scenario to the test proving it, and that link stays intact through file moves and rewrites. PR taxonomy narrows the reviewer task, and the verification loop catches the remaining drift.
 
 Topics three and four are a pair. Spec-driven development showed up more often in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and most examples stop at the spec. A spec narrows the solution space and pins the behavior of a change. It does not tell you whether the generated code landed there.
 
@@ -74,7 +74,7 @@ You are a senior developer or architect. You already use a capability-class codi
 
 You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
-Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` as the shared layout, written once and read by whichever tool shows up next. Wiring a new one costs something today, a cost later chapters name honestly rather than wave away.
+Run one agent or run several. This book treats vendor-agnostic as a deliberate choice: `AGENTS.md` and `.agents/` form a shared layout, written once and read by whichever tool shows up next. Adding a new agent still costs setup work today, and later chapters account for that cost directly.
 
 The payoff arrives when adding another tool means one pointer file and a few load clauses. Then you run one agent for the patch, another for review, and a third against the same golden task, instead of betting the codebase on one vendor's roadmap. The list of viable agents will keep shifting through 2026 and beyond. The practices here should change more slowly, unless the tools absorb these conventions outright and the wiring cost disappears with them.
 

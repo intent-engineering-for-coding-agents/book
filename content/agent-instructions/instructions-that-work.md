@@ -14,7 +14,7 @@ An instruction written before a failure is a guess. The agent might never need i
 
 The practical move in this book is to start minimal and add reactively. The agent violates a convention. Write the instruction that prevents it. That instruction is grounded in a real failure. It states the constraint that bit and prevents a repeat, instead of guarding against a problem you only guessed at. Write it immediately: the failure is in front of you, so you point to the exact wrong output and say what to do instead. Wait a day, and you are writing from memory, not from evidence.
 
-Only writing when something fails keeps the file short: nothing enters unless a real failure earned it. A short file loads fast, stays readable, and carries nothing that is not load-bearing. A file full of preemptive rules fills with guesses that never once get exercised.
+Only writing after a failure keeps the file short: nothing enters unless a real failure earned it. A short file loads fast, stays readable, and carries only load-bearing rules. A file full of preemptive rules accumulates guesses the repo never exercises.
 
 The goal is not to remove improvisation. For most of what the agent does, from choosing an algorithm to shaping an API response, you want it drawing on everything it knows. Constrain every decision, and the instruction file stops being a context. It becomes a straitjacket.
 
@@ -28,7 +28,7 @@ A useful test for any instruction: does the agent produce a concrete behavior fr
 
 "Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables. Use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
 
-The same principle applies beyond security. "Keep functions small" cannot be violated: there is no agreed meaning of small for the agent to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or does not, and the rule it gives is one of the agent follows the same way every session.
+The same principle applies beyond security. "Keep functions small" has no measurable threshold, so the agent has nothing concrete to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or it does not, and reviewers inspect the result without debating what "small" meant.
 
 *Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
 
@@ -44,7 +44,7 @@ The most valuable negative instructions cover the agent's defaults. Defaults com
 
 ## Architecture boundaries in plain language
 
-Some instructions protect architecture. The agent should not touch certain directories, add dependencies outside the approved list, or overwrite generated files. These are structural constraints, not style preferences. Violate one and something downstream breaks.
+Some instructions protect architecture. The agent should not touch certain directories, add dependencies outside the approved list, or overwrite generated files. These are structural constraints, not style preferences. Break one, and the next generator run, architecture check, or deploy step fails.
 
 Write them explicitly. "Do not modify files under `src/generated/`. They are produced by the code generator, and any hand-edit will be overwritten on the next build" is an architecture boundary the agent follows. It cannot infer this from the directory name alone.
 
@@ -86,7 +86,7 @@ A second-model critique pass often surfaces the same gap: instructions that stat
 
 ## When instructions backfire
 
-Instructions constrain the agent's decisions. That is the point. Some decisions should not be constrained. An instruction that specifies the sorting algorithm prevents the agent from choosing a better one when the data shifts. Pin the exact structure of an API response, and the agent cannot adapt it when a new client needs something different. Over-constraining the agent turns it from a collaborator into a template filler.
+Instructions constrain the agent's decisions. That is the point. Some decisions should stay open. An instruction that specifies the sorting algorithm blocks a better choice when the data distribution changes. Pin the exact structure of an API response, and the agent cannot adapt when a new client needs a different shape. Over-constraining the agent turns it from a collaborator into a template filler.
 
 Where is the line? Write instructions for a senior colleague who has read the entire internet but has never seen your codebase. They know the language idioms and the common library APIs. Do not explain those. They do not know your team's decisions or what you tried and rejected. Document those.
 

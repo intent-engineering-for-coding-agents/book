@@ -4,7 +4,7 @@ Green tests feel like proof. They are not proof. A suite runs fully green over c
 
 Consider a spec with one acceptance criterion: files must not exceed 10 MB. The agent writes a test that uploads a 5 MB file and asserts the response is 200. The test passes. It would still pass if the size check were deleted entirely. It exercises the path that works. It does not prove the limit holds. The AC is in the spec. The proof is not in the suite.
 
-This is not a *code coverage* problem, which measures whether a test touches a line. AC coverage measures whether a test would fail if an acceptance criterion were violated. A suite reaching 100% line coverage still proves none of its ACs.
+This is not a *code coverage* problem. Code coverage measures whether a test touches a line. AC coverage measures whether a test would fail if an acceptance criterion were violated. A suite reaching 100% line coverage still proves none of its ACs.
 
 The two metrics answer different questions, and only one tells you whether the implementation matches the spec.
 
@@ -68,7 +68,7 @@ Write the test once, and every later edit runs against the same check. Skip the 
 
 A test that fires and flags a violation is not a broken test. The violation is the problem. The test found it before it shipped. At the delivery rate agents sustain, a catch before production is the most valuable outcome a test produces.
 
-This is not a call for more tests. It is a call for tests that do the job. A suite that doubled in size last quarter and caught nothing new is a suite that grew without proving more. The number that matters is how many real defects the suite catches before they ship, and whether that number tracks the rate of change. If it does not, the tests are ritual.
+This is not a call for more tests. It is a call for tests that fail on wrong behavior. If the suite doubled in size last quarter, yet a removed validation, an inverted condition, or an off-by-one limit still slips through green, the extra tests bought nothing. A larger suite is only better when it catches concrete implementation mistakes the previous suite missed. If the new tests do not catch a broader set of wrong outputs, wrong status codes, wrong state changes, or missing guards, the suite grew and the proof did not.
 
 ## The traceability problem
 
