@@ -89,7 +89,7 @@ Every gate splits in two. Hooks and CI catch broken links, oversized files, miss
 
 This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and shape. Review still proves meaning.
 
-The work is uneven. The before-gate is mostly maintenance. The during-gate is mostly automation. The after-gate burns the review budget, and earns it.
+The work is uneven. The before-gate is mostly maintenance. The during-gate is mostly automation. The after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
 
 ## The sequence is logical, not temporal
 

@@ -35,6 +35,7 @@ Run a dedicated credibility and provenance pass on drafted or reviewed book cont
 5. Mark any unstable or perishable claim that needs time-bounded wording, such as tool support, model behavior, workflow maturity, or current naming conventions.
 6. Downgrade or flag any claim whose wording is stronger than the available evidence.
 7. Flag any passage that narrates a fabricated specific event in the past tense as if it happened (an invented anecdote dressed as observed fact), especially chapter openings carrying invented precise numbers. Honest scenarios must be marked as hypothetical, framed in the second person, or sourced. See `voice.md`, "Never fake a memory".
+8. Run the class-without-members test from `voice.md`. Find every sentence whose predicate ends with an abstract count noun: *failures, gaps, control, issues, problems, risks, value, meaning, quality, benefits*. For each, verify that the same sentence or the immediately preceding one names at least one concrete member of that class. Flag any sentence where the class floats without an instance.
 
 ## Failure labels
 
@@ -49,6 +50,7 @@ Use these exact labels when the pass finds problems:
 - `Unmapped source` (a source on a `*Sources:*` line with no claim-tag, or whose claim does not appear in the section)
 - `Decorative source` (a source that backs no claim in its section and should be removed)
 - `Fabricated anecdote` (a specific event narrated in the past tense as if it happened, with no source and no hypothetical framing)
+- `Class without members` (a sentence names a category — failures, gaps, control, value — without naming any concrete instance; the class floats with no referent)
 
 ## Output
 

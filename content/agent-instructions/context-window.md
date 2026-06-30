@@ -72,4 +72,4 @@ The distinction matters when you are deciding whether to reset or redirect. If t
 
 Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
 
-Context management keeps the agent loaded with the right context. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry, and supplying it is where the next topic begins.
+Context management loads the agent with the right standing context. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry. The Spec-Driven Development topic covers how to supply it.

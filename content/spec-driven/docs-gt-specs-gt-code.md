@@ -67,7 +67,7 @@ This book's rule has a direction. The machine moves down the layers, and only a 
 
 Generated code sometimes looks wrong in ways that compound. Rolling back is quick. Improving the spec takes longer than a revert, but it is cheaper than debugging the same misunderstanding across several PRs. Regenerate from the improved spec, and the second attempt has less room to repeat the same mistake.
 
-This is the practical demonstration of the thesis. When the result is wrong, the code is what you discard first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate. Each iteration sharpens the docs and the spec. The code is a snapshot.
+When the result is wrong, the code is what you discard first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate. Each iteration sharpens the docs and the spec. The code is a snapshot.
 
 Frederick P. Brooks called it in 1975: plan to throw one away. The first system will be discarded. The only question is whether you planned to. Brooks was describing projects where the throwaway cost months. For a small agent-generated change with tests already in place, the discard cost drops to an iteration.
 

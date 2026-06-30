@@ -76,4 +76,4 @@ The `openspec/changes/<name>/` folder does not count toward the file total. That
 
 *Sources: LeanSpec, small-spec discipline, and formality-to-risk matching.*
 
-A spec that fits in one PR and one review pass is a tactical win. But not every change earns a spec at all, and some earn far more than a paragraph. A dependency bump and a payment-flow redesign do not deserve the same ceremony. How much structure a given change warrants, from a throwaway prompt to a full OpenSpec proposal, is the question that decides whether the spec earns its keep.
+A spec that fits in one PR and one review pass is a tactical win. But not every change earns a spec at all, and some earn far more than a paragraph. A dependency bump and a payment-flow redesign do not deserve the same ceremony. How much structure a given change warrants, from a throwaway prompt to a full OpenSpec change folder, is the question [The Spectrum](./the-spectrum) answers.

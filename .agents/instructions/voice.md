@@ -197,6 +197,8 @@ The referent test. Read each paragraph and find the concrete noun: a named file,
 
 Show the break. When you claim something fails, show the symptom. Not "the types drift" but "the client reads a field the server no longer sends." Not "context degrades" but "the agent re-derives in hour two the same import path it knew in hour one."
 
+The class-without-members test. A sentence that names a category of thing without naming any member of that category is still abstract, even though it contains a noun. "catches the failures the other two cannot", "fills the gaps automated proof does not cover", "buys most of the same control", "earns its keep": each names a class (failures, gaps, control, value) but no instance. The fix is to name at least one member: which failure, which gap, which kind of control, what the thing actually produces. If the sentence is a closer or summary, the preceding sentence should have already named the members, so the summary refers back to something concrete.
+
 The honest boundary. Concrete comes from real referents, never invented ones. Naming a real file is concrete. Inventing "forty-seven acceptance criteria" is fabrication. Reach for a named artifact, a real command, a sourced fact, or an explicitly marked hypothetical, and never a precise number you made up. See "Never fake a memory."
 
 ### Name the role, not the species

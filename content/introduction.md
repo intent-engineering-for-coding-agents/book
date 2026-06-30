@@ -47,7 +47,7 @@ The book is organized around four topics. Each works at a solo scale and couples
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it.
 
-Foundation: repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: context keeps the agent from choosing wrong out of ignorance.
+Foundation: repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: the agent reads the recorded decision instead of inventing a solution from code patterns alone.
 
 Agent Instructions: `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 

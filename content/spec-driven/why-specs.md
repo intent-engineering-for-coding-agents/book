@@ -14,7 +14,7 @@ It is not a requirements document in the enterprise sense. No stakeholder sign-o
 
 Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created, and the 201 is returned with the ID. These scenarios double as test definitions: each one maps to a test. The spec is not done when the prose is written. It is done when the tests pass.
 
-This book uses a change-scoped definition. It takes the lightweight spec frameworks, not enterprise requirements practice. The spec stays small, lives beside the code, and earns its keep through acceptance criteria a test verifies.
+This book uses a change-scoped definition. It takes the lightweight spec frameworks, not enterprise requirements practice. The spec stays small, lives beside the code, and proves each criterion through a test that fails when the criterion is violated.
 
 *Sources: Fission AI, OpenSpec; LeanSpec, the change-scoped spec and acceptance-criteria structure this book's working definition distills.*
 

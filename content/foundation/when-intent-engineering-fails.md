@@ -62,6 +62,6 @@ Cognitive debt is the cost that grows when these modes go unaddressed: the undoc
 
 The goal is not zero drift. The goal is to catch mismatches before they stack up.
 
-Six months of accumulated mismatch trace back to what the agent was reading. What the agent should have been reading is the question the Agent Instructions topic exists to answer.
+Six months of accumulated mismatch trace back to what the agent was reading. The Agent Instructions topic covers which files it should load and how to keep them current.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*

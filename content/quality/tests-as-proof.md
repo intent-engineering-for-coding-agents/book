@@ -56,7 +56,7 @@ Farley's Modern Software Engineering frames this as a feedback loop: the spec op
 
 ## Why agentic speed forces the issue
 
-A human team shipping one feature a week relies partly on social verification. Someone reviews the PR carefully, the change is small, and the reviewer remembers the discussion. Memory carries some of the load.
+A human team shipping one feature a week relies partly on social verification. A developer reviews the PR carefully, the change is small, and the reviewer remembers the discussion. The reviewer's recollection of the planning catches what no test asserts.
 
 An agentic team shipping several features a day cannot. Memory does not scale to that rate. PR review under time pressure becomes scan-based: changed files, green tests, merge. A reviewer who approved on that basis often cannot reconstruct a week later which acceptance criteria the diff was supposed to satisfy. Without automated proof, production depends on how much of the spec the reviewer remembered during that pass.
 

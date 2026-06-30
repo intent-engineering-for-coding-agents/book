@@ -53,7 +53,7 @@ This is not BDD: there are no step definitions, no Cucumber runtime, and the sce
 
 The change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
 
-OpenSpec is the workflow this book uses. It is not the only one that works. The closest alternative is the plain `spec.md` your team has already shaped into a local workflow. The durable part is the bundle of concerns: a statement of intent, an implementation approach when the change needs one, behavioral specs, an execution plan, and an archive rule. A framework with those pieces buys most of the same control.
+OpenSpec is the workflow this book uses. It is not the only one that works. The closest alternative is the plain `spec.md` your team has already shaped into a local workflow. The portable pieces are stated intent, an implementation approach when the change needs one, behavioral specs, an execution plan, and an archive rule. Any framework holding those prevents dead specs from lacking an archive step, scope drift from lacking a task list, and unverifiable intent from lacking testable criteria.
 
 The selection rule is simpler than the tool names make it sound: pick the lightest framework that is already closest to the artifact set and lifecycle you want. A plain `spec.md` plus four house rules for a proposal, tasks, archive, and review is already a framework. Pretending otherwise only hides the maintenance cost.
 

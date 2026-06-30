@@ -48,7 +48,7 @@ Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach ski
 
 ## `.agents/hooks/`
 
-Few teams use agent hooks yet. The case for them comes down to one word: enforcement. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full. Here the point is only where the files live.
+Few teams use agent hooks yet. The case for them comes down to one word: enforcement. An instruction tells the agent to run the linter after editing a source file, and the agent usually does. A hook runs the linter after every source file edit, regardless of what the agent decided. [Skills, Commands, and Hooks](./skills-commands-hooks) makes the determinism argument in full. This section covers only where the files live.
 
 Hooks scope to file types too. A hook configured to fire on `.java` file edits runs checkstyle every time the agent touches a Java file, not because the agent remembered to, but because the trigger matched. The Javadoc use case is a clean example: an agent adding a new public method often skips the Javadoc comment. A hook configured on `.java` edits checks every public and protected method and forces the agent to fill in what is missing.
 
@@ -83,7 +83,7 @@ The hub adds that directory structure, a pointer file, and a maintenance ritual 
 
 Two things change the calculation. First, tool independence: a developer who wants to stay portable, not locked into any single agent, benefits from a vendor-neutral hub even alone. Second, multi-agent workflows: running one agent to write code and another to review it is a coordination problem even for one person. Both agents need the same instructions, the same skill definitions, the same conventions. A vendor-specific file serves only the tool it was written for.
 
-The hub earns its keep when the coordination problem appears: a second developer joins with their own tool, a solo developer starts using two agents across different tasks, or a team grows from two to five and needs every tool reading the same repo rules.
+The hub pays off when the coordination problem appears: a second developer joins with their own tool, a solo developer runs two agents across different tasks, or a team grows from two to five and needs every tool reading the same repo rules.
 
 Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes.
 
