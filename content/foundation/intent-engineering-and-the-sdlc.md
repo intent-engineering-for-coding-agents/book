@@ -2,7 +2,7 @@
 
 This chapter rejects a tempting pitch: replace your SDLC with a new one. New ceremonies, new artifacts, a new review process. Existing tooling becomes legacy on contact.
 
-The pitch fails where the engineering process already has teeth: Continuous Integration (CI) catches mistakes, reviewers defend standards, and the Jira board drives planning. This chapter makes the opposite move. Keep the delivery loop. Change the artifacts moving through the loop.
+The pitch fails where the engineering process already has teeth: Continuous Integration (CI) catches mistakes, reviewers defend standards, and the Jira board drives planning. This chapter makes the opposite move. Keep the delivery flow. Change the artifacts moving through that flow.
 
 This book uses Spec-Driven Development for the broader practice of _writing intent before writing code_. Intent Engineering is this book's version of the practice. The Software Development Life Cycle (SDLC) stays in place.
 
@@ -10,7 +10,7 @@ This book uses Spec-Driven Development for the broader practice of _writing inte
 
 ## The map
 
-Read the diagram as an overlay: gray marks the existing process, and teal marks the Intent Engineering context, artifact, review step, or check added to the loop.
+Read the diagram as an overlay: gray marks the existing process, and teal marks the Intent Engineering context, artifact, review step, or check added to that flow.
 
 ```mermaid
 graph TD

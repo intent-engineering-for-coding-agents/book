@@ -36,7 +36,7 @@ The minimum during-checkpoint is three questions. Is the spec the same one the a
 
 ## After: the verification gate
 
-The after-checkpoint runs on what was produced. The spec is done, the implementation is done, and the tests pass. The question is whether the artifact closes the loop.
+The after-checkpoint runs on what was produced. The spec is done, the implementation is done, and the tests pass. The question is whether the artifact closes the gap.
 
 The verification checks the things automation cannot catch on its own. Did the implementation introduce code unrelated to the spec? Scope creep in agentic PRs is common. The agent passes through a file, fixes things it noticed along the way, and those fixes ship without review. Do the new tests prove the acceptance criteria or behavior the agent invented? An AC ID linking a scenario to a test that asserts something different is the silent-drift failure mode.
 
@@ -59,7 +59,7 @@ Ask the same question at repo scale. Did the change invalidate the engineering m
 
 Small updates belong in the same PR. Larger architecture cleanup needs a follow-up with an owner named from the implementation PR. A release with no memory update and no explicit follow-up leaves stale context behind on purpose.
 
-*Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance loop and documentation drift check.*
+*Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance path and documentation drift check.*
 
 Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right shape for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
 

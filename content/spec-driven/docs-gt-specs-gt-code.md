@@ -63,7 +63,7 @@ The diagram's solid arrows run downward: docs shape the spec, and the spec drive
 
 This book's rule has a direction. The machine moves down the layers, and only a person moves intent back up. That upward arrow never moves on its own. A team that forgets to move it keeps docs reading as authoritative over code they no longer match. [Keeping docs up to date](../quality/keeping-docs-up-to-date) gives durable documents a feedback loop to catch that gap.
 
-## The rollback loop
+## The rollback path
 
 Generated code sometimes looks wrong in ways that compound. Rolling back is quick. Improving the spec takes longer than a revert, but it is cheaper than debugging the same misunderstanding across several PRs. Regenerate from the improved spec, and the second attempt has less room to repeat the same mistake.
 
@@ -71,7 +71,7 @@ When the result is wrong, the code is what you discard first. Improve what produ
 
 Frederick P. Brooks called it in 1975: plan to throw one away. The first system will be discarded. The only question is whether you planned to. Brooks was describing projects where the throwaway cost months. For a small agent-generated change with tests already in place, the discard cost drops to an iteration.
 
-Vibe coding is a special case. A vibe session usually produces no durable record: the specification is chat history, ephemeral and uncommitted. That makes the mode useful for exploration and mockups. The transition to production runs the loop in reverse: write the decisions into docs and the behavior into a spec, discard the prototype code, and regenerate from them.
+Vibe coding is a special case. A vibe session usually produces no durable record: the specification is chat history, ephemeral and uncommitted. That makes the mode useful for exploration and mockups. The transition to production runs the sequence in reverse: write the decisions into docs and the behavior into a spec, discard the prototype code, and regenerate from them.
 
 *Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", planned discard; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025), extracting a spec from a vibe prototype before production; Simon Willison, "Not all AI-assisted programming is vibe coding" (simonwillison.net, March 19, 2025), vibe coding as a narrow mode distinct from disciplined AI-assisted work.*
 

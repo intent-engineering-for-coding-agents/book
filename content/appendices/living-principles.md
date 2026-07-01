@@ -75,14 +75,14 @@ Principles about test strategy, acceptance criteria, and what makes a test proof
 
 ## Quality
 
-Principles about the quality loop: checkpoints, agent evaluation, deterministic checks, and security.
+Principles about the quality path: checkpoints, agent evaluation, deterministic checks, and security.
 
 | ID | Summary |
 |----|---------|
 | IEC-QUALITY-AUTOMATED-PROOF-MANDATORY | Coding agents generate code faster than manual verification scales. Automated proof is mandatory. |
 | IEC-QUALITY-THREE-GATES | Quality is three gates in sequence (before, during, after), each looking at what the others cannot see. |
 | IEC-QUALITY-MAXIMIZE-DETERMINISTIC | Maximize deterministic checks: they scale to agentic speeds; manual review does not. |
-| IEC-QUALITY-AGENT-EVAL-LOOP | Tests prove the code is right; agent evaluation proves the agent setup is right: two distinct loops. |
+| IEC-QUALITY-AGENT-EVAL-LOOP | Tests prove the code is right; agent evaluation proves the agent setup is right: two distinct checks. |
 | IEC-QUALITY-RULES-FIRST-PRINCIPLES-SECOND | Write deterministic rules when detection is possible. Write principles for judgment. |
 | IEC-QUALITY-ONE-PR-PER-CLASS | `docs`, `structural`, and `behavioral` PRs use different review styles: one PR per class. |
 | IEC-QUALITY-CANONICAL-PATTERN-VISIBLE | Make the pattern the agent should follow the easiest pattern to find in the codebase. |

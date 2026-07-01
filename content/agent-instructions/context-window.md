@@ -20,7 +20,7 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 Context windows are larger in 2026 than they were a year or two ago. The wall most sessions used to hit is farther away. The discipline is not.
 
-Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step loop that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests.
+Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step session that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests.
 
 The second is attention. Filling a roomy window with files the task never reads buries the load-bearing tokens the same way a small window does, and the model attends to them less reliably even though they remain in the window.
 

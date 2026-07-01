@@ -4,19 +4,19 @@ Your agent instructions, skills, and hooks are code. Nobody tests them. They dri
 
 In the companion repo's `examples/eval-demo`, one line added to `AGENTS.md` ("Prefer functions over classes for utility code") pushed the agent away from the project's conventions. The baseline output scores 9/9. The drifted output scores 5/9.
 
-Tests prove the code is right. They say nothing about whether the agent setup is right. That second loop is the one most teams miss.
+Tests prove the code is right. They say nothing about whether the agent setup is right. That second check is the one most teams miss.
 
 *Sources: intent-engineering-for-coding-agents/cli `examples/eval-demo/README.md` (ongoing), the one-line `AGENTS.md` change and the drift symptoms described. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the 9/9 and 5/9 demo scores.*
 
 ## Two different feedback loops
 
-The tests in the previous chapter close the loop between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
+The tests in the previous chapter close the gap between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
 The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, and the hook configuration are inputs to the agent, not outputs. Their effect shows up only in the code the agent produces, one PR at a time. A change that makes the agent worse can sit in the codebase for weeks before anyone notices. A change that makes it slightly better is hard to prove without a fixed task.
 
-This is the open loop. Nothing in the toolchain closes it for you.
+This is the open gap. Nothing in the toolchain closes it for you.
 
-*Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of an effective agent setup. Applying the loop to instruction files specifically is this book's synthesis.*
+*Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of an effective agent setup. Applying the same check to instruction files specifically is this book's synthesis.*
 
 ## Golden tests for the agent
 
@@ -83,7 +83,7 @@ Not every team needs this. A solo developer on one project has the option of pay
 
 The investment starts to pay when two developers share one `AGENTS.md`, two agents run against the same codebase, and instruction files change faster than one reviewer can sample the outputs by hand. At that point the eval suite is the only thing catching a quiet regression before it shapes a week of patches.
 
-The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The closed loop answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
+The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The complete check answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 
 ## Calibration is the hard part
 

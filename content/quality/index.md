@@ -1,10 +1,10 @@
 # Quality and Verification
 
-> A spec without proof is a document. A test without intent is decoration. Quality is what closes the loop between them.
+> A spec without proof is a document. A test without intent is decoration. Quality is what closes the gap between them.
 
 The spec-driven chapters argued that specifications are more important than code. That claim only holds if the spec is tied to executable proof that the implementation delivers what it promised. Without that proof, the spec is a polite hope and the code is whatever the agent decided to ship.
 
-This topic is about how teams close that loop and keep it closed at agentic speed. Tests catch regressions in behavior. Evals catch regressions in the agent setup. Acceptance-criterion IDs stay stable through spec rewrites. Checkpoints catch the missing archive, the stale document, and the PR that arrived without proof. Security starts in the artifacts the agent reads. PRs stay small enough for one reviewer to inspect end to end. For teams that want it, `.principles` adds a machine-readable way to enforce code shape alongside behavior.
+This topic is about how teams close that gap and keep it closed at agentic speed. Tests catch regressions in behavior. Evals catch regressions in the agent setup. Acceptance-criterion IDs stay stable through spec rewrites. Checkpoints catch the missing archive, the stale document, and the PR that arrived without proof. Security starts in the artifacts the agent reads. PRs stay small enough for one reviewer to inspect end to end. For teams that want it, `.principles` adds a machine-readable way to enforce code shape alongside behavior.
 
 None of these are new by themselves. What is new is the speed they have to handle and the fact that the agent skips them by default unless the structure enforces them. Quality at agentic speed is structure, not discipline.
 

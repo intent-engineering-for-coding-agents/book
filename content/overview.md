@@ -16,7 +16,7 @@ flowchart LR
     F & AI --> SD --> QV
 ```
 
-*Context (slate) is the prerequisite. Intent (teal) directs each change. Proof (cyan) closes the loop.*
+*Context (slate) is the prerequisite. Intent (teal) directs each change. Proof (cyan) verifies the result.*
 
 ## The four practices
 
@@ -65,4 +65,3 @@ This book assumes you:
 | Get into the practice immediately | [Foundation](/foundation/) |
 | See what the practices look like in code | [Companion Repo](/appendices/companion-repo) |
 | Evaluate whether to adopt at all | [Honest Maturity](/appendices/honest-maturity) |
-

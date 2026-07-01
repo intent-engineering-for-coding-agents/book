@@ -16,7 +16,7 @@ A release should leave the codebase ready for the next agent session. This chapt
 
 Tests already have the property documentation lacks. When the code changes and the test no longer matches, the suite fails. The failure is noisy. Somebody has to deal with it.
 
-Documentation has no equivalent loop by default. A design note describing an old retry policy does not fail. An agent instruction file pointing at a renamed file passes every check unless a structural link validator catches it, and a README documenting last month's module boundary still renders cleanly on GitHub.
+Documentation has no equivalent check by default. A design note describing an old retry policy does not fail. An agent instruction file pointing at a renamed file passes every check unless a structural link validator catches it, and a README documenting last month's module boundary still renders cleanly on GitHub.
 
 The asymmetry is the problem. Generated code changes fast. The surrounding prose drifts at human speed.
 

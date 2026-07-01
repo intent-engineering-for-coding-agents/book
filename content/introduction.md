@@ -12,7 +12,7 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 *Sources: Bill Doerrfeld, "AI doesn't create great developers, it amplifies them" (LeadDev, January 20, 2026), the amplifier framing: the agent multiplies whatever the developer brings to it.*
 
-This book calls that work Intent Engineering: giving the agent enough of your system and intent that it stops guessing at both. It is one part of building software with coding agents in the loop.
+This book calls that work Intent Engineering: giving the agent enough of your system and intent that it stops guessing at both. It is one part of building software with coding agents doing part of the work.
 
 The phrase "agentic software engineering" appears in parts of the field, but the boundaries are still unsettled. Intent Engineering is the narrower claim: engineering the intent that an agent turns into code.
 
@@ -47,13 +47,13 @@ The book is organized around four topics. Each works at a solo scale and couples
 
 The first two give the agent context: the structural knowledge to execute your intent without improvising. The last two are **intent**: they specify the target and prove that the agent hit it.
 
-Foundation: repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: the agent reads the recorded decision instead of inventing a solution from code patterns alone.
+**Foundation:** repo structure as the agent's context: decisions, design docs, specs, and an agent-facing index. This is context, not intent, and the prerequisite for everything else. The payoff is slow at first: the agent reads the recorded decision instead of inventing a solution from code patterns alone.
 
-Agent Instructions: `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
+**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. The book uses "agent instructions" to mean both together. Teach the agent your system once, in a place every session reads, and work out which of those rules are worth wiring into a hook in `.agents/hooks/`: a script that fires whether the agent remembers to or not.
 
-Spec-Driven Development: specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
+**Spec-Driven Development:** specs before code. Documentation is the durable source of truth, the spec pins the behavior of a single change, and the code is downstream of both. Small specs ship. Large specs drift.
 
-Quality and Verification: tests as _proof of intent_. A stable ID on every acceptance criterion links the scenario to the test proving it, and that link stays intact through file moves and rewrites. PR taxonomy narrows the reviewer task, and the verification loop catches the remaining drift.
+**Quality and Verification:** tests as _proof of intent_. A stable ID on every acceptance criterion links the scenario to the test proving it, and that link stays intact through file moves and rewrites. PR taxonomy narrows the reviewer task, and the verification path catches the remaining drift.
 
 Topics three and four are a pair. Spec-driven development showed up more often in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and most examples stop at the spec. A spec narrows the solution space and pins the behavior of a change. It does not tell you whether the generated code landed there.
 
@@ -61,7 +61,7 @@ In the SDD material reviewed for this book, the emphasis is heavier on aiming th
 
 *Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, January 2026); SolGuruz, "Spec-Driven Development Guide" (2026); IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), spec-driven development as a more visible but still young and unevenly defined 2025-2026 practice.*
 
-After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. This book does not add a second project-management layer. It changes what moves through the existing one: tickets link to change folders, PRs carry spec deltas, ADRs settle cross-team decisions, and CI checks proof instead of only code style. If "specs before code" already sounds like waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, and the loop still runs one PR at a time.
+After the four topics come team workflows, cross-team coordination, and a section on what is still unsettled in the field. This book does not add a second project-management layer. It changes what moves through the existing one: tickets link to change folders, PRs carry spec deltas, ADRs settle cross-team decisions, and CI checks proof instead of only code style. If "specs before code" already sounds like waterfall, [the waterfall objection](./spec-driven/why-specs#the-waterfall-objection) answers it where the practice is introduced: the spec here is one change-sized pre-flight check, and the process still runs one PR at a time.
 
 What you will not find here:
 

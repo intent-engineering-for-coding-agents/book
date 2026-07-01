@@ -12,7 +12,7 @@ A file (`test/ac-registry.md` by convention) that maintains one row per componen
 
 ## ADLC (Agentic Development Lifecycle)
 
-The discipline of building agents as products: reasoning loops, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+The discipline of building agents as products: reasoning passes, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
 
 ## ADR (Architectural Decision Record)
 
@@ -76,7 +76,7 @@ The agentic-era analogue to technical debt: undocumented decisions and assumptio
 
 ## Context engineering
 
-The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering loop of specs, proof, review, and durable decisions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
+The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering chain of specs, proof, review, and durable decisions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
 
 ## Context poisoning
 
