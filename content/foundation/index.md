@@ -2,11 +2,13 @@
 
 > Repo structure. The prerequisite for everything else.
 
-Foundation looks like the least interesting topic in this book. Skip it, and the rest stops making sense.
+The Foundation is properly the most important part to get right.
 
-It does not sit beside intent as an equal. It is the ground that makes intent executable. Strip it away, and agent instructions have nowhere to live, specs have nothing to enforce against, and quality checks have no conventions to validate.
+Open a PR where the agent adds a REST endpoint to a codebase that moved to gRPC months ago. Nobody wrote down the migration. Nothing in `docs/` says REST is gone. The code compiles anyway, and now the system speaks two protocols.
 
-These chapters take one problem, agents that are productive but contextless, and turn it into conventions you put in the repo: which documents hold which knowledge, why that knowledge lives in plain text, where it slots into your SDLC, and how to bootstrap it on a codebase that has none.
+That is the Foundation problem. README and INDEX files drift, Architectural Decision Records (ADRs) never get written, and old specs sit around as if they still matter. Review becomes a grep session backed by whoever still remembers the original decision. The agent reads the same stale files and follows them faithfully.
+
+These chapters are about stopping that kind of quiet damage. They define which documents belong in the repo, why the agent needs them in plain text, where the structure fits in the Software Development Life Cycle (SDLC), how to bootstrap a brownfield system, and what still breaks after the setup looks solid.
 
 ## Chapters
 
