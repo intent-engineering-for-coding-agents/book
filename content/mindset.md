@@ -18,9 +18,9 @@ I say "coding agent" because I avoid "AI" here. Whether the tool uses AI under t
 
 I do not mention product names. I want vendor independence. This book takes the same stand.
 
-I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a patch. If one agent stops fitting, I replace it. If two are useful on the same change, I run both and compare the patches.
+I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a patch. If one agent stops fitting, I just replace it. If two are useful for the same thing, I run both and compare the changes.
 
-Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer reviews every patch it produces.
+Treat the agent as magic, and the developer assumes understanding that is not there. Treat it as a silver bullet, and the developer stops doing the design and judgment work the tool will not do. Treat it as implementation labor and the developer reviews every patch it produces.
 
 Give the agent a vague instruction, and it fills the gap. That usually fails. Show it an old pattern in the codebase and it copies the pattern. Leave last month's architecture rule in a meeting, and the agent never sees it.
 
