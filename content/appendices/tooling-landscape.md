@@ -1,6 +1,6 @@
 # Tooling Landscape
 
-This page is a snapshot reviewed on June 28, 2026, not a buyer's guide. The roster of agents, spec tools, and MCP servers changes faster than any book tracks well. Use the categories here to decide what is in scope, then verify current support against each tool's documentation.
+This page is a snapshot reviewed on July 1, 2026, not a buyer's guide. The roster of agents, spec tools, and MCP servers changes faster than any book tracks well. Use the categories here to decide what is in scope, then verify current support against each tool's documentation.
 
 ## Capability-class agents
 
@@ -9,7 +9,7 @@ This book targets coding agents that combine a thinking-capable model, real tool
 | Agent | Type | Project instruction source |
 |---|---|---|
 | Claude Code (Anthropic) | CLI / IDE | Project memory through `CLAUDE.md` |
-| Codex CLI (OpenAI) | CLI | Native |
+| Codex (OpenAI) | CLI / IDE / app / cloud | Native |
 | OpenCode | CLI, open-source | Native |
 | Junie (JetBrains) | CLI / IDE | Native |
 | GitHub Copilot coding agent | IDE / PR | As of August 2025 |
@@ -18,7 +18,7 @@ Concrete model examples from this review date include Claude Opus 4.8 and GPT-5.
 
 IDE-only completion tools and chat-only assistants are out of scope. The practices in this book target the capability class, not a frozen vendor list. When a new tool combines planning, tool use, file edits, and reviewable output, evaluate it against the same patterns.
 
-*Sources: Anthropic Claude Code overview and memory documentation (ongoing, reviewed June 28, 2026), Claude Code capability class and `CLAUDE.md` project memory; Anthropic, "Introducing Claude Opus 4.8" (May 28, 2026), dated Claude model example for coding and agentic tasks; OpenAI Codex CLI documentation (ongoing, reviewed June 28, 2026), Codex CLI capability class; OpenAI Codex AGENTS.md documentation (ongoing, reviewed June 28, 2026), Codex reading `AGENTS.md` before work; OpenAI, "Introducing GPT-5.5" (April 23, 2026), dated GPT model example for coding, tool use, and long-context work; OpenCode Rules documentation (ongoing, reviewed June 28, 2026), OpenCode `AGENTS.md` support; JetBrains Junie documentation (June 18, 2026), Junie `AGENTS.md` guidelines; GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot AGENTS.md support. Instruction-file statuses are this page's June 28, 2026 snapshot.*
+*Sources: Anthropic Claude Code overview and memory documentation (ongoing, reviewed June 28, 2026), Claude Code capability class and `CLAUDE.md` project memory; Anthropic, "Introducing Claude Opus 4.8" (May 28, 2026), dated Claude model example for coding and agentic tasks; OpenAI Codex overview, CLI, IDE extension, app features, cloud, skills, and AGENTS.md documentation (ongoing, reviewed July 1, 2026), Codex capability class, current surfaces, skills, and `AGENTS.md` support; OpenAI, "Introducing GPT-5.5" (April 23, 2026), dated GPT model example for coding, tool use, and long-context work; OpenCode Rules documentation (ongoing, reviewed June 28, 2026), OpenCode `AGENTS.md` support; JetBrains Junie documentation (June 18, 2026), Junie `AGENTS.md` guidelines; GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot AGENTS.md support. Instruction-file statuses are this page's July 1, 2026 snapshot.*
 
 ## Spec-driven tools
 

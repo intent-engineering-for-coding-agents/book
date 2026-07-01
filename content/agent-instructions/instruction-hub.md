@@ -30,7 +30,7 @@ One file per domain, not one file per task. `coding-standards.md` covers all sty
 
 ## `.agents/skills/`
 
-Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a repeatable task. `.agents/skills/` is the emerging standard path: OpenAI Codex scans it natively from the current directory up to the repo root.
+Skills are workflows, not context. An instruction file tells the agent how things work in this repo. A skill tells it how to do a repeatable task. `.agents/skills/` is the emerging standard path. In Codex's July 2026 docs, Codex scans that directory in each folder from your working directory up to the repo root. Codex also supports user-level and system-level skill folders, but the project-local path is the one this chapter cares about.
 
 Take `update-changelog` as an example: scan commits since the last tag, extract the relevant entries, regenerate `CHANGELOG.md`. Five steps, one outcome, invocable any time a feature merges. Without the skill, each agent session has to remember to update the changelog or be told to. With the skill, the agent instructions state the rule once: after merging a feature, run `update-changelog`.
 
@@ -44,7 +44,7 @@ At the time of writing, running `openspec init` for a specific agent generates a
 
 Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill in a given session still depends on its judgment. Hooks close that gap.
 
-*Sources: OpenAI, "Codex Skills" (developers.openai.com/codex/skills, accessed 2026), `.agents/skills/` as the native Codex scan path; Fission AI, "OpenSpec" (openspec.dev, ongoing), `opsx:*` skill generation via `openspec init`.*
+*Sources: OpenAI, "Agent Skills" (developers.openai.com/codex/skills, reviewed July 1, 2026), Codex scanning `.agents/skills/` from the working directory to the repo root, plus user-level and system-level skill folders; Fission AI, "OpenSpec" (openspec.dev, ongoing), `opsx:*` skill generation via `openspec init`.*
 
 ## `.agents/hooks/`
 

@@ -4,7 +4,7 @@
 
 I wrote this book out of irritation. Not at the coding agents, but at the advice around them.
 
-2026: If you were to click open my developer feeds any peaceful afternoon, you would be greeted with another carousel of angry titles:
+2026: Open my developer feeds on any peaceful afternoon, and you get another carousel of shouted titles:
 
 - "Start an AI coding side hustle".
 - "How I built a SaaS in a few weeks".
@@ -17,9 +17,7 @@ That detail is usually absent. Though one-pagers are too thin to explain why the
 
 This book answers one question: how do you use coding agents in professional software work. Not the demo that looks clean on Tuesday and falls apart by Friday.
 
-Vibe coding is fine for quick prototypes and mocks.
-
-Use it when you need a screen mock, a rough feature sketch, or a quick way to tease requirements out of somebody who cannot state them cleanly yet.
+Vibe coding is fine for quick prototypes and mocks. Use it when you need a screen mock, a rough feature sketch, or a quick way to tease requirements out of somebody who cannot state them cleanly yet.
 
 The prototype is not the product. Throw it away and start again with the real requirements.
 
