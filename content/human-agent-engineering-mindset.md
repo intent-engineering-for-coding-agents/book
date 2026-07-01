@@ -1,6 +1,8 @@
 # The Human-Agent Engineering Mindset
 
-The real problem is not whether developers should use AI. The real problem begins once the prototype works and the team keeps calling the coding agent the magic chat box.
+The real problem is not whether developers should use AI. The trouble starts once the prototype works, and people treat the coding agent like a magic box: smarter than your codebase, creative on its own, as if it has original ideas.
+
+A coding agent does not produce original ideas out of thin air. Use that fact. Give the agent the project-specific information the public internet does not contain: your decisions, constraints, tradeoffs, and exceptions. Do not spend context budget re-explaining patterns the model has already seen a thousand times.
 
 I do not want a coding agent trying to figure out everything from a single prompt. I want it working in the same engineering environment I do: code, decisions, documentation, tests, review, and constraints on the change.
 
@@ -16,7 +18,7 @@ I say "coding agent" because I avoid "AI" here. Whether the tool uses AI under t
 
 I do not mention product names. I want vendor independence. This book takes the same stand.
 
-I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent only needs to inspect the project, propose a change, run checks, and create the patch. If one agent stops fitting, I replace it. If two are useful on the same change, I run both and compare the patches.
+I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a patch. If one agent stops fitting, I replace it. If two are useful on the same change, I run both and compare the patches.
 
 Treat the agent as magic and the developer gets careless. Treat it as implementation labor and the developer reviews every patch it produces.
 
@@ -24,21 +26,21 @@ Give the agent a vague instruction, and it fills the gap. That usually fails. Sh
 
 ## The mindset shift
 
-The old habit is to think in tasks: build this endpoint, fix this bug, refactor this module.
+The old habit is task language: build this endpoint, fix this bug, refactor this module.
 
 With coding agents, the safer habit is to think in terms of intent: which decision limits the work, what behavior should change, what should stay alone, and what makes the change ready to merge.
 
-Most AI coding advice loses me here. It talks about prompts, models, autocomplete, demos, and the next feature you are told you need. It compares products instead of asking what the team needs to document before an agent touches code. Then it skips the part that makes software professional: decisions, boundaries, trade-offs, security restrictions, existing structures, tests, and review.
+Most AI coding advice loses me here. It talks about prompts, models, autocomplete, demos, and the next feature you are told you need. It compares products instead of asking what the team needs to document before an agent touches code. Then it skips the professional part: decisions, boundaries, trade-offs, security restrictions, existing structures, tests, and review.
 
 When working on security, the agent starts from the current security practice and the governance rules the company and team selected. There is no room for improvisation here.
 
-The decisions, checks, and constraints belong to the product whether the code was typed or generated. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
+The decisions, checks, and constraints belong to the product whether the code was typed or generated. That is why treating the agent as a source of original insight goes wrong so quickly. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
 
 Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only the source code the compiler accepts. It also includes the written intent the developer cites in the review to justify the patch.
 
 ## The shared workspace
 
-The team also needs a source-controlled workspace where production work lives.
+Once intent matters as much as code, the workspace changes too. Production work needs a source-controlled home for the information the model will never pick up from the public corpus.
 
 Solo prototyping is often a chat window, a pasted stack trace, and a throwaway patch. No ceremony, no shame.
 
@@ -66,8 +68,8 @@ This is where stack sprawl turns into a retrieval failure. The agent searches ac
 
 ## What this book is about
 
-The agent writes the code. The developer owns the architecture, the design, and every line the agent produces. Directing the agent to generate correct output is the engineering work.
+The agent writes the code. The developer owns the architecture, the design, and every line the agent produces. Directing the agent to generate the correct output is the engineering work.
 
 The term this book uses, Intent Engineering, covers a narrower practice: making decisions, docs, specs, checks, and reviews available to the agent as input.
 
-Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent-named files, an explicit lifecycle, and proof hooks bound to those files. Give the agent explicit inputs, or it will infer from whatever happens to be in the codebase.
+Spec-driven development is one engine for this work, but not the whole discipline. OpenSpec is the workflow this book uses because it gives the agent a concrete change folder with `proposal.md`, `tasks.md`, and delta specs under `specs/`, plus an explicit lifecycle and proof tied to those files. The next question is where those inputs live, how they stay current, and which of them the agent should load first. That is where the rest of the book starts.
