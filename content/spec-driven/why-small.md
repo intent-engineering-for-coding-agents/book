@@ -54,13 +54,13 @@ Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spe
 
 The limit is for the reviewer on the change, not the agent. The agent re-reads a long task list at every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, the reviewer is sampling the diff instead of checking the whole change.
 
-Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the honest ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one pass, the whole change visible at once.
+Calibrate the number to your stack. Go and Java touch interfaces, mocks, and call sites that a dynamic language collapses into one edit, so the practical ceiling is higher. A terse codebase pulls it down. Move it to eight, move it to twelve, tune it to your stack. What does not move is the reason: one reviewer, one pass, the whole change visible at once.
 
 When the task list goes beyond 10, stop. The spec is describing two changes. Find the natural seam, the point where each half ships and stands on its own, and split there.
 
 If you cannot find the seam, ask the coding agent to propose the split. It usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID.
 
-Splitting is not a failure. A spec that spawns a Part 2 was honest about its scope. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
+Splitting is not a failure. A spec that spawns a Part 2 was correctly scoped. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
 
 ## When the change is genuinely large
 

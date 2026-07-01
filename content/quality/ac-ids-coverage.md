@@ -36,7 +36,7 @@ Test-type: Integration
 **Then** the directory contains `AGENTS.md`, `docs/`, and `openspec/`
 ```
 
-`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: Integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it guesses.
+`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: Integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it makes that choice for itself.
 
 A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed, test methods get extracted, and a path hardcoded in the spec goes stale without anyone noticing. That is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
 
@@ -87,7 +87,7 @@ The registry, `tests/ac-registry.md` in the companion repo, keeps one row per co
 | CONF   | configuration     | 022      |
 ```
 
-When adding a new scenario: look up the prefix, increment its `Max used` value, use the result as the new ID, and commit the registry update in the same commit as the scenario. The registry and the spec change together. A prefix that appears in a spec but not in the registry is an ID someone allocated by guessing.
+When adding a new scenario: look up the prefix, increment its `Max used` value, use the result as the new ID, and commit the registry update in the same commit as the scenario. The registry and the spec change together. A prefix that appears in a spec but not in the registry is an ID someone allocated by individual choice instead of through the registry.
 
 The prefix itself is permanent. Never reassign it to a different component. `GV` means graph-validator for the lifetime of the project. If the component is renamed, the prefix stays.
 

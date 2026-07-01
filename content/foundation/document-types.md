@@ -126,7 +126,7 @@ Specs are temporary: they move to `openspec/changes/archive/` after implementati
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with a `docs/decisions/` graveyard of superseded specs and a `docs/design/` directory of half-finished thoughts that nobody updated and nobody deleted.
 
-Structure is the cheapest discipline available. Convention over configuration is an old argument, one Maven and Rails built ecosystems on. Here the extra reader is the agent.
+This is cheap discipline. Put the file in the right place, keep the lifecycle rule, and the agent starts from fewer bad choices. Maven and Rails made the same bet years ago for developers and build tools. Here the extra reader is the agent.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
 
@@ -138,7 +138,7 @@ If you want to see this in practice, the `iec` CLI repository has the structure 
 - design docs in `docs/design/`,
 - specs in `openspec/specs/` with completed changes archived.
 
-Run `iec check` and the structural validators pass. This is not a showcase repo. It is the shape a codebase takes when the taxonomy has been applied consistently over the life of a real project.
+Run `iec check` and the structural validators pass. The point is not that the repo looks tidy in a screenshot. The point is that a later session can tell a live spec from an archived one without asking you.
 
 *Sources: `iec` CLI (github.com/intent-engineering-for-coding-agents/cli), the document taxonomy applied to a live project.*
 

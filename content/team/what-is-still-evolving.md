@@ -16,7 +16,7 @@ The failure modes behind all this (incompatible specs, stale agent instructions,
 
 ## What has patterns but not consensus
 
-Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. It is not yet standardized for agent workflows: the directory structure, contribution process, and instruction format for how agents consume shared architecture docs vary by organization. The pattern is clear, but the form is not.
+Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. Agent workflows still diverge here: one company keeps a central architecture repo, another mirrors ADRs into each product repo, a third links out from `AGENTS.md` and hopes developers follow the trail. Shared decisions are the recurring pattern. The packaging is still all over the place.
 
 Inner source for `.agents/` libraries follows well-understood shared-library mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? In the sources reviewed for this book, no shared package-management convention for agent instruction files appears as of mid-2026.
 
@@ -26,15 +26,15 @@ Multi-LLM critique (using a second model to review a spec before implementation)
 
 ## What is genuinely open
 
-Multi-repo planning remains a gap in the SDD sources reviewed for this book. When a single feature requires coordinated changes to three repositories, the spec-driven workflow requires human coordination at points where the one-codebase workflow does not. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. The problem is named. The solution is not.
+Multi-repo planning remains a gap in the SDD sources reviewed for this book. When one feature needs coordinated changes across three repositories, somebody still has to sequence the work, line up the PRs, and decide which repo carries the contract change first. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. That is useful honesty. It is not a workflow yet.
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 
-No framework in the sources reviewed for this book has delivered governance without bureaucracy at scale. The practices described here are voluntary and pull-based. Teams adopt them because they work, not because a government committee mandates them. What happens when a large organization needs cross-team consistency and has mixed adoption? In the sources reviewed for this book, the answer is social pressure and champions. That answer gets thin in an organization of two hundred developers.
+No framework in the sources reviewed for this book has delivered governance without bureaucracy at scale. The practices described here are voluntary and pull-based. Teams adopt them because the local payoff is obvious, not because a central group wrote a policy deck. In the sources reviewed for this book, large-scale consistency still comes down to champions, review habits, and a few teams doing the tedious maintenance work. That approach does not scale cleanly to two hundred developers spread across ten repos.
 
 *Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, March 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), Workspaces roadmap naming multi-repo planning as an in-development team problem. Governance without bureaucracy is this book's open-problem framing.*
 
-## The honest bar for this book
+## The evidentiary bar for this book
 
 The bar this book applies to itself is simple: strong claims need strong evidence, synthesis gets labeled, and moving practices get time bounds.
 
@@ -42,6 +42,6 @@ The individual practices (Foundation, Agent Instructions, Spec-Driven Developmen
 
 The current SDD tool set is still fragmented: multiple frameworks, different trade-offs, no dominant approach, significant experimentation still underway. That is the picture this book found. The individual-developer story is further along. The team and organization story is still messy.
 
-These open problems are live practice questions, not decorative caveats. Some should be solved by the time the next edition lands. Others will still be open, renamed, and probably more annoying than they are now. That is what a young field looks like from the inside.
+These are live practice questions, not decorative caveats. A few should settle before the next edition. A few will come back with new names and the same operational headache. That is the view from inside a young field: half the work is learning which problems are still real.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the assessment of the SDD tool set as fragmented with no dominant approach.*

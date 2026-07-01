@@ -8,7 +8,7 @@ I do not want a coding agent trying to figure out everything from a single promp
 
 That is the trap. Excellent code makes it easy to assume the agent already figured the system out. It did not. It still does not know your rules, constraints, or taste.
 
-Give the agent the information you would give a teammate before asking them to change the code. Then tighten that handoff next time. If the software gets better, that is where it comes from, not from pretending the agent guessed everything.
+Give the agent the information you would give a teammate before asking them to change the code. Then tighten that handoff next time. If the software gets better, that is where it comes from, not from pretending the agent made every design choice correctly on its own.
 
 ## Not magic AI
 

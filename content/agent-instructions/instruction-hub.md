@@ -65,7 +65,7 @@ Common hook candidates: run the linter after any source file edit, keep a genera
 
 Each file defines a trigger (a file edit matching that extension) and the command to run. The trigger fires whether the agent remembered the rule or not.
 
-The honest caveat: hook authoring is still early practice. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool looks for hook definitions also varies. For many teams as of mid-2026, hooks are still experimental rather than routine.
+The current-practice caveat: hook authoring is still early practice. The tooling varies by agent, the syntax is not standardized across tools, and the failure modes when a hook blocks unexpectedly are not always easy to debug. Where each tool looks for hook definitions also varies. For many teams as of mid-2026, hooks are still experimental rather than routine.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), hooks as a deterministic guarantee that runs regardless of the agent's decision. The maturity caveat here is this book's current-practice observation across agent tooling as of mid-2026.*
 

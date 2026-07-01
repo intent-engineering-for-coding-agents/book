@@ -1,6 +1,6 @@
 # When Intent Engineering Fails
 
-Intent Engineering does not prevent specs and agent instructions from falling out of sync with the codebase. It makes that gap visible and recoverable, which is a meaningfully weaker claim, and the honest one.
+Intent Engineering does not prevent specs and agent instructions from falling out of sync with the codebase. It makes that gap visible and recoverable, which is a meaningfully weaker claim, and the technically accurate one.
 
 The five failure modes below remain after good initial setup. They are not beginner mistakes. They show up after the first discipline wears off, and they do it quietly enough that the damage compounds before anyone notices. The chapter sits here, before the practices, so the rest of the book does not read like sales material for itself.
 

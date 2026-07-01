@@ -20,4 +20,4 @@ This section assumes OpenSpec because the book needs a concrete workflow to show
 4. [Code Review for Agent-Generated Code](./code-review-agent-code): PR shape that makes intent-first review the default, AI-assisted coverage tracing, multi-LLM critique, and the gaps reviewers and agents catch for each other
 5. [Shared Agent Instruction Conventions](./shared-conventions): team-level `AGENTS.md`, shared `.agents/skills/` libraries, onboarding, and when to leave things divergent
 6. [Cross-Team Coordination](./cross-team-coordination): ADRs as the cross-team mechanism, inner source for `.agents/` libraries, multi-repo realities
-7. [What Is Still Evolving](./what-is-still-evolving): what the Spec-Driven Development (SDD) ecosystem has not yet figured out, a maturity-honest account of mid-2026
+7. [What Is Still Evolving](./what-is-still-evolving): what the Spec-Driven Development (SDD) ecosystem has not yet figured out, a maturity-bounded account of mid-2026

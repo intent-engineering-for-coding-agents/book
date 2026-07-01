@@ -122,4 +122,6 @@ The boundary is the agent: if it needs the information to reason correctly, it g
 
 ## The compound effect
 
-A team that practices this consistently accumulates structured context. Each ADR records a decision the agent reads instead of inventing. Skill files add repeatable procedures the agent invokes by name. The architecture overview gains entries as the system grows. After months, a new agent, or a new developer, loads the relevant context in minutes rather than days, because the decisions, constraints, and workflows are in committed files. The formats are settled. What remains is the harder question: where in the commit, review, and deploy path do these documents get written, and who ensures they stay current when the code moves on without them.
+After a few months, the repo starts answering questions nobody should have to re-ask. Why does this service retry three times. Which auth boundary applies here. Where did this queue contract come from. The ADR, the diagram, and the skill file are already in the tree, so the next session starts from the last decision instead of re-deriving it from source code and folklore.
+
+That is the practical payoff. A new developer, or a new agent session, reads the repo and finds the same constraints the previous change used. The next problem is less glamorous and more important: where in the commit, review, and deploy path do these files get updated, and who notices when the code moved on but the docs did not.

@@ -63,7 +63,7 @@ The simplest evaluation is comparative. Run the suite against the current agent 
 
 In the companion repo's example, the baseline configuration scores nine of nine. Add the one line about preferring functions to classes, regenerate the same three tasks, and the score drops to five of nine. The service task loses its class and its `_validate` method. The test task loses the `@pytest.mark.ac` markers that tied tests back to acceptance criteria. None of that reads as broken in review. The code runs. The tests pass. The structural properties the team cared about quietly go missing.
 
-This is the change that sounds reasonable and is not. A style note about utility functions read as global guidance, and the agent applied it to service classes and test markers it was never meant to touch. Without the comparison, the tradeoff stays invisible. With it the choice is concrete: which version of the agent instructions produced the score the team wants?
+This is the kind of change a reviewer waves through. "Prefer functions over classes" looks harmless until the agent starts flattening service objects and dropping the test markers your workflow relies on. The comparison makes the damage visible. You are no longer arguing about taste. You are choosing between two instruction files with different failure rates.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), evaluation as a feedback loop for agent behavior. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the example A/B scores cited.*
 
@@ -83,7 +83,7 @@ Not every team needs this. A solo developer on one project has the option of pay
 
 The investment starts to pay when two developers share one `AGENTS.md`, two agents run against the same codebase, and instruction files change faster than one reviewer can sample the outputs by hand. At that point the eval suite is the only thing catching a quiet regression before it shapes a week of changes.
 
-The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The complete check answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
+The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The split matters here. Tests catch wrong code. The eval suite catches agent setup drift. Skip either side and the faster loop starts hiding mistakes instead of exposing them.
 
 ## Calibration is the hard part
 
@@ -102,7 +102,7 @@ iec eval --path baseline --eval-dir eval      # Score: 9/9 (100%)
 iec eval --path after-drift --eval-dir eval   # Score: 5/9 (55%)
 ```
 
-Those two scores are committed snapshots from one run of this example, not a benchmark to reproduce. They show the shape of the result. The pattern is the point. The tool is one way to run it.
+Those two scores are committed snapshots from one run of this example, not a benchmark to reproduce. Read them as a worked example: one instruction change, same tasks, worse output. `iec` is one way to run the check, not the argument for doing it.
 
 *Sources: intent-engineering-for-coding-agents/cli (ongoing), `examples/eval-demo` and its `iec eval` invocation.*
 
