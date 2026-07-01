@@ -14,13 +14,13 @@ Give the agent the information you would give a teammate before asking them to c
 
 Show me coding agents, not magical AI.
 
-I say "coding agent" because I avoid "AI" here. Whether the tool uses AI under the hood does not matter. "Coding agent" says the useful part: the tool changes a project and gives you back a patch to review.
+I say "coding agent" because I avoid "AI" here. Whether the tool uses AI under the hood does not matter. "Coding agent" says the useful part: the tool changes a project and gives you back a change to review.
 
 I do not mention product names. I want vendor independence. This book takes the same stand.
 
-I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a patch. If one agent stops fitting, I just replace it. If two are useful for the same thing, I run both and compare the changes.
+I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a change to review. If one agent stops fitting, I just replace it. If two are useful for the same thing, I run both and compare the changes.
 
-Treat the agent as magic, and the developer assumes understanding that is not there. Treat it as a silver bullet, and the developer stops doing the design and judgment work the tool will not do. Treat it as implementation labor and the developer reviews every patch it produces.
+Treat the agent as magic, and the developer assumes understanding that is not there. Treat it as a silver bullet, and the developer stops doing the design and judgment work the tool will not do. Treat it as implementation labor and the developer reviews every change it produces.
 
 Give the agent a vague instruction, and it fills the gap. That usually fails. Show it an old pattern in the codebase and it copies the pattern. Leave last month's architecture rule in a meeting, and the agent never sees it.
 
@@ -28,23 +28,23 @@ Give the agent a vague instruction, and it fills the gap. That usually fails. Sh
 
 The old habit is task language: build this endpoint, fix this bug, refactor this module.
 
-With coding agents, the safer habit is to think in terms of intent: which decision limits the work, what behavior should change, what should stay alone, and what makes the change ready to merge.
+With coding agents, the safer habit is to think in terms of intent: which decision limits the work, what behavior should change, what should stay alone, where the boundary sits, how the domain model should hold, and what makes the change ready to merge.
 
-Most AI coding advice loses me here. It talks about prompts, models, autocomplete, demos, and the next feature you are told you need. It compares products instead of asking what the team needs to document before an agent touches code. Then it skips the professional part: decisions, boundaries, trade-offs, security restrictions, existing structures, tests, and review.
+Most AI coding advice loses me here. It talks about prompts, models, autocomplete, demos, and the next feature you are told you need. It compares products instead of asking what the team needs to document before an agent touches code. Then it skips the professional part: separation of concerns, domain modeling, module boundaries, trade-offs, security restrictions, existing structures, tests, and review.
 
 When working on security, the agent starts from the current security practice and the governance rules the company and team selected. There is no room for improvisation here.
 
-The decisions, checks, and constraints belong to the product whether the code was typed or generated. That is why treating the agent as a source of original insight goes wrong so quickly. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates source into machine code, and a coding agent translates intent into application code.
+The decisions, checks, and constraints belong to the product whether the code was typed or generated. That is why treating the agent as a source of original insight goes wrong so quickly. Code still matters, but with coding agents it starts to look more like output than authorship. I read the shift as a compiler shift: a compiler translates sources into machine code, and a coding agent translates intent into application code.
 
-Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only the source code the compiler accepts. It also includes the written intent the developer cites in the review to justify the patch.
+Software engineering has been moving in this direction for years. Developers already write one artifact and let tools emit another. Coding agents push the same move one layer up. The maintained artifact is no longer only the source code the compiler accepts. It also includes the written intent the developer cites in the review to justify the change.
 
 ## The shared workspace
 
 Once intent matters as much as code, the workspace changes too. Production work needs a source-controlled home for the information the model will never pick up from the public corpus.
 
-Solo prototyping is often a chat window, a pasted stack trace, and a throwaway patch. No ceremony, no shame.
+Solo prototyping is often a chat window, a pasted stack trace, and a throwaway change. No ceremony, no shame.
 
-For maintained software, the workspace becomes the shared input surface. Developers read the files. Reviewers inspect the diff. The next agent session loads the repo state, not the previous chat history. The work in the repo becomes the input to the next patch.
+For maintained software, the workspace becomes the shared input surface. Developers read the files. Reviewers inspect the diff. The next agent session loads the repo state, not the previous chat history. The work in the repo itself becomes the input to the next change.
 
 If a decision creates a coding convention, put it in a file the next session loads. If one rule keeps showing up in review comments, move it out of the thread and into instructions. If a diagram defines a boundary, store it in Mermaid or another text format the team can diff and the agent can read.
 
@@ -58,7 +58,7 @@ Not a huge design document. Not waterfall cosplay. Prototypes need less document
 
 The inversion still feels odd: developers used to protect the code because writing it was expensive. Now the expensive part is the decision, the checks, and the shared understanding of where the change fits.
 
-Code without documented intent preserves old decisions without their rationale. The next agent sees the current shape, copies it, and turns an old compromise into the default for the next patch.
+Code without documented intent preserves old decisions without their rationale. The next agent sees the current shape, copies it, and turns an old compromise into the default for the next change.
 
 ## One stack at a time
 

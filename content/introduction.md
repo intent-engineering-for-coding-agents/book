@@ -14,7 +14,7 @@ Coding agents amplify the developer managing them. Bill Doerrfeld put it bluntly
 
 This book calls the missing discipline Intent Engineering: giving the agent enough of your system and intent that it stops guessing at both. The practice is narrower than the wider "agentic software engineering" language circulating through the field. This book is about the intent you hand to a coding agent, not every problem involved in building agents as products.
 
-Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose instead of its own inference. It has two forms. One is change-sized: a spec for the next patch. The other is durable: decisions and conventions that constrain every patch after that.
+Intent, as this book uses the word, is what you want the agent to build or decide, stated with enough precision that it acts on your purpose instead of its own inference. It has two forms. One is change-sized: a spec for the next change. The other is durable: decisions and conventions that constrain every change after that.
 
 The phrase "intent engineering" did not start here. `intentengineering.dev` uses it in a broader sense, covering product intent, user-experience intent, and agent-system design. Related terms are moving through 2025-2026 writing too, especially Intent-Driven Development. This book uses a narrower frame: durable repo context, spec-first change control, and executable proof for agent-generated code. That framing is this book's synthesis, not a field standard.
 
@@ -32,7 +32,7 @@ The book is organized around four topics. The first two give the agent durable c
 
 **Agent Instructions:** `AGENTS.md` and the `.agents/` hub. Teach the agent your project rules once, then decide which of those rules are important enough to enforce with hooks.
 
-**Spec-Driven Development:** specs before code. The spec defines one change, limits the solution space, and gives the patch a target richer than "do what the codebase seems to imply".
+**Spec-Driven Development:** specs before code. The spec defines one change, limits the solution space, and gives the change a target richer than "do what the codebase seems to imply".
 
 **Quality and Verification:** tests as proof of intent. Acceptance criteria trace to tests, reviewer scope stays narrow, and drift has a better chance of getting caught before merge.
 
@@ -56,11 +56,11 @@ Vendor-agnostic is a deliberate choice here. `AGENTS.md` and `.agents/` form a s
 
 ## When a project earns this
 
-Most of what you build does not need all of this. A script you run once, a glue function, a prototype you delete after it answers the question: write the prompt, take the patch, move on.
+Most of what you build does not need all of this. A script you run once, a glue function, a prototype you delete after it answers the question: write the prompt, take the change, move on.
 
-The discipline starts paying for itself when the work outlives the session that started it. Once a build runs into weeks, the agent is extending its own earlier patches across many sessions, and a spec stops being ceremony. The spec becomes the file the next session loads before editing the code again, so the agent extends an approved target instead of re-deriving one from the current implementation.
+The discipline starts paying for itself when the work outlives the session that started it. Once a build runs into weeks, the agent is extending its own earlier changes across many sessions, and a spec stops being ceremony. The spec becomes the file the next session loads before editing the code again, so the agent extends an approved target instead of re-deriving one from the current implementation.
 
-For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the codebase facts the agent does not know. Specs and verification pin one change to one target and show whether the patch hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum).
+For a service meant to run in production and be maintained by the next developer on call, adopt the rest. Foundation and Agent Instructions load the codebase facts the agent does not know. Specs and verification pin one change to one target and show whether the change hit it. You do not adopt every practice at once. As the cost of getting a change wrong rises, you turn up the discipline, the same way you already vary how much process one change deserves on [the spectrum of formality](./spec-driven/the-spectrum).
 
 ## What Intent Engineering does not do
 

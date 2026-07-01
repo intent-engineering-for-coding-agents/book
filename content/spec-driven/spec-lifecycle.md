@@ -52,7 +52,7 @@ OpenSpec already does the mechanical part. `/opsx:propose` generates `tasks.md` 
 
 What the agent will not do is decompose the way your team would. Left to its priors, it groups tasks by functional area, runs tests "as needed" rather than per criterion, and carries no thread from a scenario to the test that proves it. None of that breaks OpenSpec's rules, because OpenSpec has none here: requirements and scenarios are named, not ID'd, and a scenario is only a "potential test case", bound to nothing.
 
-So you constrain the generation instead of performing it. Put the conventions in an instruction file next to the workflow, for example `.agents/instructions/openspec.md`, and patch nothing:
+So you constrain the generation instead of performing it. Put the conventions in an instruction file next to the workflow, for example `.agents/instructions/openspec.md`, and hand-edit nothing:
 
 ```markdown
 # openspec.md (.agents/instructions/)

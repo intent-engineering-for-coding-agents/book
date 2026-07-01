@@ -45,7 +45,7 @@ graph TD
     end
 ```
 
-Rename the payment adapter and merge the release. Leave `docs/architecture/README.md` pointing at `payments/adapters/legacy`. The next agent follows the page, imports a dead path, and opens a patch for the system you no longer have.
+Rename the payment adapter and merge the release. Leave `docs/architecture/README.md` pointing at `payments/adapters/legacy`. The next agent follows the page, imports a dead path, and opens a change for the system you no longer have.
 
 ## Planning: from ticket to spec
 

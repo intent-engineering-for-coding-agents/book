@@ -81,7 +81,7 @@ Most teams will not maintain this for every skill. The economics only work for t
 
 Not every team needs this. A solo developer on one project has the option of paying attention. Their eval suite lives in their head: they remember what the agent used to do, and they notice the day it stops. Formalizing the eval is wasted effort at that scale.
 
-The investment starts to pay when two developers share one `AGENTS.md`, two agents run against the same codebase, and instruction files change faster than one reviewer can sample the outputs by hand. At that point the eval suite is the only thing catching a quiet regression before it shapes a week of patches.
+The investment starts to pay when two developers share one `AGENTS.md`, two agents run against the same codebase, and instruction files change faster than one reviewer can sample the outputs by hand. At that point the eval suite is the only thing catching a quiet regression before it shapes a week of changes.
 
 The book's central claim, repeated through Foundation and Agent Instructions and Spec-Driven, is that manual verification does not keep up at agentic speed. The complete check answers it in both halves. Tests close it for the code. The eval suite closes it for the agent setup. Without both, every speed-up is also a way to ship more of the wrong thing faster.
 
