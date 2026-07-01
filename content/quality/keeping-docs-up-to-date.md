@@ -150,7 +150,7 @@ Nothing here depends on one tool. The practice is broader: one rule the agent re
 
 This is not a general documentation chapter in disguise. The scope is narrower: keep the files agents load aligned with the code agents are changing.
 
-[Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept the order, stale documents become a quality problem rather than a writing problem. The disposable artifact changed. The durable artifact did not.
+[Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept that order, stale documents stop being a writing problem. They become a quality problem. The code moved. The durable file the next agent trusts did not.
 
 Verification closes the code gap with tests. A documentation drift check closes part of the prose gap. Both are the same shape of control:
 
@@ -158,7 +158,7 @@ Verification closes the code gap with tests. A documentation drift check closes 
 - run a deterministic check against the link
 - surface failure where the team already pays attention, in CI
 
-The check does less than a test. A test proves behavior. A documentation drift check only proves nobody reviewed the prose after the source moved, or that an outside record still depends on the file staying put. The weaker claim is still valuable because silent drift is the default otherwise.
+The check does less than a test. A test proves behavior. A documentation drift check only proves nobody reviewed the prose after the source moved, or that an outside record still depends on the file staying put. That weaker claim still earns its keep because the default is silence.
 
 ## Limits worth naming
 

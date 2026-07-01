@@ -76,10 +76,10 @@ This reduces confusion, but it does not remove coordination. OpenSpec's Workspac
 
 ## Governance without bureaucracy is still unsolved
 
-The shared architecture repository pattern works only when organizations maintain it. A shared repository with twenty teams committing ADRs requires clear ownership, contribution guidelines, and a review process for incoming decisions. The same organizational discipline that makes internal ADRs useful (consistent format, active maintenance, genuine use by teams and agents) applies doubly to a shared architecture repository.
+The shared architecture repository pattern works only when somebody actually owns it. A shared repository with twenty teams committing ADRs turns into a drop folder fast: no index discipline, no review, no confidence that the latest decision displaced the old one. The same organizational discipline that makes internal ADRs useful applies doubly to a shared architecture repository.
 
 The alternative, where cross-team decisions are not written down, is the pattern behind the hypothetical production incident at the start of this chapter. The overhead of the shared repository is real. So is the cost of not having it.
 
-The tooling for cross-team coordination is still early. The community has repeatable patterns for one developer and one repository. The multi-repo story still has loose edges.
+The tooling for cross-team coordination is still early. The community has repeatable patterns for one developer and one repository. The multi-repo story still has loose edges, and most teams are still bridging them by hand.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), multi-repo planning still treated as an in-development problem. Governance-without-bureaucracy is this book's open-problem framing.*

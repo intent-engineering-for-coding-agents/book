@@ -60,8 +60,8 @@ Each topic targets one or more of these modes directly:
 
 Cognitive debt is the cost that grows when these modes go unaddressed: the undocumented decision that quietly breaks a deployment months later. ThoughtWorks uses "harness engineering" for the controls that keep the agent's context coherent enough to hold that debt down. The rest of this book is about building those controls, one failure mode at a time.
 
-The goal is not zero drift. The goal is to catch mismatches before they stack up.
+You will still get drift. The win is catching the mismatch before three stale assumptions turn into one bad deploy.
 
-Six months of accumulated mismatch trace back to what the agent was reading. The Agent Instructions topic covers which files it should load and how to keep them current.
+Six months of accumulated mismatch usually trace back to what the agent was reading. The Agent Instructions topic covers which files it should load and how to keep them current.
 
 *Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*

@@ -48,11 +48,11 @@ The convention document defines the types the project uses, the framework that c
 
 ```
 
-The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams might use pre-commit/pre-merge/post-deploy, others might use L1/L2/L3 (for layers). Some test types have no layer: Manual sits outside the automated pipeline entirely. The important part is to define both axes in a file the agent can read instead of leaving them implicit in team habit.
+The Level column is the second axis. Type answers what the test proves, and level answers when it runs. Pre-commit tests run locally before a PR, pre-merge tests run in CI on every branch push, and post-deploy tests run against the live system after a release. The exact labels are team-specific: some teams might use pre-commit/pre-merge/post-deploy, others might use L1/L2/L3 (for layers). Some test types have no layer: Manual sits outside the automated pipeline entirely. Write both axes down in a file the agent can read, or the agent will make them up from whatever pattern it saw last.
 
-The document is part of the project's architecture documentation and belongs alongside the project's ADRs and design documents, wherever those live. The agent reads it before writing a test. Without it, the agent improvises at every decision point: framework, location, level. The convention removes that guesswork from the first session.
+The document belongs with the project's architecture docs, wherever those live. The agent reads it before writing a test. Without it, every session reopens the same choices: framework, file location, level. The convention cuts off that improvisation early.
 
-The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR is permanent. The convention document evolves. A convention document without the rationale behind it is a table waiting to be overridden by the next session that does not know why the choices were made.
+The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR stays. The convention document evolves. Without the rationale, the convention document is a table waiting for some later session to override it for a reason nobody recorded.
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (2011), ADRs as durable records of architectural rationale. The convention-document shape above is this book's workflow rule for making test-layer decisions readable by agents.*
 

@@ -2,13 +2,11 @@
 
 > Repo structure. The prerequisite for everything else.
 
-The Foundation is properly the most important part to get right.
-
 Open a PR where the agent adds a REST endpoint to a codebase that moved to gRPC months ago. Nobody wrote down the migration. Nothing in `docs/` says REST is gone. The code compiles anyway, and now the system speaks two protocols.
 
 That is the Foundation problem. README and INDEX files drift, Architectural Decision Records (ADRs) never get written, and old specs sit around as if they still matter. Review becomes a grep session backed by whoever still remembers the original decision. The agent reads the same stale files and follows them faithfully.
 
-These chapters are about stopping that kind of quiet damage. They define which documents belong in the repo, why the agent needs them in plain text, where the structure fits in the Software Development Life Cycle (SDLC), how to bootstrap a brownfield system, and what still breaks after the setup looks solid.
+These chapters are about stopping that kind of damage before it turns routine. They cover which documents belong in the repo, why the agent needs them in plain text, where the structure fits in the Software Development Life Cycle (SDLC), how to bootstrap a brownfield system, and what still breaks after the setup looks reasonable on paper.
 
 ## Chapters
 

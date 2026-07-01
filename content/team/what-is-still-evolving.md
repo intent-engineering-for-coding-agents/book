@@ -38,10 +38,10 @@ No framework in the sources reviewed for this book has delivered governance with
 
 The bar this book applies to itself is simple: strong claims need strong evidence, synthesis gets labeled, and moving practices get time bounds.
 
-The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) meet a higher bar than the team practices. They are described with more specificity because the evidence base is stronger. The team practices meet a lower bar by honest acknowledgment: they are directionally useful, they follow from the individual practices, and they are consistent with what the SDD community is building toward. Some of them will look different in two years.
+The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) are far enough along to teach directly. The team practices are not. The evidence base is thinner, the patterns are looser, and some of the advice in this chapter will age badly. Better to say that plainly than to sand it down into certainty.
 
-The current SDD tool set is still fragmented: multiple frameworks, different trade-offs, no dominant approach, significant experimentation still underway. That assessment matches what this book found. The individual-developer story is further along. The team and organization story is not.
+The current SDD tool set is still fragmented: multiple frameworks, different trade-offs, no dominant approach, significant experimentation still underway. That is the picture this book found. The individual-developer story is further along. The team and organization story is still messy.
 
-The open problems are live practice questions. Some should be solved by the time the next edition lands. Others will still be open, renamed, and slightly worse. That is not a pessimistic forecast. It is what the maturity curve looks like from the inside.
+These open problems are live practice questions, not decorative caveats. Some should be solved by the time the next edition lands. Others will still be open, renamed, and probably more annoying than they are now. That is what a young field looks like from the inside.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, the assessment of the SDD tool set as fragmented with no dominant approach.*
