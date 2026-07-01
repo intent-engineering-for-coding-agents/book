@@ -4,9 +4,9 @@ Ask the team if they practice spec-driven development. Most will say yes. Then s
 
 The team is not lying. They believe the practice is alive, and soon after adoption, the belief likely matched the workflow. The gap between what we believe we do and what the codebase shows we do is a common failure mode in engineering organizations. Intent Engineering practices drift the same way.
 
-The fix is not more process, but honest labeling. This book uses three labels for any practice you adopt: practiced, documented, CI-enforced. Each label names what the team relies on now.
+The fix is not more process. It is calling the practice what it actually is. This book uses three labels for any practice you adopt: practiced, documented, CI-enforced. Each label names what the team relies on now.
 
-## Three levels, used honestly
+## Three levels, no rounding up
 
 ### Practiced
 
@@ -20,7 +20,7 @@ Documented means the practice is written down well enough for a new teammate to 
 
 CI-enforced is the only level a team relies on without trust. In a repo with those checks wired in, the pipeline fails when the practice is violated: a missing `docs/README.md` stops the PR before merge, and a test tagged with a non-existent AC ID fails the traceability check. CI-enforced practices persist through team turnover, deadline pressure, and the new developer who did not read the wiki. The other two levels do not.
 
-A target annotation keeps current state separate from intent: `practiced, target: CI-enforced by Q3`. Writing target: CI-enforced when you are not there yet is honest roadmapping. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy names.
+A target annotation keeps current state separate from intent: `practiced, target: CI-enforced by Q3`. Writing target: CI-enforced when you are not there yet flags the gap instead of papering over it. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy names.
 
 These are not CMM audit levels. No certification, no maturity score, no report for management. The discipline is calling things by the right name, not upgrading the label to look good in a retrospective.
 
@@ -30,7 +30,7 @@ These are not CMM audit levels. No certification, no maturity score, no report f
 
 A team claiming CI-enforced maturity for something caught in code review is not lying. They often believe the claim. The next developer trusts the pipeline, though, and the pipeline is not catching what the team thinks it catches. Misplaced trust fails exactly when nobody expects it.
 
-Honest labeling tells everyone what they rely on: CI-enforced means trusting the pipeline, while practiced means asking the teammate who knows the rule. Honest labels also make gaps visible, which makes them closeable. A practice marked practiced, target: CI-enforced by Q3 is a backlog item. A practice marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
+Accurate labeling tells everyone what they rely on: CI-enforced means trusting the pipeline, while practiced means asking the teammate who knows the rule. It also makes gaps visible, which makes them closeable: a practice marked practiced, target: CI-enforced by Q3 is a backlog item, while one marked CI-enforced but caught only in code review is an outage waiting for the right Tuesday.
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 

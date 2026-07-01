@@ -46,7 +46,7 @@ Short sessions also make skills and hooks more valuable. A skill is fresh-sessio
 
 The clause on each instruction file link tells the agent which to load. A developer working on authentication loads `auth-conventions.md`. They do not load `deployment-runbook.md` or `database-schema.md`. The clauses make that decision automatic.
 
-If the clauses are not specific enough, the agent loads conservatively, which usually means too much. Write clauses that describe the task, not the file content. "Load when working on authentication, SSO, or session management" is a task description. "Contains auth conventions" describes the file. The first tells the agent when to load. The second tells it what is inside.
+If the clauses are not specific enough, the agent loads conservatively, which usually means too much. Write clauses that describe the task, not the file content. "Load when working on authentication, SSO, or session management" is a task description, telling the agent when to load. "Contains auth conventions" describes the file instead, telling it only what is inside.
 
 *Sources: This repo's `AGENTS.md` instruction-file links, task-describing load clauses in practice.*
 
@@ -68,7 +68,7 @@ Context management keeps the agent loaded with the right files and the right tra
 
 Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the agent's reasoning is fundamentally flawed, the task is genuinely ambiguous, or the codebase has contradictions the agent cannot resolve. Context management fixes the problems caused by context loss. A vague instruction set or a contradictory codebase is not one of them.
 
-The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the instruction set or the codebase itself. Resetting the session will not fix those. Fixing the context will not fix a broken instruction set.
+The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the instruction set or the codebase itself, and neither resetting the session nor fixing the context will repair a broken instruction set.
 
 Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
 

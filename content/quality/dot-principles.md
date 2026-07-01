@@ -2,7 +2,7 @@
 
 There is a kind of bad code that passes every check you automate. The tests are green, the spec is matched, the PR taxonomy is clean, and the reviewer has nothing concrete to flag. The code is correct and also clumsy: nested conditionals where a guard clause would read better, a `processData` that does three unrelated things, a class with seven public methods and two callers. Nothing is wrong, and nothing is good. The person who would have caught it is the senior reviewer the team adopted agentic tooling to free up.
 
-Specs verify behavior. Tests verify proof. PR taxonomy verifies hygiene. None of them verify quality in the sense a senior reviewer means quality: the code's readability, its adherence to the principles the team values, the small choices that compound into a codebase the next developer has to maintain.
+Specs verify behavior, tests verify proof, and PR taxonomy verifies hygiene, but none of them verify quality in the sense a senior reviewer means quality: the code's readability, its adherence to the principles the team values, the small choices that compound into a codebase the next developer has to maintain.
 
 ## The gap
 

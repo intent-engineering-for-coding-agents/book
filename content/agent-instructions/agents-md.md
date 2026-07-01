@@ -67,13 +67,11 @@ The test is not the line count. Does anyone open the file and, in under two minu
 
 Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact instruction file in the repo. Every session loads it, so one stale load clause or stale repo rule affects every later task until someone fixes the file.
 
-The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision that is wrong in two directions.
+The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision wrong in two directions, and the agent works from it without ever raising an error.
 
-Neither registers as an error. Both produce an agent confidently working from the wrong instructions.
+Treat `AGENTS.md` changes as load-bearing: a stale ADR misleads one change, but a stale `AGENTS.md` misleads every session, precisely because the file is small enough that nobody expects it to be the thing lying to them.
 
-Treat `AGENTS.md` changes as load-bearing. A stale ADR misleads one change. A stale `AGENTS.md` misleads every session. A small file is a file where staleness is visible.
-
-`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires. Staleness in `.agents/instructions/` is invisible until a session loads a file that no longer describes the repo. Keeping it accurate is necessary. It is not enough.
+`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires, so staleness in `.agents/instructions/` stays invisible until a session finally loads a file that no longer describes the repo, and keeping the hub itself accurate does not catch that kind of drift on its own.
 
 ## Tooling
 

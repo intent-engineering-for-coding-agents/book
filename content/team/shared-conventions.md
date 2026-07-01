@@ -10,7 +10,7 @@ The team-level fix is a shared instruction set every agent reads, regardless of 
 
 ## Team-level `AGENTS.md`
 
-On a solo project, `AGENTS.md` is a personal instruction set. On a team, it is a shared instruction set: it documents conventions every developer and every agent should follow. The difference is ownership. Personal instruction sets drift, while the team instruction set needs an owner and a review process.
+On a solo project, `AGENTS.md` functions as a personal instruction set. On a team, the same file has to work as a shared one: it documents conventions every developer and every agent should follow, and unlike the solo version, it needs an owner and a review process, or the copies drift apart.
 
 The practical structure: `AGENTS.md` at the repo root is the team's instruction set. It covers conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain parallel `AGENTS.md` files that override the team instruction set.
 
@@ -42,11 +42,11 @@ Not every developer convention belongs in the team instruction set. Personal not
 
 The test: if developer A and developer B follow a convention independently, and the outputs would be inconsistent in the same codebase, standardize it. If the convention affects only local workflow and does not show up in committed code, leave it divergent.
 
-Data access patterns and security rules should be standardized. Architect mode for spec drafting, or whether to run the credibility pass skill manually or via a hook, stays divergent.
+Standardize data access patterns and security rules. Leave architect mode for spec drafting, or whether to run the credibility pass skill manually or via a hook, up to the individual.
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces brittle agents and developers who stop making local judgment calls. The team instruction set should specify conventions that affect the codebase. Everything else is a personal setup.
 
-Role-based personal instruction set are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it. A personal instruction set that adds depth is fine. One that overrides a team convention is a review problem waiting to happen.
+Role-based personal instruction set are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it. Depth is welcome in a personal instruction set. Overriding a team convention in one is not, and it becomes a review problem the moment someone notices.
 
 Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement. It does not produce the agreement. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
 

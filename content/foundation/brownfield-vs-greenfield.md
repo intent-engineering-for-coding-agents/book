@@ -20,7 +20,7 @@ Do not write the first brownfield change proposal from a cold codebase read. Har
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
-This map goes into `docs/`. This book uses `docs/skeleton.md` to mark it as bootstrap rather than current architecture. The skeleton is the first pass, not the resting place. Structure moves into `docs/architecture/`. Data flows and component behavior move into `docs/design/`. Recovered decisions and long-lived constraints move into `docs/decisions/` as historical ADRs. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
+This map goes into `docs/`. This book uses `docs/skeleton.md` to mark it as bootstrap rather than current architecture. The skeleton is the first pass, not the resting place: structure eventually lands in `docs/architecture/`, data flows and component behavior in `docs/design/`, and recovered decisions and long-lived constraints in `docs/decisions/` as historical ADRs. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
 
 ## Generating one
 
@@ -36,7 +36,7 @@ That review gates the first change proposal. A brownfield proposal written befor
 
 The same prompt accepts an output layout. Append the target `docs/` structure and the agent writes the files directly: `architecture.md` for the module map, `design/` for data flows and component views, `decisions/` for anything it reconstructs from the implementation. That structure also becomes the team's docs convention from the first commit.
 
-Do not leave the harvest trapped in `skeleton.md`. Move stable findings into the permanent docs set before the first proposal: architecture in `docs/architecture/`, durable design constraints in `docs/design/`, and reconstructed decisions in `docs/decisions/`. `skeleton.md` gets the codebase through bootstrap. Later work should read the permanent docs, not keep circling back to the excavation notes.
+Do not leave the harvest trapped in `skeleton.md`. Move stable findings into the permanent docs set before the first proposal, the same split described above. `skeleton.md` gets the codebase through bootstrap. Later work should read the permanent docs, not keep circling back to the excavation notes.
 
 *Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code.*
 
@@ -50,7 +50,7 @@ The agentic-era `skeleton.md` reverses the direction. You are not building a ske
 
 ## After the skeleton
 
-Once `skeleton.md` exists, has been reviewed, and has been distilled into the permanent `docs/` set, the brownfield codebase proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions are written based on what the skeleton and the recovered docs reveal, not from scratch. ADRs capture decisions that were made implicitly and are now being made explicit. Specs cover new changes, not retrofitted to existing behavior wholesale.
+Once `skeleton.md` exists, has been reviewed, and has been distilled into the permanent `docs/` set, the brownfield codebase proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions get written from what the skeleton and the recovered docs reveal, not from scratch. ADRs capture decisions that were made implicitly and are only now being made explicit. And specs stay scoped to new changes, not retrofitted to existing behavior wholesale.
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated explicitly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not reproduce the actual meeting. A domain expert corrects it, and the documented best guess beats the silence that put the team here.
 

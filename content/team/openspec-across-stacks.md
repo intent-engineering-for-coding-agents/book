@@ -48,7 +48,7 @@ This is a book synthesis. There is no widely adopted standard for multi-tier spe
 
 The spec pattern for front-end work is identical to the pattern for back-end work. What changes is the permanent context the agent reads before implementation.
 
-A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document: component conventions, accessibility requirements, and state management patterns. Figma or another design source supplies visual context. The design system document supplies durable convention.
+A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document instead: component conventions, accessibility requirements, and state management patterns. Figma or another design source supplies the visual context, while the design system document supplies the durable convention.
 
 The spec should still cover behavior: states, validation, edge cases, loading, error, and empty states. User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The design system doc answers how the component should look when it renders correctly.
 

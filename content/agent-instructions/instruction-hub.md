@@ -34,7 +34,7 @@ Skills are workflows, not context. An instruction file tells the agent how thing
 
 Take `update-changelog` as an example: scan commits since the last tag, extract the relevant entries, regenerate `CHANGELOG.md`. Five steps, one outcome, invocable any time a feature merges. Without the skill, each agent session has to remember to update the changelog or be told to. With the skill, the agent instructions state the rule once: after merging a feature, run `update-changelog`.
 
-The short version: instructions answer "how does this work?" and skills answer "how do I do this specific thing?" A coding-standards file is an instruction. Scaffolding a new module is a skill. [Skills, Commands, and Hooks](./skills-commands-hooks) covers when to reach for each and how to write a skill that runs.
+The concrete version: a coding-standards file is an instruction. Scaffolding a new module is a skill. [Skills, Commands, and Hooks](./skills-commands-hooks) covers when to reach for each and how to write a skill that runs.
 
 Typed from the session, `/update-changelog` invokes the skill directly.
 
@@ -73,7 +73,7 @@ The hub gives the agent context about the codebase. What it still needs for any 
 
 ## When the hub becomes overhead
 
-The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub gives those tools the same instruction files, skill definitions, and hook docs. When neither case exists, the extra directory and pointer structure may add no value.
+The `.agents/` hub solves a coordination problem. When two developers use different tools, or when one developer uses multiple tools across sessions, the hub gives those tools the same instruction files, skill definitions, and hook docs. When neither case exists, the extra directory and pointer structure buys nothing.
 
 A solo developer working with a single tool and no plans to change does not have a coordination problem. A single instruction file, whether it is called `CLAUDE.md`, `AGENTS.md`, or anything else, is the source of truth because there is only one source.
 

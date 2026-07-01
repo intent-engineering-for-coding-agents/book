@@ -11,7 +11,7 @@ I wrote this book out of irritation. Not at the coding agents, but at the advice
 - "How to make money with vibe coding".
 - "One prompt refactored my entire codebase".
 
-Fine. Good for them. But I just keep scrolling and waiting for the part that will never come: How? How did you do it? What did the codebase look like at week 2 when it all failed? What did you tell the agent? What did you burn? What broke in production?
+Fine. Good for them. But I keep scrolling, waiting for the part that never comes: How? How did you do it? What did the codebase look like at week 2 when it all failed? What did you tell the agent? What did you burn? What broke in production?
 
 That detail is usually absent. Though one-pagers are too thin to explain why the second week failed, which assumption broke, or which test exposed the flaw. The omission looks less like brevity than avoidance.
 
@@ -27,7 +27,7 @@ This should not be new advice. Fred Brooks wrote it down in 1975: plan to throw 
 
 In 2026, when most of the build is done by a coding agent, that second pass is cheaper. Rebuilding is less painful than it was when a fresh start took weeks.
 
-The second build is sharper. The dead ends are gone. The framework is chosen. The prototype was the conversation, not the artifact.
+The second build is sharper: the dead ends are already mapped and the framework is already picked. The prototype was the conversation, not the artifact.
 
 For this book, I write "coding agent" where many would write "AI". A coding agent is an LLM used as a developer tool. "Intelligence" is a marketing choice, not the technical point here.
 

@@ -20,7 +20,7 @@ Specs are often incomplete, scenarios go missing, tests assert too little. None 
 
 A test is proof when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. Open the spec, pick a scenario, modify the implementation to violate it, run the tests. If everything stays green, the tests do not prove that scenario. They prove that something runs.
 
-Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation stayed green, and whatever it touched is not actually under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number. They cannot fake a mutation kill rate without writing genuine assertions.
+Most test suites contain a mix of both. Tests written to cover the happy path tend to be proof. Tests written to lift coverage to a target tend to be decoration. Mutation testing is the practical detector. Flip an operator, change a constant, invert a boolean. If the suite still passes, the mutation stayed green, and whatever it touched is not under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery: agents will hit a coverage number. They cannot fake a mutation kill rate without writing genuine assertions.
 
 Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?" Which paths you need to cover to answer that for every AC is the harder question.
 
@@ -38,7 +38,7 @@ Code coverage, integration checks, architectural tests, performance tests, and s
 
 ## Choosing the right test type
 
-This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation. It proves nothing about the HTTP layer above it. An integration test proves a module pipeline. It proves nothing about the deployed system. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
+This applies within a test type. Across test types, a different question applies: which type of test is the right proof for this scenario? Unit, integration, acceptance, end-to-end, and architectural tests each prove something the others do not. A unit test proves a function in isolation, nothing about the HTTP layer sitting above it. An integration test proves a module pipeline works together, and still nothing about the deployed system end to end. The chapter on [Test Strategy and Convention](./test-strategy) covers the taxonomy and how to encode it as a project-level convention the agent reads before it writes its first test.
 
 ## Done means proven
 
@@ -88,7 +88,7 @@ The spec does not have to contain everything it references. An ADR documenting w
 
 ## Ritual Tests Earn Their Place, Proof Has a Ceiling
 
-Some tests will always be ritual. Smoke tests confirm the application boots. Linting confirms the syntax is current. End-to-end tests confirm the integration is wired. These are not proof of intent. They are environment and wiring checks. Keep them because they catch a different class of failure, not because they prove the spec.
+Some tests will always be ritual. Smoke tests confirm the application boots, linting confirms the syntax is current, and end-to-end tests confirm the integration is wired. These are not proof of intent. They are environment and wiring checks. Keep them because they catch a different class of failure, not because they prove the spec.
 
 The harder issue is that a test proves what it asserts, not what the spec omitted. If the spec defines the 10 MB limit but says nothing about zero-byte files, the suite runs green while a zero-byte upload hits an unhandled path. Mutation testing, covered above, catches the first kind of gap: an assertion the suite should make but does not. The second kind, a scenario the spec never considered, does not show up in any test run. Someone has to read the spec and ask what was left out.
 

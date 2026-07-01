@@ -22,7 +22,7 @@ The asymmetry is the problem. Generated code changes fast. The surrounding prose
 
 The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a codebase rule the team already removed because the instruction file still lists it.
 
-This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. The compounding is fast here because one stale document feeds the very next implementation session.
+This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. The compounding is fast here because one stale document feeds directly into the next implementation session.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as undocumented or stale reasoning in agentic delivery. AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as a practical agent failure mode.*
 

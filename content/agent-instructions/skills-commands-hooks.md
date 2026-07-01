@@ -89,7 +89,7 @@ The output should read like data, not terminal noise:
 }
 ```
 
-The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and waits forever. An agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. A human-facing CLI writes warnings into the same stream as the JSON. An agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
+The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and waits forever, where an agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. The same split shows up in output: a human-facing CLI writes warnings into the same stream as the JSON, while an agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
 
 This is not polish. It is control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
 
@@ -111,7 +111,7 @@ Hook syntax is tool-specific. As of mid-2026, a hook written for Claude Code doe
 
 ## Which one, and when
 
-Each mechanism fails differently when it is missing. Without the instruction, the agent does not know the convention and improvises. Without the skill, it knows what to do but re-derives the steps every session and sometimes gets them wrong. Without the hook, it knows what to do and usually does it, and "usually" is the problem for the steps that cannot be skipped.
+Each mechanism fails differently when it is missing. Without the instruction, the agent does not know the convention and improvises. Without the skill, it knows what to do but re-derives the steps every session and sometimes gets them wrong. The hook is the only one that holds under pressure: without it, the agent knows what to do and usually does it, and "usually" is the problem for the steps that cannot be skipped.
 
 Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure shows up in more than two sessions. Add a hook when skipping the procedure causes real damage rather than drift.
 

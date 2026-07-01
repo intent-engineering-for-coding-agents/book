@@ -81,7 +81,7 @@ graph TD
     A --> M(["Merge + archive"])
 ```
 
-Each gate catches a different break. Skip the before-gate, and the agent works from stale docs, dead links, or a design decision the codebase already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. Skip the after-gate and the PR lands code the spec never asked for, backed by tests that prove something adjacent. The gates overlap less than they look.
+Each gate catches a different break. Skip the before-gate and the agent works from stale docs, dead links, or a design decision the codebase already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. The after-gate is different: skip it and the PR lands code the spec never asked for, backed by tests that prove something adjacent. The gates overlap less than they look.
 
 ## Where the attention goes
 
@@ -89,7 +89,7 @@ Every gate splits in two. Hooks and CI catch broken links, oversized files, miss
 
 This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and shape. Review still proves meaning.
 
-The work is uneven. The before-gate is mostly maintenance. The during-gate is mostly automation. The after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
+The work is uneven. Most of the before-gate is maintenance, most of the during-gate is automation, and the after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
 
 ## The sequence is logical, not temporal
 

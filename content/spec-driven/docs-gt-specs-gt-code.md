@@ -14,9 +14,9 @@ The agent will infer. It reads the code and produces a document listing routes, 
 
 In the 2025-2026 SDD material this chapter cites, code is increasingly treated as generated. Intent is authored.
 
-Generated artifacts already have a familiar dependency rule. The compiled binary is downstream of the source code. The minified bundle is downstream of the modules. The Docker image is downstream of the Dockerfile. Nobody treats the binary as the source of truth.
+Generated artifacts already have a familiar dependency rule. The compiled binary is downstream of the source code, the minified bundle is downstream of the modules, and the Docker image is downstream of the Dockerfile. Nobody treats the binary as the source of truth.
 
-In agent-driven work, code starts to occupy the position the compiled binary used to. The authored intent above it lives in two places. The design, the decisions, the reasons one option won over another: those live in docs. The testable behavior, the acceptance criteria, the proof: those live in the spec. Agents derive code from both, but the design and the criteria do not reliably come back from code.
+In agent-driven work, code starts to occupy the position the compiled binary used to. The authored intent above it lives in two places. The design, the decisions, the reasons one option won over another live in docs. The testable behavior, the acceptance criteria, and the proof belong to the spec instead. Agents derive code from both, but the design and the criteria do not reliably come back from code.
 
 This has happened one level down already. Assembler was once the source a person reasoned in, until the compiler turned the instruction stream into emitted output and the developer's working line moved up to C and later languages. Nobody fixes a bug by hand-editing the instruction stream a compiler emits. The agent runs the same move one step higher: code becomes a generated artifact, and the working line climbs again, to the spec and the docs above it.
 
@@ -51,7 +51,7 @@ The mantra: code is self-documenting. It is not. Code tells you what it does, bu
 
 For bounded 2025-2026 agent-assisted changes, code modification is cheaper than it used to be. A small service, handler, or UI flow might fit in one agent session. Regenerating without docs and a spec spends the same session budget and leaves the next developer reverse-engineering intent from output. Code that is inexpensive to replace should not outrank the documents that make replacement repeatable.
 
-Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record the design decisions and the spec turns them into proof obligations. Without those artifacts, a deploy carries assumptions nobody checked. With them, a reviewer can open the ADR, match it to the spec scenario, and find the test proving the behavior.
+Farley's "Modern Software Engineering" argues for feedback loops and reliable delivery of intent into production. In this book's workflow, docs record the design decisions and the spec turns them into proof obligations. Without those artifacts, a deploy carries assumptions nobody checked. With them, a reviewer opens the ADR, matches it to the spec scenario, and finds the test proving the behavior.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and reliable delivery of intent into production; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing for bounded regeneration claims.*
 
@@ -95,9 +95,9 @@ Those bars are about behavior. The design behind the change, the why, and the al
 
 Most developers reading this chapter are not yet convinced. The intuition is that the code is what matters: the docs are overhead, the code runs in production, and the documents sit in a folder nobody opens.
 
-The code runs. The docs do not. Both statements are true. The code reflects what the agent implemented. The docs and the spec reflect what the team asked for. When the code and the intent disagree, one side is wrong. Only the docs and the spec record the decision rationale.
+The code runs. The docs do not. Both statements are true, and each reflects a different origin: the code shows what the agent implemented, while the docs and the spec show what the team asked for in the first place. When the code and the intent disagree, one side is wrong, and only the docs and the spec record the decision rationale that settles which.
 
-Stop treating code review as the only primary quality gate. In this book's spec-driven workflow, spec review happens before or alongside code review. A correct spec improves the odds of the correct code. A wrong spec lets code review approve a clean implementation of the wrong behavior. Read the spec for correctness before the diff for conformance.
+Stop treating code review as the only primary quality gate. In this book's spec-driven workflow, spec review happens before or alongside code review, because a correct spec improves the odds of correct code, but a wrong spec lets code review approve a clean implementation of the wrong behavior anyway. Read the spec for correctness before the diff for conformance.
 
 This claim holds up only if the spec is connected to something harder than intent: not a document that describes expected behavior, but executable proof that the implementation delivers it. That proof is CI tests failing when the implementation diverges from the spec, not a human scanning the diff. Intent without proof is still a document.
 

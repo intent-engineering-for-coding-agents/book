@@ -33,9 +33,9 @@ graph LR
 
 A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant. They serve different readers.
 
-The ticket is for the team: priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent: delta spec, acceptance criteria, task list, and archive record. The ticket answers "is this being worked on?" The change folder answers "what is being built and how do we know it is done?"
+The ticket is for the team: priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent: delta spec, acceptance criteria, task list, and archive record. One answers "is this being worked on?", the other answers "what is being built and how do we know it is done?"
 
-Practically: create the change folder when you start the spec and link the Jira issue ID in the proposal. The spec references the ticket for context, while the ticket links to the PR that implements it. The agent reads the spec. The sprint board reads the ticket. Neither replaces the other.
+Practically: create the change folder when you start the spec and link the Jira issue ID in the proposal. The spec references the ticket for context, while the ticket links to the PR that implements it. The agent reads the spec, and the sprint board reads the ticket: neither replaces the other.
 
 The reverse link is automatic if you use the issue key in commit messages. Jira's development panel surfaces every commit and PR that contains `XXX-123` in the message, without any manual linking. Include that convention in `AGENTS.md` and the agent will prefix its commits correctly. Then the change folder links forward to the ticket, and the commits link back.
 

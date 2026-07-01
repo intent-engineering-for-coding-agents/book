@@ -18,11 +18,11 @@ I say "coding agent" because I avoid "AI" here. Whether the tool uses AI under t
 
 I do not mention product names. I want vendor independence. This book takes the same stand.
 
-I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a change to review. If one agent stops fitting, I just replace it. If two are useful for the same thing, I run both and compare the changes.
+I do not care about a vendor's claimed strengths or unique qualities. Those change. The agent needs to read the project, propose a change, run the checks, and hand back a change to review. If one agent stops fitting, I replace it. If two are useful for the same thing, I run both and compare the changes.
 
-Treat the agent as magic, and the developer assumes understanding that is not there. Treat it as a silver bullet, and the developer stops doing the design and judgment work the tool will not do. Treat it as implementation labor and the developer reviews every change it produces.
+Treating the agent as magic means assuming understanding that is not there. Treating it as a silver bullet means skipping the design and judgment work the tool will not do for you either way. What survives contact with production is neither: implementation labor, reviewed on every change it produces.
 
-Give the agent a vague instruction, and it fills the gap. That usually fails. Show it an old pattern in the codebase and it copies the pattern. Leave last month's architecture rule in a meeting, and the agent never sees it.
+Give the agent a vague instruction and it fills the gap itself, usually wrong. Show it an old pattern in the codebase and it copies that pattern forward, stale conventions included. An architecture rule that only ever existed as a comment in last month's meeting never reaches the agent at all.
 
 ## The mindset shift
 
@@ -44,9 +44,9 @@ Once intent matters as much as code, the workspace changes too. Production work 
 
 Solo prototyping is often a chat window, a pasted stack trace, and a throwaway change. No ceremony, no shame.
 
-For maintained software, the workspace becomes the shared input surface. Developers read the files. Reviewers inspect the diff. The next agent session loads the repo state, not the previous chat history. The work in the repo itself becomes the input to the next change.
+For maintained software, the workspace becomes the shared input surface. Developers read the files, reviewers inspect the diff, and the next agent session loads the repo state instead of the previous chat history. The repo itself becomes the input to the next change.
 
-If a decision creates a coding convention, put it in a file the next session loads. If one rule keeps showing up in review comments, move it out of the thread and into instructions. If a diagram defines a boundary, store it in Mermaid or another text format the team can diff and the agent can read.
+A decision that creates a coding convention belongs in a file the next session loads, not in folklore passed at standup. A rule that keeps surfacing in review comments has outgrown the thread: move it into instructions. And a diagram that defines a boundary belongs in Mermaid or another text format the team can diff and the agent can read.
 
 Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs, a hook that runs after file edits. Intent a machine checks lasts longer than intent a teammate has to remember.
 

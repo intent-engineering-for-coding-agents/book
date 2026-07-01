@@ -28,7 +28,7 @@ A useful test for any instruction: does the agent produce a concrete behavior fr
 
 "Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables. Use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
 
-The same principle applies beyond security. "Keep functions small" has no measurable threshold, so the agent has nothing concrete to miss. "Keep functions under 25 lines. Extract when you exceed this" is testable. The agent either stays under the limit or it does not, and reviewers inspect the result without debating what "small" meant.
+The same principle applies beyond security: "Keep functions small" has no measurable threshold, so the agent has nothing concrete to miss, while "Keep functions under 25 lines. Extract when you exceed this" gives it something to hit or miss. The agent either stays under the limit or it does not, and reviewers inspect the result without debating what "small" meant.
 
 *Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
 
@@ -88,10 +88,10 @@ A second-model critique pass often surfaces the same gap: instructions that stat
 
 Instructions constrain the agent's decisions. That is the point. Some decisions should stay open. An instruction that specifies the sorting algorithm blocks a better choice when the data distribution changes. Pin the exact structure of an API response, and the agent cannot adapt when a new client needs a different shape. Over-constraining the agent turns it from a collaborator into a template filler.
 
-Where is the line? Write instructions for a senior colleague who has read the entire internet but has never seen your codebase. They know the language idioms and the common library APIs. Do not explain those. They do not know your team's decisions or what you tried and rejected. Document those.
+Where is the line? Write instructions for a senior colleague who has read the entire internet but has never seen your codebase: skip explaining the language idioms and the common library APIs they already know, and spend the words on your team's decisions and what you tried and rejected instead, since that is the part they cannot infer.
 
 Instructions also backfire by going stale: a constraint written for last quarter's architecture gets followed confidently into today's, the same false-confidence failure stale instructions produce at the entry point.
 
-The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the agent gets the decision wrong and the fix is general engineering knowledge, let the agent learn from the codebase. Instructions prevent drift against your decisions. They should not prevent the agent from making decisions you have not made yet.
+The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the agent gets the decision wrong and the fix is general engineering knowledge, let the agent learn from the codebase. What instructions are for is preventing drift against decisions you have already made, not preventing the agent from making decisions you have not made yet.
 
 There is a harder limit. Some constraints the agent reads and improvises against anyway, and a louder instruction does not fix it. The rule has to move somewhere the agent cannot quietly skip: a skill that runs the workflow on its behalf, or a hook that fails the build the moment the rule breaks.

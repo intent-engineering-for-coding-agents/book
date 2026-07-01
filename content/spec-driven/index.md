@@ -10,7 +10,7 @@ Intent is what you want this specific change to do, in this specific codebase, r
 
 This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, which tool, what lifecycle, and finally the thesis the whole book leads to.
 
-OpenSpec is the workflow this book uses to make Spec-Driven Development visible: one change folder, one lifecycle, one archive rule. The companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with it, so the chapters can point at a real repo instead of an abstract workflow diagram.
+OpenSpec is the workflow this book uses to make Spec-Driven Development visible: one change folder, one lifecycle, one archive rule. The companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with it, so the chapters point at a real repo instead of an abstract workflow diagram.
 
 The portable practice is per-change intent with testable acceptance criteria. The closest alternative is a plain `spec.md` in the repo. Teams with domain, review, or compliance pressure often add local fields, review steps, and archive rules because their specs have to fit the ticket flow, PR template, and compliance checks already in place. If your team uses `spec.md`, LeanSpec, Spec-Kit, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to the record your team treats as historical after merge.
 

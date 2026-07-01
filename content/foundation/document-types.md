@@ -32,7 +32,7 @@ INDEX files serve a different reader: the agent. Each table row lists a file and
 
 The agent loads `docs/INDEX.md` at the start of a session to find the next file to read before reading anything else. That makes a stale entry worse than a missing one: it sends the agent toward a file that moved, or hides one that recently landed.
 
-The fix is not a cleanup pass after the fact. It is a standing repo rule, and it belongs in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same commit that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
+The fix is not a cleanup pass after the fact. Make it a standing repo rule that lives in the agent instructions `AGENTS.md` points to, not in the hub file itself: the same commit that adds, renames, or removes a file updates the directory's INDEX entry and any reference to that file in its README.
 
 README and INDEX live in the same directory, serve the same lifespan, and are the easiest types to collapse into one. That is the most common mistake. A human lands on the README when browsing in a browser. An agent loads the INDEX to know what exists before it decides what to read. Two files, same location, different jobs.
 
@@ -58,7 +58,7 @@ The taxonomy here is this book's synthesis. `skeleton.md` is not a field standar
 
 ## Architectural Decision Records
 
-Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. The value is not what was decided. It is why. Six months later, when a developer proposes reintroducing the stack the team moved away from, the ADR answers the question before a meeting is called.
+Architectural Decision Records (ADRs) are documents that manifest specific decisions: what was decided, what alternatives were considered, why this option won, and what consequences follow. What an ADR is worth is not the decision itself. It is the why behind it. Six months later, when a developer proposes reintroducing the stack the team moved away from, the ADR answers the question before a meeting even gets called.
 
 While an ADR is still proposed, change it as much as the discussion requires. That is what the proposal stage exists for. Once its status moves to `accepted`, the decision freezes. Reversing it means writing a new ADR that references the old one and supersedes it, not rewriting the original to say something different.
 
