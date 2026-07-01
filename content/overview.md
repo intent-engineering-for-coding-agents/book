@@ -61,7 +61,7 @@ This book assumes you:
 
 | If you want to… | Start here |
 |---|---|
-| Understand the motivation first | [Preface](/preface), then [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset), then [Introduction](/introduction) |
+| Understand the motivation first | [Preface](/preface), then [The Human-Agent Engineering Mindset](/mindset), then [Introduction](/introduction) |
 | Get into the practice immediately | [Foundation](/foundation/) |
 | See what the practices look like in code | [Companion Repo](/appendices/companion-repo) |
 | Evaluate whether to adopt at all | [Honest Maturity](/appendices/honest-maturity) |

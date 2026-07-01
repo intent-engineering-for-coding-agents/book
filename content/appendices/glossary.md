@@ -76,7 +76,7 @@ The agentic-era analogue to technical debt: undocumented decisions and assumptio
 
 ## Context engineering
 
-The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering chain of specs, proof, review, and durable decisions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
+The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering chain of specs, proof, review, and durable decisions. See [The Human-Agent Engineering Mindset](/mindset).
 
 ## Context poisoning
 
@@ -176,7 +176,7 @@ A spec-driven-development framework (openspec.dev) built around a change-folder 
 
 ## Prompt engineering
 
-The practice of shaping one prompt or instruction exchange so a model responds usefully. This book treats prompt engineering as a useful but too-small frame for production coding-agent work, where the harder problem is keeping codebase context, specs, tests, and decisions aligned across sessions. See [The Human-Agent Engineering Mindset](/human-agent-engineering-mindset).
+The practice of shaping one prompt or instruction exchange so a model responds usefully. This book treats prompt engineering as a useful but too-small frame for production coding-agent work, where the harder problem is keeping codebase context, specs, tests, and decisions aligned across sessions. See [The Human-Agent Engineering Mindset](/mindset).
 
 ## skeleton.md
 

@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: Start with the mindset
-      link: /human-agent-engineering-mindset
+      link: /mindset
     - theme: alt
       text: Overview
       link: /overview
