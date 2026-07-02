@@ -1,6 +1,6 @@
 # Trunk-Based Development with Agents
 
-The branch strategy predates coding agents by two decades. Paul Hammant has documented it since the early 2000s, and the core discipline has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.
+The branch strategy predates coding agents by two decades. Paul Hammant has documented it since the early 2000s, and the core rule has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.
 
 An agent opens and closes a feature branch in the time a human developer spends reading the ticket. At agentic speed, the question is not whether to use short-lived branches, but how to align the branch lifecycle with the change folder lifecycle. The two lifecycles should collapse into the same unit of work.
 
@@ -26,23 +26,23 @@ For a change whose intent is fully visible in the code diff, that split is pure 
 
 The test is not size, but whether an intent-level correction found during code review would force the implementation to be redone. If yes, the spec earns its own PR. If the only fix would be to the code, one PR is enough.
 
-The discipline that covers both shapes is not a branch count. Every branch that traces back to this change folder carries its name and its scope, and nothing else rides along. The change folder is the unit of intent, and its branches are the units of delivery. A branch that folds in a second change folder's work is the violation, whether you used one branch or two.
+The rule covering both shapes is not a branch count. Every branch that traces back to this change folder carries its name and its scope, and nothing else rides along. The change folder is the unit of intent, and its branches are the units of delivery. A branch that folds in a second change folder's work is the violation, whether you used one branch or two.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and "Trunk-Based Development and Branch by Abstraction" (Leanpub, 2020), short-lived branches and the trunk-based discipline the change-folder lifecycle maps onto. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small changes integrated continuously.*
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing) and "Trunk-Based Development and Branch by Abstraction" (Leanpub, 2020), short-lived branches and the trunk-based rule set the change-folder lifecycle maps onto. Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), small changes integrated continuously.*
 
 ## Short-lived means days, not weeks
 
-Hammant's trunk-based development (TBD) discipline defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that has lived for two weeks accumulates two weeks of divergence from the trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
+Hammant's trunk-based development (TBD) defines short-lived branches as lasting hours to days, not weeks. The underlying reason is feedback: a branch that has lived for two weeks accumulates two weeks of divergence from the trunk before it gets feedback from integration. A branch that lives for one day gets feedback within one day.
 
 At agentic speed, even one day is long. A small feature spec can land in hours. The branch flow is simple: create the branch, write the spec in its change folder, implement, test, open the PR, review, merge.
 
 Start to merge in hours, not days. If the implementation is taking days, the spec was too large. Split it.
 
-The discipline of keeping specs small (the ten-task, ten-file rule of thumb from [Why Small?](/spec-driven/why-small)) is also the discipline of keeping branches short-lived. A spec sized to one implementation PR is a branch that fits in one day. When the implementation branch sprawls past what a reviewer holds in one sitting, the spec was describing two changes, not one.
+The habit of keeping specs small, the ten-task, ten-file rule of thumb from [Why Small?](/spec-driven/why-small), is also the habit of keeping branches short-lived. A spec sized to one implementation PR is a branch that fits in one day. When the implementation branch sprawls past what a reviewer holds in one sitting, the spec was describing two changes, not one.
 
 ## Merge cadence with parallel changes
 
-Multiple developers, multiple change folders, multiple branches. The question is how often they integrate.
+Multiple developers, multiple change folders, multiple branches. How often should they integrate?
 
 Trunk-based development's answer is: as often as possible, with CI as the gate. Each branch merges when CI passes, not when "it is done". Integration happens continuously rather than all at once at the sprint end.
 
@@ -52,7 +52,7 @@ Second, reviewing a PR that has a spec delta gives the reviewer a clear statemen
 
 Two specs that make incompatible claims about the same capability are the one collision worth heading off early. Because each change folder names its scope before the branch exists, that overlap is visible in the planning column of the sprint board, where it costs a conversation, not in the Friday morning integration run, where it costs a rollback.
 
-## `AGENTS.md`, CI, and the branch discipline
+## `AGENTS.md`, CI, and branch control
 
 The agent will follow none of this unless `AGENTS.md` states it. Its default is to implement what it is given and push when done. It does not know the team's branch naming convention, that the implementation branch should match the change folder slug, that the spec for a decision-heavy change ships on its own PR first, or that a branch carrying two change folders is a problem.
 
@@ -60,13 +60,13 @@ The `AGENTS.md` file, or a skill file it references, should state three rules: t
 
 Instructions drift. Checks do not. The two steps most worth promoting from instruction to CI gate are archiving and task completion.
 
-A check that fails the implementation PR when its change folder is not archived, or when `tasks.md` still has unchecked boxes, turns a discipline the agent forgets under load into one it cannot skip. This is the verifier pattern: the check gates the merge but does not do the work.
+A check that fails the implementation PR when its change folder is not archived, or when `tasks.md` still has unchecked boxes, turns a step the agent forgets under load into one it cannot skip. This is the verifier pattern: the check gates the merge but does not do the work.
 
 `iec check` already plays that role for file-size limits and AC traceability. Gating it on an archived folder and a fully-checked `tasks.md` is the same move. The archive stays a one-line step the agent runs as its final task, visible in the code diff where a reviewer watches the spec promoted to baseline.
 
 Two smaller mechanics finish the cycle. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and unimplemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
 
-*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration discipline. Dave Farley with Jez Humble, "Continuous Delivery" (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a discipline the agent forgets into one it cannot skip.*
+*Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration practice. Dave Farley with Jez Humble, "Continuous Delivery" (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a step the agent forgets into one it cannot skip.*
 
 ## Review at merge
 
@@ -76,7 +76,7 @@ The failure is not in the code but in the review sequence: the code diff was rea
 
 Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff view get opened. The code diff review question is different: does this implementation match the spec?
 
-Reviewers and agents miss different things in this review, and it works only when each covers the other's gaps: reviewers verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own discipline.
+Reviewers and agents miss different things in this review, and it works only when each covers the other's gaps: reviewers verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own workflow question.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder and spec delta the review reads before the diff. Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec before implementation.*
 
@@ -88,4 +88,4 @@ The argument for TBD over Gitflow is Hammant's to make, and he has made it thoro
 
 The two-PR shape for decision-heavy changes is this book's recommended default, not an industry standard. Plenty of teams ship spec and code in one PR and review the spec delta first inside it. That works, and it is lighter. The split earns its second PR when locking the intent before implementation would have saved a rework and costs ceremony when it would not. Treat it as a dial, not a mandate.
 
-The one-change-per-developer rule contains the work in a reviewable unit. What happens when that unit reaches the review queue is a different discipline entirely.
+The one-change-per-developer rule contains the work in a reviewable unit. What happens when that unit reaches the review queue is a different workflow entirely.

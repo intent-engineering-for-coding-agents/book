@@ -15,12 +15,12 @@ A working taxonomy, representative rather than prescriptive. This is the book's 
 | Unit | One component in isolation (logic, edge cases, error paths) | Single class or function |
 | Slice | One framework layer with its wiring intact (external services stubbed) | e.g. persistence layer, HTTP routing |
 | Integration | Components interacting within a module (real dependencies, no stubs) | Module pipeline |
-| Interface / Contract | An API boundary or interop surface holds | Public API, Java/Kotlin interop |
+| Interface / Contract | An API boundary or interop point holds | Public API, Java/Kotlin interop |
 | Architectural | Structural rules hold: no forbidden dependencies, no layer violations | Module graph |
 | Acceptance | A user-visible scenario works end-to-end at the spec level | Feature, golden fixture |
 | E2E | The deployed system behaves as the user expects | CLI to output, browser to API |
 | Visual regression | Rendered output matches a stored reference (no layout shifts, no styling regressions) | UI component or full-page render |
-| Smoke | The deployed system is alive and routing correctly after a release | Deployed surface entry points |
+| Smoke | The deployed system is alive and routing correctly after a release | Deployed entry points |
 | Performance | Latency or throughput stays within a defined bound | Load profile |
 | Manual | Intent is specified in the spec (automated proof not yet written, or not practical) | Any level |
 
@@ -68,7 +68,7 @@ Not every AC is the same shape. The minimum test count follows from the AC's own
 
 The underlying principle is equivalence partitioning: one test per valid partition, one per invalid. The tier mapping is this book's application of that to AC complexity. The ISTQB Foundation Level Syllabus documents equivalence partitioning (EP) and boundary value analysis (BVA) formally. The complexity-to-count table is not in it. What makes a test genuine proof of its AC (positive and negative coverage, boundary values, mutation testing) is the subject of [Tests as Proof, Not Ritual](./tests-as-proof).
 
-This table belongs next to the scenario template. In the companion repo, that template lives at `tests/scenario-template.md`. The agent reads the template when writing scenarios and the strategy when implementing tests. The two documents together define the surface the test suite has to cover.
+This table belongs next to the scenario template. In the companion repo, that template lives at `tests/scenario-template.md`. The agent reads the template when writing scenarios and the strategy when implementing tests. The two documents together define what the test suite has to cover.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. ISTQB "Foundation Level Syllabus" (ongoing), equivalence partitioning and boundary value analysis as the basis for minimum partition coverage. The complexity-to-count tier mapping is this book's synthesis, not a published standard.*
 
@@ -82,7 +82,7 @@ The allocation rule, the monotone-numbering discipline, and why a deleted ID lea
 
 ## Tooling note
 
-If you want to see this in practice, the companion repo includes the working convention surface: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
+If you want to see this in practice, the companion repo includes the working convention set: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation.
 

@@ -6,7 +6,7 @@ Take a concrete one: after modifying `api-spec.yaml`, regenerate the TypeScript 
 
 Write it as an instruction, a line in `AGENTS.md` or an instruction file, and you have described the workflow. The agent loads the instruction, reads "regenerate the types after editing the spec", and decides whether this is the moment to act. Type it as a prompt at the moment, and nothing fundamental changes: the agent still decides. Both are advisory.
 
-In a session focused on making a failing test pass, the agent renames a field in `api-spec.yaml` and skips the regeneration. The generated types still describe the old field, every file that imports them still compiles, and the test goes green. The drift surfaces later, at runtime, when the client reads a field the server no longer sends.
+In a session focused on making a failing test pass, the agent renames a field in `api-spec.yaml` and skips the regeneration. The generated types still describe the old field, every file that imports them still compiles, and the test goes green. The drift shows up later, at runtime, when the client reads a field the server no longer sends.
 
 Write it as a skill and you have automated the workflow. A skill is a procedure the agent runs as discrete steps, not prose it weighs against the task in front of it. Expose that skill as a command, and a developer fires the same steps by hand. Write it as a hook and the decision disappears: the script runs on the triggering event whether the agent considered it or not.
 
@@ -36,7 +36,7 @@ So why have them? The agent will not always recognize the moment. You finished t
 
 The trigger is not always a human too. When an external program drives the agent, a CI step, or a script wrapping the CLI, it needs a deterministic handle to call by name. It invokes `/generate-types` and gets that exact procedure, instead of feeding the agent a prose task and hoping it reaches for the right skill.
 
-Give the command a name you will remember under pressure. `/generate-types` is one you reach for. `/synchronize-openapi-typescript-types` is one you look up. Each tool exposes its own command surface, and the key differs, but every one of them fires the same skill file, not a separate command definition you maintain alongside it.
+Give the command a name you will remember under pressure. `/generate-types` is one you reach for. `/synchronize-openapi-typescript-types` is one you look up. Each tool exposes commands differently, and the key differs, but every one of them fires the same skill file, not a separate command definition you maintain alongside it.
 
 ## Agent-facing commands need an explicit contract
 
@@ -62,7 +62,7 @@ Then add three controls:
 - Stable error codes separating `missing file` from `missing auth`
 - One explicit next step in the result when the follow-up is obvious
 
-A short command surface is enough:
+A short command set is enough:
 
 ```text
 tool submit --agent --dry-run
@@ -91,7 +91,7 @@ The output should read like data, not terminal noise:
 
 The failure mode is concrete. A human-facing CLI prints `Continue? [y/N]` and waits forever, where an agent-facing CLI exits at once with `CONFIRMATION_REQUIRED` and names the missing flag. The same split shows up in output: a human-facing CLI writes warnings into the same stream as the JSON, while an agent-facing CLI keeps `stdout` clean and puts the warnings on `stderr`.
 
-This is not polish. It is control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command surface should say so directly.
+This is not polish. It is control. An agent should not scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run. The command set should say so directly.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
 

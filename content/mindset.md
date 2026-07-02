@@ -44,7 +44,7 @@ Once intent matters as much as code, the workspace changes too. Production work 
 
 Solo prototyping is often a chat window, a pasted stack trace, and a throwaway change. No ceremony, no shame.
 
-For maintained software, the workspace becomes the shared input surface. Developers read the files, reviewers inspect the diff, and the next agent session loads the repo state instead of the previous chat history. The repo itself becomes the input to the next change.
+For maintained software, the workspace becomes the shared input. Developers read the files, reviewers inspect the diff, and the next agent session loads the repo state instead of the previous chat history. The repo itself becomes the input to the next change.
 
 A decision that creates a coding convention belongs in a file the next session loads, not in folklore passed at standup. A rule that keeps surfacing in review comments has outgrown the thread: move it into instructions. And a diagram that defines a boundary belongs in Mermaid or another text format the team can diff and the agent can read.
 

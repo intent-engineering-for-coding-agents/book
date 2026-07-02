@@ -10,7 +10,7 @@ This chapter covers one narrow extension of verification: give important documen
 
 A release should leave the codebase ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as practical agent failure modes. The release-to-next-session boundary is this book's synthesis.*
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as current agent failure modes. The release-to-next-session boundary is this book's synthesis.*
 
 ## The asymmetry
 
@@ -20,9 +20,9 @@ Documentation has no equivalent check by default. A design note describing an ol
 
 The asymmetry is the problem. Generated code changes fast. The surrounding prose drifts at human speed.
 
-The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses, or follow a codebase rule the team already removed because the instruction file still lists it.
+The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses or follow a codebase rule the team already removed because the instruction file still lists it.
 
-This is cognitive debt in a narrow, practical form: stale reasoning compounding in agentic delivery. The compounding is fast here because one stale document feeds directly into the next implementation session.
+This is cognitive debt in a narrow form: stale reasoning compounding in agentic delivery. The compounding is fast here because one stale document feeds directly into the next implementation session.
 
 *Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as undocumented or stale reasoning in agentic delivery. AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as a practical agent failure mode.*
 
@@ -30,7 +30,7 @@ This is cognitive debt in a narrow, practical form: stale reasoning compounding 
 
 The verification move is familiar by now. Do not match text. Match identity.
 
-[AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten and the test moves files, but the ID remains stable, so the link between intent and proof remains intact.
+[AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten, and the test moves files, but the ID remains stable, so the link between intent and proof remains intact.
 
 Documentation needs a lighter version of the same move. Each important document carries a small frontmatter block naming the code paths the check watches, the date somebody last checked it against those paths, and any outside systems still pointing at it:
 
@@ -60,7 +60,7 @@ referrers-verified-at: 2026-06-20
 
 Once the fields exist, the check stops guessing. The questions are mechanical: did one of the tracked paths change after `content-verified-at`, and does an outside system still depend on this file staying where the referrer expects after `referrers-verified-at`?
 
-This is not a field standard. This book uses it as a practical synthesis of the AC-ID idea for prose. The mechanism is structural: one stable marker in the prose, one reference target in code or docs, and one check that verifies the link.
+This is not a field standard. This book uses it as a working synthesis of the AC-ID idea for prose. The mechanism is structural: one stable marker in the prose, one reference target in code or docs, and one check that verifies the link.
 
 *Sources: The frontmatter marker and field names are this book's synthesis from AC-ID verification logic applied to prose.*
 
@@ -130,7 +130,7 @@ The same pattern works for a release runbook that must name the rollback command
 
 This is weaker than a behavior test. The test does not prove the command still works. It proves the document still names the command. For operational prose, that already moves far beyond silence.
 
-Testing runbook content like this is a practical extension this book recommends. It is not presented here as common industry policy.
+Testing runbook content like this is a narrow extension this book recommends. It is not presented here as common industry policy.
 
 ## Three layers again
 
@@ -156,7 +156,7 @@ Verification closes the code gap with tests. A documentation drift check closes 
 
 - attach a stable link to the artifact under review
 - run a deterministic check against the link
-- surface failure where the team already pays attention, in CI
+- expose failure where the team already pays attention, in CI
 
 The check does less than a test. A test proves behavior. A documentation drift check only proves nobody reviewed the prose after the source moved, or that an outside record still depends on the file staying put. That weaker claim still earns its keep because the default is silence.
 

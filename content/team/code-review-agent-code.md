@@ -75,7 +75,7 @@ The gaps are complementary: each reviewer covers what the other does not. These 
 | Agent | Integration context | It reviewed the code and the spec, not the runtime: a latency the spec did not model, middleware ordered differently in production than in test |
 | Agent | Silent ambiguity resolution | Ambiguous criteria resolve toward the simplest implementation, and the choice is never surfaced as a choice |
 
-A human doing intent-and-integration review and an agent doing coverage-and-consistency review together cover more of the failure surface than either alone. Neither covers it completely.
+A human doing intent-and-integration review and an agent doing coverage-and-consistency review together cover more failure modes than either alone. Neither covers them completely.
 
 ## The review is one gate
 

@@ -64,7 +64,7 @@ For a service meant to run in production and be maintained by the next developer
 
 ## What Intent Engineering does not do
 
-Intent Engineering does not stop drift. It gives you a better surface for detecting drift and recovering from it. That is a weaker claim than much of the surrounding agent-engineering material makes, and it is the claim this book defends.
+Intent Engineering does not stop drift. It gives you a clearer way to detect drift and recover from it. That is a weaker claim than much of the surrounding agent-engineering material makes, and it is the claim this book defends.
 
 Nor does it try to make the agent deterministic. You are engineering the ground it reasons from: a well-informed picture of your system instead of a guess. The limits of that bargain matter, and [When Intent Engineering Fails](./foundation/when-intent-engineering-fails) takes them up early, before any of the practices are sold as a cure.
 

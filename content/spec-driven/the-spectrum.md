@@ -93,7 +93,7 @@ The same dial governs how you stage the change, not only which framework you rea
 
 ## The trade-off
 
-More formality means more audit trail, better traceability, less improvisation surface. It also means more upfront time, more overhead per change, and more places for the process to become theater if nobody tends it.
+More formality means more audit trail, better traceability, and less room for improvisation. It also means more upfront time, more overhead per change, and more places for the process to become theater if nobody tends it.
 
 Teams underestimate the theater risk. A heavy framework adopted by a small team produces specs written to satisfy the framework rather than guide the implementation: correct structure, shallow content, twenty minutes from a developer who wants to get to the code. They look complete and are not.
 
