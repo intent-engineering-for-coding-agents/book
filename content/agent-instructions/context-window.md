@@ -66,10 +66,10 @@ Context management keeps the agent loaded with the right files and the right tra
 
 ## What context management cannot fix
 
-Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the agent's reasoning is fundamentally flawed, the task is genuinely ambiguous, or the codebase has contradictions the agent cannot resolve. Context management fixes the problems caused by context loss. A vague instruction set or a contradictory codebase is not one of them.
+Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the model cannot reason through the task, the task is genuinely ambiguous, or the codebase contradicts itself. The failure in scope here is narrower: sessions decay because the active context got too long, too noisy, or too stale.
 
-The distinction matters when you are deciding whether to reset or redirect. If the agent was working well and then started drifting, context management (reset, selective loading, subagents) is the right tool. If the agent has been struggling from the start, the problem is upstream, in the instruction set or the codebase itself, and neither resetting the session nor fixing the context will repair a broken instruction set.
+The distinction matters when you are deciding whether to reset or redirect. If the session started well and then drifted, context management is the right tool. If the session was confused from the first turn, look upstream instead: bad instructions, conflicting docs, or a task the model is not strong enough to handle.
 
 Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
 
-Context management loads the agent with the right standing context. It does not say what this one change is meant to do. That per-change intent is the one input the instruction hub cannot carry. The Spec-Driven Development topic covers how to supply it.
+Context management keeps the standing context clean. It still does not define the change. Per-change intent belongs to the spec, which is where the book goes next.

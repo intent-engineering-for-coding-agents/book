@@ -53,7 +53,7 @@ The change starts in the usual place: a ticket, a story, a Linear card. In this 
 
 Most changes do not need a spec. Typo fixes and dependency bumps should stay light. Bugs need judgment. If the correct behavior is obvious, skip the spec. If reconstructing the intended behavior is the hard part, put the reasoning in a spec before restoring the code.
 
-Architecture changes and agent-led implementation need the target before code exists. Without a target, the agent fills the empty space with plausible work nobody requested.
+Architecture changes and agent-led implementation need the target before code exists. The SDLC point is placement: where the target enters the delivery flow, who reviews it, and what carries forward after merge.
 
 *Sources: Farley, Modern Software Engineering (Addison-Wesley, 2021), intent over artifact.*
 
@@ -65,9 +65,9 @@ During implementation, the agent enters the coding step through the repo context
 
 ## Review: intent first, code second
 
-Once a PR exists, a normal review path collapses intent and code into one review conversation centered on the code diff. Intent Engineering separates them.
+Once a PR exists, a normal review path collapses intent and code into one conversation centered on the code diff. Intent Engineering separates them.
 
-The spec delta describes the intended behavior, while the code diff shows what got built. Read the spec first: does intent match agreement? Then read the code: does the implementation match intent?
+The spec delta answers one question, the code diff answers another. First: does the intent match agreement? Then: does the implementation match the approved intent?
 
 The sequence moves one question earlier: are we building the right change at all? Once the diff view dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
@@ -83,7 +83,7 @@ AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac
 
 ## Maintenance: synchronize engineering memory
 
-After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark Architectural Decision Records (ADRs) accepted or rejected and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
+After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark Architectural Decision Records (ADRs) accepted or rejected, and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
 
 Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request. That is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
 
@@ -95,7 +95,7 @@ After implementation, the agent has the code diff and the spec near at hand. Use
 
 Do not let the agent silently rewrite the system record. The synchronization is part of the release work, but review still owns the truth. A coding agent with write access to the architecture docs is useful. A coding agent with unchecked authority over the architecture docs is how stale memory becomes fabricated memory, which is a worse incident with nicer Markdown.
 
-Skipped archive work looks harmless at first. The cost shows up later, when the agent reads half-implemented proposals as live context and writes code for a change nobody is making anymore. Skipped engineering-memory work has the same shape, with a longer fuse: the code changed, the durable context did not, and the next intent starts from the wrong system.
+Skipped archive work looks harmless at first. The cost shows up later, when half-implemented proposals still look live or a design doc still describes the system you replaced. Skipped engineering-memory work has the same shape, with a longer fuse: the code changed, the durable context did not, and later work starts from the wrong system.
 
 Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. The judgment still stays with the developer and reviewer.
 

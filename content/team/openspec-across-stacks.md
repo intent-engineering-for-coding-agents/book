@@ -1,10 +1,8 @@
 # OpenSpec Across Stacks
 
-Give an agent the whole monorepo as context, and it will confidently call the wrong half of it. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches what the agent did not: it called the back-end service API, not the Backend for Frontend (BFF) API the front-end was supposed to use. The back-end API skipped the authorization checks the BFF enforced.
+Give an agent the whole monorepo as context, and stack boundaries blur fast. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches the mismatch later: the front end called the back-end service API instead of the Backend for Frontend (BFF) API, so the authorization checks in the BFF never ran.
 
-The spec never said which API to call. With every tier's specs in reach and no signal about which tier it was working in, the agent resolved the ambiguity the wrong way, and felt certain doing it.
-
-The problem is upstream. A single `openspec/` directory shared across three tiers of a system gives every agent access to every tier's specs, and no signal about which tier it is working in.
+This chapter is about that narrower failure. A single `openspec/` directory shared across three tiers gives every agent access to every tier's specs and leaves tier ownership implicit.
 
 ## One `openspec/` per stack
 
@@ -38,7 +36,7 @@ back-end/
     changes/  # (unchanged by this feature)
 ```
 
-A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's context legible and bounded.
+A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's working set legible and bounded.
 
 This is a book synthesis. There is no widely adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
 
@@ -88,6 +86,6 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 ## This is book synthesis, not a field standard
 
-Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt to it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope context to the work being done. The directory layout is one way to enforce that principle.
+Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope the working set to the stack doing the work. The directory layout is one way to enforce that principle.
 
 A multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of them. Knowing which slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

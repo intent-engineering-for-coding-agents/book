@@ -4,13 +4,13 @@ A convention constrains only the agents able to read it. On a solo project, that
 
 One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A developer who joined later never saw the discussion where that was decided, and their own `AGENTS.md` says nothing about it. Their agent hits a performance problem and writes a raw query. The query is defensible in isolation. It is also out of step with every other data access path in the codebase, and the team burns a review cycle deciding whether to apply the rule retroactively or carve an exception.
 
-The agent was not wrong. The convention was invisible to it.
+Nothing in the shared instruction set told the agent the convention existed.
 
 The team-level fix is a shared instruction set every agent reads, regardless of who started the session.
 
 ## Team-level `AGENTS.md`
 
-On a solo project, `AGENTS.md` functions as a personal instruction set. On a team, the same file has to work as a shared one: it documents conventions every developer and every agent should follow, and unlike the solo version, it needs an owner and a review process, or the copies drift apart.
+On a solo project, `AGENTS.md` functions as a personal instruction set. On a team, the same file has to work as a shared one: it documents conventions every developer and every agent should follow, and unlike the solo version, it needs an owner and a review process.
 
 The practical structure: `AGENTS.md` at the repo root is the team's instruction set. It covers conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain parallel `AGENTS.md` files that override the team instruction set.
 
@@ -32,7 +32,7 @@ The test of a team `AGENTS.md` is a new developer's first agent session. They cl
 
 If the output is inconsistent, `AGENTS.md` has a gap. Fix the instruction set. Do not file the same failure under "welcome to the team" for every new developer to hit independently.
 
-Onboarding is a forcing function for keeping the team instruction set current. Treating inconsistency as an onboarding task masks drift. Treating it as documentation debt surfaces it.
+Onboarding is a forcing function for keeping the team instruction set current. Treating inconsistency as an onboarding task masks drift. Treating it as drift in the shared instruction set addresses the actual problem.
 
 *Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context files for quality and drift. The first-session onboarding test is this book's team workflow heuristic.*
 

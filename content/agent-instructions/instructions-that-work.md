@@ -20,7 +20,7 @@ The goal is not to remove improvisation. For most of what the agent does, from c
 
 *Sources: Böckeler, "Navigating AI Development Workflows," Refactoring.fm, building up instructions reactively from observed failures. Anthropic, "Building effective agents" (December 2024), keeping the instruction surface minimal and load-bearing.*
 
-Instructions cover one specific failure mode: the agent improvising against your decisions. The library you chose, the module boundary you drew, the naming convention your team settled after a long argument. General engineering knowledge does not help here. Only your codebase history does, and the agent cannot read that history unless you tell it to.
+Instructions are for repo-specific decisions: the library you chose, the module boundary you drew, the naming convention your team settled after a long argument. General engineering knowledge belongs elsewhere. Instructions exist for the parts of the codebase history the agent will not reconstruct reliably from code alone.
 
 ## Be specific enough to be testable
 
@@ -92,6 +92,6 @@ Where is the line? Write instructions for a senior colleague who has read the en
 
 Instructions also backfire by going stale: a constraint written for last quarter's architecture gets followed confidently into today's, the same false-confidence failure stale instructions produce at the entry point.
 
-The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the agent gets the decision wrong and the fix is general engineering knowledge, let the agent learn from the codebase. What instructions are for is preventing drift against decisions you have already made, not preventing the agent from making decisions you have not made yet.
+The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the fix is general engineering knowledge, let the codebase and review handle it. Instructions are for preserving decisions you already made, not for freezing every later decision in place.
 
 There is a harder limit. Some constraints the agent reads and improvises against anyway, and a louder instruction does not fix it. The rule has to move somewhere the agent cannot quietly skip: a skill that runs the workflow on its behalf, or a hook that fails the build the moment the rule breaks.
