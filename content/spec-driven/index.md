@@ -2,17 +2,11 @@
 
 > A spec that nobody reads is documentation. A spec the agent loads before it writes code is the source the implementation is generated from.
 
-Agent Instructions equipped the agent to arrive loaded. The hub is built, the skills are ready, and the hooks fire automatically. What changes every session is intent.
+What changes every session is intent. The hub is durable. The spec is not.
 
-The agent is the labor. You write the spec, and the agent generates the code from it. Reviewing a diff without having reviewed the spec first is reviewing output without knowing what the output was supposed to be.
+This topic is about per-change intent: the spec that tells the agent what this change must do, what it must leave alone, and what proof will count. Review the spec first or you are reviewing output without knowing the target.
 
-Intent is what you want this specific change to do, in this specific codebase, right now. It is not in agent instructions because it is not permanent. It is not the architecture or the decision behind it: that lives in `docs/`, the durable source of truth. It is the testable behavior for one change, and it lives in a spec. The spec guides the implementation, then moves to the archive. Ask later what the change was required to do and the archived spec answers. Ask why the system is built this way and the answer is in `docs/`.
-
-This topic covers why specs exist, what makes them work, and what makes them fail. The chapters build in order: why bother, how big, which tool, what lifecycle, and finally the thesis the whole book leads to.
-
-OpenSpec is the workflow this book uses to make Spec-Driven Development visible: one change folder, one lifecycle, one archive rule. The companion CLI (`iec`, [cli](https://github.com/intent-engineering-for-coding-agents/cli)) was built with it, so the chapters point at a real repo instead of an abstract workflow diagram.
-
-The portable practice is per-change intent with testable acceptance criteria. The closest alternative is a plain `spec.md` in the repo. Teams with domain, review, or compliance pressure often add local fields, review steps, and archive rules because their specs have to fit the ticket flow, PR template, and compliance checks already in place. If your team uses `spec.md`, LeanSpec, Spec-Kit, or an internal workflow, map `openspec/changes/<name>/` to your per-change spec artifact and map archiving to the record your team treats as historical after merge.
+OpenSpec is the concrete workflow used throughout because it gives the book one change folder, one lifecycle, and one archive rule. The portable practice is simpler than the tooling: per-change intent with testable acceptance criteria.
 
 *Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The local-format portability framing is this book's synthesis.*
 

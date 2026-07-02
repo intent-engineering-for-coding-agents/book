@@ -2,11 +2,9 @@
 
 > Repo structure. The prerequisite for everything else.
 
-Open a PR where the agent adds a REST endpoint to a codebase that moved to gRPC months ago. Nobody wrote down the migration. Nothing in `docs/` says REST is gone. The code compiles anyway, and now the system speaks two protocols.
+Foundation is where repo structure stops being housekeeping and starts doing engineering work. If the decisions, maps, and constraints are missing or stale, the agent reads the wrong picture of the system and acts on it.
 
-That is the Foundation problem. README and INDEX files drift, Architectural Decision Records (ADRs) never get written, and old specs sit around as if they still matter. Review becomes a grep session backed by whoever still remembers the original decision. The agent reads the same stale files and follows them faithfully.
-
-These chapters are about stopping that kind of damage before it turns routine. They cover which documents belong in the repo, why the agent needs them in plain text, where the structure fits in the Software Development Life Cycle (SDLC), how to bootstrap a brownfield system, and what still breaks after the setup looks reasonable on paper.
+These chapters cover the document set, the plain-text rule, where the structure fits in an existing SDLC, how to bootstrap a brownfield system, and what still breaks after setup.
 
 ## Chapters
 

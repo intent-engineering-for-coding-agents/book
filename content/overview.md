@@ -16,18 +16,18 @@ flowchart LR
     F & AI --> SD --> QV
 ```
 
-*Context (slate) is the prerequisite. Intent (teal) directs each change. Proof (cyan) verifies the result.*
+*Context comes first. Intent directs the change. Proof checks the result.*
 
 ## The four practices
 
 | Practice | What it does | What breaks without it |
 |---|---|---|
-| [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from training data instead of the codebase |
-| [Agent Instructions](/agent-instructions/) | One entry point and one instruction hub for every session | Each session re-derives the conventions from scratch |
-| [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code and archived after merge | The agent ships code without a settled change spec |
-| [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | The spec states the target, but nobody checks whether the agent hit it |
+| [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from public patterns instead of your codebase |
+| [Agent Instructions](/agent-instructions/) | One entry point and one instruction hub for each session | Each session re-derives conventions from scratch |
+| [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code and archived after merge | The change ships without a settled target |
+| [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | The target exists, but nothing proves the change hit it |
 
-[Team Workflows](/team/) covers how these practices scale across a team.
+[Team Workflows](/team/) covers how the same practices hold up across a team.
 
 ## How a session works
 
@@ -46,7 +46,7 @@ flowchart LR
     W --> R --> C --> V --> P
 ```
 
-*You write the spec. The agent reads context and spec, then generates code and tests. The tests show whether the spec was met. The PR merges.*
+*You write the spec. The agent reads context and spec, then generates code and tests. The tests show whether the spec was met.*
 
 ## Is this for you?
 

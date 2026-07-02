@@ -2,9 +2,9 @@
 
 > One file at the root. Everything else follows from it.
 
-The Foundation topic gave the codebase its structure. Agent Instructions is what tells the agent which files describe that structure, which ones are load-bearing, and when to load them. Without it, the agent falls back to general training data. With it, the agent starts from codebase-specific inputs.
+Foundation gives the repo structure. Agent Instructions tells the agent which parts of that structure matter, when to load them, and which defaults to stop trusting.
 
-The chapters in this topic cover the mechanics: what goes in `AGENTS.md`, how to build the instruction hub it points into, how to write instructions that change agent behavior, and how to keep an instruction load within the context window. Hooks are part of the hub too, but they are optional and maturity-dependent. Leave that directory empty until the rest is stable.
+These chapters cover `AGENTS.md`, the instruction hub it points into, instructions that actually change agent behavior, and the limits imposed by the context window. Hooks belong here too, but as an optional enforcement layer, not the starting point.
 
 ## Chapters
 
