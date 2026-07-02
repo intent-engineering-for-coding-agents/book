@@ -76,7 +76,7 @@ The output should read like data, not terminal noise:
 }
 ```
 
-This is not polish. It is control. An agent should not have to scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run.
+This is control, not polish: an agent should not have to scrape help text to discover which command lists datasets, which one mutates state, or which missing input blocked the run.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
 

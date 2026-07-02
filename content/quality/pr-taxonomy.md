@@ -80,7 +80,7 @@ For a `structural` PR, verify completeness. Grep the old name. Run the relevant 
 
 For a `behavioral` PR, read the accepted spec first. Trace each acceptance criterion to a test. Then read the diff for scope creep: changed files with no link to the spec, refactors with no behavioral dependency, config edits nobody asked for.
 
-This is not bureaucracy. It is the mechanical aid that lets a reviewer keep one mental model loaded long enough to catch the bug.
+Call it bureaucracy if you like; it is also the mechanical aid that lets a reviewer keep one mental model loaded long enough to catch the bug.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback-loop framing for review checks. The class-specific checklist is this book's synthesis.*
 

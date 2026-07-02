@@ -31,7 +31,7 @@ graph LR
 
 ## Change folder and ticket: the same event, different records
 
-A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant. They serve different readers.
+A Jira ticket (or GitHub Issue, or Azure DevOps work item) records that work is planned. The change folder records how that work was specified. These are not redundant; they serve different readers.
 
 The ticket is for the team: priority, assignee, sprint assignment, status, and comments from the planning meeting. The change folder is for the agent: delta spec, acceptance criteria, task list, and archive record. One answers "is this being worked on?", the other answers "what is being built and how do we know it is done?"
 

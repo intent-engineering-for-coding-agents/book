@@ -43,7 +43,7 @@ The output should read like a checklist, not a verdict. `SC-018 tag exists, but 
 
 The agent also checks scope. A behavioral implementation should deliver what the spec describes and nothing more. An agent working inside a long session accumulates context and adds small improvements: a helper function it needed, a config flag that seemed useful, a refactor it noticed while passing through. These additions are not in the spec. A reviewing agent, comparing the code diff against the acceptance criteria, flags each changed line with no criterion to trace to.
 
-What the review agent does not catch reliably: integration failures, whether the acceptance criteria were right in the first place, or whether the feature will work as intended in production. Those require judgment. The coverage and consistency check does not require judgment. That is the point.
+What the review agent does not catch reliably: integration failures, whether the acceptance criteria were right in the first place, or whether the feature will work as intended in production. Those require judgment; the coverage and consistency check does not, which is exactly the point.
 
 As of mid-2026, `iec` does not ship this as a command. Treat `check_spec_quality` as the planned shape of a future MCP check: compare an implementation against its spec, trace acceptance criteria to tests, and flag deviations and scope additions. The practice does not depend on the tool existing first.
 
@@ -79,7 +79,7 @@ A human doing intent-and-integration review and an agent doing coverage-and-cons
 
 ## The review is one gate
 
-These practices raise the quality of what ships. They are not a guarantee. Review catches divergences between spec and implementation, not divergences between the spec and reality or the user's need. Cognitive debt still accumulates when the spec itself is wrong, incomplete, or stale.
+These practices raise the quality of what ships, but they are not a guarantee. Review catches divergences between spec and implementation, not divergences between the spec and reality or the user's need. Cognitive debt still accumulates when the spec itself is wrong, incomplete, or stale.
 
 At agentic speeds, the review gate handles higher volume than before. The quality of what reaches it still depends on the spec that preceded it: clear intent, constrained scope, and the load-bearing constraints near the top.
 

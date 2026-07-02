@@ -14,7 +14,7 @@ The tests in the previous chapter close the gap between spec and implementation.
 
 The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, and the hook configuration are inputs to the agent, not outputs. Their effect shows up only in the code the agent produces, one PR at a time. A change that makes the agent worse can sit in the codebase for weeks before anyone notices. A change that makes it slightly better is hard to prove without a fixed task.
 
-This is the open gap. Nothing in the toolchain closes it for you.
+This is the open gap, and nothing in the toolchain closes it for you.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of an effective agent setup. Applying the same check to instruction files specifically is this book's synthesis.*
 

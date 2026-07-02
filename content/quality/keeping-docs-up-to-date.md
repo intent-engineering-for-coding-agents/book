@@ -70,7 +70,7 @@ The minimum useful validator is content-blind and deterministic. Content-blindne
 
 First, verify the reference itself. Every entry in `tracked-paths` must resolve. A document pointing at code no longer present is already wrong in one concrete way.
 
-Second, compare the review date to the source history. If the latest commit touching one of those paths is newer than `content-verified-at`, the document is now suspect. The check does not claim the prose is false. The check says nobody has confirmed the prose since the source changed.
+Second, compare the review date to the source history. If the latest commit touching one of those paths is newer than `content-verified-at`, the document is now suspect. The check does not claim the prose is false, only that nobody has confirmed it since the source changed.
 
 Three states are enough for the repo-local documentation drift check:
 
@@ -112,7 +112,7 @@ The retention rule follows from the inventory. A file in `docs/` with live `refe
 
 Some documents are operational dependencies, not background reading. A deployment runbook, an incident checklist, a rollback guide, or a release README tells the operator what to type. If the rollback command is missing, the document is wrong.
 
-This book recommends one narrow extension: test the required facts directly. Not the writing. Not completeness. Only the details an operator needs in front of them.
+This book recommends one narrow extension: test the required facts directly. Not the writing, not completeness, only the details an operator needs in front of them.
 
 ```java
 @Test

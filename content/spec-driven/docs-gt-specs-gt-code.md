@@ -6,7 +6,7 @@ A vendor guide in June 2026 calls this the rebuild test: delete `src/`, point a 
 
 Now flip it. Delete the docs, keep the code, regenerate the docs.
 
-The agent will infer. It can list routes, classes, and fields. It cannot recover why the retry count is three, why validation stayed in the controller, or which compromise should never have become the default. That is the difference between structure and intent.
+The agent will infer: it can list routes, classes, and fields. What it cannot recover is why the retry count is three, why validation stayed in the controller, or which compromise should never have become the default. That is the difference between structure and intent.
 
 *Sources: Augment Code, "The Spec as Source of Truth: Why Codebases Should Be Rebuildable from Documentation" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), spec-as-source as the strongest SDD form, and code as derivative.*
 
@@ -89,7 +89,7 @@ Those bars are about behavior. The design behind the change, the why, and the al
 
 ## The hardest shift
 
-Most developers reading this chapter are not convinced yet. The intuition is that the code is what matters: the docs are overhead, the code runs in production, and the documents sit in a folder nobody opens.
+Most developers reading this chapter are not convinced yet, and I sympathize. The intuition is that the code is what matters: the docs are overhead, the code runs in production, and the documents sit in a folder nobody opens.
 
 The code runs. The docs do not. Both statements are true. The code shows what the agent implemented, while the docs and the spec show what the team asked for in the first place.
 

@@ -2,7 +2,7 @@
 
 Two developers, same repo, same language, same CI pipeline. Their pull requests still come back with different naming, different directories off-limits, different test structures. The rules diverged because the instruction files diverged.
 
-The fix is not better synchronization between two files. It is one source that both tools point to.
+The fix is one source that both tools point to, not better synchronization between copies.
 
 `AGENTS.md` is the entry point, and `.agents/instructions/` is what it points into. One directory, no vendor in the name, readable by every tool.
 

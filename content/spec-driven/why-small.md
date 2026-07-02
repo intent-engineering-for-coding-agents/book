@@ -36,7 +36,7 @@ Compression is the wrong fix. Squeezing the spec into dense prose buries the sam
 
 A spec that is too vague to be useful is not small in the useful sense. "Add error handling to the API" fits in a few lines and tells the agent almost nothing. What carries a spec is specificity per line, not word count. A spec with precise acceptance criteria beats a short spec with vague ones.
 
-Write small and write precisely. Vagueness is not a side effect of brevity. It is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit. The better move is to clarify. If clarifying makes the spec too large, the change itself is too large. Split it.
+Write small and write precisely. Vagueness is not a side effect of brevity. It is a failure to commit to concrete outcomes. When you compress a spec to one page, you force a choice: omit scenarios or clarify each one. Most teams omit; the better move is to clarify. If clarifying makes the spec too large, the change itself is too large. Split it.
 
 *Sources: LeanSpec, small-spec discipline, and the precision-vs-compression tradeoff.*
 
@@ -50,7 +50,7 @@ Embed the size discipline in the agent's instructions. The human review process 
 
 ## The Rule of Ten
 
-Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. Ten works because it is round, easy to count toward, and easy to recall when you are busy. Eight would work, twelve would work. The point is this: a number you cannot hold in your head under deadline pressure is not useful. It is a footnote.
+Quantity has a threshold. This book calls it the Rule of Ten: ten tasks in a spec, ten files in a PR. I picked ten because it is round, easy to count toward, and easy to recall when you are busy; eight would work, twelve would work. The point is this: a number you cannot hold in your head under deadline pressure is not useful. It is a footnote.
 
 The limit is for the reviewer on the change, not the agent. The agent re-reads a long task list at every step. The reviewer cannot re-read a long diff while also judging whether the intent was right. Past a certain point, the reviewer is sampling the diff instead of checking the whole change.
 
@@ -60,7 +60,7 @@ When the task list goes beyond 10, stop. The spec is describing two changes. Fin
 
 If you cannot find the seam, ask the coding agent to propose the split. It usually sees clearer boundaries than you will. Two specs, two branches, two PRs, with the second proposal referencing the first by spec ID.
 
-Splitting is not a failure. A spec that spawns a Part 2 was correctly scoped. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
+Splitting is not a failure: a spec that spawns a Part 2 was correctly scoped. The mechanics of turning acceptance criteria into a task list, one task per criteria cluster, live in the [Spec Lifecycle](./spec-lifecycle) chapter. The rule here is only about when the count is telling you to split.
 
 ## When the change is genuinely large
 

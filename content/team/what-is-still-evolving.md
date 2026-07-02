@@ -26,7 +26,7 @@ Multi-LLM critique (using a second model to review a spec before implementation)
 
 ## What is genuinely open
 
-Multi-repo planning remains a gap in the SDD sources reviewed for this book. When one feature needs coordinated changes across three repositories, somebody still has to sequence the work, line up the PRs, and decide which repo carries the contract change first. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. That is a straight admission of a gap. It is not a workflow yet.
+Multi-repo planning remains a gap in the SDD sources reviewed for this book. When one feature needs coordinated changes across three repositories, somebody still has to sequence the work, line up the PRs, and decide which repo carries the contract change first. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. That is a straight admission of a gap, not a workflow.
 
 Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
 
@@ -38,7 +38,7 @@ No framework in the sources reviewed for this book has delivered governance with
 
 The bar this book applies to itself is simple: strong claims need strong evidence, synthesis gets labeled, and moving practices get time bounds.
 
-The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) are far enough along to teach directly. The team practices are not. The evidence base is thinner, the patterns are looser, and some of the advice in this chapter will age badly. Better to say that plainly than to sand it down into certainty.
+The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) are far enough along to teach directly. The team practices are not. The evidence base is thinner, the patterns are looser, and I expect some of the advice in this chapter to age badly. Better to say that plainly than to sand it down into certainty.
 
 The current SDD tool set is still fragmented: multiple frameworks, different trade-offs, no dominant approach, significant experimentation still underway. That is the picture this book found. The individual-developer story is further along. The team and organization story is still messy.
 

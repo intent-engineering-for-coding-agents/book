@@ -69,7 +69,7 @@ Frameworks without a native tag mechanism fall back to a comment on the test met
 // AC: SC-001 | Integration
 ```
 
-The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag. It is better than nothing.
+The comment does not integrate with the runner filter, but it satisfies the traceability scan. The fallback is worse than the tag but better than nothing.
 
 *Sources: Cucumber "Tags" (ongoing), scenario `@tags` for selective execution and for linking scenarios to issue or requirement IDs, the BDD lineage this convention borrows. JUnit 5 "Tagging and Filtering" (ongoing), `@Tag` for selective test execution. intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), dual tagging by AC ID and test type. The framework-specific syntax above is illustrative implementation guidance.*
 
@@ -111,9 +111,9 @@ One small table is enough:
 | `AUTH-015` | `partial` | positive path covered, boundary case missing |
 | `AUTH-016` | `gap` | no tagged proof |
 
-The `partial` state matters because real suites often land there. A team wrote the 403-path test. The session-expired redirect is still untested. Marking that row `covered` lies. Marking it `gap` throws away the proof already written. `partial` keeps the missing edge visible without pretending the whole scenario is open.
+The `partial` state matters because real suites often land there. A team wrote the 403-path test. The session-expired redirect is still untested. Marking that row `covered` lies; marking it `gap` throws away the proof already written. `partial` keeps the missing edge visible without pretending the whole scenario is open.
 
-The row itself should carry the next task. For `AUTH-015`, the note might read: `403 path covered; expired-session redirect still untested`. No detective work. The next test is clear from the registry entry alone.
+The row itself should carry the next task. For `AUTH-015`, the note might read: `403 path covered; expired-session redirect still untested`. No detective work needed: the next test is clear from the registry entry alone.
 
 This registry-as-work-queue pattern is this book's convention. OpenSpec does not require it. The point is not the exact file shape. The point is that missing proof should sit in the same place as the IDs it is missing from.
 

@@ -14,7 +14,7 @@ For cross-team decisions, the ADR location matters. An ADR checked into Team A's
 
 The shared architecture repository pattern is simple: a repository, or subdirectory in a monorepo, contains ADRs for decisions affecting more than one team. Team A's `AGENTS.md` tells agents to check the shared architecture repository before writing specs across service boundaries. Team B's instructions say the same. The authentication token format change goes into the shared repository, where both teams' agents load it.
 
-This is not a new mechanism. It is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is a pre-spec context load from the shared repository.
+The mechanism is not new: it is the existing ADR practice applied at the organizational level rather than the team level. The agent-specific addition is a pre-spec context load from the shared repository.
 
 ```mermaid
 graph TD

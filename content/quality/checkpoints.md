@@ -30,7 +30,7 @@ The other two inputs split along the line this chapter keeps drawing. Hooks are 
 
 Context erodes silently, the way [Context Window Management](../agent-instructions/context-window) described. A session three hours deep, window full, the spec buried under two unrelated tasks, writes worse code than the same session at its start.
 
-The during-gate re-teaches neither. It enforces them. The tell that context has lapsed is the agent re-deriving in hour three an import path it had right in hour one.
+The during-gate re-teaches neither; it enforces them. The tell that context has lapsed is the agent re-deriving in hour three an import path it had right in hour one.
 
 The minimum during-checkpoint is three questions. Is the spec the same one the agent loaded? Are the deterministic checks still passing? Has the context window been refreshed in the last hour? Two no answers and the work should pause.
 
@@ -85,7 +85,7 @@ Each gate catches a different break. Skip the before-gate and the agent works fr
 
 Every gate splits in two. Hooks and CI catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right form, whether the test proves the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
 
-This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and structure. Review still proves meaning.
+This book treats deterministic checks as hard gates; semantic AI review stays advisory unless your team has already proved a stronger workflow.
 
 The work is uneven. Most of the before-gate is maintenance, most of the during-gate is automation, and the after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
 

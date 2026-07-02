@@ -6,7 +6,7 @@ Specs verify behavior, tests verify proof, and PR taxonomy verifies hygiene, but
 
 ## The gap
 
-The [.principles project](https://dot-principles.github.io/) is one experimental answer. Principles are written as version-controlled Markdown files, organized into catalogs, and applied through agent commands. Each principle states one established belief about how code should be shaped, backed by a citable published source: a book with an ISBN, a paper with a DOI, or an authoritative specification.
+The [.principles project](https://dot-principles.github.io/) is one experimental answer, and a disclosure belongs here: it is my own project, so weigh my enthusiasm accordingly. Principles are written as version-controlled Markdown files, organized into catalogs, and applied through agent commands. Each principle states one established belief about how code should be shaped, backed by a citable published source: a book with an ISBN, a paper with a DOI, or an authoritative specification.
 
 The framework includes setup, load, and audit steps. The check is agent-native. A deterministic linter cannot tell whether a function has one reason to change. A model with the principle in context often makes a defensible call.
 

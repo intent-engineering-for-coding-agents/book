@@ -32,9 +32,9 @@ README and INDEX live in the same directory and share the same lifespan, but the
 
 ## Design docs
 
-Design docs live in `docs/design/` and hold per-feature thinking: options weighed, approach chosen, risks named. They are not decision records, and they are not specs. A design doc describes the approach. A spec defines the behavior.
+Design docs live in `docs/design/` and hold per-feature thinking: options weighed, approach chosen, risks named. They are not decision records, and they are not specs: a design doc describes the approach, a spec defines the behavior.
 
-Some teams write them and move on. Others keep them current. Both are reasonable. Pick one policy and apply it consistently, so the agent does not load a 2025 design doc as if it still described the 2026 implementation.
+Some teams write them and move on, others keep them current, and both are reasonable. Pick one policy and apply it consistently, so the agent does not load a 2025 design doc as if it still described the 2026 implementation.
 
 *Sources: `iec` repo conventions in this project family, the docs/design/ placement and write-and-forget vs. keep-current treatment.*
 

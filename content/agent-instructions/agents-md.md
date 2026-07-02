@@ -49,7 +49,7 @@ The alternative is picking a vendor file as canonical. A repo whose source of tr
 
 ## Generated pointers, not authored duplicates
 
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. The fix is not better discipline. The fix is generation: a short script that writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, and commits the result. The convention lives in the generator, not in anyone's memory.
+A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. Better discipline will not fix that; generation will. A short script writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, and commits the result. The convention lives in the generator, not in anyone's memory.
 
 Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
 

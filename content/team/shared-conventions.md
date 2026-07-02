@@ -48,7 +48,7 @@ Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies ev
 
 Role-based personal instruction set are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it. Depth is welcome in a personal instruction set. Overriding a team convention in one is not, and it becomes a review problem the moment someone notices.
 
-Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement. It does not produce the agreement. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
+Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement; it does not produce it. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
 
 Shared conventions work within a team. Cross-team coordination needs a different mechanism, one already part of the SDLC and visible outside a single codebase.
 

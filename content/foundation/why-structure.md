@@ -4,7 +4,7 @@ Your agent adds a new `POST /orders` REST endpoint.
 
 Consider a codebase that moved to gRPC months ago for typed contracts, streaming, and performance reasons that live in one architect's head and zero files in the docs. Every other service in the codebase is gRPC.
 
-REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else.
+REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else. Most of us have sat in that meeting.
 
 The handler compiles and passes its tests. The codebase now speaks two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
 
@@ -12,11 +12,11 @@ This one PR is the smallest version of the problem. The codebase holds hundreds 
 
 ## Compounding drift
 
-The model did not fail. Given the available context, the agent reasoned correctly. The constraint was missing.
+The model did not fail: given the available context, the agent reasoned correctly. The constraint was missing.
 
 ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
 
-There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear. It moves from the code to the gap between what the team decided and what the codebase expresses.
+There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear; it moves from the code to the gap between what the team decided and what the codebase expresses.
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, it takes weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 

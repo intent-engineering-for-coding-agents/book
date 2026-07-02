@@ -6,7 +6,7 @@ A coding agent does not produce original ideas out of thin air. Use that fact. G
 
 I do not want a coding agent trying to figure out everything from a single prompt. I want it working in the same engineering environment I do: code, decisions, documentation, tests, review, and constraints on the change.
 
-That is the trap. Clean output makes it easy to assume the agent already figured the system out. It did not. It still does not know your rules, constraints, or taste.
+That is the trap. Clean output makes it easy to assume the agent already figured the system out. It did not, and it still does not know your rules, constraints, or taste.
 
 Give the agent the information you would give a teammate before asking them to change the code. Then tighten that handoff next time. If the software gets better, that is where it comes from.
 

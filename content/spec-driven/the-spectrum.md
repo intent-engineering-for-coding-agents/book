@@ -73,7 +73,7 @@ At the enterprise end, GitHub positions Spec-Kit for large-scale, multi-team env
 
 ## Match formality to risk
 
-Match formality to risk is LeanSpec's framing. The table below is this book's working synthesis of it. The error is not picking the wrong tool. The error is picking one tool and applying it to every change regardless of risk.
+Match formality to risk is LeanSpec's framing. The table below is this book's working synthesis of it. The error is not picking the wrong tool; it is applying one tool to every change regardless of risk.
 
 | Change type | Appropriate formality |
 |---|---|
