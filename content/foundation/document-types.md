@@ -1,6 +1,6 @@
 # Document Types
 
-A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) with its acceptance criteria intact and its status unmarked, and the next agent reads it as live instruction, reimplements behavior the system already has, and opens a PR nobody knows what to do with. Nobody archived it. Nobody did anything wrong. The document outlived the job it was written for, and permanent documents do not get cleaned up.
+A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) and the next agent reads it as live instruction. The document outlived the job it was written for. [Spec Lifecycle](../spec-driven/spec-lifecycle) is where this book explains the archive rule in full.
 
 This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to see why the types matter is to watch what breaks when a team stores the right content in the wrong artifact.
 
@@ -98,7 +98,7 @@ One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the
 
 A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing `proposal.md`, `tasks.md`, delta specs (one per capability under `specs/`), and optionally `design.md` for changes that require technical design decisions. The spec itself is one artifact inside that structure.
 
-Some teams keep a simpler `/specs` folder with files named by feature. That works too and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation, and dead specs accumulate without a structural check to catch them.
+Some teams keep a simpler `/specs` folder with files named by feature. That works too and is more common in smaller codebases. The cost is lifecycle management: nothing prompts archival after implementation.
 
 This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
 
@@ -106,9 +106,9 @@ This book uses OpenSpec throughout, but the spec concept applies regardless of h
 
 ## Archiving
 
-A spec lives in two moments: written before the work begins, archived once it ends. Skip the second, and the agent treats settled work as an open task.
+A spec lives in two moments: written before the work begins, archived once it ends.
 
-Specs are temporary: they move to `openspec/changes/archive/` after implementation. The full archiving mechanics, the retention discipline, and the dead-spec failure mode that results from skipping this step are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
+Specs are temporary: they move to `openspec/changes/archive/` after implementation. The full mechanics are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 *Sources: OpenSpec documentation, `concepts.md` (Fission-AI/OpenSpec), the archive folder mechanics.*
 

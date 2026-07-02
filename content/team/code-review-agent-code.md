@@ -49,9 +49,9 @@ As of mid-2026, `iec` does not ship this as a command. Treat `check_spec_quality
 
 *Sources: The acceptance-criterion trace, scope-drift check, and `check_spec_quality` command shape are this book's workflow guidance. The `check_spec_quality` command is a time-bounded companion-tool plan, not a shipped feature.*
 
-## Multi-LLM critique
+## Independent critique at review
 
-The fresh-session technique from [Spec Lifecycle](../spec-driven/spec-lifecycle) applies here with different inputs and a different goal. Pre-implementation, the second agent critiques the spec. At review, it traces the implementation.
+The independent-critic technique from [Spec Lifecycle](../spec-driven/spec-lifecycle) applies here with different inputs and a different goal. Pre-implementation, the critic attacks the spec. At review, the critic traces the implementation.
 
 The implementation agent has context that biases its review. It resolved the spec's ambiguities, decided which edge cases were in scope, and wrote tests that confirm its choices. Asking it to review the same code confirms the same choices again.
 
@@ -59,7 +59,7 @@ Open a fresh session with the approved spec and the implementation code diff, an
 
 This step is not free. For high-stakes behavioral changes with many acceptance criteria, the tracing is worth it. For a change with three acceptance criteria and three tests, skip it.
 
-A fresh session of the same model removes the implementation bias. A genuinely different agent removes more: different training data, different defaults, different blind spots. Keeping `AGENTS.md` and `.agents/` vendor-neutral keeps the switching cost lower because the context was never tool-specific. The second opinion does not have to come from the same tool, and pointing a different agent at the same spec and code diff often costs little beyond the extra run itself. After enough review runs, the team also gets comparison data: which agent catches more missing traces, scope leaks, or inconsistent tests on this codebase.
+A fresh session of the same model removes implementation bias. A genuinely different agent does a different job: it brings different defaults and different blind spots. Use the fresh session when the main risk is context contamination from the implementation run. Reach for a second model family when the main risk is that one model class will miss the same gap twice. A portable instruction set lowers the switching cost, which is one reason [Instruction Hub](../agent-instructions/instruction-hub) argues for shared agent-facing files instead of tool-specific ones.
 
 *Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec without implementation-context bias.*
 

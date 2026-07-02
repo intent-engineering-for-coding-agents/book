@@ -150,7 +150,7 @@ Nothing here depends on one tool. The practice is broader: one rule the agent re
 
 This is not a general documentation chapter in disguise. The scope is narrower: keep the files agents load aligned with the code agents are changing.
 
-[Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept that order, stale documents stop being a writing problem. They become a quality problem. The code moved. The durable file the next agent trusts did not.
+[Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept that order, stale documents stop being a writing problem. They become a quality problem.
 
 Verification closes the code gap with tests. A documentation drift check closes part of the prose gap. Both follow the same control pattern:
 
@@ -172,6 +172,6 @@ The external inventory is only as good as the discipline behind it. A missing `r
 
 None of those limits sink the practice. They define it. This control is a tripwire, not semantic verification. For documentation, tripwires carry most of the value because the baseline is silence.
 
-The before-gate in [Before, During, After Checkpoints](./checkpoints) asks whether architecture and instructions are still current. This chapter turns the question into something a checker asks too.
+The before-gate in [Before, During, After Checkpoints](./checkpoints) asks whether architecture and instructions are still current. This chapter adds a tripwire for part of that question.
 
 *Sources: Model Context Protocol documentation, connector pattern for reaching external systems during agent work. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence connector availability as a perishable tooling example. This chapter's extension of AC-ID verification logic from tests to prose is this book's synthesis.*

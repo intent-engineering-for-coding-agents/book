@@ -48,7 +48,7 @@ Trunk-based development's answer is: as often as possible, with CI as the gate. 
 
 Spec deltas reduce merge pain in two ways. First, a clearly scoped spec is less likely to overlap with another clearly scoped spec. If two change folders are well-defined, their implementation boundaries are visible before the branches are created. A team standing up before the sprint catches spec collisions while they are still cheap to resolve.
 
-Second, reviewing a PR that has a spec delta gives the reviewer a clear statement of what the PR is supposed to do, which makes merge-conflict resolution faster. When two branches conflict, the question is not "what was this trying to do?" The spec answers it.
+Second, a spec delta makes merge-conflict resolution faster. When two branches conflict, the question is not "what was this trying to do?" The spec answers it.
 
 Two specs that make incompatible claims about the same capability are the one collision worth heading off early. Because each change folder names its scope before the branch exists, that overlap is visible in the planning column of the sprint board, where it costs a conversation, not in the Friday morning integration run, where it costs a rollback.
 
@@ -64,17 +64,15 @@ A check that fails the implementation PR when its change folder is not archived,
 
 `iec check` already plays that role for file-size limits and AC traceability. Gating it on an archived folder and a fully-checked `tasks.md` is the same move. The archive stays a one-line step the agent runs as its final task, visible in the code diff where a reviewer watches the spec promoted to baseline.
 
-Two smaller mechanics finish the cycle. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` un-archived and unimplemented, which is a dead spec until its implementation PR lands. Keep the two PRs in the same cycle and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one.
+Two smaller mechanics finish the cycle. Turn on the platform's auto-delete-branch-on-merge setting so spent branches do not accumulate. That is a repository checkbox, not a pipeline. And mind the one gap the two-PR shape opens: a spec PR merges the change folder to `main` before implementation lands. Keep the two PRs in the same cycle and let the open implementation PR be the tracking link, so a half-built proposal is never mistaken for a finished one. [Spec Lifecycle](../spec-driven/spec-lifecycle) covers the archive rule and the dead-spec failure mode.
 
 *Sources: Paul Hammant, [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) (ongoing), branch naming and integration practice. Dave Farley with Jez Humble, "Continuous Delivery" (Addison-Wesley, 2010) and [continuousdelivery.com](https://continuousdelivery.com/) (ongoing), CI as the gate that turns a step the agent forgets into one it cannot skip.*
 
 ## Review at merge
 
-A clean code diff is the easiest thing for an agent to produce and the easiest thing for a reviewer to wave through. Consider tidy, well-tested code, approved in ten minutes. Then a support ticket lands: the export endpoint skips validation on the `reason` field for premium-tier users. The spec listed exactly that as acceptance criterion `[EXP-004]`. The test for `[EXP-004]` existed but asserted the wrong tier, the implementation matched the wrong test, and every layer agreed with every other. The reviewer read the code diff. Nobody read the code diff against the spec.
+A clean code diff is the easiest thing for an agent to produce and the easiest thing for a reviewer to wave through. That is why review order matters. Read the diff first and the spec becomes confirmation. Read the spec first and the diff has to answer to it.
 
-The failure is not in the code but in the review sequence: the code diff was read before the spec. The code diff looked correct. The spec would have caught the divergence.
-
-Intent-first review reads the spec delta before the code diff. The questions to answer from the spec delta are: does this intent match what was planned? Is anything missing from the acceptance criteria? Are the edge cases named? Only after those questions are answered does the diff view get opened. The code diff review question is different: does this implementation match the spec?
+[Code Review for Agent-Generated Code](./code-review-agent-code) is the chapter that works out the mechanics. The point here is narrower: trunk-based flow gives that review order a natural place to happen, either in a spec PR of its own or at the top of a single PR before the code diff takes over the screen.
 
 Reviewers and agents miss different things in this review, and it works only when each covers the other's gaps: reviewers verify intent and integration, agents verify coverage and consistency. Which gaps fall to which reviewer is its own workflow question.
 

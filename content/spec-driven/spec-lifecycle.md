@@ -20,7 +20,7 @@ graph TD
     ADR[ADR<br/>approved]:::pre --> DD["Design doc<br/>docs/"]:::pre
     DD --> W
 
-    W["Write<br/>/opsx:propose"]:::stage --> C[Critique<br/>second model]:::stage
+    W["Write<br/>/opsx:propose"]:::stage --> C[Critique<br/>independent critic]:::stage
     C --> R[Review<br/>spec before code]:::stage
     R --> I["Implement<br/>/opsx:apply"]:::stage
     I --> A["Archive<br/>/opsx:sync + archive"]:::stage
@@ -32,7 +32,7 @@ Three of these stages are OpenSpec commands. Critique and review are not, and th
 
 **Write** (`/opsx:propose`): create the spec when you are about to implement, not weeks in advance. One command generates the proposal, specs, design, and tasks together. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
-**Critique:** run the draft past a second model before human review. Not code review. Spec review. A different model finds the missing edge cases, the ambiguous criteria, and the scope the implementer quietly narrowed to make the work tractable, gaps a human reviewer who already heard the proposal skips over.
+**Critique:** run the draft past an independent critic before human review. The critic may be a fresh session of the same model or a second model family. Those are different controls. A fresh session drops the author's context and bias. A second model adds different priors and blind spots. Use either for ordinary work. Use both when the spec is expensive to get wrong.
 
 **Review:** the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
@@ -72,15 +72,13 @@ The task list makes the spec executable. It does not make the spec correct. That
 
 *Sources: Fission AI, OpenSpec (github.com/Fission-AI/OpenSpec, accessed 2026), the spec template naming requirements and scenarios rather than assigning IDs, and framing a scenario as a potential test case bound to no test; `/opsx:propose` generating `tasks.md` and `/opsx:apply` working through tasks and checking them off.*
 
-## Multi-LLM critique
+## Independent critique
 
-The single-model spec review has a blind spot: the model that wrote the spec and the model reviewing it share the same training and the same priors about what constitutes a complete scenario. The gaps they miss, they tend to miss together.
+The model that wrote the spec carries two kinds of bias into review. One comes from session history. The draft, the abandoned alternatives, and the little compromises are still in context, so the review tends to confirm them. The other comes from the model itself: the same priors about what counts as a complete scenario, the same habits in how edge cases get skipped.
 
-A second model from a different family does not share those priors. Writing the spec in your primary tool and critiquing it with a different model family catches different gaps than writing and reviewing within the same family. Rick Hightower lists this multimodel critique as an emerging step in spec-driven workflows. The difference is not always large, but for specs guiding production-critical implementations, it is often worth the pass.
+A fresh session fixes the first problem. Start a new chat, load only the spec, and ask for missing edge cases, ambiguous acceptance criteria, and scenarios with no stated failure mode. That is the cheaper pass and often enough.
 
-The practical workflow: draft in your primary tool, then send the spec to a second model with the prompt "identify missing edge cases, ambiguous acceptance criteria, and any scenarios where the failure mode is not specified". How you do this depends on your setup: a second chat session, a different IDE plugin, or a CLI agent pointed at the file. Iterate once. The critique adds a few minutes and often catches cases the first model skipped: the empty list, the concurrent update, the API returning a 200 with an error payload in the body.
-
-This is not a rigid practice. For small, low-risk specs, it is overhead. For specs touching security, payment, or anything that would constitute a long day when it goes wrong, the second-model pass is worth it.
+A second model family addresses the second problem. Different defaults catch different omissions. Rick Hightower lists this multimodel critique as an emerging step in spec-driven workflows. For small specs, skip the extra run. For payment, security, or production-critical behavior, the pass is usually worth a few minutes.
 
 *Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), multimodel critique as an emerging step in spec-driven development.*
 

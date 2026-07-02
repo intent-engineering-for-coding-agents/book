@@ -81,11 +81,11 @@ Note that using `CLAUDE.md` does not prevent the hub: a `CLAUDE.md` that points 
 
 The hub adds that directory structure, a pointer file, and a maintenance ritual for a problem that does not exist yet. The coordination cost is real: every instruction file needs a load clause, every skill needs a trigger, every hook needs a definition. For that project, that cost buys nothing.
 
-Two things change the calculation. First, tool independence: a developer who wants to stay portable, not locked into any single agent, benefits from a vendor-neutral hub even alone. Second, multi-agent workflows: running one agent to write code and another to review it is a coordination problem even for one person. Both agents need the same instructions, the same skill definitions, the same conventions. A vendor-specific file serves only the tool it was written for.
+Two things change the calculation. First, portability: a developer who does not want to get locked into any single agent benefits from a shared hub even alone. Second, multi-agent workflows: running one agent to write code and another to review it is a coordination problem even for one person. Both agents need the same instructions, the same skill definitions, the same conventions. A tool-specific file serves only the tool it was written for.
 
 The hub pays off when the coordination problem appears: a second developer joins with their own tool, a solo developer runs two agents across different tasks, or a team grows from two to five and needs every tool reading the same codebase rules.
 
-Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a vendor-specific instruction file is a barrier a vendor-neutral hub removes.
+Open source projects are a special case: the moment you accept contributions, you cannot expect every contributor to use your preferred agent. With many coding agents to choose from today, a tool-specific instruction file is a barrier a shared hub removes.
 
 At that point, the hub prevents the fork that would otherwise happen. The investment pays off when the alternative is divergence.
 

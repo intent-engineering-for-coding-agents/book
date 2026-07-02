@@ -55,7 +55,7 @@ One closing check has nothing to do with the diff and everything to do with what
 
 The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
 
-Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc) lists what that memory holds, and any of it counts when the release changed what it describes. The agent inspects the diff and proposes the affected artifacts. The reviewer decides whether the memory is current.
+Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc) defines that term and lists the artifacts inside it. The after-gate uses the term as a checklist item: update the affected records now or name a follow-up owner before merge.
 
 Small updates belong in the same PR. Larger architecture cleanup needs a follow-up with an owner named from the implementation PR. A release with no memory update and no explicit follow-up leaves stale context behind on purpose.
 
@@ -63,7 +63,7 @@ Small updates belong in the same PR. Larger architecture cleanup needs a follow-
 
 Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right structure for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
 
-Review is the third part of the after-checkpoint, and the order is the one [Trunk-Based Development with Agents](../team/trunk-based-development) sets out: the spec first, then the diff against the spec, then the diff on its own merits. The after-gate is where that order is most often reversed under time pressure. Reverse it and the review checks whether the code looks reasonable, not whether it implements what was specified.
+Review is the third part of the after-checkpoint. [Code Review for Agent-Generated Code](../team/code-review-agent-code) defines the sequence. The after-gate is where teams most often abandon it under time pressure.
 
 ## A worked sequence
 
