@@ -152,7 +152,7 @@ This is not a general documentation chapter in disguise. The scope is narrower: 
 
 [Docs > Specs > Code](../spec-driven/docs-gt-specs-gt-code) argued for design intent above code because this book treats generated code as the more disposable artifact. Once you accept that order, stale documents stop being a writing problem. They become a quality problem. The code moved. The durable file the next agent trusts did not.
 
-Verification closes the code gap with tests. A documentation drift check closes part of the prose gap. Both are the same shape of control:
+Verification closes the code gap with tests. A documentation drift check closes part of the prose gap. Both follow the same control pattern:
 
 - attach a stable link to the artifact under review
 - run a deterministic check against the link

@@ -53,7 +53,7 @@ Three properties, three unambiguous answers: did the file exist, did the agent d
 
 A handful of these tasks is the eval set, each covering a workflow the team relies on. Start with a set small enough to re-run by hand. Every task follows the pattern above: start from a fixed repo state, implement the spec, then grade the output against the properties it must satisfy.
 
-The score is the count of properties satisfied. If that score drops after a configuration change, you have a regression even if the generated code still runs. The eval-set shape and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and it does not prescribe a format.
+The score is the count of properties satisfied. If that score drops after a configuration change, you have a regression even if the generated code still runs. The eval-set design and the structural-check format here are this book's convention, not a settled standard. Hightower's survey of spec-driven tooling names evaluation as a gap across the tools he compares, and it does not prescribe a format.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), evaluation as part of agent setup. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), evaluation as a gap in SDD tooling. intent-engineering-for-coding-agents/cli `examples/eval-demo/` (ongoing), one concrete eval set and structural-check format.*
 
@@ -87,7 +87,7 @@ The book's central claim, repeated through Foundation and Agent Instructions and
 
 ## Calibration is the hard part
 
-Eval suites for agents are still early practice. As of 2026, there is no widely shared tooling for this. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as an unfilled gap, and neither prescribes a framework. This chapter gives the minimum viable shape: a fixed task, a structural check, a comparison.
+Eval suites for agents are still early practice. As of 2026, there is no widely shared tooling for this. Anthropic's effective-agents guidance and Hightower's tool survey both point at evaluation as an unfilled gap, and neither prescribes a framework. This chapter gives the minimum viable setup: a fixed task, a structural check, a comparison.
 
 Keeping the suite calibrated is harder than building it. A task the agent nails reliably today goes uninformative tomorrow when the model improves under it. A task the agent fails reliably tests a property no configuration will satisfy, so it reports noise on every run. The suite drifts in both directions and needs periodic curation. Treat it as a living artifact, not a one-time setup.
 

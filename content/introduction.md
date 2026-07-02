@@ -20,7 +20,7 @@ The phrase "intent engineering" did not start here. `intentengineering.dev` uses
 
 *Sources: intentengineering.dev (ongoing), broader prior use of "intent engineering". Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, December 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, March 9, 2026), intent-driven development as outcome-and-constraint framing for AI-assisted execution. intent-driven-development.com (ongoing), intent-above-implementation framing in current workflow language.*
 
-The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one lifecycle, one directory shape, one archive rule, and one companion repo readers inspect. If your team uses a plain `spec.md`, a local spec format, LeanSpec, Spec-Kit, or an internal workflow, translate the OpenSpec terms to your own spec artifact.
+The book is OpenSpec-first on purpose. Intent Engineering is the portable practice. OpenSpec is the concrete workflow used here because the examples need one lifecycle, one directory layout, one archive rule, and one companion repo readers inspect. If your team uses a plain `spec.md`, a local spec format, LeanSpec, Spec-Kit, or an internal workflow, translate the OpenSpec terms to your own spec artifact.
 
 *Sources: OpenSpec (openspec.dev), change-folder and delta-spec structure used throughout this book.*
 

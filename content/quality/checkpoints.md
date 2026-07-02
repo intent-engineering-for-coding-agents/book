@@ -61,7 +61,7 @@ Small updates belong in the same PR. Larger architecture cleanup needs a follow-
 
 *Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance path and documentation drift check.*
 
-Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right shape for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
+Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right structure for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
 
 Review is the third part of the after-checkpoint, and the order is the one [Trunk-Based Development with Agents](../team/trunk-based-development) sets out: the spec first, then the diff against the spec, then the diff on its own merits. The after-gate is where that order is most often reversed under time pressure. Reverse it and the review checks whether the code looks reasonable, not whether it implements what was specified.
 
@@ -85,9 +85,9 @@ Each gate catches a different break. Skip the before-gate and the agent works fr
 
 ## Where the attention goes
 
-Every gate splits in two. Hooks and CI catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right shape, whether the test proves the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
+Every gate splits in two. Hooks and CI catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right form, whether the test proves the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
 
-This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and shape. Review still proves meaning.
+This book treats deterministic checks as hard gates. Semantic AI review stays advisory unless your team has already proved a stronger workflow. A scanner proves linkage and structure. Review still proves meaning.
 
 The work is uneven. Most of the before-gate is maintenance, most of the during-gate is automation, and the after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
 

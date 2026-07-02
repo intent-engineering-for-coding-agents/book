@@ -95,7 +95,7 @@ After implementation, the agent has the code diff and the spec near at hand. Use
 
 Do not let the agent silently rewrite the system record. The synchronization is part of the release work, but review still owns the truth. A coding agent with write access to the architecture docs is useful. A coding agent with unchecked authority over the architecture docs is how stale memory becomes fabricated memory, which is a worse incident with nicer Markdown.
 
-Skipped archive work looks harmless at first. The cost shows up later, when half-implemented proposals still look live or a design doc still describes the system you replaced. Skipped engineering-memory work has the same shape, with a longer fuse: the code changed, the durable context did not, and later work starts from the wrong system.
+Skipped archive work looks harmless at first. The cost shows up later, when half-implemented proposals still look live or a design doc still describes the system you replaced. Skipped engineering-memory work fails the same way, with a longer fuse: the code changed, the durable context did not, and later work starts from the wrong system.
 
 Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. The judgment still stays with the developer and reviewer.
 
