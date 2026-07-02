@@ -1,6 +1,6 @@
 # Test Strategy and Convention
 
-Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving little about the system.
+Left to its own defaults, an agent reaches for the test type its training over-represents, the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving little about the system.
 
 ## The test taxonomy
 
@@ -53,7 +53,7 @@ The decision to adopt a specific convention, and the rationale for each choice, 
 
 ## Scenario complexity and minimum test count
 
-Not every AC is the same shape. The minimum test count follows from the AC's own complexity: the number of conditions it states, not the paths the implementation introduces.
+Not every AC is the same shape. The minimum test count follows from the AC's own complexity, the number of conditions it states rather than the paths the implementation introduces.
 
 | AC complexity | Minimum tests |
 |---|---|
@@ -69,7 +69,7 @@ This table belongs next to the scenario template. In the companion repo, that te
 
 ## The AC registry
 
-The convention needs one more file: an AC registry that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. In the companion repo, the registry lives at `tests/ac-registry.md`.
+The convention needs one more file, an AC registry that allocates acceptance-criterion IDs so two scenarios never collide on the same identifier. One row per component, updated in the same commit as any new scenario. In the companion repo, the registry lives at `tests/ac-registry.md`.
 
 The allocation rule, the monotone-numbering discipline, and why a deleted ID leaves a permanent gap are the next chapter's subject: [AC IDs and Coverage](./ac-ids-coverage).
 

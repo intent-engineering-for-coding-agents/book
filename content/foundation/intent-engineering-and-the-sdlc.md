@@ -61,13 +61,13 @@ Architecture changes and agent-led implementation need the target before code ex
 
 During implementation, the agent enters the coding step through the repo context: `AGENTS.md`, `.agents/`, project docs under `docs/`, canonical specs under `openspec/specs/`, and the spec for the current change.
 
-[Why Structure Matters](./why-structure) explains the deeper rule: the repo is the context. The SDLC map only needs the placement because implementation is where durable context meets code generation.
+[Why Structure Matters](./why-structure) explains the deeper rule, that the repo is the context. The SDLC map only needs the placement because implementation is where durable context meets code generation.
 
 ## Review: intent first, code second
 
 Once a PR exists, a normal review path collapses intent and code into one conversation centered on the code diff. Intent Engineering separates them: first, does the intent match agreement, then, does the implementation match the approved intent. The sequence moves one question earlier, to whether this is the right change at all. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
-PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same code diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
+PR taxonomy gives the reviewer a second guardrail. A `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same code diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
 
 ## CI: the pipeline checks the conventions
 
@@ -93,7 +93,7 @@ Do not let the agent silently rewrite the system record. The synchronization is 
 
 Skipped archive work looks harmless at first. The cost shows up later, when half-implemented proposals still look live or a design doc still describes the system you replaced. Skipped engineering-memory work fails the same way, with a longer fuse: the code changed, the durable context did not, and later work starts from the wrong system.
 
-Checks catch the mechanical part: an index-staleness rule compares the index with the file tree, but no check knows if a design doc deserved ADR promotion or an undocumented convention changed. The judgment still stays with the developer and reviewer.
+Checks catch the mechanical part. An index-staleness rule compares the index with the file tree, but no check knows whether a design doc deserved ADR promotion or an undocumented convention changed. The judgment still stays with the developer and reviewer.
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (Cognitect, 2011), a reversed decision becomes a new superseding ADR rather than an edit to the original. ISO/IEC/IEEE 42010:2022, architecture description as the artifact expression of architecture. The archive-on-ship discipline, engineering-memory synchronization step, and agent-assisted review boundary are this book's workflow synthesis.*
 

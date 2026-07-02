@@ -18,9 +18,9 @@ The enforcement mechanism is directory placement. Structured documents live unde
 
 ## README and INDEX files
 
-README files live at the root of every documentation directory. GitHub, GitLab, and most hosted Git platforms render them automatically when a user navigates to that directory, and that rendering is what a README is for: a human reading on a Git host.
+README files live at the root of every documentation directory. GitHub, GitLab, and most hosted Git platforms render them automatically when a user navigates to that directory, and that rendering is what a README is for, a human reading on a Git host.
 
-INDEX files serve a different reader: the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map.
+INDEX files serve a different reader, the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map.
 
 The agent loads `docs/INDEX.md` at the start of a session to decide what to read next, so a stale entry misdirects every session that follows.
 
@@ -64,7 +64,7 @@ This book uses MADR (Markdown Architectural Decision Records), a structured temp
 
 The "considered options" section is not boilerplate. Rejected options tell the agent which paths were already evaluated and ruled out. The why-not carries almost as much weight as the why.
 
-A second reason MADR works is simpler: the headings already say what belongs under them. Write `## Considered Options` and the agent usually fills it correctly without extra explanation.
+A second reason MADR works is that the headings already say what belongs under them. Write `## Considered Options` and the agent usually fills it correctly without extra explanation.
 
 *Sources: Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), the template's plain-English section headings. The named-standard-versus-custom-format argument is book synthesis.*
 
@@ -74,7 +74,7 @@ Specs are the behavioral form of intent. Where an ADR records a decision and the
 
 The structure matters. A list of discrete unchecked steps keeps the work concrete. The same content written as prose gets summarized and blurred.
 
-One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the agent to check off each task immediately upon completion, not at the end of the run. That gives you live progress visibility and makes interruption safer.
+One instruction is worth adding to your `AGENTS.md` or to the spec itself. Tell the agent to check off each task immediately upon completion, not at the end of the run. That gives you live progress visibility and makes interruption safer.
 
 *Sources: OpenSpec documentation (openspec.dev), the task-list structure within a spec change folder. The checklist-vs-prose behavioral tendency is a current-practice observation.*
 
@@ -82,7 +82,7 @@ One instruction worth adding to your `AGENTS.md` or to the spec itself: tell the
 
 A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing `proposal.md`, `tasks.md`, delta specs under `specs/`, and optionally `design.md` for changes that require technical design decisions. The spec itself is one artifact inside that structure.
 
-Some teams keep a simpler `/specs` folder with files named by feature. That works too. The cost is lifecycle management: nothing prompts archival after implementation.
+Some teams keep a simpler `/specs` folder with files named by feature. That works too. The cost is lifecycle management, since nothing prompts archival after implementation.
 
 This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
 
@@ -92,7 +92,7 @@ This book uses OpenSpec throughout, but the spec concept applies regardless of h
 
 A spec lives in two moments: written before the work begins, archived once it ends.
 
-Specs are temporary: they move to `openspec/changes/archive/` after implementation. The full mechanics are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
+Specs are temporary and move to `openspec/changes/archive/` after implementation. The full mechanics are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 *Sources: OpenSpec documentation, `concepts.md` (Fission-AI/OpenSpec), the archive folder mechanics.*
 

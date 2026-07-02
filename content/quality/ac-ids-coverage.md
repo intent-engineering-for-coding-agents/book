@@ -8,13 +8,13 @@ A spec and a test suite that drift apart silently defeat the point: the spec cre
 
 An Acceptance Criterion ID (AC ID) is a stable, scenario-level identifier: a prefix and a zero-padded number, wrapped in brackets so it is easy to spot in a heading and detect with a grep, such as `[GV-001]`, `[AUTH-014]`, `[CONF-007]`. Each acceptance scenario in a spec gets one, and tests reference the ID in a marker, a comment, or a test name. The link remains valid when the prose is rewritten, the file moves, or the heading order changes.
 
-The prefix is a short uppercase abbreviation of the component or feature, usually two to four letters, the same shape as an issue-tracker project key. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. Longer is allowed when a component needs it: the constraint is readability inside a bracketed heading, not a letter count. The reader recognizes the component from the prefix without looking it up, and `grep "GV-" specs/` finds every graph-validator scenario.
+The prefix is a short uppercase abbreviation of the component or feature, usually two to four letters, the same shape as an issue-tracker project key. `GV` for GraphValidator, `AUTH` for authentication, `CONF` for configuration. Longer is allowed when a component needs it, since the constraint is readability inside a bracketed heading, not a letter count. The reader recognizes the component from the prefix without looking it up, and `grep "GV-" specs/` finds every graph-validator scenario.
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is the thing that stops matching first.
 
-This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight: its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules.
+This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight. Its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules.
 
-The scenario form borrows Gherkin's `WHEN/THEN` notation, not the BDD practice that notation came from (the distinction is drawn in [The Spectrum](../spec-driven/the-spectrum)). The stricter traceability and coverage rules do not come from BDD either. Those are this book's contribution: the quality layer that turns a spec from documented intent into provable behavior.
+The scenario form borrows Gherkin's `WHEN/THEN` notation, not the BDD practice that notation came from (the distinction is drawn in [The Spectrum](../spec-driven/the-spectrum)). The stricter traceability and coverage rules do not come from BDD either. Those are this book's contribution, the quality layer that turns a spec from documented intent into provable behavior.
 
 In the companion repo, the convention is recorded in `docs/decisions/0007-ac-id-and-test-type-convention.md`.
 
@@ -36,9 +36,9 @@ Test-type: Integration
 **Then** the directory contains `AGENTS.md`, `docs/`, and `openspec/`
 ```
 
-`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate: the intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: Integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it makes that choice for itself.
+`Test-type:` sits on its own line before the WHEN/THEN block. That placement is deliberate. The intended test category is a design-time decision, visible during spec review, not deferred until implementation. The agent writing a test for this scenario reads `Test-type: Integration`, consults the test strategy document, picks the right framework, and puts the file in the right location. Without the field it makes that choice for itself.
 
-A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed, test methods get extracted, and a path hardcoded in the spec goes stale without anyone noticing. That is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec: the `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
+A pointer from the spec to a specific test file path is the wrong coupling direction. Test files get renamed, test methods get extracted, and a path hardcoded in the spec goes stale without anyone noticing. That is the failure mode the practice is supposed to prevent. The right direction is from the test back to the spec. The `@Tag("SC-001")` annotation on the test is the stable link. A traceability scanner greps for `SC-001` in the test suite. It does not care which file the test lives in or what the method is named.
 
 *Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), the `Test-type:` field and test-back-to-spec tagging convention. This field name is a book and companion-repo convention layered onto OpenSpec, not an OpenSpec requirement.*
 
@@ -61,7 +61,7 @@ def test_init_empty_directory(tmp_path): ...
 
 Two tags, two independent uses. The traceability scanner greps for `SC-001` to verify the scenario has a corresponding test. The CI runner filters on `integration` to run only the integration tier in a specific pipeline stage, skipping e2e tests that require a deployed environment. One tagging step, two channels that never interfere.
 
-None of this machinery is new. Test tags in JUnit, pytest, and the rest exist primarily for selective execution: run the smoke set, skip the slow e2e tier. BDD tooling went further years ago, tagging Cucumber scenarios with issue keys like `@JIRA-1234` to link a scenario back to a ticket. The AC ID convention is that same move made strict: the tag carries a registry-allocated ID, and a CI check fails when a scenario has no test wearing it.
+None of this machinery is new. Test tags in JUnit, pytest, and the rest exist primarily for selective execution: run the smoke set, skip the slow e2e tier. BDD tooling went further years ago, tagging Cucumber scenarios with issue keys like `@JIRA-1234` to link a scenario back to a ticket. The AC ID convention is that same move made strict. The tag carries a registry-allocated ID, and a CI check fails when a scenario has no test wearing it.
 
 Frameworks without a native tag mechanism fall back to a comment on the test method:
 
@@ -113,7 +113,7 @@ One small table is enough:
 
 The `partial` state matters because real suites often land there. A team wrote the 403-path test. The session-expired redirect is still untested. Marking that row `covered` lies; marking it `gap` throws away the proof already written. `partial` keeps the missing edge visible without pretending the whole scenario is open.
 
-The row itself should carry the next task. For `AUTH-015`, the note might read: `403 path covered; expired-session redirect still untested`. No detective work needed: the next test is clear from the registry entry alone.
+The row itself should carry the next task. For `AUTH-015`, the note might read: `403 path covered; expired-session redirect still untested`. The next test is then clear from the registry entry alone, no detective work needed.
 
 This registry-as-work-queue pattern is this book's convention. OpenSpec does not require it. The point is not the exact file shape. The point is that missing proof should sit in the same place as the IDs it is missing from.
 
@@ -159,7 +159,7 @@ Test-type: Integration
 
 Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `Integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not prove the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The AC-coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test.
 
-What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness: the ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness keeps the link intact in an agentic codebase, where everything changes faster than anyone tracks by hand.
+What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness. The ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness keeps the link intact in an agentic codebase, where everything changes faster than anyone tracks by hand.
 
 A generated scenario should therefore be treated as a draft, not a verdict. When the scenario is too weak to write a good test from, the problem is upstream in the acceptance criteria, the missing context, or the review discipline around them. The syntax did its job. The intent did not.
 
