@@ -40,7 +40,7 @@ Typed from the session, `/update-changelog` invokes the skill directly.
 
 None of that touches the autonomous trigger. Agent instructions tell the agent which skill to load when the task description matches. The developer bypasses that layer by invoking the skill explicitly. Same file either way.
 
-At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output sometimes lands in a vendor-specific directory rather than `.agents/skills/`. If you want one shared hub, copy the generated files into `.agents/skills/` after initialization.
+At the time of writing, running `openspec init` for a specific agent generates a full set of skills: `opsx:new`, `opsx:ff`, `opsx:apply`, `opsx:archive` and others. The output sometimes goes to a vendor-specific directory rather than `.agents/skills/`. If you want one shared hub, copy the generated files into `.agents/skills/` after initialization.
 
 Some CLI agents scan `.agents/skills/` natively. Many IDE integrations reach skill files through `AGENTS.md` pointers instead of reading the directory directly. Vendor-neutral structure gets you as far as the file. Whether the agent invokes that skill in a given session still depends on its judgment. Hooks close that gap.
 

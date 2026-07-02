@@ -78,7 +78,7 @@ Three states are enough for the repo-local documentation drift check:
 - `stale`: a tracked path changed after `content-verified-at`
 - `untracked`: a handwritten document has no marker yet
 
-`broken-ref` should fail the build. `stale` is better as a warning at first, then a build failure later if the team wants a ratchet. `untracked` stays warn-only so adoption does not turn into a migration project before the first signal lands.
+`broken-ref` should fail the build. `stale` is better as a warning at first, then a build failure later if the team wants a ratchet. `untracked` stays warn-only so adoption does not turn into a migration project before the first signal appears.
 
 The useful twist is diff scoping. Checking only documents changed in the Pull Request (PR) fails the moment somebody forgets the doc update. The validator should also pull in tracked documents whose `tracked-paths` entries intersect the code changed by the PR.
 

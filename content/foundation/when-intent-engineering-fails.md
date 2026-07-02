@@ -14,7 +14,7 @@ The fix is structural and slightly painful. Treat agent instructions as part of 
 
 Open `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) and find a pile of directories: implemented changes, canceled changes, an implemented change never archived, a partially done change from before the original author left, and competing proposals for the same change.
 
-Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple lands here: the clutter compounds with every change the team leaves un-archived.
+Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple applies directly here: the clutter compounds with every change the team leaves un-archived.
 
 A dead spec is worse than no spec. It tells the agent, with confidence, about behavior the system no longer has, decisions that were reversed, and acceptance criteria never proven. Worse, it does so as the agent's first read of the change folder. Archive immediately after implementation. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds the archive discipline that prevents this.
 

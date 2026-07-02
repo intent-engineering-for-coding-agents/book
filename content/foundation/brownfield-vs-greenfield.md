@@ -20,7 +20,7 @@ Do not write the first brownfield change proposal from a cold codebase read. Har
 
 A useful skeleton contains what a capable agent infers from reading the code: the major modules and their responsibilities, the dependencies between them, the data flows, an outline of the business rules visible from the implementation, and C4-style views of context and containers. It is the answer to "what is this system, and how does it work?", written down for the first time, possibly ever.
 
-This map goes into `docs/`. This book uses `docs/skeleton.md` to mark it as bootstrap rather than current architecture. The skeleton is the first pass, not the resting place: structure eventually lands in `docs/architecture/`, data flows and component behavior in `docs/design/`, and recovered decisions and long-lived constraints in `docs/decisions/` as historical ADRs. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
+This map goes into `docs/`. This book uses `docs/skeleton.md` to mark it as bootstrap rather than current architecture. The skeleton is the first pass, not the resting place: structure eventually moves into `docs/architecture/`, data flows and component behavior into `docs/design/`, and recovered decisions and long-lived constraints into `docs/decisions/` as historical ADRs. Before the team has written a single ADR or any agent instructions, the agent reads the skeleton and reasons about what already exists.
 
 ## Generating one
 
@@ -30,7 +30,7 @@ Point a capability-class coding agent at the legacy tree. Ask for a structural m
 
 This is a goal statement, not a one-shot script. The agent works through it by reading files, tracing imports, and following dependency declarations. On a large codebase, expect multiple passes across different modules before the structure becomes clear. Let it run.
 
-The structural output tends to land well: modules, dependencies, data flows. Business rules, historical decisions, and operating constraints are harder. Some rules read directly from the code: constraint checks, guard clauses, state machines inlined in service logic. Some design decisions show up indirectly in module boundaries, dependency choices, and defensive code paths. Others exist only in institutional memory, and no amount of static analysis surfaces them. The "Note anything you cannot determine" clause is load-bearing. The skeleton is not done until a domain expert has reviewed it and corrected what the agent flagged as missing.
+The structural output is usually strong: modules, dependencies, data flows. Business rules, historical decisions, and operating constraints are harder. Some rules read directly from the code: constraint checks, guard clauses, state machines inlined in service logic. Some design decisions show up indirectly in module boundaries, dependency choices, and defensive code paths. Others exist only in institutional memory, and no amount of static analysis surfaces them. The "Note anything you cannot determine" clause is load-bearing. The skeleton is not done until a domain expert has reviewed it and corrected what the agent flagged as missing.
 
 That review gates the first change proposal. A brownfield proposal written before this pass is guesswork with better formatting.
 

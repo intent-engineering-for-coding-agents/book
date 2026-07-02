@@ -33,7 +33,7 @@ git clone https://github.com/intent-engineering-for-coding-agents/cli
 
 ## The git history, for the curious
 
-The repo accumulated its structure in phases, each represented by a git tag. If you want to see how the setup evolved rather than where it landed, check out the repo at any point in that history:
+The repo accumulated its structure in phases, each represented by a git tag. If you want to see how the setup evolved rather than where it ended up, check out the repo at any point in that history:
 
 | Tag | What it introduced |
 |-----|--------------------|
