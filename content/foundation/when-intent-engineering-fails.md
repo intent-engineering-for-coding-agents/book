@@ -12,7 +12,7 @@ The fix is structural and slightly painful. Treat agent instructions as part of 
 
 ## Dead specs
 
-Open `openspec/changes/` and find a pile of directories: implemented changes, canceled changes, an implemented change never archived, a partially done change from before the original author left, and competing proposals for the same change.
+Open `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) and find a pile of directories: implemented changes, canceled changes, an implemented change never archived, a partially done change from before the original author left, and competing proposals for the same change.
 
 Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple lands here: the clutter compounds with every change the team leaves un-archived.
 

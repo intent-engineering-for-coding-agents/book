@@ -2,7 +2,7 @@
 
 Consider a spec with no lifecycle. It does not get retired. It sits there looking exactly like a live one.
 
-Months later, an agent opens a change folder for a payment integration the team abandoned: never merged, never archived, still sitting in `openspec/changes/` with a `proposal.md` and `tasks.md` pointing at an upstream API the company already replaced. The agent, being helpful, starts implementing it.
+Months later, an agent opens a change folder for a payment integration the team abandoned: never merged, never archived, still sitting in `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) with a `proposal.md` and `tasks.md` pointing at an upstream API the company already replaced. The agent, being helpful, starts implementing it.
 
 A spec without a lifecycle accumulates. The agent cannot distinguish intent from archaeology.
 

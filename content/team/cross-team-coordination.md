@@ -54,7 +54,7 @@ The inner source for agent instructions is book synthesis. As of mid-2026, there
 
 ## Multi-repo realities
 
-Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/`, its own `.agents/`, its own agent instructions. Coordination between them requires agents to cross a repository boundary the code already crossed years ago.
+Most teams work in multi-repo environments: the payment service in one repository, the notification service in another, the authentication service in a third. Each has its own `openspec/` (the OpenSpec spec directory, if the team uses OpenSpec), its own `.agents/`, its own agent instructions. Coordination between them requires agents to cross a repository boundary the code already crossed years ago.
 
 Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
 

@@ -1,6 +1,6 @@
 # Document Types
 
-A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` with its acceptance criteria intact and its status unmarked, and the next agent reads it as live instruction, reimplements behavior the system already has, and opens a PR nobody knows what to do with. Nobody archived it. Nobody did anything wrong. The document outlived the job it was written for, and permanent documents do not get cleaned up.
+A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) with its acceptance criteria intact and its status unmarked, and the next agent reads it as live instruction, reimplements behavior the system already has, and opens a PR nobody knows what to do with. Nobody archived it. Nobody did anything wrong. The document outlived the job it was written for, and permanent documents do not get cleaned up.
 
 This is not a documentation problem. It is a type problem. This book uses a small working set of document types, each with a different lifespan and a different reason to exist. The easiest way to see why the types matter is to watch what breaks when a team stores the right content in the wrong artifact.
 
