@@ -25,7 +25,7 @@ graph TD
     A -->|spec approved and merged| B
 ```
 
-When the split applies is the question [Trunk-Based Development with Agents](./trunk-based-development) already settles: if an intent-level correction found in review forces the implementation to be redone, the spec earns its own PR, otherwise spec and code ship together with the spec delta read first inside the single PR. What the review angle adds is why the split helps the reviewer. Once the spec PR has merged, reading the code diff before the intent is structurally harder, so the review order no longer depends on good intentions alone.
+When the split applies is a question [Trunk-Based Development with Agents](./trunk-based-development) already settles. What the review angle adds is why the split helps the reviewer: once the spec PR has merged, reading the code diff before the intent is structurally harder, so the review order no longer depends on good intentions alone.
 
 The [PR Taxonomy](../quality/pr-taxonomy) chapter establishes that `docs`, `structural`, and `behavioral` PRs use different review styles and should not mix. The spec PR, carrying only the change folder, is a docs change. The implementation PR is behavioral. The two-PR shape is the natural expression of that taxonomy for decision-heavy behavioral changes.
 
@@ -59,7 +59,7 @@ Open a fresh session with the approved spec and the implementation code diff, an
 
 This step is not free. For high-stakes behavioral changes with many acceptance criteria, the tracing is worth it. For a change with three acceptance criteria and three tests, skip it.
 
-A fresh session of the same model removes implementation bias. A genuinely different agent does a different job: it brings different defaults and different blind spots. Use the fresh session when the main risk is context contamination from the implementation run. Reach for a second model family when the main risk is that one model class will miss the same gap twice. A portable instruction set lowers the switching cost, which is one reason [Instruction Hub](../agent-instructions/instruction-hub) argues for shared agent-facing files instead of tool-specific ones.
+Choosing between a fresh session and a second model family is the same tradeoff [Spec Lifecycle](../spec-driven/spec-lifecycle) works out for spec critique: the fresh session removes context contamination, the second model family removes shared blind spots. A portable instruction set lowers the switching cost, which is one reason [Instruction Hub](../agent-instructions/instruction-hub) argues for shared agent-facing files instead of tool-specific ones.
 
 *Sources: Birgitta Böckeler, ["Navigating AI Development Workflows"](https://refactoring.fm/p/navigating-ai-development-workflows), Refactoring.fm, using a second model or fresh session to critique a spec without implementation-context bias.*
 

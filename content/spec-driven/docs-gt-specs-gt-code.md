@@ -20,7 +20,7 @@ In agent-driven work, code starts to occupy the position the compiled binary use
 
 This is why the chain runs in one direction. Docs shape the spec. The spec drives the code. Code is the artifact you are most willing to throw away.
 
-This book reads the shift as a compiler move: code becomes cheaper to regenerate, while intent becomes more expensive to reconstruct. When that happens, the authored layer moves upward.
+This is the compiler move from [the mindset chapter](/mindset) carried to its consequence: code becomes cheaper to regenerate, intent becomes more expensive to reconstruct, and the authored layer moves upward.
 
 ```mermaid
 graph TD
@@ -65,9 +65,9 @@ Generated code sometimes looks wrong in ways that compound. Rolling back is quic
 
 When the result is wrong, discard the code first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate.
 
-Frederick P. Brooks called it in 1975: plan to throw one away. For a small agent-generated change with tests already in place, the discard cost can drop from months to an iteration.
+This is Brooks's plan-to-throw-one-away from the preface at a smaller scale: for an agent-generated change with tests already in place, the discard cost drops from months to an iteration.
 
-Vibe coding is a special case. A vibe session usually produces no durable record: the specification is chat history, ephemeral and uncommitted. That makes the mode useful for exploration and mockups. The transition to production runs the sequence in reverse: write the decisions into docs and the behavior into a spec, discard the prototype code, and regenerate from them.
+Vibe coding is a special case: the specification is chat history, ephemeral and uncommitted, which suits exploration and mockups. The transition to production runs the sequence in reverse: write the decisions into docs and the behavior into a spec, discard the prototype code, and regenerate from them.
 
 *Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", planned discard; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "From Vibe Coding to Spec-Driven Development," Towards Data Science (2025), extracting a spec from a vibe prototype before production; Simon Willison, "Not all AI-assisted programming is vibe coding" (simonwillison.net, March 19, 2025), vibe coding as a narrow mode distinct from disciplined AI-assisted work.*
 

@@ -20,9 +20,7 @@ The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the en
 
 Context windows are larger in 2026 than they were a year or two ago. The wall most sessions used to hit is farther away. The discipline is not.
 
-Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step session that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests.
-
-The second is attention. Filling a roomy window with files the task never reads buries the load-bearing tokens the same way a small window does, and the model attends to them less reliably even though they remain in the window.
+Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step session that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests. The second is attention, and it does not care how roomy the window is.
 
 So the larger window changes the failure, not the fix. You overflow less often, and you dilute the signal exactly as before. Load what the task needs, and the extra capacity buys headroom instead of a slower, more expensive, less reliable session.
 
@@ -36,7 +34,7 @@ The pattern feels backwards at first. The instinct is to keep context rich by no
 
 Review is the third case, and the sharpest. An agent that reviews its own work in the same session does not read the diff cold: every justification for every choice it made is still in context, so it defends the code instead of auditing it. The prior reasoning does more than fill the window, it primes the conclusion, and the review confirms what a fresh reader would have questioned. Hand the review to a new session or a subagent, and the reviewer reads what is on the page, with no stake in the decisions. That is a context control. It is not the same claim as using a second model family for different blind spots, which belongs to [Spec Lifecycle](../spec-driven/spec-lifecycle).
 
-Cost runs in the same direction. A long session re-bills its growing transcript at every turn, so the reset that protects attention is also where the bill stops compounding.
+The reset that protects attention is also where the bill stops compounding.
 
 Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than the instruction set the agent no longer has in active context.
 

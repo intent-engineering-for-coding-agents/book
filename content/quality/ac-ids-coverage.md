@@ -2,7 +2,7 @@
 
 A spec and its tests are supposed to be the same promise written twice. Consider a spec with scenarios and a PR with tests. Some scenarios have no test at all, and some tests cover behavior the spec never mentioned. The reviewer approves it because the tests pass and the diff looks reasonable. The next change breaks the untested scenario, and the team hears about it from a customer.
 
-A spec and a test suite that drift apart silently are worse than no spec at all. The spec creates the expectation of traceability, and drift defeats it. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
+A spec and a test suite that drift apart silently defeat the point: the spec creates an expectation of traceability the suite no longer honors. The fix is a small piece of mechanics: a stable identifier on every acceptance criterion, and a rule that says no scenario is real unless something with that identifier runs in CI.
 
 ## What is an Acceptance Criterion ID?
 

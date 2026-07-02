@@ -36,8 +36,6 @@ That review gates the first change proposal. A brownfield proposal written befor
 
 The same prompt accepts an output layout. Append the target `docs/` structure and the agent writes the files directly: `architecture.md` for the module map, `design/` for data flows and component views, `decisions/` for anything it reconstructs from the implementation. That structure also becomes the team's docs convention from the first commit.
 
-Do not leave the harvest trapped in `skeleton.md`. Move stable findings into the permanent docs set before the first proposal, the same split described above. `skeleton.md` gets the codebase through bootstrap. Later work should read the permanent docs, not keep circling back to the excavation notes.
-
 *Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code.*
 
 ## The walking skeleton reversed
@@ -58,9 +56,7 @@ The skeleton does not eliminate the brownfield condition. The system still carri
 
 ## skeleton.md has a lifecycle
 
-A skeleton that goes unreviewed and unupdated becomes worse than no skeleton. A `docs/skeleton.md` written before a module split or database migration still names the old boundaries, so the agent follows relationships that no longer exist. That failure mode is worse than missing documentation because the codebase now contains a file that looks authoritative and is false.
-
-This book's rule is straightforward. `skeleton.md` starts the bootstrap. Then the stable findings move into permanent `docs/`. After that, the skeleton either stays as marked history or leaves the active docs set. Once `docs/architecture/`, `docs/design/`, and `docs/decisions/` cover the same ground, new proposals and new agent sessions should stop loading `docs/skeleton.md` as the place to learn the system.
+A skeleton that goes unreviewed and unupdated turns hostile. A `docs/skeleton.md` written before a module split or database migration still names the old boundaries, so the agent follows relationships that no longer exist, guided by a file that looks authoritative and is false.
 
 Treat `skeleton.md` like a living bootstrap document while the recovery is in progress. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will keep.
 

@@ -32,7 +32,7 @@ Three of these stages are OpenSpec commands. Critique and review are not, and th
 
 **Write** (`/opsx:propose`): create the spec when you are about to implement, not weeks in advance. One command generates the proposal, specs, design, and tasks together. A spec written speculatively drifts: by the time the work starts, the context has shifted. Purpose, acceptance criteria, scenarios with test assignments. Get the scope wrong at this stage and nothing downstream corrects it.
 
-**Critique:** run the draft past an independent critic before human review. The critic may be a fresh session of the same model or a second model family. Those are different controls. A fresh session drops the author's context and bias. A second model adds different priors and blind spots. Use either for ordinary work. Use both when the spec is expensive to get wrong.
+**Critique:** run the draft past an independent critic, a fresh session or a second model family, before human review. Which to use, and when both are worth it, is worked out below.
 
 **Review:** the same PR review culture that applies to code applies here, with one difference. Review the spec before the implementation, not after, so the reviewer evaluates whether the intent is correct before judging whether the code matches it. [Code Review for Agent-Generated Code](../team/code-review-agent-code) works out why that order changes what the reviewer sees.
 
@@ -40,7 +40,7 @@ Approve the change folder on its own pull request, the spec, and its scenarios, 
 
 **Implement** (`/opsx:apply`): in the OpenSpec `opsx` workflow, the agent works through the tasks one by one, writes the code, runs tests, and ticks each checkbox, with the spec canonical for behavior throughout. `/opsx:verify` then checks the implementation against the artifacts. When the implementation reveals the spec is wrong, fix the spec and let the code follow, never the reverse.
 
-**Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. `/opsx:sync` merges the delta specs into `openspec/specs/`. `/opsx:archive` moves the change folder to `openspec/changes/archive/`.
+**Archive** (`/opsx:sync`, then `/opsx:archive`): archive the moment the implementation merges and every task is checked off, not on a later cleanup pass. A folder left in `openspec/changes/` after merge is the dead spec from the top of this chapter, in-flight to the agent, finished to everyone else. The rule is binary: `openspec/changes/` holds only active work. `/opsx:sync` merges the delta specs into `openspec/specs/`. `/opsx:archive` moves the change folder to `openspec/changes/archive/`.
 
 In this book's workflow, CI is the natural place to trigger both. The last checked task is the signal. The implementation stays in git, the acceptance criteria move into the canonical spec, the change history moves into the archive, and the design doc stays in `docs/`. Four artifacts, four locations.
 
@@ -82,12 +82,8 @@ A second model family addresses the second problem. Different defaults catch dif
 
 *Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), multimodel critique as an emerging step in spec-driven development.*
 
-## The dead spec problem
-
-A dead spec is not a deleted spec. It is a change folder left in `openspec/changes/`, marked in-flight, for work that already merged or got abandoned. The fix is the Write/Archive timing rule: `openspec/changes/` contains only active work, and anything no longer active moves to `openspec/changes/archive/` or is removed.
-
 ## Tooling note
 
-If you want to see this workflow in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
+The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) runs `iec check` on itself. The checks make lifecycle gaps visible before they become misleading instructions.
 
 The archive is not an afterthought. It separates live work from historical record. Without that split, the agent reads last quarter's abandoned change beside today's active one and treats both as instructions. Keep the archive committed. Those folders explain why each capability ended up with its current behavior.

@@ -50,7 +50,7 @@ You are a senior developer or architect. You already use a capability-class codi
 
 You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
-Vendor-agnostic is a deliberate choice here. `AGENTS.md` and `.agents/` form a shared layout, written once and read by whichever tool shows up next. Adding a new agent still costs setup work today. The payoff is that you stop betting the codebase on one vendor's roadmap.
+Vendor-agnostic is a deliberate choice here: `AGENTS.md` and `.agents/` form a shared layout, written once and read by whichever tool shows up next, so you stop betting the codebase on one vendor's roadmap.
 
 *Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), AGENTS.md as a current vendor-supported convention.*
 

@@ -22,7 +22,7 @@ A dead spec is worse than no spec. It tells the agent, with confidence, about be
 
 ## Agent-accelerated tech debt
 
-Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this kind of drift accumulated across quarters. At agent speed, a day of merged PRs adds the architectural contradictions that once took weeks of handwritten changes to produce. Yegge's framing of the agentic shift fits: velocity amplifies whatever discipline is already there, and whatever is missing.
+Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this kind of drift accumulated across quarters. At agent speed, a day of merged PRs adds the architectural contradictions that once took weeks of handwritten changes to produce: the velocity amplifier from [Why Structure Matters](./why-structure), cutting the other way.
 
 The Spec-Driven topic exists because of this mode. Writing the spec before the agent implements gives the agent the intention it needs. Decisions written down as ADRs are constraints the agent will follow. Intent and constraints living only in human memory will be violated.
 
@@ -32,9 +32,7 @@ The Spec-Driven topic exists because of this mode. Writing the spec before the a
 
 The team writes multipage specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from requirements buried late in the spec, drifts during the long reading pass and misses the requirement that mattered.
 
-Spec length is a cost, not a quality signal. Every token spent reading the spec is a token unavailable for reasoning about the code. LeanSpec's framing applies here: if the spec is longer than the implementation would be, something has gone wrong. Match formality to risk. Payment processing earns a thorough spec. A config-key rename does not.
-
-The "Why Small" chapter in the Spec-Driven topic goes further.
+Spec length is a cost, not a quality signal: if the spec is longer than the implementation would be, something has gone wrong. [Why Small?](../spec-driven/why-small) and [The Spectrum](../spec-driven/the-spectrum) carry the full argument.
 
 *Sources: LeanSpec (lean-spec.dev), small-spec discipline, and formality-to-risk matching.*
 

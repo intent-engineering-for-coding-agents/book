@@ -4,9 +4,7 @@ An agent with no context reaches for the nearest thing it knows.
 
 Suppose the agent is working on the auth module. The codebase has a custom token-validation library for the team's Single Sign-On (SSO) quirks, and the agent has no idea it exists. It reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library already handled. The PR passes tests. A reviewer catches it only because they recognize the library and notice what got bypassed.
 
-The agent did not invent the vulnerability. It improvised in the absence of a context it was never given.
-
-`AGENTS.md` is that context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the same context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` is the missing context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the same context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
 
 ## The TOC pattern
 
@@ -65,16 +63,14 @@ The TOC pattern has a failure mode: gradual accumulation. Branch naming conventi
 
 The test is not the line count. Does anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact instruction file in the repo. Every session loads it, so one stale load clause or stale repo rule affects every later task until someone fixes the file.
+Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact instruction file in the repo: a stale ADR misleads one change, but a stale `AGENTS.md` misleads every session until someone fixes the file, precisely because the file is small enough that nobody expects it to be the thing lying to them.
 
 The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision wrong in two directions, and the agent works from it without ever raising an error.
 
-Treat `AGENTS.md` changes as load-bearing: a stale ADR misleads one change, but a stale `AGENTS.md` misleads every session, precisely because the file is small enough that nobody expects it to be the thing lying to them.
-
-`AGENTS.md` gets read every session. The files it points to get read only when their load clause fires, so staleness in `.agents/instructions/` stays invisible until a session finally loads a file that no longer describes the repo, and keeping the hub itself accurate does not catch that kind of drift on its own.
+The files it points to are read only when their load clause fires, so staleness in `.agents/instructions/` stays invisible until a session finally loads a file that no longer describes the repo. Keeping the hub itself accurate does not catch that kind of drift.
 
 ## Tooling
 
-If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer. The next problem is the instruction hub it points into.
+The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer. The next problem is the instruction hub it points into.
 
 *Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support. Böckeler, "Navigating AI Development Workflows," Refactoring.fm, reactive instruction authoring.*

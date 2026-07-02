@@ -2,8 +2,6 @@
 
 Left to its own defaults, an agent reaches for the test type its training over-represents: the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while proving little about the system.
 
-That is a default, not a moral failure. Nobody told the agent which test type proves which kind of behavior, so it fell back to the pattern it sees most often.
-
 ## The test taxonomy
 
 Different test types prove different things at different boundaries. No row in the table below substitutes for another.
@@ -79,7 +77,7 @@ The allocation rule, the monotone-numbering discipline, and why a deleted ID lea
 
 ## Tooling note
 
-If you want to see this in practice, the companion repo includes the working convention set: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
+The companion repo includes the working convention set: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
 
 The strategy document is what separates a test suite that knows what it is proving from one that grew by accumulation.
 

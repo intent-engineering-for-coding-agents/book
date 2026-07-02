@@ -95,7 +95,7 @@ Keeping the suite calibrated is harder than building it. A task the agent nails 
 
 ## Tooling
 
-If you want to see this run, the companion repo includes `examples/eval-demo`. The directory holds two snapshots of the same project: `baseline`, generated with the team's original `AGENTS.md`, and `after-drift`, generated after the one-line change. The `eval/` directory holds three tasks with their `checks.yaml` files. The same suite grades both snapshots without knowing which `AGENTS.md` produced them:
+The companion repo includes `examples/eval-demo`. The directory holds two snapshots of the same project: `baseline`, generated with the team's original `AGENTS.md`, and `after-drift`, generated after the one-line change. The `eval/` directory holds three tasks with their `checks.yaml` files. The same suite grades both snapshots without knowing which `AGENTS.md` produced them:
 
 ```bash
 iec eval --path baseline --eval-dir eval      # Score: 9/9 (100%)

@@ -65,11 +65,7 @@ During implementation, the agent enters the coding step through the repo context
 
 ## Review: intent first, code second
 
-Once a PR exists, a normal review path collapses intent and code into one conversation centered on the code diff. Intent Engineering separates them.
-
-The spec delta answers one question, the code diff answers another. First: does the intent match agreement? Then: does the implementation match the approved intent?
-
-The sequence moves one question earlier: are we building the right change at all? Once the diff view dominates the screen, the question gets expensive. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
+Once a PR exists, a normal review path collapses intent and code into one conversation centered on the code diff. Intent Engineering separates them: first, does the intent match agreement, then, does the implementation match the approved intent. The sequence moves one question earlier, to whether this is the right change at all. [Code Review for Agent-Generated Code](../team/code-review-agent-code) takes up the mechanics of making spec-first review the default path.
 
 PR taxonomy gives the reviewer a second guardrail: a `docs`-only PR skips behavior scrutiny, and a `behavioral` PR does not belong in the same code diff as formatting churn. The taxonomy sounds bureaucratic. In practice, names are cheaper than mixed diffs.
 

@@ -20,7 +20,7 @@ A spec is one PR's worth of intent. Not a requirements document covering all kno
 
 Spec size should follow PR size, and small PRs are already a practice most teams want. If the spec requires dozens of acceptance criteria, the spec is too large. Split the change.
 
-More importantly: the spec does not freeze the scope. You planned to fetch upstream records in one call, then find the endpoint is paginated. Scenario four no longer matches what the code has to do. Edit scenario four. A spec that contradicts the code it shipped with is worse than no spec, because the next agent reads the spec as ground truth. The spec stays live until the PR merges, then it archives.
+More importantly: the spec does not freeze the scope. You planned to fetch upstream records in one call, then find the endpoint is paginated. Scenario four no longer matches what the code has to do. Edit scenario four. A spec that contradicts the code it shipped with actively misleads, because the next agent reads it as ground truth. The spec stays live until the PR merges, then it archives.
 
 *Sources: LeanSpec, one-PR-scoped specs, and live-spec discipline.*
 

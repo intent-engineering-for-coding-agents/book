@@ -77,4 +77,4 @@ Use a simple threshold. If you maintain one instruction file and it works, keep 
 
 ## Tooling
 
-If you want to see this in practice, the [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has the four instruction files above, the `update-index` skill, and an `.agents/hooks/` directory waiting to be filled (as of mid-2026). See [Companion Repo](../appendices/companion-repo) for how to browse it.
+The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has the four instruction files above, the `update-index` skill, and an `.agents/hooks/` directory waiting to be filled (as of mid-2026). See [Companion Repo](../appendices/companion-repo) for how to browse it.

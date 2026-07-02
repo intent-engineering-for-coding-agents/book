@@ -2,7 +2,7 @@
 
 An instruction in your repo reads: follow the team's naming conventions. Reasonable, until you notice it never says which ones. The agent fills the gap by matching the pattern it sees most often, and names a new service `orderProcessor`. The team moved to kebab-case a year ago. The old camelCase files still dominate the tree, so that is what the agent learned.
 
-Vague instructions are not neutral. They hand the choice back to the agent, which infers it from the surrounding code. The convention the team moved to was never written into the instructions the agent loads, so the code it sees outvotes the decision nobody wrote down.
+Vague instructions are not neutral. They hand the choice back to the agent, and the code it sees outvotes the decision nobody wrote down.
 
 ## Write when you have to, not before
 

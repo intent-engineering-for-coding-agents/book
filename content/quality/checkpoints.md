@@ -55,9 +55,7 @@ One closing check has nothing to do with the diff and everything to do with what
 
 The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
 
-Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc) defines that term and lists the artifacts inside it. The after-gate uses the term as a checklist item: update the affected records now or name a follow-up owner before merge.
-
-Small updates belong in the same PR. Larger architecture cleanup needs a follow-up with an owner named from the implementation PR. A release with no memory update and no explicit follow-up leaves stale context behind on purpose.
+Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc) defines that term, lists the artifacts inside it, and sets the rule for same-PR fixes versus owned follow-ups. The after-gate uses it as a checklist item: a release with no memory update and no explicit follow-up leaves stale context behind on purpose.
 
 *Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance path and documentation drift check.*
 

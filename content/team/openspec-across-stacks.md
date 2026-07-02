@@ -38,8 +38,6 @@ back-end/
 
 A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's working set legible and bounded.
 
-This is a book synthesis. There is no widely adopted standard for multi-tier spec organization. The pattern here follows from the general principle that context should be scoped to the work being done.
-
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
 ## Front-end context belongs outside the stack spec

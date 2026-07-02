@@ -22,7 +22,7 @@ README files live at the root of every documentation directory. GitHub, GitLab, 
 
 INDEX files serve a different reader: the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map.
 
-The agent loads `docs/INDEX.md` at the start of a session to find the next file to read. That makes a stale entry worse than a missing one.
+The agent loads `docs/INDEX.md` at the start of a session to decide what to read next, so a stale entry misdirects every session that follows.
 
 Make it a standing repo rule that the same commit adding, renaming, or removing a file also updates the directory's INDEX entry and any reference to that file in its README.
 
@@ -42,9 +42,7 @@ Some teams write them and move on. Others keep them current. Both are reasonable
 
 `skeleton.md` exists to get a brownfield repo into the rest of the taxonomy. This book uses it as a first pass: reverse-engineered structure, visible business rules, recovered constraints, and the first draft of decisions nobody had written down.
 
-That gives it a lifecycle. While the brownfield recovery is in progress, `docs/skeleton.md` is live and maintained. Once the stable findings have been distilled into `docs/architecture/`, `docs/design/`, and `docs/decisions/`, the skeleton stops being a live source. Remove it, archive it, or mark it as historical bootstrap material.
-
-If both bootstrap notes and durable docs stay live forever, the agent loads two competing explanations of the same module and has to guess which one still applies.
+That gives it a lifecycle: live while the brownfield recovery is in progress, retired once the stable findings have been distilled into the permanent `docs/` set. [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield) works out the mechanics.
 
 *Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code. The `skeleton.md` lifecycle framing is this book's synthesis.*
 
@@ -116,7 +114,7 @@ A team that grasps the lifespan column has the practice. A team that only learns
 
 ## Tooling
 
-If you want to see this in practice, the `iec` CLI repository has the structure live:
+The `iec` CLI repository has the structure live:
 
 - ADRs in `docs/decisions/`
 - design docs in `docs/design/`

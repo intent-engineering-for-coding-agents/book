@@ -29,8 +29,6 @@ In 2026, when most of the build is done by a coding agent, that second pass is c
 
 The second build is sharper: the dead ends are already mapped and the framework is already picked. The prototype was the conversation, not the artifact.
 
-For this book, I write "coding agent" where many would write "AI". A coding agent is an LLM used as a developer tool. "Intelligence" is a marketing choice, not the technical point here.
-
 A coding agent is not reading your mind. In 2026, a vague prompt still produces the wrong code in production work. State the rules, the intent, and the stack. Use the agent as a sparring partner for architecture and design, but keep the thinking on your side.
 
 That is the purpose of the book. The machine writes more of the code. You do more of the hard thinking: what gets built, which scope is justified, which tradeoff is worth paying, and which tests must pass before merge. You become a writer, not a typist.
