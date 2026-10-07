@@ -152,7 +152,6 @@ export default withMermaid(
             { text: 'Honest Maturity', link: '/appendices/honest-maturity' },
             { text: 'Adoption Checklist', link: '/appendices/adoption-checklist' },
             { text: 'Glossary', link: '/appendices/glossary' },
-            { text: 'Living Principles', link: '/appendices/living-principles' },
             { text: 'Tooling Landscape', link: '/appendices/tooling-landscape' },
             { text: 'Companion Repo', link: '/appendices/companion-repo' },
             { text: 'Feedback & Contributing', link: '/appendices/feedback' },

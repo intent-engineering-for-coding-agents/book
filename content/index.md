@@ -40,6 +40,6 @@ features:
     details: Adoption, trunk-based development with agents, cross-team coordination, and a time-bounded account of what is still unsettled.
     link: /team/
   - title: Reference
-    details: Glossary, living principles, tooling snapshot, the iec companion repo, an adoption checklist, and Honest Maturity.
+    details: Glossary, tooling snapshot, the iec companion repo, an adoption checklist, and Honest Maturity.
     link: /appendices/honest-maturity
 ---
