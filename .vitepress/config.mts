@@ -131,7 +131,6 @@ export default withMermaid(
             { text: 'Before, During, After Checkpoints', link: '/quality/checkpoints' },
             { text: 'What the Scanners Miss', link: '/quality/what-the-scanners-miss' },
             { text: 'PR Taxonomy', link: '/quality/pr-taxonomy' },
-            { text: '.principles: Raising the Bar', link: '/quality/dot-principles' },
           ]
         },
         {

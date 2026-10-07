@@ -82,7 +82,6 @@ Grouped by theme. Each entry includes the publication date, or "(ongoing)" with 
 - Andrej Karpathy: ["+1 for context engineering over prompt engineering"](https://x.com/karpathy/status/1937902205765607626). X (Twitter), *June 25, 2025*. Primary source for the prompt-to-context terminology shift.
 - Sourcegraph: ["Context Engineering: A Practical Guide for AI Agents"](https://sourcegraph.com/blog/context-engineering). Sourcegraph blog, *May 28, 2026*. Vendor-authored framing of context engineering for coding agents.
 - intent-engineering-for-coding-agents: ["cli" companion repo](https://github.com/intent-engineering-for-coding-agents/cli) (ongoing, last reviewed June 28, 2026). Worked examples referenced throughout the book (test strategy, AC registry, eval demo).
-- [.principles](https://dot-principles.github.io/) and [example-catalog](https://github.com/dot-principles/example-catalog) (ongoing, last reviewed June 28, 2026). Principle-as-code experiment, optional complement to specs/tests.
 - Stephan Schwab: ["AI as Your Legacy Code Archaeologist"](https://www.caimito.net/en/blog/2026/02/07/ai-as-your-legacy-code-archaeologist.html). Caimito blog, *February 7, 2026*. Practitioner voice on AI-driven extraction of business rules from legacy code.
 
 ## Security

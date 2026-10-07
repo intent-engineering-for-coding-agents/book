@@ -21,7 +21,7 @@ Instructions that assume a specific vendor's features become stale when vendors 
 
 ## Good practice
 
-Describe what the agent needs to do, not which vendor command to run. Apply the replacement test: remove the named agent, framework, or command and check whether the underlying control still makes sense. "Resolve the `.principles` hierarchy by walking up from the target file to the git root" still works after tool replacement. "Run `dot-prime`" only works where that command is installed.
+Describe what the agent needs to do, not which vendor command to run. Apply the replacement test: remove the named agent, framework, or command and check whether the underlying control still makes sense. "Resolve the rules hierarchy by walking up from the target file to the git root" still works after tool replacement. "Run `lint-docs`" only works where that command is installed.
 
 ## Sources
 

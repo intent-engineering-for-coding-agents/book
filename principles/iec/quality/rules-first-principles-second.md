@@ -1,7 +1,7 @@
 # IEC-QUALITY-RULES-FIRST-PRINCIPLES-SECOND: Write Rules Before Principles
 
 **Layer**: 1
-**Categories**: quality, dot-principles, automation
+**Categories**: quality, automation
 **Applies-to**: all
 **Summary**: Write deterministic rules when detection is possible. Write principles for judgment.
 
@@ -25,5 +25,4 @@ For every desirable property of the codebase, ask: can I write a deterministic c
 
 ## Sources
 
-- intent-book, *".principles — Raising the Bar" chapter*, quality section.
-- .principles, https://dot-principles.github.io/.
+- This book, Quality and Verification topic.

@@ -34,10 +34,6 @@ ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and flagg
 
 Birgitta Böckeler has written and spoken clearly about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic are downstream of that work.
 
-## Quality and principles
-
-The [.principles project](https://dot-principles.github.io/) is the experiment this book describes in the Quality and Verification topic. The principle catalog for this book is maintained as a companion set against that framework.
-
 ## Plain text and diagrams
 
 Mermaid (mermaid.js.org) is the diagram format used throughout. Every diagram in this book is plain text that diffs and renders the same way.

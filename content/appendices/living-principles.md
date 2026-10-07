@@ -2,7 +2,7 @@
 
 These are the principles that emerged during the writing of this book. Each principle is drawn from a chapter. Together they form a compact summary of the book's normative claims: the rules, instincts, and boundaries that make Intent Engineering work.
 
-This appendix is structured as a [`.principles`](https://dot-principles.github.io/) catalog. The individual principle files live in `principles/iec/`. The selection file is `.principles` at the repo root, and the group definition is `groups/intent-book.yaml`. All 67 principles are active by default.
+This appendix is the book's catalog of principles. The individual principle files live in `principles/iec/`, and the group definition is `groups/intent-book.yaml`. All 67 principles are active by default.
 
 ## Foundation
 
@@ -115,4 +115,4 @@ Principles about team process, adoption, and culture.
 
 ---
 
-*Sources: This catalog is the book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`. The format follows the [`.principles`](https://dot-principles.github.io/) specification.*
+*Sources: This catalog is the book's synthesis. Each principle is sourced from the chapter it emerged from; full sources are in the individual principle files under `principles/iec/`.*
