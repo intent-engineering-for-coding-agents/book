@@ -44,7 +44,8 @@ flowchart LR
 | `openspec/` | Change proposals, delta specs, tasks |
 | `.agents/` | agent instruction hub (added Phase O) |
 | `.vitepress/` | VitePress config and theme |
-| `.github/workflows/` | CI — build+deploy, iec check |
+| `.github/workflows/` | CI — build+deploy, iec check, front matter check |
+| `scripts/` | repo tooling — `check-frontmatter.mjs` |
 
 ## VitePress conventions
 
@@ -64,7 +65,7 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 ## CI checks
 
-`check.yml` installs `iec` and runs `iec check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
+`check.yml` runs `npm run docs:check-frontmatter` first. It fails when a tracked Markdown file lacks `type` and `title`, or when `title` no longer matches the first heading. Then it installs `iec` and runs `iec check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
 
 ## agent instruction hub
 

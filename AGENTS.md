@@ -2,7 +2,6 @@
 type: agent-hub
 title: "AGENTS.md: Intent Engineering for Coding Agents"
 ---
-
 # AGENTS.md: Intent Engineering for Coding Agents
 
 You are working on **Intent Engineering for Coding Agents**, a VitePress site teaching Intent Engineering practices.
@@ -11,8 +10,7 @@ You are working on **Intent Engineering for Coding Agents**, a VitePress site te
 
 - **Site generator**: VitePress 1.x (`srcDir: 'content'`)
 - **Diagrams**: Mermaid (via vitepress-plugin-mermaid)
-- **Package manager**: npm
-- **License**: Apache 2.0
+- **Package manager**: npm. **License**: Apache 2.0
 
 ## Instructions
 
@@ -37,7 +35,7 @@ Load when relevant:
 ```
 npm run docs:dev     # local dev server with hot reload
 npm run docs:build   # build to .vitepress/dist/
-npm run docs:preview # preview the built site locally
+npm run docs:check-frontmatter # every .md carries type and title
 ```
 
 ## Skills

@@ -17,6 +17,8 @@ jobs:
           cache: npm
       - name: Install site dependencies
         run: npm ci
+      - name: Check front matter
+        run: npm run docs:check-frontmatter
       - name: Build site
         run: npm run docs:build
       - uses: astral-sh/setup-uv@v8.1.0
