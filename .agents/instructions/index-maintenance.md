@@ -18,14 +18,18 @@ Anything else — `decisions/0001-x.md`, `../AGENTS.md`, `https://example.com/..
 
 The principle: documents form a hypergraph navigated by following sub-INDEX pointers. A top-level INDEX that enumerates everything below it duplicates the sub-INDEXes and rots silently.
 
+## Two index forms
+
+A directory keeps its index in one of two places. A short README carries the index between `<!-- index:start -->` and `<!-- index:end -->` marker lines, one row per file. A directory whose README runs long, such as `docs/` with its architecture overview, keeps a separate `INDEX.md` so an agent does not read the prose to reach the map. The scope rule applies to both. If both exist, `INDEX.md` wins. `iec check` (>= 1.2.0) understands both forms.
+
 ## Files to Update
 
 | When you change... | Update... |
 |---|---|
 | A file directly in `docs/` (not in a sub-dir) | `docs/INDEX.md` |
-| A file in `docs/decisions/` | `docs/decisions/INDEX.md` **and** `docs/decisions/README.md` (the latter for the human-facing ADR row) |
-| A file in `docs/<other-subdir>/` | that sub-dir's `INDEX.md` (and its `README.md` listing if it has one) |
-| A new sub-directory gains its first substantive file | add `INDEX.md` + `README.md` in the new sub-dir; add a single pointer row to it in the parent `INDEX.md` |
+| A file in `docs/decisions/` | the index block in `docs/decisions/README.md` (it has no separate `INDEX.md`) |
+| A file in `docs/<other-subdir>/` | that sub-dir's index: the block in its `README.md`, or its `INDEX.md` if it has one |
+| A new sub-directory gains its first substantive file | add a `README.md` with an index block (short README) or `INDEX.md` + `README.md` (long README); add a single pointer row to it in the parent index |
 
 ## Index Entry Format
 

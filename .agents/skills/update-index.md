@@ -18,7 +18,7 @@ Scan `docs/` and regenerate `docs/INDEX.md` and all `docs/*/README.md` listing f
 | File | Contains |
 |---|---|
 | `docs/INDEX.md` | Every file under `docs/` with a one-line description |
-| `docs/decisions/README.md` | All ADR files — number, title, status, date |
+| `docs/decisions/README.md` | The index block between the `index:start` and `index:end` markers: all ADR files — number, title, status, date |
 | `docs/design/README.md` | All design doc files — name, feature, status, date |
 
 ## Process
@@ -28,7 +28,7 @@ Scan `docs/` and regenerate `docs/INDEX.md` and all `docs/*/README.md` listing f
    - One table row per file (excluding `INDEX.md` itself)
    - Link is relative from `docs/`
    - Description is the file's first non-heading sentence, or derived from its H1
-3. Regenerate `docs/decisions/README.md`:
+3. Regenerate the index block in `docs/decisions/README.md` (leave the text above the markers alone):
    - One row per `NNNN-*.md` file
    - Extract status and date from the file's frontmatter metadata lines (`* Status:`, `* Date:`)
 4. Regenerate `docs/design/README.md` if any design docs exist

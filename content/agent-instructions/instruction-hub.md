@@ -23,7 +23,7 @@ A focused hub stays small. Here is what one looks like in practice:
 .agents/instructions/
 ├── build-and-ci.md       # build commands, lint, test, CI pipeline
 ├── coding-standards.md   # coding style, project structure, testing
-├── index-maintenance.md  # when and how to update any INDEX.md
+├── index-maintenance.md  # when and how to update a directory index
 └── openspec.md           # OpenSpec extensions for specs, AC IDs, test traceability
 ```
 
