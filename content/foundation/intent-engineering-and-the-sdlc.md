@@ -76,7 +76,7 @@ PR taxonomy gives the reviewer a second guardrail. A `docs`-only PR skips behavi
 
 ## CI: the pipeline checks the conventions
 
-In this book's workflow, a convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` and `docs/INDEX.md`, Markdown Architectural Decision Record (MADR) format for ADRs, and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
+In this book's workflow, a convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` with its embedded index, Markdown Architectural Decision Record (MADR) format for ADRs, and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
 
 AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` verifies the named scenario, and the traceability remains after spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
 
@@ -84,11 +84,11 @@ AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac
 
 ## Maintenance: synchronize engineering memory
 
-After a change ships, archive the spec, update `docs/INDEX.md` when docs move, mark Architectural Decision Records (ADRs) accepted or rejected, and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
+After a change ships, archive the spec, update the index in `docs/README.md` when docs move, mark Architectural Decision Records (ADRs) accepted or rejected, and leave them. If a decision reverses, supersede with a new ADR. Never rewrite the original.
 
 Update agent instructions when a convention changes. Agent instructions are code, and code changes go through a pull request. That is how the team reviews the change and stays informed that agent behavior has shifted. On a solo project the PR is optional, but the principle holds.
 
-Archive work is the small part. The larger question is whether the repo now describes the system that shipped. This book calls the step to synchronize engineering memory. An ADR records one decision. The rest of the memory lives in the architecture overview, design docs, diagrams, Application Programming Interface (API) contracts, README files, INDEX files, and agent instructions.
+Archive work is the small part. The larger question is whether the repo now describes the system that shipped. This book calls the step to synchronize engineering memory. An ADR records one decision. The rest of the memory lives in the architecture overview, design docs, diagrams, Application Programming Interface (API) contracts, README files with their embedded indexes, and agent instructions.
 
 ISO/IEC/IEEE 42010 distinguishes the architecture from an architecture description expressing it. This book narrows the idea to the repo-local artifacts a coding agent reads and writes against: engineering memory.
 

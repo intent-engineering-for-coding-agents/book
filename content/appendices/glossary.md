@@ -97,7 +97,7 @@ This book uses `diff` for the line-by-line source-control change set shown in a 
 
 ## Engineering memory
 
-The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files with their embedded indexes, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
 ## Front matter
 

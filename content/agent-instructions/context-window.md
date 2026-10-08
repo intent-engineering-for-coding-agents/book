@@ -17,7 +17,7 @@ Loading files is the most common way to exhaust context before the task starts. 
 
 The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the entry point, a short file that says what to load next, and loads only the instruction files relevant to the current task. Everything else stays unread.
 
-`docs/INDEX.md` exists for the same reason. One 40-line file, full map. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
+The index block in `docs/README.md` exists for the same reason: a short block, full map. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
 
 *Sources: Anthropic, "Building effective agents" (December 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), context-window pressure as a practical constraint across agentic coding tools.*
 

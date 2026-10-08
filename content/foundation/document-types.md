@@ -21,19 +21,41 @@ The enforcement mechanism is directory placement. Structured documents live unde
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
-## README and INDEX files
+## README files with an embedded index
 
-README files live at the root of every documentation directory. GitHub, GitLab, and most hosted Git platforms render them automatically when a user navigates to that directory, and that rendering is what a README is for, a human reading on a Git host.
+A directory with a README listing and a separate INDEX table lists every file twice. The two lists drift apart as soon as a commit updates only one of them.
 
-INDEX files serve a different reader, the agent. Each table row lists a file and carries a one-line description. The job is not to summarize the file, but to tell the reader which file answers the need at hand. No prose, no story, no diagrams. A map.
+One README per documentation directory serves both readers. Its opening lines say what the directory holds, for the developer who lands there from a Git host, where GitHub, GitLab, and most hosted platforms render it automatically. Below those lines, between two marker comments, sits the index: one row per file, with a link and a one-line description.
 
-The agent loads `docs/INDEX.md` at the start of a session to decide what to read next, so a stale entry misdirects every session that follows.
+```markdown
+---
+type: index
+title: Architectural Decision Records
+---
 
-Make it a standing repo rule that the same commit adding, renaming, or removing a file also updates the directory's INDEX entry and any reference to that file in its README.
+# Architectural Decision Records
 
-README and INDEX live in the same directory and share the same lifespan, but they do different work. A human lands on the README in a browser. An agent loads the INDEX to decide what exists before it reads further.
+Decisions that shaped this repo. Accepted records are frozen.
 
-*Sources: `iec` repo conventions in this project family, the INDEX file structure, and agent-map format. GitHub and GitLab render README files automatically in directory navigation, behavior stable on both platforms as of this writing.*
+<!-- index:start -->
+| File | Description |
+|---|---|
+| [0001-vitepress.md](0001-vitepress.md) | Use VitePress for the book site |
+| [0002-content-dir.md](0002-content-dir.md) | Keep prose in `content/`, free `docs/` for project docs |
+<!-- index:end -->
+```
+
+Write each row so the reader knows which question the file answers: "Use VitePress for the book site" beats "Architecture decision". Keep prose and diagrams out of the block. The agent loads the README at the start of a session to decide what to read next, and a script reads the lines between the markers without parsing the rest. The `type: index` [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) lets one query list every index in the repo.
+
+Make it a standing repo rule that the commit adding, renaming, or removing a file also updates its row. A stale row misdirects every session that loads the README.
+
+The price is context. A separate INDEX held only the map, while the README makes the agent read the opening lines too. Keep them to a few lines. When the human-facing text has to run long, as in a project's front-page README, keep the map in its own file.
+
+This book's own `content/` directories use the same shape under a different name. Each section opens with an `index.md` that carries prose and a chapter list, because VitePress serves `index.md` as the page at a directory root. There the file name follows the site generator and the pattern stays the same.
+
+A check that compares the rows with the directory's files flags a stale row before a session loads it. It is optional. A table kept by hand and reviewed in the same pull request does the job. The first stale row that slips through review is the argument for adding the check.
+
+*Sources: GitHub and GitLab render README files automatically in directory navigation, behavior stable on both platforms as of this writing. VitePress, "Routing" guide (vitepress.dev/guide/routing, accessed October 2026), `index.md` served at the directory root. `iec` repo conventions in this project family, the one-line-per-file map format. Embedding the map in the README is this book's synthesis.*
 
 ## Design docs
 
@@ -106,8 +128,7 @@ Specs are temporary and move to `openspec/changes/archive/` after implementation
 | Type | Lifespan | What that means in practice |
 |---|---|---|
 | Content documents | Permanent, updated | Write and evolve in place. No lifecycle or size constraints |
-| README files | Permanent, updated | Updated in place, written for human readers on Git hosts |
-| INDEX files | Permanent, updated | Maintained on every file change in the directory |
+| README files with an embedded index | Permanent, updated | Opening lines written for readers on Git hosts. The index rows change with every file added, renamed, or removed in the directory |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
 | ADRs | Permanent, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
 | `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into permanent `docs/`, then archive, remove, or mark as historical. |

@@ -16,7 +16,7 @@ These chapters cover the document set, the plain-text rule, where the structure 
 ## Chapters
 
 1. [Why Structure Matters](./why-structure): what compounding drift costs, and why structure is a context problem
-2. [Document Types](./document-types): README files, INDEX files, ADRs, design docs, and specs each have a different lifespan
+2. [Document Types](./document-types): README files with embedded indexes, ADRs, design docs, and specs each have a different lifespan
 3. [Plain-Text-as-Code](./plain-text-as-code): why everything the agent needs must live in the repo as plain text
 4. [Intent Engineering and the SDLC](./intent-engineering-and-the-sdlc): where Intent Engineering practices slot into an existing SDLC
 5. [Brownfield vs Greenfield](./brownfield-vs-greenfield): how to bootstrap Intent Engineering on an existing codebase using `skeleton.md`

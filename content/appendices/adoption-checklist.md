@@ -21,7 +21,7 @@ If brownfield: harvest structure, dependencies, key decisions, design constraint
 - [ ] `openspec/` (the OpenSpec spec directory, if your team uses OpenSpec): change proposals, delta specs, archived changes
 - [ ] `AGENTS.md` at the repo root, TOC pattern: short, links to `.agents/`, load clauses for each instruction file
 - [ ] `docs/**/README.md`: human-readable document providing an overview of the content in a directory
-- [ ] `docs/**/INDEX.md`: one-line description per file in `docs/`, the agent-facing map loaded before anything else
+- [ ] `docs/**/README.md`: an embedded index with one row per file and a one-line description, the map the agent loads before anything else
 
 ## Agent Instructions
 
