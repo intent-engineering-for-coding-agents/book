@@ -34,7 +34,7 @@ The verification move is familiar by now. Do not match text. Match identity.
 
 [AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten, and the test moves files, but the ID remains stable, so the link between intent and evidence remains intact.
 
-Documentation needs a lighter version of the same move. Each important document carries a small frontmatter block naming the code paths the check watches, the date somebody last checked it against those paths, and any outside systems still pointing at it:
+Documentation needs a lighter version of the same move. Each important document carries a small [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) block naming the code paths the check watches, the date somebody last checked it against those paths, and any outside systems still pointing at it:
 
 ```yaml
 ---
@@ -64,7 +64,7 @@ Once the fields exist, the check stops guessing. The questions are mechanical: d
 
 This is not a field standard. I use it here as a working synthesis of the AC-ID idea for prose: one stable marker in the prose, one reference target in code or docs, and one check that verifies the link.
 
-*Sources: The frontmatter marker and field names are this book's synthesis from AC-ID verification logic applied to prose.*
+*Sources: The front matter marker and field names are this book's synthesis from AC-ID verification logic applied to prose.*
 
 ## What the check looks for
 

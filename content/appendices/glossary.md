@@ -94,6 +94,10 @@ This book uses `diff` for the line-by-line source-control change set shown in a 
 
 The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files, INDEX files, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
+## Front matter
+
+The YAML header between `---` markers at the top of a Markdown file. This book uses it to state what a file is (`type`, `title`) and, for files with a lifecycle such as ADRs, its `status`, so scripts, linters, and agents read the file's kind without reading its body. Written as two words. See [Plain-Text-as-Code](/foundation/plain-text-as-code#front-matter-as-a-contract).
+
 ## Gherkin
 
 The `Given/When/Then` (here `WHEN/THEN`) scenario notation from Cucumber, used in this book as a specification language for acceptance criteria, one scenario per behavior. OpenSpec prescribes the `#### Scenario:` heading and the `WHEN/THEN` body. The notation is borrowed. The [BDD](#behavior-driven-development-bdd) practice it originates from is not. See [The Spectrum](/spec-driven/the-spectrum) and [AC IDs and Coverage](/quality/ac-ids-coverage).

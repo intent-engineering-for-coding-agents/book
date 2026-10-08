@@ -54,7 +54,7 @@ While an ADR is still proposed, change it as much as the discussion requires. On
 
 Supporting context is not frozen. If you sharpen the record without changing the decision, record an amendment at the bottom of the file with the date and what changed.
 
-The proposed and accepted statuses come from MADR itself, recorded in YAML front matter at the top of the file: `status: accepted`, `date: 2024-03-01`. The amendment record does not come from MADR. It is this book's own convention.
+The proposed and accepted statuses come from MADR itself, recorded in YAML [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) at the top of the file: `status: accepted`, `date: 2024-03-01`. The amendment record does not come from MADR. It is this book's own convention.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR form and the why-over-what value. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr, 2018), the proposed/accepted status field in front matter. The amendment-record convention is this book's own.*
 
