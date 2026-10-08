@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Why Structure Matters
+---
+
 # Why Structure Matters
 
 Your agent adds a new `POST /orders` REST endpoint.

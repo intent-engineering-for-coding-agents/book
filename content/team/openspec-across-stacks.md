@@ -1,3 +1,8 @@
+---
+type: chapter
+title: OpenSpec Across Stacks
+---
+
 # OpenSpec Across Stacks
 
 Give an agent the whole monorepo as context, and stack boundaries blur fast. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches the mismatch later: the front end called the back-end service API instead of the Backend for Frontend (BFF) API, so the authorization checks in the BFF never ran.

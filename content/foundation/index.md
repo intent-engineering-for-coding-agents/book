@@ -1,3 +1,8 @@
+---
+type: index
+title: Foundation
+---
+
 # Foundation
 
 > Repo structure. The prerequisite for everything else.

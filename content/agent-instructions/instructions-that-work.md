@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Instructions That Work
+---
+
 # Instructions That Work
 
 An instruction in your repo reads: follow the team's naming conventions. Reasonable, until you notice it never says which ones. The agent fills the gap by matching the pattern it sees most often, and names a new service `orderProcessor`. The team moved to kebab-case a year ago. The old camelCase files still dominate the tree, so that is what the agent learned.

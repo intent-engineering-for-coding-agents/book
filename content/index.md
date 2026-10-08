@@ -1,4 +1,5 @@
 ---
+type: home
 layout: home
 title: Intent Engineering for Coding Agents
 description: "Intent Engineering for Coding Agents: How humans and coding agents design software together"

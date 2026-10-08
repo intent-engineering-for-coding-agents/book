@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Cross-Team Coordination
+---
+
 # Cross-Team Coordination
 
 Consider two teams sharing an authentication boundary. Team A changes the token format and records the decision in an ADR marked Internal, inside Team A's repo. Team B's agents keep parsing the old format out of Team B's architecture docs because Team A's decision log never enters their context. Team B learns about the break the usual way, in production.

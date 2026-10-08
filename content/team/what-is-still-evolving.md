@@ -1,3 +1,8 @@
+---
+type: chapter
+title: What Is Still Evolving
+---
+
 # What Is Still Evolving
 
 The individual practices are taught directly. That editorial choice does not amount to empirical validation of Intent Engineering as a combined paradigm. The team practices remain provisional.

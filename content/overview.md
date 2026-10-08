@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Overview
+---
+
 # Overview
 
 The agent does not know your decisions. Intent Engineering puts decisions, change-sized specs, and verification in the workspace. The agent then has less to infer from code or conversation history.

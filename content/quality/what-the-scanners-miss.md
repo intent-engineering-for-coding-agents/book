@@ -1,3 +1,8 @@
+---
+type: chapter
+title: What the Scanners Miss
+---
+
 # What the Scanners Miss
 
 The most dangerous agent suggestion is the one that looks like obvious hygiene.

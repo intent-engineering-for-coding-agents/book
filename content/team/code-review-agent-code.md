@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Code Review for Agent-Generated Code
+---
+
 # Code Review for Agent-Generated Code
 
 The PR has a spec delta, acceptance criteria, a constraint section, and three hundred lines of implementation. The reviewer opens the diff view.

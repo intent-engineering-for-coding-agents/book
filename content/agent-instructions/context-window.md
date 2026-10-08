@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Context Window Management
+---
+
 # Context Window Management
 
 A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. The agent ignores a constraint it read early, or contradicts a decision it made an hour ago. Nothing failed and nobody reset anything. The context that mattered either dropped off the back to make room, or it is still in the window, and the agent has quietly stopped attending to it.

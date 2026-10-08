@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Companion Repo
+---
+
 # Companion Repo
 
 `iec` (Intent Engineering Checker) is the companion repository for this book. Its job is evidence, not product adoption: ADRs in MADR format, OpenSpec changes, stable AC IDs, tests that trace back to those IDs, and `AGENTS.md` wired to `.agents/` instructions and skills.

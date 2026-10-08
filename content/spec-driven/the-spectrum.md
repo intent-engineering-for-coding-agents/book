@@ -1,3 +1,8 @@
+---
+type: chapter
+title: The Spectrum
+---
+
 # The Spectrum
 
 How much process does rename a config variable deserve? A full Spec-Driven Development framework gives it too much. The ceremony is right for a large API redesign, and absurd for a one-line rename. The structure that protects a risky change suffocates a trivial one.

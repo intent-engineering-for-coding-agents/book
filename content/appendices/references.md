@@ -1,3 +1,8 @@
+---
+type: appendix
+title: References
+---
+
 # References
 
 *Last reviewed: July 2, 2026.*

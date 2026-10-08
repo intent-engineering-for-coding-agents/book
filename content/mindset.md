@@ -1,3 +1,8 @@
+---
+type: chapter
+title: The Human-Agent Engineering Mindset
+---
+
 # The Human-Agent Engineering Mindset
 
 The real problem is not whether developers should use AI. The trouble starts once the prototype works and people treat the coding agent like a magic box, as if it understands the codebase better than the people maintaining it.

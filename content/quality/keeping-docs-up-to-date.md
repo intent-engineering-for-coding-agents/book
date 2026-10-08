@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Keeping Documentation Up to Date
+---
+
 # Keeping Documentation Up to Date
 
 Code often changes first, and the documentation lags behind. The next coding agent reads the document anyway and works from a description the code no longer matches.

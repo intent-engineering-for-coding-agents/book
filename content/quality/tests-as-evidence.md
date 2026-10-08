@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "Tests as Evidence, Not Ritual"
+---
+
 # Tests as Evidence, Not Ritual
 
 Green tests look like evidence. I have merged on that feeling more times than I care to admit, and most developers have: suite green, diff reasonable, ship it. But a suite can run fully green over code that is quietly broken, because the tests cover the paths the prose happened to mention and nothing else.

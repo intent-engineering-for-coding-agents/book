@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "Brownfield vs Greenfield: Bootstrap with skeleton.md"
+---
+
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
 Consider a retry policy buried in a function called `do_it_again_lol`. Every legacy codebase has one. The author left years ago, and nobody knows what it retries or why it retries at all. The system went through several rewrites and handoffs. The original architect was certain about several things, none of which are written down anywhere.

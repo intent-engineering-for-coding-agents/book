@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Credits
+---
+
 # Credits
 
 The full bibliography appears in [References](/appendices/references). This page is attribution-only: intellectual debts, tool precedents, and prior art named in one place.

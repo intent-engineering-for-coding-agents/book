@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Test Strategy and Convention
+---
+
 # Test Strategy and Convention
 
 Left to its own defaults, an agent reaches for the test type its training over-represents, the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while verifying little about the system.

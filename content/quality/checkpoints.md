@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "Before, During, After: The Three Checkpoints"
+---
+
 # Before, During, After: The Three Checkpoints
 
 A change clears every gate at merge time and still runs wrong three weeks later. The spec is solid, the tests are real evidence, and the PR lands clean. Then you find a comment pointing at a design document that no longer matches the code. The decision it depended on was reversed in a different PR, and nothing caught the mismatch because the change sat outside the diff anyone reviewed.

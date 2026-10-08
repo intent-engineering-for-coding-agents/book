@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Privacy
+---
+
 # Privacy
 
 This site uses GoatCounter to count page views and understand which parts of the book readers visit. The site does not use advertising trackers or set analytics cookies.

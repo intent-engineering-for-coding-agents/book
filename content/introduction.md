@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Introduction
+---
+
 # Introduction
 
 The mindset alone does not give an agent enough to work from. A maintained codebase still needs explicit context, per-change intent, and evidence that the result matched the target.

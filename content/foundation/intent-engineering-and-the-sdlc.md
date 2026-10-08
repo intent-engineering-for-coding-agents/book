@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Intent Engineering and the SDLC
+---
+
 # Intent Engineering and the SDLC
 
 This chapter rejects a tempting pitch: replace your SDLC with a new one. New ceremonies, new artifacts, a new review process. Existing tooling becomes legacy on contact.

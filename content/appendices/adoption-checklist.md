@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Adoption Checklist
+---
+
 # Adoption Checklist
 
 A starting point for applying the practices in this book to a new or existing codebase. The list follows the order the topics compound: Foundation first, because Agent Instructions have nowhere to live without it.

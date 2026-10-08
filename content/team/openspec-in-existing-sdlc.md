@@ -1,3 +1,8 @@
+---
+type: chapter
+title: OpenSpec in an Existing SDLC
+---
+
 # OpenSpec in an Existing SDLC
 
 You already have Jira. Sprint boards, PR review, a Confluence wiki, a changelog: all of it, working. Then you adopt OpenSpec because the Spec-Driven Development framing makes sense, and one question follows immediately. Where does the change folder sit relative to everything you already run? Does it replace the ticket? Does the spec replace the Confluence page? Is PR review now two reviews, one for the spec and one for the code?

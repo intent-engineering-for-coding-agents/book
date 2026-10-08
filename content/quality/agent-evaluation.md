@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Agent Evaluation and Regression
+---
+
 # Agent Evaluation and Regression
 
 Your agent instructions, skills, and hooks are code. Nobody tests them. They drift anyway.

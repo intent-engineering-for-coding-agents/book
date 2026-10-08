@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Why Specs?
+---
+
 # Why Specs?
 
 An agent without a spec does not refuse to act. It guesses. A good guess is indistinguishable from the right answer until the day it is not.

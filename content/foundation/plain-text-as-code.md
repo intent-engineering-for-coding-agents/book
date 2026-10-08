@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Plain-Text-as-Code
+---
+
 # Plain-Text-as-Code
 
 I have spent forty years watching useful engineering work disappear into Word documents, PowerPoint decks, Visio files, and whichever proprietary tool was fashionable at the time. The files are often still around. Opening them is another matter. You need the right application and license, sometimes on an old laptop nobody wants to touch. A connector puts one more dependency between the developer and the decision.

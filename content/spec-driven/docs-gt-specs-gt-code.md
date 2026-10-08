@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "Docs > Specs > Code"
+---
+
 # Docs > Specs > Code
 
 Delete the code. Keep the docs. Regenerate.

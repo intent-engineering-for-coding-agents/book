@@ -1,3 +1,8 @@
+---
+type: index
+title: Quality and Verification
+---
+
 # Quality and Verification
 
 > A spec without evidence is a document. A test without intent is decoration. Quality is what closes the gap between them.

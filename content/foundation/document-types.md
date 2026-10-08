@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Document Types
+---
+
 # Document Types
 
 A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` and the next agent reads it as live instruction. That is not a documentation problem. It is a type problem.

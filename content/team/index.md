@@ -1,3 +1,8 @@
+---
+type: index
+title: Team Workflows and Adoption
+---
+
 # Team Workflows and Adoption
 
 > One owned change artifact per developer. Coordination starts with visible scope.

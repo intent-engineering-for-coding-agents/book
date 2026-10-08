@@ -1,3 +1,8 @@
+---
+type: chapter
+title: AC IDs and Coverage
+---
+
 # AC IDs and Coverage
 
 A spec and its tests are supposed to be the same promise written twice. Consider a spec with scenarios and a PR with tests. Some scenarios have no test at all, and some tests cover behavior the spec never mentioned. The reviewer approves it because the tests pass and the diff looks reasonable. The next change breaks the untested scenario, and the team hears about it from a customer.

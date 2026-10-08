@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Honest Maturity
+---
+
 # Honest Maturity
 
 Ask the team if they practice spec-driven development. Most will say yes. Then sample recent PRs. If specs appear after the code, or acceptance criteria have no matching tests, the practice is already drifting.

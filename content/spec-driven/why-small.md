@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Why Small?
+---
+
 # Why Small?
 
 A long spec does not fail loudly. It fails by quietly dropping things, and the more thorough the spec, the more it drops.

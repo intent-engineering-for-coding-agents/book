@@ -1,3 +1,8 @@
+---
+type: appendix
+title: "Feedback & Contributing"
+---
+
 # Feedback & Contributing
 
 A book about externalizing intent should make its own intent easy to correct. This one is plain text in a public repo, so every page is a file you can edit and every claim is one you can argue with.

@@ -1,3 +1,8 @@
+---
+type: preface
+title: Preface
+---
+
 > *To my coworkers at Elsevier in Aalborg and my dearest friends, who are always happy to talk about AI.*
 
 # Preface

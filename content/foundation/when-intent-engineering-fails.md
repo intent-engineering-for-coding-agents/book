@@ -1,3 +1,8 @@
+---
+type: chapter
+title: When Intent Engineering Fails
+---
+
 # When Intent Engineering Fails
 
 Intent Engineering does not prevent specs and agent instructions from falling out of sync with the codebase. It makes that gap visible and recoverable, which is a meaningfully weaker claim, and the technically accurate one.

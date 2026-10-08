@@ -1,3 +1,8 @@
+---
+type: index
+title: Agent Instructions
+---
+
 # Agent Instructions
 
 > One file at the root. Everything else follows from it.

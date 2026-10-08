@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "AGENTS.md: The Entry Point"
+---
+
 # AGENTS.md: The Entry Point
 
 An agent with no context reaches for the nearest thing it knows.

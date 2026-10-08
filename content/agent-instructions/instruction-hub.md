@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Agent Instruction Hub
+---
+
 # Agent Instruction Hub
 
 Two developers, same repo, same language, same CI pipeline. Their pull requests still come back with different naming, different directories off-limits, different test structures. The rules diverged because the instruction files diverged.

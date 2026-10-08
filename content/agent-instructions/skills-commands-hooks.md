@@ -1,3 +1,8 @@
+---
+type: chapter
+title: "Skills, Commands, and Hooks"
+---
+
 # Skills, Commands, and Hooks
 
 The same workflow has more than one home, and where you put it decides whether it runs.

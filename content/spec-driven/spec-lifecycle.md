@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Spec Lifecycle
+---
+
 # Spec Lifecycle
 
 Consider a spec with no lifecycle. It does not get retired. It sits there looking exactly like a live one.

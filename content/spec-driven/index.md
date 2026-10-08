@@ -1,3 +1,8 @@
+---
+type: index
+title: Spec-Driven Development
+---
+
 # Spec-Driven Development
 
 > A spec that nobody reads is documentation. A spec the agent loads before it writes code is the source the implementation is generated from.

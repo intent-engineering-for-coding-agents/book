@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Tooling Landscape
+---
+
 # Tooling Landscape
 
 This page is a snapshot reviewed on July 1, 2026, not a buyer's guide. The roster of agents, spec tools, and MCP servers changes faster than any book tracks well. Use the categories here to decide what is in scope, then verify current support against each tool's documentation. If removing a named tool also removes the practice, the practice is too tool-dependent for the core argument.

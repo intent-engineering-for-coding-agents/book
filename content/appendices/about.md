@@ -1,3 +1,8 @@
+---
+type: appendix
+title: About the Author
+---
+
 # About the Author
 
 Flemming Nørnberg Larsen is a principal software developer based near Aalborg, Denmark. He works at Elsevier, where he builds and maintains software systems and has spent several years working alongside coding agents in production.

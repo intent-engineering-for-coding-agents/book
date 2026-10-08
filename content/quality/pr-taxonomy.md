@@ -1,3 +1,8 @@
+---
+type: chapter
+title: PR Taxonomy
+---
+
 # PR Taxonomy
 
 A pull request is a review contract. If the contract says `behavioral` and the diff also moves files, reformats modules, and edits docs, the reviewer no longer knows which evidence applies.

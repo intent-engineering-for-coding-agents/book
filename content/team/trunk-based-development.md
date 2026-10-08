@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Trunk-Based Development with Agents
+---
+
 # Trunk-Based Development with Agents
 
 The branch strategy predates coding agents by two decades. Paul Hammant has documented it since the early 2000s, and the core rule has not changed: commit to trunk frequently, keep feature branches short-lived, integrate continuously. The arguments for it are unchanged: early conflict detection, reduced merge pain, reliable CI signal. What has changed is what creates branches.

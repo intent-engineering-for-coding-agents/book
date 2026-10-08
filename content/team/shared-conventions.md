@@ -1,3 +1,8 @@
+---
+type: chapter
+title: Shared Agent Instruction Conventions
+---
+
 # Shared Agent Instruction Conventions
 
 A convention constrains only the agents able to read it. On a solo project, that is one file and one agent. On a team, the same convention gets copied into as many instructions as there are developers, and those copies drift apart quietly.

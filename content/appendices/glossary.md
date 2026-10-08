@@ -1,3 +1,8 @@
+---
+type: appendix
+title: Glossary
+---
+
 # Glossary
 
 Sorted alphabetically. Each entry expands the term and gives the definition this book uses. Where an entry makes a historical, vendor, or time-bounded claim, it carries a local `*Sources:*` line. The rest are book-local definitions or cross-references.
