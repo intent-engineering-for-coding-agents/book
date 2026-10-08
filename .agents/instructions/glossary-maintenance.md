@@ -1,3 +1,8 @@
+---
+type: instruction
+title: Glossary Maintenance
+---
+
 # Glossary Maintenance
 
 When introducing a technical term in a chapter, follow the first-use rule and keep `content/appendices/glossary.md` current.

@@ -1,4 +1,6 @@
 ---
+type: decision
+title: "ADR-0002: Use `content/` for VitePress Prose"
 status: accepted
 date: 2026-05-09
 decision-makers: Intent Engineering Contributors

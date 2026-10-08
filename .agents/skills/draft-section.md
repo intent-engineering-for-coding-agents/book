@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: draft-section"
+---
+
 # Skill: draft-section
 
 Draft a new content section from its place in the book: the relevant section `index.md` entry, the book arc, and the task request.

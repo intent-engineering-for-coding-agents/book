@@ -4,8 +4,15 @@
 import fs from 'node:fs'
 import { execFileSync } from 'node:child_process'
 
-// Named exceptions: files a consumer pastes verbatim into other content.
-const EXCEPTIONS = new Set(['.github/PULL_REQUEST_TEMPLATE.md'])
+// Named exceptions, each with a reason. A file belongs here only when a consumer
+// pastes or renders it verbatim, so a header would leak into the output.
+const EXCEPTIONS = new Set([
+  '.github/PULL_REQUEST_TEMPLATE.md', // the forge pastes it into every pull request body
+  '.github/profile/README.md', // the organization profile page renders it, header included
+  'eval/01-update-index/task.md', // eval prompts are handed to the agent verbatim
+  'eval/02-review-chapter/task.md',
+  'eval/03-update-sidebar/task.md',
+])
 
 const specs = process.argv.length > 2 ? process.argv.slice(2) : ['*.md']
 const files = execFileSync('git', ['ls-files', ...specs], { encoding: 'utf8' })

@@ -1,3 +1,8 @@
+---
+type: guide
+title: Contributing
+---
+
 # Contributing
 
 Thanks for helping improve *Intent Engineering for Coding Agents*. There are three ways to contribute, ordered from lowest to highest effort.

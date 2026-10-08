@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: update-index"
+---
+
 # Skill: update-index
 
 Scan `docs/` and regenerate `docs/INDEX.md` and all `docs/*/README.md` listing files to match the files currently on disk.

@@ -1,3 +1,8 @@
+---
+type: instruction
+title: Voice and Craft
+---
+
 # Voice and Craft
 
 This file defines how the prose should sound. `writing.md` covers mechanics: audience, length, sources, structure. This file covers the part that makes a chapter feel lived-in instead of generic.

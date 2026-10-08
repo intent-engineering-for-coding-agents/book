@@ -1,3 +1,8 @@
+---
+type: instruction
+title: VitePress Conventions
+---
+
 # VitePress Conventions
 
 ## Configuration

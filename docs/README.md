@@ -1,3 +1,8 @@
+---
+type: index
+title: Intent Engineering for Coding Agents — Architecture
+---
+
 # Intent Engineering for Coding Agents — Architecture
 
 Intent Engineering for Coding Agents is a VitePress site at a domain to be confirmed at launch, deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices and references `iec` throughout as live evidence.

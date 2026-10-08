@@ -1,4 +1,6 @@
 ---
+type: decision
+title: "ADR-0001: Use VitePress for the Book Site"
 status: accepted
 date: 2026-05-09
 decision-makers: Intent Engineering Contributors

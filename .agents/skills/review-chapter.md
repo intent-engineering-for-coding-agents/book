@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: review-chapter"
+---
+
 # Skill: review-chapter
 
 Consistency, focus, tone, and DRY review of a draft chapter.

@@ -1,3 +1,8 @@
+---
+type: instruction
+title: docs/ Index Maintenance
+---
+
 # docs/ Index Maintenance
 
 Whenever you create, rename, or delete any file under `docs/`, you MUST update the index and listing files **of that file's directory** — not the top-level `docs/INDEX.md`.

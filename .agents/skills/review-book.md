@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: review-book"
+---
+
 # Skill: review-book
 
 Cross-cutting review of the whole book, across every part under `content/`.

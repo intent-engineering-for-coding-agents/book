@@ -1,3 +1,8 @@
+---
+type: index
+title: docs/decisions/ Index
+---
+
 # docs/decisions/ Index
 
 Agent-facing map of architectural decision records.

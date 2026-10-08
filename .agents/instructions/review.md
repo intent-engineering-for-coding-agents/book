@@ -1,3 +1,8 @@
+---
+type: instruction
+title: Review Conventions
+---
+
 # Review Conventions
 
 ## When to review

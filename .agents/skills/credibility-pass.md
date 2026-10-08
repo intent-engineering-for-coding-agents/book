@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: credibility-pass"
+---
+
 # Skill: credibility-pass
 
 Run a dedicated credibility and provenance pass on drafted or reviewed book content.

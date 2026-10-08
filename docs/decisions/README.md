@@ -1,3 +1,8 @@
+---
+type: index
+title: Architectural Decision Records
+---
+
 # Architectural Decision Records
 
 | ADR | Title | Status | Date |

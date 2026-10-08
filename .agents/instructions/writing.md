@@ -1,3 +1,8 @@
+---
+type: instruction
+title: Writing Conventions
+---
+
 # Writing Conventions
 
 ## Audience
@@ -27,6 +32,10 @@ Outside the Tooling section, tool names appear at most once per chapter, as a si
 Constraints first: put the key constraint, non-goal, or risk at the top of the chapter. Agents and skimmers read top-down and lose focus. Do not bury the point in the conclusion.
 
 Cross-chapter transitions: the last paragraph of a chapter plants a seed for the next (see voice.md — Asimov technique). When the next chapter is written, its opening paragraph should reference (implicitly or explicitly) the tension planted at the end of the previous one. This is bridging: something at the end of chapter N is mirrored or resolved at the start of chapter N+1.
+
+## Front matter
+
+Every Markdown file in this repo carries YAML front matter with `type` and `title`. Files with a lifecycle, such as ADRs, add `status`. Add no other field without a check that consumes it. `title` must match the file's first H1, which stays the source of truth for sidebar text. Book pages use `type: chapter`, `index`, `appendix`, or `preface`. The named exceptions live in `scripts/check-frontmatter.mjs`. Run `npm run docs:check-frontmatter` before committing.
 
 ## Formatting
 

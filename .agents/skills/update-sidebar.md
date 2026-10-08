@@ -1,3 +1,8 @@
+---
+type: skill
+title: "Skill: update-sidebar"
+---
+
 # Skill: update-sidebar
 
 Regenerate the VitePress sidebar in `.vitepress/config.mts` from the current `content/` file tree.
@@ -17,7 +22,7 @@ After adding, removing, or renaming any `.md` file under `content/`.
    - `team-workflows/`
    - `cross-team/`
    - `appendices/`
-3. For each file, derive the display text from the H1 heading of the file (not the filename)
+3. For each file, derive the display text from the H1 heading of the file (not the filename). The `title` in the front matter mirrors the H1. If they differ, fix the front matter, then run `npm run docs:check-frontmatter`
 4. Generate the sidebar config in this format:
 
 ```ts

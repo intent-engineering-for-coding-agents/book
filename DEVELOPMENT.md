@@ -1,3 +1,8 @@
+---
+type: guide
+title: Development Guide for intent-book
+---
+
 # Development Guide for intent-book
 
 ## Setup

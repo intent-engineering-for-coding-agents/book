@@ -1,3 +1,8 @@
+---
+type: guide
+title: Code of Conduct
+---
+
 # Code of Conduct
 
 ## Our pledge

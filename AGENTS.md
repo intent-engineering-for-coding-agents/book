@@ -1,3 +1,8 @@
+---
+type: agent-hub
+title: "AGENTS.md: Intent Engineering for Coding Agents"
+---
+
 # AGENTS.md: Intent Engineering for Coding Agents
 
 You are working on **Intent Engineering for Coding Agents**, a VitePress site teaching Intent Engineering practices.

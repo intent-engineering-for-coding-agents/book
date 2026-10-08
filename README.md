@@ -1,3 +1,8 @@
+---
+type: readme
+title: Intent Engineering for Coding Agents
+---
+
 # Intent Engineering for Coding Agents
 
 How humans and coding agents design software together.
