@@ -65,6 +65,49 @@ Some teams write them and move on, others keep them current, and both are reason
 
 *Sources: `iec` repo conventions in this project family, the docs/design/ placement and write-and-forget vs. keep-current treatment.*
 
+## Analysis documents
+
+You spend an afternoon finding out why the nightly build fails on one runner. The answer lives in a chat session closed since Friday. Next month an agent starts the same investigation, or retries the fix you already ruled out.
+
+An analysis document keeps that work. It answers an open question before a decision, a design, or a spec exists: why something fails, which option holds up, what the legacy code does. It lives in `docs/analysis/`, and every analysis ends in a finding. Each rejected alternative either becomes an ADR or is named in the findings, so the why-not outlasts the session that produced it.
+
+The shape is small. The file opens with the question, then states the evidence boundary: the date, the commit or release it ran against, what you ran and what you did not. Next come what was tried and the findings. Each finding is labeled observed or inferred, so a later reader knows a measured result from a guess.
+
+```markdown
+---
+type: analysis
+title: Why the nightly build fails on the arm64 runner
+status: concluded
+---
+
+# Why the nightly build fails on the arm64 runner
+
+## Open question
+## Evidence boundary
+## What was tried
+## Findings
+
+1. The cache restore step exceeds its timeout on every failing run (observed).
+2. The runner image changed the week the failures began (inferred).
+```
+
+An analysis is a snapshot. While its `status` is `active`, edit it as the work proceeds. Once it is `concluded`, the findings freeze, because they describe a system at one point in time. Later evidence goes into a new analysis, which supersedes the old one the way a new ADR supersedes an accepted one.
+
+Three neighbors look similar to an analysis, and each answers a different question:
+
+| Document | Question it answers |
+|---|---|
+| Analysis | What is true, and how do we know? |
+| Design doc | Which approach did we choose? |
+| ADR | What did we decide, and why? |
+| `proposal.md` | Which change are we proposing? |
+
+OpenSpec's `proposal.md` lives inside a change folder, so an analysis comes before any proposal exists. `skeleton.md` is the other near neighbor: it recovers a brownfield system and retires once its findings are distilled, while an analysis answers any question and stays.
+
+Point the agent at the analysis index before it starts an investigation. A concluded analysis on the same question saves the spike. Check its evidence boundary against the current system first, because a finding about last year's runner image says nothing about this year's.
+
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the supersede-instead-of-rewrite practice for accepted records. The analysis document type, its evidence boundary, its `active` and `concluded` statuses, and the observed or inferred labels are this book's synthesis.*
+
 ## skeleton.md
 
 `skeleton.md` exists to get a brownfield repo into the rest of the taxonomy. This book uses it as a first pass: reverse-engineered structure, visible business rules, recovered constraints, and the first draft of decisions nobody had written down.
@@ -129,6 +172,7 @@ Specs are temporary and move to `openspec/changes/archive/` after implementation
 |---|---|---|
 | Content documents | Permanent, updated | Write and evolve in place. No lifecycle or size constraints |
 | README files with an embedded index | Permanent, updated | Opening lines written for readers on Git hosts. The index rows change with every file added, renamed, or removed in the directory |
+| Analysis documents | Snapshot, frozen once concluded | `active` while the work runs, then `concluded`. New evidence goes into a new analysis that supersedes the old one |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
 | ADRs | Permanent, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
 | `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into permanent `docs/`, then archive, remove, or mark as historical. |

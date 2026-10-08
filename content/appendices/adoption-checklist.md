@@ -17,11 +17,11 @@ If brownfield: harvest structure, dependencies, key decisions, design constraint
 
 - [ ] `docs/architecture/`: architecture, updated as the system changes, not only at setup
 - [ ] `docs/decisions/`: ADRs in MADR format, one per architectural decision
+- [ ] `docs/analysis/`: findings from discovery, diagnosis, and spikes. Each ends in a finding, and concluded analyses stay frozen
 - [ ] `docs/design/`: per-feature design docs. Decide to write-and-forget or keep-current and apply it consistently
 - [ ] `openspec/` (the OpenSpec spec directory, if your team uses OpenSpec): change proposals, delta specs, archived changes
 - [ ] `AGENTS.md` at the repo root, TOC pattern: short, links to `.agents/`, load clauses for each instruction file
-- [ ] `docs/**/README.md`: human-readable document providing an overview of the content in a directory
-- [ ] `docs/**/README.md`: an embedded index with one row per file and a one-line description, the map the agent loads before anything else
+- [ ] `docs/**/README.md`: a short overview for readers on a Git host, then an embedded index with one row per file and a one-line description, the map the agent loads before anything else
 
 ## Agent Instructions
 

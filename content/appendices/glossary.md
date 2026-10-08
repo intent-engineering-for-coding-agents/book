@@ -39,6 +39,10 @@ The de-facto entry point for a coding agent at the root of a repository as of th
 
 The broader discipline of building software with coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
 
+## Analysis document
+
+This book's term for a document in `docs/analysis/` that answers an open question before a decision, design, or spec exists: it states the question, the evidence boundary, what was tried, and findings labeled observed or inferred. Its `status` is `active` while the work runs and `concluded` once the findings freeze. See [Document Types](/foundation/document-types).
+
 ## Behavior-Driven Development (BDD)
 
 The collaboration practice Gherkin's `Given/When/Then` notation came from: scenarios written with business stakeholders, then bound to step definitions that a tool such as Cucumber executes. This book borrows the notation, not the practice. Its scenarios carry no step-definition layer and no Cucumber runtime, and they are authored before the code exists and compiled to tests by the agent rather than written against code that already runs. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
@@ -97,7 +101,7 @@ This book uses `diff` for the line-by-line source-control change set shown in a 
 
 ## Engineering memory
 
-The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, design docs, diagrams, specs, contracts, README files with their embedded indexes, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, analysis documents, design docs, diagrams, specs, contracts, README files with their embedded indexes, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
 ## Front matter
 
