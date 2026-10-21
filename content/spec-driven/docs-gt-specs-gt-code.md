@@ -13,7 +13,7 @@ Now flip it. Delete the docs, keep the code, regenerate the docs.
 
 The agent will infer: it can list routes, classes, and fields. What it cannot recover is why the retry count is three, why validation stayed in the controller, or which compromise should never have become the default. That is the difference between structure and intent.
 
-*Sources: Augment Code, "The Spec as Source of Truth: Why Codebases Should Be Rebuildable from Documentation" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), spec-as-source as the strongest SDD form, and code as derivative.*
+*Sources: Augment Code, "The Spec as Source of Truth: Why Codebases Should Be Rebuildable from Documentation" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (arXiv preprint, January 30, 2026), spec-as-source as the strongest SDD form, and code as derivative.*
 
 ## The argument
 
@@ -42,7 +42,7 @@ graph TD
     S -. design wrong? fix the docs .-> D
 ```
 
-*Sources: Fission AI, OpenSpec, change folders, delta specs, and archive into canonical specs; LeanSpec, spec files as intent, constraints, and success criteria for AI implementation; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), SDD tools treating specs as primary artifacts; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), spec-first, spec-anchored, and spec-as-source spectrum; Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and delivery of intent into production. The docs > specs > code ordering and compiler analogy are this book's synthesis.*
+*Sources: Fission AI, OpenSpec, change folders, delta specs, and archive into canonical specs; LeanSpec, spec files as intent, constraints, and success criteria for AI implementation; Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), SDD tools treating specs as primary artifacts; "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (arXiv preprint, January 30, 2026), spec-first, spec-anchored, and spec-as-source spectrum; Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and delivery of intent into production. The docs > specs > code ordering and compiler analogy are this book's synthesis.*
 
 ## Why this inverts the default
 
@@ -90,7 +90,7 @@ Scoped to one change: one spec, one coherent change. Not a domain model. Not a q
 
 Those bars are about behavior. The design behind the change, the why, and the alternatives weighed live in the ADRs and design docs under `docs/`.
 
-*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), testable and verifiable specification qualities; LeanSpec, context economy, and spec files capturing intent, constraints, and success criteria; Cucumber, Gherkin tags, stable scenario tagging lineage; JUnit 5, test tagging as executable grouping. The AC ID format and minimum-bar checklist are this book's synthesis.*
+*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (arXiv preprint, January 30, 2026), testable and verifiable specification qualities; LeanSpec, context economy, and spec files capturing intent, constraints, and success criteria; Cucumber, Gherkin tags, stable scenario tagging lineage; JUnit 5, test tagging as executable grouping. The AC ID format and minimum-bar checklist are this book's synthesis.*
 
 ## The hardest shift
 
@@ -102,4 +102,4 @@ Stop treating code review as the only primary quality gate. In this workflow, sp
 
 This claim only holds if the spec is tied to something harder than intent: executable evidence that the implementation delivers it. Intent without evidence is still a document.
 
-*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (OpenReview, January 30, 2026, modified April 2, 2026), SDD workflow checkpoints and spec-code alignment through tests; Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and automated verification.*
+*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (arXiv preprint, January 30, 2026), SDD workflow checkpoints and spec-code alignment through tests; Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), feedback loops and automated verification.*

@@ -180,7 +180,7 @@ Specs are temporary and move to `openspec/changes/archive/` after implementation
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with superseded specs in the wrong place and half-live design notes nobody trusts.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (2014), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
+*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (reviewed October 21, 2026), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
 
 ## Tooling
 
