@@ -5,230 +5,254 @@ title: Glossary
 
 # Glossary
 
-Sorted alphabetically. Each entry expands the term and gives the definition this book uses. Where an entry makes a historical, vendor, or time-bounded claim, it carries a local `*Sources:*` line. The rest are book-local definitions or cross-references.
+Definitions follow this book's usage. Entries identify book conventions explicitly and link to chapters for workflow details. Dates on living sources record when the cited definition was checked.
 
 ## AC ID (Acceptance Criterion ID)
 
-A stable, bracketed identifier (format `[PREFIX-NNN]`, e.g. `[GV-001]`, `[AUTH-014]`) attached to each acceptance scenario in a spec. Prefix is 2-4 letters from the component abbreviation so the component is immediately recognizable. Numbers are monotone: deleted IDs leave a permanent gap and are never reused. Tests carry the ID as a framework tag (e.g. JUnit `@Tag("GV-001")`), producing traceability from spec to evidence. This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec itself prescribes no ID format. See [AC IDs and Coverage](/quality/ac-ids-coverage).
+A stable identifier linking an acceptance scenario to its tests, such as `[AUTH-014]`. In this book's convention, a component prefix and an increasing number identify the scenario, and retired IDs are never reused. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## AC registry
 
-A file (`test/ac-registry.md` by convention) that maintains one row per component: prefix, component name, and next available number. Allocate IDs from this file and increment the counter atomically with the new scenario. A checker uses the registry to reject prefix overlap and ID reuse, as described in [AC IDs and Coverage](/quality/ac-ids-coverage).
+This book's allocation record for AC IDs, conventionally `test/ac-registry.md`. Each row records a component, its prefix, and the next available number. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## ADLC (Agentic Development Lifecycle)
 
-The discipline of building agents as products: reasoning passes, evals, hallucination budgets, runtime governance (boundaries, policies, escalation paths). Distinct from Intent Engineering, where the agent is the worker rather than the product being shipped. See [Introduction](/introduction).
+A lifecycle for developing and operating AI agents as products, in EPAM's usage. This book uses the same meaning when distinguishing agent development from software development assisted by agents. See [Introduction](/introduction).
+
+*Sources: EPAM, "Agentic Development Lifecycle (ADLC): A New Model for AI Systems Beyond SDLC" (reviewed October 21, 2026), vendor-authored agent-product lifecycle framing.*
 
 ## ADR (Architectural Decision Record)
 
-A document recording a single architectural decision: context, options considered, decision, consequences. The recorded decision is immutable once accepted. Reversing a decision creates a new ADR that supersedes the old one, though status updates and cross-references remain editable. The practice originated in Michael Nygard's 2011 post. The structured-Markdown variant used in this book is MADR. See [Document Types](/foundation/document-types).
+A record of one architectural decision, its context, and its consequences. Following Michael Nygard's approach, a later ADR supersedes a reversed decision while preserving the earlier rationale. See [Document Types](/foundation/document-types).
 
-*Sources: Michael Nygard, "Documenting Architecture Decisions" (November 15, 2011), origin of the ADR practice. Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS paper (2018), MADR as the structured Markdown variant used in this book.*
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (November 15, 2011), decision-record structure and supersession.*
 
 ## Agent instructions
 
-This book's term for the full instruction set the agent loads: `AGENTS.md` (the entry-point file) and the `.agents/` hub it points into (instruction files, skills, and hooks). The entry point is a table of contents. The content lives in `.agents/`. "Agent instructions" refers to both together. See [Agent Instructions](/agent-instructions/).
-
-## AGENTS.md
-
-The de-facto entry point for a coding agent at the root of a repository as of the May 2026 snapshot of [agents.md](https://agents.md/). Acts as a table of contents: short, links to detailed instruction files, points the agent at the architecture overview.
-
-*Sources: [AGENTS.md](https://agents.md/) (ongoing, May 2026 snapshot), the de-facto entry-point convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed June 9, 2026), the TOC pattern described in this book. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), current vendor support for the convention.*
+This book's collective term for `AGENTS.md` and the instruction files, skills, and hook configuration in the `.agents/` hub. See [Agent Instructions](/agent-instructions/).
 
 ## Agentic Software Engineering (ASE)
 
-The broader discipline of building software with coding agents as active participants in the development process. Intent Engineering sits within agentic software engineering as the specific practice of directing agents by engineering intent rather than writing code.
+This book uses ASE for software engineering with coding agents participating in implementation and verification. Intent Engineering addresses the context, specifications, and evidence used to direct their work.
+
+## AGENTS.md
+
+A Markdown file providing project instructions to coding agents. This book uses the root file as a short index into `.agents/`, while the format also supports instructions directly in the file and additional files in subdirectories. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
+
+*Sources: [AGENTS.md](https://agents.md/) (reviewed October 21, 2026), instruction-file format and directory scope. The index layout is this book's convention.*
 
 ## Analysis document
 
-This book's term for a document in `docs/analysis/` that answers an open question before a decision, design, or spec exists: it states the question, the evidence boundary, what was tried, and findings labeled observed or inferred. Its `status` is `active` while the work runs and `concluded` once the findings freeze. See [Document Types](/foundation/document-types).
+This book's document for investigating an open question in `docs/analysis/`. Records evidence and distinguishes observed findings from inference, with status `active` during investigation and `concluded` when findings freeze. See [Document Types](/foundation/document-types).
 
 ## Behavior-Driven Development (BDD)
 
-The collaboration practice Gherkin's `Given/When/Then` notation came from: scenarios written with business stakeholders, then bound to step definitions that a tool such as Cucumber executes. This book borrows the notation, not the practice. Its scenarios carry no step-definition layer and no Cucumber runtime, and they are authored before the code exists and compiled to tests by the agent rather than written against code that already runs. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
+A collaborative development practice using concrete examples to establish expected behavior before implementation and guide automated checks. This book borrows scenario notation from BDD without requiring a Cucumber runtime. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
 
-*Sources: Dan North, "Introducing BDD" (March 2006), origin of Behavior-Driven Development. Cucumber Gherkin reference (ongoing), the scenario notation this book borrows while discarding the step-definition runtime.*
-
-## Brownfield
-
-A codebase that predates Intent Engineering practices: typically years of code, undocumented decisions, business rules that exist only in institutional memory. Brownfield repos cannot adopt Intent Engineering from intent the way greenfield ones do. They bootstrap with `skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+*Sources: Dan North, "Introducing BDD" (originally published March 2006), behavior-first development. Cucumber, "Behaviour-Driven Development" (reviewed October 21, 2026), collaboration around examples from discovery through implementation.*
 
 ## BFF (Backend for Frontend)
 
-An intermediate service layer that sits between front-end clients and back-end services. The BFF provides a client-specific API (aggregating, transforming, and authorizing calls) so the front-end does not talk directly to back-end services. When using OpenSpec in a multi-tier system, each tier (front-end, BFF, back-end) has its own `openspec/` directory. Cross-tier contracts are recorded in ADRs. See [OpenSpec Across Stacks](/team/openspec-across-stacks).
+A backend service tailored to a particular frontend, exposing the API its client needs and coordinating calls to downstream services. See [OpenSpec Across Stacks](/team/openspec-across-stacks).
+
+*Sources: Sam Newman, "Backends For Frontends" (reviewed October 21, 2026), client-specific backend pattern.*
+
+## Brownfield
+
+An existing codebase whose implementation constrains the next change. This book's brownfield adoption path starts by extracting and validating existing behavior and decisions. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## BYOK (Bring Your Own Key)
 
-A design principle where the tool uses the caller's model provider credentials rather than supplying its own. In the `iec` design, agent-assisted checks use BYOK via MCP: the user's agent connects to the MCP server and runs checks using its own model access. The tool never touches API keys directly.
+In model tooling, an arrangement where the user supplies model-provider credentials. The companion design uses the term more loosely for reusing the developer's existing agent and model access. See [MCP](#mcp-model-context-protocol) for the separate connection protocol.
+
+*Sources: OpenRouter, "BYOK" (reviewed October 21, 2026), user-supplied provider keys. Companion repository, ADR-0004 (reviewed October 21, 2026), the broader bring-your-own-agent design usage.*
 
 ## Capability-class agent
 
-A coding agent with reasoning, tool use, file editing, and a planning mode. The book targets this class rather than one vendor roster. Current time-bounded examples live in [Tooling Landscape](/appendices/tooling-landscape), while completion-only tools remain out of scope.
+This book's term for a coding agent with reasoning, planning, tool use, and file editing sufficient to carry out a development task. See [Tooling Landscape](/appendices/tooling-landscape) for dated product examples.
 
 ## Change folder
 
-The unit of work in OpenSpec: a directory under `openspec/changes/` named with a slug matching the branch. Contains `proposal.md`, delta specs under `specs/`, `tasks.md`, and optionally `design.md`. Moves to `openspec/changes/archive/` when the PR merges. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+An OpenSpec directory under `openspec/changes/` holding the artifacts for one proposed change. This book uses `proposal.md`, delta specs, `tasks.md`, and optional `design.md`, and archives the folder after merge. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
-## CSRF (Cross-Site Request Forgery)
-
-A web attack class in which an authenticated user's browser is induced to submit an unintended request to a site they are logged into. Defended against with CSRF tokens, same-site cookies, or origin checks. Listed in [What the Scanners Miss](/quality/what-the-scanners-miss).
-
-## CVE (Common Vulnerabilities and Exposures)
-
-A public catalog of disclosed security flaws in software, each with a unique identifier (e.g. `CVE-2026-12345`). Dependency scanners flag direct and transitive dependencies that include packages with open CVEs. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), change directories and artifacts. Archiving after merge is this book's lifecycle rule.*
 
 ## Cognitive debt
 
-The agentic-era analogue to technical debt: undocumented decisions and assumptions developers hold implicitly but agents cannot read. Coined by ThoughtWorks Technology Radar Vol 34 (April 2026). See [Why Structure Matters](/foundation/why-structure).
+The gap between a system's implementation and developers' understanding of how and why the system works. Thoughtworks' April 2026 Radar warns of this gap growing as AI generates more code. See [Why Structure Matters](/foundation/why-structure).
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), "cognitive debt" as the named agentic-era failure mode.*
+*Sources: Thoughtworks Technology Radar Vol 34 and its release announcement (April 15, 2026), cognitive debt as a gap in developer understanding.*
 
 ## Context engineering
 
-The practice of deliberately controlling what enters a model's context window: instructions, retrieved files, tool definitions, conversation history, and other task-relevant information. In this book, context engineering covers part of the Foundation and Agent Instructions work, but not the full Intent Engineering chain of specs, evidence, review, and durable decisions. See [The Human-Agent Engineering Mindset](/mindset).
+Selecting and maintaining the information available to a model during a task, including instructions, retrieved files, tool definitions, and conversation history. This book applies context engineering to repository knowledge and agent instructions. See [The Human-Agent Engineering Mindset](/mindset).
+
+*Sources: Birgitta Böckeler, "Context Engineering for Coding Agents" (February 5, 2026), configuring context for coding-agent tasks.*
 
 ## Context poisoning
 
-A failure mode in which stale, incorrect, or irrelevant documents loaded into the agent's context cause it to act on false premises. The agent treats provided context as authoritative, so an outdated architecture doc, a superseded spec, or wrong instruction files produce wrong output with apparent confidence. See [When Intent Engineering Fails](/foundation/when-intent-engineering-fails).
+This book uses the term for incorrect or stale context steering an agent toward the wrong implementation, such as a superseded API contract loaded as current guidance. See [When Intent Engineering Fails](/foundation/when-intent-engineering-fails).
+
+## CSRF (Cross-Site Request Forgery)
+
+An attack inducing a browser to send an unwanted request using the victim's existing authentication. Defenses include anti-CSRF tokens and origin validation, with `SameSite` cookies providing additional protection. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+
+*Sources: OWASP, "Cross-Site Request Forgery Prevention Cheat Sheet" (reviewed October 21, 2026), attack mechanism and layered defenses.*
+
+## CVE (Common Vulnerabilities and Exposures)
+
+A program identifying and cataloging publicly disclosed cybersecurity vulnerabilities. A CVE ID names a vulnerability, regardless of whether a particular installation is affected or a fix exists. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+
+*Sources: CVE Program, "About CVE" (reviewed October 21, 2026), vulnerability identification and cataloging.*
 
 ## Dead spec
 
-An un-archived OpenSpec change folder still sitting in `openspec/changes/`, marked in-flight, for a change that was implemented, abandoned, or pivoted away from. The agent loads it as current intent and acts on instructions that no longer apply. An un-archived spec is a live instruction, not a historical record. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+This book's term for a completed, abandoned, or superseded change left among active specs. In OpenSpec, the stale folder stays under `openspec/changes/`, where an agent risks reading obsolete intent as current work. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 ## Diff
 
-This book uses `diff` for the line-by-line source-control change set shown in a pull request. Where the distinction matters, `code diff` names the changed code itself, while `diff view` names the review surface that presents those changes. See [Code Review for Agent-Generated Code](/team/code-review-agent-code).
+The source-control changes shown for review. This book distinguishes the `code diff`, the changed code, from the `diff view`, the interface presenting those changes. See [Code Review for Agent-Generated Code](/team/code-review-agent-code).
 
 ## Engineering memory
 
-The durable codebase context developers and coding agents read before the next change: ADRs, architecture overview, analysis documents, design docs, diagrams, specs, contracts, README files with their embedded indexes, conventions, and agent instructions. ADRs record decisions inside engineering memory, but they are not the whole memory. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
+This book's term for durable project knowledge available across development sessions: decisions, architecture and design docs, contracts, specs, and agent instructions. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
 ## Front matter
 
-The YAML header between `---` markers at the top of a Markdown file. This book uses it to state what a file is (`type`, `title`) and, for files with a lifecycle such as ADRs, its `status`, so scripts, linters, and agents read the file's kind without reading its body. Written as two words. See [Plain-Text-as-Code](/foundation/plain-text-as-code#front-matter-as-a-contract).
+The metadata header at the start of a document. This book uses YAML between `---` markers to declare `type`, `title`, and lifecycle `status` where applicable. See [Plain-Text-as-Code](/foundation/plain-text-as-code#front-matter-as-a-contract).
 
 ## Gherkin
 
-The `Given/When/Then` (here `WHEN/THEN`) scenario notation from Cucumber, used in this book as a specification language for acceptance criteria, one scenario per behavior. OpenSpec prescribes the `#### Scenario:` heading and the `WHEN/THEN` body. The notation is borrowed. The [BDD](#behavior-driven-development-bdd) practice it originates from is not. See [The Spectrum](/spec-driven/the-spectrum) and [AC IDs and Coverage](/quality/ac-ids-coverage).
+Cucumber's language for describing behavior through scenarios with `Given`, `When`, and `Then` steps. This book uses a Markdown adaptation with `#### Scenario:` headings and `WHEN/THEN` clauses, rather than executable `.feature` files. See [The Spectrum](/spec-driven/the-spectrum).
 
-*Sources: Cucumber Gherkin reference (ongoing), the `Given/When/Then` scenario form. OpenSpec FAQ and docs (ongoing), the lightweight `#### Scenario:` / `WHEN/THEN` structure used in this book.*
-
-## Greenfield
-
-A new codebase, or one being built from explicit intent. Greenfield Intent Engineering adoption assumes you write `AGENTS.md`, ADRs, and specs from requirements, not from reverse-engineering existing code.
+*Sources: Cucumber, "Gherkin reference" (reviewed October 21, 2026), scenario language. Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), Markdown scenario structure.*
 
 ## Golden test
 
-A fixed, repeatable task with a known good output, used to detect regressions when something upstream changes. In this book, applied both to code (a stable input with an expected output) and to agent setups (a fixed task with structural properties the agent's output should satisfy). See [Agent Evaluation and Regression](/quality/agent-evaluation).
+A regression check comparing output from a fixed input against an approved reference. This book also uses the term for fixed agent tasks checked against expected structural properties rather than exact output text. See [Agent Evaluation and Regression](/quality/agent-evaluation).
+
+## Greenfield
+
+A new implementation without an existing codebase to preserve. This book's greenfield adoption path records requirements and decisions directly, before implementation. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## GSD (Get Shit Done)
 
-The lightest structured point on the spec-driven spectrum: structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail, which makes it the practical alternative for teams whose risk profile does not warrant OpenSpec's overhead. See [The Spectrum](/spec-driven/the-spectrum).
+A named system for context engineering and spec-driven development with coding agents. As checked in October 2026, the original repository directs users to [GSD Core](https://github.com/open-gsd/gsd-core). See [The Spectrum](/spec-driven/the-spectrum).
+
+*Sources: [GSD repository](https://github.com/gsd-build/get-shit-done) and its README (reviewed October 21, 2026), project identity and move to GSD Core.*
 
 ## Hook
 
-A deterministic script wired to a file-system or session event (post-edit, pre-commit, etc.) that runs automatically, independent of agent memory. Hooks enforce rules the agent might otherwise forget to apply. Stored in `.agents/hooks/`. Distinct from skills (invocable on demand) and instruction files (advisory). See [Agent Instruction Hub](/agent-instructions/instruction-hub).
+An event-triggered command or script, such as a pre-commit check or a check after an agent edits a file. This book stores hook scripts in `.agents/hooks/`, with event wiring configured in the invoking tool. See [Agent Instruction Hub](/agent-instructions/instruction-hub).
 
 ## `iec`
 
-The companion CLI for this book (Intent Engineering Checker). Validates the structural conventions the book describes: `docs/` layout, ADR format (MADR), `AGENTS.md` presence, AC ID traceability, and spec lifecycle. The companion repo also records the MCP/BYOK design for agent-assisted checks. Source at github.com/intent-engineering-for-coding-agents/cli. See [Companion Repository](/appendices/companion-repo).
+Intent Engineering Checker, the book's companion CLI and worked repository. Demonstrates checks for documentation structure, decision records, AC ID traceability, and spec lifecycle. See [Companion Repo](/appendices/companion-repo).
+
+*Sources: [Companion repository](https://github.com/intent-engineering-for-coding-agents/cli) (reviewed October 21, 2026), CLI scope and worked conventions.*
 
 ## Inner source
 
-The practice of sharing `.agents/` skill and instruction files across team boundaries within an organization, using the same contribution and review patterns as shared libraries. Teams publish useful skills to a shared repository. Other teams pull from it. This book treats packaging and versioning for `.agents/` libraries as an unsettled practice in the mid-2026 snapshot. See [Cross-Team Coordination](/team/cross-team-coordination).
+Applying open-source collaboration practices to software shared within an organization. This book extends the approach to shared agent instructions and skills. See [Cross-Team Coordination](/team/cross-team-coordination).
+
+*Sources: InnerSource Commons, "What is InnerSource?" (reviewed October 21, 2026), internal open collaboration. Applying the approach to `.agents/` libraries is book synthesis.*
 
 ## Intent
 
-What a developer encodes for a coding agent to act on. In this book, intent takes two forms: per-change specs that state what to build right now (the immediate intention), and the permanent architectural decisions and coded conventions that constrain how anything gets built. See [Spec-Driven Development](/spec-driven/) for the per-change form. See [Foundation](/foundation/) and [Agent Instructions](/agent-instructions/) for the permanent substrate. See [Intent Engineering](#intent-engineering).
+What the developer wants an agent to build or decide, including constraints on the result. This book distinguishes change-specific intent in specs from durable intent in decisions and conventions. See [Intent Engineering](#intent-engineering).
 
 ## Intent Engineering
 
-Intent Engineering is presented here as a paradigm within agentic software engineering. It directs coding agents through maintained engineering intent: durable context and instructions, change-sized specs, evidence, and intent-first review. Prompt engineering remains one local technique inside this larger chain. See [Introduction](/introduction).
+This book's discipline for directing coding agents through maintained project context, instructions, change-specific specs, and evidence reviewed against intent. See [Introduction](/introduction).
 
 ## LeanSpec
 
-A lightweight spec-driven development framework focused on small, focused specs (lean-spec.dev). Source for the small-spec discipline this book inherits.
+A spec methodology and toolset emphasizing short, focused specifications maintained alongside implementation. This book draws on its small-spec discipline. See [The Spectrum](/spec-driven/the-spectrum).
 
-*Sources: LeanSpec (lean-spec.dev, ongoing), the small-spec framework this book cites as one point on the SDD spectrum.*
+*Sources: [LeanSpec](https://www.lean-spec.dev/) (reviewed October 21, 2026), concise specs and adaptive specification workflow.*
 
 ## LLM (Large Language Model)
 
-This book uses LLM for the language model behind a coding agent. The term matters here only when the model is wrapped in tool use and project context.
+A language model trained on large amounts of data to process and generate text. In this book, the LLM supplies the language and reasoning component of a coding agent.
 
 ## Load clause
 
-A condition line in an instruction file (or in `AGENTS.md`) that states when the agent should load it: for example, "Load when working on database migrations" or "Load before writing any spec." The TOC pattern depends on load clauses to enable selective loading. Without them the agent has no basis for choosing what to read and either loads everything or nothing. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
+This book's term for an instruction stating when an agent should read a file, such as "Load when working on database migrations". See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
 ## MADR (Markdown Architectural Decision Record)
 
-A specific Markdown template for ADRs developed by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann (2018). Used in `docs/decisions/` throughout this book. The structure (context, options, decision, consequences) makes ADRs scan-readable and machine-parseable.
+A Markdown template for ADRs, documented by Oliver Kopp, Anita Armbruster, and Olaf Zimmermann in 2018. This book uses its context, options, decision, and consequences structure in `docs/decisions/`.
 
-*Sources: Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS paper (2018), the MADR format and its structure.*
+*Sources: Kopp, Armbruster, Zimmermann, "Markdown Architectural Decision Records: Format and Tool Support" (2018), MADR format.*
 
 ## MCP (Model Context Protocol)
 
-The agent-tool bridge protocol documented at modelcontextprotocol.io. In this book, the `iec` design uses MCP to expose agent-assisted checks through the user's own coding agent (BYOK: bring your own key).
+A protocol connecting AI applications to servers exposing tools, resources, and prompts. MCP defines the connection and exchange format, independently of the model credentials the application uses.
 
-*Sources: Model Context Protocol (modelcontextprotocol.io, ongoing), MCP as the agent-tool bridge. intent-engineering-for-coding-agents/cli companion repo (ongoing), MCP used with BYOK in the companion design.*
+*Sources: Model Context Protocol, "Architecture overview" (reviewed October 21, 2026), client-server roles, exposed primitives, and protocol scope.*
 
 ## Mutation testing
 
-A technique that introduces small, semantics-changing edits (mutations) into the code under test and re-runs the test suite. A mutation that stays green indicates a gap: the suite did not detect a wrong implementation. The kill rate is a feedback control on whether tests are evidence or decoration. See [Tests as Evidence, Not Ritual](/quality/tests-as-evidence).
+Evaluating tests by introducing small changes to the code and checking whether tests fail. A surviving mutant warrants investigation: the tests missed the change, or the mutation preserved observable behavior. See [Tests as Evidence, Not Ritual](/quality/tests-as-evidence).
 
-## OWASP (Open Worldwide Application Security Project)
-
-A non-profit foundation publishing community-driven security resources for web applications. Best known for the OWASP Top 10, the ten most prevalent web application vulnerability classes. Used in this book as the after-gate review checklist. See [What the Scanners Miss](/quality/what-the-scanners-miss).
-
-*Sources: OWASP and OWASP Top 10 (ongoing), OWASP as the community-maintained security reference used in this book.*
+*Sources: Yue Jia and Mark Harman, "An Analysis and Survey of the Development of Mutation Testing" (2011), mutants, detection, and equivalent mutations.*
 
 ## OpenSpec
 
-A spec-driven-development framework (openspec.dev) built around a change-folder pattern: `proposal.md`, delta specs per capability under `specs/`, `tasks.md`, and optional `design.md`. On archive, delta specs are applied to the canonical `openspec/specs/` and the full change folder moves to `openspec/changes/archive/`. The book uses OpenSpec end-to-end. `iec` is built with it.
+A spec-driven development framework organizing proposed changes as delta specs alongside proposal, design, and task artifacts. Its archive workflow merges deltas into `openspec/specs/` and preserves change folders under `openspec/changes/archive/`. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
-*Sources: OpenSpec (openspec.dev and GitHub repo, ongoing), the change-folder pattern and archive flow. intent-engineering-for-coding-agents/cli companion repo (ongoing), the book's worked OpenSpec example.*
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), delta specs and archive workflow.*
+
+## OWASP (Open Worldwide Application Security Project)
+
+A nonprofit foundation supporting open application-security resources. Its Top 10 is an awareness document covering critical web application security risks. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+
+*Sources: OWASP and "OWASP Top 10" (reviewed October 21, 2026), foundation role and Top 10 scope.*
 
 ## Prompt engineering
 
-The practice of shaping one prompt or instruction exchange so a model responds usefully. Prompt engineering is a local technique within Intent Engineering. The wider paradigm maintains codebase context, specs, tests, decisions, and review across sessions. See [Introduction](/introduction#why-this-is-more-than-prompt-engineering).
-
-## skeleton.md
-
-An agent-generated structural map of an existing codebase: modules, dependencies, data flow, business-rule outline, C4-style views. In this book, `skeleton.md` is the brownfield bootstrap map, not the file an agent should keep treating as current architecture forever. Its stable findings move into `docs/architecture/`, `docs/design/`, and `docs/decisions/`. After that, the skeleton becomes history or gets retired. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
-
-## Skill
-
-A named, reusable agent workflow stored as a Markdown file in `.agents/skills/`. Invocable via slash command (`/draft-section`) or an autonomous trigger in the agent instructions. A skill describes a multi-step procedure: what to load, what to do, what to produce. Distinct from an instruction file (standing rules) and a hook (fires automatically). See [Agent Instruction Hub](/agent-instructions/instruction-hub).
-
-## Spec
-
-In this book's sense: the canonical specification of system behavior. Acceptance criteria, scenarios, test definitions. Lives under `openspec/`, written before implementation, archived after. Distinct from a design doc (which describes the approach) and an ADR (which records a decision).
+Designing prompts to guide a model's responses. This book treats prompt wording as one technique within the wider Intent Engineering workflow. See [Introduction](/introduction#why-this-is-more-than-prompt-engineering).
 
 ## SDD (Spec-Driven Development)
 
-The practice of writing intent as structured, acceptance-criterion-tagged specifications before implementation. Specs are scoped to one change, archived after merge, and serve as the canonical acceptance criteria from which code is generated and checked. The durable source of truth for design is `docs/`, not the spec. One of the four topics in Intent Engineering. See [Spec-Driven Development](/spec-driven/).
+Using explicit specifications to guide implementation and verify the result. This book adds change-sized scope, stable AC IDs, and a review-and-archive lifecycle. See [Spec-Driven Development](/spec-driven/).
 
-## Test-type field
+## skeleton.md
 
-A `Test-type:` line placed in a spec scenario before the WHEN/THEN block, naming the category of test that verifies the scenario (e.g. `unit`, `integration`, `e2e`). Captures the intended test level at spec-authoring time so the agent generates the right kind of test. Resolved against the project's test strategy document at implementation time. See [AC IDs and Coverage](/quality/ac-ids-coverage).
+This book's bootstrap map of an existing codebase, drafted by an agent and validated by developers. Stable findings move into maintained architecture, design, and decision documents. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
+
+## Skill
+
+A reusable agent workflow describing what to load, do, and produce. This book stores skill procedures as Markdown files in `.agents/skills/` and lists their triggers in the agent instructions. See [Agent Instruction Hub](/agent-instructions/instruction-hub).
+
+## Spec
+
+A specification of expected system behavior, expressed here through requirements and acceptance scenarios. In this book's OpenSpec workflow, change specs describe deltas, while `openspec/specs/` holds the canonical behavior after synchronization. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), distinction between delta and main specs.*
 
 ## `tasks.md`
 
-A checklist file inside an OpenSpec change folder that lists the implementation steps for a change. The agent checks off tasks as it completes them. A change folder with unchecked tasks should not have a PR open. See [Document Types](/foundation/document-types).
+The implementation checklist in this book's OpenSpec change folders. Tracks steps to complete the change, with acceptance behavior defined in the accompanying specs. See [Document Types](/foundation/document-types).
+
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), task artifact and completion tracking.*
 
 ## TBD (Trunk-Based Development)
 
-A source-control discipline in which all developers commit to a single trunk branch frequently, using short-lived feature branches (often less than a day) and avoiding long-running parallel branches. Canonical reference: Paul Hammant, trunkbaseddevelopment.com. In the Intent Engineering context, an OpenSpec change folder maps onto one or two short-lived branches that carry its name: a spec branch followed by an implementation branch for decision-heavy changes, or a single branch when the intent is visible in the code diff. See [PR Taxonomy](/quality/pr-taxonomy) and [Trunk-Based Development with Agents](/team/trunk-based-development).
+A branching model where developers integrate frequently into one shared trunk and avoid long-lived development branches. Short-lived feature branches are compatible with the model. See [Trunk-Based Development with Agents](/team/trunk-based-development).
 
-*Sources: Paul Hammant, trunkbaseddevelopment.com and "Trunk-Based Development and Branch by Abstraction" (2020), trunk-based development as the source-control discipline. The change-folder-to-branch mapping is this book's synthesis.*
+*Sources: Paul Hammant, trunkbaseddevelopment.com (reviewed October 21, 2026), shared trunk and short-lived branches.*
+
+## Test-type field
+
+This book's `Test-type:` annotation in an acceptance scenario, naming the intended test category, such as `Integration`. The agent resolves the category against the project's test strategy when implementing tests. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## TOC pattern
 
-The table-of-contents approach to writing `AGENTS.md`: a short file at the repo root that names the project, links to instruction files in `.agents/instructions/` each with a clause saying when to load it, and lists available commands and skills. Contrast with loading all context into a single long file, which exhausts the token budget before the agent starts. Named by AgentPatterns.ai. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
-
-*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents" (last reviewed June 9, 2026), the TOC pattern naming and structure. Paula Hingel, "AI Agent Loop Token Costs: How to Constrain Context" (April 6, 2026), context growth as the cost argument behind keeping the entry file short.*
+The table-of-contents layout this book uses for `AGENTS.md`: a short entry file linking to detailed instructions with load clauses. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
 
 ## Walking skeleton
 
-A thin end-to-end implementation built forward to verify an architecture works. From Alistair Cockburn's "Crystal Clear" (2004). Etymological ancestor of the agentic-era `skeleton.md`, which reverses the direction by extracting the skeleton from existing code rather than building one forward.
+A minimal end-to-end implementation connecting the main architectural components to exercise a complete path. Alistair Cockburn describes the pattern as a starting point for evolving architecture and functionality together. See [skeleton.md](#skeleton-md) for this book's separate codebase-mapping artifact.
 
-*Sources: Alistair Cockburn, "Crystal Clear" (2004), origin of the walking-skeleton pattern. The `skeleton.md` reversal described here is this book's synthesis.*
+*Sources: Alistair Cockburn, walking-skeleton definition restated in his LinkedIn post (reviewed October 21, 2026), minimal end-to-end implementation and architectural evolution.*

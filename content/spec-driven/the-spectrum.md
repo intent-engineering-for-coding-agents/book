@@ -19,7 +19,7 @@ graph LR
     classDef mid fill:#0891b2,stroke:#0e7490,color:#fff
     classDef heavy fill:#0d9488,stroke:#0f766e,color:#fff
 
-    P[Raw prompt<br/>no artifact]:::light --> G[GSD<br/>intent doc, no archive]:::light
+    P[Raw prompt<br/>no artifact]:::light --> G[Intent note<br/>no managed lifecycle]:::light
     G --> M[spec.md<br/>single file in repo]:::mid
     M --> O[OpenSpec<br/>change folder + archive]:::heavy
     O --> K[Spec-Kit<br/>governance, multi-team]:::heavy
@@ -31,7 +31,9 @@ Formality and audit trail rise left to right, and so does overhead. The rung tha
 
 At the minimal end is the raw prompt. Describe the feature in the chat window and let the agent implement. No artifact, no audit trail. Acceptable for throwaway code, local experiments, prototypes that will not last the week.
 
-One step up, GSD (Get Shit Done): structured prompting without a framework. Write a concise intent document, run the agent, commit. It produces a usable artifact but no archive, task log, or traceability trail. Hightower calls it "spec-driven development without the ceremony," and where OpenSpec's overhead exceeds a team's risk profile, it is the practical alternative.
+One step up is a concise intent note: write down the target, run the agent, commit. The note preserves the request, but the team still needs rules for task tracking, verification, and retirement.
+
+GSD (Get Shit Done) names a specific development system. As checked in October 2026, its original repository points to GSD Core, whose documented phases cover discussion, planning, execution, verification, and shipping with archiving. Treat GSD as a framework option. The light rung in this diagram is an intent note without a managed lifecycle.
 
 Next is a `spec.md` file in the repo: a single Markdown file, no external framework, with purpose, scope, acceptance criteria, scenarios, task notes, and verification rules. Written before implementation, committed with the code. The GitHub post launching Spec-Kit describes this as where most teams start with spec-driven development.
 
@@ -39,7 +41,7 @@ For teams with stable review rules, `spec.md` becomes a local framework. The fil
 
 The cost is ownership. A custom `spec.md` gives maximum fit and almost no tooling burden, but the team owns the lifecycle around it. Without those rules, `spec.md` is a better prompt. With them, it becomes a spec-driven workflow.
 
-*Sources: Rick Hightower, "What Is GSD? Spec-Driven Development Without the Ceremony" (February 23, 2026), GSD as structured prompting that produces an artifact but no archive or traceability trail. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The custom `spec.md` lifecycle framing is this book's synthesis.*
+*Sources: GSD original repository README and GSD Core README (reviewed October 21, 2026), named framework, project move, and phase lifecycle. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), specification-first workflow. The intent-note rung and custom `spec.md` lifecycle framing are this book's synthesis.*
 
 ## OpenSpec
 
@@ -54,7 +56,7 @@ OpenSpec is the next level: a structured change-folder workflow with four parts,
 
 Acceptance criteria are written in Gherkin's `WHEN/THEN` notation. The book borrows that notation as a specification language, not the practice it came from. The payoff is that the scenario reads the same whether the agent targets Java, Kotlin, Python, or Go: a reviewer checks the acceptance criteria without knowing the implementation language or its test framework, the same way nobody reviews behavior by reading the assembler a compiler emits.
 
-This is not BDD: there are no step definitions, no Cucumber runtime, and the scenario is authored and approved before the code exists, then compiled to tests by the agent, rather than written against code that already runs. Why the spec outranks the code it produces is the argument in [Docs > Specs > Code](./docs-gt-specs-gt-code).
+BDD also uses examples to guide development before implementation. The workflow here borrows scenario notation without requiring Cucumber step definitions or adopting the full collaborative BDD practice. The agent generates tests from the reviewed scenarios. Why the spec outranks the code it produces is the argument in [Docs > Specs > Code](./docs-gt-specs-gt-code).
 
 The change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
 
@@ -68,7 +70,7 @@ OpenSpec is the choice here because it supplies the lifecycle without hiding the
 
 That archive becomes the canonical set of acceptance criteria for each capability. Later changes diff against those criteria, and CI tests trace back to them. The design those criteria serve does not live here. It lives in `docs/`. This split adds real file and process overhead, and it fits best where several developers are shipping changes into the same production codebase.
 
-*Sources: Fission AI, OpenSpec, the four-part change-folder workflow, delta specs, `tasks.md`, and the archive as a canonical capability model. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` notation borrowed here as a spec language, not the BDD practice it originates from. The framework-selection rule and closest-alternative framing above are this book's synthesis.*
+*Sources: Fission AI, OpenSpec, the four-part change-folder workflow, delta specs, `tasks.md`, and the archive as a canonical capability model. Cucumber, "Gherkin reference" and "Behaviour-Driven Development" (reviewed October 21, 2026), scenario notation and collaborative examples before implementation. The framework-selection rule and closest-alternative framing above are this book's synthesis.*
 
 ## LeanSpec and Spec-Kit
 

@@ -19,13 +19,13 @@ This one PR is the smallest version of the problem. The codebase holds hundreds 
 
 The model did not fail: given the available context, the agent reasoned correctly. The constraint was missing.
 
-ThoughtWorks called this cognitive debt in their April 2026 Radar: the agentic-era analogue to technical debt, but harder to detect because no linter catches an undocumented decision. Code has static analysis. Context does not. A team that ships ten agent-assisted PRs a week makes ten chances a week to encode an unwritten constraint as a contradiction in the codebase.
+Thoughtworks' April 2026 Radar warns of cognitive debt: the widening gap between generated code and developers' understanding of the system. An undocumented decision adds a separate context problem for the agent. In this book's framing, recording the decision gives both developers and agents a rationale to check before extending the code.
 
-There is a flip side: the same agents that run up cognitive debt also clear code debt faster. A refactor that took a sprint now takes an afternoon. The debt does not disappear; it moves from the code to the gap between what the team decided and what the codebase expresses.
+Generating a refactor does not establish whether the team understands the result. Code cleanup and developer understanding need separate review, even when the tests pass.
 
 At human speed, drift like this used to take quarters to compound. At agentic speed, it takes weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt. Yegge, "Revenge of the junior developer," Sourcegraph (March 22, 2025), velocity as amplifier.*
+*Sources: Thoughtworks Technology Radar Vol 34 and its release announcement (April 15, 2026), cognitive debt as the gap in developer understanding. Yegge, "Revenge of the junior developer," Sourcegraph (March 22, 2025), velocity as amplifier. The link between recorded decisions and agent context is this book's synthesis.*
 
 ## Structure as context
 

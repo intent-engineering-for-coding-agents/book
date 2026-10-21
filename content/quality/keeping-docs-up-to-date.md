@@ -29,9 +29,9 @@ Generated code changes fast. The surrounding prose drifts at human speed, withou
 
 The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses or follow a codebase rule the team already removed because the instruction file still lists it.
 
-This is cognitive debt in its narrowest form: one stale document feeding directly into the next implementation session.
+This book calls the immediate failure context poisoning: one stale document steering the next implementation session toward obsolete behavior.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34 (April 2026), cognitive debt as undocumented or stale reasoning in agentic delivery. AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as a practical agent failure mode.*
+*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), secondary commentary on stale instruction files and context drift. The context-poisoning label is this book's usage.*
 
 ## A stable link from prose to code
 
