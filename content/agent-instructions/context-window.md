@@ -5,72 +5,38 @@ title: Context Window Management
 
 # Context Window Management
 
-A long agent session does not announce when it starts forgetting. The answers get shorter and a little more generic. The agent ignores a constraint it read early, or contradicts a decision it made an hour ago. Nothing failed and nobody reset anything. The context that mattered either dropped off the back to make room, or it is still in the window, and the agent has quietly stopped attending to it.
+If the agent starts using a field name you already replaced, stop and check its inputs. Point it to the current contract and the recorded decision before asking for another patch. Repeated corrections are a reason to inspect the working context, without assuming a particular cause such as truncation.
 
-This failure is not a bug. Every token in the context window carries two costs. The first cost is reliability. In a session that overflows, old tokens fall out as new ones arrive and the agent loses earlier context.
+This chapter gives the book's working guidance for choosing what to load, what to record, and when to start again.
 
-Long before any overflow, a window packed with files the task never needed buries the few tokens that mattered, and the model attends to them less reliably even though they remain in the window. Money is the second cost for teams billed per token. The window does not need to fill for either cost to bite. The question is what you put in it.
+## Load for the next decision
 
-## What eats the context
+Before implementing a change, name the files needed to decide what belongs in the patch: the spec, relevant instructions, and the code being changed. Use the [instruction hub](./instruction-hub) to locate the rules. Add other files when the task exposes a dependency or an unanswered question.
 
-Loading files is the most common way to exhaust context before the task starts. An `AGENTS.md` that imports four instruction files, a spec, two design docs, and an architecture overview has consumed thousands of tokens before the agent has written a line. If those files are loaded every session regardless of task, most sessions spend their early context on files they do not need.
+For example, suppose a task changes an authentication response. Load the authentication rules and current response contract first. Read deployment guidance if the change affects rollout. Loading every runbook upfront adds material you must then keep current through the session.
 
-The TOC pattern in `AGENTS.md` manages this deliberately. The agent reads the entry point, a short file that says what to load next, and loads only the instruction files relevant to the current task. Everything else stays unread.
+When the agent cites an obsolete contract, identify which file supplied the old rule. Replace the stale input and correct the document or link responsible. A new session reading the same stale file starts with the same wrong guidance.
 
-The index block in `docs/README.md` exists for the same reason: a short block, full map. The alternative is the agent reconstructing structure from the raw directory tree, a noisy source it reads unreliably and at the cost of every file it opens. A curated index is what makes selective loading possible: the agent reads the map, then loads only the files the task needs.
+*Sources: The file-selection example and stale-input check are this book's workflow guidance.*
 
-*Sources: Anthropic, "Building effective agents" (December 2024), context economy: load only what the task needs. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), context-window pressure as a practical constraint across agentic coding tools.*
+## Record decisions before moving on
 
-## A bigger window, the same discipline
+A conversation-only decision leaves the next session without a file to consult. Before switching from spec authoring to implementation, record the accepted behavior and unresolved questions in the spec. Keep lasting architecture decisions in the repository's decision records. [Spec Lifecycle](../spec-driven/spec-lifecycle) covers the handoff.
 
-Context windows are larger in 2026 than they were a year or two ago. The wall most sessions used to hit is farther away. The discipline is not.
+Suppose you agree to preserve an old response field for existing clients. Put the compatibility requirement in the spec before asking the agent to implement the rename. A note saying "discussed compatibility" leaves the implementer to reconstruct the decision.
 
-Two costs outlive the larger window. The first is the bill, and it compounds. Every turn re-sends the whole transcript, so each step is charged for everything before it, and a session's total cost grows with the square of its length rather than in step with it. A twenty-step session that adds a thousand tokens a turn bills around 210,000 input tokens, not the 20,000 a per-step estimate suggests. The second is attention, and it does not care how roomy the window is.
+Keep any handoff short: identify the current spec, unfinished work, and checks still needed. Link to the authoritative files instead of copying their contents into another summary which needs maintenance.
 
-So the larger window changes the failure, not the fix. You overflow less often, and you dilute the signal exactly as before. Load what the task needs, and the extra capacity buys headroom instead of a slower, more expensive, less reliable session.
+*Sources: The compatibility example and handoff guidance are this book's synthesis.*
 
-*Sources: Paula Hingel, Augment Code, "AI Agent Loop Token Costs" (April 2026), a naive agent loop re-bills the full history each turn, so cumulative input tokens follow the triangular series N(N+1)/2: a 20-step run bills ~210,000 tokens against a 20,000-token per-step estimate.*
+## Refresh when corrections stop helping
 
-## Short sessions beat long conversations
+Start a fresh session when the agent repeatedly reintroduces a rejected change or keeps reasoning from an outdated requirement after correction. Give the new session the current spec and relevant instructions, plus the unfinished diff. Ask it to identify the next step from those artifacts before continuing.
 
-The practical implication: do not try to achieve a large change in a single session. Write the spec in one session and commit it, then implement in a second session with the spec loaded fresh. The second session reads the spec from the repo, not from session memory. It arrives with the full specification intact, not with a summary of a summary. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter works out the authoring side of this split.
+A reset is a chance to choose the inputs again. If the new session proposes the same wrong change, inspect the task and source files for ambiguity or conflicting rules. Another reset leaves those conflicts unresolved.
 
-The pattern feels backwards at first. The instinct is to keep context rich by not resetting. A fresh session with the right files loaded is more reliable than a long session where the earliest context has been compressed or dropped. The fresh session reads the recorded decision. The hour-three session reconstructs the decision from partial traces.
+For review, provide the intended change, the diff, and the test evidence. Ask the reviewer to identify unmet requirements and unrelated edits. If you use a separate session, supply those inputs explicitly and inspect the findings. Separation alone provides no assurance of a thorough review.
 
-Review is the third case, and the sharpest. An agent that reviews its own work in the same session does not read the diff cold: every justification for every choice it made is still in context, so it defends the code instead of auditing it. The prior reasoning does more than fill the window, it primes the conclusion, and the review confirms what a fresh reader would have questioned. Hand the review to a new session or a subagent, and the reviewer reads what is on the page, with no stake in the decisions. That is a context control. It is not the same claim as using a second model family for different blind spots, which belongs to [Spec Lifecycle](../spec-driven/spec-lifecycle).
+*Sources: The reset criteria and review inputs are this book's workflow guidance, not claims about a particular agent runtime.*
 
-The reset that protects attention is also where the bill stops compounding.
-
-*Sources: Anthropic, "Building effective agents" (December 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
-
-## Loading selectively
-
-The clause on each instruction file link tells the agent which to load. A developer working on authentication loads `auth-conventions.md`. They do not load `deployment-runbook.md` or `database-schema.md`. The clauses make that decision automatic.
-
-If the clauses are not specific enough, the agent loads conservatively, which usually means too much. Write clauses that describe the task, not the file content. "Load when working on authentication, SSO, or session management" is a task description, telling the agent when to load. "Contains auth conventions" describes the file instead, telling it only what is inside.
-
-*Sources: This repo's `AGENTS.md` instruction-file links, task-describing load clauses in practice.*
-
-## Subagents and compaction
-
-Two mechanisms reclaim context without ending the session, and both carry a limit worth knowing. A subagent runs a delegated task in a clean window and returns only the result, so the main agent never accumulates the history behind it. Review is the case that pays off most: a subagent reads a diff the main agent produced without ever seeing the reasoning that justified it. Compaction is the other lever. Tools that summarize accumulated history reclaim space, not attention, and the summary is lossy: "use camelCase for the API fields" becomes "fixed naming", and the rule is gone. A larger context window only pushes back the moment you reach for either one.
-
-*Sources: Anthropic docs for Claude Code `/compact` (ongoing), context compaction as a built-in control that summarizes history at the cost of exact detail.*
-
-## The discipline
-
-Context management is not a one-time configuration. It is repeated task control: when to reset the session, and which files to load next. The question stays the same at every step: does the active context contain the information required for the next operation?
-
-An agent with too much context is slow and prone to self-contradiction. An agent with too little context improvises in the gaps. The balance is maintained by short sessions, selective loading, and skills that carry their own context rather than relying on what remains from an hour ago.
-
-Context management keeps the agent loaded with the right files and the right transcript history. Done well, it keeps the load-bearing tokens in front of the model and the stale ones out of the way. Even then, bad output remains possible. Some failures still occur with a perfectly managed window.
-
-## What context management cannot fix
-
-Context management is necessary but not sufficient. A fresh session with perfect context still produces bad output if the model cannot reason through the task, the task is genuinely ambiguous, or the codebase contradicts itself. The failure in scope here is narrower: sessions decay because the active context got too long, too noisy, or too stale.
-
-The distinction matters when you are deciding whether to reset or redirect. If the session started well and then drifted, context management is the right tool. If the session was confused from the first turn, look upstream instead: bad instructions, conflicting docs, or a task the model is not strong enough to handle.
-
-Some problems require better models, not better context. A model that cannot reason about concurrency will not write correct concurrent code regardless of how much context you give it. A model that hallucinates APIs will hallucinate them in a fresh session too.
-
-Context management keeps the standing context clean. It still does not define the change. Per-change intent belongs to the spec, which is where the book goes next.
+Even with the current files loaded, the agent still needs a precise description of the change. Standing instructions describe the project. The spec must settle what this patch is supposed to do.

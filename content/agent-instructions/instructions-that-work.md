@@ -81,15 +81,15 @@ The "any coding agent or human" requirement is the key addition. Without it the 
 
 ## Testing whether your instructions work
 
-Instructions go stale. Others were too vague from the day they landed. The only reliable check is to give the agent a task that should trigger the rule and see whether the output changes.
+After changing an instruction or skill, try a representative task and inspect whether the intended convention still holds. Choose a task which exercises the rule you edited. This is the book's practical check before relying on revised guidance.
 
-Give the agent a task that should trigger the instruction and observe the output. Ask for a new HTTP client call. Does it use `httpx`? Ask for a new service module. Does it follow the naming convention? If the agent improvises instead of following the instruction, the instruction is unclear, or the agent never loaded it.
+For example, suppose you revise a skill for updating the documentation index. Try the procedure with a renamed file. Inspect the index and directory README listings for the new path, and check whether the old link remains. A completed index alone does not establish whether the agent followed the whole procedure.
 
-Once it works, raise a PR. The review catches instructions that are too broad or too narrow, and instructions that quietly contradict a rule already in the file. The PR thread also informs your teammates of the new rule: an instruction merged silently is a constraint your colleagues do not know exists and cannot challenge.
+Keep the task and starting repository state if you expect to repeat the check. Review the resulting files and run the relevant project checks. One successful attempt shows what happened on that task, without establishing reliability across other tasks or agents.
 
-If you wrote the instruction on a stronger model, test it on a weaker one before merging. A stronger model fills in gaps the instruction leaves open. A weaker model exposes them. If the weaker model still improvises, the instruction is not specific enough yet. Teams that use different coding agents and models need instructions that hold across all of them, not only the most capable model in the room.
+If the output violates the convention, check whether the agent loaded the revised instructions and whether another rule conflicts. Correct the guidance or its loading condition, then retry. For shared instructions, include the task and observed result in the pull request so reviewers have something concrete to inspect.
 
-A second-model critique pass often surfaces the same gap: instructions that state an outcome without stating the constraint. "Write clean code" states an outcome. "Do not introduce nested ternary expressions. Break them into named variables" states the constraint behind it, and only the second changes what the agent produces.
+*Sources: The renamed-file example and instruction-change check are this book's workflow guidance.*
 
 ## When instructions backfire
 

@@ -84,6 +84,4 @@ The allocation rule, the monotone-numbering discipline, and why a deleted ID lea
 
 The companion repo includes the working convention set: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
 
-The strategy document is what separates a test suite that knows what it is verifying from one that grew by accumulation.
-
-The strategy document governs what the agent tests, not how the agent is configured. The `AGENTS.md` and instruction files are code too. They regress without anyone touching the application. That is the next chapter.
+The convention tells the agent how to write tests. Review still needs a way to trace each test back to the acceptance criterion it verifies, including after the spec changes.

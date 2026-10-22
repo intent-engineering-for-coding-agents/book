@@ -129,7 +129,7 @@ Cucumber's language for describing behavior through scenarios with `Given`, `Whe
 
 ## Golden test
 
-A regression check comparing output from a fixed input against an approved reference. This book also uses the term for fixed agent tasks checked against expected structural properties rather than exact output text. See [Agent Evaluation and Regression](/quality/agent-evaluation).
+A regression check comparing output from a fixed input against an approved reference. For a practical check after changing agent guidance, see [Testing whether your instructions work](/agent-instructions/instructions-that-work#testing-whether-your-instructions-work).
 
 ## Greenfield
 

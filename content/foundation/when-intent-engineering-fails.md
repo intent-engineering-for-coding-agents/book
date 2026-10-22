@@ -47,7 +47,7 @@ The team has agent instructions, ADRs, specs, and good initial intentions. Six m
 
 A convention check in CI covers part of this gap. It catches structural violations before they reach the main. The check does not catch ADRs that should have been written and were not. It does not detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
 
-The [agent-evaluation chapter](../quality/agent-evaluation) covers what detection is available and where the limits are.
+[Keeping Documentation Up to Date](../quality/keeping-docs-up-to-date) covers checks for stale documents. After changing agent guidance, [try a representative task](../agent-instructions/instructions-that-work#testing-whether-your-instructions-work) and inspect whether the intended convention still holds.
 
 ## Why the rest of the book is organized the way it is
 

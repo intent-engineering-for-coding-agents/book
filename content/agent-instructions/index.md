@@ -18,4 +18,4 @@ These chapters cover `AGENTS.md`, the instruction hub it points into, instructio
 1. [AGENTS.md: The Entry Point](./agents-md): the TOC pattern, what goes in it, vendor pointers, and why it has to stay short
 2. [Agent Instruction Hub](./instruction-hub): shared instructions and reusable skill procedures, with loading conditions and completion criteria
 3. [Instructions That Work](./instructions-that-work): specific instructions, negative constraints, architecture boundaries, and how to test whether they work
-4. [Context Window Management](./context-window): why context fills, short sessions, selective loading, subagents, and the directory index as context economy
+4. [Context Window Management](./context-window): selective loading, recorded decisions, and when to refresh the session
