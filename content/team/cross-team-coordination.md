@@ -71,9 +71,11 @@ Multi-repo coordination is harder at the agent level than at the code level. Pac
 
 ## OpenSpec's acknowledged gap
 
-OpenSpec is strongest in single-repository work. The change folder model assumes one codebase, one spec directory, one PR. Multi-repo coordination, where a single feature requires coordinated change folders in two or three repositories, does not yet have a clean OpenSpec solution.
+OpenSpec is strongest in single-repository work. The book uses a separate proposal for each implementation ticket, including tickets in different repositories. Multi-repo coordination, where a single feature requires coordinated change folders in two or three repositories, does not yet have a clean OpenSpec solution.
 
-The current book pattern is one change folder per repository, each referencing the same cross-cutting ADR. Coordination between the change folders remains human: the developers from both teams agree on the ADR, then each creates that repository's change folder referencing it. The agent in each repository implements against its own spec. The integration is verified in an environment shared by both teams.
+For a feature spanning repositories, coordinate the implementation tickets and their dependencies across teams. Each ticket has its own proposal referencing the agreed cross-cutting ADR. Create each proposal when its ticket starts. Verify the combined behavior in an environment shared by both teams.
+
+*Sources: The ticket mapping and coordination sequence are this book's application of the author's team practice to cross-repository work.*
 
 This reduces confusion, but it does not remove coordination. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. As of mid-2026, teams building cross-repo features should plan for manual coordination overhead.
 

@@ -5,101 +5,22 @@ title: "Before, During, After: The Three Checkpoints"
 
 # Before, During, After: The Three Checkpoints
 
-A change clears every gate at merge time and still runs wrong three weeks later. The spec is solid, the tests are real evidence, and the PR lands clean. Then you find a comment pointing at a design document that no longer matches the code. The decision it depended on was reversed in a different PR, and nothing caught the mismatch because the change sat outside the diff anyone reviewed.
+Before accepting an agent's patch, check which spec it implemented and what evidence supports the result. A passing test run leaves the review unfinished if the tests assert a different behavior from the acceptance criteria.
 
-Quality is not a single gate. It is three, in sequence, and each catches a failure the other two miss.
+Use this book's three checkpoints as a short checklist during the change. The linked chapters explain the decisions and procedures.
 
-- **Before:** did the work start from legible architecture, current agent instructions, and a reviewed spec?
-- **During:** is the agent following the reviewed spec and checking the resulting changes, or has the session drifted?
-- **After:** do the tests verify the acceptance criteria, and does the merged work update the engineering memory the next agent reads?
-
-## Before: the foundation gate
-
-The before-gate does not build the foundation. Earlier chapters did that: legible architecture (Foundation), agent instructions reachable from the `AGENTS.md` hub (Agent Instructions), a documented design system, and a test convention the agent reads before its first test ([Test Strategy and Convention](./test-strategy)). The gate asks one question about all of it: is each still current and reachable, or has it rotted since the last change?
-
-That question is cheaper than it sounds because most of it is deterministic. A hub that points at a file that no longer exists loads nothing, and the agent codes against a convention it never saw. A repo-level checker catches structural failures like broken instruction links. The companion workflow adds file-size and index-staleness checks too. What stays manual is the judgment no scan makes: whether the architecture the docs describe is the architecture the agent will meet in the code.
-
-[Keeping Documentation Up to Date](./keeping-docs-up-to-date) adds one more deterministic layer to this gate: a document declares which code it describes, and a validator flags the document when the code changed after the last review date. The check does not verify the prose is right. The check verifies nobody has re-verified it since the source moved.
-
-One input sits upstream of the spec itself: the architectural decision the spec executes. The chain runs ADR, then design doc, then spec ([Spec Lifecycle](../spec-driven/spec-lifecycle)). Freeze a spec against a decision still open, or against one reversed in a later PR, and the spec executes a decision the architecture no longer follows. The gate confirms the governing ADR is approved, and the design doc the spec leans on still says what the spec assumes. A link checker verifies the reference resolves. Whether the decision still holds is the same manual judgment the architecture check already demands.
-
-*Sources: Anthropic, "Building effective agents" (December 2024), preparing the agent's context before it starts work. AGENTS.md (agents.md, ongoing), AGENTS.md as a project-level entry point for agent instructions. The repo-level checker and companion-workflow examples in this section are this book's synthesis built on the documentation-drift and AGENTS.md-check patterns described elsewhere in the book.*
-
-## During: the implementation gate
-
-During implementation, check the spec the agent loaded, the results of the relevant checks, and whether the task context still includes the constraints behind the change.
-
-Freeze the spec first. A spec still under negotiation while the code is written is two moving targets, and the implementation drifts toward wherever the agent guesses it is heading. If it has to change, change it explicitly and restart the affected scenario rather than let the code chase a spec in motion.
-
-Tell the agent which checks to run for the changed files, such as lint or AC-ID verification. Inspect the results before accepting the change. The instruction alone does not establish whether the check ran.
-
-Context erodes silently, the way [Context Window Management](../agent-instructions/context-window) described. A session three hours deep, window full, the spec buried under two unrelated tasks, writes worse code than the same session at its start.
-
-Watch for the agent re-deriving an import path already established earlier in the task. Check whether the relevant instruction or code reference is still available.
-
-Before continuing, resolve a changed spec, a failing check, or missing task context. Record any revised decision before asking the agent to proceed.
-
-*Sources: The implementation checkpoint is this book's workflow guidance.*
-
-## After: the verification gate
-
-The after-checkpoint runs on what was produced. The spec is done, the implementation is done, and the tests pass. The question is whether the artifact closes the gap.
-
-The verification checks the things automation cannot catch on its own. Did the implementation introduce code unrelated to the spec? Scope creep in agentic PRs is common. The agent passes through a file, fixes things it noticed along the way, and those fixes ship without review. Do the new tests verify the acceptance criteria or behavior the agent invented? An AC ID linking a scenario to a test that asserts something different is the silent-drift failure mode.
-
-State the split plainly:
-
-| Check | Hard gate or advisory | What it checks |
+| When | Check before proceeding | Details |
 |---|---|---|
-| AC ID exists | hard gate | spec and tests are linked |
-| positive/negative pair exists | hard gate | evidence shape is present |
-| test actually matches `GIVEN` / `WHEN` / `THEN` | advisory review | semantic alignment |
-| scope creep beyond spec | advisory review | intent drift |
+| Before implementation | Relevant instructions resolve, the governing decisions are current, and the spec has been reviewed. | [Spec Lifecycle](../spec-driven/spec-lifecycle), [Keeping Documentation Up to Date](./keeping-docs-up-to-date) |
+| During implementation | The agent is working from the agreed spec. Inspect relevant check results and resolve changed requirements or missing context before continuing. | [Spec Lifecycle](../spec-driven/spec-lifecycle), [Context Window Management](../agent-instructions/context-window) |
+| Review and completion | Compare the diff and test assertions with the intended change. Update affected documentation and record any owned follow-up. After integration, archive the verified change before completing the ticket. | [Code Review for Agent-Generated Code](../team/code-review-agent-code), [documentation maintenance](../foundation/intent-engineering-and-the-sdlc), [Spec Lifecycle](../spec-driven/spec-lifecycle) |
 
-CI verifying that `PAY-022` exists in both the spec and the test tags is useful. That same CI job does not verify the tagged test asserts timeout behavior. The test might only assert that one request returns `500`. The link exists. The meaning is still wrong. That second check stays with review.
+For example, if implementation exposes an incorrect assumption in the spec, revise the assumption and review the affected scenario before continuing. Do not leave the next session a spec describing behavior the team rejected.
 
-One closing check has nothing to do with the diff and everything to do with what the diff invalidated. Reverse an earlier decision, and the ADR that recorded it along with any design doc citing it now describes a system no longer in the code.
+*Sources: The checkpoints and changed-assumption example are this book's workflow synthesis.*
 
-The diff cannot flag this, because the stale document sits outside it: the failure this chapter opened on a comment pointing at a design doc whose decision was overturned in a separate PR. So the after-gate asks whether the change invalidated a recorded decision. If it did, was the ADR updated or marked superseded, and does the design doc still match what shipped?
+Instructions tell the agent which checks to run. To block merging when a check fails, configure the check as required in Continuous Integration (CI) and restrict bypass permissions. GitHub documents these controls as required status checks and branch-protection bypass settings.
 
-Ask the same question at repo scale. Did the change invalidate the engineering memory the next agent will load? [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc) defines that term, lists the artifacts inside it, and sets the rule for same-PR fixes versus owned follow-ups. The after-gate uses it as a checklist item: a release with no memory update and no explicit follow-up leaves stale context behind on purpose.
+*Sources: GitHub, ["About protected branches"](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) (reviewed October 22, 2026), required status checks and bypass permissions.*
 
-*Sources: The engineering-memory after-gate is this book's synthesis from the SDLC maintenance path and documentation drift check.*
-
-Refactoring is where most teams stop: the code worked, so it ships. The agent's first generation is rarely the right structure for the next change. The cheapest moment to fix that is now, while the spec and the code are both fresh, not in a follow-up PR three weeks later when the next developer is reverse-engineering unfamiliar generated code.
-
-Review is the third part of the after-checkpoint. [Code Review for Agent-Generated Code](../team/code-review-agent-code) defines the sequence. The after-gate is where teams most often abandon it under time pressure.
-
-## A worked sequence
-
-A small change runs through all three gates in sequence:
-
-```mermaid
-graph TD
-    classDef before fill:#64748b,stroke:#475569,color:#fff
-    classDef during fill:#0d9488,stroke:#0f766e,color:#fff
-    classDef after fill:#0891b2,stroke:#0e7490,color:#fff
-
-    B["<b>Before: foundation</b><br/>instructions current<br/>arch legible<br/>governing ADR closed<br/>design system in place<br/>&nbsp;"]:::before --> W(["Write spec"])
-    W --> D["<b>During: implementation</b><br/>check results reviewed<br/>context fresh<br/>spec stable<br/>&nbsp;"]:::during
-    D --> A["<b>After: verification</b><br/>scope check<br/>AC tests trace<br/>spec review first<br/>engineering memory current<br/>&nbsp;"]:::after
-    A --> M(["Merge + archive"])
-```
-
-Each gate catches a different break. Skip the before-gate and the agent works from stale docs, dead links, or a design decision the codebase already reversed. Skip the during-gate and the session keeps moving after the spec changed or the context window lost the thread. The after-gate is different: skip it and the PR lands code the spec never asked for, backed by tests that verify something adjacent. The gates overlap less than they look.
-
-## Where the attention goes
-
-Every gate splits in two. Configured CI checks catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right form, whether the test verifies the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
-
-Instructions tell the agent which checks to run. To block merging when a check fails, configure the check as required in CI and restrict bypass permissions. GitHub documents these controls as required status checks and branch-protection bypass settings.
-
-*Sources: GitHub, "About protected branches" (reviewed October 22, 2026), required status checks and bypass permissions.*
-
-The work is uneven. Most of the before-gate is maintenance, most of the during-gate is automation, and the after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
-
-## The sequence is logical, not temporal
-
-Read the order as a dependency, not a schedule. First, check the ground under the change. Then write the spec. Then code against that same spec. Then verify the result. A small change moves through all four steps in one sitting. The failure starts when teams treat those steps as phase gates with handoffs between them: docs first, code later, correction last.
-
-These gates catch drift from the spec and drift from recorded architecture. They do not catch a missing constraint. If the spec never names the security boundary, and the codebase shows the agent an insecure pattern, every checkpoint here still passes. The next chapter deals with failures of that kind: code faithful to the examples, wrong in the way that matters.
+Review still needs a diff with a clear purpose. Mixing a refactor with a behavior change gives the reviewer two different jobs in the same patch, the distinction [PR Taxonomy](./pr-taxonomy) addresses.

@@ -69,11 +69,11 @@ In model tooling, an arrangement where the user supplies model-provider credenti
 
 ## Capability-class agent
 
-This book's term for a coding agent with reasoning, planning, tool use, and file editing sufficient to carry out a development task. See [Tooling Landscape](/appendices/tooling-landscape) for dated product examples.
+This book's term for a coding agent with reasoning, planning, tool use, and file editing sufficient to carry out a development task. See [Tooling Landscape](/appendices/tooling-landscape) for workflow selection questions.
 
 ## Change folder
 
-An OpenSpec directory under `openspec/changes/` holding the artifacts for one proposed change. This book uses `proposal.md`, delta specs, `tasks.md`, and optional `design.md`, and archives the folder after merge. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
+An OpenSpec directory under `openspec/changes/` holding the artifacts for one proposed change. This book uses `proposal.md`, delta specs, `tasks.md`, and optional `design.md`, and archives the folder after verification and integration. In the author's team workflow, one ticket maps to one change proposal. See [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 *Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), change directories and artifacts. Archiving after merge is this book's lifecycle rule.*
 
@@ -95,13 +95,13 @@ This book uses the term for incorrect or stale context steering an agent toward 
 
 ## CSRF (Cross-Site Request Forgery)
 
-An attack inducing a browser to send an unwanted request using the victim's existing authentication. Defenses include anti-CSRF tokens and origin validation, with `SameSite` cookies providing additional protection. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+An attack inducing a browser to send an unwanted request using the victim's existing authentication. Defenses include anti-CSRF tokens and origin validation, with `SameSite` cookies providing additional protection.
 
 *Sources: OWASP, "Cross-Site Request Forgery Prevention Cheat Sheet" (reviewed October 21, 2026), attack mechanism and layered defenses.*
 
 ## CVE (Common Vulnerabilities and Exposures)
 
-A program identifying and cataloging publicly disclosed cybersecurity vulnerabilities. A CVE ID names a vulnerability, regardless of whether a particular installation is affected or a fix exists. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+A program identifying and cataloging publicly disclosed cybersecurity vulnerabilities. A CVE ID names a vulnerability, regardless of whether a particular installation is affected or a fix exists.
 
 *Sources: CVE Program, "About CVE" (reviewed October 21, 2026), vulnerability identification and cataloging.*
 
@@ -207,7 +207,7 @@ A spec-driven development framework organizing proposed changes as delta specs a
 
 ## OWASP (Open Worldwide Application Security Project)
 
-A nonprofit foundation supporting open application-security resources. Its Top 10 is an awareness document covering critical web application security risks. See [What the Scanners Miss](/quality/what-the-scanners-miss).
+A nonprofit foundation supporting open application-security resources. Its Top 10 is an awareness document covering critical web application security risks.
 
 *Sources: OWASP and "OWASP Top 10" (reviewed October 21, 2026), foundation role and Top 10 scope.*
 

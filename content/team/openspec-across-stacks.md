@@ -83,7 +83,7 @@ Most features touch multiple tiers. A new filter endpoint requires front-end wor
 
 That temptation compounds every problem described above. The front-end agent does not need the back-end implementation details, and the BFF reviewer does not need to read the front-end acceptance criteria. The archive of the change becomes three times as large and three times as hard to search.
 
-When a change spans tiers, each tier gets its own change folder referencing the same cross-cutting ADR. Coordination happens at the ADR level, while implementation stays separate. Each PR is one tier, one spec, one reviewer context.
+For separately owned work across tiers, create a ticket for each implementation and link its proposal to the shared ADR. Coordinate ownership and dependencies in the ticket system. The shared decision records the contract each implementation must follow. [OpenSpec in an Existing SDLC](./openspec-in-existing-sdlc) explains the ticket mapping.
 
 The rare exception: infrastructure changes that have no clean tier boundary. A change to how authentication tokens are propagated through the stack affects all three tiers simultaneously. These are genuinely cross-cutting and warrant a cross-cutting spec, but they are rare enough that the exception should be labeled as such, not treated as the default.
 

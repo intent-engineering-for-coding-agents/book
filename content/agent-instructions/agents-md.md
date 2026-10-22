@@ -41,26 +41,17 @@ The test is simple: does the clause tell the agent *when* to load the file, or o
 
 ## Tool-agnostic by design
 
-Several major coding agents now read `AGENTS.md` natively. GitHub Copilot's coding agent added native support in August 2025. Claude Code still reads `CLAUDE.md` as its primary entry point, but that file is a single line:
+Keep the shared project rules in `AGENTS.md`. Check how your agent loads this file before adding a vendor-specific entry file.
+
+For a setup which loads `CLAUDE.md`, Anthropic documents this import:
 
 ```markdown
-# CLAUDE.md
 @AGENTS.md
 ```
 
-Claude Code follows the import and loads the real context. Any edit to `AGENTS.md` propagates automatically.
+Put the pointer beside `AGENTS.md`. The import reads the shared file, so editing a project rule does not require regenerating the pointer. Confirm the intended file loaded when starting a session.
 
-The alternative is picking a vendor file as canonical. A repo whose source of truth is `CLAUDE.md` is implicitly Claude-first. Every other tool becomes a guest pointing at a file named after a competitor. `AGENTS.md` carries no vendor in the name, no vendor in the format, and no vendor in the spec. Adopting it with Claude Code costs one pointer file with one line. That is a small cost for a convention that belongs to no tool.
-
-## Generated pointers, not authored duplicates
-
-A pointer file maintained by hand drifts from `AGENTS.md` the moment one update is forgotten. Better discipline will not fix that; generation will. A short script writes the pointer from `AGENTS.md` (Python, TypeScript, or whatever your repo already runs). One or two lines either way, committed as output. The developer edits `AGENTS.md`, runs the generator, and commits the result. The convention lives in the generator, not in anyone's memory.
-
-Generated files go into the commit without ambiguity. They are clearly outputs, not sources. A developer who sees a generated file in a PR review knows not to edit it: edit the source, regenerate, commit the output.
-
-As vendors add native support, the pointer pattern shrinks. GitHub Copilot's coding agent followed in August 2025. Today: `CLAUDE.md` with one line for Claude Code. `.github/copilot-instructions.md` with one sentence if your team uses Copilot Chat. Both committed, both generated, neither authored.
-
-*Sources: [agents.md](https://agents.md/) (May 2026 snapshot), AGENTS.md as the canonical file vendor files point to. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the one-canonical-source pattern. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support that removes the need for a pointer file.*
+*Sources: Anthropic, ["How Claude remembers your project"](https://code.claude.com/docs/en/memory) (reviewed October 22, 2026), importing `AGENTS.md` from `CLAUDE.md` and checking loaded instructions. Keeping the shared rules in one file is this book's convention.*
 
 ## How it goes wrong
 

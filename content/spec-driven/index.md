@@ -20,7 +20,7 @@ OpenSpec is the concrete workflow used throughout because it gives the book one 
 ## Chapters
 
 1. [Why Specs?](./why-specs): drift, intent, and traceability, the practical motivation for writing down what you want before you ask an agent to build it
-2. [Why Small?](./why-small): context window economics, lean scope, and why the agent that finishes one small spec beats the one that drifts through a large one
+2. [Why Small?](./why-small): bounded tickets, changing assumptions during parallel work, and proposals based on the current repository
 3. [The Spectrum](./the-spectrum): from a raw prompt to OpenSpec, matching formality to risk and team size
-4. [Spec Lifecycle](./spec-lifecycle): write, critique, review, implement, archive, and why multi-LLM critique catches what solo review misses
+4. [Spec Lifecycle](./spec-lifecycle): start a ticket, review its proposal, implement and verify, integrate and archive before completing the ticket
 5. [Docs > Specs > Code](./docs-gt-specs-gt-code): the book's load-bearing thesis, that documentation is the durable source of truth, the spec verifies the behavior of one change, and the code is downstream of both

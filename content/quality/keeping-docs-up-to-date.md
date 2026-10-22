@@ -173,6 +173,6 @@ The external inventory is only as good as the discipline behind it. A missing `r
 
 These limits are why I still regard documentation freshness as one of the largest unresolved parts of the practice. The control is a tripwire, not semantic verification. It points at prose somebody needs to inspect. It cannot tell whether an important design change is missing. It will also accept a new date from somebody who never read the file.
 
-The before-gate in [Before, During, After Checkpoints](./checkpoints) asks whether architecture and instructions are still current. This chapter adds a tripwire for part of that question.
+The [checkpoint checklist](./checkpoints) places this inspection before implementation and the documentation update before merge.
 
 *Sources: Model Context Protocol documentation, connector pattern for reaching external systems during agent work. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence connector availability as a perishable tooling example. This chapter's extension of AC-ID verification logic from tests to prose is this book's synthesis.*

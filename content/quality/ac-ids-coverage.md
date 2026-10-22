@@ -182,7 +182,7 @@ The bracket format is a convention, not a law. `[PROJECT-NNN]`, `[FEAT-NNN]`, an
 
 Tests that verify the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists, not whether the test asserts what the scenario describes.
 
-That second judgment is not out of reach, though: line up the scenario's `Given/When/Then` against the test's setup, action, and assertions, and a mismatch shows. A human reviewer makes that call, and so does an agent handed both artifacts and asked whether they agree. That comparison is what the next chapter on lifecycle checkpoints is built around.
+That second judgment is not out of reach, though: line up the scenario's `Given/When/Then` against the test's setup, action, and assertions, and a mismatch shows. A human reviewer makes that call, and so does an agent handed both artifacts and asked whether they agree. [Code Review for Agent-Generated Code](../team/code-review-agent-code#trace-the-implementation-to-the-spec) describes the comparison.
 
 Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine. The ID stays, the wording changes, and the test still verifies the new wording because the new wording describes the same behavior. A scenario being rewritten to specify a different behavior, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artifact gets a new identifier.
 

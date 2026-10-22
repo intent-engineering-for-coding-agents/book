@@ -35,11 +35,11 @@ The Spec-Driven topic exists because of this mode. Writing the spec before imple
 
 ## Over-spec
 
-The team writes multipage specs for a config rename. The spec becomes the bottleneck. Review cycles stretch. The agent, asked to implement from requirements buried late in the spec, drifts during the long reading pass and misses the requirement that mattered.
+Suppose a config rename receives a spec covering unrelated cleanup and future migration work. The agent now has several proposed changes to interpret, and the reviewer has to separate the requested rename from the additions. Remove the unrelated scope before implementation.
 
-Spec length is a cost, not a quality signal: if the spec is longer than the implementation would be, something has gone wrong. [Why Small?](../spec-driven/why-small) and [The Spectrum](../spec-driven/the-spectrum) carry the full argument.
+Use [Why Small?](../spec-driven/why-small) to decide where to split, and [The Spectrum](../spec-driven/the-spectrum) to choose the appropriate formality.
 
-*Sources: LeanSpec (lean-spec.dev), small-spec discipline, and formality-to-risk matching.*
+*Sources: The over-scoped rename example is this book's illustrative workflow guidance.*
 
 ## Drift with no detection
 

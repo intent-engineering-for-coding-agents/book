@@ -5,19 +5,15 @@ title: Code Review for Agent-Generated Code
 
 # Code Review for Agent-Generated Code
 
-The PR has a spec delta, acceptance criteria, a constraint section, and three hundred lines of implementation. The reviewer opens the diff view.
+Open the spec before reviewing the generated diff. If the agent resolved an ambiguous requirement while implementing, the patch alone gives you its chosen answer. You still need to decide whether the team wanted that behavior.
 
-Not from laziness. The code diff is what changed. Review tooling presents the diff view first. Years of review habit point the same way. The harder question is how to make spec-first review happen by default instead of by discipline.
+This chapter uses spec-first review, an optional agent-assisted coverage trace, and explicit checks for copied patterns or removed controls. These are the book's review practices, with the reviewer responsible for checking the findings.
 
-This chapter covers three things: how to shape the PR so intent-first review happens by default rather than by discipline, how to bring a second agent into the review to check what the implementation agent and the human reviewer each miss, and what each kind of reviewer reliably gets wrong.
+## PR shape: review intent before implementation
 
-## PR shape: the spec as the load-bearing document
+For a decision-heavy change, put the proposed behavior in a separate pull request (PR) before implementation. Read the acceptance criteria and constraints without a generated solution to explain them away. [Trunk-Based Development with Agents](./trunk-based-development) covers when the two-PR split is worth using.
 
-A change folder plus an implementation in one PR creates a size and sequencing problem simultaneously. The spec delta is forty lines, the implementation is three hundred lines, and the diff view opens on the first file changed. If the implementation files appear before the change folder in the directory tree, the reviewer arrives at the acceptance criteria after reading three hundred lines of code with a model of the feature already formed.
-
-A reviewer who has read the implementation first reads the spec to confirm what they already understood. They verify that the spec matches the code they read, not that the code matches the spec as written. The two documents contain different information, and reading them in the wrong order treats one of them as a formality.
-
-The two-PR shape removes this problem by separating the documents. The first PR carries only the change folder: `proposal.md`, `design.md`, and the delta specs with their acceptance criteria. Nothing executable. The reviewer reads the spec as a spec, without implementation to bias them. Corrections to intent happen before any code exists. The second PR delivers the implementation and archives the folder. The reviewer arrives with an approved spec and reads the code diff against it. The review question changes from "what is this supposed to do?" to "does this do what was approved?"
+In the implementation PR, link to the approved spec and identify any subsequent revisions. Review those revisions first. Then compare the code and test evidence with the agreed behavior, including the parts the agent left unfinished.
 
 ```mermaid
 graph TD
@@ -30,64 +26,36 @@ graph TD
     A -->|spec approved and merged| B
 ```
 
-When the split applies is a question [Trunk-Based Development with Agents](./trunk-based-development) already settles. What the review angle adds is why the split helps the reviewer: once the spec PR has merged, reading the code diff before the intent is structurally harder, so the review order no longer depends on good intentions alone.
+For a small change kept in one PR, keep the same reading order. The [PR Taxonomy](../quality/pr-taxonomy) helps decide whether unrelated documentation, refactoring, and behavioral changes belong together.
 
-The [PR Taxonomy](../quality/pr-taxonomy) chapter establishes that `docs`, `structural`, and `behavioral` PRs use different review styles and should not mix. The spec PR, carrying only the change folder, is a docs change. The implementation PR is behavioral. The two-PR shape is the natural expression of that taxonomy for decision-heavy behavioral changes.
+*Sources: The review order and PR guidance are this book's workflow synthesis.*
 
-*Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change folder as the unit of spec-first review.*
+## Trace the implementation to the spec
 
-## AI-assisted coverage review
+Suppose the agent implements duplicate-email rejection, but its new test only checks malformed email. A passing test says nothing about the missing duplicate case. Review the test's setup, action, and assertions against the named acceptance criterion.
 
-A common failure mode in reviewing agent-generated code: the implementation agrees with the tests, the tests agree with each other, and neither agrees with the acceptance criteria. All three artifacts are internally consistent. All three are wrong relative to the spec.
+For a change with many scenarios, ask a reviewing agent to list each criterion, locate its test, and state what the test asserts. Give it the approved spec, implementation diff, and relevant tests. Request file references for missing coverage, mismatched assertions, and additions outside the agreed scope. Inspect those references before accepting the findings.
 
-An agent brought into the review with the spec and the implementation checks one thing efficiently: does every acceptance criterion have a corresponding test, and does the test assert what the criterion requires? This is coverage tracing, tedious enough that human reviewers skip it in practice. The agent does not find it tedious.
+For example, `SC-018 names duplicate-email rejection, but the tagged test only supplies a malformed address` directs the reviewer to a specific mismatch. A report saying `coverage looks incomplete` leaves the tracing unfinished.
 
-Ask it to list each acceptance criterion, locate the corresponding test, and state what the test asserts. Flag any criterion with no test, any test whose assertion does not match the criterion's requirement, and any test with no corresponding criterion.
+A separate session lets you choose the review inputs explicitly. Include relevant architecture decisions and existing code needed to assess the patch. Do not treat a fresh session or a different model as proof of independent judgment. For a small change, tracing the criteria yourself avoids an extra report to verify.
 
-The output should read like a checklist, not a verdict. `SC-018 tag exists, but THEN says "reject duplicate email" and the test only checks malformed email` is a useful review comment. `coverage looks incomplete` is not. The second agent should name the broken link, not hand the reviewer another riddle.
+*Sources: The coverage trace, example, and choice of review inputs are this book's workflow guidance.*
 
-The agent also checks scope. A behavioral implementation should deliver what the spec describes and nothing more. An agent working inside a long session accumulates context and adds small improvements: a helper function it needed, a config flag that seemed useful, a refactor it noticed while passing through. These additions are not in the spec. A reviewing agent, comparing the code diff against the acceptance criteria, flags each changed line with no criterion to trace to.
+## Check copied patterns and removed controls {#patterns-and-controls}
 
-What the review agent does not catch reliably: integration failures, whether the acceptance criteria were right in the first place, or whether the feature will work as intended in production. Those require judgment; the coverage and consistency check does not, which is exactly the point.
+A matching pattern in the repository is not enough reason to accept generated code. Suppose the agent copies an endpoint whose authorization check the team has already identified as incomplete. Compare the new endpoint with the approved authorization design and verify the relevant rejection cases. Give the agent a link to the current example, and mark the obsolete example so later sessions have a reason not to copy it.
 
-As of mid-2026, `iec` does not ship this as a command. Treat `check_spec_quality` as the planned shape of a future MCP check: compare an implementation against its spec, trace acceptance criteria to tests, and flag deviations and scope additions. The practice does not depend on the tool existing first.
+Inspect removals with the same care. If an agent deletes a rate limiter because the tests pass without it, ask which requirement made the limiter necessary and what now satisfies it. Require the pull request to name the replacement or the accepted decision to retire the control, with evidence for the changed behavior. A clean diff and a passing suite do not answer those questions by themselves.
 
-*Sources: The acceptance-criterion trace, scope-drift check, and `check_spec_quality` command shape are this book's workflow guidance. The `check_spec_quality` command is a time-bounded companion-tool plan, not a shipped feature.*
+Record the rationale where later sessions will find it, such as the governing decision record or the instruction linked from the affected module. These checks address copied defects and unexplained removals. They do not replace security review.
 
-## Independent critique at review
+*Sources: The endpoint and rate-limiter examples are hypothetical. The review checks are this book's workflow guidance.*
 
-The independent-critic technique from [Spec Lifecycle](../spec-driven/spec-lifecycle) applies here with different inputs and a different goal. Pre-implementation, the critic attacks the spec. At review, the critic traces the implementation.
+## What the review leaves open
 
-The implementation agent has context that biases its review. It resolved the spec's ambiguities, decided which edge cases were in scope, and wrote tests that confirm its choices. Asking it to review the same code confirms the same choices again.
+An implementation which matches the spec still needs checking against the intended use. If the spec omitted a production constraint, record the missing requirement and review the affected code again. A coverage report only helps with the criteria supplied to the reviewer.
 
-Open a fresh session with the approved spec and the implementation code diff, and no context from the implementation conversation. Run the same coverage trace described above: every acceptance criterion to its test, every changed line back to a criterion. The output is a checklist, not a verdict. The human reviewer uses it to direct attention toward the sections most likely to contain gaps.
+*Sources: The review boundary is this book's workflow guidance.*
 
-This step is not free. For high-stakes behavioral changes with many acceptance criteria, the tracing is worth it. For a change with three acceptance criteria and three tests, skip it.
-
-Choosing between a fresh session and a second model family is the same tradeoff [Spec Lifecycle](../spec-driven/spec-lifecycle) works out for spec critique: the fresh session removes context contamination, the second model family removes shared blind spots. A portable instruction set lowers the switching cost, which is one reason [Instruction Hub](../agent-instructions/instruction-hub) argues for shared agent-facing files instead of tool-specific ones.
-
-*Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), multimodel critique as an emerging step in spec-driven workflows. The fresh-session variant without implementation-context bias is this book's practice.*
-
-## What human reviewers miss, what agent reviewers miss
-
-The gaps are complementary: each reviewer covers what the other does not. These are analytical observations from the structure of a spec-driven review, not sourced findings.
-
-| Reviewer | Reliably misses | Why it slips through |
-|---|---|---|
-| Human | Competence heuristic | Polished, well-tested code reads as careful, so the reviewer notes the test exists without asking whether it asserts the right thing |
-| Human | Unchanged context | The code diff shows what changed. A new dependency on a function three files away leaves no red or green line |
-| Human | Constraints past the top | A reviewer who reads the acceptance criteria and skips the constraint section approves an edge case handled wrong, the constraint was in section three |
-| Agent | Integration context | It reviewed the code and the spec, not the runtime: a latency the spec did not model, middleware ordered differently in production than in test |
-| Agent | Silent ambiguity resolution | Ambiguous criteria resolve toward the simplest implementation, and the choice is never surfaced as a choice |
-
-A human doing intent-and-integration review and an agent doing coverage-and-consistency review together cover more failure modes than either alone. Neither covers them completely.
-
-## The review is one gate
-
-These practices raise the quality of what ships, but they are not a guarantee. Review catches divergences between spec and implementation, not divergences between the spec and reality or the user's need. Cognitive debt still accumulates when the spec itself is wrong, incomplete, or stale.
-
-At agentic speeds, the review gate handles higher volume than before. The quality of what reaches it still depends on the spec that preceded it: clear intent, constrained scope, and the load-bearing constraints near the top.
-
-A disciplined review process is only as consistent as the conventions that back it. One reviewer who reads spec-first and another who reads code-diff-first, reviewing code generated by the same agent against the same spec, produce different results. The conventions that make intent-first review consistent across the team are the same conventions that make everything else consistent: a shared instruction set that every agent and every developer reads before the first session.
-
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt as the failure mode review alone does not prevent.*
+Write the team's review expectations into the [shared conventions](./shared-conventions). The next developer and agent need to know which artifacts to supply and which findings require a correction before merge.
