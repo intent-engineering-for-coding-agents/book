@@ -139,19 +139,13 @@ This is weaker than a behavior test. The test does not verify the command still 
 
 Testing runbook content like this is a narrow extension this book recommends. It is not presented here as common industry policy.
 
-## Three layers again
+## Put the check in the workflow
 
-This book reuses the pattern from [Skills, Commands, and Hooks](../agent-instructions/skills-commands-hooks) here.
+Tell the agent which documents need markers and what to do when a code change produces a stale warning. Run the validator during the task so broken references surface before review.
 
-Layer one is the instruction. Tell the agent which documents need markers, what the marker means, and what to do when a code change trips a stale warning.
+For this book's workflow, configure the validator as a required Continuous Integration (CI) check. Treat broken references and deletion of documents with live `referred-by` entries as failures. Review still decides whether the marked document describes the code accurately.
 
-Layer two is the on-demand check. A skill or script the agent runs mid-task gives fast feedback before the change reaches Continuous Integration (CI).
-
-Layer three is the build gate. The CI job checks tracked documents on every Pull Request and blocks on hard failures such as broken references. The same gate blocks a delete or rename when a `docs/` file still has live `referred-by` entries. Put this in CI because delete-and-fix-later nearly always turns into delete-and-never-fix.
-
-Nothing here depends on one tool. The practice is broader: one rule the agent reads, one fast self-check, one hard backstop independent of memory. A deterministic checker reaches this much. The rest still needs review.
-
-*Sources: The three-layer placement is this book's synthesis from the instruction, command, and hook pattern applied to documentation drift.*
+*Sources: The validator placement and failure policy are this book's workflow guidance.*
 
 ## Why this belongs in verification
 

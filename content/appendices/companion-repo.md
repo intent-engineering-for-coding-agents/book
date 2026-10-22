@@ -13,7 +13,7 @@ It is also not production-grade. The repo is a teaching artifact, and this page 
 
 ## Repo structure
 
-The repository at `github.com/intent-engineering-for-coding-agents/cli` is organized as follows:
+The repository at `github.com/intent-engineering-for-coding-agents/cli` has the following layout at revision `2491a62` (checked October 22, 2026):
 
 ```text
 docs/         ADRs, design docs, INDEX.md, testing strategy
@@ -23,6 +23,10 @@ AGENTS.md     entry point for all agents working in this repo
 src/          CLI source code (Python)
 tests/        test suite
 ```
+
+The `hooks/` directory contains only `.gitkeep` at this revision. It is a scaffold artifact and adds no setup requirement to the practices taught here.
+
+*Sources: Companion CLI repository at revision `2491a62`, directory layout and `.agents/hooks/.gitkeep`.*
 
 `docs/` holds the living documentation: ADRs in `docs/decisions/`, design documents in `docs/design/`, and a flat `docs/INDEX.md` agents use as a map. `openspec/` holds the specs. `.agents/` holds the instruction files that `AGENTS.md` loads. The `AGENTS.md` at root follows the same wiring pattern as the one for this book.
 

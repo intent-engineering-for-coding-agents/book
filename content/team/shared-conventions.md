@@ -47,7 +47,7 @@ Not every developer convention belongs in the team instruction set. Personal not
 
 The test: if developer A and developer B follow a convention independently, and the outputs would be inconsistent in the same codebase, standardize it. If the convention affects only local workflow and does not show up in committed code, leave it divergent.
 
-Standardize data access patterns and security rules. Leave architect mode for spec drafting, or whether to run the credibility pass skill manually or via a hook, up to the individual.
+Standardize data access patterns and security rules. Leave the choice of editor and personal shortcuts for invoking shared skills up to the individual.
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces brittle agents and developers who stop making local judgment calls. The team instruction set should specify conventions that affect the codebase. Everything else is a personal setup.
 

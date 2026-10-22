@@ -76,7 +76,7 @@ That archive becomes the canonical set of acceptance criteria for each capabilit
 
 LeanSpec is the lightweight productized neighbor. It articulates the small-spec discipline the previous two chapters inherited: stay focused, keep specs short, finish before extending. Its tooling and adoption are thin next to OpenSpec, so this book takes LeanSpec's philosophy on scope and OpenSpec's machinery for lifecycle.
 
-At the enterprise end, GitHub positions Spec-Kit for large-scale, multi-team environments with compliance requirements: tooling, integrations, governance hooks. The formality is designed for the scale.
+At the enterprise end, GitHub positions Spec-Kit for large-scale, multi-team environments with compliance requirements: tooling and integrations. The formality is designed for the scale.
 
 *Sources: LeanSpec, the small-spec discipline this book absorbs while using OpenSpec for lifecycle and structure. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), Spec-Kit's targeting of large-scale, multi-team environments with compliance requirements.*
 

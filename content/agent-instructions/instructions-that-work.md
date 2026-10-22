@@ -101,4 +101,4 @@ Instructions also backfire by going stale: a constraint written for last quarter
 
 The practical test: if the agent gets the decision wrong and the fix is repo-specific, write an instruction. If the fix is general engineering knowledge, let the codebase and review handle it. Instructions are for preserving decisions you already made, not for freezing every later decision in place.
 
-There is a harder limit. Some constraints the agent reads and improvises against anyway, and a louder instruction does not fix it. The rule has to move somewhere the agent cannot quietly skip: a skill that runs the workflow on its behalf, or a hook that fails the build the moment the rule breaks.
+A recurring task needs more than a constraint. Regenerating types after an API change involves a command, a type check, and repairs to stale imports. Put those steps in a reusable procedure with a clear completion condition.

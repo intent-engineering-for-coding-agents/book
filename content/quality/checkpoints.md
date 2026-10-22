@@ -10,7 +10,7 @@ A change clears every gate at merge time and still runs wrong three weeks later.
 Quality is not a single gate. It is three, in sequence, and each catches a failure the other two miss.
 
 - **Before:** did the work start from legible architecture, current agent instructions, and a reviewed spec?
-- **During:** is the implementation running against that spec and the commit hooks, or has the session drifted?
+- **During:** is the agent following the reviewed spec and checking the resulting changes, or has the session drifted?
 - **After:** do the tests verify the acceptance criteria, and does the merged work update the engineering memory the next agent reads?
 
 ## Before: the foundation gate
@@ -27,17 +27,19 @@ One input sits upstream of the spec itself: the architectural decision the spec 
 
 ## During: the implementation gate
 
-The during-gate watches three inputs while the agent codes: the spec it loaded, the hooks firing on each commit, and the state of the context window. The question is whether the implementation is still running against the right ones.
+During implementation, check the spec the agent loaded, the results of the relevant checks, and whether the task context still includes the constraints behind the change.
 
 Freeze the spec first. A spec still under negotiation while the code is written is two moving targets, and the implementation drifts toward wherever the agent guesses it is heading. If it has to change, change it explicitly and restart the affected scenario rather than let the code chase a spec in motion.
 
-The other two inputs split along the line this chapter keeps drawing. Hooks are deterministic: the pre-commit checks [Skills, Commands, and Hooks](../agent-instructions/skills-commands-hooks) installs are lint, secret detection, and AC-ID-to-tag verification, all firing unprompted.
+Tell the agent which checks to run for the changed files, such as lint or AC-ID verification. Inspect the results before accepting the change. The instruction alone does not establish whether the check ran.
 
 Context erodes silently, the way [Context Window Management](../agent-instructions/context-window) described. A session three hours deep, window full, the spec buried under two unrelated tasks, writes worse code than the same session at its start.
 
-The during-gate re-teaches neither; it enforces them. The tell that context has lapsed is the agent re-deriving in hour three an import path it had right in hour one.
+Watch for the agent re-deriving an import path already established earlier in the task. Check whether the relevant instruction or code reference is still available.
 
-The minimum during-checkpoint is three questions. Is the spec the same one the agent loaded? Are the deterministic checks still passing? Has the context window been refreshed in the last hour? Two no answers and the work should pause.
+Before continuing, resolve a changed spec, a failing check, or missing task context. Record any revised decision before asking the agent to proceed.
+
+*Sources: The implementation checkpoint is this book's workflow guidance.*
 
 ## After: the verification gate
 
@@ -79,7 +81,7 @@ graph TD
     classDef after fill:#0891b2,stroke:#0e7490,color:#fff
 
     B["<b>Before: foundation</b><br/>instructions current<br/>arch legible<br/>governing ADR closed<br/>design system in place<br/>&nbsp;"]:::before --> W(["Write spec"])
-    W --> D["<b>During: implementation</b><br/>hooks firing<br/>context fresh<br/>spec stable<br/>&nbsp;"]:::during
+    W --> D["<b>During: implementation</b><br/>check results reviewed<br/>context fresh<br/>spec stable<br/>&nbsp;"]:::during
     D --> A["<b>After: verification</b><br/>scope check<br/>AC tests trace<br/>spec review first<br/>engineering memory current<br/>&nbsp;"]:::after
     A --> M(["Merge + archive"])
 ```
@@ -88,9 +90,11 @@ Each gate catches a different break. Skip the before-gate and the agent works fr
 
 ## Where the attention goes
 
-Every gate splits in two. Hooks and CI catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right form, whether the test verifies the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
+Every gate splits in two. Configured CI checks catch broken links, oversized files, missing AC IDs, and missing test pairs. Review handles the part the scanner cannot reach: whether the spec picked the right behavior, whether the code took the right form, whether the test verifies the named scenario instead of a nearby one. Push structure into automation. Spend review time on meaning.
 
-This book treats deterministic checks as hard gates; semantic AI review stays advisory unless your team has already verified a stronger workflow.
+Instructions tell the agent which checks to run. To block merging when a check fails, configure the check as required in CI and restrict bypass permissions. GitHub documents these controls as required status checks and branch-protection bypass settings.
+
+*Sources: GitHub, "About protected branches" (reviewed October 22, 2026), required status checks and bypass permissions.*
 
 The work is uneven. Most of the before-gate is maintenance, most of the during-gate is automation, and the after-gate is the expensive one: scope creep and tests that assert adjacent behavior instead of the named scenario do not fail a CI check.
 

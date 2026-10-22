@@ -29,7 +29,7 @@ A record of one architectural decision, its context, and its consequences. Follo
 
 ## Agent instructions
 
-This book's collective term for `AGENTS.md` and the instruction files, skills, and hook configuration in the `.agents/` hub. See [Agent Instructions](/agent-instructions/).
+This book's collective term for `AGENTS.md`, instruction files, and skills in the `.agents/` hub. See [Agent Instructions](/agent-instructions/).
 
 ## Agentic Software Engineering (ASE)
 
@@ -143,7 +143,9 @@ A named system for context engineering and spec-driven development with coding a
 
 ## Hook
 
-An event-triggered command or script, such as a pre-commit check or a check after an agent edits a file. This book stores hook scripts in `.agents/hooks/`, with event wiring configured in the invoking tool. See [Agent Instruction Hub](/agent-instructions/instruction-hub).
+A command or script invoked by an event. Git's `pre-commit` hook is one example.
+
+*Sources: Git, "githooks" documentation, event-triggered scripts and the `pre-commit` event.*
 
 ## `iec`
 

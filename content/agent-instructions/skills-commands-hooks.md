@@ -1,17 +1,17 @@
 ---
 type: chapter
-title: "Skills, Commands, and Hooks"
+title: "Skills and Commands"
 ---
 
-# Skills, Commands, and Hooks
+# Skills and Commands
 
-The same workflow has more than one home, and where you put it decides whether it runs.
+A recurring task needs instructions precise enough for the agent to repeat the procedure.
 
 Take a concrete example: after modifying `api-spec.yaml`, regenerate the TypeScript types so the client stays in sync with the contract.
 
-Write it as an instruction and you have described the workflow. The agent reads "regenerate the types after editing the spec" and decides whether this is the moment to act. Write it as a skill and you have automated the workflow. Expose that skill as a command and a developer fires the same steps by hand. Write it as a hook and the decision disappears.
+Write the regeneration steps in a skill and tell the agent when to load it. Give the procedure a completion condition: generated types match the contract and the type check passes.
 
-Instructions and prompts describe the work. This chapter is about the three mechanisms that make it run: skills, commands, and hooks.
+This chapter covers reusable procedures and explicit commands for invoking them.
 
 ## Skills: automate the work you keep repeating
 
@@ -85,46 +85,10 @@ This is control, not polish: an agent should not have to scrape help text to dis
 
 *Sources: Anthropic, "Building effective agents" (December 2024), predefined workflows, and deterministic paths. The command contract in this section is this book's synthesis.*
 
-## Hooks: determinism, like a database trigger
+## Keeping the procedure available
 
-A skill runs only when it is triggered, and the trigger gets missed two ways. You forget the command. Or the agent edits the spec, never registers the edit as the event that should run the skill, and the drift it would have caught ships.
+A saved procedure still needs to reach the agent at the right moment. Put the loading condition in the instruction hub and check the resulting files before accepting the change.
 
-A hook does not wait and does not choose. It fires on the event, every time, the way a database trigger fires on every `INSERT` whether the application remembered to call it or not. Edit a `.py` file, the formatter runs. Stage a commit, the secret scan runs.
+*Sources: This repo's `AGENTS.md`, explicit loading conditions for reusable procedures.*
 
-Hooks exist next to skills for exactly this reason. A skill automates the work. A hook removes the decision to run it.
-
-Keep each hook narrow. A hook that runs `ruff` on every modified Python file does one thing and fails clearly when that thing fails. A hook that runs the full test suite on every edit blocks the agent at every step and usually gets disabled.
-
-Hook syntax is tool-specific. As of mid-2026, a hook written for Claude Code does not drop into Cursor or Copilot unchanged, and one that blocks unexpectedly is awkward to debug. Start with the one check you cannot afford to skip.
-
-*Sources: Anthropic, "Building effective agents" (December 2024), predefined deterministic paths versus leaving the choice to the agent.*
-
-## Which one, and when
-
-Each mechanism fails differently when it is missing. Without the instruction, the agent does not know the convention and improvises. Without the skill, it knows what to do but re-derives the steps every session and sometimes gets them wrong. The hook is the only one that holds under pressure.
-
-Stack them in that order. Get the instruction right first: specific, testable, covering the agent's defaults. Add a skill when the same procedure shows up in more than two sessions. Add a hook when skipping the procedure causes real damage rather than mild drift.
-
-```mermaid
-graph TD
-    classDef advisory fill:#64748b,stroke:#475569,color:#fff
-    classDef auto fill:#0891b2,stroke:#0e7490,color:#fff
-    classDef forced fill:#0d9488,stroke:#0f766e,color:#fff
-
-    I["Instruction<br/>agent might skip"]:::advisory
-    S["Skill<br/>runs saved steps"]:::auto
-    H["Hook<br/>runs every time"]:::forced
-
-    I -->|repeats in 2+ sessions| S
-    S -->|skipping causes real damage| H
-```
-
-The cost is real, so weigh it. A simple workflow you run once a month does not need a skill. A check that fails once a quarter usually does not need a hook.
-
-Frequency is not the only reason to write a skill. A release procedure whose steps must run in a fixed order belongs in a skill even if you rarely cut a release.
-
-Use a simple threshold. If the agent gets the procedure wrong twice, write the skill. If the agent skips the procedure and something breaks, write the hook. Until then, an instruction and code review are usually enough.
-
-A skill is only as reliable as the context that triggers it. The agent renames a field in `api-spec.yaml` in hour one. An hour later the window has filled with test output and diffs, that edit has scrolled out of context, and the agent moves on without ever connecting it to the regenerate-types skill.
-
-The procedure was never the hard part. Keeping the agent's context intact is.
+The procedure also needs the current task context. If the agent loses track of the field renamed in `api-spec.yaml`, a saved regeneration procedure alone does not tell it which change needs checking.

@@ -5,7 +5,7 @@ title: Agent Evaluation and Regression
 
 # Agent Evaluation and Regression
 
-Your agent instructions, skills, and hooks are code. Nobody tests them. They drift anyway.
+Changing an instruction or skill changes the input the agent works from. Check the resulting output before relying on the revised procedure.
 
 In the companion repo's `examples/eval-demo`, one line added to `AGENTS.md` ("Prefer functions over classes for utility code") pushed the agent away from the project's conventions. The baseline output scores 9/9. The drifted output scores 5/9.
 
@@ -17,7 +17,7 @@ Tests verify the code is right. They say nothing about whether the agent setup i
 
 The tests in the previous chapter close the gap between spec and implementation. A failing test says the code does not match the intent. Both sides of that comparison are concrete: the spec is a document, the test is executable, the implementation is the artifact under scrutiny.
 
-The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, the skill library, and the hook configuration are inputs to the agent, not outputs. Their effect shows up only in the code the agent produces, one PR at a time. A change that makes the agent worse can sit in the codebase for weeks before anyone notices. A change that makes it slightly better is hard to verify without a fixed task.
+The agent setup has no built-in equivalent. `AGENTS.md`, the instruction files, and the skill library are inputs to the agent, not outputs. Their effect shows up only in the code the agent produces, one PR at a time. A change that makes the agent worse can sit in the codebase for weeks before anyone notices. A change that makes it slightly better is hard to verify without a fixed task.
 
 This is the open gap, and nothing in the toolchain closes it for you.
 
@@ -72,15 +72,15 @@ This is the kind of change a reviewer waves through. "Prefer functions over clas
 
 *Sources: Anthropic, "Building effective agents" (December 2024), evaluation as a feedback loop for agent behavior. intent-engineering-for-coding-agents/cli `examples/eval-demo/score-baseline.txt` and `examples/eval-demo/score-after-drift.txt` (ongoing), the example A/B scores cited.*
 
-## Regression when a skill or hook changes
+## Regression when a skill changes
 
-Skills and hooks have the same failure mode. A skill that used to update the index starts skipping the README files because one step was rewritten. A hook that used to catch missing tests starts passing because its pattern was tightened too far. Neither change looks broken in the diff. The skill still runs, the hook still fires, the outcomes drift.
+Consider a skill rewritten to update the documentation index. The agent updates the index but skips the directory README files. The procedure finishes with stale listings still in place.
 
-The defense is the same: a fixed task that exercises the skill or hook, run before and after the change. The index skill runs against a known directory state and is checked against the index it should produce. The missing-tests hook runs against one PR diff that should fail and another that should pass. Same golden test, scoped to a single component.
+Run the revised skill against a known directory state and inspect the generated index and README listings. Include a renamed file in the task so the check exposes stale links.
 
 Most teams will not maintain this for every skill. The economics only work for the ones that fail expensively. The skill that touches the documentation index earns a golden test because its failure mode is silent drift. The skill that scaffolds a new ADR file does not, because its failure mode is the agent showing the wrong output immediately and the user catching it.
 
-*Sources: The skill-and-hook golden-test examples are this book's workflow guidance.*
+*Sources: The skill regression example are this book's workflow guidance.*
 
 ## When to invest
 

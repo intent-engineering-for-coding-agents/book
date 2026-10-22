@@ -104,7 +104,7 @@ export default withMermaid(
             { text: 'AGENTS.md: The Entry Point', link: '/agent-instructions/agents-md' },
             { text: 'Agent Instruction Hub', link: '/agent-instructions/instruction-hub' },
             { text: 'Instructions That Work', link: '/agent-instructions/instructions-that-work' },
-            { text: 'Skills, Commands, and Hooks', link: '/agent-instructions/skills-commands-hooks' },
+            { text: 'Skills and Commands', link: '/agent-instructions/skills-commands-hooks' },
             { text: 'Context Window Management', link: '/agent-instructions/context-window' },
           ]
         },

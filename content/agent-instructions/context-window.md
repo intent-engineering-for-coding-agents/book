@@ -41,8 +41,6 @@ Review is the third case, and the sharpest. An agent that reviews its own work i
 
 The reset that protects attention is also where the bill stops compounding.
 
-Short sessions also make skills and hooks more valuable. A skill is fresh-session-safe: it carries its own procedure without relying on session memory. A hook fires regardless of session length. Both are more reliable than the instruction set the agent no longer has in active context.
-
 *Sources: Anthropic, "Building effective agents" (December 2024), a fresh session with the right files outperforming a long, compressed one. Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 2026), session and context discipline in agentic tools. This repo's `AGENTS.md` and skill structure, fresh-session-safe skills in practice.*
 
 ## Loading selectively

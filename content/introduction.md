@@ -57,7 +57,7 @@ The book is organized around four topics. The first two give the agent durable c
 
 **Foundation:** repo structure as the agent's context. Decisions, design docs, specs, and an agent-facing index live in plain text, in version control, where the next session can load them.
 
-**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. Teach the agent your project rules once, then decide which of those rules are important enough to enforce with hooks.
+**Agent Instructions:** `AGENTS.md` and the `.agents/` hub. Record your project rules and tell the agent which instructions to load for the task.
 
 **Spec-Driven Development:** specs before code. The spec defines one change, limits the solution space, and gives the change a target richer than "do what the codebase seems to imply".
 

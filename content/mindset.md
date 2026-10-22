@@ -59,7 +59,7 @@ For maintained software, the workspace becomes the shared input. Developers read
 
 A decision that creates a coding convention belongs in a file the next session loads, not in folklore passed at standup. A rule that keeps surfacing in review comments has outgrown the thread: move it into instructions. And a diagram that defines a boundary belongs in Mermaid or another text format the team can diff and the agent can read.
 
-Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs, a hook that runs after file edits. Intent a machine checks lasts longer than intent a teammate has to remember.
+Readable is not enough when the artifact does not enforce itself. The stronger rule is the one a check can fail on: an ADR with a required status field, a spec with AC IDs checked against test tags. Intent a machine checks lasts longer than intent a teammate has to remember.
 
 ## Documentation before code
 

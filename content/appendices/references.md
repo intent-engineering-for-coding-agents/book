@@ -54,6 +54,8 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 - Framelink: [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (reviewed October 21, 2026). Primary repository documentation for exposing Figma design information to coding agents through MCP.
 - Cucumber: ["Behaviour-Driven Development"](https://cucumber.io/docs/bdd/), [Gherkin reference](https://cucumber.io/docs/gherkin/reference/), and [tags documentation](https://cucumber.io/docs/cucumber/api/#tags) (reviewed October 21, 2026). Primary documentation for collaborative examples, scenario notation, execution filtering, and tags linking to external requirement records.
 - JUnit: ["Tagging and Filtering", JUnit 5.13.4 User Guide](https://docs.junit.org/5.13.4/user-guide/index.html#writing-tests-tagging-and-filtering) (reviewed October 21, 2026). Version-pinned primary documentation for `@Tag`. Reusing tags for AC ID traceability is this book's convention. The former `current` URL now redirects to JUnit 6 documentation.
+- Git: ["githooks" documentation](https://git-scm.com/docs/githooks) (reviewed October 22, 2026). Primary documentation for event-triggered scripts, including `pre-commit`.
+- GitHub: ["About protected branches"](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) (reviewed October 22, 2026). Primary documentation for required status checks and bypass permissions.
 
 ## Agentic engineering & agent instructions
 
