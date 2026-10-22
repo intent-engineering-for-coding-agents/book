@@ -59,6 +59,7 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 
 ## Agentic engineering & agent instructions
 
+- Agent Skills: [Overview](https://agentskills.io/home) and [specification](https://agentskills.io/specification) (reviewed October 22, 2026). Primary format documentation for reusable instructions, skill descriptions, and loading skill content when relevant.
 - InnerSource Commons: ["What is InnerSource?"](https://innersourcecommons.org/#what-is-innersource) (reviewed October 21, 2026). Primary community definition of open-source collaboration practices applied within organizations.
 - OpenRouter: ["BYOK"](https://openrouter.ai/docs/guides/overview/auth/byok) (reviewed October 21, 2026). Primary vendor documentation illustrating user-supplied model-provider API keys.
 - [intentengineering.dev](https://intentengineering.dev/) (reviewed October 21, 2026). Consulting site's definition of intent engineering through objectives, success criteria, constraints, and stop rules. Evidence of another usage of the phrase, rather than a standard definition.

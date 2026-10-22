@@ -225,7 +225,7 @@ This book's bootstrap map of an existing codebase, drafted by an agent and valid
 
 ## Skill
 
-A reusable agent workflow describing what to load, do, and produce. This book stores skill procedures as Markdown files in `.agents/skills/` and lists their triggers in the agent instructions. See [Agent Instruction Hub](/agent-instructions/instruction-hub).
+A reusable procedure describing what the agent should load, do, and produce. This book stores skill procedures under `.agents/skills/` and lists their loading conditions in the agent instructions. See [Agent Instruction Hub](/agent-instructions/instruction-hub#skills).
 
 ## Spec
 
