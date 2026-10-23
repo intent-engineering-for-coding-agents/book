@@ -23,7 +23,7 @@ Documented means the practice is written down well enough for a new teammate to 
 
 ### CI-enforced
 
-CI-enforced is the strongest of these three labels. In a repo with those checks wired in, the pipeline fails on violations the check expresses: a missing `docs/README.md` stops the PR before merge, and a test tagged with a non-existent AC ID fails the traceability check. Enforcement gives those specific rules a better chance of remaining active through team turnover and deadline pressure. It says nothing about rules the pipeline does not encode.
+CI-enforced is the strongest of these three labels. When the team configures a check as a required merge gate, a missing `docs/README.md` can stop the PR. In the companion repo at revision `2491a62`, an orphaned AC marker produces a warning, so that case does not earn the label. Enforcement covers only the rules the gate actually checks.
 
 A target annotation keeps current state separate from intent: `practiced, target: CI-enforced by Q3`. Writing target: CI-enforced when you are not there yet flags the gap instead of papering over it. Writing CI-enforced when code review is doing the actual catching is the failure mode this taxonomy names.
 
@@ -39,7 +39,7 @@ Accurate labeling tells everyone what they rely on: CI-enforced means trusting t
 
 Not every practice in this book needs to reach CI-enforced. Some pay off at practiced and the enforcement cost is not worth the work. A team that enforces a spec-before-code rule in code review does better work than one with a pipeline check and stale specs. For each practice you adopt, find the minimum level where it starts returning value, and decide whether CI-enforced is worth the investment.
 
-The three levels rhyme loosely with the ThoughtWorks Radar's Hold/Assess/Trial/Adopt rings. Both scale a practice from early awareness toward confident adoption. The difference is scope. The Radar speaks to the industry: is this technique ready for widespread adoption? These three levels speak to one team: is this practice enforced here, right now? The Radar's rings tell you what the field has learned. These labels tell you what you rely on.
+The three levels rhyme loosely with the Thoughtworks Radar's Caution/Assess/Trial/Adopt rings in its April 2026 edition. The Radar offers a consultancy's assessment of a technique. These labels describe what one team has practiced, documented, or configured as a required check in its own repository.
 
 Your current level tells you what you rely on, and your starting point tells your adoption order. A greenfield codebase and a six-year-old production system is a different problem with different amounts of technical debt. They are different entry points, and the adoption sequence that works for one makes a mess of the other.
 

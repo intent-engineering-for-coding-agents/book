@@ -9,17 +9,17 @@ An agent with no context reaches for the nearest thing it knows.
 
 Suppose the agent is working on the auth module. The codebase has a custom token-validation library for the team's Single Sign-On (SSO) quirks, and the agent has no idea it exists. It reaches for `python-jwt`, writes its own claims validation, and opens a PR that bypasses checks the custom library already handled. The PR passes tests. A reviewer catches it only because they recognize the library and notice what got bypassed.
 
-`AGENTS.md` is the missing context: one file at the repo root, read natively by several coding agents or reached through a thin vendor-specific entry file. Get it right, and every agent arrives with the same context. Skip it, and every agent improvises from general training data that knows nothing about your SSO library.
+`AGENTS.md` gives supported agents a place to find the missing project rule. Put the token-validation library and the relevant security check there, then confirm the agent loaded the file. A file in the repo does not by itself prove the agent used it.
 
 ## The TOC pattern
 
 The instinct when writing `AGENTS.md` is to fill it. Project history, coding style, dependency guidance, testing rules. Dump everything the agent might need into one long file so it never misses a rule.
 
-Weeks later, the file is hundreds of lines. The agent reads every line before starting any task because it cannot tell which section applies to today's task and which covers an edge case nobody has hit in months. By the time it reaches the task, a large slice of its context window is gone. The agent is not better informed, only more constrained.
+Weeks later, the file is hundreds of lines. A session that loads the whole file spends context on sections unrelated to today's task. The agent still has to distinguish the current rule from an edge case nobody has hit in months.
 
-AgentPatterns.ai named the better approach the table-of-contents (TOC) pattern. `AGENTS.md` is a table of contents, not an encyclopedia. It should fit in one context load. It should tell the agent which file to load next and under which condition. The agent loads the file matching the task, not every instruction file in the repo.
+AgentPatterns.ai named the table-of-contents (TOC) pattern. Keep `AGENTS.md` short enough to orient the session. Each link should say when a second file matters. Ask the agent to load the relevant file and confirm it did so before relying on the rule.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support. Anthropic docs for `CLAUDE.md` support (ongoing), the `@AGENTS.md` import mechanism.*
+*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern naming. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support.*
 
 ## What goes in it
 
@@ -29,7 +29,7 @@ The TOC pattern implies three things, in this order:
 - **Load-on-demand instructions:** links to `.agents/instructions/...` files, each with a clause saying when to load it
 - **Commands and skills:** key commands and invocable skills, listed last as reference
 
-The clause on each instruction link is where most teams cut corners. Without one, the agent opens the file only to find out whether it matters. With one, it reads the clause, sees the file is not relevant, and moves on without touching it:
+The clause on each instruction link explains when the file matters. Without one, the agent has to open the file to find out whether it applies:
 
 ```markdown
 - [Build and CI](.agents/instructions/build-and-ci.md): uv commands, lint, test, CI pipeline
@@ -59,14 +59,14 @@ The TOC pattern has a failure mode: gradual accumulation. Branch naming conventi
 
 The test is not the line count. Does anyone open the file and, in under two minutes, know what the project is, which instruction file to load for the current task, and what commands to run? If they have to scroll for the answer, the TOC has become its own content problem.
 
-Size is the visible failure. Staleness is the silent one. `AGENTS.md` is the highest-impact instruction file in the repo: a stale ADR misleads one change, but a stale `AGENTS.md` misleads every session until someone fixes the file, precisely because the file is small enough that nobody expects it to be the thing lying to them.
+Size is the visible failure. Staleness is the silent one. A stale entry-point rule reaches each session that loads the file, while a stale ADR affects work that depends on the decision. Check both the links and the rules when the underlying workflow changes.
 
-The agent follows outdated instructions more faithfully than no instructions, because it has no way to distinguish "this used to be true" from "this is still true". A link to an instruction file that was renamed silently breaks the load. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications produces a loading decision wrong in two directions, and the agent works from it without ever raising an error.
+An outdated instruction presents the old rule as current. A link to an instruction file that was renamed breaks the load unless the agent notices the missing path. A clause that says "load for auth tasks" pointing to a file that now covers payments and notifications sends the reader to the wrong place.
 
-The files it points to are read only when their load clause fires, so staleness in `.agents/instructions/` stays invisible until a session finally loads a file that no longer describes the repo. Keeping the hub itself accurate does not catch that kind of drift.
+An instruction file may sit unread until a relevant task calls for it, so staleness in `.agents/instructions/` can stay invisible for a while. Keeping the hub itself accurate does not catch that kind of drift.
 
 ## Tooling
 
-The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. Run `iec check` with `agents-size` and `agents-links` enabled to catch files that have grown too long and links that no longer resolve. Neither rule catches stale content, but both catch structural failures before the agent does. The entry point is only the first layer. The next problem is the instruction hub it points into.
+The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. At revision `2491a62`, `agents-size` fails when the file exceeds its configured line limit, while `agents-links` warns about links without descriptions. Neither check resolves the linked paths or catches stale instructions. Check those separately. The entry point is only the first layer. The next problem is the instruction hub it points into.
 
-*Sources: [agents.md](https://agents.md/) (de-facto AI agent entry-point file, May 2026 snapshot), the AGENTS.md convention as entry point. AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern and size discipline. GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), Copilot's native AGENTS.md support. Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), improving the controls whenever an issue repeats.*
+*Sources: Companion CLI `agents_size.py` and `agents_links.py` at revision `2491a62`, line-limit failure and descriptive-link warning. The final link and staleness review is this book's guidance.*

@@ -35,13 +35,13 @@ One step up is a concise intent note: write down the target, run the agent, comm
 
 GSD (Get Shit Done) names a specific development system. As checked in October 2026, its original repository points to GSD Core, whose documented phases cover discussion, planning, execution, verification, and shipping with archiving. Treat GSD as a framework option. The light rung in this diagram is an intent note without a managed lifecycle.
 
-Next is a `spec.md` file in the repo: a single Markdown file, no external framework, with purpose, scope, acceptance criteria, scenarios, task notes, and verification rules. Written before implementation, committed with the code. The GitHub post launching Spec-Kit describes this as where most teams start with spec-driven development.
+Next is a `spec.md` file in the repo: one Markdown file with purpose, scope, acceptance criteria, scenarios, task notes, and verification rules. Written before implementation and committed with the code, it is this book's lightweight alternative to a managed change folder.
 
 For teams with stable review rules, `spec.md` becomes a local framework. The file starts small, then picks up house rules: where it lives, which headings are mandatory, who reviews it, how scenarios map to tests, when it becomes historical, and how stale specs stop acting as live instructions. Local formats stay viable when those rules match the team's existing review and release mechanics better than the generic template does.
 
 The cost is ownership. A custom `spec.md` gives maximum fit and almost no tooling burden, but the team owns the lifecycle around it. Without those rules, `spec.md` is a better prompt. With them, it becomes a spec-driven workflow.
 
-*Sources: GSD original repository README and GSD Core README (reviewed October 21, 2026), named framework, project move, and phase lifecycle. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), specification-first workflow. The intent-note rung and custom `spec.md` lifecycle framing are this book's synthesis.*
+*Sources: GSD original repository README and GSD Core README (reviewed October 21, 2026), named framework, project move, and phase lifecycle. The intent-note and custom `spec.md` rungs are this book's synthesis.*
 
 ## OpenSpec
 
@@ -74,11 +74,11 @@ That archive becomes the canonical set of acceptance criteria for each capabilit
 
 ## LeanSpec and Spec-Kit
 
-LeanSpec is the lightweight productized neighbor. It articulates the small-spec discipline the previous two chapters inherited: stay focused, keep specs short, finish before extending. Its tooling and adoption are thin next to OpenSpec, so this book takes LeanSpec's philosophy on scope and OpenSpec's machinery for lifecycle.
+LeanSpec argues for concise specifications that evolve with the work. This book uses that scope advice while teaching OpenSpec's change-folder lifecycle.
 
-At the enterprise end, GitHub positions Spec-Kit for large-scale, multi-team environments with compliance requirements: tooling and integrations. The formality is designed for the scale.
+GitHub's 2025 Spec-Kit launch post includes security and compliance requirements among the inputs to its specification and plan. This book places that more structured workflow toward the formal end of its spectrum. The placement is an editorial comparison, not a measured ranking.
 
-*Sources: LeanSpec, the small-spec discipline this book absorbs while using OpenSpec for lifecycle and structure. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), Spec-Kit's targeting of large-scale, multi-team environments with compliance requirements.*
+*Sources: LeanSpec documentation, concise and evolving specs. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), security and compliance requirements as specification inputs. The formality comparison is this book's synthesis.*
 
 ## Match formality to risk
 

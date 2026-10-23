@@ -7,7 +7,7 @@ title: AC IDs and Coverage
 
 A spec and its tests are supposed to be the same promise written twice. Consider a spec with scenarios and a PR with tests. Some scenarios have no test at all, and some tests cover behavior the spec never mentioned. The reviewer approves it because the tests pass and the diff looks reasonable. The next change breaks the untested scenario, and the team hears about it from a customer.
 
-A spec and a test suite that drift apart silently defeat the point. The spec promises traceability, but the link to the tests has broken. A stable identifier on every acceptance criterion keeps the link visible, and CI checks whether something carrying the identifier runs.
+A spec and a test suite that drift apart silently defeat the point. The spec promises traceability, but the link to the tests has broken. A stable identifier on every acceptance criterion keeps the link visible. The companion check finds whether a matching test marker exists. It does not establish that the marked test ran or checked the criterion.
 
 I first saw the value of acceptance criterion identifiers at a former employer. Customers and developers had one short name for the behavior under discussion. Nobody had to guess which paragraph, ticket comment, or test somebody meant.
 
@@ -70,9 +70,9 @@ void initCreatesExpectedStructure(@TempDir Path dir) { ... }
 def test_init_empty_directory(tmp_path): ...
 ```
 
-Two tags, two independent uses. The traceability scanner greps for `SC-001` to verify the scenario has a corresponding test. The CI runner filters on `integration` to run only the integration tier in a specific pipeline stage, skipping e2e tests that require a deployed environment. One tagging step, two channels that never interfere.
+Two tags, two uses. The traceability scanner greps for `SC-001` to find a matching test marker. The CI runner can filter on `integration` in a pipeline stage that excludes end-to-end tests requiring a deployed environment. A matching marker says nothing about the assertion's quality.
 
-None of this machinery is new. Test tags in JUnit, pytest, and the rest exist primarily for selective execution: run the smoke set, skip the slow e2e tier. BDD tooling went further years ago, tagging Cucumber scenarios with issue keys like `@JIRA-1234` to link a scenario back to a ticket. The AC ID convention is that same move made strict. The tag carries a registry-allocated ID, and a CI check fails when a scenario has no test wearing it.
+Test tags in JUnit and pytest support selective execution: run the smoke set, skip the slow end-to-end tier. Cucumber also supports tags that link scenarios to external requirements. This book's AC ID convention adds a registry-allocated ID and a check for missing test markers.
 
 Frameworks without a native tag mechanism fall back to a comment on the test method:
 
@@ -110,7 +110,7 @@ A registry that only reports percentages is a dashboard. A reviewer cannot act o
 
 I use three states for this work queue:
 
-- `covered`: tagged evidence exists at the declared boundary
+- `covered`: a reviewer has checked the tagged test's assertions at the declared boundary
 - `partial`: some evidence exists, but one observable part is still missing
 - `gap`: no evidence linked to the acceptance criterion
 
@@ -118,7 +118,7 @@ One small table is enough:
 
 | AC ID | Status | Why |
 |---|---|---|
-| `AUTH-014` | `covered` | tagged evidence exists |
+| `AUTH-014` | `covered` | tagged assertions checked against the scenario |
 | `AUTH-015` | `partial` | positive path covered, boundary case missing |
 | `AUTH-016` | `gap` | no tagged evidence |
 
@@ -132,11 +132,11 @@ This registry-as-work-queue pattern is this book's convention. OpenSpec does not
 
 ## Enforcing the pairs
 
-[Tests as Evidence, Not Ritual](./tests-as-evidence) made the case that verifying an acceptance criterion takes more than the happy path: the positive path, each way the criterion is violated, and any boundary it implies. AC IDs turn that principle into something a tool enforces. Because every scenario carries an ID and every test wears it, a check counts the evidence for each criterion and fails when a direction is missing.
+[Tests as Evidence, Not Ritual](./tests-as-evidence) made the case for checking positive, negative, and boundary behavior where the criterion calls for them. AC IDs make test markers countable. In the companion repo at revision `2491a62`, `test-traceability` fails when a non-Manual scenario has no marker, while the advisory `test-coverage` check warns when it has fewer than two markers.
 
-The check is deterministic: scan the spec, identify scenarios, count positive and negative tests per scenario, fail when a positive-direction scenario has no negative pair (or vice versa), unless the scenario has only one direction to verify. "When the user submits an empty form, the API returns a 400" is itself a negative-direction scenario. Its positive counterpart ("a valid form returns a 201") is a separate scenario with its own ID. This is coverage of acceptance criteria, not the percentage of code lines a test run executes. It measures the shape of the suite, not the quality of any one test.
+The checker counts markers, not test direction or assertions. Two tests carrying the same ID can both exercise the happy path and still pass the count check. "When the user submits an empty form, the API returns a 400" is a negative-direction scenario. Its positive counterpart ("a valid form returns a 201") is a separate scenario with its own ID. A reviewer must inspect the tests for the missing behavior and boundaries.
 
-*Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), positive and negative coverage as the companion-repo convention.*
+*Sources: Companion CLI [`test_traceability.py`](https://github.com/intent-engineering-for-coding-agents/cli/blob/2491a62659ac6e2291f9d5f3353090d68fe10940/src/iec_cli/checkers/test_traceability.py) and [`test_coverage.py`](https://github.com/intent-engineering-for-coding-agents/cli/blob/2491a62659ac6e2291f9d5f3353090d68fe10940/src/iec_cli/checkers/test_coverage.py), marker presence as a failing check and two-marker count as an advisory check at revision `2491a62`. The positive/negative review rule is this book's guidance.*
 
 ## A worked example
 
@@ -168,7 +168,7 @@ Test-type: Integration
 **Then** the response is 410 with `{ error: 'gone' }`
 ```
 
-Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `Integration` because these scenarios exercise a real HTTP layer against a real database. A unit test with a mocked repository would not verify the HTTP status codes or the ORM query. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The AC-coverage check sees the pair. The traceability scanner greps for `USR-009` in the test suite and finds the tagged test.
+Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix because this feature is about users, readable at a glance. The test type is `Integration` because these scenarios call for evidence across the HTTP and persistence boundaries. A unit test with a mocked repository would not verify either integration. USR-008 is the positive case, while USR-009 and USR-010 are negative cases. The reviewer checks those cases in the test suite. The traceability scanner only finds a tagged test for each ID.
 
 What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness. The ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness keeps the link intact in an agentic codebase, where everything changes faster than anyone tracks by hand.
 
@@ -182,7 +182,7 @@ The bracket format is a convention, not a law. `[PROJECT-NNN]`, `[FEAT-NNN]`, an
 
 Tests that verify the wrong thing still pass. An AC ID linking to a test that asserts a different behavior than the scenario specifies looks fine to the traceability check and fails the underlying purpose. The check verifies the link exists, not whether the test asserts what the scenario describes.
 
-That second judgment is not out of reach, though: line up the scenario's `Given/When/Then` against the test's setup, action, and assertions, and a mismatch shows. A human reviewer makes that call, and so does an agent handed both artifacts and asked whether they agree. [Code Review for Agent-Generated Code](../team/code-review-agent-code#trace-the-implementation-to-the-spec) describes the comparison.
+Line up the scenario's `Given/When/Then` against the test's setup, action, and assertions. A reviewing agent can help locate a mismatch, but its report needs checking against both artifacts. [Code Review for Agent-Generated Code](../team/code-review-agent-code#trace-the-implementation-to-the-spec) describes the comparison.
 
 Refactoring spec scenarios is the failure mode to watch for. A scenario being rewritten to clarify its intent is fine. The ID stays, the wording changes, and the test still verifies the new wording because the new wording describes the same behavior. A scenario being rewritten to specify a different behavior, while keeping the ID, is silent drift. The fix is to retire the old ID and assign a new one. Same discipline as ADRs: when the decision changes, the new artifact gets a new identifier.
 

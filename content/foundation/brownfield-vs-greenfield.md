@@ -5,17 +5,17 @@ title: "Brownfield vs Greenfield: Bootstrap with skeleton.md"
 
 # Brownfield vs Greenfield: Bootstrap with skeleton.md
 
-Consider a retry policy buried in a function called `do_it_again_lol`. Every legacy codebase has one. The author left years ago, and nobody knows what it retries or why it retries at all. The system went through several rewrites and handoffs. The original architect was certain about several things, none of which are written down anywhere.
+Consider a retry policy buried in a function called `do_it_again_lol`. The code shows what it retries, but the reason for the limit is missing from the docs. A new change has to decide whether that limit was deliberate or incidental.
 
 An agent dropped into this environment improvises. At agentic speed, that improvisation compounds existing drift.
 
-The Foundation chapters work from intent, and so do greenfield development with coding agents: a codebase built from scratch, with no prior decisions to inherit. Before the first commit, you plan the tech stack with the agent as a sparring partner, weigh tradeoffs, and record decisions as ADRs. Specs exist before implementations do. Greenfield gives you a complete history built forward from the beginning.
+The Foundation chapters work from intent, and greenfield development gives a team a chance to record decisions before the first implementation. Plan the tech stack, weigh tradeoffs, and write the decisions the agent will need. Starting from scratch does not make the record complete by itself.
 
 Brownfield teams adopt most of these practices immediately, without a rewrite. Agent instructions get written this week. New decisions get ADRs from this point forward. A spec-driven workflow starts on the next ticket.
 
 The historical record is not gone. Wikis, ticket systems, internal communications, old PRs: the reasoning behind decisions is scattered across sources nobody synthesized. Feed those to the agent and ask it to produce ADRs and design documents, updating stale documentation in the same pass. Before the Foundation practices work, the brownfield codebase needs that record assembled.
 
-One warning: incorrect or outdated documentation does not sit inertly in the codebase. The agent treats the provided context as authoritative. A Confluence page from three major versions ago, a Slack thread from a direction the team reversed: these need a domain expert to flag before they go in. The filter is not optional.
+One warning: a supplied document can steer the agent even when the document is obsolete. A Confluence page from an earlier release or a Slack thread about a reversed decision needs a domain expert to check it before it becomes project guidance.
 
 Do not write the first brownfield change proposal from a cold codebase read. Harvest the existing decisions, constraints, design intent, and visible business rules first, then write the proposal against that recovered context.
 
@@ -35,7 +35,7 @@ Point a capability-class coding agent at the legacy tree. Ask for a structural m
 
 This is a goal statement, not a one-shot script. The agent works through it by reading files, tracing imports, and following dependency declarations. On a large codebase, expect multiple passes across different modules before the structure becomes clear. Let it run.
 
-The structural output is usually strong: modules, dependencies, data flows. Business rules, historical decisions, and operating constraints are harder. Some rules read directly from the code: constraint checks, guard clauses, state machines inlined in service logic. Some design decisions show up indirectly in module boundaries, dependency choices, and defensive code paths. Others exist only in institutional memory, and no amount of static analysis surfaces them. The "Note anything you cannot determine" clause is load-bearing. The skeleton is not done until a domain expert has reviewed it and corrected what the agent flagged as missing.
+Check the structural output against the repository: modules, dependencies, and data flows can be traced. Historical decisions and operating constraints need other evidence. A guard clause shows what the code does, not why the team chose it. The "Note anything you cannot determine" clause matters because a domain expert must review the inferred rules before the skeleton guides a change.
 
 That review gates the first change proposal. A brownfield proposal written before this pass is guesswork with better formatting.
 

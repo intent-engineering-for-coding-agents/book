@@ -17,7 +17,7 @@ Content documents are the baseline: wiki pages, guides, articles, reference docu
 
 The other types carry stronger rules because the agent needs to know whether each document is current, frozen, or ready to archive.
 
-The enforcement mechanism is directory placement. Structured documents live under `docs/`. Content documents live outside it, in whatever directory fits the team's setup: `content/`, `wiki/`, `pages/`. A convention check scopes its validators to `docs/` and `openspec/`. `AGENTS.md` points the agent at those same places.
+Directory placement makes the distinction inspectable. In this book's layout, structured documents live under `docs/`, while content pages live under `content/`, `wiki/`, or another publishing directory. A configured check can validate files under `docs/` and `openspec/`. `AGENTS.md` points the agent at those places.
 
 *Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), the ADR concept. Kopp, Armbruster, Zimmermann, MADR template (2018), structured ADR format. OpenSpec (openspec.dev), the change-folder lifecycle. `iec` repo conventions in this project family, the docs/ vs. content/ directory placement.*
 
@@ -25,7 +25,7 @@ The enforcement mechanism is directory placement. Structured documents live unde
 
 A directory with a README listing and a separate INDEX table lists every file twice. The two lists drift apart as soon as a commit updates only one of them.
 
-One README per documentation directory serves both readers. Its opening lines say what the directory holds, for the developer who lands there from a Git host, where GitHub, GitLab, and most hosted platforms render it automatically. Below those lines, between two marker comments, sits the index: one row per file, with a link and a one-line description.
+One README per documentation directory serves both readers. Its opening lines say what the directory holds for a developer who lands there from GitHub or GitLab, which render README files in repository navigation. Below those lines, between two marker comments, sits the index: one row per file, with a link and a one-line description.
 
 ```markdown
 ---
@@ -45,7 +45,7 @@ Decisions that shaped this repo. Accepted records are frozen.
 <!-- index:end -->
 ```
 
-Write each row so the reader knows which question the file answers: "Use VitePress for the book site" beats "Architecture decision". Keep prose and diagrams out of the block. The agent loads the README at the start of a session to decide what to read next, and a script reads the lines between the markers without parsing the rest. The `type: index` [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) lets one query list every index in the repo.
+Write each row so the reader knows which question the file answers: "Use VitePress for the book site" beats "Architecture decision". Keep prose and diagrams out of the block. Point the agent to the README when the task needs that directory, and let a script read the lines between the markers. The `type: index` [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) lets one query list every index in the repo.
 
 Make it a standing repo rule that the commit adding, renaming, or removing a file also updates its row. A stale row misdirects every session that loads the README.
 
@@ -55,7 +55,7 @@ This book's own `content/` directories use the same shape under a different name
 
 A check that compares the rows with the directory's files flags a stale row before a session loads it. It is optional. A table kept by hand and reviewed in the same pull request does the job. The first stale row that slips through review is the argument for adding the check.
 
-*Sources: GitHub and GitLab render README files automatically in directory navigation, behavior stable on both platforms as of this writing. VitePress, "Routing" guide (vitepress.dev/guide/routing, accessed October 2026), `index.md` served at the directory root. `iec` repo conventions in this project family, the one-line-per-file map format. Embedding the map in the README is this book's synthesis.*
+*Sources: GitHub, "About the repository README file" and "Get a repository README for a directory" (reviewed October 23, 2026), README display and directory lookup. GitLab, "File management" (reviewed October 23, 2026), automatic README rendering. VitePress, "Routing" guide (accessed October 2026), `index.md` served at the directory root. `iec` repo conventions in this project family, the one-line-per-file map format. Embedding the map in the README is this book's synthesis.*
 
 ## Design docs
 
@@ -140,19 +140,19 @@ A second reason MADR works is that the headings already say what belongs under t
 
 ## Specs
 
-Specs are the behavioral form of intent. Where an ADR records a decision and the reasoning behind it, a spec records what the system must do as a result, before you build it. It usually carries acceptance criteria, scenarios, test definitions, and a task plan.
+Specs are the behavioral form of intent. Where an ADR records a decision and the reasoning behind it, a spec records what the system must do as a result, before you build it. In this book's OpenSpec workflow, delta specs carry scenarios while `tasks.md` holds implementation steps.
 
-The structure matters. A list of discrete unchecked steps keeps the work concrete. The same content written as prose gets summarized and blurred.
+The task list makes incomplete work visible. Prose can describe the plan, but a reviewer then has to reconstruct which steps remain.
 
 One instruction is worth adding to your `AGENTS.md` or to the spec itself. Tell the agent to check off each task immediately upon completion, not at the end of the run. That gives you live progress visibility and makes interruption safer.
 
-*Sources: OpenSpec documentation (openspec.dev), the task-list structure within a spec change folder. The checklist-vs-prose behavioral tendency is a current-practice observation.*
+*Sources: OpenSpec documentation (openspec.dev), separate delta specs and `tasks.md` in a change folder. The task-list review advice is this book's workflow guidance.*
 
 ## Specs and OpenSpec
 
 A spec is not the same thing as OpenSpec. OpenSpec is a framework for managing specs through a change lifecycle: one folder per change, containing `proposal.md`, `tasks.md`, delta specs under `specs/`, and optionally `design.md` for changes that require technical design decisions. The spec itself is one artifact inside that structure.
 
-Some teams keep a simpler `/specs` folder with files named by feature. That works too. The cost is lifecycle management, since nothing prompts archival after implementation.
+A team can also keep a simpler `/specs` folder with files named by feature. That choice leaves the team to define when a file becomes historical and how the agent finds the current version.
 
 This book uses OpenSpec throughout, but the spec concept applies regardless of how the folder is organized.
 
@@ -180,7 +180,7 @@ Specs are temporary and move to `openspec/changes/archive/` after implementation
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with superseded specs in the wrong place and half-live design notes nobody trusts.
 
-*Sources: Nygard, "Documenting Architecture Decisions," Cognitect (November 15, 2011), origin of ADRs. Kopp, Armbruster, Zimmermann, MADR template (adr.github.io/madr) and CEUR-WS Vol-2072 (2018), structured ADR format. OpenSpec (openspec.dev), the spec lifecycle and archive discipline. Apache Maven, "Standard Directory Layout" (reviewed October 21, 2026), the canonical convention-over-configuration directory layout. David Heinemeier Hansson, "The Rails Doctrine" (2016), convention over configuration codified as a framework pillar.*
+*Sources: Nygard, "Documenting Architecture Decisions" (November 15, 2011), durable decision records. Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS Vol. 2072 (2018), structured ADR format. OpenSpec documentation, change folders and archive lifecycle. The remaining lifespan categories are this book's taxonomy.*
 
 ## Tooling
 
@@ -190,7 +190,7 @@ The `iec` CLI repository has the structure live:
 - design docs in `docs/design/`
 - specs in `openspec/specs/` with completed changes archived
 
-Run `iec check` and the structural validators pass. A later session then distinguishes a live spec from an archived one without asking you.
+Run `iec check` to see which structural validators pass. A later session still needs to load the correct active spec and check its status.
 
 *Sources: `iec` CLI (github.com/intent-engineering-for-coding-agents/cli), the document taxonomy applied to a live project.*
 

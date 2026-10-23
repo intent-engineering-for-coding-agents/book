@@ -11,27 +11,27 @@ I have caught the more dangerous version during PR review. A feature introduces 
 
 The smaller cases are merely annoying. I have seen an outdated instruction make the agent build and test the entire codebase after a Markdown or configuration edit. You notice because you sit there waiting for work nobody wants. An undocumented framework decision is harder to catch. By the time it surfaces, the wrong choice looks like an ordinary part of the implementation.
 
-Tests fail when they stop matching the code. Prose usually does not, and an absent decision has no file to become stale. This chapter addresses the part a deterministic check reaches. The missing-decision problem still depends on review and team discipline.
+Some tests fail when code changes, giving the team a signal to inspect. Prose has no equivalent by default, and an absent decision has no file to become stale. This chapter addresses the part a deterministic check reaches. The missing-decision problem still depends on review and team discipline.
 
 This chapter covers one narrow extension of verification: give important documentation a feedback loop. Not semantic understanding. Not model grading prose. A tripwire that turns silent drift into a visible signal.
 
 A release should leave the codebase ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), stale instruction files and context drift as current agent failure modes. The release-to-next-session boundary is this book's synthesis.*
+*Sources: The release-to-next-session boundary and documentation tripwire are this book's workflow synthesis, informed by the author's PR-review examples above.*
 
 ## The asymmetry
 
-Tests already have the property documentation lacks. When the code changes and the test no longer matches, the suite fails. The failure is noisy. Somebody has to deal with it.
+Tests sometimes expose a mismatch after code changes because a failing assertion produces a visible signal. A test that never covered the changed behavior stays green.
 
 Documentation has no equivalent check by default. A design note describing an old retry policy does not fail. An agent instruction file pointing at a renamed file passes every check unless a structural link validator catches it, and a README documenting last month's module boundary still renders cleanly on GitHub.
 
-Generated code changes fast. The surrounding prose drifts at human speed, without producing an error.
+An agent can change code and leave the surrounding prose untouched. The build still succeeds unless a check links that prose to the changed area.
 
 The failure is not only reader confusion. The next agent session starts from false inputs. A stale architecture note makes the agent add a layer the system no longer uses or follow a codebase rule the team already removed because the instruction file still lists it.
 
 This book calls the immediate failure context poisoning: one stale document steering the next implementation session toward obsolete behavior.
 
-*Sources: AgentPatterns.ai, "Evaluating AGENTS.md: When Context Files Hurt More Than Help" (last reviewed June 13, 2026), secondary commentary on stale instruction files and context drift. The context-poisoning label is this book's usage.*
+*Sources: The stale-document example and the term "context poisoning" are this book's synthesis.*
 
 ## A stable link from prose to code
 
@@ -159,7 +159,7 @@ Verification closes the code gap with tests. A documentation drift check closes 
 - run a deterministic check against the link
 - expose failure where the team already pays attention, in CI
 
-The check does less than a test. A test verifies behavior. A documentation drift check only verifies nobody reviewed the prose after the source moved, or that an outside record still depends on the file staying put. That weaker claim still earns its keep because the default is silence.
+The check does less than a behavior test with useful assertions. A documentation drift check flags a tracked source change after the recorded review date, or a declared outside reference before a file moves. It does not verify the prose. That weaker signal still earns its keep because the default is silence.
 
 ## Limits worth naming
 

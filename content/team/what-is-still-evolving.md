@@ -11,23 +11,23 @@ The team and cross-team practices are extensions of the individual workflow, not
 
 ## What is known and working
 
-The individual-scale practices are documented in a growing body of evidence. Spec-Driven Development (SDD) at PR scope (one change folder, one spec, scoped to a single change) appears across OpenSpec, Spec-Kit, LeanSpec, and GSD variants as of mid-2026. The change-folder-as-isolation primitive for parallel work is this book's extension of those workflows. Intent-first PR review follows from matching review style to PR class.
+OpenSpec, Spec-Kit, LeanSpec, and GSD describe different ways to record intent before implementation. This book uses a proposal per implementation ticket. The connection between that proposal, branch scope, and review order is the book's workflow synthesis, not a result established across those projects.
 
 Short-lived branches and trunk-based development have decades of documented practice behind them. The Intent Engineering application is narrower: change folder scope matches branch scope, and PR class matches review style.
 
 The working taxonomy groups incompatible specs, stale agent instructions, context poisoning, and agent-accelerated drift as related team-scale failure modes. That grouping is synthesis. The controls above them remain unfinished.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, February 27, 2026, OpenSpec, Spec-Kit, LeanSpec, and GSD as active SDD variants. The change-folder-as-isolation primitive and intent-first PR review mapping are this book's synthesis.*
+*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://spillwave.com/writing/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge/), February 27, 2026, practitioner comparison of different spec workflows. The ticket and review mapping is this book's synthesis.*
 
 ## What has patterns but not consensus
 
-Multi-team coordination via shared ADR repositories borrows from mature architecture review cultures. Agent workflows still diverge here: one company keeps a central architecture repo, another mirrors ADRs into each product repo, a third links out from `AGENTS.md` and hopes developers follow the trail. Shared decisions are the recurring pattern. The packaging is still all over the place.
+Shared decisions need a location each affected team can read. This book uses a shared ADR repository as one possible location. The source and update path still need an owner, especially when a contract spans several code repositories.
 
-Inner source for `.agents/` libraries follows well-understood shared-library mechanics. What is not standardized is versioning: when a shared skill file changes, how do dependent teams know? How do they test the skill against their own codebase before adopting the update? In the sources reviewed for this book, no shared package-management convention for agent instruction files appears as of mid-2026.
+The same ownership question applies to shared `.agents/` files. If a central skill changes, dependent teams need to know which revision they loaded and whether the procedure still fits their repositories. The versioning problem is an open question in this book's proposed team workflow.
 
-Multi-LLM critique (using a second model to review a spec before implementation) is not yet codified as a standard step in the SDD sources reviewed for this book as of mid-2026. Which models to use, how to structure the critique prompt, and how to weight the critique output against the developer's judgment remain matters of individual preference.
+If a team asks another agent to critique a spec, the developer still needs to decide which findings matter. A second report does not establish review quality. The book makes no model-selection rule for this optional step.
 
-*Sources: Rick Hightower, ["Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI"](https://pub.spillwave.com/agentic-coding-gsd-vs-spec-kit-vs-openspec-vs-taskmaster-ai-where-sdd-tools-diverge-0414dcb97e46), Spillwave, February 27, 2026, the divergence across SDD frameworks and the absence of standardized review steps.*
+*Sources: The ownership, versioning, and optional critique questions are this book's team-workflow synthesis.*
 
 ## What is genuinely open
 
@@ -39,26 +39,26 @@ Infrastructure is another weak spot in my experience. Continuous Integration and
 
 There is also a capability floor. Among the coding agents I have used in 2026, weaker and cheaper models miss decisions and ignore instructions often enough to make this workflow frustrating. The book should not imply that any model with file access will behave the same way. Better models will move this floor, so I expect this assessment to need revision.
 
-Multi-repo planning remains a gap in the SDD sources reviewed for this book. When one feature needs coordinated changes across three repositories, somebody still has to sequence the work, line up the PRs, and decide which repo carries the contract change first. OpenSpec's Workspaces roadmap names multi-repo planning as an in-development team problem. That is a straight admission of a gap, not a workflow.
+OpenSpec now documents a Stores beta for shared planning across repositories. The guide still leaves independently scoped implementation changes in each code repo and says a store does not route tasks to those repos or synchronize their Git checkouts. Somebody must sequence the work, link the PRs, and decide who owns the contract.
 
-Agent-to-agent handoff, where one agent completes a spec and hands the change folder to a different agent for implementation (across session boundaries), is experimentally described by Yegge's Agent Fleets framing but not yet practiced in any consistent form. The tooling does not yet support reliable agent memory across session boundaries in a way that makes handoff predictable.
+When one agent drafts a proposal and another implements it, the second session needs the approved proposal, relevant decisions, and current code. Yegge's Agent Fleets essay is a forecast of more agent coordination, not evidence that this handoff works reliably.
 
-No framework in the sources reviewed for this book has delivered governance without bureaucracy at scale. The practices described here are voluntary and pull-based. Teams adopt them because the local payoff is obvious, not because a central group wrote a policy deck. In the sources reviewed for this book, large-scale consistency still comes down to champions, review habits, and a few teams doing the tedious maintenance work. That approach does not scale cleanly to two hundred developers spread across ten repos.
+The governance problem here is concrete: a shared ADR or skill needs an owner who notices stale content and a review path for changes. A central repository does not supply either one by itself.
 
-*Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), Sourcegraph blog, March 22, 2025, the Agent Fleets stage of the six-wave model as the framing for agent-to-agent handoff. Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), Workspaces roadmap naming multi-repo planning as an in-development team problem. Governance without bureaucracy is this book's open-problem framing.*
+*Sources: Steve Yegge, ["Revenge of the junior developer"](https://sourcegraph.com/blog/revenge-of-the-junior-developer), March 22, 2025, Agent Fleets as the author's forecast. Fission AI, ["Stores: Plan in Its Own Repo"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/stores-beta/user-guide.md) (reviewed October 23, 2026), shared planning and limits of the beta. The ownership question is this book's synthesis.*
 
 ## The evidentiary bar for this book
 
 The bar this book applies to itself is simple: strong claims need strong evidence, synthesis gets labeled, and moving practices get time bounds.
 
-The individual practices (Foundation, Agent Instructions, Spec-Driven Development, Quality) have enough precedent to teach directly, but documentation feedback is not solved. There is less evidence for the team practices, and teams have not converged on one way of working. I expect to revise parts of this chapter as the field develops.
+The individual practices have worked examples and established predecessors, but this book has not measured the combined workflow. Documentation freshness and cross-team ownership still need stronger evidence. I expect to revise parts of this chapter as teams report what happens when they use them.
 
 The next evidentiary step is empirical: worked examples other teams reproduce, reusable templates they adapt, and reports comparing changes before and after adoption. Useful reports should include the failures and upkeep cost, not only the clean result. The paradigm should change when repeated practice exposes a weak boundary, a needless artifact, or a control that fails under deadline pressure.
 
 Intent Engineering is presented as a working synthesis for 2026, not the final form of the discipline. Publication starts the useful part of that process. Teams have to apply the practices, remove what does not earn its upkeep, and report where the model fails.
 
-The current SDD tool set is still fragmented: multiple frameworks, different trade-offs, no dominant approach, significant experimentation still underway. That is the picture this book found. The individual-developer story is further along. The team and organization story is still messy.
+The reviewed tools prescribe different artifacts and workflows. Thoughtworks' April 2026 Radar notes that even the terms "spec-driven development" and "harness engineering" overlap in current usage. This book's team and organization chapters should be read with that uncertainty in mind.
 
 These questions are unresolved. Some tooling gaps will close before the next edition. Documentation drift, ownership boundaries, and weak review discipline will remain when frameworks get new names. The work now is to distinguish limitations in today's tools from problems that require engineering judgment.
 
-*Sources: ThoughtWorks, Technology Radar Vol 34, April 2026, semantic diffusion across spec-driven development and harness engineering terminology, with no single dominant framework named. The "fragmented" reading of that assessment is this book's.*
+*Sources: Thoughtworks, Technology Radar Vol 34 (April 2026), inconsistent and overlapping use of spec-driven development and harness engineering terminology. The comparison of reviewed tool workflows is this book's synthesis.*

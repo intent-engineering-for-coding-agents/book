@@ -11,7 +11,7 @@ One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A dev
 
 Nothing in the shared instruction set told the agent the convention existed.
 
-The team-level fix is a shared instruction set every agent reads, regardless of who started the session.
+The team-level fix is one shared instruction set. Check that each agent setup loads it when a session starts.
 
 ## Team-level `AGENTS.md`
 
@@ -19,7 +19,7 @@ On a solo project, `AGENTS.md` functions as a personal instruction set. On a tea
 
 The practical structure: `AGENTS.md` at the repo root is the team's instruction set. It covers conventions that apply to every change: code style, test naming, security rules, dependency hygiene, data access patterns, and which sections of `docs/` to read for context. Individual developers do not maintain parallel `AGENTS.md` files that override the team instruction set.
 
-Where teams get into trouble: the instruction set grows to cover every edge case a developer has explained to an agent. Six months in, it is eight hundred lines and the agent hits the context limit before reaching the security conventions. The [TOC pattern](../agent-instructions/agents-md) is the team-scale fix: keep `AGENTS.md` short, link to detail files in `.agents/instructions/`.
+Where teams get into trouble: the instruction set grows to cover every edge case a developer has explained to an agent. A long entry file spends context on unrelated rules and hides the security convention a task needs. The [TOC pattern](../agent-instructions/agents-md) keeps `AGENTS.md` short and links to detail files in `.agents/instructions/`.
 
 *Sources: [AGENTS.md](https://agents.md/) (ongoing), the AGENTS.md convention as a shared project instruction set. AgentPatterns.ai, ["AGENTS.md: Project-Level README for AI Coding Agents"](https://agentpatterns.ai/standards/agents-md/) (ongoing), keeping the instruction set short and linking out to detail files.*
 
@@ -29,7 +29,7 @@ Skills worth writing once and sharing: generate a change folder from a template,
 
 Skills also travel across repos via an inner source: a shared `.agents/` repository teams pull from, or a directory within a shared infrastructure repo. The principle is the same as shared library dependencies: standardize what is common, extend for what is specific.
 
-*Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context and instruction files for quality and drift.*
+*Sources: Sharing a skill library across repositories is this book's proposed team convention.*
 
 ## Onboarding: the first agent session
 
@@ -53,7 +53,7 @@ Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies ev
 
 Role-based personal instruction set are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it. Depth is welcome in a personal instruction set. Overriding a team convention in one is not, and it becomes a review problem the moment someone notices.
 
-Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement; it does not produce it. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
+Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
 
 Shared conventions work within a team. Cross-team coordination needs a different mechanism, one already part of the SDLC and visible outside a single codebase.
 

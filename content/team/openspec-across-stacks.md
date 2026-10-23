@@ -5,13 +5,13 @@ title: OpenSpec Across Stacks
 
 # OpenSpec Across Stacks
 
-Give an agent the whole monorepo as context, and stack boundaries blur fast. It finds an API endpoint with the right name, the right path, the right method signature, and wires it into the new filter component without hesitation. Code review catches the mismatch later: the front end called the back-end service API instead of the Backend for Frontend (BFF) API, so the authorization checks in the BFF never ran.
+Consider a front-end agent given a monorepo without a clear tier boundary. It finds an API endpoint with the right name and method signature, then wires the new filter component directly to the back-end service. A review of the call path reveals the missing Backend for Frontend (BFF) authorization check.
 
 This chapter is about that narrower failure. A single `openspec/` directory shared across three tiers gives every agent access to every tier's specs and leaves tier ownership implicit.
 
 ## One `openspec/` per stack
 
-The fix is structural. Each stack (front-end, BFF, back-end) gets its own `openspec/` directory at the root of its repository, or of its subdirectory in a monorepo. The front-end agent never sees the back-end specs. It knows its contracts, its acceptance criteria, and its pending changes. The back-end specs are not its context.
+For this workflow, give each stack (front-end, BFF, back-end) its own `openspec/` directory at the root of its repository, or of its subdirectory in a monorepo. Direct the front-end agent to its contract, acceptance criteria, and pending changes. Separate directories help scope the work, but the agent's actual inputs still depend on what the session loads.
 
 ```text
 front-end/
@@ -75,7 +75,7 @@ graph TD
 
 The ADR is permanent, while the change folders are temporary and archived after implementation. The contract outlives both.
 
-*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, ADRs as the cross-stack contract of record that outlives the change folders.*
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, ADRs as durable records of a decision and its consequences. Using one to record the cross-stack contract is this book's workflow choice.*
 
 ## When a change spans tiers
 
@@ -89,6 +89,6 @@ The rare exception: infrastructure changes that have no clean tier boundary. A c
 
 ## This is book synthesis, not a field standard
 
-Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope the working set to the stack doing the work. The directory layout is one way to enforce that principle.
+Multi-tier spec organization is not a field standard. This pattern is the book's synthesis, derived from the OpenSpec change-folder model applied to multi-repo realities. Teams should expect to adapt it. A monorepo with shared libraries between front-end and back-end often needs a different boundary than the one described here. The principle is to scope the working set to the stack doing the work. The directory layout makes that boundary visible, while each session still has to select the right files.
 
 A multi-tier layout settles where the specs live. It says nothing about where they fit. The team already has Jira, PR review, a changelog, and an architecture board, and now a directory of change folders that has to coexist with all of them. Knowing which slot each artifact belongs in is the difference between OpenSpec fitting the workflow and fighting it.

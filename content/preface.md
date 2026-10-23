@@ -32,7 +32,7 @@ This should not be new advice. Fred Brooks wrote it down in 1975: plan to throw 
 
 *Sources: Frederick P. Brooks Jr. "The Mythical Man-Month: Essays on Software Engineering" (1975), plan to throw one away.*
 
-In 2026, when most of the build is done by a coding agent, that second pass is cheaper. Rebuilding is less painful than it was when a fresh start took weeks.
+In my agent-assisted work, rebuilding a bounded prototype is cheaper than preserving its accidental structure. That judgment depends on what the prototype taught the team and what production work remains.
 
 A prototype still has a good job. It lets you show an idea, challenge assumptions, and compare designs for a small service or component. Sometimes the right result is a better prototype, followed by another. Once the architecture, operational constraints, authentication, and delivery path are known, the prototype has finished its job. Use what you learned when designing the production system, then start its implementation separately.
 
@@ -42,10 +42,10 @@ That is the purpose of the book. The machine writes more of the code. You do mor
 
 This book does not review or rank agents. The agent is the worker. The load-bearing variable is the input: the instructions, docs, specs, and checks you give it.
 
-Context is most of the game. Do not cram a project into one prompt. Keep the decisions in plain-text documents and diagrams the agent can load again next month. Without that, every session re-creates the same conventions, reopens settled decisions, and ships code that breaks the constraints nobody wrote down.
+Context carries the decisions the next session needs. Do not cram a project into one prompt. Keep the relevant decisions in plain-text documents and diagrams, and check that the agent loads them when the task calls for them.
 
 ## From Vibe to Pro
-This is the part the carousels leave out. Give the agent the current repo facts, the active constraints, and the acceptance criteria, and the work moves from rough prototype to production software. The hard part is not the code. The hard part is choosing the limits and verifying the result stayed inside them.
+This is the part the carousels leave out. Give the agent the current repo facts, active constraints, and acceptance criteria. Then inspect whether the patch and tests meet them before calling the work production-ready.
 
 Software development still needs judgment. I expect better models and more automation, and I will update this preface as that line moves. In 2026 the job still belongs to developers and reviewers: choose the scope, set the constraints, and reject code that misses both.
 

@@ -23,7 +23,7 @@ I also distrust a complex implementation with one positive test and no negative 
 
 I have seen tests piggyback on shared test helpers carrying their own assumptions and defects. The test appears to exercise the subject under test, but most of the behavior lives in scaffolding nobody is reviewing. This happens when passing the coverage check becomes the goal. A developer writes the quickest test that turns CI green, and a weaker coding agent generates more tests built on the same bad assumptions.
 
-Most suites contain a mix of evidence and decoration, and mutation testing is the practical detector: flip an operator, change a constant, invert a boolean, and see whether anything complains. If the suite still passes, whatever you touched was not under test. ThoughtWorks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery, which matches my reading: it is the automated version of breaking the implementation on purpose.
+Most suites contain a mix of evidence and decoration, and mutation testing helps expose the weak spots: flip an operator, change a constant, invert a boolean, and see whether anything complains. A surviving mutation calls for inspection. The test might miss the behavior, or the mutation might leave behavior unchanged. Thoughtworks Technology Radar Vol 34 (April 2026) recommends mutation testing as a feedback control suited to agentic delivery, which matches my reading: it is the automated version of breaking the implementation on purpose.
 
 Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?"
 
@@ -55,7 +55,7 @@ The working definition in this book:
 
 Approved intent is the spec, reviewed and merged. Evidence is tests across every AC scenario, each failing when its criterion is violated. Coverage is tests across the paths the implementation introduces. Both have to be there.
 
-Farley's *Modern Software Engineering* frames this as a feedback loop: the spec opens it, the test closes it. Without the closing step, the process produces artifacts, not engineering.
+Farley's *Modern Software Engineering* argues for short feedback loops. This book applies that idea to specs and tests: a written criterion needs a test or review check that can expose a wrong implementation.
 
 *Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), engineering as feedback loops that verify intent. The done definition is this book's synthesis.*
 
@@ -67,7 +67,7 @@ A team shipping several agent-built features a day cannot, because memory does n
 
 Push the rate up far enough, and the developer leaves the moment entirely. An unattended agent has no reviewer to ask whether a change is done, so it reads the test result instead. Evidence becomes the exit condition for the run.
 
-Automated evidence is the only verification that scales to the speed. A test that fails when the implementation diverges from intent does not get tired or forget the spec, and it never approves a change because the diff looked reasonable. Notice that nothing here asks for more tests, only for tests that fail on wrong behavior.
+Automated checks let the team repeat the same behavioral check as changes arrive. They still cover only the scenarios the team wrote down, and a green suite does not review the requirement or the diff. The useful test is the one that fails on wrong behavior.
 
 ## The traceability problem
 
@@ -81,18 +81,18 @@ There is a bonus: a test scoped to one scenario and linked to its AC ID is also 
 
 Everything in this chapter assumes the spec is right. That assumption does the most work and gets the least scrutiny.
 
-If the spec is wrong, the tests pass, the build is green, and the feature ships doing the wrong thing correctly. No automated check catches a well-implemented wrong requirement. That is a job for developers, and it has to happen before implementation starts, by reviewing the spec delta before the diff. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs.
+If the spec is wrong, tests derived from it might pass while the feature does the wrong thing. Tests alone do not settle whether the requirement was right. Developers need to review the spec delta before implementation starts. [Trunk-Based Development with Agents](../team/trunk-based-development) covers how that review runs.
 
 The spec does not have to contain everything it references. An ADR documenting why the retry limit is three does not belong in the scenario text. It belongs in the decision record, linked from the spec.
 
 ## Ritual tests still have a job
 
-Some tests will always be ritual, and that is fine. Smoke tests confirm the application boots, linting confirms the syntax is current, and end-to-end tests confirm the integration is wired. They are environment and wiring checks, not evidence of intent, and a healthy suite needs them too.
+Some checks serve a narrower purpose, and that is fine. A smoke test might confirm the application boots. A lint check catches a configured syntax or style violation. An end-to-end test can exercise a user path across services. Judge each by its assertions. None proves an acceptance criterion merely by existing.
 
 The harder issue is that a test verifies what it asserts, not what the spec omitted. If the spec says nothing about zero-byte files, the suite can stay green while that path is still broken. Someone has to read the spec and ask what was left out.
 
 ## Tooling note
 
-The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) ships test traceability and coverage checks: a deterministic scan that cross-references acceptance criterion IDs in `openspec/specs/` against test markers in the test suite. A scenario without a test marker fails the check, and a test marker referencing a scenario that no longer exists fails the check.
+The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) ships a traceability check that compares acceptance criterion IDs with test markers. At revision `2491a62`, a non-Manual scenario without a marker fails the check. An orphaned marker produces a warning. An advisory coverage check warns when a scenario has fewer than two markers, without reading the test assertions.
 
 A test linked to the spec is the closing half of the chain the previous chapter opened. The other half is selecting the correct test type and recording that choice before the agent generates the test.

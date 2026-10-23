@@ -47,13 +47,13 @@ flowchart LR
     W["Write spec"]:::you
     R["Agent reads<br>context + spec"]:::agent
     C["Agent generates<br>code + tests"]:::agent
-    V["Tests verify<br>intent met"]:::you
+    V["Tests + review check<br>intent against patch"]:::you
     P["PR merges"]:::gate
 
     W --> R --> C --> V --> P
 ```
 
-*You write the spec. The agent reads context and spec, then generates code and tests. The tests show whether the spec was met.*
+*You write the spec and check which context the agent loaded. The agent drafts code and tests. Review the assertions and patch against the agreed behavior.*
 
 ## Is this for you?
 

@@ -15,7 +15,7 @@ Prompt engineering improves how a request is phrased. Spec-Driven Development gi
 
 OpenSpec is the concrete workflow used throughout because it gives the book one change folder, one lifecycle, and one archive rule. The portable practice is simpler than the tooling: per-change intent with testable acceptance criteria.
 
-*Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. GitHub Blog, "Spec-driven development with AI: Get started with a new open source toolkit" (September 2, 2025), the plain `spec.md` file as the common starting point for teams new to spec-driven development. The local-format portability framing is this book's synthesis.*
+*Sources: Fission AI, OpenSpec, the change-folder lifecycle and archive rule used as the book's concrete workflow. The local-format portability framing is this book's synthesis.*
 
 ## Chapters
 

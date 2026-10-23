@@ -21,11 +21,11 @@ My practical rule is to start minimal and add reactively. The agent violates a c
 
 Write it immediately: the failure is in front of you, so you point to the exact wrong output and say what to do instead. Wait a day, and you are writing from memory, not from evidence.
 
-Only writing after a failure keeps the file short: nothing enters unless a real failure earned it. A short file loads fast, stays readable, and carries only load-bearing rules. A file full of preemptive rules accumulates guesses the repo never exercises.
+Adding rules after observed failures keeps speculative instructions out of the file. The approach has a cost: the first occurrence reaches the agent before the rule exists. Review and project checks still have to catch it.
 
 The goal is not to remove improvisation. For most of what the agent does, from choosing an algorithm to shaping an API response, you want it drawing on everything it knows. Constrain every decision, and the instruction file stops being a context. It becomes a straitjacket.
 
-*Sources: Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), improving the controls whenever an issue repeats. Anthropic, "Building effective agents" (December 2024), keeping the instruction surface minimal and load-bearing.*
+*Sources: Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), improving guides after repeated failures. Starting with a short file and adding rules after observed failures is the author's practice.*
 
 Instructions are for repo-specific decisions: the library you chose, the module boundary you drew, the naming convention your team settled after a long argument. General engineering knowledge belongs elsewhere. Instructions exist for the parts of the codebase history the agent will not reconstruct reliably from code alone.
 
@@ -33,33 +33,35 @@ Instructions are for repo-specific decisions: the library you chose, the module 
 
 A useful test for any instruction: does the agent produce a concrete behavior from it, or does it have to guess what you meant?
 
-"Follow good security practices" gives the agent nothing concrete to act on. "Never store secrets in environment variables. Use the team's `SecretConfig` class in `src/config/secrets.py`" does: the agent either uses `SecretConfig` or it does not. This is Popper's falsifiability applied to instructions: a rule that cannot be violated cannot be followed.
+"Follow good security practices" leaves the agent to guess. "Read secrets through the team's `SecretConfig` class in `src/config/secrets.py`" gives the reviewer a specific choice to inspect in the patch.
 
 The same principle applies beyond security: "Keep functions small" has no measurable threshold, so the agent has nothing concrete to miss, while "Keep functions under 25 lines. Extract when you exceed this" gives it something to hit or miss. The agent either stays under the limit or it does not, and reviewers inspect the result without debating what "small" meant.
 
-*Sources: Popper, "The Logic of Scientific Discovery" (1959), falsifiability as the mark of a testable claim, applied here to instructions.*
+*Sources: The `SecretConfig` and function-length examples are illustrative. The testability check is this book's workflow guidance.*
 
-## Negative instructions do the work
+## Name rejected alternatives
 
 Teams write the rules for what the agent should do and forget the rules for what it should not. Then they wonder why the agent keeps doing the thing nobody told it to stop. Positive instructions tell the agent what to do. Negative instructions tell it what not to do.
 
-Negative instructions are the more important category. The agent already has defaults, built from everything it was trained on, and a negative instruction is the only thing that overrides them. The opening example in this chapter was a negative instruction failure: the team never wrote "do not use camelCase." A positive rule saying "use kebab-case" might have helped, but the agent saw far more camelCase in the existing code and weighted that over the instruction. The prohibition is what closes the door.
+When a common pattern conflicts with a repo decision, name the prohibited choice and the expected replacement together. In the opening example, "Use kebab-case for new service names. Do not copy the camelCase names in legacy files" makes the exception visible. The rule gives the reviewer something to check. It does not guarantee the agent will comply.
 
-"Do not use the `requests` library. This repo uses `httpx` for all HTTP calls" is a negative instruction. Without it, the agent reaches for `requests` every session, because it has read more code using `requests` than `httpx`. That one negative line is the only thing keeping `httpx` consistent.
+"Do not add `requests` for new HTTP calls. This repo uses `httpx`" is another example. Check the diff and dependency file after the task. The instruction alone does not enforce the choice.
 
-The most valuable negative instructions cover the agent's defaults. Defaults come from training data, and training data is the internet, not your codebase. Anywhere your codebase diverges from common practice, write a negative instruction. The agent will not infer the divergence from the code alone. The code looks like an exception, and the agent will treat it as one.
+Write a prohibition when the codebase contains a tempting old pattern or a common alternative the team has rejected. Point to the current path. Otherwise, the file fills with warnings against choices the agent had no reason to make.
+
+*Sources: The naming and HTTP-library examples are illustrative. Pairing a prohibition with its replacement is this book's instruction-writing guidance.*
 
 ## Architecture boundaries in plain language
 
 Some instructions protect architecture. The agent should not touch certain directories, add dependencies outside the approved list, or overwrite generated files. These are structural constraints, not style preferences. Break one, and the next generator run, architecture check, or deploy step fails.
 
-Write them explicitly. "Do not modify files under `src/generated/`. They are produced by the code generator, and any hand-edit will be overwritten on the next build" is an architecture boundary the agent follows. It cannot infer this from the directory name alone.
+Write them explicitly. "Do not modify files under `src/generated/`. They are produced by the code generator, and any hand-edit will be overwritten on the next build" states the boundary and the reason. Check the diff for edits under that path.
 
-Most languages have an architectural constraint testing framework that encodes exactly these rules: ArchUnit for Java, NetArchTest for .NET, `dependency-cruiser` for JavaScript and TypeScript, `import-linter` for Python. If yours does, consult it when writing instructions and run it after the agent changes to catch what the instructions missed.
+If the repository has an architecture check for package boundaries, run it after the agent changes the code. A failed check gives stronger evidence than the instruction alone.
 
 Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" prevents the agent from adding an import edge that breaks the dependency graph. Without the instruction, the agent sees a useful function in `users`, imports it, and opens a PR that passes local tests but fails the architecture check.
 
-*Sources: Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), feedforward controls that externalize developer judgment into explicit guides. Anthropic, "Building effective agents" (December 2024), explicit constraints and guardrails over implicit ones.*
+*Sources: Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), guides as feedforward controls and structural tests as feedback. The directory and package examples are illustrative.*
 
 ## Let the agent draft the instruction
 

@@ -7,13 +7,13 @@ title: Why Structure Matters
 
 Your agent adds a new `POST /orders` REST endpoint.
 
-Consider a codebase that moved to gRPC months ago for typed contracts, streaming, and performance reasons that live in one architect's head and zero files in the docs. Every other service in the codebase is gRPC.
+Consider a codebase whose team chose gRPC for new service endpoints. The reasons remain in a meeting nobody recorded. The existing services use gRPC, but no project instruction tells the agent to follow that choice.
 
-REST is what the model reaches for by default. The decision to leave it behind and replace it with gRPC happened in a team meeting but never became a readable file, for the agent or anyone else. Most of us have sat in that meeting.
+The agent proposes REST, a familiar option. Without a record of the decision, the reviewer has to infer whether the mixed protocols are intentional.
 
 The handler compiles and passes its tests. The codebase now speaks two protocols. A reviewer misses the mismatch, client code starts to depend on the REST endpoint, and reversing the choice costs more than writing the Architectural Decision Record (ADR) would have.
 
-This one PR is the smallest version of the problem. The codebase holds hundreds like it, each one an undocumented decision waiting to be overwritten. The count keeps climbing. Every agent session widens the gap between what the team decided and what the code now says.
+This hypothetical PR shows the problem at its smallest: a decision exists in team memory but not in the material the agent reads. Another session can make the same choice again.
 
 ## Compounding drift
 
@@ -23,9 +23,9 @@ Thoughtworks' April 2026 Radar warns of cognitive debt: the widening gap between
 
 Generating a refactor does not establish whether the team understands the result. Code cleanup and developer understanding need separate review, even when the tests pass.
 
-At human speed, drift like this used to take quarters to compound. At agentic speed, it takes weeks, sometimes days. Yegge's "Revenge of the junior developer" framed this as the velocity amplifier: agents make good architectures sharper and bad ones uninhabitable, both faster than before.
+More generated changes give a team more opportunities to repeat a missed constraint before review catches it. The time it takes to notice depends on the team's review and integration cadence.
 
-*Sources: Thoughtworks Technology Radar Vol 34 and its release announcement (April 15, 2026), cognitive debt as the gap in developer understanding. Yegge, "Revenge of the junior developer," Sourcegraph (March 22, 2025), velocity as amplifier. The link between recorded decisions and agent context is this book's synthesis.*
+*Sources: Thoughtworks Technology Radar Vol 34 and its release announcement (April 15, 2026), cognitive debt as the gap in developer understanding. The link between recorded decisions and agent context is this book's synthesis.*
 
 ## Structure as context
 
@@ -47,18 +47,17 @@ date: 2026-03-11
 
 ## Context and Problem Statement
 
-REST endpoints lack typed contracts and cannot support streaming.
-Performance profiling identified protocol overhead as a bottleneck.
+The team wants new service endpoints defined through the same protobuf contracts as the existing services.
 
 ## Considered Options
 
 - gRPC: typed contracts via protobuf, streaming, language-agnostic
-- REST with OpenAPI: typed via schema, widely understood, no streaming
-- GraphQL subscriptions: streaming support, heavier client tooling
+- REST with OpenAPI: typed via schema, but a second contract workflow for this team
+- GraphQL: another contract and client workflow for this team
 
 ## Decision Outcome
 
-Chosen option: gRPC. It is the only option that satisfies all three constraints.
+Chosen option: gRPC. Keep new endpoints in the team's existing protobuf workflow.
 
 ### Consequences
 
@@ -66,9 +65,9 @@ Chosen option: gRPC. It is the only option that satisfies all three constraints.
 - REST handlers are deprecated; do not add new ones.
 ```
 
-The agent does not have to read the reasoning to find the constraint. `## Decision Outcome` and `### Consequences` put the rule where the agent finds it. From there, the agent proposes a `.proto` definition with the right method shape, or asks first. The decision is enforced inside the system that created the temptation, instead of caught later by a reviewer who happened to remember the migration meeting from months back.
+`## Decision Outcome` and `### Consequences` put the rule where the agent can find it. If the instruction file points to the ADR and the agent loads it, the proposal has a better chance of following the protobuf workflow. A reviewer still checks the new endpoint against the decision.
 
-Put the decision, constraint, and file map in the codebase before asking the agent to extend the system. The agent then works from project knowledge instead of a reviewer catching the mismatch later.
+Put the decision, constraint, and file map in the codebase before asking the agent to extend the system. Then check that the agent loaded the ADR and that the patch follows it.
 
 *Sources: `iec` repo structure and this repo's AGENTS.md conventions, the docs/ + AGENTS.md + openspec/ layout the agent reads as its context. OpenSpec documentation (ongoing), the openspec/ directory where specs live.*
 

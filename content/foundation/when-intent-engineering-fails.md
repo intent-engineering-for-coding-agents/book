@@ -13,25 +13,25 @@ The five failure modes below remain after good initial setup. They are not begin
 
 The entry point goes stale. The agent instructions say to follow the old module layout, while an ADR reversed that layout months ago. Nobody updated the agent instructions, so the agent reads them, not the ADR, and produces code shaped for the old system.
 
-Treat agent instructions as part of the architecture, not part of the initial setup. Any PR changing something the agent instructions describe must update them in the same commit. No CI check catches "the convention you describe no longer matches the code". The Agent Instructions topic covers what to put in `AGENTS.md` and `.agents/instructions/...`. Keeping these current stays your job.
+Treat agent instructions as maintained project files. When a PR changes a convention they describe, review the instruction in the same change. A link checker catches a missing file, but semantic drift needs someone to compare the rule with the new code. The Agent Instructions topic covers what to put in `AGENTS.md` and `.agents/instructions/...`.
 
 ## Dead specs
 
 Open `openspec/changes/` (the OpenSpec change folder, if your team uses OpenSpec) and find a pile of directories: implemented changes, canceled changes, an implemented change never archived, a partially done change from before the original author left, and competing proposals for the same change.
 
-Without an archive step, the agent has no signal to distinguish a canceled spec from an active one. Whatever it reads, it reads as live instruction. De Schryver's case for keeping agentic workflows simple applies directly here: the clutter compounds with every change the team leaves un-archived.
+Without an archive step, a canceled proposal can remain beside active work. A later session needs its status and the current spec to tell which one governs the change. This book uses an archive rule to keep the working set clear.
 
-A dead spec gives the agent confident instructions about behavior the system no longer has, decisions that were reversed, and acceptance criteria nobody checked. Those instructions enter the same context as the current implementation, with no status telling the agent which one to trust. Archive the spec immediately after the change ships. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds this discipline into the workflow.
+A dead proposal might describe behavior the system no longer has or a decision the team reversed. If the agent loads it without a status check, the old acceptance criteria can steer the patch. Archive the proposal after the implementation is integrated. The [Spec Lifecycle](../spec-driven/spec-lifecycle) chapter builds this discipline into the workflow.
 
-*Sources: De Schryver, "Keep Agentic AI Simple" (2026), clutter as a compounding factor in agent context.*
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 22, 2026), the change-folder archive lifecycle. The stale-proposal failure example and archive discipline are this book's workflow synthesis.*
 
 ## Agent-accelerated tech debt
 
-Without spec-first discipline, the agent produces code that satisfies the immediate ask and quietly violates an architectural decision nobody read out loud. At human speed, this kind of drift accumulated across quarters. At agent speed, a day of merged PRs adds the architectural contradictions that once took weeks of handwritten changes to produce: the velocity amplifier from [Why Structure Matters](./why-structure), cutting the other way.
+An agent working from a vague request can satisfy the immediate ask while missing an architectural decision absent from its inputs. Each merged patch that copies the new pattern makes the error harder to recognize. The risk grows with the rate of unreviewed changes, but no calendar estimate follows from that observation.
 
 The Spec-Driven topic exists because of this mode. Writing the spec before implementation gives the agent a target it would otherwise have to infer. Decisions written down as ADRs enter the agent's context as explicit constraints. Intent left only in developer memory remains exposed to omission or contradiction.
 
-*Sources: Yegge, "Revenge of the junior developer," Sourcegraph blog (March 22, 2025), agent velocity as amplifier.*
+*Sources: The repeated-pattern example and its risk are this book's synthesis.*
 
 ## Over-spec
 
@@ -61,10 +61,10 @@ Each topic targets one or more of these modes directly:
 | Over-spec | Spec-Driven Development (Why Small) |
 | Drift with no detection | Quality and Verification |
 
-Cognitive debt is the cost that grows when these modes go unaddressed: the undocumented decision that quietly breaks a deployment months later. ThoughtWorks uses "harness engineering" for the controls that keep the agent's context coherent enough to hold that debt down. The rest of this book is about building those controls, one failure mode at a time.
+Thoughtworks uses "cognitive debt" for the gap between generated code and developers' understanding of it. A stale decision record is a different problem: the agent receives obsolete context. This book addresses that problem through maintained instructions, specs, and review.
 
 Drift will still happen. Catch the mismatch before stale assumptions turn into one bad deploy.
 
 Six months of accumulated mismatch usually trace back to what the agent was reading. The Agent Instructions topic covers which files it should load and how to keep them current.
 
-*Sources: ThoughtWorks Technology Radar Vol 34 (April 2026), cognitive debt and harness engineering as the frame for drift that no check catches.*
+*Sources: Thoughtworks Technology Radar Vol 34 (April 2026), cognitive debt as a gap in developer understanding. The link to stale repo context is this book's synthesis.*

@@ -63,9 +63,8 @@ The book is organized around four topics. The first two give the agent durable c
 
 **Quality and Verification:** tests as evidence of intent. Acceptance criteria trace to tests, reviewer scope stays narrow, and drift has a better chance of getting caught before merge.
 
-Topics three and four are a pair. Spec-driven development became more visible in 2025-2026 tooling and discussion, though the practice is still young and unevenly defined, and much of the public material stops at writing the spec. This book keeps the spec, then adds the missing half: verifying the generated code landed where the spec aimed it.
+Topics three and four are a pair. A written spec gives the change a target. Tests and review then check whether the generated code met it.
 
-*Sources: "Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants" (submitted to AIware 2026, OpenReview, January 2026). SolGuruz, "Spec-Driven Development Guide" (2026), public SDD framing in current tooling discourse. IntuitionLabs, "Spec-Driven Development and Spec-Kit" (2026), current SDD framing and limits.*
 
 After those four topics come team workflows, cross-team coordination, and the parts of this field that are still unsettled. This book does not add a second project-management layer. The existing flow stays. Tickets point to change folders. PRs carry spec deltas. CI checks evidence, not only style.
 
@@ -77,9 +76,8 @@ You are a senior developer or architect. You already use a capability-class codi
 
 You have shipped production code under pressure, stayed skeptical of hype, and wanted more control and consistency at scale. You know what a PR is and treat human review as non-negotiable.
 
-Vendor-agnostic is a deliberate choice here: `AGENTS.md` and `.agents/` form a shared layout, written once and read by whichever tool shows up next, so you stop betting the codebase on one vendor's roadmap.
+Vendor-agnostic is a deliberate goal here: keep shared rules in `AGENTS.md` and `.agents/`, then check how each agent setup loads them. Support differs by tool and changes over time.
 
-*Sources: GitHub Changelog, "Copilot coding agent now supports AGENTS.md custom instructions" (August 28, 2025), AGENTS.md as a current vendor-supported convention.*
 
 ## When a project earns this
 

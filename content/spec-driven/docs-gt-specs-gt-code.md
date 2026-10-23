@@ -66,15 +66,15 @@ This rule has a direction. The machine moves down the layers, and only a person 
 
 ## The rollback path
 
-Generated code sometimes looks wrong in ways that compound. Rolling back is quick. Improving the spec takes longer than a revert, but it is cheaper than debugging the same misunderstanding across several PRs.
+Generated code sometimes looks wrong in ways that compound. Reverting a bounded patch is often straightforward. Improving the spec takes another review, but it can prevent the same misunderstanding from appearing in the next proposal.
 
 When the result is wrong, discard the code first. Improve what produced it, the spec when the behavior was underspecified, the docs when the design itself was wrong, and regenerate.
 
-This is Brooks's plan-to-throw-one-away from the preface at a smaller scale: for an agent-generated change with tests already in place, the discard cost drops from months to an iteration.
+This is Brooks's plan-to-throw-one-away from the preface at a smaller scale. The cost of discarding an agent-generated patch depends on its integrations and the strength of the tests, not on generation speed alone.
 
 Vibe coding is a special case: the specification is chat history, ephemeral and uncommitted, which suits exploration and mockups. The transition to production runs the sequence in reverse: write the decisions into docs and the behavior into a spec, discard the prototype code, and regenerate from them.
 
-*Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", planned discard; Augment Code, "The Spec as Source of Truth" (April 9, 2026, updated June 18, 2026), vendor-authored rebuild-test framing; Mariya Mansurova, "From Vibe Coding to Spec-Driven Development," Towards Data Science (May 2026), extracting a spec from a vibe prototype before production; Simon Willison, "Not all AI-assisted programming is vibe coding" (simonwillison.net, March 19, 2025), vibe coding as a narrow mode distinct from disciplined AI-assisted work.*
+*Sources: Frederick P. Brooks Jr., "The Mythical Man-Month" (Addison-Wesley, 1975; 20th anniversary ed. 1995), ch. 11 "Plan to Throw One Away", planned discard. Simon Willison, "Not all AI-assisted programming is vibe coding" (March 19, 2025), vibe coding as a distinct mode of AI-assisted work. The rollback and production-transition advice is this book's workflow guidance.*
 
 ## The bar a spec must clear
 

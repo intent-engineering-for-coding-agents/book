@@ -35,7 +35,7 @@ Test the location with a fresh session. If the agent has only the repo, does it 
 
 ## Mermaid for diagrams
 
-A C4 diagram in draw.io is opaque to agents and unreviewed by humans. The file format describes shape positions and styles, not graph semantics, and nobody opens the source to verify a PR description's claim that the architecture changed.
+A draw.io diagram may show the right boxes while its source diff says little about which dependency changed. A reviewer often has to compare rendered images to check the PR's architecture claim.
 
 Mermaid is different: the syntax encodes the graph itself, not a picture of boxes and arrows but the relationships. The same diagram, as a source and as a render:
 
@@ -71,15 +71,15 @@ graph TD
 
 The syntax is compact enough to write by hand once you know it. For larger diagrams, `mermaid.live` gives a browser preview: paste, edit, copy back. The source stays next to the document describing the system. When the architecture moves, the diagram changes in the same commit, and the PR review covers both artifacts together.
 
-Agents default to ASCII art when asked for a diagram in plain text. Push back on that default. ASCII art carries no semantic structure. Topology does not extract cleanly, connections do not validate mechanically, and it renders as a wall of punctuation in every tool that matters. Mermaid takes roughly the same number of characters, renders as a real diagram on GitHub and in many IDEs with a Mermaid plugin, and produces a queryable artifact. Ask for Mermaid explicitly, using agent instructions. Sometimes the layout is off. In that case, ask the agent to improve the layout of the Mermaid diagram.
+If an agent returns ASCII art for an architecture diagram, ask for Mermaid where the relationships matter. ASCII art can be useful for a directory tree, but its arrows and spacing are hard to review as a changing dependency graph. Mermaid source shows the edges directly, and GitHub renders it in Markdown. A poor layout is still possible, so inspect both source and render.
 
-Mermaid covers [28 diagram types](https://mermaid.ai/open-source/intro/index.html) as of mid-2026, including the UML staples (class, sequence, state, and ER) and even Gantt, C4, and mind map. Not every type is rendered by every IDE plugin or Git vendor today, but Mermaid is widely adopted and support keeps expanding. Use the type that fits the thing you are describing rather than forcing everything through `graph TD`.
+Mermaid documents class, sequence, state, and entity relationship diagrams alongside flowcharts. Use the type that fits the relationship you need to show rather than forcing everything through `graph TD`.
 
-D2 is the more interesting format on its merits, but as of mid-2026, no major Git vendor renders it inline. A D2 block shows up as a code listing in a PR review, not a diagram. Mermaid is the right call for now.
+This book uses Mermaid because the repository renders it in the site and GitHub. D2 remains an alternative if a team has a rendering and review path for it.
 
 The C4 model gives a useful set of diagram types (**C**ontext, **C**ontainer, **C**omponent, **C**ode) that map cleanly onto `docs/architecture/README.md` (architecture overview) and per-feature design docs. Structurizr defines those models in a text DSL rather than a drawing tool, the same plain-text-as-code move applied to architecture. Diagrams show structure; they do not explain why the structure is what it is.
 
-*Sources: Mermaid (mermaid.ai), the diagram format used throughout. Mermaid live editor (mermaid.live), the editing escape hatch. Mermaid diagram types (mermaid.ai/open-source/intro/index.html), 28 diagram types as of mid-2026. D2 (d2lang.com), the alternative format not yet rendered inline by Git hosts as of mid-2026. C4 model, Simon Brown (c4model.com), the diagram types mapping to architecture docs. Structurizr, Simon Brown (docs.structurizr.com), C4 models authored as a text DSL.*
+*Sources: Mermaid documentation (mermaid.ai), text-defined diagrams and supported diagram types. Mermaid live editor (mermaid.live), browser preview and editing. D2 documentation (d2lang.com), another text-defined diagram format. C4 model, Simon Brown (c4model.com), architecture diagram levels. Structurizr documentation (docs.structurizr.com), C4 models authored as a text DSL. The format choice is this book's project convention.*
 
 ## ADRs as plain text
 
@@ -102,9 +102,9 @@ renders on GitHub, and is readable by coding agents without conversion.
 
 ## Considered Options
 
-- Mermaid: plain text, renders on GitHub, 28 diagram types
-- draw.io: rich GUI, binary format, opaque to agents
-- ASCII art: no tooling required, no semantic structure
+- Mermaid: plain text, renders on GitHub, named graph edges
+- draw.io: visual editor, image-oriented review
+- ASCII art: no tooling required, limited graph structure
 
 ## Decision Outcome
 
@@ -147,11 +147,11 @@ rg -l '^type: decision' docs/
 rg -l '^status: accepted' docs/decisions/
 ```
 
-Each command returns an exact list of paths without reading a single body. Without the header, the same question turns into a read-and-judge loop over every file under `docs/`. I have not measured how much faster agents work this way, so the claim stays narrow: a fuzzy question becomes an exact one, and a wrong answer shows up as a wrong list instead of a wrong guess nobody sees. The same move works outside Markdown, for example a `kind` field in a YAML manifest.
+The first command lists files labeled as decisions. The second lists files marked accepted. Intersect the lists, then inspect the headers before relying on the result: a text match does not validate the YAML or prove the labels are correct. The gain is a short candidate list rather than opening every document to find its type and status. The same move works outside Markdown, for example a `kind` field in a YAML manifest.
 
-Agent hosts already rely on this. In Claude Code, a skill's `description` field is loaded into context at the start of a session so the agent knows what exists, and the full skill loads only when invoked. A rule file with a `paths` field loads only when the agent works on files matching its globs. In both cases the header decides whether the body ever reaches the context window. As of October 2026, Claude Code ignores unknown fields in both file types without an error and strips the header from a rule before loading it, so extra fields such as `type` and `title` do no harm there.
+Agent hosts already use front matter for loading decisions. In a regular Claude Code session, skill descriptions enter context while full skill content loads on invocation. A rule file with a `paths` field loads when Claude works on matching files. As of October 2026, Claude Code ignores unrecognized fields in these headers and strips rule front matter before loading the body.
 
-The header has costs. GitHub has rendered it as a table above the content since 2013, which means a README with a header looks different on a repository's front page. A reader who opens the raw file sees it as text. A broken header also fails silently. If the YAML in a rule file does not parse, Claude Code loads the rule as if it had no `paths`, so a rule meant for `src/api/**` quietly applies to every session.
+The header has costs. GitHub renders YAML metadata as a table above the content, changing how a README appears on a repository's front page. A reader of the raw file also sees the header. If YAML in a Claude Code rule file does not parse, the rule loads without its `paths` scope. Claude Code reports the parse error in debug output, but the agent may receive a rule intended only for `src/api/**` while working elsewhere.
 
 A header nobody validates drifts like any other comment, so it gets the treatment ADRs get: a check. A CI step that fails when a tracked Markdown file lacks `type` and `title`, or when `title` no longer matches the first heading, takes a few lines of script and catches the drift on the pull request that introduces it. Exceptions need a named reason. The clearest case is the pull request template, which the forge pastes verbatim into every pull request body, header included.
 
@@ -159,7 +159,7 @@ The two-field header is a convention, not a standard. The heavier alternative gi
 
 A header tells the agent what a file is. Whether the file is still true needs a separate check, which the chapter on keeping docs up to date covers.
 
-*Sources: Anthropic, Claude Code documentation, skills page (code.claude.com/docs/en/skills, accessed October 2026), the skill `description` loaded at session start and unknown fields ignored. Anthropic, Claude Code documentation, "How Claude remembers your project" (code.claude.com/docs/en/memory, accessed October 2026), `paths` scoping, header stripped before loading, unparseable YAML loads the rule unscoped. GitHub Blog, "Viewing YAML Metadata in your Documents" (github.blog, September 2013), the table rendering, not rechecked against current GitHub behavior. The two-field header, the query examples, and the keep-it-small rule are this book's synthesis.*
+*Sources: Anthropic, Claude Code [skills](https://code.claude.com/docs/en/skills) and [rule front matter](https://code.claude.com/docs/en/memory) documentation (reviewed October 23, 2026), skill-description loading, `paths` scoping, ignored fields, and the behavior of unparseable YAML. GitHub Blog, ["Viewing YAML Metadata in your Documents"](https://github.blog/news-insights/product-news/viewing-yaml-metadata-in-your-documents/) (reviewed October 23, 2026), rendering YAML metadata above prose files. The two-field header and candidate-list query are this book's conventions.*
 
 ## What it is not
 

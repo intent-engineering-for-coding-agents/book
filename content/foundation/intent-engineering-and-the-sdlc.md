@@ -76,11 +76,11 @@ PR taxonomy gives the reviewer a second guardrail. A `docs`-only PR skips behavi
 
 ## CI: the pipeline checks the conventions
 
-In this book's workflow, a convention check runs on every push and validates `AGENTS.md`, the presence of `docs/README.md` with its embedded index, Markdown Architectural Decision Record (MADR) format for ADRs, and stable Acceptance Criterion IDs (AC IDs) with test declarations on spec scenarios. This is not a new pipeline, only a new check inside the pipeline you already have.
+In this book's workflow, CI runs configured convention checks for `AGENTS.md`, the index in `docs/README.md`, Markdown Architectural Decision Record (MADR) format, and Acceptance Criterion ID (AC ID) markers. Configure those checks as required status checks if a failing result must block a merge. Their scope remains structural.
 
-AC traceability links scenarios to tests: a passing test marked `@pytest.mark.ac("SCAFFOLD-001")` verifies the named scenario, and the traceability remains after spec archival. Later, the audit trail still answers "which test covered this?" without grep guessing.
+AC traceability links a scenario ID to a test marker such as `@pytest.mark.ac("SCAFFOLD-001")`. The marker helps locate a test after spec archival. A reviewer still has to inspect whether the test asserts the scenario's behavior.
 
-*Sources: Dave Farley and Jez Humble, continuousdelivery.com (ongoing), CI as the gate run on every push. Microsoft, "An AI-led SDLC" (2026, vendor-authored); IBM, "AI in SDLC" (ongoing, vendor-authored), vendor framing of folding AI-era checks into the existing pipeline rather than standing up a new one.*
+*Sources: GitHub, "About protected branches" (reviewed October 22, 2026), required status checks as merge gates. The named convention checks and AC marker rule are this book's workflow design.*
 
 ## Maintenance: synchronize engineering memory
 

@@ -21,17 +21,14 @@ If brownfield: harvest structure, dependencies, key decisions, design constraint
 - [ ] `docs/design/`: per-feature design docs. Decide to write-and-forget or keep-current and apply it consistently
 - [ ] `openspec/` (the OpenSpec spec directory, if your team uses OpenSpec): change proposals, delta specs, archived changes
 - [ ] `AGENTS.md` at the repo root, TOC pattern: short, links to `.agents/`, load clauses for each instruction file
-- [ ] `docs/**/README.md`: a short overview for readers on a Git host, then an embedded index with one row per file and a one-line description, the map the agent loads before anything else
+- [ ] `docs/**/README.md`: a short overview for readers on a Git host, then an embedded index with one row per file and a one-line description. Point the agent to the relevant map for the task
 
 ## Agent Instructions
 
 - [ ] `.agents/instructions/` with at least one domain-specific instruction file covering coding standards and architecture constraints
 - [ ] Each instruction file has a load clause in `AGENTS.md` naming when to load it
-- [ ] Vendor files wired as thin pointers: `CLAUDE.md`, `.cursorrules`, `.github/copilot-instructions.md` each contain one line pointing to `AGENTS.md`
-- [ ] Skills added reactively: after the agent repeats a workflow three times, not speculatively
-
-Optional, maturity-dependent:
-
+- [ ] Confirm each agent setup loads the shared `AGENTS.md` rules, using a vendor-specific import where needed
+- [ ] Add a skill when a recurring procedure needs named inputs and a completion check
 
 ## Spec-Driven Development
 
@@ -46,8 +43,8 @@ This checklist is OpenSpec-first because the book is OpenSpec-first. The portabl
 ## Quality and Verification
 
 - [ ] `docs/architecture/test-strategy.md`: test types your project uses, frameworks, file locations, coverage thresholds
-- [ ] `test/ac-registry.md`: one row per component prefix with the next available number
-- [ ] Tests carry `@Tag` annotations for AC ID and test type
+- [ ] `tests/ac-registry.md`: one row per component prefix with the next available number
+- [ ] Tests carry AC ID and test-type markers in the form supported by the test framework
 - [ ] Important agent-facing docs declare the code they describe and expose drift when that code changes
 - [ ] CI validation of structure, AGENTS.md presence, and AC traceability (`iec check` is one implementation; wire your own checks if you prefer)
 

@@ -5,7 +5,7 @@ title: Test Strategy and Convention
 
 # Test Strategy and Convention
 
-Left to its own defaults, an agent reaches for the test type its training over-represents, the unit test. Fine for core logic, wrong for an endpoint. An endpoint needs a real HTTP layer wired to a real database and a real request shaping the response. Mock both and the test passes while verifying little about the system.
+An agent asked to test an endpoint may write a unit test around the handler while mocking the HTTP layer and database. Such a test checks handler logic, but it cannot show whether a real request reaches the handler or whether persistence works. Name the boundary the acceptance criterion requires before choosing the test type.
 
 ## The test taxonomy
 
@@ -50,7 +50,7 @@ The convention document defines the types the project uses, the framework that c
 
 Type answers what the test verifies. Level answers when it runs. Write both axes down in a file the agent can read, or the agent will make them up from whatever pattern it saw last.
 
-The document belongs with the project's architecture docs, wherever those live. The agent reads it before writing a test. Without it, every session reopens the same choices: framework, file location, level.
+The document belongs with the project's architecture docs, wherever those live. Direct the agent to read it before writing a test. Without that guidance, the agent has to infer the framework, file location, and run stage from the code it happens to inspect.
 
 The decision to adopt a specific convention, and the rationale for each choice, belongs in an ADR. The ADR stays. The convention document evolves.
 
@@ -70,7 +70,7 @@ The underlying principle is equivalence partitioning: one test per valid partiti
 
 This table belongs next to the scenario template. In the companion repo, that template lives at `tests/scenario-template.md`. The agent reads the template when writing scenarios and the strategy when implementing tests.
 
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. ISTQB "Foundation Level Syllabus" (ongoing), equivalence partitioning and boundary value analysis as the basis for minimum partition coverage. The complexity-to-count tier mapping is this book's synthesis, not a published standard.*
+*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. ISTQB "Certified Tester Foundation Level Syllabus v4.0.1" (September 15, 2024), equivalence partitioning and boundary value analysis. The complexity-to-count tier mapping is this book's synthesis, not a published standard.*
 
 ## The AC registry
 
@@ -82,6 +82,6 @@ The allocation rule, the monotone-numbering discipline, and why a deleted ID lea
 
 ## Tooling note
 
-The companion repo includes the working convention set: `tests/test-strategy.md` (test types, locations, markers), `tests/scenario-template.md` (scenario format and complexity tiers), and `tests/ac-registry.md` (prefix allocation).
+At revision `2491a62`, the companion repo keeps its test strategy at `docs/architecture/test-strategy.md`, its scenario template at `tests/scenario-template.md`, and its prefix registry at `tests/ac-registry.md`. The strategy describes test types and locations, while the template and registry guide scenario writing and ID allocation.
 
 The convention tells the agent how to write tests. Review still needs a way to trace each test back to the acceptance criterion it verifies, including after the spec changes.
