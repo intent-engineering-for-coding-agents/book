@@ -7,7 +7,7 @@ title: OpenSpec Across Stacks
 
 Consider a front-end agent given a monorepo without a clear tier boundary. It finds an API endpoint with the right name and method signature, then wires the new filter component directly to the back-end service. A review of the call path reveals the missing Backend for Frontend (BFF) authorization check.
 
-This chapter is about that narrower failure. A single `openspec/` directory shared across three tiers gives every agent access to every tier's specs and leaves tier ownership implicit.
+This chapter addresses the missing tier boundary in the agent's working files. A single `openspec/` directory shared across three tiers puts their specs under one path and leaves tier ownership implicit.
 
 ## One `openspec/` per stack
 
@@ -41,7 +41,7 @@ back-end/
     changes/  # (unchanged by this feature)
 ```
 
-A unified `openspec/` across stacks gives the agent three codebases of context it does not need and three sets of canonical specs it should not all trust. Every ambiguity resolution gets harder. Keeping stacks separate makes each agent's working set legible and bounded.
+A unified `openspec/` across stacks leaves the agent to sort through specs for three tiers when selecting the files for its task. Separate directories make tier ownership visible. The session still needs to load the relevant contract and change proposal.
 
 *Sources: Fission AI, [OpenSpec](https://openspec.dev/) (ongoing), the change-folder model this per-stack layout builds on. The multi-tier split itself is this book's synthesis.*
 
@@ -53,35 +53,37 @@ A back-end agent reads `docs/architecture/`, the API contract, and the test stra
 
 The spec should still cover behavior: states, validation, edge cases, loading, error, and empty states. User flows and navigation logic belong in `docs/architecture/`, referenced by the spec. The design system doc answers how the component should look when it renders correctly.
 
-*Sources: Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), Figma files as extractable design context for coding agents. The split between front-end behavior specs and `docs/design/` convention instructions is this book's workflow mapping.*
+*Sources: Framelink, [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) (ongoing), Figma files as extractable design context for coding agents. The split between front-end behavior specs and a design-system document is this book's workflow mapping.*
 
 ## The integration contract belongs in an ADR
 
-A change in the front-end spec that depends on a new BFF endpoint needs a source of truth shared by both stacks. That source of truth is not a spec, because specs are scoped to a single change folder and a single stack. The shared source is an Architectural Decision Record (ADR).
+A change in the front-end spec that depends on a new BFF endpoint needs a contract shared by both stacks. This workflow records the cross-stack decision in an Architectural Decision Record (ADR), then links the separate change specs to it.
 
-The ADR in `docs/decisions/` records the API contract: endpoint path, request shape, response shape, error handling, authentication boundary. Both stacks reference the same ADR in their respective change folders. The front-end spec says "see ADR-0042 for the BFF contract", while the BFF spec says "implements the contract in ADR-0042". When the contract changes, one ADR update is the source of truth. The specs do not need to repeat the contract details.
+The ADR in `docs/decisions/` records the API contract: endpoint path, request shape, response shape, error handling, authentication boundary. Both stacks reference the same ADR in their respective change folders. The front-end spec says "see ADR-0042 for the BFF contract", while the BFF spec says "implements the contract in ADR-0042".
+
+If the team changes the decision, record a superseding ADR and revise affected specs. The specs need not repeat the contract details.
 
 ```mermaid
 graph TD
     classDef contract fill:#0d9488,stroke:#0f766e,color:#fff
     classDef change fill:#0891b2,stroke:#0e7490,color:#fff
 
-    ADR["ADR-0042: Filter API Contract<br/>docs/decisions/<br/>&nbsp;"]:::contract
-    FE["front-end/openspec/<br/>changes/add-filter-component/<br/>design.md<br/>&nbsp;"]:::change
-    BFF["bff/openspec/<br/>changes/add-filter-endpoint/<br/>design.md<br/>&nbsp;"]:::change
+    ADR["ADR-0042: Filter API Contract<br>docs/decisions/<br>&nbsp;"]:::contract
+    FE["front-end/openspec/<br>changes/add-filter-component/<br>design.md<br>&nbsp;"]:::change
+    BFF["bff/openspec/<br>changes/add-filter-endpoint/<br>design.md<br>&nbsp;"]:::change
     FE -- "references" --> ADR
     BFF -- "implements" --> ADR
 ```
 
-The ADR is permanent, while the change folders are temporary and archived after implementation. The contract outlives both.
+The ADR stays among the current decisions while the change folders move to the archive after implementation. The contract remains available to later changes.
 
-*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, ADRs as durable records of a decision and its consequences. Using one to record the cross-stack contract is this book's workflow choice.*
+*Sources: Michael Nygard, ["Documenting Architecture Decisions"](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), Cognitect blog, November 15, 2011, durable decision records and superseding a changed decision. Using an ADR for the cross-stack contract is this book's workflow choice.*
 
 ## When a change spans tiers
 
-Most features touch multiple tiers. A new filter endpoint requires front-end work, BFF work, and sometimes back-end work. The temptation is to create one change folder that covers all three.
+A new filter endpoint requires front-end work, BFF work, and sometimes back-end work. The temptation is to create one change folder that covers all three.
 
-That temptation compounds every problem described above. The front-end agent does not need the back-end implementation details, and the BFF reviewer does not need to read the front-end acceptance criteria. The archive of the change becomes three times as large and three times as hard to search.
+One folder makes tier ownership harder to see. The front-end agent does not need back-end implementation details to build its component, and the BFF reviewer needs the shared contract rather than every front-end acceptance criterion. Separate folders keep each review tied to the work its ticket owns.
 
 For separately owned work across tiers, create a ticket for each implementation and link its proposal to the shared ADR. Coordinate ownership and dependencies in the ticket system. The shared decision records the contract each implementation must follow. [OpenSpec in an Existing SDLC](./openspec-in-existing-sdlc) explains the ticket mapping.
 

@@ -9,7 +9,7 @@ Suppose two developers use separate instruction files for the same repo. One fil
 
 Give both agents the same source for the project rules.
 
-`AGENTS.md` is the entry point, and `.agents/instructions/` is what it points into. One directory, no vendor in the name, readable by every tool.
+`AGENTS.md` is the entry point, and `.agents/instructions/` is what it points into. The shared files are plain Markdown in a directory without a vendor name. Check that each agent setup loads the relevant file.
 
 ## `.agents/instructions/`
 

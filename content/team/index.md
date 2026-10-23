@@ -17,7 +17,7 @@ Prompt engineering focuses on the developer-agent exchange. Team-scale Intent En
 
 ## Chapters
 
-1. [OpenSpec Across Stacks](./openspec-across-stacks): when the system has multiple tiers, one `openspec/` per stack narrows each agent's context to one tier
+1. [OpenSpec Across Stacks](./openspec-across-stacks): when the system has multiple tiers, one `openspec/` per stack makes ownership visible while sessions select the relevant files
 2. [OpenSpec in an Existing SDLC](./openspec-in-existing-sdlc): team coordination through tickets, one proposal per ticket, and ticket identifiers in proposal names
 3. [Trunk-Based Development with Agents](./trunk-based-development): change folders as short-lived branches, merge cadence, how spec deltas reduce merge pain, intent-first review
 4. [Code Review for Agent-Generated Code](./code-review-agent-code): spec-first review, optional agent-assisted coverage tracing, and checks for copied patterns or removed controls

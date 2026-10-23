@@ -5,7 +5,7 @@ title: Shared Agent Instruction Conventions
 
 # Shared Agent Instruction Conventions
 
-A convention constrains only the agents able to read it. On a solo project, that is one file and one agent. On a team, the same convention gets copied into as many instructions as there are developers, and those copies drift apart quietly.
+A convention guides an agent only when the session loads the relevant instruction. On a solo project, one file may be enough. On a team, developers sometimes copy the same convention into separate instructions, and those copies drift apart quietly.
 
 One developer's `AGENTS.md` says: never write raw SQL, always use the ORM. A developer who joined later never saw the discussion where that was decided, and their own `AGENTS.md` says nothing about it. Their agent hits a performance problem and writes a raw query. The query is defensible in isolation. It is also out of step with every other data access path in the codebase, and the team burns a review cycle deciding whether to apply the rule retroactively or carve an exception.
 

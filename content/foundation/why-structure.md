@@ -29,7 +29,7 @@ More generated changes give a team more opportunities to repeat a missed constra
 
 ## Structure as context
 
-Whatever lives in `docs/` (the durable design record), `AGENTS.md` (the agent's instructions), and `openspec/` (the active and archived specs when using OpenSpec) is what the agent reads. For anything the team knows but never wrote down, the agent falls back to plausible-looking patterns. Every silent decision leaves room for improvisation.
+Put the durable design record in `docs/`, the agent's instructions in `AGENTS.md`, and active and archived specs in `openspec/` when using OpenSpec. Then check which of those files the agent loads for the task. For a decision the team never wrote down, the agent has only the code and conversation to work from. Every silent decision leaves room for improvisation.
 
 Chat sessions end with the session. Committed instructions, docs, and specs carry forward into the next run: local session, CI job, new laptop, and fresh clone all start from the same files. The codebase becomes the shared context source.
 

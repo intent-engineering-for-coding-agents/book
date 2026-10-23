@@ -11,7 +11,7 @@ This topic is about evidence. The spec states the target. The tests, checks, and
 
 Prompt engineering works on the input. Quality and Verification examines the output against the recorded target. Intent Engineering needs both sides of that boundary.
 
-Tests catch behavior regressions. Acceptance Criterion IDs (AC IDs) hold traceability together when a spec gets edited. Checkpoints catch the stale document, the missing archive, and the PR that arrived without evidence.
+Tests help catch behavior regressions. Acceptance Criterion IDs (AC IDs) keep the spec-to-test link visible when a spec gets edited. The checkpoint checklist prompts reviewers to inspect stale documents, missing archives, and PRs without evidence.
 
 None of these practices are new. What changes with coding agents is the rate of change and how quickly informal review starts missing things.
 
