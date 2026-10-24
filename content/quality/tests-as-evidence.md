@@ -53,7 +53,7 @@ The working definition in this book:
 
 > A change is done when the approved intent (specs) has evidence and the implementation (code) has coverage.
 
-Approved intent is the spec, reviewed and merged. Evidence is tests across every AC scenario, each failing when its criterion is violated. Coverage is tests across the paths the implementation introduces. Both have to be there.
+Approved intent is the reviewed spec. Automated scenarios need tests whose assertions exercise the stated behavior; a manual scenario needs a recorded review result. The implementation also needs tests for affected paths beyond the acceptance criteria. A green suite and matching AC markers do not establish either kind of coverage without inspecting the cases.
 
 Farley's *Modern Software Engineering* argues for short feedback loops. This book applies that idea to specs and tests: a written criterion needs a test or review check that can expose a wrong implementation.
 

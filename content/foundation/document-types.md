@@ -5,7 +5,7 @@ title: Document Types
 
 # Document Types
 
-A spec is meant to die when its feature ships. Leave one sitting in `openspec/changes/` and the next agent reads it as live instruction. That is not a documentation problem. It is a type problem.
+A change proposal stops being active after its implementation is verified and integrated. Leave it in `openspec/changes/` and the next agent may read it as unfinished work. That is not a documentation problem. It is a type problem.
 
 This book uses a small working set of document types. Each one has a different lifespan and a different job. If you blur those jobs, the agent reads stale material as if it were current.
 
@@ -162,7 +162,7 @@ This book uses OpenSpec throughout, but the spec concept applies regardless of h
 
 A spec lives in two moments: written before the work begins, archived once it ends.
 
-Specs are temporary and move to `openspec/changes/archive/` after implementation. The full mechanics are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
+Change specs move to `openspec/changes/archive/` after the implementation is verified and integrated. The full mechanics are in [Spec Lifecycle](/spec-driven/spec-lifecycle).
 
 *Sources: OpenSpec documentation, `concepts.md` (Fission-AI/OpenSpec), the archive folder mechanics.*
 
@@ -176,7 +176,7 @@ Specs are temporary and move to `openspec/changes/archive/` after implementation
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
 | ADRs | Permanent, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
 | `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into permanent `docs/`, then archive, remove, or mark as historical. |
-| Specs | Temporary, archived | Moved to archive after implementation |
+| Specs | Active during the change, then archived | Move the change folder to the archive after verification and integration |
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with superseded specs in the wrong place and half-live design notes nobody trusts.
 

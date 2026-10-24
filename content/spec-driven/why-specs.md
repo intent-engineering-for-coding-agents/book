@@ -19,7 +19,7 @@ This book uses a proposal for one implementation ticket, reviewed before code ch
 
 Acceptance criteria are the core. Each scenario names a condition and an expected outcome: when the user submits an empty form, the API returns a 400 with the fields listed. When the user submits a valid form, the record is created, and the 201 is returned with the ID. The scenarios guide test design. A matching test marker alone does not prove the behavior, so review the assertions as well as the spec.
 
-This book uses a change-scoped definition. It takes the lightweight spec frameworks, not enterprise requirements practice. The spec stays small, lives beside the code, and verifies each criterion through a test that fails when the criterion is violated.
+This book uses a change-scoped definition drawn from lightweight spec frameworks rather than enterprise requirements practice. The spec stays small and lives beside the code. Each criterion needs test evidence or an explicit manual review path, and the reviewer checks whether that evidence addresses the stated behavior.
 
 *Sources: Fission AI, OpenSpec, change proposals and scenario structure. LeanSpec, concise change-scoped specifications. The ticket boundary and test-evidence rule are this book's workflow guidance.*
 
@@ -53,7 +53,7 @@ The risk is a large batch of requirements handed to implementation with no room 
 
 A proposal here follows one implementation ticket. The developer can revise it when review or implementation exposes a mistaken assumption. The cost is an extra artifact to keep aligned with the code.
 
-Written that way, spec-before-code is the agile cycle run one change at a time. The cycle is short. The implementer owns it. It ends in working software: completion requires verified, integrated behavior and an archived proposal. "Working software over comprehensive documentation" fits the rule. The spec stays small, ships, and gets archived after merge. A pre-flight check catches the obvious failure before takeoff. A contract does not. Write the spec to catch problems, not to trap you in them.
+Written that way, spec-before-code runs one change at a time. The implementer owns the proposal and revises it when the code or review exposes a mistake. Completion still requires verified, integrated behavior and an archived proposal. The spec stays small and records the behavior the reviewer checks before accepting the patch.
 
 The version that does slide back toward waterfall is the oversized spec that tries to settle the whole system before any code exists. That is a batch-size failure, not an intent-first one. Small, change-scoped specs reduce the batch size behind the risk.
 

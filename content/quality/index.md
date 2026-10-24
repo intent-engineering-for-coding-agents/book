@@ -17,9 +17,9 @@ None of these practices are new. What changes with coding agents is the rate of 
 
 ## Chapters
 
-1. [Tests as Evidence, Not Ritual](./tests-as-evidence): a test is evidence only if it fails when the implementation diverges from intent
-2. [Test Strategy and Convention](./test-strategy): the test taxonomy, the convention document the agent reads, scenario complexity tiers, and the AC registry
+1. [Tests as Evidence, Not Ritual](./tests-as-evidence): test assertions and manual review as evidence against acceptance criteria
+2. [Test Strategy and Convention](./test-strategy): the test taxonomy, the convention document the agent reads, choosing cases from a criterion, and the AC registry
 3. [AC IDs and Coverage](./ac-ids-coverage): bracket-format IDs, `Test-type:` field, dual `@Tag` tagging, the AC registry, positive and negative pairs
-4. [Keeping Documentation Up to Date](./keeping-docs-up-to-date): stable links from prose to code, drift signals, and checks for important documents during implementation and in CI
+4. [Keeping Documentation Up to Date](./keeping-docs-up-to-date): links from prose to code, drift signals, and checks during implementation and in CI
 5. [Before, During, After: The Three Checkpoints](./checkpoints): a short checklist linking preparation, implementation checks, and review to their detailed procedures
 6. [PR Taxonomy](./pr-taxonomy): docs, structural, behavioral. Three review styles, one class per PR

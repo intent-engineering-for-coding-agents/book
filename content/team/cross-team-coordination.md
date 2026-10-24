@@ -26,15 +26,15 @@ graph TD
     classDef team fill:#64748b,stroke:#475569,color:#fff
     classDef shared fill:#0d9488,stroke:#0f766e,color:#fff
 
-    SR["Shared architecture repo<br/>cross-team ADRs"]:::shared
+    SR["Shared architecture repo<br>cross-team ADRs"]:::shared
 
     subgraph A[Team A]
         AA["Agents + AGENTS.md"]:::team
-        AR["Local repo<br/>own specs + ADRs"]:::team
+        AR["Local repo<br>own specs + ADRs"]:::team
     end
     subgraph B[Team B]
         BA["Agents + AGENTS.md"]:::team
-        BR["Local repo<br/>own specs + ADRs"]:::team
+        BR["Local repo<br>own specs + ADRs"]:::team
     end
 
     AA -->|reads| SR
@@ -61,13 +61,13 @@ The inner-source pattern for agent instructions is book synthesis. Teams using i
 
 Consider a system with the payment, notification, and authentication services in separate repositories. Each has its own `openspec/` (if the team uses OpenSpec), `.agents/`, and project instructions. A change to their shared contract needs an explicit path across those repository boundaries.
 
-Navigation happens through ADRs and through explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, not copy the API definition into the payment service spec. The reference is a pointer, and the ADR is the canonical record. When the API changes, the ADR updates. The payment service spec reference remains valid.
+Navigation happens through ADRs and explicit cross-repo references in specs. A spec in the payment service that depends on a notification service API should reference the notification service's ADR for that API, rather than copy its definition. If the contract changes, record a superseding ADR and revise affected specs to reference the current decision. A pointer to the old ADR remains useful as history but no longer names the governing contract.
 
 MCP (Model Context Protocol) creates another path: agents fetch context from other repositories on demand, rather than reading only their local files. As of mid-2026, this is an emerging practice. An agent working in the payment service might call an MCP tool to fetch the current API contract from the notification service repository. The pattern depends on the MCP tooling available.
 
 The connector does not choose which contract governs a change. The developer still has to point the agent at the authoritative record and check the fetched revision. Without a connector, the developer may provide the relevant excerpt and link directly.
 
-*Sources: Model Context Protocol documentation (ongoing), MCP as the agent-tool bridge used for external context fetches. The shared-context gap for multi-repo agent work is this book's synthesis from current tool limits.*
+*Sources: Michael Nygard, "Documenting Architecture Decisions" (November 15, 2011), superseding a changed decision. Model Context Protocol documentation (ongoing), MCP as the agent-tool bridge used for external context fetches. The shared-context gap for multi-repo agent work is this book's synthesis from current tool limits.*
 
 ## Cross-repository planning still needs coordination
 

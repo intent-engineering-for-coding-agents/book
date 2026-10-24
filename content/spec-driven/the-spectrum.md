@@ -19,10 +19,10 @@ graph LR
     classDef mid fill:#0891b2,stroke:#0e7490,color:#fff
     classDef heavy fill:#0d9488,stroke:#0f766e,color:#fff
 
-    P[Raw prompt<br/>no artifact]:::light --> G[Intent note<br/>no managed lifecycle]:::light
-    G --> M[spec.md<br/>single file in repo]:::mid
-    M --> O[OpenSpec<br/>change folder + archive]:::heavy
-    O --> K[Spec-Kit<br/>governance, multi-team]:::heavy
+    P[Raw prompt<br>no artifact]:::light --> G[Intent note<br>no managed lifecycle]:::light
+    G --> M[spec.md<br>single file in repo]:::mid
+    M --> O[OpenSpec<br>change folder + archive]:::heavy
+    O --> K[Spec-Kit<br>governance, multi-team]:::heavy
 ```
 
 Formality and audit trail rise left to right, and so does overhead. The rung that fits a change is the one whose ceremony matches its risk, not the heaviest one available.
@@ -58,7 +58,7 @@ Acceptance criteria are written in Gherkin's `WHEN/THEN` notation. The book borr
 
 BDD also uses examples to guide development before implementation. The workflow here borrows scenario notation without requiring Cucumber step definitions or adopting the full collaborative BDD practice. The agent generates tests from the reviewed scenarios. Why the spec outranks the code it produces is the argument in [Docs > Specs > Code](./docs-gt-specs-gt-code).
 
-The change folder is lifecycle machinery around those scenarios. The specs are the part that changes the system. A change proposal is a delta on the capability model: acceptance criteria added, updated, or removed. When the change is archived, those criteria merge into the canonical `/openspec/specs/<capability>/spec.md` and the full change folder, proposal, design, and tasks, moves to `openspec/changes/archive/`.
+The change folder manages the scenarios through the change lifecycle. A proposal records additions, updates, or removals to capability requirements. Before or during archive, sync those deltas into `openspec/specs/<capability>/spec.md`. The change folder then moves to `openspec/changes/archive/` with its proposal, design, specs, and tasks preserved.
 
 OpenSpec is the concrete workflow used here. It is not the only one that works. The closest alternative is the plain `spec.md` your team has already shaped into a local workflow.
 
@@ -68,7 +68,7 @@ The selection rule is simpler than the tool names make it sound: pick the lighte
 
 OpenSpec is the choice here because it supplies the lifecycle without hiding the files. One change folder holds a single unit of intent, carrying delta specs for the behavior changes, Gherkin-style scenarios to make the acceptance criteria concrete, and `tasks.md` for the agent's execution path. Archiving then keeps active intent apart from the historical record.
 
-That archive becomes the canonical set of acceptance criteria for each capability. Later changes diff against those criteria, and CI tests trace back to them. The design those criteria serve does not live here. It lives in `docs/`. This split adds real file and process overhead, and it fits best where several developers are shipping changes into the same production codebase.
+Synchronization updates the canonical acceptance criteria under `openspec/specs/`; the archived folder preserves the change history. Later changes diff against the current criteria, and tests carry links back to their identifiers. The design those criteria serve lives in `docs/`. This split adds file and process overhead, and it fits best where several developers ship changes into the same production codebase.
 
 *Sources: Fission AI, OpenSpec, the four-part change-folder workflow, delta specs, `tasks.md`, and the archive as a canonical capability model. Cucumber, "Gherkin reference" and "Behaviour-Driven Development" (reviewed October 21, 2026), scenario notation and collaborative examples before implementation. The framework-selection rule and closest-alternative framing above are this book's synthesis.*
 

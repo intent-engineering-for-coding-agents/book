@@ -30,7 +30,7 @@ flowchart LR
 | [Foundation](/foundation/) | Decisions, design docs, specs, and an index the agent can load | The agent guesses from public patterns instead of your codebase |
 | [Agent Instructions](/agent-instructions/) | One entry point and one instruction hub for each session | Each session re-derives conventions from scratch |
 | [Spec-Driven Development](/spec-driven/) | A change-sized spec written before code and archived after merge | The change ships without a settled target |
-| [Quality & Verification](/quality/) | Tests that trace back to acceptance criteria in the spec | The target exists, but nothing verifies the change hit it |
+| [Quality & Verification](/quality/) | Tests and review evidence linked to acceptance criteria | The target exists, but the team has no recorded evidence that the change hit it |
 
 [Team Workflows](/team/) covers how the same practices hold up across a team.
 

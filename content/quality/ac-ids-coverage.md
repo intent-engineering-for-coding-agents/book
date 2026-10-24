@@ -188,4 +188,4 @@ Refactoring spec scenarios is the failure mode to watch for. A scenario being re
 
 *Sources: intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), stable IDs, non-reuse, and traceability rules. Michael Nygard, "Documenting Architecture Decisions" (2011), new identifiers for changed decisions as the ADR analogy used here.*
 
-IDs and pairs are the mechanics. The next chapter is where those mechanics fit into a project's schedule: when each check runs, before and during and after the change.
+IDs make the link between a spec and its tests visible. Documentation can use a lighter link to code paths so a change flags prose that needs another look. [Keeping Documentation Up to Date](./keeping-docs-up-to-date) develops that check.

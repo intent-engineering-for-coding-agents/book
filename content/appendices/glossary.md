@@ -13,7 +13,7 @@ A stable identifier linking an acceptance scenario to its tests, such as `[AUTH-
 
 ## AC registry
 
-This book's allocation record for AC IDs, conventionally `test/ac-registry.md`. Each row records a component, its prefix, and the next available number. See [AC IDs and Coverage](/quality/ac-ids-coverage).
+This book's allocation record for AC IDs, conventionally `tests/ac-registry.md`. Each row records a component, its prefix, and the highest number used. See [AC IDs and Coverage](/quality/ac-ids-coverage).
 
 ## ADLC (Agentic Development Lifecycle)
 

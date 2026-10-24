@@ -19,7 +19,7 @@ The repository at `github.com/intent-engineering-for-coding-agents/cli` has the 
 docs/         ADRs, design docs, INDEX.md, testing strategy
 openspec/     OpenSpec spec files (changes/ and specs/)
 .agents/      instructions/, skills/, commands/, hooks/
-AGENTS.md     entry point for all agents working in this repo
+AGENTS.md     shared project entry point for supported agents
 src/          CLI source code (Python)
 tests/        test suite
 ```
@@ -28,7 +28,7 @@ The `hooks/` directory contains only `.gitkeep` at this revision. It is a scaffo
 
 *Sources: Companion CLI repository at revision `2491a62`, directory layout and `.agents/hooks/.gitkeep`.*
 
-`docs/` holds the living documentation: ADRs in `docs/decisions/`, design documents in `docs/design/`, and a flat `docs/INDEX.md` agents use as a map. `openspec/` holds the specs. `.agents/` holds the instruction files that `AGENTS.md` loads. The `AGENTS.md` at root follows the same wiring pattern as the one for this book.
+`docs/` holds the living documentation: ADRs in `docs/decisions/`, design documents in `docs/design/`, and a flat `docs/INDEX.md` agents use as a map. `openspec/` holds the specs. `.agents/` holds instruction files that `AGENTS.md` points to with load clauses. The `AGENTS.md` at root follows the same wiring pattern as the one for this book.
 
 ## How to browse
 

@@ -86,7 +86,7 @@ AC-tagged: each scenario has a stable identifier, such as `[FEAT-001]`. Tests re
 
 Sized to be readable: the spec fits in a context window with room for the code.
 
-Scoped to one change: one spec, one coherent change. Not a domain model. Not a quarter's worth of requirements.
+Scoped to one change: one proposal with the delta specs its capabilities need. Not a quarter's worth of requirements.
 
 Those bars are about behavior. The design behind the change, the why, and the alternatives weighed live in the ADRs and design docs under `docs/`.
 

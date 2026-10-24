@@ -93,6 +93,6 @@ Call it bureaucracy if you like; it is also the mechanical aid that lets a revie
 
 This chapter treats the coherent-looking bundle as the failure to prevent: feature, cleanup, and opportunistic refactor in one diff. Mixed intent weakens review because the reviewer must switch evidence models mid-stream. PR taxonomy makes the intended review path explicit before the agent writes code.
 
-The next control raises a different question. A clean PR verifies the change stayed in its lane, but lane discipline does not verify the code is well-shaped.
+A clean PR still needs a clear owner when several agents change different parts of one system. [OpenSpec Across Stacks](../team/openspec-across-stacks) starts there: a front-end change must respect the BFF boundary even when its diff stays small.
 
 *Sources: The mixed-intent failure mode and PR taxonomy defense are this book's synthesis.*

@@ -13,9 +13,9 @@ The smaller cases are merely annoying. I have seen an outdated instruction make 
 
 Some tests fail when code changes, giving the team a signal to inspect. Prose has no equivalent by default, and an absent decision has no file to become stale. This chapter addresses the part a deterministic check reaches. The missing-decision problem still depends on review and team discipline.
 
-This chapter covers one narrow extension of verification: give important documentation a feedback loop. Not semantic understanding. Not model grading prose. A tripwire that turns silent drift into a visible signal.
+This chapter covers one narrow extension of verification: give important documentation a feedback loop. A tripwire turns silent drift into a visible signal.
 
-A release should leave the codebase ready for the next agent session. This chapter covers the cheap part of that work. It does not decide whether the architecture overview is correct. It tells you which documents became suspect after the source moved.
+A release should leave the codebase ready for the next agent session. This chapter covers a cheap part of that work: identifying documents that became suspect after the source moved.
 
 *Sources: The release-to-next-session boundary and documentation tripwire are this book's workflow synthesis, informed by the author's PR-review examples above.*
 
@@ -39,7 +39,7 @@ The verification move is familiar by now. Do not match text. Match identity.
 
 [AC IDs and Coverage](./ac-ids-coverage) made tests durable by linking each acceptance scenario to a stable Acceptance Criterion ID (AC ID). The scenario text gets rewritten, and the test moves files, but the ID remains stable, so the link between intent and evidence remains intact.
 
-Documentation needs a lighter version of the same move. Each important document carries a small [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) block naming the code paths the check watches, the date somebody last checked it against those paths, and any outside systems still pointing at it:
+Documentation needs a lighter version of the same move. Each important document carries a small [front matter](/foundation/plain-text-as-code#front-matter-as-a-contract) block naming the code paths the check watches and the date somebody last checked it against those paths:
 
 ```yaml
 ---
@@ -47,25 +47,13 @@ tracked-paths:
   - services/payments/src
   - services/payments/build.gradle.kts
 content-verified-at: 2026-06-25
-referred-by:
-  - system: jira
-    id: PAY-1842
-    url: https://jira.example.com/browse/PAY-1842
-    reason: Implementation ticket links to this design doc
-  - system: confluence
-    id: ARCH-221
-    url: https://confluence.example.com/x/ARCH-221
-    reason: Architecture index links here
-referrers-verified-at: 2026-06-20
 ---
 ```
 
 - `tracked-paths` lists the repo paths whose changes might invalidate the document.
 - `content-verified-at` records the last date somebody checked the document against those paths.
-- `referred-by` lists outside records still pointing at the document.
-- `referrers-verified-at` records the last date somebody checked those external referrers still needed the document.
 
-Once the fields exist, the check stops guessing. The questions are mechanical: did one of the tracked paths change after `content-verified-at`, and does an outside system still depend on this file staying where the referrer expects after `referrers-verified-at`?
+Once the fields exist, the check asks a mechanical question: did one of the tracked paths change after `content-verified-at`?
 
 This is not a field standard. I use it here as a working synthesis of the AC-ID idea for prose: one stable marker in the prose, one reference target in code or docs, and one check that verifies the link.
 
@@ -91,59 +79,11 @@ The useful twist is diff scoping. Checking only documents changed in the Pull Re
 
 *Sources: The `tracked-paths`, `content-verified-at`, state names, fail/warn policy, and diff-scoping rule are this book's synthesis from AC-ID verification logic applied to prose.*
 
-## External referrers change the retention rule
-
-Documents under `docs/` have a second failure mode. The file is still linked from Jira, Confluence, an internal wiki, or some other system outside the repo. Delete the document, rename it, or move it without updating those links, and the codebase stays green while the next developer lands on a dead reference.
-
-This check differs from local drift. `tracked-paths` asks whether the document still matches the code. `referred-by` asks whether some outside system still depends on the document existing at this path.
-
-The base pattern here is an inventory. The checker does not crawl for backlinks or discover them on its own. It validates a declared list of known referrers:
-
-- `system`: where the reference lives, for example `jira` or `confluence`
-- `id`: the stable identifier in the external system
-- `url`: the direct link
-- `reason`: why the external record points at this document
-
-This book uses two extra states for the inventory:
-
-- `unknown-ref`: a `referred-by` entry is malformed or incomplete
-- `live-ref`: one or more `referred-by` entries still exist, so deletion or rename is blocked until those entries are cleared
-
-`unknown-ref` should fail because the inventory is already broken. `live-ref` is not a failure on an ordinary edit. It becomes a failure when a PR deletes or renames the document while external referrers still exist.
-
-The retention rule follows from the inventory. A file in `docs/` with live `referred-by` entries stays put until the team removes or updates those external links and then clears the inventory entry in the same change. Local docs drift silently. Dead backlinks drift silently too, and they break a different reader.
-
-*Sources: The `referred-by` inventory and retention rule are this book's synthesis for repository documents with declared external backlinks.*
-
-## Runbooks under test
-
-Some documents are operational dependencies, not background reading. A deployment runbook, an incident checklist, a rollback guide, or a release README tells the operator what to type. If the rollback command is missing, the document is wrong.
-
-This book recommends one narrow extension: test the required facts directly. Not the writing, not completeness, only the details an operator needs in front of them.
-
-```java
-@Test
-void runbookListsRollbackCommand() {
-    assertTrue(readme.contains("kubectl rollout undo"));
-}
-
-@Test
-void runbookExplainsWhereToFindFailureLogs() {
-    assertTrue(readme.contains("kubectl logs"));
-}
-```
-
-The same pattern works for a release runbook that must name the rollback command, the artifact location, and the first log command. Test those three facts directly. If one disappears in an edit, the suite fails before the next release leaves someone guessing in a live incident.
-
-This is weaker than a behavior test. The test does not verify the command still works. It verifies the document still names the command. For operational prose, that already moves far beyond silence.
-
-Testing runbook content like this is a narrow extension this book recommends. It is not presented here as common industry policy.
-
 ## Put the check in the workflow
 
 Tell the agent which documents need markers and what to do when a code change produces a stale warning. Run the validator during the task so broken references surface before review.
 
-For this book's workflow, configure the validator as a required Continuous Integration (CI) check. Treat broken references and deletion of documents with live `referred-by` entries as failures. Review still decides whether the marked document describes the code accurately.
+For this book's workflow, configure the validator as a required Continuous Integration (CI) check. Treat broken tracked paths as failures. Review still decides whether the marked document describes the code accurately.
 
 *Sources: The validator placement and failure policy are this book's workflow guidance.*
 
@@ -159,20 +99,18 @@ Verification closes the code gap with tests. A documentation drift check closes 
 - run a deterministic check against the link
 - expose failure where the team already pays attention, in CI
 
-The check does less than a behavior test with useful assertions. A documentation drift check flags a tracked source change after the recorded review date, or a declared outside reference before a file moves. It does not verify the prose. That weaker signal still earns its keep because the default is silence.
+The check does less than a behavior test with useful assertions. A documentation drift check flags a tracked source change after the recorded review date. It does not verify the prose. That weaker signal still earns its keep because the default is silence.
 
 ## Limits worth naming
 
 The signal is blunt. A commit touching a tracked directory marks the document stale even when the change was a rename, a comment edit, or an internal helper the document never mentioned.
 
-The dates are bookkeeping markers, not evidence of careful reading. Bumping `content-verified-at` or `referrers-verified-at` silences the warning.
+The date is a bookkeeping marker, not evidence of careful reading. Bumping `content-verified-at` silences the warning.
 
 Cross-cutting documents are awkward. A design note covering four subsystems and two team boundaries has no tidy sibling path list. Those documents need manual `tracked-paths` entries, and many teams will defer the work.
-
-The external inventory is only as good as the discipline behind it. A missing `referred-by` entry means the checker never knows the outside link exists. As of mid-2026, teams with Model Context Protocol (MCP) connectors into Jira or Confluence might confirm some records through APIs, but API confirmation is a higher-maturity extension and a perishable one. I would not make the basic control depend on a connector. Connectors to ticket and wiki systems still add latency and another unstable network boundary to a check that should be fast.
 
 These limits are why I still regard documentation freshness as one of the largest unresolved parts of the practice. The control is a tripwire, not semantic verification. It points at prose somebody needs to inspect. It cannot tell whether an important design change is missing. It will also accept a new date from somebody who never read the file.
 
 The [checkpoint checklist](./checkpoints) places this inspection before implementation and the documentation update before merge.
 
-*Sources: Model Context Protocol documentation, connector pattern for reaching external systems during agent work. Atlassian Rovo MCP Server and sooperset `mcp-atlassian` documentation (mid-2026 snapshot), Jira and Confluence connector availability as a perishable tooling example. This chapter's extension of AC-ID verification logic from tests to prose is this book's synthesis.*
+*Sources: This chapter's extension of AC-ID verification logic from tests to prose is this book's synthesis.*

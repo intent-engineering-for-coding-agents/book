@@ -73,7 +73,7 @@ Put the decision, constraint, and file map in the codebase before asking the age
 
 ## The prerequisite
 
-The remaining Intent Engineering topics each assume Foundation is in place. Agent Instructions need a `docs/` to point into. Spec-driven development needs somewhere for specs to live, and quality checks have no conventions to validate against until Foundation supplies them. Skip Foundation and the rest stops working.
+The remaining Intent Engineering topics work better when Foundation is in place. Agent Instructions have documented decisions to load, specs have a known home, and quality checks have recorded conventions to inspect. [Document Types](./document-types) separates those files by purpose and lifespan so an agent does not treat an archived proposal as an active instruction.
 
 Foundation is also the topic with the lowest immediate payoff. A team adopting OpenSpec on Tuesday feels the difference Wednesday. A team adopting Foundation sees the effect over months: fewer PRs that reintroduce retired stacks, fewer review comments spent rediscovering old decisions, and fewer agent sessions wasted reconstructing codebase structure from code.
 

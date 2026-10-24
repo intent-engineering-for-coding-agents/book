@@ -35,9 +35,9 @@ Skills also travel across repos via an inner source: a shared `.agents/` reposit
 
 The test of a team `AGENTS.md` is a new developer's first agent session. They clone the repo, start a capability-class agent, and ask it to implement a small task. The output should match the team's existing test style, data access pattern, and security conventions.
 
-If the output is inconsistent, `AGENTS.md` has a gap. Fix the instruction set. Do not file the same failure under "welcome to the team" for every new developer to hit independently.
+If the output is inconsistent, first check which instruction files the session loaded. Then inspect whether the shared rule is missing, stale, or in conflict with another rule. Fix the file or loading path responsible, and repeat the small task before relying on the convention.
 
-Onboarding is a forcing function for keeping the team instruction set current. Treating inconsistency as an onboarding task masks drift. Treating it as drift in the shared instruction set addresses the actual problem.
+Onboarding exposes instruction drift while the task is small enough to inspect. Record the observed failure so the next developer does not have to diagnose it again.
 
 *Sources: AgentPatterns.ai, ["Evaluating AGENTS.md"](https://agentpatterns.ai/instructions/evaluating-agents-md-context-files/) (ongoing), evaluating agent context files for quality and drift. The first-session onboarding test is this book's team workflow heuristic.*
 
@@ -51,7 +51,9 @@ Standardize data access patterns and security rules. Record the [ticket-number p
 
 Over-standardizing is its own failure mode. A team `AGENTS.md` that specifies every workflow detail produces brittle agents and developers who stop making local judgment calls. The team instruction set should specify conventions that affect the codebase. Everything else is a personal setup.
 
-Role-based personal instruction set are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it. Depth is welcome in a personal instruction set. Overriding a team convention in one is not, and it becomes a review problem the moment someone notices.
+Role-based personal instruction sets are not divergence. A QA engineer's instructions might load extra test-coverage instructions, a security engineer's might run a threat-model pass, and a database specialist's might include query-plan analysis. These extend the team instruction set without contradicting it.
+
+Depth is welcome in a personal instruction set. Overriding a team convention in one is not, and it becomes a review problem the moment someone notices.
 
 Team conventions are organizational problems with technical artifacts. `AGENTS.md` records the agreement. A team that has never discussed data access conventions has to have the discussion first and record the outcome.
 

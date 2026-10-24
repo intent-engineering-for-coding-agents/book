@@ -59,13 +59,13 @@ Write them explicitly. "Do not modify files under `src/generated/`. They are pro
 
 If the repository has an architecture check for package boundaries, run it after the agent changes the code. A failed check gives stronger evidence than the instruction alone.
 
-Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" prevents the agent from adding an import edge that breaks the dependency graph. Without the instruction, the agent sees a useful function in `users`, imports it, and opens a PR that passes local tests but fails the architecture check.
+Package boundaries need the same treatment. "The `payments` module has no dependency on `users`. If a change requires one, raise it in the PR before implementing" names the choice the agent must report. Without that context, the agent might import a useful function from `users` and open a PR that passes local tests but fails the architecture check. Review the import graph even when the instruction was loaded.
 
 *Sources: Birgitta Böckeler, "Harness engineering for coding agent users" (martinfowler.com, April 2, 2026), guides as feedforward controls and structural tests as feedback. The directory and package examples are illustrative.*
 
 ## Let the agent draft the instruction
 
-When a failure happens, the agent has the full context: it produced the wrong output moments ago, and the task that triggered it is still in the session. That makes the agent useful for drafting a targeted instruction. The developer still reviews whether the rule addresses the failure without blocking valid work.
+When a failure happens during a session, the task and wrong output are available to inspect. Give both to the agent when asking it to draft a targeted instruction. The developer still reviews whether the rule addresses the failure without blocking valid work.
 
 Give it the failure and ask for the instruction:
 
@@ -79,7 +79,7 @@ Requirements:
 - Keep it to one or two sentences
 ```
 
-The "any coding agent or human" requirement is the key addition. Without it the agent writes for itself: phrasing a stronger model interprets correctly, but a weaker one glosses over. Test the draft immediately while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
+The reviewer requirement forces the draft to name a visible choice rather than rely on a vague instruction the current agent happened to interpret. Test the draft while the failure is still in front of you. If the agent still improvises, sharpen the language before the instruction goes anywhere.
 
 ## Testing whether your instructions work
 

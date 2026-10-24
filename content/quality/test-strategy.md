@@ -56,21 +56,11 @@ The decision to adopt a specific convention, and the rationale for each choice, 
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (2011), ADRs as durable records of architectural rationale. The convention-document shape above is this book's workflow rule for making test-layer decisions readable by agents.*
 
-## Scenario complexity and minimum test count
+## Choose cases from the criterion
 
-Not every AC is the same shape. The minimum test count follows from the AC's own complexity, the number of conditions it states rather than the paths the implementation introduces.
+The number of tests follows from the behavior, not a fixed tier. A file-size limit needs an accepted file, a rejected oversized file, and attention to the limit itself. A retry rule may need separate cases for the first failure, the last allowed attempt, and exhaustion. Use equivalence partitions and boundaries to choose cases, then inspect what each test asserts. [Tests as Evidence, Not Ritual](./tests-as-evidence) explains why a count alone is weak evidence.
 
-| AC complexity | Minimum tests |
-|---|---|
-| Simple (single condition) | 1 positive + 1 negative |
-| Medium (2-3 conditions) | 2-3 positive + 2 negative |
-| Complex (multiple conditions) | Several positive + several negative |
-
-The underlying principle is equivalence partitioning: one test per valid partition, one per invalid. The tier mapping is this book's application of that to AC complexity. What makes a test genuine evidence of its AC is the subject of [Tests as Evidence, Not Ritual](./tests-as-evidence).
-
-This table belongs next to the scenario template. In the companion repo, that template lives at `tests/scenario-template.md`. The agent reads the template when writing scenarios and the strategy when implementing tests.
-
-*Sources: Dave Farley, "Modern Software Engineering" (Addison-Wesley, 2021), tests as feedback against behavior boundaries. ISTQB "Certified Tester Foundation Level Syllabus v4.0.1" (September 15, 2024), equivalence partitioning and boundary value analysis. The complexity-to-count tier mapping is this book's synthesis, not a published standard.*
+*Sources: ISTQB "Certified Tester Foundation Level Syllabus v4.0.1" (September 15, 2024), equivalence partitioning and boundary value analysis. The example and review rule are this book's application to acceptance criteria.*
 
 ## The AC registry
 

@@ -67,7 +67,7 @@ If you use a separate agent session, choose its inputs explicitly. A fresh sessi
 
 In the author's team workflow, a ticket is complete only when the implementation has been verified and integrated and the change proposal is archived. Keep the ticket open while any of those steps remains unfinished. Archive status alone is not evidence of correct behavior.
 
-OpenSpec's archive process preserves the change folder under `openspec/changes/archive/` and incorporates its delta specs into the main specs. Inspect the resulting spec changes and keep the archive in version control. The next proposal needs the current specification as well as the integrated code.
+OpenSpec's archive command preserves the change folder under `openspec/changes/archive/` and offers to sync delta specs that have not already been merged into the main specs. Accept or perform that sync before completing the ticket. Inspect the resulting main specs and keep the archive in version control. The next proposal needs the current specification as well as the integrated code.
 
 Once this ticket is complete, start the next ticket in the agreed sequence and create its proposal. Other developers continue on their own tickets. Recheck dependencies and current decisions before beginning the next implementation.
 

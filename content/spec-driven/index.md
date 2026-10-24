@@ -7,7 +7,7 @@ title: Spec-Driven Development
 
 > A spec that nobody reads is documentation. A spec the agent loads before it writes code is the source the implementation is generated from.
 
-What changes every session is intent. The hub is durable. The spec is not.
+The instruction hub is durable. A change proposal has a shorter life: it directs one change, then moves to the archive after integration. Maintained capability specs carry the resulting behavior forward.
 
 This topic is about per-change intent: the spec that tells the agent what this change must do, what it must leave alone, and what evidence will count. Review the spec first or you are reviewing output without knowing the target.
 

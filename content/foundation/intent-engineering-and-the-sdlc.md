@@ -28,12 +28,12 @@ graph TD
         L2[Intent Engineering]:::ie
     end
     subgraph Planning
-        A[Ticket / story]:::existing --> B[OpenSpec change folder<br/>proposal + delta specs + tasks]:::ie
+        A[Ticket / story]:::existing --> B[OpenSpec change folder<br>proposal + delta specs + tasks]:::ie
     end
     subgraph Implementation
-        C["Agent instructions<br/>AGENTS.md + .agents/"]:::ie --> D["Coding<br/>(agent assisted)"]:::existing
-        J["Structured documentation<br/>docs/"]:::ie --> D
-        K["Acceptance criteria<br/>openspec/specs"]:::ie --> D
+        C["Agent instructions<br>AGENTS.md + .agents/"]:::ie --> D["Coding<br>(agent assisted)"]:::existing
+        J["Structured documentation<br>docs/"]:::ie --> D
+        K["Acceptance criteria<br>openspec/specs"]:::ie --> D
         B --> D
     end
     subgraph Review
@@ -41,11 +41,11 @@ graph TD
         E --> F[PR: docs / structural / behavioral]:::ie
     end
     subgraph "Continuous Integration (CI)"
-        F --> G[Conventions check<br/>AC traceability tests]:::ie
+        F --> G[Conventions check<br>AC traceability tests]:::ie
         G --> H[Deploy]:::existing
     end
     subgraph Maintenance
-        H --> I[Sync engineering memory<br/>archive spec + update docs]:::ie
+        H --> I[Sync engineering memory<br>archive spec + update docs]:::ie
         I --> A
     end
 ```

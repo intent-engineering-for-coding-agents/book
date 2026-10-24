@@ -19,7 +19,7 @@ graph TD
     classDef spec fill:#0891b2,stroke:#0e7490,color:#fff
     classDef trunk fill:#64748b,stroke:#475569,color:#fff
 
-    CF["openspec/changes/<br/>web-142-add-filter-endpoint/"]:::intent -- "spec reviewed on" --> SB["spec/web-142-add-filter-endpoint"]:::spec
+    CF["openspec/changes/<br>web-142-add-filter-endpoint/"]:::intent -- "spec reviewed on" --> SB["spec/web-142-add-filter-endpoint"]:::spec
     SB -- "merges to" --> TRUNK["main"]:::trunk
     TRUNK -- "implemented on" --> BR["web-142-add-filter-endpoint"]:::intent
     BR -- "reviewed implementation merges to" --> M["main with verified implementation"]:::trunk

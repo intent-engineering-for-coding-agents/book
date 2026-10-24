@@ -43,9 +43,13 @@ Use [Why Small?](../spec-driven/why-small) to decide where to split, and [The Sp
 
 ## Drift with no detection
 
-The team has agent instructions, ADRs, specs, and good initial intentions. Six months later, the codebase has six ADRs from the first month and nothing since, a design doc last touched in March, and a `docs/README.md` index last updated when someone new joined. Nobody violated a rule because there is no rule about update frequency. There is only drift, and nothing detecting it.
+Suppose a team writes agent instructions and ADRs during setup, then leaves them untouched through several changes. A design doc still names a removed component, and `docs/README.md` points to a renamed file. The next agent session reads those files as current project context.
 
-A convention check in CI covers part of this gap. It catches structural violations before they reach the main. The check does not catch ADRs that should have been written and were not. It does not detect an architecture overview that was accurate a year ago and is now misleading. Detection of content drift is harder than detection of structural drift, and most of it remains a human responsibility.
+A required convention check in CI covers part of this gap. It blocks a merge when a configured structural check fails. The check does not catch ADRs that should have been written and were not. It does not detect an architecture overview that was accurate a year ago and is now misleading.
+
+Detection of content drift is harder than detection of structural drift, and most of it remains a developer and reviewer responsibility.
+
+*Sources: GitHub, "About protected branches" (reviewed October 22, 2026), required status checks as merge gates. The limits of structural checks are this book's workflow analysis.*
 
 [Keeping Documentation Up to Date](../quality/keeping-docs-up-to-date) covers checks for stale documents. After changing agent guidance, [try a representative task](../agent-instructions/instructions-that-work#testing-whether-your-instructions-work) and inspect whether the intended convention still holds.
 
@@ -65,6 +69,6 @@ Thoughtworks uses "cognitive debt" for the gap between generated code and develo
 
 Drift will still happen. Catch the mismatch before stale assumptions turn into one bad deploy.
 
-Six months of accumulated mismatch usually trace back to what the agent was reading. The Agent Instructions topic covers which files it should load and how to keep them current.
+The Agent Instructions topic covers which files the agent should load and how to keep them current.
 
 *Sources: Thoughtworks Technology Radar Vol 34 (April 2026), cognitive debt as a gap in developer understanding. The link to stale repo context is this book's synthesis.*

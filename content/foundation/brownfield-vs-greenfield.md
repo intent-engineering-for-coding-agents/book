@@ -55,7 +55,9 @@ The agentic-era `skeleton.md` works backward from an implementation already in p
 
 Once `skeleton.md` exists, has been reviewed, and has been distilled into the permanent `docs/` set, the brownfield codebase proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions get written from what the skeleton and the recovered docs reveal, not from scratch. ADRs capture decisions that were made implicitly and are only now being made explicit. And specs stay scoped to new changes, not retrofitted to existing behavior wholesale.
 
-Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Write the result up as a historical ADR, dated explicitly as a reconstruction: "Status: reconstructed, [date]" rather than "Accepted." It will not reproduce the actual meeting. A domain expert corrects it, and the documented best guess beats the silence that put the team here.
+Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Keep the draft ADR at `status: proposed`, and state in its context when the reconstruction was made and which evidence supports it. A domain expert checks the inference before the team accepts the record. The draft will not reproduce the original meeting.
+
+*Sources: Companion CLI `adr_format.py` at revision `2491a62`, accepted status values. Treating a recovered decision as a proposed, dated reconstruction is this book's workflow guidance.*
 
 The skeleton does not eliminate the brownfield condition. The system still carries the same old dependencies, missing decisions, and undocumented constraints. The difference is that the codebase now has files for those findings under `docs/`, so later specs and instructions can reference them instead of forcing every session to rediscover them from code.
 
@@ -65,6 +67,6 @@ A skeleton that goes unreviewed and unupdated turns hostile. A `docs/skeleton.md
 
 Treat `skeleton.md` like a living bootstrap document while the recovery is in progress. Update it when the system changes meaningfully. Mark sections the domain expert flagged as uncertain. Add a Last reviewed date and revisit it on a schedule the team will keep.
 
-Once ADRs, architecture docs, and design docs cover what the skeleton approximated, change its status. Remove it, archive it, or mark it plainly as historical bootstrap context that agents should ignore when reading the current design. The filename matters less than the distinction. An agent should not open `docs/skeleton.md` and `docs/architecture/overview.md` and read both as live instructions for the same system.
+Once ADRs, architecture docs, and design docs cover what the skeleton approximated, change its status. Remove it, archive it, or mark it plainly as historical bootstrap context that agents should ignore when reading the current design. The filename matters less than the distinction. An agent should not open `docs/skeleton.md` and `docs/architecture/overview.md` and read both as live instructions for the same system. [When Intent Engineering Fails](./when-intent-engineering-fails) follows the stale-document problem beyond the bootstrap.
 
 *Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), the skeleton-as-archaeology framing.*
