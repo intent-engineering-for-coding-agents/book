@@ -5,9 +5,9 @@ title: Foundation
 
 # Foundation
 
-> Repo structure. The prerequisite for everything else.
+> Repo structure. A durable base for later changes.
 
-Foundation is where repo structure stops being housekeeping and starts doing engineering work. If the decisions, maps, and constraints are missing or stale, the agent reads the wrong picture of the system and acts on it.
+Foundation is where repo structure stops being housekeeping and starts doing engineering work. When decisions, maps, or constraints are stale, an agent that loads them works from the wrong picture of the system.
 
 A prompt describes the current request. Foundation preserves decisions later requests depend on. This durable layer is the first point where Intent Engineering reaches beyond prompt engineering.
 

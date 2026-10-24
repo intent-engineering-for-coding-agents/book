@@ -9,46 +9,54 @@ The full bibliography appears in [References](/appendices/references). This page
 
 ## Foundational engineering practice
 
-Dave Farley ("Modern Software Engineering", 2021) and Jez Humble ("Continuous Delivery", 2010) are the conceptual anchor for how this book thinks about feedback loops, small batches, and CI discipline. The Farley test shaped the scope discipline here. Does "Modern Software Engineering" have an Operations chapter? No, because ops dissolves into feedback loops.
+Dave Farley ("Modern Software Engineering", 2021) and Jez Humble ("Continuous Delivery", 2010) are the conceptual anchor for this book's feedback loops, small batches, and Continuous Integration (CI) discipline.
 
-Michael Nygard coined the Architectural Decision Record in 2011. Every `docs/decisions/` directory in this book and in `iec` is downstream of that post.
+Michael Nygard's 2011 account of Architectural Decision Records (ADRs) shaped the `docs/decisions/` pattern used in this book and in `iec`.
 
-Oliver Kopp, Anita Armbruster, and Olaf Zimmermann created the MADR template (2018). The structured, scannable ADR format used throughout is theirs.
+Oliver Kopp, Anita Armbruster, and Olaf Zimmermann documented Markdown Architectural Decision Records (MADR) in 2018. This book uses their structured template for ADRs.
 
-Paul Hammant built the canonical reference for trunk-based development at trunkbaseddevelopment.com. The branch discipline and merge cadence running through the Team Workflows topic trace back there.
+Paul Hammant's trunkbaseddevelopment.com documents short-lived branches and frequent merges. The Team Workflows topic draws on that guidance.
 
-Alistair Cockburn's walking skeleton pattern ("Crystal Clear", 2004) is the etymological ancestor of the agentic-era `skeleton.md`. Same metaphor, reversed direction.
+Alistair Cockburn's walking skeleton pattern ("Crystal Clear", 2004) informed this book's `skeleton.md` analogy. The brownfield file maps an existing system, while Cockburn's pattern builds a thin new path through one.
+
+*Sources: Farley, "Modern Software Engineering" (2021), feedback loops; Humble and Farley, "Continuous Delivery" (2010), small batches and CI; Nygard, "Documenting Architecture Decisions" (2011), the ADR form; Kopp, Armbruster, and Zimmermann, "Markdown Architectural Decision Records" (2018), the MADR template; Hammant, trunkbaseddevelopment.com, branch and merge discipline; Cockburn, "Crystal Clear" (2004), walking skeleton. The `skeleton.md` analogy is this book's synthesis.*
 
 ## Spec-driven development
 
-Fission AI built OpenSpec (openspec.dev), the change-folder framework this book uses end-to-end. `iec` was built with OpenSpec from its first commit.
+Fission AI built OpenSpec, the change-folder framework this book uses as its concrete workflow. The companion `iec` repository uses OpenSpec in its worked examples.
 
-LeanSpec (lean-spec.dev) articulated the small-spec discipline: match formality to risk. The Why Small? chapter inherits that framing directly.
+LeanSpec documents concise specifications maintained alongside implementation. The Spectrum uses it as one example of lighter process.
 
-GitHub's Spec-Kit is the enterprise-scale spec-driven development example this book cites.
+GitHub's Spec-Kit is another structured development process this book compares with OpenSpec.
 
-Rick Hightower's comparative survey of SDD tools (Spillwave, February 2026) is the main map this book uses for current SDD tool comparisons.
+Rick Hightower's February 2026 comparison helped map the Spec-Driven Development (SDD) tools discussed in The Spectrum. Its tool descriptions are a dated snapshot.
+
+*Sources: Fission AI, OpenSpec documentation, change folders and lifecycle; companion CLI repository at revision `2491a62`, worked OpenSpec folders; LeanSpec project documentation, concise evolving specs; GitHub, Spec-Kit documentation, structured processes; Rick Hightower, "Agentic Coding" (February 2026), comparative tool snapshot. The book's framework selection is its own synthesis.*
 
 ## Agent conventions
 
-AgentPatterns.ai named and documented the TOC pattern for AGENTS.md. That framing runs through the Agent Instructions topic.
+AgentPatterns.ai documents the table-of-contents (TOC) pattern for `AGENTS.md`. That framing runs through the Agent Instructions topic.
 
 Andrej Karpathy coined "vibe coding" on February 2, 2025. The Preface's opening argument starts there.
 
-ThoughtWorks Technology Radar Vol 34 (April 2026) named cognitive debt and flagged semantic diffusion across spec-driven development and harness engineering terminology. A handful of chapters cite it where those claims matter.
+Thoughtworks Technology Radar Vol. 34 (April 2026) warned about codebase cognitive debt and semantic diffusion in agent-related terminology. Chapters using those claims cite the report locally.
 
-Birgitta Böckeler has written and spoken clearly about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic are downstream of that work.
+Birgitta Böckeler has written about agent-assisted software delivery. Several framing decisions in the Agent Instructions topic draw on that work.
+
+*Sources: AgentPatterns.ai, "AGENTS.md: Project-Level README for AI Coding Agents", the TOC pattern; Karpathy, "Vibe coding" (February 2025), the term; Thoughtworks Technology Radar Vol. 34 (April 2026), cognitive debt and semantic diffusion; Böckeler, "Harness engineering for coding agent users" (April 2026), agent guidance and controls.*
 
 ## Plain text and diagrams
 
-Mermaid (mermaid.js.org) is the diagram format used throughout. Every diagram in this book is plain text that diffs and renders the same way.
+Mermaid is the diagram format used throughout. Its source lives in Markdown, where reviewers see the text diff before GitHub or the site renders the diagram.
 
 The Write the Docs community's docs-as-code guide is the precedent for the plain-text-as-code practice the Foundation topic extends.
 
 The Plain Text as Code Manifest (github.com/Plain-Text-as-Code) is the author's prior statement of the same philosophy. The Foundation topic is its application to agentic engineering.
 
+*Sources: Mermaid documentation, text-defined diagrams; Write the Docs, docs-as-code guide, documentation in version control; Plain Text as Code Manifest, the author's prior statement. The book's format choice is its project convention.*
+
 ## How this book was written
 
-This book was written with the practices it describes, coding agents included. I used agents for the work they are good at: planning the book, the companion CLI repo, and the phases of both; spelling and grammar; cross-checking chapters against each other; removing redundancy; verifying sources; keeping one voice across chapters; sparring on structure and arguments; and refactoring, moving content to the chapter where it belongs. The repo behind the book carries the same setup the book teaches, including review skills that check a single chapter and the whole book, plus a credibility pass that hunts for claims I cannot back, so an untrue statement or a misattributed source gets caught before a reader finds it.
+I used coding agents while writing this book and its companion CLI. They helped plan work, compare chapters, catch spelling errors, check sources, and move or cut repeated passages. The repository includes procedures for chapter review, book-wide consistency, and claim provenance.
 
-The agents did not decide anything. What the book claims, which practices it recommends, and which sources it trusts are my calls, and every chapter went through my review before it shipped. That is the same rule this book applies to agent-generated code: the agent produces, the author owns.
+The agents did not decide what this book claims. I chose its recommendations and sources, and reviewed each chapter before publication. The agent produces. The author owns.

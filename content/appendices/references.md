@@ -83,6 +83,12 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 - intent-engineering-for-coding-agents: [`adr-format` implementation](https://github.com/intent-engineering-for-coding-agents/cli/blob/2491a62659ac6e2291f9d5f3353090d68fe10940/src/iec_cli/checkers/adr_format.py) at revision `2491a62` lists the accepted status prefixes for companion CLI checks (reviewed October 24, 2026).
 - Stephan Schwab: ["AI as Your Legacy Code Archaeologist"](https://www.caimito.net/en/blog/2026/02/07/ai-as-your-legacy-code-archaeologist.html). Caimito, *February 7, 2026*. Consultancy-authored practitioner argument for extracting business rules from legacy code with domain-expert validation.
 
+## Site services
+
+- intent-engineering-for-coding-agents: [book site configuration](https://github.com/intent-engineering-for-coding-agents/book/blob/f4efc6672e0b76ffd416a9840eb5f008cfe0ce7b/.vitepress/config.mts) and [issue forms](https://github.com/intent-engineering-for-coding-agents/book/tree/f4efc6672e0b76ffd416a9840eb5f008cfe0ce7b/.github/ISSUE_TEMPLATE) at revision `f4efc66` (reviewed October 24, 2026). Primary repository evidence for the edit link, analytics script, and contribution routes.
+- GoatCounter: ["Privacy policy"](https://www.goatcounter.com/help/privacy) (reviewed October 24, 2026). Primary service documentation for traffic data, in-memory session handling, cookie-free site analytics, and the optional individual-pageview setting.
+- GitHub: ["General Privacy Statement"](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) (effective April 27, 2026; reviewed October 24, 2026). Primary policy for GitHub services, including the site's hosting and contribution paths.
+
 ## Security
 
 - OWASP: ["Cross-Site Request Forgery Prevention Cheat Sheet"](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html) (reviewed October 21, 2026). Primary guidance on CSRF, tokens, origin checks, and SameSite defense in depth.

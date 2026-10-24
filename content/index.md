@@ -26,7 +26,7 @@ hero:
       link: https://github.com/intent-engineering-for-coding-agents/book
 features:
   - title: Foundation
-    details: The source-controlled workspace as shared ground. Decisions, design docs, specs, and an agent-facing index, before any per-change intent exists.
+    details: Decisions, design docs, and an agent-facing index used by later change proposals.
     link: /foundation/
   - title: Agent Instructions
     details: AGENTS.md and the .agents/ hub that tells each coding agent how this repo is structured, reviewed, and constrained.

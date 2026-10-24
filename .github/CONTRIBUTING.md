@@ -9,7 +9,7 @@ Thanks for helping improve *Intent Engineering for Coding Agents*. There are thr
 
 ## Fix something directly
 
-Every page on the site has a "Suggest a change to this page" link in its footer. It opens the GitHub edit view for that file, where you can make the change and open a pull request in one flow. This is the fastest path for typos, broken links, and small corrections.
+Book pages other than the home page have a "Suggest a change to this page" link in the footer. It opens the GitHub edit view for that file, where you propose a change as a pull request. This is the fastest path for typos, broken links, and small corrections.
 
 ## File an issue
 
@@ -26,7 +26,7 @@ For open-ended questions, ideas, and "what about X" conversations that are not y
 
 ## Pull requests
 
-If you open a PR with prose changes, the content follows the repo's writing conventions in `.agents/instructions/writing.md` and `.agents/instructions/voice.md`. Two rules catch most contributions: no em dashes, and concrete over abstract. Run `npm run docs:build` before pushing to confirm the site still builds with no broken links.
+If you open a PR with prose changes, the content follows the repo's writing conventions in `.agents/instructions/writing.md` and `.agents/instructions/voice.md`. Two rules catch most contributions: no em dashes, and concrete over abstract. Run `npm run docs:build` before pushing, then check any links you changed in the built site.
 
 ## Contact
 
