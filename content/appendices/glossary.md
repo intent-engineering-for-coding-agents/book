@@ -7,6 +7,10 @@ title: Glossary
 
 Definitions follow this book's usage. Entries identify book conventions explicitly and link to chapters for workflow details. Dates on living sources record when the cited definition was checked.
 
+## AC fidelity check
+
+A review of whether a tagged test still proves the scenario it is tagged with. It catches the test that carries the right AC ID but asserts something weaker, which happens after a refactoring or when an agent loosens an assertion to turn a failing run green. The companion repo's `docs/testing-convention.md` calls it an agent-assisted verification layer. See [AC IDs and Coverage](/quality/ac-ids-coverage#the-criterion-as-yardstick).
+
 ## AC ID (Acceptance Criterion ID)
 
 A stable identifier linking an acceptance scenario to its tests, such as `[AUTH-014]`. In this book's convention, a component prefix and an increasing number identify the scenario, and retired IDs are never reused. See [AC IDs and Coverage](/quality/ac-ids-coverage).
@@ -117,6 +121,10 @@ The source-control changes shown for review. This book distinguishes the `code d
 
 This book's term for durable project knowledge available across development sessions: decisions, architecture and design docs, contracts, specs, and agent instructions. See [Intent Engineering and the SDLC](/foundation/intent-engineering-and-the-sdlc).
 
+## Evidence
+
+A test, review result, or other check that would fail if the implementation diverged from the spec. A test that still passes with the guarded behavior removed is decoration. In this book's definition of done, approved intent needs evidence, and an AC counts as covered once a reviewer has checked that the tagged assertions match the scenario. See [Tests as Evidence, Not Ritual](/quality/tests-as-evidence).
+
 ## Front matter
 
 The metadata header at the start of a document. This book uses YAML between `---` markers to declare `type`, `title`, and lifecycle `status` where applicable. See [Plain-Text-as-Code](/foundation/plain-text-as-code#front-matter-as-a-contract).
@@ -205,6 +213,10 @@ A spec-driven development framework organizing proposed changes as delta specs a
 
 *Sources: Fission AI, OpenSpec "Concepts" (reviewed October 21, 2026), delta specs and archive workflow.*
 
+## Orphaned marker
+
+A test marker naming an AC ID that no active spec carries, usually left behind when a scenario was withdrawn and its tests were not. The companion repo's `test-traceability` check fails on it. See [AC IDs and Coverage](/quality/ac-ids-coverage#when-a-criterion-dies-its-tests-die).
+
 ## OWASP (Open Worldwide Application Security Project)
 
 A nonprofit foundation supporting open application-security resources. Its Top 10 is an awareness document covering critical web application security risks.
@@ -214,6 +226,10 @@ A nonprofit foundation supporting open application-security resources. Its Top 1
 ## Prompt engineering
 
 Designing prompts to guide a model's responses. This book treats prompt wording as one technique within the wider Intent Engineering workflow. See [Introduction](/introduction#why-this-is-more-than-prompt-engineering).
+
+## Reason marker
+
+A tag declaring why a test exists when it proves no acceptance criterion: `BASELINE` for structural or coverage-threshold protection, `SANITY` for toolchain readiness, `ARCHITECTURAL` for rules such as dependency direction. The markers come from the companion repo's testing convention, and its advisory `test-untagged` check warns on test files with neither a reason marker nor an AC marker. See [AC IDs and Coverage](/quality/ac-ids-coverage#tests-with-no-criterion).
 
 ## SDD (Spec-Driven Development)
 
