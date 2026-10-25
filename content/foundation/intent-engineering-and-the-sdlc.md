@@ -102,10 +102,6 @@ Checks catch the mechanical part. An index-staleness rule compares the index wit
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (Cognitect, 2011), a reversed decision becomes a new superseding ADR rather than an edit to the original. ISO/IEC/IEEE 42010:2022, architecture description as the artifact expression of architecture. The archive-on-ship discipline, engineering-memory synchronization step, and agent-assisted review boundary are this book's workflow synthesis.*
 
-## Tooling
-
-`iec check` is a CLI tool that validates these conventions locally or in CI. It is one implementation of the gate, not a requirement for the practice. See [Companion Repo](../appendices/companion-repo) for the repo layout.
-
 ## Why not add ceremonies
 
 New ceremonies have a half-life. Teams adopt them with enthusiasm and drift back under deadline pressure. The design is to sidestep the churn by plugging into existing ceremonies rather than replacing them. A smaller ask lasts longer.

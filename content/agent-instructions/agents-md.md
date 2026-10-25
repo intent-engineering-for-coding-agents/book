@@ -65,8 +65,8 @@ An outdated instruction presents the old rule as current. A link to an instructi
 
 An instruction file may sit unread until a relevant task calls for it, so staleness in `.agents/instructions/` can stay invisible for a while. Keeping the hub itself accurate does not catch that kind of drift.
 
-## Tooling
+## Automated checks
 
-The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has an `AGENTS.md` that fits on one screen: four instruction files with load clauses, the key commands, and a skill list. At revision `2491a62`, `agents-size` fails when the file exceeds its configured line limit, while `agents-links` warns about links without descriptions. Neither check resolves the linked paths or catches stale instructions. Check those separately. The entry point is only the first layer. The next problem is the instruction hub it points into.
+A line limit and a check for undescribed links are cheap to automate. Neither resolves the linked paths or catches stale instructions, so check those separately. The entry point is only the first layer. The next problem is the instruction hub it points into.
 
-*Sources: Companion CLI `agents_size.py` and `agents_links.py` at revision `2491a62`, line-limit failure and descriptive-link warning. The final link and staleness review is this book's guidance.*
+*Sources: The link and staleness review is this book's guidance.*

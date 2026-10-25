@@ -182,17 +182,9 @@ A team that grasps the lifespan column has the practice. A team that only learns
 
 *Sources: Nygard, "Documenting Architecture Decisions" (November 15, 2011), durable decision records. Kopp, Armbruster, Zimmermann, MADR template and CEUR-WS Vol. 2072 (2018), structured ADR format. OpenSpec documentation, change folders and archive lifecycle. The remaining lifespan categories are this book's taxonomy.*
 
-## Tooling
+## Keeping the structure honest
 
-The `iec` CLI repository has the structure live:
-
-- ADRs in `docs/decisions/`
-- design docs in `docs/design/`
-- specs in `openspec/specs/` with completed changes archived
-
-Run `iec check` to see which structural validators pass. A later session still needs to load the correct active spec and check its status.
-
-*Sources: `iec` CLI (github.com/intent-engineering-for-coding-agents/cli), the document taxonomy applied to a live project.*
+A directory layout does not stop an agent from reading the wrong file. A later session still needs to load the correct active spec and check its status.
 
 ## The taxonomy assumes a readable format
 

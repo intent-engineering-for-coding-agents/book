@@ -9,8 +9,6 @@ A starting point for applying the practices in this book to a new or existing co
 
 This is not a required sequence. Apply what fits your context. Stop when the cost exceeds the value. See [Honest Maturity](/appendices/honest-maturity) for how to label what you have versus what you are working toward.
 
-If you are using `iec` locally, `iec init` creates the directory scaffold and stub files. Edit each stub for your system before committing; an unedited stub only pretends to be documentation.
-
 If brownfield: harvest structure, dependencies, key decisions, design constraints, and business rules into `skeleton.md` and the permanent `docs/` set before any of the below. Review that recovery pass with a domain expert before the first change proposal. Move stable findings into `docs/architecture/`, `docs/design/`, and `docs/decisions/` rather than leaving the next agent session to reverse-engineer them again from `docs/skeleton.md`. See [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield).
 
 ## Foundation
@@ -46,7 +44,7 @@ This checklist is OpenSpec-first because the book is OpenSpec-first. The portabl
 - [ ] `tests/ac-registry.md`: one row per component prefix with the highest number used
 - [ ] Tests carry AC ID and test-type markers in the form supported by the test framework
 - [ ] Important agent-facing docs declare the code they describe and expose drift when that code changes
-- [ ] CI validation of structure, AGENTS.md presence, and AC traceability (`iec check` is one implementation; wire your own checks if you prefer)
+- [ ] CI validation of structure, AGENTS.md presence, and AC traceability (a small script in CI is enough; it does not need a framework)
 
 ## Team scale
 

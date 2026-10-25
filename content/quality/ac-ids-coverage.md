@@ -7,7 +7,7 @@ title: AC IDs and Coverage
 
 A spec and its tests are supposed to be the same promise written twice. Consider a spec with scenarios and a PR with tests. Some scenarios have no test at all, and some tests cover behavior the spec never mentioned. The reviewer approves it because the tests pass and the diff looks reasonable. The next change breaks the untested scenario, and the team hears about it from a customer.
 
-A spec and a test suite that drift apart silently defeat the point. The spec promises traceability, but the link to the tests has broken. A stable identifier on every acceptance criterion keeps the link visible. The companion check finds whether a matching test marker exists. It does not establish that the marked test ran or checked the criterion.
+A spec and a test suite that drift apart silently defeat the point. The spec promises traceability, but the link to the tests has broken. A stable identifier on every acceptance criterion keeps the link visible. A traceability check finds whether a matching test marker exists. It does not establish that the marked test ran or checked the criterion.
 
 I first saw the value of acceptance criterion identifiers at a former employer. Customers and developers had one short name for the behavior under discussion. Nobody had to guess which paragraph, ticket comment, or test somebody meant.
 
@@ -43,7 +43,7 @@ Each scenario in a spec carries one recommended field: `Test-type:`. It records 
 Test-type: Integration
 
 **Given** an empty target directory
-**When** the user runs `iec init`
+**When** the user runs the project's init command
 **Then** the directory contains `AGENTS.md`, `docs/`, and `openspec/`
 ```
 
@@ -132,11 +132,11 @@ This registry-as-work-queue pattern is this book's convention. OpenSpec does not
 
 ## Enforcing the pairs
 
-[Tests as Evidence, Not Ritual](./tests-as-evidence) made the case for checking positive, negative, and boundary behavior where the criterion calls for them. AC IDs make test markers countable. In the companion repo at revision `2491a62`, `test-traceability` fails when a non-Manual scenario has no marker, while the advisory `test-coverage` check warns when it has fewer than two markers.
+[Tests as Evidence, Not Ritual](./tests-as-evidence) made the case for checking positive, negative, and boundary behavior where the criterion calls for them. AC IDs make test markers countable. A reasonable CI rule fails when a non-Manual scenario has no marker and warns when it has fewer than two.
 
-The checker counts markers, not test direction or assertions. Two tests carrying the same ID can both exercise the happy path and still pass the count check. "When the user submits an empty form, the API returns a 400" is a negative-direction scenario. Its positive counterpart ("a valid form returns a 201") is a separate scenario with its own ID. A reviewer must inspect the tests for the missing behavior and boundaries.
+A marker check counts markers, not test direction or assertions. Two tests carrying the same ID can both exercise the happy path and still pass the count check. "When the user submits an empty form, the API returns a 400" is a negative-direction scenario. Its positive counterpart ("a valid form returns a 201") is a separate scenario with its own ID. A reviewer must inspect the tests for the missing behavior and boundaries.
 
-*Sources: Companion CLI [`test_traceability.py`](https://github.com/intent-engineering-for-coding-agents/cli/blob/2491a62659ac6e2291f9d5f3353090d68fe10940/src/iec_cli/checkers/test_traceability.py) and [`test_coverage.py`](https://github.com/intent-engineering-for-coding-agents/cli/blob/2491a62659ac6e2291f9d5f3353090d68fe10940/src/iec_cli/checkers/test_coverage.py), marker presence as a failing check and two-marker count as an advisory check at revision `2491a62`. The positive/negative review rule is this book's guidance.*
+*Sources: The marker-presence and two-marker thresholds follow the companion repo's checks at revision `2491a62`. The positive/negative review rule is this book's guidance.*
 
 ## A worked example
 

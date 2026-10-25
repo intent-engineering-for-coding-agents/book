@@ -68,8 +68,3 @@ Use a simple threshold. If you maintain one instruction file and it works, keep 
 
 The shared files settle where the agent finds the rules. Whether those rules are specific enough to guide a change depends on the instructions themselves.
 
-## Tooling
-
-The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) has the four instruction files above and the `update-index` skill (checked at revision `2491a62`). See [Companion Repo](../appendices/companion-repo) for how to browse it.
-
-*Sources: Companion CLI repository at revision `2491a62`, the four instruction files and `update-index` skill.*

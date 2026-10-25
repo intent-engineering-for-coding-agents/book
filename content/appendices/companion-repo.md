@@ -40,30 +40,10 @@ To clone it locally:
 git clone https://github.com/intent-engineering-for-coding-agents/cli
 ```
 
-## The git history, for the curious
-
-The repo accumulated its structure in phases, each represented by a git tag. If you want to see how the setup evolved rather than where it ended up, check out the repo at any point in that history:
-
-| Tag | What it introduced |
-|-----|--------------------|
-| `v0.0.1` | Bare scaffold: `pyproject.toml`, `.gitignore`, CI, source stubs |
-| `v0.1.0` | Foundation: `docs/`, ADRs 0001-0006, `openspec/` structure, `.agents/` scaffold |
-| `v0.2.0` | Agent instructions: `AGENTS.md`, `.agents/instructions/`, `update-index` skill |
-| `v0.3.0` | Version-tagging conventions, no new structure |
-| `v0.4.0` | File and structure checkers |
-| `v0.5.0` | Agent hub structure and secrets checkers |
-| `v0.6.0` | Test traceability and test coverage checkers |
-
-```bash
-git checkout v0.1.0   # foundation: docs/, ADRs, openspec/ scaffold
-```
-
-The tags above cover the progression this book teaches. The CLI did not stop there. It reached `v1.0.0`, and the tags from `v0.7.0` onward add checkers and conventions beyond this book's teaching scope: OpenSpec lifecycle gates (`tasks-complete`, `change-archived`), maturity labels on each check, and a PR taxonomy applied to the tool's own development. This page stays with `v0.0.1` through `v0.6.0` because those tags map onto the practices each chapter introduces. Read the later tags in the repo if you want to see where the tool went after the book's snapshot.
-
 ## What it does not do
 
 `iec` is not a general-purpose validator for arbitrary legacy repos. Its checks assume the Intent Engineering conventions are in place. Run `iec check` in a repo that follows these conventions. Uninitialized repos fail most checks by design. The companion repo is the reference example for this convention set.
 
-The practices in this book do not require `iec`. The repo exists to show one implementation of the book's rules with files, tags, and checks you can inspect. The requirement is to apply the underlying mechanics in your own repo, not to copy `iec` directory-for-directory.
+The practices in this book do not require `iec`. The repo exists to show one implementation of the book's rules with files and checks you can inspect. The requirement is to apply the underlying mechanics in your own repo, not to copy `iec` directory-for-directory.
 
-*Sources: `iec` repository history and tag annotations (github.com/intent-engineering-for-coding-agents/cli), repository structure and phase descriptions from `git tag -n1`.*
+*Sources: `iec` repository (github.com/intent-engineering-for-coding-agents/cli), repository structure at revision `2491a62`.*

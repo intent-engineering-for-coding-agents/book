@@ -91,8 +91,4 @@ Some checks serve a narrower purpose, and that is fine. A smoke test might confi
 
 The harder issue is that a test verifies what it asserts, not what the spec omitted. If the spec says nothing about zero-byte files, the suite can stay green while that path is still broken. Someone has to read the spec and ask what was left out.
 
-## Tooling note
-
-The [`iec` companion repo](https://github.com/intent-engineering-for-coding-agents/cli) ships a traceability check that compares acceptance criterion IDs with test markers. At revision `2491a62`, a non-Manual scenario without a marker fails the check. An orphaned marker produces a warning. An advisory coverage check warns when a scenario has fewer than two markers, without reading the test assertions.
-
 A test linked to the spec is the closing half of the chain the previous chapter opened. The other half is selecting the correct test type and recording that choice before the agent generates the test.

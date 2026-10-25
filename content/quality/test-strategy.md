@@ -70,8 +70,4 @@ The allocation rule, the monotone-numbering discipline, and why a deleted ID lea
 
 *Sources: intent-engineering-for-coding-agents/cli `tests/ac-registry.md` (ongoing), monotone AC registry layout and non-reuse rule.*
 
-## Tooling note
-
-At revision `2491a62`, the companion repo keeps its test strategy at `docs/architecture/test-strategy.md`, its scenario template at `tests/scenario-template.md`, and its prefix registry at `tests/ac-registry.md`. The strategy describes test types and locations, while the template and registry guide scenario writing and ID allocation.
-
 The convention tells the agent how to write tests. Review still needs a way to trace each test back to the acceptance criterion it verifies, including after the spec changes.
