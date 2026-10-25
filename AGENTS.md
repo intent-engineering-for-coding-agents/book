@@ -39,6 +39,7 @@ npm run docs:dev     # local dev server with hot reload
 npm run docs:build   # build to .vitepress/dist/
 npm run docs:preview # preview the built site locally
 npm run docs:check-frontmatter # every .md carries type and title
+npm run docs:check-index # docs/ index files exist, stay in scope, and list every file
 ```
 
 ## Skills

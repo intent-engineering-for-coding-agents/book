@@ -5,7 +5,7 @@ title: "Skill: update-index"
 
 # Skill: update-index
 
-Scan `docs/` and regenerate `docs/INDEX.md` and all `docs/*/README.md` listing files to match the files currently on disk.
+Scan `docs/` and regenerate each directory's index (`INDEX.md` or the README index block) to match the files currently on disk. Each index maps only its own directory.
 
 ## When to use
 
@@ -17,22 +17,23 @@ Scan `docs/` and regenerate `docs/INDEX.md` and all `docs/*/README.md` listing f
 
 | File | Contains |
 |---|---|
-| `docs/INDEX.md` | Every file under `docs/` with a one-line description |
+| `docs/INDEX.md` | Every file directly in `docs/`, plus one pointer row per immediate sub-directory index |
 | `docs/decisions/README.md` | The index block between the `index:start` and `index:end` markers: all ADR files — number, title, status, date |
 | `docs/design/README.md` | All design doc files — name, feature, status, date |
 
 ## Process
 
-1. List all files under `docs/` recursively
+1. List the files directly in each `docs/` directory (not recursively)
 2. Regenerate `docs/INDEX.md`:
-   - One table row per file (excluding `INDEX.md` itself)
-   - Link is relative from `docs/`
+   - One table row per same-directory file (excluding `INDEX.md` itself)
+   - One pointer row per immediate sub-directory, linking to its `INDEX.md` or `README.md`
+   - No links into deeper paths such as `decisions/0001-x.md`
    - Description is the file's first non-heading sentence, or derived from its H1
 3. Regenerate the index block in `docs/decisions/README.md` (leave the text above the markers alone):
    - One row per `NNNN-*.md` file
    - Extract status and date from the file's frontmatter metadata lines (`* Status:`, `* Date:`)
 4. Regenerate `docs/design/README.md` if any design docs exist
-5. Verify no broken links and no orphaned files
+5. Run `npm run docs:check-index` to verify scope, broken links, and unlisted files
 
 ## Format reference
 
