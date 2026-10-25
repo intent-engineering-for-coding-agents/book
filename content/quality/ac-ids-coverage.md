@@ -168,11 +168,13 @@ The unit of that check is the set of tests, because one criterion usually has se
 
 ### What the checks see
 
-At revision `aee6374`, the companion repo's `test-traceability` check fails when a non-Manual scenario has no marker and warns on orphaned markers, meaning an ID in the tests that matches no spec. Retiring `AUTH-015` without deleting its tests therefore produces a warning. The convention document also lists "a product-behavior test has no AC marker" as a CI failure, but the checker I read does not scan for untagged tests, so review has to catch them today. Promoting the orphaned-marker warning to a failure is my recommendation for teams that want retirement enforced.
+At revision `d89cc01`, the companion repo's `test-traceability` check fails when a non-Manual scenario has no marker and also when a marker names an ID that no spec carries. Retiring `AUTH-015` without deleting its tests therefore breaks the build. Earlier revisions only warned on orphaned markers, which left the green build this section argues against.
+
+A second check, `test-untagged`, warns on test files that carry neither an AC marker nor a `BASELINE`, `SANITY`, or `ARCHITECTURAL` marker. It works per file. A file with one tagged test and ten anonymous ones passes, and telling a product-behavior test from a baseline test stays a review judgment.
 
 A marker declares a reason without proving it, and `BASELINE` is the obvious home for tests nobody wants to defend. A growing `BASELINE` pile in review is the next cleanup.
 
-*Sources: intent-engineering-for-coding-agents/cli `docs/testing-convention.md` (ongoing), the `BASELINE`/`SANITY`/`ARCHITECTURAL` markers, the rule that behavior tests carry an AC marker, and the AC fidelity check layer. intent-engineering-for-coding-agents/cli `src/iec_cli/checkers/test_traceability.py` at revision `aee6374`, fail on missing marker and warn on orphaned marker. Retirement of tests with their criterion, the set-of-tests view, and the reason-comment habit are this book's synthesis.*
+*Sources: intent-engineering-for-coding-agents/cli `docs/testing-convention.md` (ongoing), the `BASELINE`/`SANITY`/`ARCHITECTURAL` markers, the rule that behavior tests carry an AC marker, and the AC fidelity check layer. intent-engineering-for-coding-agents/cli `src/iec_cli/checkers/test_traceability.py` and `test_untagged.py` at revision `d89cc01`, fail on missing and orphaned markers, warn on untagged test files. Retirement of tests with their criterion, the set-of-tests view, and the reason-comment habit are this book's synthesis.*
 
 ## A worked example
 
