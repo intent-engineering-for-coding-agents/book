@@ -49,11 +49,11 @@ A Markdown file providing project instructions to coding agents. This book uses 
 
 This book's document for investigating an open question in `docs/analysis/`. Records evidence and distinguishes observed findings from inference, with status `active` during investigation and `concluded` when findings freeze. See [Document Types](/foundation/document-types).
 
-## Behavior-Driven Development (BDD)
+## BDD (Behavior-Driven Development)
 
-A collaborative development practice using concrete examples to establish expected behavior before implementation and guide automated checks. This book borrows scenario notation from BDD without requiring a Cucumber runtime. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
+A collaborative development practice using concrete examples to establish expected behavior before implementation and guide automated checks. It grew out of teaching [TDD](#tdd-test-driven-development), and Dan North describes a story's behavior as its acceptance criteria. This book borrows scenario notation from BDD without requiring a Cucumber runtime and puts the scenarios before the tests. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
 
-*Sources: Dan North, "Introducing BDD" (originally published March 2006), behavior-first development. Cucumber, "Behaviour-Driven Development" (reviewed October 21, 2026), collaboration around examples from discovery through implementation.*
+*Sources: Dan North, "Introducing BDD" (originally published March 2006), behavior-first development, the origin in teaching TDD, and a story's behavior as its acceptance criteria. Cucumber, "Behaviour-Driven Development" (reviewed October 21, 2026), collaboration around examples from discovery through implementation.*
 
 ## BFF (Backend for Frontend)
 
