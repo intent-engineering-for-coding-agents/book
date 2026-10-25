@@ -25,13 +25,21 @@ This book uses a change-scoped definition drawn from lightweight spec frameworks
 
 ## Not test-first, not behavior-first
 
-Test-Driven Development put the test first: write a failing test, then write the code making it pass. Behavior-Driven Development (BDD) starts with examples of behavior the team discusses before implementation. Neither practice requires handwritten implementation.
+The first artifact decides what gets pinned down. A test written first against a class pins down that class: its methods, its collaborators, its shape. A scenario written first pins down what the system does for whoever uses it.
 
-In this book's Spec-Driven Development workflow, you review the proposed behavior, constraints, and acceptance criteria before asking the agent to implement them. The agent may draft code and tests, but the developer still reviews both against the agreed change.
+Test-Driven Development (TDD) puts the test first. Kent Beck's cycle is to write a failing test, write the code that makes it pass, and refactor. For a coding agent the appeal is plain, because a failing test is a signal the agent runs by itself. For a unit or a class, the fit is good.
+
+In my experience the tests TDD produces sit too close to the code being written. That fits a class. It fits a whole system less well, because the test names a structure the next refactor or the next agent session is free to change. The opening example of this chapter shows what coupling to structure costs: the agent moved validation out of the controller, and the tests asserting the old controller behavior broke.
+
+Behavior-Driven Development (BDD) came out of teaching TDD. Dan North writes that misunderstandings about TDD almost always came back to the word "test", so he moved the vocabulary to behavior. In his account a story's behavior is simply its acceptance criteria.
+
+This book puts scenarios first. You review the proposed behavior, constraints, and acceptance criteria before asking the agent to implement them. The agent drafts code and tests at the layer the [test strategy](../quality/test-strategy) names, and the developer reviews both against the agreed change.
+
+TDD stays available below the scenarios. It fits units, and where the boundary is stable it fits slice and integration tests too. Acceptance and end-to-end tests come from the scenarios, and the book leaves the use of TDD to the team.
 
 So when a tester reaches for the BDD label and braces for step definitions, the reflex is reasonable and the target is wrong. The notation stayed. The practice underneath changed.
 
-*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Dan North, "Introducing BDD" (Better Software, 2006), behavior written in business-readable scenarios. The artifact-level contrast with SDD is this book's synthesis.*
+*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Dan North, "Introducing BDD" (Better Software, 2006), misunderstandings about TDD tracing back to the word "test", and a story's behavior as its acceptance criteria. The coupling concern, the scenarios-first order, and TDD as an optional technique below the scenarios are this book's position and the author's experience, not a field finding.*
 
 ## The practical motivation
 

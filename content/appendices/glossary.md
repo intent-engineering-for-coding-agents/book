@@ -267,6 +267,12 @@ A branching model where developers integrate frequently into one shared trunk an
 
 *Sources: Paul Hammant, trunkbaseddevelopment.com (reviewed October 21, 2026), shared trunk and short-lived branches.*
 
+## TDD (Test-Driven Development)
+
+A development practice in which a failing test is written first, then the code that makes it pass, followed by refactoring. This book puts behavior scenarios before tests and treats TDD as an optional technique for units and, where the boundary is stable, slice and integration tests. See [Why Specs?](/spec-driven/why-specs#not-test-first-not-behavior-first).
+
+*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Placing TDD below the scenarios is this book's position.*
+
 ## Test-type field
 
 This book's `Test-type:` annotation in an acceptance scenario, naming the intended test category, such as `Integration`. The agent resolves the category against the project's test strategy when implementing tests. See [AC IDs and Coverage](/quality/ac-ids-coverage).
