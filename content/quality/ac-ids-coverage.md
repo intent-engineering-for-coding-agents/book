@@ -21,7 +21,7 @@ The prefix is a short uppercase abbreviation of the component or feature, usuall
 
 The ID is the contract between two files that change at different rates. The spec is rewritten during review. The tests are rewritten during implementation. Without a stable identifier, the only thing connecting them is matching prose, which is the thing that stops matching first.
 
-This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight. Its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec prescribes the scenario structure (`#### Scenario: ...`) and the `WHEN/THEN` Gherkin style, but it does not mandate an ID format, test-type annotations, or positive/negative coverage rules.
+This is an Intent Engineering convention layered on top of OpenSpec. OpenSpec is intentionally lightweight. Its FAQ states, "Lightweight. Minimal steps, minimal process. We want to get you building as quickly as possible". OpenSpec's validator requires at least one `#### Scenario: ...` per added or modified requirement, and its default schema tells the agent to write the steps as `WHEN/THEN`, but the validator does not check for them. It does not mandate an ID format, test-type annotations, or positive/negative coverage rules either.
 
 The scenario form borrows Gherkin's `WHEN/THEN` notation, not the BDD practice that notation came from (the distinction is drawn in [The Spectrum](../spec-driven/the-spectrum)). The stricter traceability and coverage rules do not come from BDD either. Those are this book's contribution, the quality layer that turns a spec from documented intent into provable behavior.
 
@@ -29,7 +29,7 @@ In the companion repo, the convention is recorded in `docs/decisions/0007-ac-id-
 
 The syntax is the easy part. A scenario written in correct Gherkin is still weak when the intent behind it is vague. Missing preconditions, ambiguous outcomes, unstated boundaries, and silent failure paths remain with perfect `Given/When/Then` formatting. Better source material produces better scenarios. Practice produces better source material. The format helps the writer think. The format does not do the thinking for them.
 
-*Sources: OpenSpec (openspec.dev) FAQ (ongoing), the lightweight `#### Scenario:` / `WHEN/THEN` structure with no mandated ID format. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` form this builds on. intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), AC ID format and `Test-type:` as a project convention enforced by checks.*
+*Sources: OpenSpec (openspec.dev) FAQ (ongoing), the lightweight approach and no mandated ID format. Fission AI, OpenSpec `schemas/spec-driven/schema.yaml` and `src/core/validation/` (read October 26, 2026, when the changelog was at 1.15.0), the default schema asking for `WHEN/THEN` scenarios and the validator requiring a scenario per added or modified requirement without checking the steps. Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` form this builds on. intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), AC ID format and `Test-type:` as a project convention enforced by checks.*
 
 ## The recommended field: `Test-type:`
 

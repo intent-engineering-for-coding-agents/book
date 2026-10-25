@@ -5,7 +5,7 @@ title: References
 
 # References
 
-*Reviewed: October 25, 2026.*
+*Reviewed: October 26, 2026.*
 
 Grouped by theme, with publication dates for fixed works and review dates for living documentation. Source descriptions identify the claim supported and the kind of evidence. Historical tool releases document the book's dated examples. Entries disclose access limitations.
 
@@ -44,7 +44,7 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 
 ## Spec-driven development
 
-- Fission AI: [OpenSpec](https://openspec.dev/), [repository](https://github.com/Fission-AI/OpenSpec), ["Concepts"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md), and ["Commands"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/commands.md) (reviewed October 22, 2026). Primary project documentation for change folders, delta specs, and synchronization into main specs. The [Stores beta guide](https://github.com/Fission-AI/OpenSpec/blob/main/docs/stores-beta/user-guide.md) (reviewed October 23, 2026) documents shared planning across repositories and the remaining task-routing and synchronization limits.
+- Fission AI: [OpenSpec](https://openspec.dev/), [repository](https://github.com/Fission-AI/OpenSpec), ["Concepts"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md), and ["Commands"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/commands.md) (reviewed October 22, 2026). Primary project documentation for change folders, delta specs, and synchronization into main specs. The default schema (`schemas/spec-driven/schema.yaml`) and validation source (`src/core/validation/`) were read on October 26, 2026 for the scenario rules. The [Stores beta guide](https://github.com/Fission-AI/OpenSpec/blob/main/docs/stores-beta/user-guide.md) (reviewed October 23, 2026) documents shared planning across repositories and the remaining task-routing and synchronization limits.
 - Fission AI: [OpenSpec FAQ](https://openspec.dev/faq/) (reviewed October 21, 2026). Primary project description of lightweight, iterative planning. The book adds its AC ID and coverage conventions.
 - GitHub: [Spec Kit repository](https://github.com/github/spec-kit) and [documentation](https://github.github.com/spec-kit/) (reviewed October 21, 2026). Primary documentation for structured specification and implementation processes. Positioning Spec Kit at one end of a formality spectrum is book synthesis.
 - LeanSpec: [project documentation](https://www.lean-spec.dev/) (reviewed October 21, 2026). Primary documentation for concise specifications maintained alongside implementation.
