@@ -138,6 +138,42 @@ A marker check counts markers, not test direction or assertions. Two tests carry
 
 *Sources: The marker-presence and two-marker thresholds follow the companion repo's checks at revision `2491a62`. The positive/negative review rule is this book's guidance.*
 
+## When a criterion dies, its tests die
+
+Every test in the suite needs a stated reason to exist. Either it carries an AC ID, or it carries a marker saying what else it is for. A test with neither is an orphan, and nobody reviewing the diff knows whether deleting it is safe.
+
+Take `AUTH-015`, withdrawn from the spec. The registry keeps the gap, and `grep -r "AUTH-015" tests/` lists every test written for it. A test tagged only with `AUTH-015` is deleted in the same PR as the spec change. A test tagged with two IDs loses one tag and stays. If a test's assertions still guard behavior the team wants, the scenario was never dead, so it comes back under a new ID.
+
+An agent handed an untagged suite finds the tests relevant to a change well enough. Names, imports, and assertions point at the right files, so for locating tests the ID is a convenience. Deletion is the harder job, because the agent has to prove a negative: no other reason keeps this test alive. The test body does not carry that reason. The agent either leaves dead tests in place until the suite is slow and full of noise, or removes the one test guarding behavior nobody wrote down.
+
+### Tests with no criterion
+
+Some tests have nothing to do with an acceptance criterion, and they still declare what they are. The companion repo's convention uses three markers: `BASELINE` for structural or coverage-threshold protection, `SANITY` for toolchain readiness, and `ARCHITECTURAL` for rules like dependency direction.
+
+```java
+@Test
+@Tag("ARCHITECTURAL")
+void domainDoesNotDependOnInfrastructure() { ... }
+```
+
+A test for a bug fix follows a stricter rule. If it proves externally visible behavior, the scenario gets written first and the test carries its ID. The test then lives and dies with that scenario. Only a test with no externally visible behavior to name gets a reason marker, and I would add the issue number or the removal condition in a comment beside it. That last habit is my suggestion, not part of the companion convention.
+
+### The criterion as yardstick
+
+The ID also gives you something to hold a changed test against. A refactoring or an agent "fixing" a red test leaves a test that passes, and passing says nothing about whether it still covers the criterion. Suppose the agent reacts to a failing test for `USR-009` by loosening the assertion to `status != 200`. The suite goes green. The scenario says 404 with `{ error: 'not found' }`, and the tag points straight at it.
+
+The companion repo names this the AC fidelity check, an agent-assisted review of whether a tagged test still proves its scenario, because a test sometimes carries the right tag and asserts the wrong thing. It is the same comparison as in [the section on flexible formats](#the-format-is-flexible-the-link-is-not), but run on every change to the test, not once at review.
+
+The unit of that check is the set of tests, because one criterion usually has several. A happy path, a boundary, an error body, and a persistence check often all carry `USR-009`. Together they have to cover every observable part of the `Then`. Removing one test during a cleanup is fine when the others still cover its part. Otherwise the registry row drops to `partial`.
+
+### What the checks see
+
+At revision `aee6374`, the companion repo's `test-traceability` check fails when a non-Manual scenario has no marker and warns on orphaned markers, meaning an ID in the tests that matches no spec. Retiring `AUTH-015` without deleting its tests therefore produces a warning. The convention document also lists "a product-behavior test has no AC marker" as a CI failure, but the checker I read does not scan for untagged tests, so review has to catch them today. Promoting the orphaned-marker warning to a failure is my recommendation for teams that want retirement enforced.
+
+A marker declares a reason without proving it, and `BASELINE` is the obvious home for tests nobody wants to defend. A growing `BASELINE` pile in review is the next cleanup.
+
+*Sources: intent-engineering-for-coding-agents/cli `docs/testing-convention.md` (ongoing), the `BASELINE`/`SANITY`/`ARCHITECTURAL` markers, the rule that behavior tests carry an AC marker, and the AC fidelity check layer. intent-engineering-for-coding-agents/cli `src/iec_cli/checkers/test_traceability.py` at revision `aee6374`, fail on missing marker and warn on orphaned marker. Retirement of tests with their criterion, the set-of-tests view, and the reason-comment habit are this book's synthesis.*
+
 ## A worked example
 
 A spec for a "delete a user" endpoint, with three scenarios:
