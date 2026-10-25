@@ -1,4 +1,4 @@
-name: iec check
+name: check
 
 on:
   push:
@@ -19,12 +19,7 @@ jobs:
         run: npm ci
       - name: Check front matter
         run: npm run docs:check-frontmatter
+      - name: Check docs index
+        run: npm run docs:check-index
       - name: Build site
         run: npm run docs:build
-      - uses: astral-sh/setup-uv@v8.1.0
-        with:
-          version: "latest"
-      - name: Install iec-cli
-        run: uv tool install git+https://github.com/intent-engineering-for-coding-agents/cli.git
-      - name: Run iec check
-        run: iec check

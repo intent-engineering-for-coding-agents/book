@@ -5,7 +5,7 @@ title: Intent Engineering for Coding Agents — Architecture
 
 # Intent Engineering for Coding Agents — Architecture
 
-Intent Engineering for Coding Agents is a VitePress site at a domain to be confirmed at launch, deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices and references `iec` throughout as live evidence.
+Intent Engineering for Coding Agents is a VitePress site at a domain to be confirmed at launch, deployed to GitHub Pages via GitHub Actions. It teaches Intent Engineering practices.
 
 This repo dogfoods its own convention: `docs/` holds project documentation; `content/` holds the book prose.
 
@@ -32,7 +32,7 @@ flowchart LR
 | Site generator | VitePress 1.x | Clean theme, Mermaid built-in, Vite-fast builds |
 | Diagrams | vitepress-plugin-mermaid | Plain text, git-diffable, renders in GitHub too |
 | Hosting | GitHub Pages | Free, git-native |
-| CI/CD | GitHub Actions | Deploys on push to `main`, runs `iec check` on PRs |
+| CI/CD | GitHub Actions | Deploys on push to `main`, runs front matter and docs index checks on pushes and PRs |
 | Package manager | npm | Standard for VitePress ecosystem |
 
 ## Directory structure
@@ -44,7 +44,7 @@ flowchart LR
 | `openspec/` | Change proposals, delta specs, tasks |
 | `.agents/` | agent instruction hub (added Phase O) |
 | `.vitepress/` | VitePress config and theme |
-| `.github/workflows/` | CI — build+deploy, iec check, front matter check |
+| `.github/workflows/` | CI — build+deploy, front matter check, docs index check |
 | `scripts/` | repo tooling — `check-frontmatter.mjs` |
 
 ## VitePress conventions
@@ -65,7 +65,7 @@ GitHub Actions (`deploy.yml`) builds on every push to `main` and deploys to GitH
 
 ## CI checks
 
-`check.yml` runs `npm run docs:check-frontmatter` first. It fails when a tracked Markdown file lacks `type` and `title`, or when `title` no longer matches the first heading. Then it installs `iec` and runs `iec check` on every push and PR. This validates that the book repo follows Intent Engineering conventions: AGENTS.md present, `docs/README.md` and `docs/INDEX.md` present, index not stale, INDEX.md links stay in scope.
+`check.yml` runs `npm run docs:check-frontmatter` first. It fails when a tracked Markdown file lacks `type` and `title`, or when `title` no longer matches the first heading. Then it runs `npm run docs:check-index` (`scripts/check-docs-index.mjs`) on every push and PR. That script fails when `AGENTS.md`, `docs/README.md`, or `docs/INDEX.md` is missing, when a `docs/` directory has no index, when an index row points at a missing file or outside its directory scope, or when a file in the directory is not listed.
 
 ## agent instruction hub
 

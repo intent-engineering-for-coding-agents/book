@@ -14,13 +14,13 @@ Every `docs/` directory has its own `INDEX.md`, and that INDEX maps **only its o
 - A **same-directory file**, e.g. `[A](a.md)` — no `/` in the path.
 - An **immediate child pointer**, e.g. `[Decisions](decisions/INDEX.md)` or `[Decisions](decisions/README.md)` — the child's own INDEX/README, nothing deeper.
 
-Anything else — `decisions/0001-x.md`, `../AGENTS.md`, `https://example.com/...` — belongs in `README.md` prose, not in the INDEX table. The CLI enforces this via the `docs-index-scope` checker (WARN).
+Anything else — `decisions/0001-x.md`, `../AGENTS.md`, `https://example.com/...` — belongs in `README.md` prose, not in the INDEX table. `npm run docs:check-index` enforces this and fails CI.
 
 The principle: documents form a hypergraph navigated by following sub-INDEX pointers. A top-level INDEX that enumerates everything below it duplicates the sub-INDEXes and rots silently.
 
 ## Two index forms
 
-A directory keeps its index in one of two places. A short README carries the index between `<!-- index:start -->` and `<!-- index:end -->` marker lines, one row per file. A directory whose README runs long, such as `docs/` with its architecture overview, keeps a separate `INDEX.md` so an agent does not read the prose to reach the map. The scope rule applies to both. If both exist, `INDEX.md` wins. `iec check` (>= 1.2.0) understands both forms.
+A directory keeps its index in one of two places. A short README carries the index between `<!-- index:start -->` and `<!-- index:end -->` marker lines, one row per file. A directory whose README runs long, such as `docs/` with its architecture overview, keeps a separate `INDEX.md` so an agent does not read the prose to reach the map. The scope rule applies to both. If both exist, `INDEX.md` wins. `npm run docs:check-index` understands both forms.
 
 ## Files to Update
 
@@ -58,7 +58,7 @@ Each entry is a table row:
 
 ## Empty directories
 
-A directory under `docs/` that holds no substantive content — only a `.gitkeep`, or nothing at all — does **not** need `README.md` or `INDEX.md`. `iec check` (>= the empty-dirs-exclusion change) skips such placeholders. Create the two files the moment the directory gets its first real file, and add the new dir's entry to `docs/INDEX.md` at the same time.
+A directory under `docs/` that holds no substantive content — only a `.gitkeep`, or nothing at all — does **not** need `README.md` or `INDEX.md`. `npm run docs:check-index` skips such placeholders. Create the two files the moment the directory gets its first real file, and add the new dir's entry to `docs/INDEX.md` at the same time.
 
 ## Why
 

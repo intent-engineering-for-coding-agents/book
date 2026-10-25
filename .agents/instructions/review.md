@@ -71,11 +71,11 @@ Source policy exception: purely navigational pages, front matter, and glossary e
 - Paragraph rhythm: are there three or more paragraphs of the same visual length in sequence? Break one of them.
 - Sentence construction (distinct from the length check above: length can vary while every sentence is built the same way): count the tells from `voice.md` — copula maxims ("X is Y"), balanced contrast pairs ("X does A. Y does B."), triple parallels. Per section: more than two copula maxims, two or more contrast pairs, or (counted across the whole chapter) three or more triple parallels is a metronome. There is also a spread-thin version: if these three shapes carry most sections, one tell here and another there, the chapter runs on one toolkit even when no section trips a count. That is the more common failure. Either pattern is symmetric prose. Send it back to be varied.
 
-### iec cross-references
+### Companion repo references
 
-- Where the chapter claims a practice is demonstrated in `iec`, verify the claim is accurate
-- Reference the correct git tag or file path; do not invent them
-- Tool positioning: are all tool mentions either in the Tooling section (last) or as one example in the body? If a tool appears more than once in the body, it is overselling. Move the extras to Tooling or cut them.
+- Where the chapter cites `iec` as a source, verify the claim against the pinned revision
+- Reference the correct revision or file path; do not invent them
+- Tool positioning: does `iec` appear only as a source attribution or one example, never as an instruction to the reader? Does any chapter carry a Tooling section? If a tool appears more than once in the body, it is overselling. Cut the extras.
 
 ## Review failure conditions
 

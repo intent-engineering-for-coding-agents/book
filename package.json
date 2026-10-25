@@ -13,7 +13,8 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "docs:check-frontmatter": "node scripts/check-frontmatter.mjs"
+    "docs:check-frontmatter": "node scripts/check-frontmatter.mjs",
+    "docs:check-index": "node scripts/check-docs-index.mjs"
   },
   "devDependencies": {
     "mermaid": "^11.16.0",
