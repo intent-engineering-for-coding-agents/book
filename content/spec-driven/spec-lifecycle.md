@@ -55,6 +55,28 @@ Inspect the resulting task list and evidence. A checked box records the agent's 
 
 *Sources: The instruction example and task-review checks are this book's workflow guidance.*
 
+## Drafting acceptance criteria from upstream material
+
+A ticket rarely arrives as acceptance criteria. It arrives as a user story, a Jobs to be Done statement, a usage scenario, or a list of requirements, and somebody has to turn it into scenarios. Some teams hand that translation to the agent. Nothing in the workflow requires the handoff.
+
+Ron Jeffries described a user story as a card, a conversation, and a confirmation. The card is a token for the requirement, and the detail travels in conversation between customer and programmers. Mike Cohn adds that details settled in conversation become tests. The agent is not part of that conversation, so the card is all it gets.
+
+Cohn calls the "so that" clause the most important part of a story, though not a mandatory one, because it shows why users want something. A Jobs to be Done statement carries the same reason when it names the job the customer hires the product to do.
+
+The risk sits in the gaps. Say a story covers a successful password reset and says nothing about an expired link. The agent writes a scenario for the expired link anyway, with a plausible status code and a plausible message, and the draft looks as authoritative as the scenarios taken from the story. Nobody asked for that behavior, and now it has an ID.
+
+Put three requests in the instruction:
+
+- Every scenario names the story, requirement, or usage scenario it came from.
+- Behavior the sources do not state goes under its own heading as an assumption or open question.
+- The agent reports contradictions between sources to the developer and does not pick a side.
+
+A developer approves the drafted scenarios before implementation starts. That approval is the independent check. When one agent context drafts the criteria, writes the code, and writes the tests, a misreading in the first step passes through the other two and the suite stays green. Ask for scenarios that cover the stated requirements and stop there, because every added permutation pushes the draft toward the [over-specification](../foundation/when-intent-engineering-fails#over-spec) the failure modes chapter describes.
+
+The critique step below runs against these scenarios and their listed assumptions.
+
+*Sources: Ron Jeffries, "Essential XP: Card, Conversation, Confirmation" (August 30, 2001), the card as a token and the conversation as the carrier of detail. Mike Cohn, "User Stories Applied" (Addison-Wesley, 2004), Introduction and Chapter 2, stories as just enough written down to prompt conversation, and details settled in conversation becoming tests. Mike Cohn, "User Story Template: What It Is and Why It Works So Well" (Mountain Goat Software, reviewed October 25, 2026), the "so that" clause as the most important part of a story. Clayton Christensen, Taddy Hall, Karen Dillon, and David Duncan, "Know Your Customers' 'Jobs to Be Done'" (Harvard Business Review, September 2016), customers hiring a product to do a job. Tying the missing conversation to the agent's input, the drafting requests, the approval step, and the independence caveat are this book's workflow guidance. Using stories, Jobs to be Done statements, and usage scenarios as inputs reflects the author's practice, not a field standard.*
+
 ## Critique before implementation
 
 Ask a critic to identify ambiguous acceptance criteria, missing failure behavior, and conflicts with the current design. Supply the ticket, draft proposal, and relevant code or documentation. Review concrete findings against those inputs before changing the spec.

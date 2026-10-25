@@ -175,6 +175,12 @@ What the developer wants an agent to build or decide, including constraints on t
 
 This book's discipline for directing coding agents through maintained project context, instructions, change-specific specs, and evidence reviewed against intent. See [Introduction](/introduction).
 
+## Jobs to be Done
+
+A framing in which a customer hires a product or service to do a job in a particular situation. In this book, a Jobs to be Done statement is one possible input from which an agent drafts acceptance criteria. See [Spec Lifecycle](/spec-driven/spec-lifecycle#drafting-acceptance-criteria-from-upstream-material).
+
+*Sources: Clayton Christensen, Taddy Hall, Karen Dillon, and David Duncan, "Know Your Customers' 'Jobs to Be Done'" (Harvard Business Review, September 2016), buying a product as hiring it to do a job.*
+
 ## LeanSpec
 
 A spec methodology and toolset emphasizing short, focused specifications maintained alongside implementation. This book draws on its small-spec discipline. See [The Spectrum](/spec-driven/the-spectrum).
@@ -268,6 +274,12 @@ This book's `Test-type:` annotation in an acceptance scenario, naming the intend
 ## TOC pattern
 
 The table-of-contents layout this book uses for `AGENTS.md`: a short entry file linking to detailed instructions with load clauses. See [AGENTS.md: The Entry Point](/agent-instructions/agents-md).
+
+## User story
+
+A short statement of a requirement, often written as "As a (role), I want (goal) so that (reason)". Ron Jeffries describes the story as a card that stands for the requirement, with the detail carried by conversation and confirmed by acceptance tests. The role, feature, and reason template is known as the Connextra format. See [Spec Lifecycle](/spec-driven/spec-lifecycle#drafting-acceptance-criteria-from-upstream-material).
+
+*Sources: Ron Jeffries, "Essential XP: Card, Conversation, Confirmation" (August 30, 2001), card, conversation, and confirmation. Mike Cohn, "User Story Template: What It Is and Why It Works So Well" (reviewed October 25, 2026), the role, goal, and reason template. Agile Alliance, "User Story Template" (reviewed October 25, 2026), the Connextra format and its 2001 origin. Seb Rose, "User stories and BDD (part #1)" (Cucumber blog, October 31, 2019), the template credited to Rachel Davies and spread through Cohn's books.*
 
 ## Walking skeleton
 

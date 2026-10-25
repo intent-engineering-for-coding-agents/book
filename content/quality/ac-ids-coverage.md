@@ -210,7 +210,7 @@ Three scenarios, three IDs, three `Test-type:` fields. `USR` is the prefix becau
 
 What is unusual here is not the structure. Acceptance scenarios in this form predate Intent Engineering by twenty years. What is unusual is the strictness. The ID is in the scenario heading and tagged on the test, and both are checked by a tool. The strictness keeps the link intact in an agentic codebase, where everything changes faster than anyone tracks by hand.
 
-A generated scenario should therefore be treated as a draft, not a verdict. When the scenario is too weak to write a good test from, the problem is upstream in the acceptance criteria, the missing context, or the review discipline around them. The syntax did its job. The intent did not.
+A generated scenario should therefore be treated as a draft, not a verdict ([Spec Lifecycle](../spec-driven/spec-lifecycle#drafting-acceptance-criteria-from-upstream-material) lists the conditions for letting an agent draft them). When the scenario is too weak to write a good test from, the problem is upstream in the acceptance criteria, the missing context, or the review discipline around them. The syntax did its job. The intent did not.
 
 *Sources: Cucumber "Gherkin reference" (ongoing), the `Given/When/Then` acceptance-scenario form. intent-engineering-for-coding-agents/cli `docs/decisions/0007-ac-id-and-test-type-convention.md` (ongoing), strict AC ID and `Test-type:` pairing as the companion-repo convention.*
 
