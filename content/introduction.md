@@ -27,7 +27,7 @@ The phrase "intent engineering" did not start here. `intentengineering.dev` uses
 
 ## The model and the agent harness
 
-A model does not read your repository merely because you ask about a file. The coding agent needs software around the model to retrieve the file and return its contents as input.
+A model generates text, code, and requests for tool calls from the input supplied to it. Generating a shell command does not execute the command. Reading a repository file, changing code on disk, or running a test requires software around the model to perform the action and return the result.
 
 That software is called an agent harness, also called an AI harness. In its April 2026 architecture description, Anthropic describes the harness as the loop which calls the model and routes its tool calls to the relevant infrastructure. The model processes the supplied context and requests actions. The harness connects those requests to tools and returns their results for the next model call.
 
