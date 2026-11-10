@@ -25,6 +25,24 @@ The phrase "intent engineering" did not start here. `intentengineering.dev` uses
 
 *Sources: intentengineering.dev (ongoing), prior use of "intent engineering" in an agent-alignment sense. Don Johnson, "Intent-Driven Development: Define the System Before You Write the Code" (DEV, December 4, 2025), intent-driven development as specification-first software design. Vishal Mysore, "What is Intent Driven Development?" (Medium, March 9, 2026), intent-driven development as outcome-and-constraint framing for AI-assisted execution. intent-driven-development.com (ongoing), intent-above-implementation framing in current workflow language.*
 
+## The model and the agent harness
+
+A model does not read your repository merely because you ask about a file. The coding agent needs software around the model to retrieve the file and return its contents as input.
+
+That software is called an agent harness, also called an AI harness. In its April 2026 architecture description, Anthropic describes the harness as the loop which calls the model and routes its tool calls to the relevant infrastructure. The model processes the supplied context and requests actions. The harness connects those requests to tools and returns their results for the next model call.
+
+As a limited analogy, think of the model as the brain and the harness with its tools and execution environment as the body. The same model works in different bodies where the integrations support it, with different tool access and context handling. The harness coordinates the work, while the execution environment performs actions such as running commands.
+
+Consider a test run. The model requests a terminal command. The harness routes the request to a terminal tool and returns the command's output to the model. The model then chooses a next step, such as inspecting a failed assertion or proposing a patch. Available tools, context handling, and approval controls depend on the implementation and configuration.
+
+*Sources: Anthropic, "Scaling Managed Agents: Decoupling the brain from the hands" (April 8, 2026), model-call loop, tool routing, and context management in its architecture. The test run is illustrative.*
+
+This book applies the distinction to project controls. A rule in `AGENTS.md` supplies guidance when loaded into context. A file-access restriction needs enforcement by the tool or execution environment. A test supplies feedback only after execution and delivery of the result. Maintaining instructions costs review effort, while enforcing a restriction requires configuring and maintaining the execution path.
+
+The practical question is which control your change needs: guidance the model reads, a restriction the environment enforces, or evidence the reviewer inspects.
+
+*Sources: The application to project guidance, enforcement, and review evidence is this book's synthesis.*
+
 ## Why this is more than prompt engineering
 
 Prompt engineering works inside one exchange. Intent Engineering treats the exchange as one step in a longer delivery system. The agent receives versioned context before implementation, a change-sized target during implementation, and evidence plus review after implementation.

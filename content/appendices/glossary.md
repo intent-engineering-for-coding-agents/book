@@ -31,6 +31,12 @@ A record of one architectural decision, its context, and its consequences. Follo
 
 *Sources: Michael Nygard, "Documenting Architecture Decisions" (November 15, 2011), decision-record structure and supersession.*
 
+## Agent harness (AI harness)
+
+Software around a model which runs the model-and-tool loop, routes requested actions to tools, and returns results as context for subsequent model calls. Tool access, context management, and approval controls depend on the implementation and configuration. See [The model and the agent harness](/introduction#the-model-and-the-agent-harness).
+
+*Sources: Anthropic, "Scaling Managed Agents: Decoupling the brain from the hands" (April 8, 2026), harness loop, tool routing, and context management in its architecture.*
+
 ## Agent instructions
 
 This book's collective term for `AGENTS.md`, instruction files, and skills in the `.agents/` hub. See [Agent Instructions](/agent-instructions/).
