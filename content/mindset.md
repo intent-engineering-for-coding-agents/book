@@ -71,6 +71,16 @@ The inversion still feels odd: developers used to protect the code because writi
 
 Code without documented intent preserves old decisions without their rationale. The next agent sees the current shape, copies it, and turns an old compromise into the default for the next change.
 
+## Old practices, higher stakes
+
+None of this requires rebuilding how your team works. The repo, the ticket system, the roles, and the review process you had before coding agents still do their jobs. I treat a coding agent as an automation tool and a sparring partner. Written requirements, design records, acceptance criteria, and review all predate the agent.
+
+What changed is the price of skipping them. An agent implements an unclear request as fast as a clear one.
+
+I would not spend much energy on the taxonomy either. Whatever your team calls its documents (product spec, feature spec, change spec), they are files in a repo. The names matter less than whether the current files are accurate and whether the agent loads them.
+
+One habit does need to change. A change proposal is easy to read as a plan for code and configuration files. The change covers every source file, and documentation is a source file. If a change moves a module boundary and the design doc under `docs/` still shows the old one, the change is unfinished, however green the build is.
+
 ## One stack at a time
 
 If your system has a front end, a BFF, and a back end, those are different working contexts. A front-end change should not drag in every back-end detail. A back-end change should not pull a component library into the session. These are pragmatic scope rules. Combine every stack into one task, and the agent starts defining limits you should have scoped out.

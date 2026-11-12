@@ -100,6 +100,27 @@ The same dial governs how you stage the change, not only which framework you rea
 
 *Sources: Rick Hightower, "Agentic Coding: GSD vs Spec Kit vs OpenSpec vs Taskmaster AI" (February 27, 2026), the formality-to-risk tradeoffs that distinguish the SDD tools across the spectrum.*
 
+## Keep the framework replaceable
+
+Ask one more question before you adopt a framework: what does leaving cost? I treat a low exit cost as a requirement for an SDD framework, on the same footing as vendor independence for the agent. If the acceptance criteria only make sense inside one tool, replacing the tool means rewriting them.
+
+Leaving is never free, and I would not make full portability an ultimatum. You lose the framework's validator and archive command and have to replace them with house rules. The aim is a migration you are able to write down as a short list of file moves before you commit to the tool.
+
+Four checks cover most of the answer:
+
+- Every artifact the framework writes is plain text in your repo, readable without the tool.
+- Durable records sit apart from work in progress, so you know which files to carry over.
+- Acceptance criteria use a notation another tool or a plain agent reads, such as Gherkin-style `WHEN/THEN`.
+- The design and the decisions live in `docs/`, outside the framework's directory.
+
+OpenSpec passes the first three by layout. The accumulated criteria are Markdown under `openspec/specs/` and the change history is Markdown under `openspec/changes/archive/`. Both move to a directory such as `docs/acceptance/` with `git mv`. Test links hold after the move because the AC IDs are text in the scenarios, so no tool has to resolve them.
+
+The fourth check is yours. OpenSpec's sync and archive operations update `openspec/specs/` and the archive folder, and in my use they have never edited a file under `docs/`. The rule keeping `docs/` current belongs in your agent instructions, and [Spec Lifecycle](./spec-lifecycle#the-change-includes-the-docs) shows one. A team whose design record exists only inside one framework's folders has made the framework the source of truth.
+
+I have not run this test against Spec-Kit, BMAD Method, or the other frameworks, so apply the four checks yourself before choosing one. I expect most of them to accept a docs-update rule in the agent instructions, though I have not tested the expectation.
+
+*Sources: Fission AI, OpenSpec "Concepts" (reviewed October 22, 2026), delta-spec sync into the main specs and the archive folder. The exit-cost requirement, the four checks, and the migration sketch are this book's synthesis. The remark on `docs/` reports the author's use of OpenSpec during 2026, not a documented guarantee.*
+
 ## The trade-off
 
 More formality means more audit trail, better traceability, and less room for improvisation. It also means more upfront time, more overhead per change, and more places for the process to become theater if nobody tends it.

@@ -17,6 +17,8 @@ This chapter covers one narrow extension of verification: give important documen
 
 A release should leave the codebase ready for the next agent session. This chapter covers a cheap part of that work: identifying documents that became suspect after the source moved.
 
+Prevention comes first. [Spec Lifecycle](../spec-driven/spec-lifecycle#the-change-includes-the-docs) puts the docs update inside the change, as tasks in the same pull request as the code. The tripwire here catches the documents that rule missed.
+
 *Sources: The release-to-next-session boundary and documentation tripwire are this book's workflow synthesis, informed by the author's PR-review examples above.*
 
 ## The asymmetry

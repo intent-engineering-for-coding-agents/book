@@ -35,6 +35,8 @@ This checklist is OpenSpec-first because the book is OpenSpec-first. The portabl
 - [ ] For the first change, create a proposal in `openspec/changes/<slug>/` with `proposal.md`, a delta spec under `specs/`, and `tasks.md` (add `design.md` if the change requires technical design decisions)
 - [ ] Spec scenarios have AC IDs in bracket format (`[PREFIX-NNN]`) and `Test-type:` fields
 - [ ] Spec-eligibility threshold documented in `AGENTS.md`: what change earns a spec, what does not
+- [ ] Agent instructions tell the agent to list affected `docs/` files in the task list and update them in the same PR as the code. The spec framework will not do this for you
+- [ ] Exit path written down: which files move where if the team replaces the spec framework. See [The Spectrum](/spec-driven/the-spectrum#keep-the-framework-replaceable)
 - [ ] For the ticket-based team workflow, each ticket has one proposal named with its ticket identifier
 - [ ] Complete the ticket only after verification, integration, and proposal archiving. Create the next proposal when its ticket starts
 

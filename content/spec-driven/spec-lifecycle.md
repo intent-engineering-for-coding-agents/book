@@ -85,6 +85,27 @@ If you use a separate agent session, choose its inputs explicitly. A fresh sessi
 
 *Sources: The critique inputs and effort tradeoff are this book's workflow guidance.*
 
+## The change includes the docs
+
+Most developers read a change proposal as a plan for code and configuration. The proposal covers every source file the change makes wrong, and the documents under `docs/` are source files. A change moving validation out of the controller also changes the design doc describing where validation runs.
+
+OpenSpec will not do this part for you. Its sync and archive operations write to `openspec/specs/` and `openspec/changes/archive/`, and in my use they leave `docs/` alone. Put the rule in your agent instructions:
+
+```markdown
+- In `tasks.md`, list the files under `docs/` this change makes inaccurate, next to the code tasks.
+- Update those files in the same pull request as the code.
+- Propose a new ADR when the change introduces or reverses a design decision. Do not edit an accepted ADR.
+- Before archiving, confirm every docs task is done or recorded as a follow-up with an owner.
+```
+
+Keeping the docs edit in the same PR puts the changed paragraph of the design doc in the diff, beside the code implementing it. A reviewer reads a prose diff quickly and spots a boundary the team never agreed to move. Waiting until archive puts the edit after code approval, when skipping is easiest.
+
+The rule costs review time on every behavioral change, and the agent's docs edit needs the same scrutiny as its code. [Intent Engineering and the SDLC](../foundation/intent-engineering-and-the-sdlc#maintenance-synchronize-engineering-memory) sets the limit on letting an agent rewrite the system record.
+
+Only the last line of the rule names an archive step. Replace the framework and the other three lines carry over unchanged, which is most of what [keeping the framework replaceable](./the-spectrum#keep-the-framework-replaceable) asks for.
+
+*Sources: Fission AI, ["Concepts"](https://github.com/Fission-AI/OpenSpec/blob/main/docs/concepts.md) (reviewed October 22, 2026), sync and archive targets inside `openspec/`. The docs-in-the-change rule and the instruction example are this book's workflow guidance. The remark on `docs/` reports the author's use of OpenSpec during 2026, not a documented guarantee.*
+
 ## Archive before completing the ticket
 
 In the author's team workflow, a ticket is complete only when the implementation has been verified and integrated and the change proposal is archived. Keep the ticket open while any of those steps remains unfinished. Archive status alone is not evidence of correct behavior.
