@@ -106,6 +106,5 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 
 ## Evidence-first verification sources
 
-- Flemming Nørnberg Larsen: Cliewen decision 019, "Use spec-driven development with evidence-first verification" (accepted November 2, 2026, reviewed November 12, 2026). Author-supplied project decision, held in the Cliewen repository at `docs/decisions/019-evidence-first-verification.md`. Primary provenance for this book's workflow framing, not independent evidence of effectiveness.
 - Agile Alliance: ["Acceptance Test Driven Development"](https://agilealliance.org/glossary/atdd/) (reviewed November 12, 2026). Practitioner-organization definition of collaboration and acceptance tests before implementation.
 - Stryker: ["Mutant states and metrics"](https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/) (reviewed November 12, 2026). Primary tool documentation for mutant outcomes and mutation-score calculation.
