@@ -69,6 +69,10 @@ The current tools demonstrate those controls. They do not define them.
 
 *Sources: OpenSpec (openspec.dev), change-folder and delta-spec structure used throughout this book.*
 
+For change delivery, this book uses [spec-driven development with evidence-first verification](./spec-driven/why-specs#spec-driven-development-with-evidence-first-verification): agree on expected behavior and its verification before implementation, then develop and check small tasks. Review whether tests detect relevant faults and maintain them as requirements change. This is our descriptive name for the workflow.
+
+*Sources: The workflow name and obligations are this book's synthesis, developed in the author's Cliewen decision 019.*
+
 ## What to expect
 
 The book is organized around four topics. The first two give the agent durable context. The last two pin a specific change and verify the generated code met the target.

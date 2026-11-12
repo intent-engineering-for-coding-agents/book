@@ -17,7 +17,7 @@ None of this is perfectionism. The minimum bar is automated evidence that the im
 
 ## The bar a test has to clear
 
-A test counts as evidence when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. My favorite check is crude but honest: open the spec, pick a scenario, break the implementation on purpose, and run the suite. If everything stays green, the tests never exercise that scenario.
+A test counts as evidence when it would fail if the implementation diverged from the spec. Otherwise, it is decoration. My favorite check is crude but honest: open the spec, pick a scenario, break the implementation on purpose, and run the suite. If everything stays green, inspect whether the tests reach the changed behavior and assert the required outcome.
 
 I also distrust a complex implementation with one positive test and no negative paths. To find out how the code fails, I have to read the implementation and work out which tests are missing. That takes time, and I might misunderstand the behavior and write the new test against the wrong assumption. Worse is a simple behavior buried under pages of mocks and test setup. At that point I do not only question the test. Code that takes more effort to fake than to execute is often asking for a redesign.
 
@@ -28,6 +28,22 @@ Most suites contain a mix of evidence and decoration, and mutation testing helps
 Stop measuring "is there a test for this line?" Start measuring "would a wrong implementation be caught?"
 
 *Sources: Jia and Harman, "An Analysis and Survey of the Development of Mutation Testing" (IEEE TSE, 2011), mutation testing as an established technique for detecting tests that assert too little. ThoughtWorks, Technology Radar Vol 34 (April 2026), mutation testing recommended as a feedback control suited to agentic delivery.*
+
+## Checking assertion effectiveness
+
+Evidence-first verification requires looking at what makes a test fail. For the upload example, temporarily remove the size guard and run the oversized-file test. A rejection assertion should fail because the application accepted the file. A missing dependency or syntax error establishes nothing about that assertion.
+
+Mutation testing automates small code changes and reruns tests against them. Jia and Harman's survey describes this established technique and its limits, including equivalent mutants whose observable behavior is unchanged. Use mutation testing as one method for evaluating test effectiveness within this book's workflow. Assertion review and targeted controlled faults also belong here.
+
+Inspect the failure cause before recording a mutation as evidence for an acceptance criterion. Stryker's reporting documentation distinguishes killed mutants from compile and runtime errors, and counts timeouts separately within its detected total. A score alone therefore does not tell a reviewer which behavioral assertion failed.
+
+Start with changed behavior and faults relevant to its criteria. Repeated test runs and investigation of surviving mutants cost time. Even a high mutation score leaves open whether the spec omitted a requirement or the generated mutations missed a relevant fault.
+
+*Sources: Jia and Harman, "An Analysis and Survey of the Development of Mutation Testing" (2011), mutation analysis and equivalent mutants; Stryker, "Mutant states and metrics" (reviewed November 12, 2026), result categories and score calculation. Fault selection, inspection of the failure cause, and the upload example are this book's verification guidance.*
+
+Record the tested revision, the fault introduced, and the failing assertion alongside the criterion. Restore the implementation and rerun the relevant checks. When a requirement changes, review those records and tests together before reusing old evidence.
+
+*Sources: The record and maintenance procedure is this book's evidence-first verification workflow.*
 
 ## Paths, not lines
 

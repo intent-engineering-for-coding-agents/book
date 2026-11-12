@@ -103,3 +103,9 @@ Grouped by theme, with publication dates for fixed works and review dates for li
 - OWASP: [foundation site](https://owasp.org/) and [OWASP Top 10](https://owasp.org/projects/top-ten) (reviewed October 21, 2026). Primary security resources. The Top 10 project identifies *2025* as its current released edition and describes an awareness document about critical web application risks.
 - OWASP: [Top 10 for Large Language Model Applications](https://owasp.org/projects/top-10-for-large-language-model-applications) (reviewed October 21, 2026). Primary project documentation for the *2025* risk list, including LLM01: Prompt Injection.
 - Simon Willison: ["Prompt injection attacks against GPT-3"](https://simonwillison.net/2022/Sep/12/prompt-injection/). *September 12, 2022*. Original proposal of the term "prompt injection", discussing Riley Goodside's attack examples.
+
+## Evidence-first verification sources
+
+- Flemming Nørnberg Larsen: Cliewen decision 019, "Use spec-driven development with evidence-first verification" (accepted November 2, 2026, reviewed November 12, 2026). Author-supplied project decision, held in the Cliewen repository at `docs/decisions/019-evidence-first-verification.md`. Primary provenance for this book's workflow framing, not independent evidence of effectiveness.
+- Agile Alliance: ["Acceptance Test Driven Development"](https://agilealliance.org/glossary/atdd/) (reviewed November 12, 2026). Practitioner-organization definition of collaboration and acceptance tests before implementation.
+- Stryker: ["Mutant states and metrics"](https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/) (reviewed November 12, 2026). Primary tool documentation for mutant outcomes and mutation-score calculation.

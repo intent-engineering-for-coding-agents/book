@@ -23,23 +23,39 @@ This book uses a change-scoped definition drawn from lightweight spec frameworks
 
 *Sources: Fission AI, OpenSpec, change proposals and scenario structure. LeanSpec, concise change-scoped specifications. The ticket boundary and test-evidence rule are this book's workflow guidance.*
 
-## Not test-first, not behavior-first
+## Spec-driven development with evidence-first verification
 
-The first artifact decides what gets pinned down. A test written first against a class pins down that class: its methods, its collaborators, its shape. A scenario written first pins down what the system does for whoever uses it.
+Before the agent edits production code, agree on the expected behavior and how you will check it. This book calls that approach spec-driven development with evidence-first verification. The phrase describes our workflow, rather than a standardized method.
 
-Test-Driven Development (TDD) puts the test first. Kent Beck's cycle is to write a failing test, write the code that makes it pass, and refactor. For a coding agent the appeal is plain, because a failing test is a signal the agent runs by itself. For a unit or a class, the fit is good.
+Write acceptance criteria with relevant positive, negative, and boundary cases. Identify the observations needed for acceptance, including manual review where automation falls short. Executable tests need not exist yet. Revise the criteria and verification plan when new information changes the requirement.
 
-In my experience the tests TDD produces sit too close to the code being written. That fits a class. It fits a whole system less well, because the test names a structure the next refactor or the next agent session is free to change. The opening example of this chapter shows what coupling to structure costs: the agent moved validation out of the controller, and the tests asserting the old controller behavior broke.
+Develop code and tests in small tasks, with a concrete completion check before moving on. Tests belong before, alongside, or after the corresponding production edits according to the task. Review their assertions against the accepted requirement independently of the implementation. Preserve valid behavioral assertions through refactoring, update them when accepted behavior changes, and retire them only when the corresponding obligation ends.
 
-Behavior-Driven Development (BDD) came out of teaching TDD. Dan North writes that misunderstandings about TDD almost always came back to the word "test", so he moved the vocabulary to behavior. In his account a story's behavior is simply its acceptance criteria.
+Planning a check does not verify the implementation. Run it against the relevant revision and inspect whether the result supports acceptance. [Tests as Evidence, Not Ritual](../quality/tests-as-evidence) covers checking whether assertions detect relevant faults, including mutation testing. This workflow costs time in reviewing assertions and maintaining evidence even when every test passes.
 
-This book puts scenarios first. You review the proposed behavior, constraints, and acceptance criteria before asking the agent to implement them. The agent drafts code and tests at the layer the [test strategy](../quality/test-strategy) names, and the developer reviews both against the agreed change.
+*Sources: The name and workflow are this book's approach, adapted from the author's Cliewen decision 019, "Use spec-driven development with evidence-first verification" (accepted November 2, 2026).*
 
-TDD stays available below the scenarios. It fits units, and where the boundary is stable it fits slice and integration tests too. Acceptance and end-to-end tests come from the scenarios, and the book leaves the use of TDD to the team.
+### BDD and ATDD as candidates
 
-So when a tester reaches for the BDD label and braces for step definitions, the reflex is reasonable and the target is wrong. The notation stayed. The practice underneath changed.
+Behavior-Driven Development (BDD) is a good candidate for agreeing on behavior before implementation. Dan North describes a story's behavior through its acceptance criteria and develops examples into executable scenarios. Use those conversations to expose missing cases before an agent turns an incomplete requirement into code.
 
-*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Dan North, "Introducing BDD" (Better Software, 2006), misunderstandings about TDD tracing back to the word "test", and a story's behavior as its acceptance criteria. The coupling concern, the scenarios-first order, and TDD as an optional technique below the scenarios are this book's position and the author's experience, not a field finding.*
+Acceptance Test-Driven Development (ATDD) is another good candidate. Agile Alliance describes collaboration among customer, development, and testing perspectives to define acceptance tests before implementation. That fits the early agreement on verification we want here. Adopting the full practice involves those perspectives, beyond asking an agent to generate tests from a spec.
+
+This book leaves the choice to the team. BDD and ATDD help establish what acceptance means. The evidence review still has to examine whether the resulting checks detect wrong behavior.
+
+*Sources: Dan North, "Introducing BDD" (2006), acceptance criteria expressed as executable behavior scenarios; Agile Alliance, "Acceptance Test Driven Development" (reviewed November 12, 2026), collaborative definition of acceptance tests before implementation. Their suitability for this workflow is the author's recommendation.*
+
+### Where TDD fits
+
+Test-Driven Development (TDD) uses a failing test to guide the next implementation step, followed by refactoring. Kent Beck describes this cycle in "Test-Driven Development: By Example".
+
+I find unit-level TDD too low-level as the starting point for directing coding agents. It puts my attention on classes, functions, and internal interfaces before we have agreed on the system's behavior. ATDD fits how I want to work: agree on acceptance behavior first, then develop the implementation and its supporting tests.
+
+The agent works out the internal structure within the project's architectural constraints. Unit tests still have a place in the [test strategy](../quality/test-strategy). Tests tied to a particular class layout need scrutiny during refactoring, though that coupling is a test-design choice, not a defining property of TDD.
+
+This book leaves the order of executable test and production edits open. A team using ATDD agrees on acceptance tests before implementation without making every internal function the subject of a mandatory test-first cycle. Review still needs to establish whether the completed change meets the accepted behavior.
+
+*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle; Agile Alliance, "Acceptance Test Driven Development" (reviewed November 12, 2026), acceptance tests defined before implementation from the user's perspective. The preference against unit-level TDD as the starting point for coding agents is the author's position. Test-order freedom is this book's workflow choice.*
 
 ## The practical motivation
 

@@ -55,9 +55,15 @@ A Markdown file providing project instructions to coding agents. This book uses 
 
 This book's document for investigating an open question in `docs/analysis/`. Records evidence and distinguishes observed findings from inference, with status `active` during investigation and `concluded` when findings freeze. See [Document Types](/foundation/document-types).
 
+## ATDD (Acceptance Test-Driven Development)
+
+A collaborative practice bringing customer, development, and testing perspectives together to define acceptance tests before implementation. This book recommends it as a candidate for early agreement on acceptance and verification. See [Why Specs?](/spec-driven/why-specs#bdd-and-atdd-as-candidates).
+
+*Sources: Agile Alliance, "Acceptance Test Driven Development" (reviewed November 12, 2026), collaboration and acceptance-test definition before implementation.*
+
 ## BDD (Behavior-Driven Development)
 
-A collaborative development practice using concrete examples to establish expected behavior before implementation and guide automated checks. It grew out of teaching [TDD](#tdd-test-driven-development), and Dan North describes a story's behavior as its acceptance criteria. This book borrows scenario notation from BDD without requiring a Cucumber runtime and puts the scenarios before the tests. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
+A collaborative development practice using concrete examples to establish expected behavior before implementation and guide automated checks. It grew out of teaching [TDD](#tdd-test-driven-development), and Dan North describes a story's behavior as its acceptance criteria. This book recommends BDD as a candidate for agreeing on behavior and acceptance scenarios before an agent implements a change. See [Gherkin](#gherkin) and [The Spectrum](/spec-driven/the-spectrum).
 
 *Sources: Dan North, "Introducing BDD" (originally published March 2006), behavior-first development, the origin in teaching TDD, and a story's behavior as its acceptance criteria. Cucumber, "Behaviour-Driven Development" (reviewed October 21, 2026), collaboration around examples from discovery through implementation.*
 
@@ -130,6 +136,10 @@ This book's term for durable project knowledge available across development sess
 ## Evidence
 
 A test, review result, or other check that would fail if the implementation diverged from the spec. A test that still passes with the guarded behavior removed is decoration. In this book's definition of done, approved intent needs evidence, and an AC counts as covered once a reviewer has checked that the tagged assertions match the scenario. See [Tests as Evidence, Not Ritual](/quality/tests-as-evidence).
+
+## Evidence-first verification
+
+This book's workflow for defining expected behavior and how to verify it before implementation, then developing and checking small tasks. Tests are reviewed for detection of relevant faults and maintained against accepted requirements, without requiring a particular order of test and production edits. See [Why Specs?](/spec-driven/why-specs#spec-driven-development-with-evidence-first-verification).
 
 ## Front matter
 
@@ -215,9 +225,9 @@ A protocol connecting AI applications to servers exposing tools, resources, and 
 
 ## Mutation testing
 
-Evaluating tests by introducing small changes to the code and checking whether tests fail. A surviving mutant warrants investigation: the tests missed the change, or the mutation preserved observable behavior. See [Tests as Evidence, Not Ritual](/quality/tests-as-evidence).
+Evaluating test effectiveness by introducing small code changes, called mutants, and checking whether tests detect them. A surviving mutant warrants investigation: the tests missed the change, or the mutation preserved observable behavior. This book uses mutation testing as one method within [evidence-first verification](#evidence-first-verification), with the practical procedure in [Checking assertion effectiveness](/quality/tests-as-evidence#checking-assertion-effectiveness).
 
-*Sources: Yue Jia and Mark Harman, "An Analysis and Survey of the Development of Mutation Testing" (2011), mutants, detection, and equivalent mutations.*
+*Sources: Yue Jia and Mark Harman, "An Analysis and Survey of the Development of Mutation Testing" (2011), mutants, detection, and equivalent mutations. Its role in evidence-first verification is this book's workflow choice.*
 
 ## OpenSpec
 
@@ -275,9 +285,9 @@ A branching model where developers integrate frequently into one shared trunk an
 
 ## TDD (Test-Driven Development)
 
-A development practice in which a failing test is written first, then the code that makes it pass, followed by refactoring. This book puts behavior scenarios before tests and treats TDD as an optional technique for units and, where the boundary is stable, slice and integration tests. See [Why Specs?](/spec-driven/why-specs#not-test-first-not-behavior-first).
+A development practice in which a failing test is written first, then the code that makes it pass, followed by refactoring. The author prefers acceptance-level direction for coding agents over unit-level TDD, which starts from tests for individual classes, functions, or methods. This book leaves executable test order open and recommends BDD and ATDD as candidates for early acceptance planning. See [Why Specs?](/spec-driven/why-specs#where-tdd-fits).
 
-*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. Placing TDD below the scenarios is this book's position.*
+*Sources: Kent Beck, "Test-Driven Development: By Example" (2002), the test-first cycle. The preference for acceptance-level direction over unit-level TDD is the author's position.*
 
 ## Test-type field
 
