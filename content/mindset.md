@@ -29,6 +29,14 @@ Treating the agent as magic means assuming understanding that is not there. Trea
 
 Give the agent a vague instruction and it fills the gap itself, usually wrong. Show it an old pattern in the codebase and it copies that pattern forward, stale conventions included. An architecture rule that only ever existed in a meeting never reaches the agent at all.
 
+## The senior nobody onboarded
+
+I think of a coding agent as an experienced senior developer who has seen most things and has never seen your system. Such a colleague is a good sparring partner and still gets things wrong, as the rest of us do. Hand them a loosely worded task in a messy codebase with missing or outdated documentation and they struggle. A new hire or an outside consultant struggles in the same place for the same reason.
+
+For a person, we run an onboarding: pairing sessions, questions across the desk, corrections in review. An agent gets none of this. In current practice each session starts from what the repo and the instructions give the agent, and last week's corrections are gone unless somebody wrote them into a file.
+
+So the written record is the onboarding. Decisions, constraints, and conventions under `docs/` let a new session start changing the system without guessing at them. The same files shorten the first weeks for the next consultant or new hire, which makes the effort easier to defend to a team skeptical of writing documents for a tool.
+
 ## The mindset shift
 
 The old habit is task language: build this endpoint, fix this bug, refactor this module.
@@ -65,7 +73,7 @@ Readable is not enough when the artifact does not enforce itself. The stronger r
 
 The most uncomfortable part of this mindset is writing down what the product needs before the implementation lands.
 
-Not a huge design document. Not waterfall cosplay. Prototypes need less documentation than a fully populated module. But do not hide behind "the code speaks for itself". It will not tell the next developer which choice mattered, which restriction was non-negotiable, or why the obvious shortcut was rejected.
+Not a huge design document. Not waterfall cosplay. Prototypes need less documentation than a fully populated module. But do not hide behind "the code speaks for itself". Code shows how the system behaves today and nothing about how the team arrived there. It will not tell the next developer which choice mattered, which restriction was non-negotiable, or why the obvious shortcut was rejected.
 
 The inversion still feels odd: developers used to protect the code because writing it was expensive. Now the expensive part is the decision, the checks, and the shared understanding of where the change fits.
 
