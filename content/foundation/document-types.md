@@ -112,7 +112,7 @@ Point the agent at the analysis index before it starts an investigation. A concl
 
 `skeleton.md` exists to get a brownfield repo into the rest of the taxonomy. This book uses it as a first pass: reverse-engineered structure, visible business rules, recovered constraints, and the first draft of decisions nobody had written down.
 
-That gives it a lifecycle: live while the brownfield recovery is in progress, retired once the stable findings have been distilled into the permanent `docs/` set. [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield) works out the mechanics.
+That gives it a lifecycle: live while the brownfield recovery is in progress, retired once the stable findings have been distilled into the durable `docs/` set. [Brownfield vs Greenfield](/foundation/brownfield-vs-greenfield) works out the mechanics.
 
 *Sources: Schwab, "AI as Your Legacy Code Archaeologist," Caimito blog (February 7, 2026), agents extracting structure and business rules from legacy code. The `skeleton.md` lifecycle framing is this book's synthesis.*
 
@@ -170,12 +170,12 @@ Change specs move to `openspec/changes/archive/` after the implementation is ver
 
 | Type | Lifespan | What that means in practice |
 |---|---|---|
-| Content documents | Permanent, updated | Write and evolve in place. No lifecycle or size constraints |
-| README files with an embedded index | Permanent, updated | Opening lines written for readers on Git hosts. The index rows change with every file added, renamed, or removed in the directory |
+| Content documents | Durable, updated | Write and evolve in place. No lifecycle or size constraints |
+| README files with an embedded index | Durable, updated | Opening lines written for readers on Git hosts. The index rows change with every file added, renamed, or removed in the directory |
 | Analysis documents | Snapshot, frozen once concluded | `active` while the work runs, then `concluded`. New evidence goes into a new analysis that supersedes the old one |
 | Design docs | Preference-dependent | Write-and-forget, or keep current. Pick one and apply it consistently. |
-| ADRs | Permanent, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
-| `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into permanent `docs/`, then archive, remove, or mark as historical. |
+| ADRs | Durable, decision frozen at accepted | Proposed: freely editable. Accepted: decision frozen. Reversal = new ADR. Supporting edits need an amendment record. |
+| `skeleton.md` | Temporary bootstrap, then historical or retired | Live only during brownfield recovery. Distill stable findings into durable `docs/`, then archive, remove, or mark as historical. |
 | Specs | Active during the change, then archived | Move the change folder to the archive after verification and integration |
 
 A team that grasps the lifespan column has the practice. A team that only learns the directory names ends up with superseded specs in the wrong place and half-live design notes nobody trusts.

@@ -47,7 +47,7 @@ A unified `openspec/` across stacks leaves the agent to sort through specs for t
 
 ## Front-end context belongs outside the stack spec
 
-The spec pattern for front-end work is identical to the pattern for back-end work. What changes is the permanent context the agent reads before implementation.
+The spec pattern for front-end work is identical to the pattern for back-end work. What changes is the durable context the agent reads before implementation.
 
 A back-end agent reads `docs/architecture/`, the API contract, and the test strategy. A front-end agent reads the design system document instead: component conventions, accessibility requirements, and state management patterns. Figma or another design source supplies the visual context, while the design system document supplies the durable convention.
 

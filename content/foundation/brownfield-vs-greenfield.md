@@ -53,7 +53,7 @@ The agentic-era `skeleton.md` works backward from an implementation already in p
 
 ## After the skeleton
 
-Once `skeleton.md` exists, has been reviewed, and has been distilled into the permanent `docs/` set, the brownfield codebase proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions get written from what the skeleton and the recovered docs reveal, not from scratch. ADRs capture decisions that were made implicitly and are only now being made explicit. And specs stay scoped to new changes, not retrofitted to existing behavior wholesale.
+Once `skeleton.md` exists, has been reviewed, and has been distilled into the durable `docs/` set, the brownfield codebase proceeds with the same Foundation practices as a greenfield one, with realistic constraints. Agent instructions get written from what the skeleton and the recovered docs reveal, not from scratch. ADRs capture decisions that were made implicitly and are only now being made explicit. And specs stay scoped to new changes, not retrofitted to existing behavior wholesale.
 
 Some of those decisions are not new. They are old ones nobody wrote down, the kind the retry-policy author carried out the door on their last day. Point the agent at the function or the module boundary and ask it to reconstruct the reasoning the code's shape implies. Keep the draft ADR at `status: proposed`, and state in its context when the reconstruction was made and which evidence supports it. A domain expert checks the inference before the team accepts the record. The draft will not reproduce the original meeting.
 
